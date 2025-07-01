@@ -1,7 +1,16 @@
+import Image from "next/image";
+
 export function Hero() {
   return (
     <section className="text-center mb-20 md:mb-32">
       <div className="max-w-4xl mx-auto">
+        <Image
+          src="/logo-icon-blue.png"
+          alt="Scooli icon"
+          className="mx-auto mb-6 h-16"
+          width={50}
+          height={50}
+        />
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-slate-900 mb-6 leading-tight">
           Transforme a sua
           <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">

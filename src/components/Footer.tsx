@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function Footer() {
@@ -5,7 +6,13 @@ export function Footer() {
     <footer className="bg-slate-900 text-slate-400 py-12">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <h3 className="text-2xl font-bold text-white mb-4">Scooli</h3>
+          <Image
+            src="/logo-full-blue.png"
+            alt="Scooli logo"
+            className="mx-auto mb-4 h-10"
+            width={120}
+            height={150}
+          />
           <p className="text-sm leading-relaxed mb-6">
             A plataforma educativa para professores portugueses de todos os
             níveis de ensino.
