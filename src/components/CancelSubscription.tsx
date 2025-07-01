@@ -219,6 +219,7 @@ export function CancelSubscription() {
                   type="button"
                   className="flex-1 w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
+                  <CheckCircle className="w-4 h-4 mr-2" />
                   Manter Subscrição
                 </Button>
               </Link>
