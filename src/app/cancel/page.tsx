@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Cancelar Subscrição - Scooli",
   description:
-    "Cancele a sua subscrição de notificações do Scooli a qualquer momento.",
+    "Cancele a sua subscrição de notificações da Scooli a qualquer momento.",
   robots: "noindex, nofollow",
 };
 

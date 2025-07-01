@@ -62,7 +62,7 @@ export function PrivacyPolicy() {
                   Introdução
                 </h2>
                 <p className="text-slate-600 leading-relaxed">
-                  O Scooli (&quot;nós&quot;, &quot;nosso&quot; ou
+                  A Scooli (&quot;nós&quot;, &quot;nosso&quot; ou
                   &quot;nossa&quot;) respeita a sua privacidade e está
                   comprometido em proteger os seus dados pessoais. Esta Política
                   de Privacidade informa-o sobre como recolhemos, utilizamos,
@@ -136,7 +136,7 @@ export function PrivacyPolicy() {
                 </p>
                 <ul className="list-disc list-inside text-slate-600 space-y-2">
                   <li>
-                    Enviar notificações sobre o lançamento do Scooli e
+                    Enviar notificações sobre o lançamento da Scooli e
                     atualizações importantes
                   </li>
                   <li>

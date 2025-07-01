@@ -16,7 +16,7 @@ export function Hero() {
         </p>
         <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-600 border border-slate-200">
           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-          Em breve disponível
+          Disponível brevemente
         </div>
       </div>
     </section>

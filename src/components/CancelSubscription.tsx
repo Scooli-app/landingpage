@@ -112,7 +112,7 @@ export function CancelSubscription() {
             </h1>
             <p className="text-slate-600 leading-relaxed mb-8">
               A sua subscrição foi cancelada com sucesso. Não receberá mais
-              notificações sobre o Scooli.
+              notificações sobre a Scooli.
             </p>
             <div className="space-y-4">
               <p className="text-sm text-slate-500">

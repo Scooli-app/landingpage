@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Política de Privacidade - Scooli",
   description:
-    "Política de privacidade e proteção de dados do Scooli, em conformidade com o RGPD.",
+    "Política de privacidade e proteção de dados da Scooli, em conformidade com o RGPD.",
   keywords: "privacidade, RGPD, proteção de dados, política de privacidade",
 };
 

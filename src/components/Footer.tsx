@@ -14,7 +14,7 @@ export function Footer() {
             <p className="text-xs text-slate-500 mb-4">
               Os seus dados pessoais são tratados de acordo com o Regulamento
               Geral sobre a Proteção de Dados (RGPD). Ao registar o seu email,
-              consente que o contactemos sobre o lançamento do Scooli. Pode
+              consente que o contactemos sobre o lançamento da Scooli. Pode
               cancelar a subscrição a qualquer momento.
             </p>
             <div className="flex justify-center gap-4 text-xs">
