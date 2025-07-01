@@ -1,4 +1,5 @@
-export const emailTemplate = `
+export const emailTemplate = {
+  confirmation: `
 <!DOCTYPE html>
 <html lang="pt-PT">
   <head>
@@ -88,4 +89,101 @@ export const emailTemplate = `
       </div>
     </div>
   </body>
-</html>`;
+</html>`,
+  cancellation: `
+<!DOCTYPE html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subscrição Cancelada - Scooli</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #374151; background-color: #f8fafc; margin: 0; padding: 0; }
+      .email-container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
+      .header { background: linear-gradient(135deg, #64748b 0%, #475569 100%); padding: 40px 30px; text-align: center; color: white; }
+      .logo { font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+      .logo img { max-height: 40px; width: auto; }
+      .tagline { font-size: 16px; opacity: 0.9; font-weight: 500; }
+      .content { padding: 40px 30px; }
+      .greeting { font-size: 24px; font-weight: 600; color: #475569; margin-bottom: 20px; }
+      .message { font-size: 16px; line-height: 1.7; margin-bottom: 30px; color: #4b5563; }
+      .benefits { background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%); border-radius: 12px; padding: 30px; margin: 30px 0; }
+      .benefits-title { font-size: 20px; font-weight: 600; color: #475569; margin-bottom: 20px; text-align: center; }
+      .benefits-grid { width: 100%; text-align: center; }
+      .benefit-item { display: inline-block; text-align: center; width: 150px; margin: 0 10px 20px 10px; vertical-align: top; }
+      .benefit-icon { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 12px; text-align: center; line-height: 60px; font-size: 24px; font-weight: 700; color: white; }
+      .benefit-icon.gray { background: #64748b; }
+      .benefit-icon.blue { background: #2c6ecb; }
+      .benefit-icon.green { background: #68ed99; }
+      .benefit-text { font-size: 14px; font-weight: 600; color: #374151; }
+      .footer { background-color: #f8fafc; padding: 30px; text-align: center; border-top: 1px solid #e2e8f0; }
+      .footer-text { font-size: 14px; color: #6b7280; margin-bottom: 10px; }
+      .social-links { margin: 20px 0; }
+      .social-link { display: inline-block; margin: 0 10px; color: #2c6ecb; text-decoration: none; font-size: 14px; font-weight: 500; }
+      .unsubscribe { font-size: 12px; color: #9ca3af; margin-top: 20px; }
+      .unsubscribe a { color: #2c6ecb; text-decoration: none; }
+      .cta-button-container { text-align: center; }
+      .cta-button { display: inline-block; background: linear-gradient(135deg, #2c6ecb 0%, #57d1b0 100%); color: white !important; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; margin: 20px 0; }
+      @media only screen and (max-width: 600px) { .email-container { margin: 10px; border-radius: 12px; } .header, .content, .footer { padding: 30px 20px; } .benefits { padding: 20px; } .greeting { font-size: 20px; } .logo { font-size: 28px; } }
+    </style>
+  </head>
+  <body>
+    <div class="email-container">
+      <div class="header">
+        <div class="logo">Scooli</div>
+        <div class="tagline">Obrigado por ter estado connosco.</div>
+      </div>
+      <div class="content">
+        <div class="greeting">Subscrição Cancelada 😔</div>
+        <div class="message">
+          Olá,<br /><br />
+          Confirmamos que a sua subscrição às notificações da Scooli foi cancelada com sucesso.<br /><br />
+          É triste vê-lo partir, mas respeitamos completamente a sua decisão. Os seus dados pessoais foram removidos da nossa base de dados em conformidade com o RGPD.
+        </div>
+        <div class="benefits">
+          <div class="benefits-title">Se mudou de ideias, pode sempre:</div>
+          <div class="benefits-grid">
+            <div class="benefit-item">
+              <div class="benefit-icon blue">📧</div>
+              <div class="benefit-text">Reinscrever-se a Qualquer Momento</div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon green">🌐</div>
+              <div class="benefit-text">Visitar o Nosso Website</div>
+            </div>
+            <div class="benefit-item">
+              <div class="benefit-icon gray">💬</div>
+              <div class="benefit-text">Partilhar o Seu Feedback</div>
+            </div>
+          </div>
+        </div>
+        <div class="message">
+          Se cancelou por engano ou gostaria de nos dar feedback sobre como podemos melhorar, ficamos sempre felizes em ouvir os nossos utilizadores.<br /><br />
+          <div class="cta-button-container">
+            <a href="https://scooli.app" class="cta-button">Reinscrever-me</a>
+          </div>
+          Desejamos-lhe tudo de bom na sua jornada educativa!<br /><br />
+          Com os melhores cumprimentos,<br />
+          <strong>Equipa Scooli</strong>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-text">
+          <img src="https://scooli.app/logo-full-blue.png" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
+          <strong>Scooli</strong> - Plataforma Educativa para Professores Portugueses
+        </div>
+        <div class="social-links">
+          <a href="https://scooli.app" class="social-link">Website</a>
+          <!-- <a href="#" class="social-link">LinkedIn</a> -->
+          <!-- <a href="#" class="social-link">Facebook</a> -->
+        </div>
+        <div class="unsubscribe">
+          Esta subscrição foi cancelada com sucesso.<br />
+          <a href="https://scooli.app/privacy">Política de Privacidade</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>`,
+};

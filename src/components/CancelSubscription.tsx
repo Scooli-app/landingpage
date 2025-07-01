@@ -1,4 +1,5 @@
 "use client";
+import { emailTemplate } from "@/assets/email-template";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -80,6 +81,27 @@ export function CancelSubscription() {
         setIsLoading(false);
         return;
       }
+
+      try {
+        const { data, error: emailError } = await supabase.functions.invoke(
+          "send-email",
+          {
+            body: {
+              to: email,
+              subject: "Subscrição Cancelada - Scooli",
+              html: emailTemplate.cancellation,
+            },
+          }
+        );
+
+        console.log("Send cancellation email data > ", data);
+        if (emailError) {
+          console.error("Error sending cancellation email:", emailError);
+        }
+      } catch (emailError) {
+        console.error("Error sending cancellation email:", emailError);
+      }
+
       setIsCancelled(true);
       toast({
         title: "Subscrição cancelada",

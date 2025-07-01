@@ -51,7 +51,7 @@ export function EmailForm() {
           body: {
             to: email,
             subject: "Obrigado por se juntar à Scooli 🎓🚀",
-            html: emailTemplate,
+            html: emailTemplate.confirmation,
           },
         });
 
