@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    },
+    {
+      "src": "/cancel",
+      "dest": "/cancel"
+    },
+    {
+      "src": "/privacy",
+      "dest": "/privacy"
+    }
+  ]
+}
