@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { ToasterProps, ToastT } from "sonner";
+import type { ToasterProps, ToastT } from "sonner";
 
 const TOAST_LIMIT = 1;
 const TOAST_REMOVE_DELAY = 1000000;
@@ -155,7 +155,7 @@ function toast({ ...props }: Toast) {
       id,
       open: true,
       onOpenChange: (open: boolean) => {
-        if (!open) dismiss();
+        if (!open) {dismiss();}
       },
     },
   });

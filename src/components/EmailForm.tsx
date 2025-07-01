@@ -1,7 +1,4 @@
 "use client";
-
-import type React from "react";
-
 import { emailTemplate } from "@/assets/email-template";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,9 +42,8 @@ export function EmailForm() {
         }
       }
 
-      // Send custom welcome email via Edge Function
       try {
-        const { data, error } = await supabase.functions.invoke("send-email", {
+        const { error } = await supabase.functions.invoke("send-email", {
           body: {
             to: email,
             subject: "Obrigado por se juntar à Scooli 🎓🚀",
@@ -55,7 +51,6 @@ export function EmailForm() {
           },
         });
 
-        console.log("Send email data > ", data);
         if (error) {
           throw error;
         }
@@ -115,7 +110,7 @@ export function EmailForm() {
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       A registar...
                     </div>
                   ) : (

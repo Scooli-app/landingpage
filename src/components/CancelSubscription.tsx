@@ -16,8 +16,7 @@ import { supabase } from "@/lib/supabaseClient";
 import type { CancelReason } from "@/types/cancel-reasons";
 import { AlertTriangle, ArrowLeft, CheckCircle, Mail } from "lucide-react";
 import Link from "next/link";
-import type React from "react";
-import { useEffect, useState } from "react";
+import { type FormEvent, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 export function CancelSubscription() {
@@ -44,7 +43,7 @@ export function CancelSubscription() {
     fetchReasons();
   }, []);
 
-  const handleCancel = async (e: React.FormEvent) => {
+  const handleCancel = async (e: FormEvent) => {
     e.preventDefault();
 
     if (!email || !email.includes("@")) {
@@ -91,7 +90,7 @@ export function CancelSubscription() {
             "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
           );
         } else {
-          console.log("Cancellation email sent successfully");
+          console.warn("Cancellation email sent successfully");
         }
       } catch {
         toast.error(
@@ -215,7 +214,7 @@ export function CancelSubscription() {
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     A cancelar...
                   </div>
                 ) : (
@@ -296,7 +295,7 @@ export function CancelSubscription() {
             >
               {isLoading ? (
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                   A cancelar...
                 </div>
               ) : (
