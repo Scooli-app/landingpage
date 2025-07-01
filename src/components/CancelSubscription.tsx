@@ -12,19 +12,18 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/lib/supabaseClient";
 import type { CancelReason } from "@/types/cancel-reasons";
 import { AlertTriangle, ArrowLeft, CheckCircle, Mail } from "lucide-react";
 import Link from "next/link";
 import type React from "react";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export function CancelSubscription() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isCancelled, setIsCancelled] = useState(false);
-  const { toast } = useToast();
   const [selectedReason, setSelectedReason] = useState<number>(0);
   const [showDialog, setShowDialog] = useState(false);
   const [reasons, setReasons] = useState<CancelReason[]>([]);
@@ -49,11 +48,7 @@ export function CancelSubscription() {
     e.preventDefault();
 
     if (!email || !email.includes("@")) {
-      toast({
-        title: "Email inválido",
-        description: "Por favor, introduza um endereço de email válido.",
-        type: "error",
-      });
+      toast.error("Por favor, introduza um endereço de email válido.");
       return;
     }
 
@@ -72,18 +67,15 @@ export function CancelSubscription() {
         },
       });
       if (error) {
-        toast({
-          title: "Erro ao cancelar subscrição",
-          description:
-            error.message || "Ocorreu um erro ao cancelar a subscrição.",
-          type: "error",
-        });
+        toast.error(
+          "Ocorreu um erro ao cancelar a subscrição. É possível que não tenha nenhuma subscrição ativa."
+        );
         setIsLoading(false);
         return;
       }
 
       try {
-        const { data, error: emailError } = await supabase.functions.invoke(
+        const { error: emailError } = await supabase.functions.invoke(
           "send-email",
           {
             body: {
@@ -94,28 +86,25 @@ export function CancelSubscription() {
           }
         );
 
-        console.log("Send cancellation email data > ", data);
         if (emailError) {
-          console.error("Error sending cancellation email:", emailError);
+          toast.error(
+            "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
+          );
+        } else {
+          console.log("Cancellation email sent successfully");
         }
-      } catch (emailError) {
-        console.error("Error sending cancellation email:", emailError);
+      } catch (emailError: any) {
+        toast.error(
+          "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
+        );
       }
 
       setIsCancelled(true);
-      toast({
-        title: "Subscrição cancelada",
-        description: "A sua subscrição foi cancelada com sucesso.",
-      });
+      toast.success("A sua subscrição foi cancelada com sucesso.");
     } catch (err: unknown) {
-      toast({
-        title: "Erro ao cancelar subscrição",
-        description:
-          err instanceof Error
-            ? err.message
-            : "Ocorreu um erro ao cancelar a subscrição.",
-        type: "error",
-      });
+      toast.error(
+        "Ocorreu um erro ao cancelar a subscrição. Tente novamente mais tarde."
+      );
     } finally {
       setIsLoading(false);
     }
@@ -211,7 +200,7 @@ export function CancelSubscription() {
                 placeholder="o.seu.email@exemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-12 text-lg bg-white border-slate-300 focus:border-red-500 focus:ring-red-500"
+                className="h-12 text-lg bg-white border-slate-300 focus:border-blue-500 focus:ring-blue-500 "
                 disabled={isLoading}
                 required
               />
