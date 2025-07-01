@@ -1,24 +1,48 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { BookOpen, Lightbulb, Users } from "lucide-react";
+import {
+  FileText,
+  Folder,
+  ListChecks,
+  Sliders,
+  Sparkles,
+  Upload,
+} from "lucide-react";
 
 const benefits = [
   {
-    icon: BookOpen,
-    title: "Recursos Personalizados",
+    icon: Sliders,
+    title: "Geração Automática de Apresentações",
     description:
-      "Aceda a uma biblioteca de recursos educativos adaptados ao currículo português e às suas necessidades específicas.",
+      "Crie apresentações para as suas aulas de forma automática e personalizada.",
   },
   {
-    icon: Users,
-    title: "Comunidade de Professores",
+    icon: FileText,
+    title: "Planificação de Aulas",
     description:
-      "Conecte-se com outros educadores, partilhe experiências e colabore em projetos pedagógicos inovadores.",
+      "Gere planos de aula alinhados com o currículo português e as melhores práticas educativas.",
   },
   {
-    icon: Lightbulb,
-    title: "Ferramentas Inovadoras",
+    icon: ListChecks,
+    title: "Criação de Testes e Fichas",
+    description: "Elabore testes, quizzes e exercícios em segundos.",
+  },
+  {
+    icon: Folder,
+    title: "Organização de Conteúdos",
     description:
-      "Utilize tecnologias modernas para criar aulas mais envolventes e melhorar o desempenho dos seus alunos.",
+      "Guarde e organize todos os materiais gerados para fácil acesso e reutilização.",
+  },
+  {
+    icon: Upload,
+    title: "Upload e Transformação de Documentos",
+    description:
+      "Faça upload dos seus próprios documentos para serem melhorados ou transformados pela IA.",
+  },
+  {
+    icon: Sparkles,
+    title: "Sugestões Inteligentes",
+    description:
+      "Receba sugestões de atividades, estratégias diferentes e ideias para trabalhos de grupo.",
   },
 ];
 
@@ -27,7 +51,7 @@ export function Benefits() {
     <section className="mb-20 md:mb-32">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-16">
-          Porquê escolher o Scooli?
+          Porquê escolher a Scooli?
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => (
