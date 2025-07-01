@@ -11,6 +11,7 @@ export const emailTemplate = `
       .email-container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1); }
       .header { background: linear-gradient(135deg, #2c6ecb 0%, #57d1b0 100%); padding: 40px 30px; text-align: center; color: white; }
       .logo { font-size: 32px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.5px; }
+      .logo img { max-height: 40px; width: auto; }
       .tagline { font-size: 16px; opacity: 0.9; font-weight: 500; }
       .content { padding: 40px 30px; }
       .greeting { font-size: 24px; font-weight: 600; color: #2c6ecb; margin-bottom: 20px; }
@@ -72,6 +73,7 @@ export const emailTemplate = `
       </div>
       <div class="footer">
         <div class="footer-text">
+          <img src="https://scooli.app/logo-full-blue.png" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
           <strong>Scooli</strong> - Plataforma Educativa para Professores Portugueses
         </div>
         <div class="social-links">
