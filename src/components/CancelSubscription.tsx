@@ -93,7 +93,7 @@ export function CancelSubscription() {
         } else {
           console.log("Cancellation email sent successfully");
         }
-      } catch (emailError: any) {
+      } catch {
         toast.error(
           "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
         );
@@ -101,7 +101,7 @@ export function CancelSubscription() {
 
       setIsCancelled(true);
       toast.success("A sua subscrição foi cancelada com sucesso.");
-    } catch (err: unknown) {
+    } catch {
       toast.error(
         "Ocorreu um erro ao cancelar a subscrição. Tente novamente mais tarde."
       );
