@@ -2,6 +2,7 @@
 
 import type React from "react";
 
+import { emailTemplate } from "@/assets/email-template";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -44,21 +45,27 @@ export function EmailForm() {
         }
       }
 
-      const { error: authError } = await supabase.auth.signInWithOtp({
-        email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/confirm`,
-        },
-      });
+      // Send custom welcome email via Edge Function
+      try {
+        const { data, error } = await supabase.functions.invoke("send-email", {
+          body: {
+            to: email,
+            subject: "Obrigado por se juntar à Scooli 🎓🚀",
+            html: emailTemplate,
+          },
+        });
 
-      if (authError) {
-        console.error("Error sending confirmation email:", authError);
-        toast.warning(
-          "Email registado com sucesso, mas não foi possível enviar o email de confirmação."
-        );
-      } else {
+        console.log("Send email data > ", data);
+        if (error) {
+          throw error;
+        }
         toast.success(
-          "Obrigado! Verifique o seu email para confirmar a subscrição. Será notificado assim que o Scooli estiver disponível."
+          "Obrigado! O seu email foi registado e receberá um email de confirmação em breve."
+        );
+      } catch (emailError) {
+        console.error("Error sending email:", emailError);
+        toast.success(
+          "Email registado com sucesso! Não foi possível enviar o email de confirmação, mas será notificado quando a Scooli estiver disponível."
         );
       }
 
