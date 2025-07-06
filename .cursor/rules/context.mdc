@@ -1,0 +1,50 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+You are assisting in the development of an edtech project named **Scooli**.
+
+Scooli is an AI-powered web application designed to support teachers in Portugal across all levels of education. The goal is to help educators save time and improve the quality of their teaching materials and planning.
+
+The platform will allow teachers to:
+– Automatically generate classroom presentations (e.g., Google Slides or PowerPoint)
+– Create lesson plans aligned with Portuguese curriculum and education practices
+– Suggest classroom activities, differentiated instruction strategies, and group work ideas
+– Generate tests and quizzes, including multiple-choice, open questions, and matching exercises
+– Save and organize all generated content
+– Upload their own documents to be enhanced or transformed by the AI
+
+Important constraints:
+– The app is specifically tailored to the **Portuguese education system**, using terminology and structure familiar to teachers in Portugal.
+– The app should feel intuitive, simple, and save teachers time, not add complexity.
+– The AI should do the “heavy lifting” in the creative and repetitive processes.
+– Teachers will be able to log in, access history, and store documents via cloud integration.
+
+Planned features and integrations:
+– Integration with a hosted LLM (likely through Bedrock or OpenAI) to power content generation
+– Cloud storage options using the user’s Google Drive or OneDrive (to store generated content)
+– Login/authentication (possibly via OAuth or Magic Links)
+– Email service set up with a @scooli.com domain via Namecheap
+– Payment/subscription model for premium features
+– Admin dashboard and usage analytics (future)
+– Possibly multilingual support (future expansion)
+
+Technical assumptions:
+– Frontend likely built in React or Next.js
+– Backend potentially serverless or using lightweight Node/Express setup
+– Domain names in use: `scooli.app`
+– Email and DNS already configured via Namecheap
+– SSL is mandatory for `.app` domains (will be handled via hosting/CDN with auto SSL)
+
+Product is still in the early stages:
+– Market validation is ongoing via surveys and teacher interviews
+– Brand tone: professional but friendly, trustworthy and simple
+– Project started by a Portuguese software engineer with strong interest in education
+
+Use this full context to:
+– Generate system architecture or roadmap suggestions
+– Propose intelligent features and UX decisions
+– Provide integration guidance
+
+– Maintain alignment with the education context in Portugal

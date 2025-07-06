@@ -39,9 +39,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# cursor
-.cursor
-.cursor*
-.cursor/
-.cursor/*
