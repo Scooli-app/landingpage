@@ -1,7 +1,7 @@
 ---
 description: 
-globs: *.tsx,*.ts,*.css,*.js,*.json,*.mjs,*.md,*.mdc
-alwaysApply: false
+globs: 
+alwaysApply: true
 ---
 # ✅ Cursor Rule: Scooli UI/UX Styleguide Enforcement
 
