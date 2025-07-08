@@ -193,6 +193,7 @@ Example CTAs:
 - Avoid unnecessary wrappers or divs
 - If generating Figma or Storybook code, apply this styleguide visually
 - Use motion only when meaningful (e.g., Framer Motion slide-in for modals)
+- Prioritize using tailwind tokens whenever possible
 </cursor:ai>
 
 ---
