@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/supabaseClient";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Clock, Gift, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -74,7 +74,7 @@ export function EmailForm() {
   };
 
   return (
-    <section className="mb-20">
+    <section className="mb-20" aria-labelledby="email-form-heading">
       <div className="max-w-2xl mx-auto">
         <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-xl">
           <CardContent className="p-8 md:p-12">
@@ -82,27 +82,53 @@ export function EmailForm() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">
                 <Mail className="w-8 h-8 text-white" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              <h2 id="email-form-heading" className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
                 Seja o primeiro a saber
               </h2>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed mb-6">
                 Registe o seu email e seja notificado quando o Scooli estiver
                 disponível. Não perca a oportunidade de revolucionar a sua
                 experiência de ensino.
               </p>
+              
+              {/* Enhanced content for GEO */}
+              <div className="grid md:grid-cols-3 gap-4 mb-8">
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <Clock className="w-4 h-4 text-blue-500" />
+                  <span>Acesso prioritário</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <Gift className="w-4 h-4 text-green-500" />
+                  <span>100 créditos gratuitos</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-slate-600">
+                  <Users className="w-4 h-4 text-purple-500" />
+                  <span>Comunidade exclusiva</span>
+                </div>
+              </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-labelledby="email-form-heading">
               <div className="flex flex-col sm:flex-row gap-4">
-                <Input
-                  type="text"
-                  placeholder="o.seu.email@exemplo.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="flex-1 h-12 text-lg bg-white border-slate-300 focus:border-blue-500 focus:ring-blue-500"
-                  disabled={isLoading}
-                  required
-                />
+                <div className="flex-1">
+                  <label htmlFor="email-input" className="sr-only">
+                    Endereço de email
+                  </label>
+                  <Input
+                    type="email"
+                    id="email-input"
+                    placeholder="o.seu.email@exemplo.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="h-12 text-lg bg-white border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                    disabled={isLoading}
+                    required
+                    aria-describedby="email-help"
+                  />
+                  <p id="email-help" className="text-xs text-slate-500 mt-1">
+                    Receberá notificações sobre o lançamento e dicas exclusivas.
+                  </p>
+                </div>
                 <Button
                   type="submit"
                   disabled={isLoading}
@@ -122,6 +148,16 @@ export function EmailForm() {
                 </Button>
               </div>
             </form>
+            
+            <div className="mt-6 text-center">
+              <p className="text-xs text-slate-500">
+                Ao registar, concorda com a nossa{" "}
+                <a href="/privacy" className="text-blue-600 hover:text-blue-700 underline">
+                  Política de Privacidade
+                </a>
+                . Pode cancelar a subscrição a qualquer momento.
+              </p>
+            </div>
           </CardContent>
         </Card>
       </div>
