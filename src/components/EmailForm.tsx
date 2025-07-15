@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/supabaseClient";
-import { ArrowRight, Mail, Clock, Gift, Users } from "lucide-react";
+import { ArrowRight, Clock, Gift, Mail, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -82,7 +82,10 @@ export function EmailForm() {
               <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">
                 <Mail className="w-8 h-8 text-white" />
               </div>
-              <h2 id="email-form-heading" className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+              <h2
+                id="email-form-heading"
+                className="text-2xl md:text-3xl font-bold text-slate-900 mb-4"
+              >
                 Seja o primeiro a saber
               </h2>
               <p className="text-slate-600 leading-relaxed mb-6">
@@ -90,7 +93,7 @@ export function EmailForm() {
                 disponível. Não perca a oportunidade de revolucionar a sua
                 experiência de ensino.
               </p>
-              
+
               {/* Enhanced content for GEO */}
               <div className="grid md:grid-cols-3 gap-4 mb-8">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
@@ -108,7 +111,12 @@ export function EmailForm() {
               </div>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4" role="form" aria-labelledby="email-form-heading">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-4"
+              role="form"
+              aria-labelledby="email-form-heading"
+            >
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                   <label htmlFor="email-input" className="sr-only">
@@ -125,9 +133,6 @@ export function EmailForm() {
                     required
                     aria-describedby="email-help"
                   />
-                  <p id="email-help" className="text-xs text-slate-500 mt-1">
-                    Receberá notificações sobre o lançamento e dicas exclusivas.
-                  </p>
                 </div>
                 <Button
                   type="submit"
@@ -148,11 +153,14 @@ export function EmailForm() {
                 </Button>
               </div>
             </form>
-            
+
             <div className="mt-6 text-center">
               <p className="text-xs text-slate-500">
                 Ao registar, concorda com a nossa{" "}
-                <a href="/privacy" className="text-blue-600 hover:text-blue-700 underline">
+                <a
+                  href="/privacy"
+                  className="text-blue-600 hover:text-blue-700 underline"
+                >
                   Política de Privacidade
                 </a>
                 . Pode cancelar a subscrição a qualquer momento.

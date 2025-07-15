@@ -14,7 +14,7 @@ import Link from "next/link";
 import { EmailContact } from "./EmailContact";
 
 export function PrivacyPolicy() {
-  const lastUpdated = "30 de Junho de 2025";
+  const lastUpdated = "15 de Julho de 2025";
 
   return (
     <div className="max-w-4xl mx-auto">
