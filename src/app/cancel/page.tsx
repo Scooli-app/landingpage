@@ -4,12 +4,14 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Cancelar Subscrição - Scooli",
-  description:
-    "Cancele a sua subscrição de notificações da Scooli a qualquer momento.",
-  robots: "noindex, nofollow",
+  description: "Página para gerir ou cancelar a sua subscrição Scooli Pro.",
+  robots: {
+    index: false,
+    follow: true,
+  },
 };
 
-export default function CancelPage() {
+export default function Cancel() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">

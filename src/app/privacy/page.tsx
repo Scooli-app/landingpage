@@ -5,8 +5,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Política de Privacidade - Scooli",
   description:
-    "Política de privacidade e proteção de dados da Scooli, em conformidade com o RGPD.",
-  keywords: "privacidade, RGPD, proteção de dados, política de privacidade",
+    "Consulte a política de privacidade da Scooli. Saiba como recolhemos, usamos e protegemos os seus dados.",
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function PrivacyPage() {

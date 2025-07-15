@@ -13,10 +13,11 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Scooli - Plataforma Educativa para Professores Portugueses",
+  title: "Scooli - Plataforma Educativa com IA para Professores",
   description:
-    "Plataforma educativa que automatiza a criação de apresentações, planos de aula e testes para professores portugueses. IA avançada para todos os níveis de ensino.",
-  keywords: "educação, professores, Portugal, ensino, plataforma educativa, IA, inteligência artificial, planos de aula, apresentações, testes",
+    "Poupe tempo e inove. A Scooli é a ferramenta com IA que gera automaticamente testes, planos de aula e apresentações para professores em Portugal.",
+  keywords:
+    "scooli, IA para professores, inteligência artificial na educação, gerador de testes, criador de planos de aula, apresentações para aulas, poupar tempo professores, ferramentas para professores portugueses, edtech portugal, recursos educativos, ensino básico, ensino secundário, AI for teachers, AI lesson planner, test generator, educational resources, IA, portugal, portuguese, school, teachers, productivity, education, teaching, learning, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, tests, quizzes, quizz, presentations, planos de aula, apresentações, testes, quizzes, quizz, present, tempo, vida, qualidade, aprendizagens, essenciais, curriculum, programa, nacional, PT, edtech, startup, 2025, basico, secundario, superior, pre escolar, creche,",
   authors: [{ name: "Scooli", url: "https://scooli.app" }],
   creator: "Scooli",
   publisher: "Scooli",
@@ -49,7 +50,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Scooli - Plataforma Educativa para Professores Portugueses",
-    description: "Transforme a sua experiência de ensino com ferramentas inovadoras.",
+    description:
+      "Transforme a sua experiência de ensino com ferramentas inovadoras.",
     images: ["/logo-full-blue.png"],
   },
   robots: {
@@ -75,7 +77,8 @@ const organizationSchema = {
   "@id": "https://scooli.app/#organization",
   name: "Scooli",
   alternateName: "Scooli - Plataforma Educativa",
-  description: "Plataforma educativa para professores portugueses de todos os níveis de ensino",
+  description:
+    "Plataforma educativa para professores portugueses de todos os níveis de ensino",
   url: "https://scooli.app",
   logo: {
     "@type": "ImageObject",
@@ -83,9 +86,7 @@ const organizationSchema = {
     width: 120,
     height: 40,
   },
-  sameAs: [
-    "https://scooli.app",
-  ],
+  sameAs: ["https://scooli.app"],
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
@@ -162,7 +163,8 @@ const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
   name: "Como gerar conteúdo educativo com a Scooli",
-  description: "Guia passo a passo para gerar apresentações, planos de aula e testes usando a plataforma Scooli",
+  description:
+    "Guia passo a passo para gerar apresentações, planos de aula e testes usando a plataforma Scooli",
   image: {
     "@type": "ImageObject",
     url: "https://scooli.app/logo-full-blue.png",
@@ -259,9 +261,7 @@ export default function RootLayout({
             </Link>
           </div>
         </header>
-        <main role="main">
-          {children}
-        </main>
+        <main role="main">{children}</main>
         <Toaster
           position="bottom-right"
           swipeDirections={["bottom", "right"]}
