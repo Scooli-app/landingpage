@@ -4,7 +4,7 @@ export function EmailContact() {
   return (
     <span className="inline-flex items-center gap-1">
       <strong>Email:</strong>{" "}
-      <a
+      <button
         onClick={() => {
           navigator.clipboard.writeText("info@scooli.app");
           toast.success(
@@ -15,7 +15,7 @@ export function EmailContact() {
         style={{ position: "relative", zIndex: 1 }}
       >
         info@scooli.app
-      </a>
+      </button>
     </span>
   );
 }
