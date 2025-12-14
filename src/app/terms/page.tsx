@@ -1,26 +1,28 @@
 import { Footer } from "@/components/Footer";
-import { PrivacyPolicy } from "@/components/PrivacyPolicy";
+import { TermsOfUse } from "@/components/TermsOfUse";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade / Privacy Policy - Scooli",
+  title: "Termos de Utilização - Scooli",
   description:
-    "Consulte a política de privacidade da Scooli (PT/EN). Saiba como recolhemos, usamos e protegemos os seus dados.",
+    "Consulte os Termos de Utilização da Scooli (PT/EN). Regras de acesso e uso do website, aplicação, comunidade e créditos.",
   robots: {
     index: true,
     follow: true,
   },
 };
 
-export default function PrivacyPage() {
+export default function TermsPage() {
   return (
     <>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
         <main className="container mx-auto px-4 py-8 md:py-16">
-          <PrivacyPolicy />
+          <TermsOfUse />
         </main>
       </div>
       <Footer />
     </>
   );
 }
+
+

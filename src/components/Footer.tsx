@@ -56,6 +56,14 @@ export function Footer() {
                   </li>
                   <li>
                     <Link
+                      href="/terms"
+                      className="text-slate-400 hover:text-slate-300 transition-colors duration-200"
+                    >
+                      Termos de Utilização
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       href="/cancel"
                       className="text-slate-400 hover:text-slate-300 transition-colors duration-200"
                     >
@@ -92,6 +100,13 @@ export function Footer() {
                   className="text-slate-400 hover:text-slate-300 underline transition-colors duration-200"
                 >
                   Cancelar subscrição
+                </Link>
+                <span className="text-slate-600">•</span>
+                <Link
+                  href="/terms"
+                  className="text-slate-400 hover:text-slate-300 underline transition-colors duration-200"
+                >
+                  Termos de Utilização
                 </Link>
                 <span className="text-slate-600">•</span>
                 <Link
