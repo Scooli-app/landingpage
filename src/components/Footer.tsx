@@ -26,18 +26,18 @@ export function Footer() {
             </div>
 
         <div className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--scooli-ink)]">
-                    <Link
-            href="/politica-de-privacidade"
+          <Link
+            href="/privacy"
             className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-                    >
-                      Política de Privacidade
-                    </Link>
-                    <Link
-            href="/termos-de-utilizacao"
+          >
+            Política de Privacidade
+          </Link>
+          <Link
+            href="/terms"
             className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-                    >
-                      Termos de Utilização
-                    </Link>
+          >
+            Termos de Utilização
+          </Link>
                     <Link
             href="/cancelar-subscricao"
             className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"

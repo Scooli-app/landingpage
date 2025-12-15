@@ -1,16 +1,22 @@
 import type { MetadataRoute } from "next";
 
+/**
+ * PWA Web App Manifest
+ * Enhanced for SEO and app store discoverability
+ */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Scooli - Plataforma Educativa para Professores",
+    name: "Scooli - IA para Professores Portugueses",
     short_name: "Scooli",
     description:
-      "Plataforma educativa que conecta professores portugueses com ferramentas inovadoras para todos os níveis de ensino",
+      "Plataforma portuguesa com IA que devolve tempo aos professores. Gere apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais em segundos.",
     start_url: "/",
+    id: "/",
     display: "standalone",
+    display_override: ["standalone", "minimal-ui"],
     background_color: "#ffffff",
     theme_color: "#6753FF",
-    orientation: "portrait",
+    orientation: "portrait-primary",
     icons: [
       {
         src: "/web-app-manifest-192x192.png",
@@ -25,13 +31,57 @@ export default function manifest(): MetadataRoute.Manifest {
         purpose: "maskable",
       },
       {
+        src: "/web-app-manifest-192x192.png",
+        sizes: "192x192",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
+        src: "/web-app-manifest-512x512.png",
+        sizes: "512x512",
+        type: "image/png",
+        purpose: "any",
+      },
+      {
         src: "/favicon.svg",
         sizes: "any",
         type: "image/svg+xml",
       },
+      {
+        src: "/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+        purpose: "any",
+      },
     ],
-    categories: ["education", "productivity"],
+    categories: ["education", "productivity", "utilities"],
     lang: "pt-PT",
+    dir: "ltr",
     scope: "/",
+    screenshots: [
+      {
+        src: "/opengraph-image",
+        sizes: "1200x630",
+        type: "image/png",
+        label: "Scooli - Página inicial",
+      },
+    ],
+    prefer_related_applications: false,
+    shortcuts: [
+      {
+        name: "Criar Apresentação",
+        short_name: "Apresentação",
+        description: "Gerar uma nova apresentação com IA",
+        url: "/?action=presentation",
+        icons: [{ src: "/favicon-96x96.png", sizes: "96x96" }],
+      },
+      {
+        name: "Criar Plano de Aula",
+        short_name: "Plano",
+        description: "Gerar um novo plano de aula com IA",
+        url: "/?action=lesson-plan",
+        icons: [{ src: "/favicon-96x96.png", sizes: "96x96" }],
+      },
+    ],
   };
 }
