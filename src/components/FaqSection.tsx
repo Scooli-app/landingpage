@@ -20,11 +20,11 @@ const faqs = [
     answer:
       "Ao criar conta na Scooli recebe 100 créditos não renováveis gratuitamente. Pode usar estes créditos para gerar apresentações, planos de aula, testes e quizzes. Quando os créditos acabam, pode ganhar mais contribuindo recursos de qualidade para a biblioteca comunitária, ou subscrever o plano Scooli Pro.",
   },
-  {
-    question: "Quanto custa o Scooli Pro e quais são os benefícios?",
-    answer:
-      "O plano Scooli Pro custa €7,99 por mês e oferece geração ilimitada de recursos educativos, acesso aos modelos de IA mais avançados e suporte prioritário. Não há limites na quantidade de apresentações, planos de aula ou testes que pode criar. Mantemos políticas de uso responsável para garantir o melhor desempenho.",
-  },
+  // {
+  //   question: "Quanto custa o Scooli Pro e quais são os benefícios?",
+  //   answer:
+  //     "O plano Scooli Pro custa €7,99 por mês e oferece geração ilimitada de recursos educativos, acesso aos modelos de IA mais avançados e suporte prioritário. Não há limites na quantidade de apresentações, planos de aula ou testes que pode criar. Mantemos políticas de uso responsável para garantir o melhor desempenho.",
+  // },
   {
     question: "A Scooli está em conformidade com o RGPD?",
     answer:
