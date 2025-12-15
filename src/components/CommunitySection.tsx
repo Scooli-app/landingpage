@@ -30,7 +30,7 @@ export function CommunitySection() {
       <Container className="relative grid gap-10 md:grid-cols-[1.1fr,1fr] md:items-center">
         <div className="space-y-4">
           <p className="text-sm font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
-            Comunidade que cria o fosso competitivo
+            Comunidade onde todos colaboram e crescem juntos
           </p>
           <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
             Biblioteca comunitária, créditos e XP. Crescer juntos faz parte do
