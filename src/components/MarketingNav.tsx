@@ -87,27 +87,26 @@ export function MarketingNav() {
           onClick={() => setOpen((prev) => !prev)}
           className="flex h-11 w-11 items-center justify-center rounded-xl border border-[color:var(--scooli-border)] bg-white text-[color:var(--scooli-ink)] shadow-sm transition hover:bg-[color:var(--scooli-accent)] lg:hidden"
         >
-          <motion.span
-            className="relative block h-4 w-6"
-            animate={open ? "open" : "closed"}
-            variants={{
-              open: {},
-              closed: {},
-            }}
-          >
+          <motion.span className="relative flex h-5 w-6 flex-col items-center justify-center">
             <motion.span
-              className="absolute left-0 top-0 h-[2px] w-full rounded-full bg-current"
-              animate={{ rotate: open ? 45 : 0, y: open ? 6 : 0 }}
+              className="absolute h-[2px] w-full rounded-full bg-current"
+              animate={{
+                rotate: open ? 45 : 0,
+                y: open ? 0 : -6,
+              }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="absolute left-0 top-2 h-[2px] w-full rounded-full bg-current"
+              className="absolute h-[2px] w-full rounded-full bg-current"
               animate={{ opacity: open ? 0 : 1 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
-              className="absolute left-0 top-4 h-[2px] w-full rounded-full bg-current"
-              animate={{ rotate: open ? -45 : 0, y: open ? -6 : 8 }}
+              className="absolute h-[2px] w-full rounded-full bg-current"
+              animate={{
+                rotate: open ? -45 : 0,
+                y: open ? 0 : 6,
+              }}
               transition={{ duration: 0.2 }}
             />
           </motion.span>

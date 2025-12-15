@@ -76,8 +76,8 @@ export function FeatureGrid() {
               >
                 <Card className="h-full overflow-hidden rounded-2xl border-[color:var(--scooli-border)] bg-white/90 shadow-sm backdrop-blur transition hover:shadow-lg">
                   <CardContent className="space-y-3 p-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
-                      <Icon className="h-6 w-6" />
+                    <div className="aspect-square inline-flex h-12 w-12 min-h-12 min-w-12 items-center justify-center rounded-xl bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
+                      <Icon className="h-6 w-6 shrink-0" />
                     </div>
                     <h3 className="text-lg font-semibold text-[color:var(--scooli-ink)]">
                       {feature.title}

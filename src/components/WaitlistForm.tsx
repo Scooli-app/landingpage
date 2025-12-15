@@ -72,26 +72,26 @@ export function WaitlistForm({ compact = false }: WaitlistFormProps) {
           : "md:flex-row md:items-end md:justify-center md:gap-3"
       )}
     >
-      <div className="flex-1 space-y-2">
+      <div className="flex-1 space-y-3">
         <label
           htmlFor="email"
           className="text-xs font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]"
         >
           Email escolar
         </label>
-        <div className="flex gap-2 items-center">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-2">
           <Input
             id="email"
             type="email"
             placeholder="prof.silva@escola.pt"
             {...form.register("email")}
             aria-invalid={!!form.formState.errors.email}
-            className="h-12 flex-1 rounded-xl bg-[color:var(--scooli-surface-alt)] text-[color:var(--scooli-ink)] placeholder:text-[color:var(--scooli-muted)] focus-visible:ring-[color:var(--scooli-primary)]"
+            className="h-12 w-full rounded-xl bg-[color:var(--scooli-surface-alt)] text-base text-[color:var(--scooli-ink)] placeholder:text-[color:var(--scooli-muted)] focus-visible:ring-[color:var(--scooli-primary)]"
           />
           <Button
             type="submit"
             disabled={status === "loading"}
-            className="h-12 rounded-xl bg-[color:var(--scooli-primary)] text-white hover:bg-[color:var(--scooli-primary-strong)]"
+            className="h-12 w-full shrink-0 rounded-xl bg-[color:var(--scooli-primary)] text-base font-medium text-white hover:bg-[color:var(--scooli-primary-strong)] sm:w-auto"
           >
             {status === "loading" ? "A guardar..." : "Acesso prioritário"}
           </Button>

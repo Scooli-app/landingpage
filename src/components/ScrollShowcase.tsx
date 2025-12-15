@@ -80,7 +80,7 @@ export function ScrollShowcase() {
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`flex h-12 w-12 items-center justify-center rounded-xl ${
+                      className={`flex h-12 w-12 items-center justify-center rounded-xl aspect-square ${
                         isActive
                           ? "bg-[color:var(--scooli-primary)] text-white shadow-[0_10px_30px_-12px_rgba(103,83,255,0.6)]"
                           : "bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]"
