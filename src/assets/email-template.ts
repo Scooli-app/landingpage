@@ -74,7 +74,7 @@ export const emailTemplate = {
       </div>
       <div class="footer">
         <div class="footer-text">
-          <img src="https://scooli.app/logo-full-blue.png" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
+          <img src="https://scooli.app/scooli.svg" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
           <strong>Scooli</strong> - Plataforma Educativa para Professores Portugueses
         </div>
         <div class="social-links">
@@ -170,7 +170,7 @@ export const emailTemplate = {
       </div>
       <div class="footer">
         <div class="footer-text">
-          <img src="https://scooli.app/logo-full-blue.png" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
+          <img src="https://scooli.app/scooli.svg" alt="Scooli" style="max-height: 24px; width: auto; margin-bottom: 8px;" /><br />
           <strong>Scooli</strong> - Plataforma Educativa para Professores Portugueses
         </div>
         <div class="social-links">

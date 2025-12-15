@@ -1,30 +1,40 @@
 import type { MetadataRoute } from "next";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://www.scooli.app";
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://scooli.app";
+  const lastModified = new Date();
 
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: siteUrl,
+      lastModified,
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
+      url: `${siteUrl}/politica-de-privacidade`,
+      lastModified,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
+      url: `${siteUrl}/termos-de-utilizacao`,
+      lastModified,
       changeFrequency: "monthly",
-      priority: 0.5,
+      priority: 0.6,
     },
     {
-      url: `${baseUrl}/cancel`,
-      lastModified: new Date(),
+      url: `${siteUrl}/cancelar-subscricao`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${siteUrl}/billing`,
+      lastModified,
       changeFrequency: "monthly",
       priority: 0.3,
     },

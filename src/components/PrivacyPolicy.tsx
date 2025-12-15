@@ -426,7 +426,7 @@ export function PrivacyPolicy() {
                     quiser exercer os seus direitos, pode contactar-nos através
                     de:
                   </p>
-                  <EmailContact language="pt" />
+                  <EmailContact showIcon showLabel />
                   <p className="text-sm text-slate-500 mt-6">
                     Responderemos ao seu pedido no prazo de 30 dias, conforme
                     exigido pelo RGPD.
@@ -722,7 +722,7 @@ export function PrivacyPolicy() {
                     If you have questions about this Privacy Policy or want to
                     exercise your rights, you can contact us at:
                   </p>
-                  <EmailContact language="en" />
+                  <EmailContact showIcon showLabel />
                   <p className="text-sm text-slate-500 mt-6">
                     We will respond within 30 days, as required under the GDPR.
                   </p>

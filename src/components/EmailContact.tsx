@@ -1,28 +1,45 @@
+"use client";
+
+import { Copy, Check } from "lucide-react";
+import { useState } from "react";
 import { toast } from "sonner";
 
-export function EmailContact({ language = "pt" }: { language?: "pt" | "en" }) {
+type EmailContactProps = {
+  showLabel?: boolean;
+  showIcon?: boolean;
+  className?: string;
+};
+
+export function EmailContact({
+  showLabel = false,
+  showIcon = true,
+  className = "",
+}: EmailContactProps) {
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("info@scooli.app");
+    setCopied(true);
+    toast.success("Email copiado!");
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <span className="inline-flex items-center gap-1">
-      <strong>Email:</strong>{" "}
       <button
-        onClick={() => {
-          navigator.clipboard.writeText("info@scooli.app");
-          toast.success(
-            language === "pt"
-              ? "Endereço de email copiado para a área de transferência"
-              : "Email address copied to clipboard"
-          );
-        }}
-        aria-label={
-          language === "pt"
-            ? "Copiar email info@scooli.app"
-            : "Copy email info@scooli.app"
-        }
-        className="underline cursor-pointer text-blue-700 hover:text-blue-900 transition-colors duration-200"
-        style={{ position: "relative", zIndex: 1 }}
-      >
-        info@scooli.app
+      type="button"
+      onClick={handleCopy}
+      aria-label="Copiar email info@scooli.app"
+      className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-[color:var(--scooli-ink)] transition-colors duration-200 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] ${className}`}
+    >
+      {showLabel && <span className="text-[color:var(--scooli-muted)]">Email:</span>}
+      <span className="font-medium">info@scooli.app</span>
+      {showIcon && (
+        copied ? (
+          <Check className="h-4 w-4 text-[color:var(--scooli-success)]" />
+        ) : (
+          <Copy className="h-4 w-4 text-[color:var(--scooli-muted)]" />
+        )
+      )}
       </button>
-    </span>
   );
 }

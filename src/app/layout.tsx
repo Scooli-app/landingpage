@@ -2,228 +2,112 @@ import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Image from "next/image";
-import Link from "next/link";
-import type React from "react";
-import "../app/globals.css";
+import type { ReactNode } from "react";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   weight: ["400", "500", "600", "700"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://www.scooli.app";
+const ogImage = `${siteUrl}/scooli.svg`;
+
 export const metadata: Metadata = {
-  title: "Scooli - Plataforma Educativa com IA para Professores",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Scooli | IA para professores em Portugal",
+    template: "%s | Scooli",
+  },
   description:
-    "Poupe tempo e inove. A Scooli é a ferramenta com IA que gera automaticamente testes, planos de aula e apresentações para professores em Portugal.",
-  keywords:
-    "scooli, IA para professores, inteligência artificial na educação, gerador de testes, criador de planos de aula, apresentações para aulas, poupar tempo professores, ferramentas para professores portugueses, edtech portugal, recursos educativos, ensino básico, ensino secundário, AI for teachers, AI lesson planner, test generator, educational resources, IA, portugal, portuguese, school, teachers, productivity, education, teaching, learning, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, teaching tools, teaching resources, teaching materials, teaching methods, teaching strategies, teaching techniques, tests, quizzes, quizz, presentations, planos de aula, apresentações, testes, quizzes, quizz, present, tempo, vida, qualidade, aprendizagens, essenciais, curriculum, programa, nacional, PT, edtech, startup, 2025, basico, secundario, superior, pre escolar, creche,",
-  authors: [{ name: "Scooli", url: "https://scooli.app" }],
+    "A plataforma portuguesa que devolve tempo aos professores: gere apresentações, planos de aula, testes e quizzes alinhados ao currículo com IA.",
+  keywords: [
+    "Scooli",
+    "IA para professores",
+    "plano de aula",
+    "apresentações",
+    "testes",
+    "edtech Portugal",
+    "currículo português",
+    "recursos educativos",
+    "biblioteca comunitária",
+  ],
+  authors: [{ name: "Scooli", url: siteUrl }],
   creator: "Scooli",
   publisher: "Scooli",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
-  metadataBase: new URL("https://scooli.app"),
+  manifest: "/site.webmanifest",
   alternates: {
-    canonical: "/",
+    canonical: siteUrl,
   },
   openGraph: {
-    title: "Scooli - Plataforma Educativa para Professores Portugueses",
+    title: "Scooli | Ferramentas com IA para professores portugueses",
     description:
-      "Transforme a sua experiência de ensino com ferramentas inovadoras. Gere apresentações, planos de aula e testes automaticamente.",
+      "Poupe horas todas as semanas. Geração de recursos, organização e comunidade para docentes em Portugal.",
     type: "website",
     locale: "pt_PT",
     siteName: "Scooli",
-    url: "https://scooli.app",
+    url: siteUrl,
     images: [
       {
-        url: "/logo-full-blue.png",
+        url: ogImage,
         width: 1200,
         height: 630,
-        alt: "Scooli - Plataforma Educativa para Professores",
+        alt: "Scooli - IA para professores",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scooli - Plataforma Educativa para Professores Portugueses",
+    title: "Scooli | Ferramentas com IA para professores portugueses",
     description:
-      "Transforme a sua experiência de ensino com ferramentas inovadoras.",
-    images: ["/logo-full-blue.png"],
+      "Poupe horas todas as semanas com geração de recursos alinhados ao currículo.",
+    images: [ogImage],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
-// Structured Data for Organization
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "@id": "https://scooli.app/#organization",
+  "@type": "Organization",
+  "@id": `${siteUrl}/#organization`,
   name: "Scooli",
-  alternateName: "Scooli - Plataforma Educativa",
-  description:
-    "Plataforma educativa para professores portugueses de todos os níveis de ensino",
-  url: "https://scooli.app",
-  logo: {
-    "@type": "ImageObject",
-    url: "https://scooli.app/logo-full-blue.png",
-    width: 120,
-    height: 40,
-  },
-  sameAs: ["https://scooli.app"],
+  url: siteUrl,
+  logo: `${siteUrl}/scooli.svg`,
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer service",
-    email: "contacto@scooli.app",
+    email: "info@scooli.app",
     availableLanguage: "Portuguese",
   },
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "PT",
-    addressLocality: "Portugal",
-  },
-  areaServed: {
-    "@type": "Country",
-    name: "Portugal",
-  },
-  serviceType: "Educational Technology Platform",
-  foundingDate: "2025",
-  founder: {
-    "@type": "Person",
-    name: "Equipa Scooli",
-  },
+  sameAs: [siteUrl],
 };
 
-// FAQ Schema for AEO
-const faqSchema = {
+const websiteSchema = {
   "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "O que é a Scooli?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Scooli é uma plataforma educativa que conecta professores portugueses com ferramentas inovadoras para todos os níveis de ensino. Permite gerar automaticamente apresentações, planos de aula, testes e quizzes.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Como funciona a geração automática de conteúdo?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Scooli utiliza inteligência artificial avançada para gerar conteúdo educativo personalizado. Os professores introduzem os parâmetros desejados e a plataforma cria automaticamente apresentações, planos de aula e testes alinhados com o currículo português.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "A Scooli é gratuita?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Scooli oferece um pacote de boas-vindas com 100 créditos gratuitos para novos utilizadores. Os utilizadores ativos podem ganhar mais créditos contribuindo para a biblioteca comunitária. Existe também um plano Scooli Pro com funcionalidades ilimitadas.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quando estará disponível a Scooli?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "A Scooli está em desenvolvimento e será lançada brevemente. Registe o seu email para ser notificado quando a plataforma estiver disponível.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "A Scooli é compatível com o currículo português?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Sim, a Scooli foi desenvolvida especificamente para o contexto educativo português, com conhecimento profundo do currículo nacional e das melhores práticas educativas em Portugal.",
-      },
-    },
-  ],
-};
-
-// HowTo Schema for AEO - Educational Content Generation
-const howToSchema = {
-  "@context": "https://schema.org",
-  "@type": "HowTo",
-  name: "Como gerar conteúdo educativo com a Scooli",
-  description:
-    "Guia passo a passo para gerar apresentações, planos de aula e testes usando a plataforma Scooli",
-  image: {
-    "@type": "ImageObject",
-    url: "https://scooli.app/logo-full-blue.png",
-    width: 1200,
-    height: 630,
-  },
-  step: [
-    {
-      "@type": "HowToStep",
-      name: "Registar na plataforma",
-      text: "Crie a sua conta na Scooli e receba 100 créditos gratuitos para começar a gerar conteúdo educativo.",
-      url: "https://scooli.app",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Selecionar tipo de conteúdo",
-      text: "Escolha entre gerar apresentações, planos de aula, testes ou quizzes baseados no currículo português.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Introduzir parâmetros",
-      text: "Especifique a matéria, nível de ensino, objetivos de aprendizagem e duração da aula.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Gerar conteúdo",
-      text: "A IA da Scooli cria automaticamente conteúdo personalizado e alinhado com as metas curriculares.",
-    },
-    {
-      "@type": "HowToStep",
-      name: "Personalizar e guardar",
-      text: "Edite o conteúdo gerado conforme necessário e guarde-o na sua biblioteca pessoal para reutilização.",
-    },
-  ],
-  totalTime: "PT5M",
-  estimatedCost: {
-    "@type": "MonetaryAmount",
-    currency: "EUR",
-    value: "0",
-  },
-  tool: [
-    {
-      "@type": "SoftwareApplication",
+  "@type": "WebSite",
       name: "Scooli",
-      applicationCategory: "EducationalApplication",
-      operatingSystem: "Web",
-    },
-  ],
-  audience: {
-    "@type": "Audience",
-    audienceType: "Professores portugueses",
+  url: siteUrl,
+  potentialAction: {
+    "@type": "SearchAction",
+    target: `${siteUrl}/?q={search_term_string}`,
+    "query-input": "required name=search_term_string",
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-PT" className={inter.className}>
       <head>
@@ -236,39 +120,16 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(faqSchema),
-          }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(howToSchema),
+            __html: JSON.stringify(websiteSchema),
           }}
         />
       </head>
-      <body className="bg-scooli-background text-scooli-dark font-sans min-h-screen">
-        <header className="w-full py-6 bg-blue-50" role="banner">
-          <div className="container mx-auto px-4 flex items-center">
-            <Link href="/" aria-label="Scooli - Página inicial">
-              <Image
-                src="/logo-full-blue.png"
-                alt="Scooli logo"
-                className="h-10"
-                width={120}
-                height={150}
-                priority
-              />
-            </Link>
-          </div>
-        </header>
-        <main role="main">{children}</main>
+      <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">
+        {children}
         <Toaster
           position="bottom-right"
-          swipeDirections={["bottom", "right"]}
-          duration={4000}
-          richColors={true}
           toastOptions={{
-            className: "animate-slide-in-right",
+            className: "glass border border-[color:var(--scooli-border)]",
           }}
         />
         <Analytics />

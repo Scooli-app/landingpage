@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+  "https://www.scooli.app";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
@@ -9,7 +13,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/api/", "/_next/", "/admin/"],
       },
     ],
-    sitemap: "https://scooli.app/sitemap.xml",
-    host: "https://scooli.app",
+    sitemap: `${siteUrl}/sitemap.xml`,
+    host: siteUrl,
   };
 }
