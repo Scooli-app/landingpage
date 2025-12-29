@@ -1,12 +1,12 @@
 "use client";
 
 import { Container } from "@/components/Container";
-import { Button } from "@/components/ui/button";
+// import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   { label: "Funcionalidades", href: "#funcionalidades" },
@@ -29,10 +29,10 @@ export function MarketingNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const appUrl = useMemo(
-    () => process.env.NEXT_PUBLIC_APP_URL || "https://create.scooli.app",
-    []
-  );
+  // const appUrl = useMemo(
+  //   () => process.env.NEXT_PUBLIC_APP_URL || "https://create.scooli.app",
+  //   []
+  // );
 
   return (
     <motion.nav
@@ -72,14 +72,14 @@ export function MarketingNav() {
           ))}
         </div>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        {/* <div className="hidden items-center gap-3 lg:flex">
           <Button
             asChild
             className="rounded-xl bg-[color:var(--scooli-primary)] px-5 py-2 text-sm font-medium text-white hover:bg-[color:var(--scooli-primary-strong)] shadow-md shadow-[rgba(103,83,255,0.25)]"
           >
             <Link href={appUrl}>Entrar</Link>
           </Button>
-        </div>
+        </div> */}
 
         <button
           type="button"
@@ -132,14 +132,14 @@ export function MarketingNav() {
                   {link.label}
                 </Link>
               ))}
-              <div className="flex flex-col gap-2 pt-2">
+              {/* <div className="flex flex-col gap-2 pt-2">
                 <Button
                   asChild
                   className="h-11 rounded-xl bg-[color:var(--scooli-primary)] text-white hover:bg-[color:var(--scooli-primary-strong)]"
                 >
                   <Link href={appUrl}>Entrar</Link>
                 </Button>
-              </div>
+              </div> */}
             </Container>
           </motion.div>
         )}
