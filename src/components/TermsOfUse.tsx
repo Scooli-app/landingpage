@@ -9,6 +9,7 @@ import {
   FileText,
   Gavel,
   Mail,
+  Scale,
   Shield,
   Users,
 } from "lucide-react";
@@ -93,8 +94,8 @@ function SectionCard({
 
 export function TermsOfUse() {
   const [language, setLanguage] = useState<Language>("pt");
-  const lastUpdated = "14 de Dezembro de 2025";
-  const lastUpdatedEn = "December 14, 2025";
+  const lastUpdated = "5 de Janeiro de 2026";
+  const lastUpdatedEn = "January 5, 2026";
 
   return (
     <div className="mx-auto w-full max-w-4xl">
@@ -253,35 +254,107 @@ export function TermsOfUse() {
               icon={<Coins className="h-6 w-6 text-white" />}
               title="6) Créditos, Plano Pro e Cancelamentos"
             >
-          <p>
-            Algumas funcionalidades podem depender de créditos, planos pagos ou
-            condições promocionais (ex.: pacote de boas-vindas).
-          </p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>
-              Créditos não têm valor monetário, não são transferíveis e podem
-              estar sujeitos a expiração e alterações de regras.
-            </li>
-            <li>
-              Preços, funcionalidades e limites podem ser atualizados ao longo
-              do tempo.
-            </li>
-            <li>
-              Para gestão/cancelamento de subscrição, consulte{" "}
-              <Link
-                href="/cancel"
-                className="underline transition-colors duration-200 hover:text-slate-900"
-              >
-                /cancel
-              </Link>
-              .
-            </li>
-          </ul>
-        </SectionCard>
+              <p>
+                Algumas funcionalidades podem depender de créditos, planos pagos ou
+                condições promocionais (ex.: pacote de boas-vindas).
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>
+                  Créditos não têm valor monetário, não são transferíveis e podem
+                  estar sujeitos a expiração e alterações de regras.
+                </li>
+                <li>
+                  Preços, funcionalidades e limites podem ser atualizados ao longo
+                  do tempo.
+                </li>
+                <li>
+                  O acesso &ldquo;ilimitado&rdquo; do Plano Pro está sujeito à
+                  Política de Uso Justo descrita na secção 7.
+                </li>
+                <li>
+                  Para gestão/cancelamento de subscrição, consulte{" "}
+                  <Link
+                    href="/cancelar-subscricao"
+                    className="underline transition-colors duration-200 hover:text-slate-900"
+                  >
+                    Cancelar Subscrição
+                  </Link>
+                  .
+                </li>
+              </ul>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Scale className="h-6 w-6 text-white" />}
+              title="7) Política de Uso Justo (Fair Use)"
+            >
+              <p>
+                O Plano Pro da Scooli oferece capacidade de geração de conteúdos
+                de forma ilimitada para fins de uso pessoal e profissional do
+                docente subscritor.
+              </p>
+              <p>
+                Para garantir a estabilidade da plataforma e a qualidade do
+                serviço para todos os utilizadores, a Scooli aplica uma{" "}
+                <strong>Política de Uso Justo</strong>. Esta política destina-se
+                a evitar utilizações abusivas, automáticas ou não-humanas que
+                coloquem em causa a integridade do sistema.
+              </p>
+
+              <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="font-semibold text-amber-800 mb-2">
+                  Considera-se uso abusivo:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-slate-700">
+                  <li>A partilha de credenciais de acesso com terceiros;</li>
+                  <li>
+                    A utilização de scripts, bots ou qualquer forma de automação
+                    para geração massiva de conteúdos;
+                  </li>
+                  <li>
+                    A utilização da conta por múltiplos utilizadores em
+                    simultâneo;
+                  </li>
+                  <li>
+                    Qualquer outra forma de utilização que exceda manifestamente
+                    o padrão de uso individual humano.
+                  </li>
+                </ul>
+              </div>
+
+              <p className="mt-4">
+                Caso o volume de utilização de um utilizador exceda
+                manifestamente a média expectável para um uso individual humano
+                num período de 30 dias, a Scooli reserva-se o direito de:
+              </p>
+              <ul className="list-[lower-alpha] list-inside space-y-2 ml-4">
+                <li>
+                  Ajustar temporariamente a velocidade de processamento ou o
+                  modelo de IA utilizado;
+                </li>
+                <li>
+                  Contactar o utilizador para validar a conformidade da
+                  utilização;
+                </li>
+                <li>
+                  Suspender temporariamente o acesso em casos extremos de
+                  violação técnica;
+                </li>
+                <li>
+                  Rescindir a subscrição em caso de violação reiterada ou grave,
+                  com devolução proporcional do valor não utilizado.
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500">
+                A aplicação desta política será sempre proporcional e precedida,
+                sempre que possível, de contacto com o utilizador para
+                esclarecimento.
+              </p>
+            </SectionCard>
 
             <SectionCard
               icon={<Gavel className="h-6 w-6 text-white" />}
-              title="7) Propriedade Intelectual, Responsabilidade e Lei Aplicável"
+              title="8) Propriedade Intelectual, Responsabilidade e Lei Aplicável"
             >
           <ul className="list-disc list-inside space-y-2">
             <li>
@@ -315,19 +388,19 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Mail className="h-6 w-6 text-white" />}
-              title="8) Contacto"
+              title="9) Contacto"
             >
-          <p>
-            Para questões sobre estes Termos, contacte-nos em{" "}
-            <a
-              href="mailto:info@scooli.app"
-              className="underline transition-colors duration-200 hover:text-slate-900"
-            >
-              info@scooli.app
-            </a>
-            .
-          </p>
-        </SectionCard>
+              <p>
+                Para questões sobre estes Termos, contacte-nos em{" "}
+                <a
+                  href="mailto:info@scooli.app"
+                  className="underline transition-colors duration-200 hover:text-slate-900"
+                >
+                  info@scooli.app
+                </a>
+                .
+              </p>
+            </SectionCard>
           </>
         ) : (
           <>
@@ -435,34 +508,97 @@ export function TermsOfUse() {
               icon={<Coins className="h-6 w-6 text-white" />}
               title="6) Credits, Pro Plan and Cancellations"
             >
-          <p>
-            Some features may depend on credits, paid plans, or promotional
-            conditions (e.g., a welcome package).
-          </p>
-          <ul className="list-disc list-inside space-y-2">
-            <li>
-              Credits have no cash value, are non-transferable, and may be
-              subject to expiration and rule changes.
-            </li>
-            <li>
-              Pricing, features, and limits may change over time.
-            </li>
-            <li>
-              For subscription management/cancellation, see{" "}
-              <Link
-                href="/cancel"
-                className="underline transition-colors duration-200 hover:text-slate-900"
-              >
-                /cancel
-              </Link>
-              .
-            </li>
-          </ul>
-        </SectionCard>
+              <p>
+                Some features may depend on credits, paid plans, or promotional
+                conditions (e.g., a welcome package).
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>
+                  Credits have no cash value, are non-transferable, and may be
+                  subject to expiration and rule changes.
+                </li>
+                <li>
+                  Pricing, features, and limits may change over time.
+                </li>
+                <li>
+                  &ldquo;Unlimited&rdquo; access under the Pro Plan is subject
+                  to the Fair Use Policy described in section 7.
+                </li>
+                <li>
+                  For subscription management/cancellation, see{" "}
+                  <Link
+                    href="/cancelar-subscricao"
+                    className="underline transition-colors duration-200 hover:text-slate-900"
+                  >
+                    Cancel Subscription
+                  </Link>
+                  .
+                </li>
+              </ul>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Scale className="h-6 w-6 text-white" />}
+              title="7) Fair Use Policy"
+            >
+              <p>
+                The Scooli Pro Plan offers unlimited content generation capacity
+                for personal and professional use by the subscribing teacher.
+              </p>
+              <p>
+                To ensure platform stability and service quality for all users,
+                Scooli applies a <strong>Fair Use Policy</strong>. This policy
+                is designed to prevent abusive, automatic, or non-human use that
+                compromises system integrity.
+              </p>
+
+              <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="font-semibold text-amber-800 mb-2">
+                  The following constitutes abusive use:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-slate-700">
+                  <li>Sharing login credentials with third parties;</li>
+                  <li>
+                    Using scripts, bots, or any form of automation for mass
+                    content generation;
+                  </li>
+                  <li>Using the account by multiple users simultaneously;</li>
+                  <li>
+                    Any other form of use that manifestly exceeds the pattern of
+                    individual human use.
+                  </li>
+                </ul>
+              </div>
+
+              <p className="mt-4">
+                If a user&apos;s usage volume manifestly exceeds the expected
+                average for individual human use within a 30-day period, Scooli
+                reserves the right to:
+              </p>
+              <ul className="list-[lower-alpha] list-inside space-y-2 ml-4">
+                <li>
+                  Temporarily adjust processing speed or the AI model used;
+                </li>
+                <li>Contact the user to validate usage compliance;</li>
+                <li>
+                  Temporarily suspend access in extreme cases of technical
+                  violation;
+                </li>
+                <li>
+                  Terminate the subscription in case of repeated or serious
+                  violation, with proportional refund of unused value.
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500">
+                Application of this policy will always be proportionate and
+                preceded, whenever possible, by contact with the user for
+                clarification.
+              </p>
+            </SectionCard>
 
             <SectionCard
               icon={<Gavel className="h-6 w-6 text-white" />}
-              title="7) Intellectual Property, Liability and Governing Law"
+              title="8) Intellectual Property, Liability and Governing Law"
             >
           <ul className="list-disc list-inside space-y-2">
             <li>
@@ -496,19 +632,19 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Mail className="h-6 w-6 text-white" />}
-              title="8) Contact"
+              title="9) Contact"
             >
-          <p>
-            If you have questions about these Terms, contact us at{" "}
-            <a
-              href="mailto:info@scooli.app"
-              className="underline transition-colors duration-200 hover:text-slate-900"
-            >
-              info@scooli.app
-            </a>
-            .
-          </p>
-        </SectionCard>
+              <p>
+                If you have questions about these Terms, contact us at{" "}
+                <a
+                  href="mailto:info@scooli.app"
+                  className="underline transition-colors duration-200 hover:text-slate-900"
+                >
+                  info@scooli.app
+                </a>
+                .
+              </p>
+            </SectionCard>
           </>
         )}
       </div>

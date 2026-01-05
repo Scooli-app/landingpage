@@ -1,11 +1,8 @@
-import { LegalLayout } from "@/components/LegalLayout";
-import { Button } from "@/components/ui/button";
-import { getLegalContent } from "@/lib/legal";
+import { Container } from "@/components/Container";
+import { TermsOfUse } from "@/components/TermsOfUse";
 import { getBreadcrumbSchema, getWebPageSchema, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Script from "next/script";
-import ReactMarkdown from "react-markdown";
 
 const pageUrl = `${SITE_URL}/terms`;
 
@@ -49,11 +46,7 @@ const webPageSchema = getWebPageSchema({
   breadcrumb: breadcrumbItems,
 });
 
-export default async function TermsPage() {
-  const { content, title, description, updated } = await getLegalContent(
-    "termos-de-utilizacao"
-  );
-
+export default function TermsPage() {
   return (
     <>
       {/* Structured Data for SEO */}
@@ -74,27 +67,11 @@ export default async function TermsPage() {
         strategy="afterInteractive"
       />
 
-      <LegalLayout title={title} description={description} updated={updated}>
-        <article
-          className="prose prose-slate max-w-none"
-          itemScope
-          itemType="https://schema.org/WebPage"
-        >
-          <ReactMarkdown>{content}</ReactMarkdown>
-        </article>
-        <nav
-          className="mt-8 flex flex-wrap gap-3 border-t border-[color:var(--scooli-border)] pt-6"
-          aria-label="Páginas relacionadas"
-        >
-          <Button asChild variant="outline" className="rounded-xl">
-            <Link href="/privacy">Política de Privacidade</Link>
-          </Button>
-          <Button asChild className="rounded-xl">
-            <Link href="/cancelar-subscricao">Cancelar Subscrição</Link>
-          </Button>
-        </nav>
-      </LegalLayout>
+      <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12 md:py-16">
+        <Container>
+          <TermsOfUse />
+        </Container>
+      </section>
     </>
   );
 }
-

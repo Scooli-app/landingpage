@@ -67,8 +67,6 @@ export function FaqSection() {
         id="faq"
         className="bg-[color:var(--scooli-accent)]/50 py-16 md:py-24"
         aria-labelledby="faq-heading"
-        itemScope
-        itemType="https://schema.org/FAQPage"
       >
         <Container className="grid gap-10 md:grid-cols-[1fr,1.1fr] md:items-start">
           <motion.div
@@ -103,23 +101,12 @@ export function FaqSection() {
                 key={faq.question}
                 value={`item-${index}`}
                 className="overflow-hidden rounded-2xl border border-[color:var(--scooli-border)] bg-white/90 shadow-sm"
-                itemScope
-                itemProp="mainEntity"
-                itemType="https://schema.org/Question"
               >
-                <AccordionTrigger
-                  className="px-4 py-3 text-left text-[color:var(--scooli-ink)] hover:text-[color:var(--scooli-primary)]"
-                  itemProp="name"
-                >
+                <AccordionTrigger className="px-4 py-3 text-left text-[color:var(--scooli-ink)] hover:text-[color:var(--scooli-primary)]">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent
-                  className="px-4 pb-4 text-[color:var(--scooli-muted)]"
-                  itemScope
-                  itemProp="acceptedAnswer"
-                  itemType="https://schema.org/Answer"
-                >
-                  <span itemProp="text">{faq.answer}</span>
+                <AccordionContent className="px-4 pb-4 text-[color:var(--scooli-muted)]">
+                  {faq.answer}
                 </AccordionContent>
               </AccordionItem>
             ))}

@@ -52,13 +52,13 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.svg?v=2", type: "image/svg+xml" },
-      { url: "/favicon-96x96.png?v=2", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg?v=3", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png?v=3", sizes: "96x96", type: "image/png" },
     ],
-    apple: [{ url: "/apple-touch-icon.png?v=2", sizes: "180x180" }],
-    shortcut: "/favicon.ico?v=2",
+    apple: [{ url: "/apple-touch-icon.png?v=3", sizes: "180x180" }],
+    shortcut: "/favicon.ico?v=3",
   },
-  manifest: "/site.webmanifest",
+  manifest: "/manifest.webmanifest",
   alternates: {
     canonical: SITE_URL,
     languages: {

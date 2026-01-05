@@ -1,12 +1,8 @@
-import { EmailContact } from "@/components/EmailContact";
-import { LegalLayout } from "@/components/LegalLayout";
-import { Button } from "@/components/ui/button";
-import { getLegalContent } from "@/lib/legal";
+import { Container } from "@/components/Container";
+import { PrivacyPolicy } from "@/components/PrivacyPolicy";
 import { getBreadcrumbSchema, getWebPageSchema, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
-import Link from "next/link";
 import Script from "next/script";
-import ReactMarkdown from "react-markdown";
 
 const pageUrl = `${SITE_URL}/privacy`;
 
@@ -50,11 +46,7 @@ const webPageSchema = getWebPageSchema({
   breadcrumb: breadcrumbItems,
 });
 
-export default async function PrivacyPage() {
-  const { content, title, description, updated } = await getLegalContent(
-    "politica-de-privacidade"
-  );
-
+export default function PrivacyPage() {
   return (
     <>
       {/* Structured Data for SEO */}
@@ -75,28 +67,11 @@ export default async function PrivacyPage() {
         strategy="afterInteractive"
       />
 
-      <LegalLayout title={title} description={description} updated={updated}>
-        <article
-          className="prose prose-slate max-w-none"
-          itemScope
-          itemType="https://schema.org/WebPage"
-        >
-          <ReactMarkdown>{content}</ReactMarkdown>
-        </article>
-        <nav
-          className="mt-8 flex flex-wrap items-center gap-3 border-t border-[color:var(--scooli-border)] pt-6"
-          aria-label="Páginas relacionadas"
-        >
-          <Button asChild className="rounded-xl">
-            <Link href="/terms">Ver Termos de Utilização</Link>
-          </Button>
-          <EmailContact
-            showIcon
-            className="rounded-xl border border-[color:var(--scooli-border)]"
-          />
-        </nav>
-      </LegalLayout>
+      <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12 md:py-16">
+        <Container>
+          <PrivacyPolicy />
+        </Container>
+      </section>
     </>
   );
 }
-
