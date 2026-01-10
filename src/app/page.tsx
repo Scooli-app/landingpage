@@ -1,12 +1,4 @@
-// import { CommunitySection } from "@/components/CommunitySection";
-import { FeatureGrid } from "@/components/FeatureGrid";
-import { FinalCta } from "@/components/FinalCta";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { MarketingNav } from "@/components/MarketingNav";
-import { PricingSection } from "@/components/PricingSection";
-import { ScrollShowcase } from "@/components/ScrollShowcase";
-import { FaqSection } from "@/components/FaqSection";
+import { HomePageClient } from "@/components/HomePageClient";
 import { getHowToSchema, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
 import Script from "next/script";
@@ -55,7 +47,7 @@ const howToSchema = getHowToSchema(
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       {/* HowTo Schema for SEO */}
       <Script
         id="howto-schema"
@@ -66,49 +58,7 @@ export default function Home() {
         strategy="afterInteractive"
       />
 
-      {/* Semantic header with navigation */}
-      <header role="banner">
-        <MarketingNav />
-      </header>
-
-      {/* Main content area with semantic article structure */}
-      <main role="main" id="main-content">
-        {/* Hero section - primary landing content */}
-        <article aria-label="Introdução à Scooli">
-          <Hero />
-        </article>
-
-        {/* Product showcase */}
-        <section aria-label="Demonstração do produto">
-          <ScrollShowcase />
-        </section>
-
-        {/* Features grid */}
-        <article aria-label="Funcionalidades principais">
-          <FeatureGrid />
-        </article>
-
-        {/* Community ecosystem */}
-        {/* <article aria-label="Ecossistema comunitário">
-          <CommunitySection />
-        </article> */}
-
-        {/* Pricing section */}
-        <article aria-label="Planos e preços">
-          <PricingSection />
-        </article>
-
-        {/* FAQ section with schema */}
-        <FaqSection />
-
-        {/* Final call to action */}
-        <aside aria-label="Chamada para ação">
-          <FinalCta />
-        </aside>
-      </main>
-
-      {/* Footer with navigation and legal links */}
-      <Footer />
-    </div>
+      <HomePageClient />
+    </>
   );
 }

@@ -1,18 +1,23 @@
 "use client";
 
 import { Container } from "@/components/Container";
-// import { Button } from "@/components/ui/button";
+import { usePlans } from "@/contexts/PlansContext";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import {
+  AnimatePresence,
+  motion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
-const links = [
+const allLinks = [
   { label: "Funcionalidades", href: "#funcionalidades" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Comunidade", href: "#comunidade" },
-  { label: "Preços", href: "#precos" },
+  { label: "Preços", href: "#precos", requiresPlans: true },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -21,6 +26,17 @@ export function MarketingNav() {
   const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
   const borderOpacity = useTransform(scrollY, [0, 120], [0, 1]);
+  const { hasPlans, loading } = usePlans();
+
+  // Filter links based on plans availability
+  const links = useMemo(() => {
+    // While loading, show all links
+    if (loading) {
+      return allLinks;
+    }
+    // After loading, filter out links that require plans if no plans available
+    return allLinks.filter((link) => !link.requiresPlans || hasPlans);
+  }, [hasPlans, loading]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 6);
@@ -28,11 +44,6 @@ export function MarketingNav() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // const appUrl = useMemo(
-  //   () => process.env.NEXT_PUBLIC_APP_URL || "https://create.scooli.app",
-  //   []
-  // );
 
   return (
     <motion.nav
@@ -71,15 +82,6 @@ export function MarketingNav() {
             </Link>
           ))}
         </div>
-
-        {/* <div className="hidden items-center gap-3 lg:flex">
-          <Button
-            asChild
-            className="rounded-xl bg-[color:var(--scooli-primary)] px-5 py-2 text-sm font-medium text-white hover:bg-[color:var(--scooli-primary-strong)] shadow-md shadow-[rgba(103,83,255,0.25)]"
-          >
-            <Link href={appUrl}>Entrar</Link>
-          </Button>
-        </div> */}
 
         <button
           type="button"
@@ -132,14 +134,6 @@ export function MarketingNav() {
                   {link.label}
                 </Link>
               ))}
-              {/* <div className="flex flex-col gap-2 pt-2">
-                <Button
-                  asChild
-                  className="h-11 rounded-xl bg-[color:var(--scooli-primary)] text-white hover:bg-[color:var(--scooli-primary-strong)]"
-                >
-                  <Link href={appUrl}>Entrar</Link>
-                </Button>
-              </div> */}
             </Container>
           </motion.div>
         )}
@@ -152,4 +146,3 @@ export function MarketingNav() {
     </motion.nav>
   );
 }
-

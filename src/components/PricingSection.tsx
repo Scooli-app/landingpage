@@ -3,9 +3,11 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { usePlans, type Plan } from "@/contexts/PlansContext";
 import { motion } from "framer-motion";
 import {
   BadgeCheck,
+  BadgePercent,
   Coins,
   Crown,
   Loader2,
@@ -14,30 +16,10 @@ import {
   X,
   Zap,
 } from "lucide-react";
-import { useEffect, useState } from "react";
 
 // URL da web app para redirecionamento
 const WEB_APP_URL =
   process.env.NEXT_PUBLIC_APP_URL || "https://create.scooli.app";
-const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
-
-// Tipos para os planos da API
-interface PlanFeatures {
-  rag: boolean;
-  streaming: boolean;
-  templates: boolean;
-  priority_support?: boolean;
-}
-
-interface ApiPlan {
-  planCode: string;
-  name: string;
-  description: string;
-  interactionsPerPeriod: number;
-  priceCents: number;
-  billingPeriod: "month" | "year";
-  features: PlanFeatures;
-}
 
 // Mapeamento de features para texto legível
 const featureLabels: Record<string, string> = {
@@ -75,7 +57,9 @@ const excludedFeatures: Record<string, string[]> = {
 };
 
 function formatPrice(priceCents: number): string {
-  if (priceCents === 0) {return "Grátis";}
+  if (priceCents === 0) {
+    return "Grátis";
+  }
 
   const price = priceCents / 100;
   const formatted = new Intl.NumberFormat("pt-PT", {
@@ -87,8 +71,12 @@ function formatPrice(priceCents: number): string {
 }
 
 function formatPeriod(billingPeriod: string): string {
-  if (billingPeriod === "month") {return "/mês";}
-  if (billingPeriod === "year") {return "/ano";}
+  if (billingPeriod === "month") {
+    return "/mês";
+  }
+  if (billingPeriod === "year") {
+    return "/ano";
+  }
   return "";
 }
 
@@ -97,7 +85,7 @@ function PlanCard({
   index,
   isPopular,
 }: {
-  plan: ApiPlan;
+  plan: Plan;
   index: number;
   isPopular: boolean;
 }) {
@@ -154,11 +142,22 @@ function PlanCard({
         </div>
       )}
 
+      {isAnnual && (
+        <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-green-500 to-emerald-600 px-4 py-1.5 text-xs font-semibold text-white shadow-lg">
+            <BadgePercent className="h-3.5 w-3.5" />
+            Melhor negócio
+          </span>
+        </div>
+      )}
+
       <Card
         className={`h-full rounded-2xl transition-all duration-300 ${
           isPopular
             ? "border-2 border-[#6753FF] bg-gradient-to-br from-[#6753FF]/5 to-[#6753FF]/10 shadow-xl shadow-[#6753FF]/10"
-            : "border border-slate-200 bg-white shadow-sm hover:shadow-md"
+            : isAnnual
+              ? "border-2 border-green-500 bg-gradient-to-br from-green-50 to-emerald-50 shadow-lg shadow-green-500/10"
+              : "border border-slate-200 bg-white shadow-sm hover:shadow-md"
         }`}
       >
         <CardContent className="flex h-full flex-col p-6 md:p-8">
@@ -167,7 +166,11 @@ function PlanCard({
             <div>
               <p
                 className={`text-sm font-semibold uppercase tracking-wide ${
-                  isPopular ? "text-[#6753FF]" : "text-slate-500"
+                  isPopular
+                    ? "text-[#6753FF]"
+                    : isAnnual
+                      ? "text-green-600"
+                      : "text-slate-500"
                 }`}
               >
                 {plan.planCode === "free"
@@ -179,7 +182,11 @@ function PlanCard({
               <div className="mt-2 flex items-baseline gap-1">
                 <span
                   className={`text-4xl font-bold ${
-                    isPopular ? "text-[#6753FF]" : "text-slate-900"
+                    isPopular
+                      ? "text-[#6753FF]"
+                      : isAnnual
+                        ? "text-green-600"
+                        : "text-slate-900"
                   }`}
                 >
                   {formatPrice(plan.priceCents)}
@@ -200,7 +207,9 @@ function PlanCard({
               className={`rounded-xl p-3 ${
                 isPopular
                   ? "bg-[#6753FF]/10 text-[#6753FF]"
-                  : "bg-slate-100 text-slate-600"
+                  : isAnnual
+                    ? "bg-green-100 text-green-600"
+                    : "bg-slate-100 text-slate-600"
               }`}
             >
               {isPro ? (
@@ -217,12 +226,20 @@ function PlanCard({
           {/* Interactions highlight */}
           <div
             className={`mb-6 rounded-xl p-3 ${
-              isPopular ? "bg-[#6753FF]/10" : "bg-slate-50"
+              isPopular
+                ? "bg-[#6753FF]/10"
+                : isAnnual
+                  ? "bg-green-100"
+                  : "bg-slate-50"
             }`}
           >
             <p
               className={`text-sm font-semibold ${
-                isPopular ? "text-[#6753FF]" : "text-slate-700"
+                isPopular
+                  ? "text-[#6753FF]"
+                  : isAnnual
+                    ? "text-green-700"
+                    : "text-slate-700"
               }`}
             >
               {interactionsText}
@@ -232,10 +249,17 @@ function PlanCard({
           {/* Features */}
           <ul className="mb-8 flex-1 space-y-3">
             {includedFeatures.map((feature, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
+              <li
+                key={i}
+                className="flex items-start gap-3 text-sm text-slate-700"
+              >
                 <BadgeCheck
                   className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
-                    isPopular ? "text-[#6753FF]" : "text-green-500"
+                    isPopular
+                      ? "text-[#6753FF]"
+                      : isAnnual
+                        ? "text-green-600"
+                        : "text-green-500"
                   }`}
                 />
                 <span>{feature}</span>
@@ -258,9 +282,11 @@ function PlanCard({
             className={`h-12 w-full rounded-xl text-base font-semibold transition-all duration-200 ${
               isPopular
                 ? "bg-[#6753FF] text-white hover:bg-[#4E3BC0] hover:shadow-lg hover:shadow-[#6753FF]/25"
-                : "border-2 border-slate-200 bg-white text-slate-700 hover:border-[#6753FF] hover:bg-[#6753FF]/5 hover:text-[#6753FF]"
+                : isAnnual
+                  ? "bg-green-600 text-white hover:bg-green-700 hover:shadow-lg hover:shadow-green-500/25"
+                  : "border-2 border-slate-200 bg-white text-slate-700 hover:border-[#6753FF] hover:bg-[#6753FF]/5 hover:text-[#6753FF]"
             }`}
-            variant={isPopular ? "default" : "outline"}
+            variant={isPopular || isAnnual ? "default" : "outline"}
           >
             {isPro ? (
               <>
@@ -281,38 +307,12 @@ function PlanCard({
 }
 
 export function PricingSection() {
-  const [plans, setPlans] = useState<ApiPlan[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { plans, loading, hasPlans } = usePlans();
 
-  useEffect(() => {
-    async function fetchPlans() {
-      try {
-        const response = await fetch(`${API_URL}/subscriptions/plans`);
-        if (!response.ok) {
-          throw new Error("Failed to fetch plans");
-        }
-        const data = await response.json();
-        if (data && Array.isArray(data) && data.length > 0) {
-          // Ordenar: free primeiro, depois pro_monthly, depois pro_annual
-          const sorted = data.sort((a: ApiPlan, b: ApiPlan) => {
-            const order: Record<string, number> = {
-              free: 0,
-              pro_monthly: 1,
-              pro_annual: 2,
-            };
-            return (order[a.planCode] ?? 99) - (order[b.planCode] ?? 99);
-          });
-          setPlans(sorted);
-        }
-      } catch (err) {
-        console.error("Error fetching plans:", err);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchPlans();
-  }, []);
+  // Don't render anything if plans failed to load
+  if (!loading && !hasPlans) {
+    return null;
+  }
 
   return (
     <section
@@ -346,7 +346,7 @@ export function PricingSection() {
           <div className="flex items-center justify-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-[#6753FF]" />
           </div>
-        ) : plans.length > 0 ? (
+        ) : (
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             {plans.map((plan, index) => (
               <PlanCard
@@ -356,10 +356,6 @@ export function PricingSection() {
                 isPopular={plan.planCode === "pro_monthly"}
               />
             ))}
-          </div>
-        ) : (
-          <div className="py-12 text-center text-slate-500">
-            Planos não disponíveis de momento. Tente novamente mais tarde.
           </div>
         )}
 
