@@ -12,7 +12,7 @@ const links = [
   { label: "Funcionalidades", href: "#funcionalidades" },
   { label: "Como funciona", href: "#como-funciona" },
   { label: "Comunidade", href: "#comunidade" },
-  // { label: "Preços", href: "#precos" },
+  { label: "Preços", href: "#precos" },
   { label: "FAQ", href: "#faq" },
 ];
 

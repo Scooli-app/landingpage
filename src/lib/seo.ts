@@ -13,6 +13,25 @@ export const SITE_NAME = "Scooli";
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
 
+// Pricing constants (in cents and euros)
+export const PRICING = {
+  free: {
+    credits: 100,
+    price: 0,
+  },
+  pro_monthly: {
+    price: 9.99,
+    priceCents: 999,
+    period: "month",
+  },
+  pro_annual: {
+    price: 95.9,
+    priceCents: 9590,
+    period: "year",
+    savings: "20%",
+  },
+} as const;
+
 // Core brand keywords for SEO
 export const BRAND_KEYWORDS = [
   "Scooli",
@@ -35,6 +54,8 @@ export const BRAND_KEYWORDS = [
   "ensino secundário",
   "educação Portugal",
   "RGPD educação",
+  "Scooli Pro preço",
+  "ferramenta IA professores grátis",
 ] as const;
 
 // Organization Schema - Used across all pages
@@ -96,6 +117,10 @@ export function getWebsiteSchema() {
 
 // SoftwareApplication Schema - Critical for app discovery
 export function getSoftwareApplicationSchema() {
+  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .split("T")[0];
+
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -110,21 +135,31 @@ export function getSoftwareApplicationSchema() {
       {
         "@type": "Offer",
         name: "Pacote de Boas-vindas",
-        description: "100 créditos gratuitos para novos utilizadores",
+        description: `${PRICING.free.credits} créditos gratuitos para novos utilizadores`,
         price: "0",
         priceCurrency: "EUR",
+        availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
-        name: "Scooli Pro",
+        name: "Scooli Pro Mensal",
         description:
           "Geração ilimitada, modelos avançados e suporte prioritário",
-        price: "7.99",
+        price: PRICING.pro_monthly.price.toString(),
         priceCurrency: "EUR",
-        priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
-          .toISOString()
-          .split("T")[0],
-        availability: "https://schema.org/PreOrder",
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        billingIncrement: "P1M",
+      },
+      {
+        "@type": "Offer",
+        name: "Scooli Pro Anual",
+        description: `Geração ilimitada com ${PRICING.pro_annual.savings} de desconto`,
+        price: PRICING.pro_annual.price.toString(),
+        priceCurrency: "EUR",
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        billingIncrement: "P1Y",
       },
     ],
     featureList: [
@@ -134,6 +169,7 @@ export function getSoftwareApplicationSchema() {
       "Alinhamento com aprendizagens essenciais",
       "Biblioteca comunitária",
       "Upload e transformação de documentos",
+      "Templates personalizáveis",
       "Conformidade RGPD",
     ],
     screenshot: `${SITE_URL}/opengraph-image`,
@@ -151,6 +187,57 @@ export function getSoftwareApplicationSchema() {
     inLanguage: SITE_LANGUAGE,
     isAccessibleForFree: true,
     countriesSupported: "PT",
+  };
+}
+
+// Product Schema for pricing pages - helps with rich results
+export function getProductSchema() {
+  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .split("T")[0];
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${SITE_URL}/#product`,
+    name: "Scooli Pro",
+    description:
+      "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
+    brand: {
+      "@type": "Brand",
+      name: SITE_NAME,
+    },
+    offers: [
+      {
+        "@type": "Offer",
+        name: "Scooli Pro Mensal",
+        price: PRICING.pro_monthly.price.toString(),
+        priceCurrency: "EUR",
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/#precos`,
+        seller: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+      {
+        "@type": "Offer",
+        name: "Scooli Pro Anual",
+        price: PRICING.pro_annual.price.toString(),
+        priceCurrency: "EUR",
+        priceValidUntil,
+        availability: "https://schema.org/InStock",
+        url: `${SITE_URL}/#precos`,
+        seller: {
+          "@id": `${SITE_URL}/#organization`,
+        },
+      },
+    ],
+    category: "Educational Software",
+    audience: {
+      "@type": "EducationalAudience",
+      educationalRole: "teacher",
+    },
   };
 }
 
@@ -262,6 +349,59 @@ export function getHowToSchema(
   };
 }
 
+// Service Schema for better AEO
+export function getServiceSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${SITE_URL}/#service`,
+    name: "Scooli - Geração de Recursos Educativos com IA",
+    description:
+      "Serviço de geração automática de apresentações, planos de aula, testes e quizzes para professores portugueses, utilizando inteligência artificial alinhada ao currículo nacional.",
+    provider: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+    serviceType: "Educational Technology Service",
+    areaServed: {
+      "@type": "Country",
+      name: "Portugal",
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Planos Scooli",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Pacote de Boas-vindas",
+            description: `${PRICING.free.credits} créditos gratuitos para experimentar a plataforma`,
+          },
+          price: "0",
+          priceCurrency: "EUR",
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Scooli Pro",
+            description:
+              "Geração ilimitada de recursos com modelos de IA avançados",
+          },
+          price: PRICING.pro_monthly.price.toString(),
+          priceCurrency: "EUR",
+          priceSpecification: {
+            "@type": "UnitPriceSpecification",
+            price: PRICING.pro_monthly.price.toString(),
+            priceCurrency: "EUR",
+            billingDuration: "P1M",
+          },
+        },
+      ],
+    },
+  };
+}
+
 // Educational features list for SEO content
 export const EDUCATIONAL_FEATURES = {
   presentations: {
@@ -304,6 +444,8 @@ export function getHomePageSchemas() {
     getOrganizationSchema(),
     getWebsiteSchema(),
     getSoftwareApplicationSchema(),
+    getProductSchema(),
+    getServiceSchema(),
   ];
 }
 

@@ -1,9 +1,10 @@
-import { CommunitySection } from "@/components/CommunitySection";
+// import { CommunitySection } from "@/components/CommunitySection";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { MarketingNav } from "@/components/MarketingNav";
+import { PricingSection } from "@/components/PricingSection";
 import { ScrollShowcase } from "@/components/ScrollShowcase";
 import { FaqSection } from "@/components/FaqSection";
 import { getHowToSchema, SITE_URL } from "@/lib/seo";
@@ -88,8 +89,13 @@ export default function Home() {
         </article>
 
         {/* Community ecosystem */}
-        <article aria-label="Ecossistema comunitário">
+        {/* <article aria-label="Ecossistema comunitário">
           <CommunitySection />
+        </article> */}
+
+        {/* Pricing section */}
+        <article aria-label="Planos e preços">
+          <PricingSection />
         </article>
 
         {/* FAQ section with schema */}
