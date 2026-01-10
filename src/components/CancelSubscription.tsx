@@ -1,5 +1,5 @@
 "use client";
-import { emailTemplate } from "@/assets/email-template";
+
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -12,12 +12,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabaseClient";
 import type { CancelReason } from "@/types/cancel-reasons";
 import { AlertTriangle, ArrowLeft, CheckCircle, Mail } from "lucide-react";
 import Link from "next/link";
 import { type FormEvent, useEffect, useState } from "react";
 import { toast } from "sonner";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export function CancelSubscription() {
   const [email, setEmail] = useState("");
@@ -31,14 +32,28 @@ export function CancelSubscription() {
   useEffect(() => {
     async function fetchReasons() {
       setReasonsLoading(true);
-      const { data, error } = await supabase
-        .from("CancelReasons")
-        .select("id,reason,description")
-        .order("id", { ascending: true });
-      if (!error && data) {
-        setReasons(data);
+      try {
+        const response = await fetch(`${API_URL}/subscriptions/cancel-reasons`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch cancel reasons");
+        }
+        const data = await response.json();
+        if (data && Array.isArray(data)) {
+          setReasons(data);
+        }
+      } catch (error) {
+        console.error("Error fetching cancel reasons:", error);
+        // Fallback reasons if API fails
+        setReasons([
+          { id: 1, reason: "Não utilizo o suficiente", description: "Não tenho tempo ou necessidade de usar a plataforma regularmente." },
+          { id: 2, reason: "Demasiado caro", description: "O preço não se adequa ao meu orçamento atual." },
+          { id: 3, reason: "Encontrei alternativa melhor", description: "Estou a usar outra ferramenta que me serve melhor." },
+          { id: 4, reason: "Funcionalidades limitadas", description: "A plataforma não tem as funcionalidades que preciso." },
+          { id: 5, reason: "Outro motivo", description: "Prefiro não especificar ou tenho outro motivo." },
+        ]);
+      } finally {
+        setReasonsLoading(false);
       }
-      setReasonsLoading(false);
     }
     fetchReasons();
   }, []);
@@ -59,50 +74,28 @@ export function CancelSubscription() {
     setShowDialog(false);
 
     try {
-      const { error } = await supabase.functions.invoke("cancel-order", {
-        body: {
-          email,
-          cancelReason: selectedReason,
+      const response = await fetch(`${API_URL}/subscriptions/cancel`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          email,
+          cancelReasonId: selectedReason,
+        }),
       });
-      if (error) {
-        toast.error(
-          "Ocorreu um erro ao cancelar a subscrição. É possível que não tenha nenhuma subscrição ativa."
-        );
-        setIsLoading(false);
-        return;
-      }
 
-      try {
-        const { error: emailError } = await supabase.functions.invoke(
-          "send-email",
-          {
-            body: {
-              to: email,
-              subject: "Subscrição Cancelada - Scooli",
-              html: emailTemplate.cancellation,
-            },
-          }
-        );
-
-        if (emailError) {
-          toast.error(
-            "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
-          );
-        } else {
-          console.warn("Cancellation email sent successfully");
-        }
-      } catch {
-        toast.error(
-          "Não foi possível enviar o email de confirmação do cancelamento. Mas a subscrição foi cancelada com sucesso."
-        );
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.message || "Failed to cancel subscription");
       }
 
       setIsCancelled(true);
       toast.success("A sua subscrição foi cancelada com sucesso.");
-    } catch {
+    } catch (error) {
+      console.error("Error cancelling subscription:", error);
       toast.error(
-        "Ocorreu um erro ao cancelar a subscrição. Tente novamente mais tarde."
+        "Ocorreu um erro ao cancelar a subscrição. É possível que não tenha nenhuma subscrição ativa."
       );
     } finally {
       setIsLoading(false);
@@ -111,28 +104,28 @@ export function CancelSubscription() {
 
   if (isCancelled) {
     return (
-      <div className="max-w-2xl mx-auto">
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-xl">
-          <CardContent className="p-8 md:p-12 text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl mb-6">
-              <CheckCircle className="w-8 h-8 text-white" />
+      <div className="mx-auto max-w-2xl">
+        <Card className="border-slate-200/50 bg-white/80 shadow-xl backdrop-blur-sm">
+          <CardContent className="p-8 text-center md:p-12">
+            <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-emerald-600">
+              <CheckCircle className="h-8 w-8 text-white" />
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h1 className="mb-4 text-2xl font-bold text-slate-900 md:text-3xl">
               Subscrição Cancelada
             </h1>
-            <p className="text-slate-600 leading-relaxed mb-8">
-              A sua subscrição foi cancelada com sucesso. Não receberá mais
-              notificações sobre a Scooli.
+            <p className="mb-8 leading-relaxed text-slate-600">
+              A sua subscrição foi cancelada com sucesso. Receberá um email de
+              confirmação em breve.
             </p>
             <div className="space-y-4">
               <p className="text-sm text-slate-500">
                 Se mudou de ideias, pode sempre voltar a subscrever na nossa
-                página principal.
+                página de preços.
               </p>
-              <Link href="/">
-                <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105">
-                  <ArrowLeft className="w-4 h-4 mr-2" />
-                  Voltar à Página Principal
+              <Link href="/#precos">
+                <Button className="bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg">
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Ver Planos
                 </Button>
               </Link>
             </div>
@@ -143,45 +136,45 @@ export function CancelSubscription() {
   }
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <div className="text-center mb-8">
+    <div className="mx-auto max-w-2xl">
+      <div className="mb-8 text-center">
         <Link
           href="/"
-          className="inline-flex items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-6"
+          className="mb-6 inline-flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-900"
         >
-          <ArrowLeft className="w-4 h-4 mr-2" />
+          <ArrowLeft className="mr-2 h-4 w-4" />
           Voltar à página principal
         </Link>
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl">
           Cancelar Subscrição
         </h1>
-        <p className="text-slate-600 leading-relaxed">
+        <p className="leading-relaxed text-slate-600">
           Lamentamos vê-lo partir. Pode cancelar a sua subscrição a qualquer
           momento.
         </p>
       </div>
 
-      <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-xl mb-8">
+      <Card className="mb-8 border-slate-200/50 bg-white/80 shadow-xl backdrop-blur-sm">
         <CardContent className="p-8 md:p-12">
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">
-              <AlertTriangle className="w-8 h-8 text-white" />
+          <div className="mb-8 text-center">
+            <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600">
+              <AlertTriangle className="h-8 w-8 text-white" />
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
+            <h2 className="mb-4 text-2xl font-bold text-slate-900 md:text-3xl">
               Confirmar Cancelamento
             </h2>
-            <p className="text-slate-600 leading-relaxed">
-              Introduza o seu endereço de email para cancelar a subscrição das
-              notificações do Scooli.
+            <p className="leading-relaxed text-slate-600">
+              Introduza o seu endereço de email para cancelar a sua subscrição
+              do Scooli Pro.
             </p>
           </div>
 
           <Alert className="mb-6 border-amber-200 bg-amber-50">
             <AlertTriangle className="h-4 w-4 text-amber-600" />
             <AlertDescription className="text-amber-800">
-              <strong>Atenção:</strong> Ao cancelar a subscrição, deixará de
-              receber todas as notificações sobre o lançamento do Scooli e
-              futuras atualizações.
+              <strong>Atenção:</strong> Ao cancelar, perderá acesso às
+              funcionalidades Pro no final do período de faturação atual.
+              Manterá acesso ao plano gratuito com 100 créditos.
             </AlertDescription>
           </Alert>
 
@@ -189,7 +182,7 @@ export function CancelSubscription() {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-slate-700 mb-2"
+                className="mb-2 block text-sm font-medium text-slate-700"
               >
                 Endereço de Email
               </label>
@@ -199,27 +192,27 @@ export function CancelSubscription() {
                 placeholder="o.seu.email@exemplo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="h-12 text-lg bg-white border-slate-300 focus:border-blue-500 focus:ring-blue-500 "
+                className="h-12 border-slate-300 bg-white text-lg focus:border-[#6753FF] focus:ring-[#6753FF]"
                 disabled={isLoading}
                 required
               />
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="flex-1 h-12 border-slate-300 text-slate-700 hover:bg-slate-50 transition-all duration-300 bg-transparent"
+                className="h-12 flex-1 border-slate-300 bg-transparent text-slate-700 transition-all duration-300 hover:bg-slate-50"
                 variant="outline"
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                     A cancelar...
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
+                    <Mail className="h-4 w-4" />
                     Cancelar Subscrição
                   </div>
                 )}
@@ -227,9 +220,9 @@ export function CancelSubscription() {
               <Link href="/" className="flex-1">
                 <Button
                   type="button"
-                  className="flex-1 w-full h-12 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-12 w-full flex-1 bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                 >
-                  <CheckCircle className="w-4 h-4 mr-2" />
+                  <CheckCircle className="mr-2 h-4 w-4" />
                   Manter Subscrição
                 </Button>
               </Link>
@@ -239,7 +232,7 @@ export function CancelSubscription() {
       </Card>
 
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
-        <DialogContent className="bg-white/95 backdrop-blur-sm border-slate-200/50 shadow-xl">
+        <DialogContent className="border-slate-200/50 bg-white/95 shadow-xl backdrop-blur-sm">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold text-slate-900">
               Confirmar Cancelamento
@@ -250,18 +243,18 @@ export function CancelSubscription() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-3 my-6">
+          <div className="my-6 space-y-3">
             {reasonsLoading ? (
-              <div className="text-center text-slate-500 py-8">
+              <div className="py-8 text-center text-slate-500">
                 A carregar motivos...
               </div>
             ) : (
               reasons.map((reason) => (
                 <label
                   key={reason.id}
-                  className={`flex items-start space-x-3 p-3 rounded-lg border cursor-pointer transition-all duration-200 hover:bg-slate-50 ${
+                  className={`flex cursor-pointer items-start space-x-3 rounded-lg border p-3 transition-all duration-200 hover:bg-slate-50 ${
                     selectedReason === reason.id
-                      ? "border-blue-500 bg-blue-50"
+                      ? "border-[#6753FF] bg-[#6753FF]/5"
                       : "border-slate-200"
                   }`}
                 >
@@ -271,7 +264,7 @@ export function CancelSubscription() {
                     value={reason.id}
                     checked={selectedReason === reason.id}
                     onChange={(e) => setSelectedReason(Number(e.target.value))}
-                    className="mt-1 w-4 h-4 text-blue-600 border-slate-300 focus:ring-blue-500"
+                    className="mt-1 h-4 w-4 border-slate-300 text-[#6753FF] focus:ring-[#6753FF]"
                   />
                   <div className="flex-1">
                     <div className="font-medium text-slate-900">
@@ -286,7 +279,7 @@ export function CancelSubscription() {
             )}
           </div>
 
-          <DialogFooter className="flex flex-col sm:flex-row gap-3">
+          <DialogFooter className="flex flex-col gap-3 sm:flex-row">
             <Button
               onClick={handleConfirmCancel}
               disabled={!selectedReason || isLoading}
@@ -295,7 +288,7 @@ export function CancelSubscription() {
             >
               {isLoading ? (
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                   A cancelar...
                 </div>
               ) : (
@@ -304,7 +297,7 @@ export function CancelSubscription() {
             </Button>
             <Button
               onClick={() => setShowDialog(false)}
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50"
+              className="bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50"
             >
               Manter Subscrição
             </Button>

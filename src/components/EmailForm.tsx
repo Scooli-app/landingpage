@@ -1,12 +1,13 @@
 "use client";
-import { emailTemplate } from "@/assets/email-template";
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { supabase } from "@/lib/supabaseClient";
 import { ArrowRight, Clock, Gift, Mail, Users } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export function EmailForm() {
   const [email, setEmail] = useState("");
@@ -23,47 +24,32 @@ export function EmailForm() {
     setIsLoading(true);
 
     try {
-      // First, try to insert the email into the preOrderEmails table
-      const { error: insertError } = await supabase
-        .from("preOrderEmails")
-        .insert({ email });
+      const response = await fetch(`${API_URL}/waitlist`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
 
-      if (insertError) {
-        if (insertError.code === "23505") {
-          // Duplicate email error
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+
+        if (response.status === 409) {
+          // Duplicate email
           toast.error(
             "Este email já está na nossa lista de espera. Verifique a sua caixa de entrada para o email de confirmação."
           );
           setIsLoading(false);
           return;
-        } else {
-          // Other database errors
-          throw insertError;
         }
+
+        throw new Error(errorData.message || "Failed to register email");
       }
 
-      try {
-        const { error } = await supabase.functions.invoke("send-email", {
-          body: {
-            to: email,
-            subject: "Obrigado por se juntar à Scooli 🎓🚀",
-            html: emailTemplate.confirmation,
-          },
-        });
-
-        if (error) {
-          throw error;
-        }
-        toast.success(
-          "Obrigado! O seu email foi registado e receberá um email de confirmação em breve."
-        );
-      } catch (emailError) {
-        console.error("Error sending email:", emailError);
-        toast.success(
-          "Email registado com sucesso! Não foi possível enviar o email de confirmação, mas será notificado quando a Scooli estiver disponível."
-        );
-      }
-
+      toast.success(
+        "Obrigado! O seu email foi registado e receberá um email de confirmação em breve."
+      );
       setEmail("");
     } catch (error) {
       console.error("Error in email registration:", error);
@@ -75,37 +61,37 @@ export function EmailForm() {
 
   return (
     <section className="mb-20" aria-labelledby="email-form-heading">
-      <div className="max-w-2xl mx-auto">
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-xl">
+      <div className="mx-auto max-w-2xl">
+        <Card className="border-slate-200/50 bg-white/80 shadow-xl backdrop-blur-sm">
           <CardContent className="p-8 md:p-12">
-            <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">
-                <Mail className="w-8 h-8 text-white" />
+            <div className="mb-8 text-center">
+              <div className="mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#6753FF] to-[#4E3BC0]">
+                <Mail className="h-8 w-8 text-white" />
               </div>
               <h2
                 id="email-form-heading"
-                className="text-2xl md:text-3xl font-bold text-slate-900 mb-4"
+                className="mb-4 text-2xl font-bold text-slate-900 md:text-3xl"
               >
                 Seja o primeiro a saber
               </h2>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <p className="mb-6 leading-relaxed text-slate-600">
                 Registe o seu email e seja notificado quando o Scooli estiver
                 disponível. Não perca a oportunidade de revolucionar a sua
                 experiência de ensino.
               </p>
 
               {/* Enhanced content for GEO */}
-              <div className="grid md:grid-cols-3 gap-4 mb-8">
+              <div className="mb-8 grid gap-4 md:grid-cols-3">
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Clock className="w-4 h-4 text-blue-500" />
+                  <Clock className="h-4 w-4 text-[#6753FF]" />
                   <span>Acesso prioritário</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Gift className="w-4 h-4 text-green-500" />
+                  <Gift className="h-4 w-4 text-green-500" />
                   <span>100 créditos gratuitos</span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-slate-600">
-                  <Users className="w-4 h-4 text-purple-500" />
+                  <Users className="h-4 w-4 text-purple-500" />
                   <span>Comunidade exclusiva</span>
                 </div>
               </div>
@@ -117,7 +103,7 @@ export function EmailForm() {
               role="form"
               aria-labelledby="email-form-heading"
             >
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col gap-4 sm:flex-row">
                 <div className="flex-1">
                   <label htmlFor="email-input" className="sr-only">
                     Endereço de email
@@ -128,7 +114,7 @@ export function EmailForm() {
                     placeholder="o.seu.email@exemplo.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="h-12 text-lg bg-white border-slate-300 focus:border-blue-500 focus:ring-blue-500"
+                    className="h-12 border-slate-300 bg-white text-lg focus:border-[#6753FF] focus:ring-[#6753FF]"
                     disabled={isLoading}
                     required
                     aria-describedby="email-help"
@@ -137,17 +123,17 @@ export function EmailForm() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="h-12 px-8 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-12 bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] px-8 font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   {isLoading ? (
                     <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                       A registar...
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
                       Registar
-                      <ArrowRight className="w-4 h-4" />
+                      <ArrowRight className="h-4 w-4" />
                     </div>
                   )}
                 </Button>
@@ -159,7 +145,7 @@ export function EmailForm() {
                 Ao registar, concorda com a nossa{" "}
                 <a
                   href="/privacy"
-                  className="text-blue-600 hover:text-blue-700 underline"
+                  className="text-[#6753FF] underline hover:text-[#4E3BC0]"
                 >
                   Política de Privacidade
                 </a>
