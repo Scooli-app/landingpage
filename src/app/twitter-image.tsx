@@ -13,6 +13,14 @@ export const contentType = "image/png";
 
 // Image generation - Same as OG image for consistency
 export default async function TwitterImage() {
+  // Fetch the SVG logo from the public directory
+  const logoUrl = new URL("/scooli.svg", "https://www.scooli.app");
+  const logoResponse = await fetch(logoUrl);
+  const logoSvg = await logoResponse.text();
+  
+  // Convert SVG to data URL for embedding
+  const logoDataUrl = `data:image/svg+xml,${encodeURIComponent(logoSvg)}`;
+
   return new ImageResponse(
     (
       <div
@@ -63,39 +71,25 @@ export default async function TwitterImage() {
             zIndex: 10,
           }}
         >
-          {/* Logo/Brand */}
+          {/* Logo - using actual Scooli SVG logo */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "16px",
+              justifyContent: "center",
               marginBottom: "40px",
             }}
           >
-            <div
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={logoDataUrl}
+              alt="Scooli Logo"
+              width={300}
+              height={120}
               style={{
-                width: "80px",
-                height: "80px",
-                background: "linear-gradient(135deg, #6753FF 0%, #4E3BC0 100%)",
-                borderRadius: "20px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: "0 10px 40px rgba(103,83,255,0.3)",
+                objectFit: "contain",
               }}
-            >
-              <span style={{ fontSize: "48px", color: "white", fontWeight: 700 }}>S</span>
-            </div>
-            <span
-              style={{
-                fontSize: "64px",
-                fontWeight: 700,
-                color: "#0B0D17",
-                letterSpacing: "-2px",
-              }}
-            >
-              Scooli
-            </span>
+            />
           </div>
 
           {/* Main headline */}
@@ -175,4 +169,3 @@ export default async function TwitterImage() {
     }
   );
 }
-

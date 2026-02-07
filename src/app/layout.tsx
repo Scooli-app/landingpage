@@ -1,11 +1,11 @@
 import { Toaster } from "@/components/ui/sonner";
 import {
-  getHomePageSchemas,
   BRAND_KEYWORDS,
+  getHomePageSchemas,
+  SITE_LANGUAGE,
+  SITE_LOCALE,
   SITE_NAME,
   SITE_URL,
-  SITE_LOCALE,
-  SITE_LANGUAGE,
 } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
@@ -82,7 +82,6 @@ export const metadata: Metadata = {
     title: `${SITE_NAME} | Ferramentas com IA para professores portugueses`,
     description:
       "Poupe horas com geração de recursos educativos alinhados às aprendizagens essenciais. Apresentações, planos de aula, testes e quizzes em segundos.",
-    // Twitter image is generated dynamically by twitter-image.tsx
     creator: "@scooli_app",
     site: "@scooli_app",
   },
