@@ -1,3 +1,4 @@
+import { APP_URL } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
@@ -26,6 +27,12 @@ export function Footer() {
             </div>
 
         <div className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--scooli-ink)]">
+          <Link
+            href={`${APP_URL}/sign-in`}
+            className="rounded-lg px-3 py-2 font-medium text-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
+          >
+            Entrar
+          </Link>
           <Link
             href="/privacy"
             className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"

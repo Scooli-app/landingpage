@@ -5,25 +5,25 @@ import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
+import { APP_URL } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
-  BadgeCheck,
-  BadgePercent,
-  Building2,
-  Coins,
-  Crown,
-  Loader2,
-  MessageSquare,
-  ShieldCheck,
-  Sparkles,
-  X,
-  Zap,
+    BadgeCheck,
+    BadgePercent,
+    Building2,
+    Coins,
+    Crown,
+    Loader2,
+    MessageSquare,
+    ShieldCheck,
+    Sparkles,
+    X,
+    Zap,
 } from "lucide-react";
 import { useState } from "react";
 
 // URL da web app para redirecionamento
-const WEB_APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL || "https://create.scooli.app";
+const WEB_APP_URL = APP_URL;
 
 // Mapeamento de features para texto legível
 const featureLabels: Record<string, string> = {

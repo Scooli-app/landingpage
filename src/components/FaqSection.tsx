@@ -3,10 +3,10 @@
 import { Container } from "@/components/Container";
 import { EmailContact } from "@/components/EmailContact";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getFAQPageSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
@@ -53,7 +53,7 @@ const faqs = [
   {
     question: "Quando estarão disponíveis integrações com Google Classroom e OneDrive?",
     answer:
-      "As integrações com Google Classroom, OneDrive e outras plataformas educativas estão planeadas para a próxima fase do desenvolvimento da Scooli. Inscreva-se na nossa lista de espera para ser notificado assim que estas funcionalidades estiverem disponíveis e receber acesso antecipado.",
+      "As integrações com Google Classroom, OneDrive e outras plataformas educativas estão planeadas para a próxima fase do desenvolvimento da Scooli. Crie a sua conta para receber notificações e novidades assim que estas funcionalidades estiverem disponíveis.",
   },
 ];
 

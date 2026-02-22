@@ -21,7 +21,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
-import { WaitlistForm } from "@/components/WaitlistForm";
+import { Button } from "@/components/ui/button";
+import { APP_URL } from "@/lib/seo";
+import Link from "next/link";
 
 const featureTags = [
   { label: "Apresentações", icon: Presentation, x: "8%", y: "12%", rotate: -6 },
@@ -86,8 +88,23 @@ export function Hero() {
             rápido e feito para a realidade das escolas portuguesas.
           </motion.p>
 
-          <div className="flex flex-col gap-4">
-            <WaitlistForm compact />
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Link href={`${APP_URL}/sign-up`} className="w-full sm:w-auto">
+                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-8 text-lg font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.25)] sm:w-auto transition-all">
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Começar Grátis
+                </Button>
+              </Link>
+              <Link href={`${APP_URL}/sign-in`} className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  className="h-14 w-full rounded-2xl border-2 border-[color:var(--scooli-border)] bg-white px-8 text-lg font-semibold text-[color:var(--scooli-ink)] hover:bg-[color:var(--scooli-accent)] sm:w-auto"
+                >
+                  Entrar na Plataforma
+                </Button>
+              </Link>
+            </div>
             <div className="flex flex-wrap items-center gap-4 text-sm text-[color:var(--scooli-muted)]">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
                 <ShieldCheck className="h-4 w-4 text-[color:var(--scooli-primary)]" />

@@ -2,7 +2,9 @@
 
 import { Container } from "@/components/Container";
 import { usePlans } from "@/contexts/PlansContext";
+import { APP_URL } from "@/lib/seo";
 import { cn } from "@/lib/utils";
+
 import {
     AnimatePresence,
     motion,
@@ -82,6 +84,20 @@ export function MarketingNav() {
               {link.label}
             </Link>
           ))}
+          <div className="ml-2 flex items-center gap-3 border-l border-[color:var(--scooli-border)] pl-4">
+            <Link
+              href={`${APP_URL}/sign-in`}
+              className="px-3 py-2 text-sm font-medium text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] rounded-full"
+            >
+              Entrar
+            </Link>
+            <Link
+              href={`${APP_URL}/sign-up`}
+              className="rounded-full bg-[color:var(--scooli-primary)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-lg hover:shadow-[rgba(103,83,255,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
+            >
+              Começar Grátis
+            </Link>
+          </div>
         </div>
 
         <button
@@ -135,6 +151,22 @@ export function MarketingNav() {
                   {link.label}
                 </Link>
               ))}
+              <div className="mt-2 flex flex-col gap-2 border-t border-[color:var(--scooli-border)] pt-4">
+                <Link
+                  href={`${APP_URL}/sign-in`}
+                  onClick={() => setOpen(false)}
+                  className="flex h-12 items-center justify-center rounded-xl border border-[color:var(--scooli-border)] text-[15px] font-semibold text-[color:var(--scooli-ink)] transition hover:bg-[color:var(--scooli-accent)]"
+                >
+                  Entrar
+                </Link>
+                <Link
+                  href={`${APP_URL}/sign-up`}
+                  onClick={() => setOpen(false)}
+                  className="flex h-12 items-center justify-center rounded-xl bg-[color:var(--scooli-primary)] text-[15px] font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)]"
+                >
+                  Começar Grátis
+                </Link>
+              </div>
             </Container>
           </motion.div>
         )}

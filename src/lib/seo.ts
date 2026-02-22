@@ -9,6 +9,10 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
   "https://www.scooli.app";
 
+export const APP_URL =
+  process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
+  "https://create.scooli.app";
+
 export const SITE_NAME = "Scooli";
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";

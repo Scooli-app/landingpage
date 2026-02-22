@@ -1,8 +1,11 @@
 "use client";
 
 import { Container } from "@/components/Container";
-import { WaitlistForm } from "@/components/WaitlistForm";
+import { Button } from "@/components/ui/button";
+import { APP_URL } from "@/lib/seo";
 import { motion } from "framer-motion";
+import { Sparkles } from "lucide-react";
+import Link from "next/link";
 
 export function FinalCta() {
   return (
@@ -26,11 +29,26 @@ export function FinalCta() {
                 Menos tempo a formatar, mais tempo a inspirar alunos.
               </h2>
               <p className="max-w-3xl text-[color:var(--scooli-muted)]">
-                Acesso prioritário para professores que querem experimentar a IA
-                aplicada ao currículo português. Sem compromissos.
+                Junte-se a centenas de professores que já estão a transformar as
+                suas salas de aula com a Scooli. Comece hoje mesmo.
               </p>
             </div>
-            <WaitlistForm />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+              <Link href={`${APP_URL}/sign-up`} className="w-full sm:w-auto">
+                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-10 text-lg font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.3)] sm:w-auto transition-all">
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Criar conta grátis agora
+                </Button>
+              </Link>
+              <Link href={`${APP_URL}/sign-in`} className="w-full sm:w-auto">
+                <Button
+                  variant="outline"
+                  className="h-14 w-full rounded-2xl border-2 border-[color:var(--scooli-border)] bg-white px-8 text-lg font-semibold text-[color:var(--scooli-ink)] hover:bg-[color:var(--scooli-accent)] sm:w-auto"
+                >
+                  Já tenho conta
+                </Button>
+              </Link>
+            </div>
           </div>
         </motion.div>
       </Container>
