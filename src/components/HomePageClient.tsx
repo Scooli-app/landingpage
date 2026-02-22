@@ -1,5 +1,6 @@
 "use client";
 
+import { ContactSection } from "@/components/ContactSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FeatureGrid } from "@/components/FeatureGrid";
 import { FinalCta } from "@/components/FinalCta";
@@ -41,6 +42,9 @@ export function HomePageClient() {
 
           {/* FAQ section with schema */}
           <FaqSection />
+
+          {/* Contact section */}
+          <ContactSection />
 
           {/* Final call to action */}
           <aside aria-label="Chamada para ação">

@@ -1,5 +1,6 @@
 "use client";
 
+import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,14 +9,17 @@ import { motion } from "framer-motion";
 import {
   BadgeCheck,
   BadgePercent,
+  Building2,
   Coins,
   Crown,
   Loader2,
+  MessageSquare,
   ShieldCheck,
   Sparkles,
   X,
   Zap,
 } from "lucide-react";
+import { useState } from "react";
 
 // URL da web app para redirecionamento
 const WEB_APP_URL =
@@ -291,7 +295,7 @@ function PlanCard({
             {isPro ? (
               <>
                 <Zap className="mr-2 h-4 w-4" />
-                {isAnnual ? "Começar com Pro Anual" : "Começar com Pro"}
+                {isAnnual ? "Subscrever Pro Anual" : "Subscrever Pro"}
               </>
             ) : (
               <>
@@ -303,6 +307,108 @@ function PlanCard({
         </CardContent>
       </Card>
     </motion.div>
+  );
+}
+
+// Enterprise/Institutional plan card (no price — opens contact modal)
+const enterpriseFeatures = [
+  "Licenças múltiplas para a escola",
+  "Gestão centralizada de contas",
+  "Suporte prioritário dedicado",
+  "Formação personalizada para docentes",
+  "Integrações personalizadas",
+  "Gestor de conta dedicado",
+  "Geração ilimitada",
+  "Modelos de IA avançados",
+];
+
+function EnterprisePlanCard({ index }: { index: number }) {
+  const [contactOpen, setContactOpen] = useState(false);
+
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ delay: index * 0.1, duration: 0.5 }}
+        className="relative"
+      >
+        <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 px-4 py-1.5 text-xs font-semibold text-white shadow-lg">
+            <Building2 className="h-3.5 w-3.5" />
+            Institucional
+          </span>
+        </div>
+
+        <Card className="h-full rounded-2xl border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-500/10 transition-all duration-300">
+          <CardContent className="flex h-full flex-col p-6 md:p-8">
+            {/* Header */}
+            <div className="mb-6 flex items-start justify-between">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
+                  Escolas e Instituições
+                </p>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="text-3xl font-bold text-blue-600">
+                    Sob Consulta
+                  </span>
+                </div>
+                <p className="mt-1 text-sm font-medium text-blue-600">
+                  Plano personalizado
+                </p>
+              </div>
+              <div className="rounded-xl bg-blue-100 p-3 text-blue-600">
+                <Building2 className="h-6 w-6" />
+              </div>
+            </div>
+
+            {/* Description */}
+            <p className="mb-4 text-slate-600">
+              Solução à medida para escolas, agrupamentos e instituições de
+              ensino.
+            </p>
+
+            {/* Highlight */}
+            <div className="mb-6 rounded-xl bg-blue-100 p-3">
+              <p className="text-sm font-semibold text-blue-700">
+                Personalizado para a sua instituição
+              </p>
+            </div>
+
+            {/* Features */}
+            <ul className="mb-8 flex-1 space-y-3">
+              {enterpriseFeatures.map((feature, i) => (
+                <li
+                  key={i}
+                  className="flex items-start gap-3 text-sm text-slate-700"
+                >
+                  <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            {/* CTA Button */}
+            <Button
+              onClick={() => setContactOpen(true)}
+              className="h-12 w-full rounded-xl bg-blue-600 text-base font-semibold text-white transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25"
+            >
+              <MessageSquare className="mr-2 h-4 w-4" />
+              Falar com a equipa
+            </Button>
+          </CardContent>
+        </Card>
+      </motion.div>
+
+      <ContactModal
+        open={contactOpen}
+        onOpenChange={setContactOpen}
+        source="enterprise_plan"
+        title="Plano Institucional"
+        description="Preencha o formulário e a nossa equipa entrará em contacto para criar um plano à medida da sua instituição."
+      />
+    </>
   );
 }
 
@@ -347,7 +453,7 @@ export function PricingSection() {
             <Loader2 className="h-8 w-8 animate-spin text-[#6753FF]" />
           </div>
         ) : (
-          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+          <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
             {plans.map((plan, index) => (
               <PlanCard
                 key={plan.planCode}
@@ -356,6 +462,7 @@ export function PricingSection() {
                 isPopular={plan.planCode === "pro_monthly"}
               />
             ))}
+            <EnterprisePlanCard index={plans.length} />
           </div>
         )}
 

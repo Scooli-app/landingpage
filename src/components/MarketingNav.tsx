@@ -4,10 +4,10 @@ import { Container } from "@/components/Container";
 import { usePlans } from "@/contexts/PlansContext";
 import { cn } from "@/lib/utils";
 import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useTransform,
+    AnimatePresence,
+    motion,
+    useScroll,
+    useTransform,
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -19,6 +19,7 @@ const allLinks = [
   { label: "Comunidade", href: "#comunidade" },
   { label: "Preços", href: "#precos", requiresPlans: true },
   { label: "FAQ", href: "#faq" },
+  { label: "Contacto", href: "#contacto" },
 ];
 
 export function MarketingNav() {

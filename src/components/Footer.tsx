@@ -44,6 +44,12 @@ export function Footer() {
                     >
                       Cancelar Subscrição
                     </Link>
+          <Link
+            href="#contacto"
+            className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
+          >
+            Contacto
+          </Link>
           <EmailContact className="text-sm" />
         </div>
       </Container>

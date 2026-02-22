@@ -1,24 +1,24 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
-import { useRef } from "react";
 import {
+  BookOpen,
+  ClipboardCheck,
+  FileText,
+  FolderOpen,
+  Lightbulb,
+  Presentation,
   ShieldCheck,
   Sparkles,
-  Presentation,
-  FileText,
-  ClipboardCheck,
-  Lightbulb,
-  Users,
-  FolderOpen,
-  Upload,
-  Wand2,
-  BookOpen,
   Timer,
   Trophy,
+  Upload,
+  Users,
+  Wand2,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 import { Container } from "@/components/Container";
 import { WaitlistForm } from "@/components/WaitlistForm";
@@ -40,7 +40,14 @@ const featureTags = [
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
+  const [mounted, setMounted] = useState(false);
   const constraintsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const isReduced = mounted ? prefersReducedMotion : false;
 
   return (
     <section className="relative overflow-hidden pt-10 md:pt-14">
@@ -120,7 +127,7 @@ export function Hero() {
             return (
               <motion.div
                 key={tag.label}
-                drag={!prefersReducedMotion}
+                drag
                 dragConstraints={constraintsRef}
                 dragElastic={0.1}
                 dragTransition={{ bounceStiffness: 300, bounceDamping: 20 }}
@@ -128,7 +135,7 @@ export function Hero() {
                 animate={{
                   opacity: 1,
                   scale: 1,
-                  y: prefersReducedMotion ? 0 : [0, -6, 0],
+                  y: isReduced ? 0 : [0, -6, 0],
                 }}
                 transition={{
                   opacity: { delay: 0.2 + index * 0.05, duration: 0.4 },

@@ -1,7 +1,7 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -26,7 +26,6 @@ export function WaitlistForm({ compact = false }: WaitlistFormProps) {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [message, setMessage] = useState<string>("");
-  const prefersReducedMotion = useReducedMotion();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(waitlistSchema),
@@ -111,18 +110,14 @@ export function WaitlistForm({ compact = false }: WaitlistFormProps) {
       onSubmit={form.handleSubmit(onSubmit)}
       className="w-full max-w-3xl"
     >
-      {prefersReducedMotion ? (
-        formContent
-      ) : (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          {formContent}
-        </motion.div>
-      )}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.4, ease: "easeOut" }}
+      >
+        {formContent}
+      </motion.div>
       <div
         role="status"
         aria-live="polite"
