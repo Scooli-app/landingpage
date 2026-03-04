@@ -4,12 +4,12 @@ import { Container } from "@/components/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import {
-  Archive,
-  CalendarClock,
-  Layers,
-  Presentation,
-  Sparkles,
-  UploadCloud,
+    CalendarClock,
+    Layers,
+    LibraryBig,
+    Presentation,
+    Sparkles,
+    UploadCloud
 } from "lucide-react";
 
 const features = [
@@ -29,9 +29,9 @@ const features = [
     icon: Layers,
   },
   {
-    title: "Organização",
-    description: "Guarde, etiquete e recupere recursos por turma e tema.",
-    icon: Archive,
+    title: "Biblioteca comunitária",
+    description: "Partilhe, reutilize e aprenda com outros professores.",
+    icon: LibraryBig,
   },
   {
     title: "Upload & Transformação",
@@ -54,7 +54,7 @@ export function FeatureGrid() {
             Funcionalidades essenciais
           </p>
           <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
-            Tudo o que precisa para preparar aulas com confiança.
+            Ferramentas alimentadas por IA + Biblioteca Colaborativa
           </h2>
           <p className="max-w-3xl text-[color:var(--scooli-muted)]">
             Gerar, personalizar, guardar e partilhar com micro-interações que

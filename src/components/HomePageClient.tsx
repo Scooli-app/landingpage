@@ -1,5 +1,6 @@
 "use client";
 
+import { CommunitySection } from "@/components/CommunitySection";
 import { ContactSection } from "@/components/ContactSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FeatureGrid } from "@/components/FeatureGrid";
@@ -26,6 +27,11 @@ export function HomePageClient() {
           <article aria-label="Introdução à Scooli">
             <Hero />
           </article>
+
+          {/* Community Section */}
+          <section aria-label="Biblioteca Comunitária">
+            <CommunitySection />
+          </section>
 
           {/* Product showcase */}
           <section aria-label="Demonstração do produto">

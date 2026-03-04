@@ -11,11 +11,10 @@ import {
   ShieldCheck,
   Sparkles,
   Timer,
-  Trophy,
   Upload,
   Users,
   Wand2,
-  Zap,
+  Zap
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -36,7 +35,6 @@ const featureTags = [
   { label: "IA Inteligente", icon: Wand2, x: "10%", y: "75%", rotate: 6 },
   { label: "Currículo PT", icon: BookOpen, x: "45%", y: "72%", rotate: -2 },
   { label: "Rápido", icon: Timer, x: "78%", y: "78%", rotate: 4 },
-  { label: "Créditos XP", icon: Trophy, x: "35%", y: "28%", rotate: -3 },
   { label: "Automático", icon: Zap, x: "88%", y: "45%", rotate: 2 },
 ];
 
@@ -74,7 +72,7 @@ export function Hero() {
             transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
             className="text-4xl font-bold leading-tight text-[color:var(--scooli-ink)] md:text-5xl"
           >
-            Devolvemos horas ao seu dia com IA alinhada ao currículo português.
+            IA + Comunidade para transformar a rotina dos professores
           </motion.h1>
 
           <motion.p
@@ -83,17 +81,15 @@ export function Hero() {
             transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
             className="max-w-xl text-lg leading-relaxed text-[color:var(--scooli-muted)]"
           >
-            Gere apresentações, planos de aula, testes e quizzes em segundos.
-            Organize, edite e partilhe com a biblioteca comunitária. Seguro,
-            rápido e feito para a realidade das escolas portuguesas.
+            Crie planos, apresentações, quizzes e mais em segundos — e descubra uma biblioteca colaborativa de recursos validados por docentes portugueses.
           </motion.p>
 
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href={`${APP_URL}/sign-up`} className="w-full sm:w-auto">
-                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-8 text-lg font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.25)] sm:w-auto transition-all">
-                  <Sparkles className="mr-2 h-5 w-5" />
-                  Começar Grátis
+                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-8 text-[15px] font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.25)] sm:w-auto transition-all">
+                  <Sparkles className="mr-2 h-5 w-5 shrink-0" />
+                  Experimente com 100 créditos gratuitos
                 </Button>
               </Link>
               <Link href={`${APP_URL}/sign-in`} className="w-full sm:w-auto">
@@ -111,7 +107,7 @@ export function Hero() {
                 RGPD-ready
               </div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
-                🇵🇹 Made in Portugal
+                🇵🇹 Professores a construir juntos
               </div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
                 Aprendizagens Essenciais

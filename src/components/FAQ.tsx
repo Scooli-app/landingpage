@@ -1,10 +1,10 @@
 "use client";
 import { EmailContact } from "@/components/EmailContact";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Card, CardContent } from "@/components/ui/card";
 import { HelpCircle } from "lucide-react";
@@ -37,7 +37,7 @@ const faqData: FAQItem[] = [
   {
     question: "A Scooli é gratuita?",
     answer:
-      "A Scooli oferece um pacote de boas-vindas com 100 créditos gratuitos para novos utilizadores. Os utilizadores ativos podem ganhar mais créditos contribuindo para a biblioteca comunitária. Existe também um plano Scooli Pro (€7,99/mês) com funcionalidades ilimitadas e acesso aos modelos de IA mais avançados.",
+      "A Scooli oferece um pacote de boas-vindas com 100 créditos gratuitos para novos utilizadores. Existe também um plano Scooli Pro (€9,99/mês) com funcionalidades ilimitadas e acesso aos modelos de IA mais avançados.",
     category: "Preços",
   },
 
@@ -62,7 +62,7 @@ const faqData: FAQItem[] = [
   {
     question: "Como funciona o sistema de créditos?",
     answer:
-      "Cada geração de conteúdo consome créditos. Novos utilizadores recebem 100 créditos gratuitos. Utilizadores ativos podem ganhar mais créditos contribuindo recursos de qualidade para a biblioteca comunitária. O plano Scooli Pro oferece geração ilimitada e acesso aos modelos de IA mais avançados.",
+      "Cada geração de conteúdo consome créditos. Novos utilizadores recebem 100 créditos gratuitos. O plano Scooli Pro oferece geração ilimitada e acesso aos modelos de IA mais avançados.",
     category: "Preços",
   },
   {
@@ -74,7 +74,7 @@ const faqData: FAQItem[] = [
   {
     question: "Posso partilhar os conteúdos gerados com outros professores?",
     answer:
-      "Sim, a Scooli inclui uma biblioteca comunitária onde pode partilhar os seus melhores recursos com outros professores. Esta funcionalidade permite colaboração, partilha de boas práticas e ganhar créditos adicionais através das suas contribuições. A biblioteca comunitária é um recurso aberto e público, onde todos os utilizadores podem contribuir com recursos de qualidade e receber créditos por isso.",
+      "Sim, a Scooli inclui uma biblioteca comunitária onde pode partilhar os seus melhores recursos com outros professores. Esta funcionalidade permite colaboração e partilha de boas práticas. A biblioteca comunitária é um recurso aberto e público, onde todos os utilizadores se podem inter-ajudar livremente.",
     category: "Comunidade",
   },
 ];

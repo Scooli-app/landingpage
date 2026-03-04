@@ -509,7 +509,7 @@ export const EDUCATIONAL_FEATURES = {
   community: {
     title: "Biblioteca Comunitária",
     description:
-      "Partilhe e aceda a recursos criados por professores portugueses. Ganhe créditos contribuindo para a comunidade.",
+      "Partilhe e aceda a recursos criados por professores portugueses.",
     keywords: [
       "recursos educativos",
       "partilha de materiais",

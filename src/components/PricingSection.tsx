@@ -8,17 +8,17 @@ import { usePlans, type Plan } from "@/contexts/PlansContext";
 import { APP_URL } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
-  BadgeCheck,
-  BadgePercent,
-  Building2,
-  Coins,
-  Crown,
-  Loader2,
-  MessageSquare,
-  ShieldCheck,
-  Sparkles,
-  X,
-  Zap,
+    BadgeCheck,
+    BadgePercent,
+    Building2,
+    Coins,
+    Crown,
+    Loader2,
+    MessageSquare,
+    ShieldCheck,
+    Sparkles,
+    X,
+    Zap,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -38,7 +38,6 @@ const additionalFeatures: Record<string, string[]> = {
   free: [
     "Acesso à biblioteca comunitária",
     "Exportação básica",
-    "Ganhe créditos ao partilhar",
   ],
   pro_monthly: [
     "Modelos de IA avançados",

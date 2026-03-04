@@ -3,10 +3,10 @@
 import { Container } from "@/components/Container";
 import { EmailContact } from "@/components/EmailContact";
 import {
-    Accordion,
-    AccordionContent,
-    AccordionItem,
-    AccordionTrigger,
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getFAQPageSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
@@ -16,9 +16,19 @@ import Script from "next/script";
 // Questions are written to match common search queries
 const faqs = [
   {
+    question: "O que é a Biblioteca Comunitária?",
+    answer:
+      "A Biblioteca Comunitária é um espaço colaborativo onde professores partilham os seus recursos educativos gerados ou adaptados na Scooli. Pode explorar, reutilizar e adaptar materiais validados por outros docentes, poupando tempo valioso e aproveitando o conhecimento coletivo da comunidade.",
+  },
+  {
+    question: "Como funciona a reutilização de recursos?",
+    answer:
+      "A comunidade é livre e todos os recursos partilhados nela são de acesso a todos os professores registados. A flexibilidade do editor permite que os reutilize e ajuste ao seu contexto escolar. Desta forma, as boas ideias circulam mais rápido pelas escolas inter-ajudando quem mais precisa.",
+  },
+  {
     question: "Como funciona o pacote de boas-vindas da Scooli?",
     answer:
-      "Ao criar conta na Scooli recebe 100 créditos gratuitos para começar. Pode usar estes créditos para gerar apresentações, planos de aula, testes e quizzes. Quando os créditos terminarem, pode ganhar mais ao contribuir recursos de qualidade para a biblioteca comunitária, ou subscrever o plano Scooli Pro para geração ilimitada.",
+      "Ao criar conta na Scooli recebe 100 créditos gratuitos para começar. Pode usar estes créditos para gerar apresentações, planos de aula, testes e quizzes. Quando os créditos terminarem, pode subscrever o plano Scooli Pro para geração ilimitada.",
   },
   {
     question: "Quanto custa o Scooli Pro e quais são os benefícios?",
@@ -44,11 +54,6 @@ const faqs = [
     question: "Os recursos da Scooli estão alinhados com as aprendizagens essenciais portuguesas?",
     answer:
       "Sim, a Scooli foi desenvolvida especificamente para o contexto educativo português. Todos os recursos gerados são alinhados com as aprendizagens essenciais e metas curriculares do sistema de ensino português, desde o ensino básico ao secundário. A IA conhece o currículo português e adapta os conteúdos de acordo.",
-  },
-  {
-    question: "Como posso ganhar mais créditos sem pagar?",
-    answer:
-      "Pode ganhar créditos adicionais ao partilhar recursos de qualidade na biblioteca comunitária da Scooli. Quando outros professores utilizam e avaliam positivamente os seus recursos, recebe créditos como recompensa. Quanto mais contribuir para a comunidade, mais créditos ganha. É uma forma de valorizar professores que ajudam outros professores.",
   },
   {
     question: "Quando estarão disponíveis integrações com Google Classroom e OneDrive?",

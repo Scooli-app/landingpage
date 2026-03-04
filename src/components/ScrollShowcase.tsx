@@ -8,35 +8,29 @@ import {
   ClipboardList,
   Edit3,
   FileBarChart2,
-  LibraryBig,
-  Timer,
+  LibraryBig
 } from "lucide-react";
 import { useState } from "react";
 
 const steps = [
   {
-    title: "Escolha o tipo de recurso",
-    description: "Plano de aula, apresentação, teste ou quiz pronto a editar.",
+    title: "Escolha o que quer criar",
+    description: "Plano de aula, apresentação, teste ou quiz a partir da sua disciplina ou tema.",
     icon: ClipboardList,
   },
   {
-    title: "Contextualize",
-    description: "Ano, disciplina, tema, objetivos e duração da aula.",
+    title: "A IA gera com alinhamento curricular",
+    description: "Conteúdos rigorosos criados com base nas aprendizagens essenciais.",
     icon: FileBarChart2,
   },
   {
-    title: "Gerar em segundos",
-    description: "IA com alinhamento curricular português e tom de professor.",
-    icon: Timer,
-  },
-  {
-    title: "Editar e guardar",
-    description: "Ajuste, personalize e mantenha a sua biblioteca organizada.",
+    title: "Edite e personalize",
+    description: "Ajuste detalhes, adapte à linguagem e ao nível da sua turma específica.",
     icon: Edit3,
   },
   {
-    title: "Partilhar com a comunidade",
-    description: "Biblioteca colaborativa com XP e créditos por impacto.",
+    title: "Publique na biblioteca comunitária ou reutilize",
+    description: "Lance os seus recursos ou reaproveite as melhores ideias de outros colegas.",
     icon: LibraryBig,
   },
 ];
