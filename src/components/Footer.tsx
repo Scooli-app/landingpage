@@ -1,63 +1,21 @@
-import { APP_URL } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
-import { EmailContact } from "./EmailContact";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[color:var(--scooli-border)] bg-white py-10 text-[color:var(--scooli-ink)]">
-      <Container className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
-        <div className="space-y-3">
-          <Link href="/" aria-label="Scooli - Página inicial">
-              <Image
-              src="/scooli.svg"
-              alt="Logótipo Scooli"
-              width={100}
-              height={40}
-              />
-          </Link>
-          <p className="max-w-md text-sm text-[color:var(--scooli-muted)]">
-            Feito em Portugal para professores que querem mais tempo para ensinar
-            e inspirar.
-              </p>
-          <p className="text-xs text-[color:var(--scooli-muted)]">
-            © 2025 Scooli. Todos os direitos reservados.
-          </p>
-            </div>
+    <footer className="border-t border-[color:var(--scooli-border)] bg-white py-10">
+      <Container className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div className="space-y-2">
+          <Image src="/scooli.svg" alt="Logótipo Scooli" width={90} height={36} />
+          <p className="text-sm text-[color:var(--scooli-muted)]">contact@scooli.app</p>
+        </div>
 
-        <div className="flex flex-wrap items-center gap-2 text-sm text-[color:var(--scooli-ink)]">
-          <Link
-            href={`${APP_URL}/sign-in`}
-            className="rounded-lg px-3 py-2 font-medium text-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-          >
-            Entrar
-          </Link>
-          <Link
-            href="/privacy"
-            className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-          >
-            Política de Privacidade
-          </Link>
-          <Link
-            href="/terms"
-            className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-          >
-            Termos de Utilização
-          </Link>
-                    <Link
-            href="/cancelar-subscricao"
-            className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-                    >
-                      Cancelar Subscrição
-                    </Link>
-          <Link
-            href="#contacto"
-            className="rounded-lg px-3 py-2 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-          >
-            Contacto
-          </Link>
-          <EmailContact className="text-sm" />
+        <div className="flex flex-wrap gap-4 text-sm">
+          <Link href="#">Sobre</Link>
+          <Link href="#acesso">Contactos</Link>
+          <Link href="/privacy">Privacidade</Link>
+          <Link href="/terms">Termos</Link>
         </div>
       </Container>
     </footer>

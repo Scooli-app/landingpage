@@ -7,61 +7,33 @@ import { FeatureGrid } from "@/components/FeatureGrid";
 import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
+import { HowItWorks } from "@/components/HowItWorks";
 import { MarketingNav } from "@/components/MarketingNav";
-import { PricingSection } from "@/components/PricingSection";
+import { ProblemSection } from "@/components/ProblemSection";
 import { ScrollShowcase } from "@/components/ScrollShowcase";
-import { PlansProvider } from "@/contexts/PlansContext";
+import { SolutionSection } from "@/components/SolutionSection";
 
 export function HomePageClient() {
   return (
-    <PlansProvider>
-      <div className="min-h-screen bg-white">
-        {/* Semantic header with navigation */}
-        <header role="banner">
-          <MarketingNav />
-        </header>
+    <div className="min-h-screen bg-white">
+      <header role="banner">
+        <MarketingNav />
+      </header>
 
-        {/* Main content area with semantic article structure */}
-        <main role="main" id="main-content">
-          {/* Hero section - primary landing content */}
-          <article aria-label="Introdução à Scooli">
-            <Hero />
-          </article>
+      <main role="main" id="main-content">
+        <Hero />
+        <ProblemSection />
+        <SolutionSection />
+        <FeatureGrid />
+        <CommunitySection />
+        <HowItWorks />
+        <ScrollShowcase />
+        <ContactSection />
+        <FaqSection />
+        <FinalCta />
+      </main>
 
-          {/* Community Section */}
-          <section aria-label="Biblioteca Comunitária">
-            <CommunitySection />
-          </section>
-
-          {/* Product showcase */}
-          <section aria-label="Demonstração do produto">
-            <ScrollShowcase />
-          </section>
-
-          {/* Features grid */}
-          <article aria-label="Funcionalidades principais">
-            <FeatureGrid />
-          </article>
-
-          {/* Pricing section - only renders if plans are available */}
-          <PricingSection />
-
-          {/* FAQ section with schema */}
-          <FaqSection />
-
-          {/* Contact section */}
-          <ContactSection />
-
-          {/* Final call to action */}
-          <aside aria-label="Chamada para ação">
-            <FinalCta />
-          </aside>
-        </main>
-
-        {/* Footer with navigation and legal links */}
-        <Footer />
-      </div>
-    </PlansProvider>
+      <Footer />
+    </div>
   );
 }
-

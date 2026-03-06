@@ -1,98 +1,56 @@
-"use client";
-
 import { Container } from "@/components/Container";
-import { Card, CardContent } from "@/components/ui/card";
-import { motion } from "framer-motion";
-import {
-    CalendarClock,
-    Layers,
-    LibraryBig,
-    Presentation,
-    Sparkles,
-    UploadCloud
-} from "lucide-react";
 
 const features = [
   {
-    title: "Apresentações",
-    description: "Slides claros, com imagens sugeridas e ritmo de aula.",
-    icon: Presentation,
+    title: "Criação automática de testes e fichas",
+    text: "Gere exercícios, perguntas e fichas completas em segundos.",
+    points: ["múltipla escolha", "resposta curta", "desenvolvimento"],
   },
   {
-    title: "Planificação",
-    description: "Objetivos, metodologias e avaliação, alinhados ao currículo.",
-    icon: CalendarClock,
+    title: "Planos de aula completos",
+    text: "Crie planificações com:",
+    points: ["objetivos", "atividades", "estratégias pedagógicas", "critérios de avaliação"],
   },
   {
-    title: "Testes & Fichas",
-    description: "Itens mistos com rubricas prontas para correção rápida.",
-    icon: Layers,
+    title: "Adaptação de conteúdos",
+    text: "Adapte rapidamente materiais para:",
+    points: [
+      "diferentes níveis de aprendizagem",
+      "alunos com necessidades educativas especiais",
+      "simplificação ou aprofundamento de conteúdos",
+    ],
   },
   {
-    title: "Biblioteca comunitária",
-    description: "Partilhe, reutilize e aprenda com outros professores.",
-    icon: LibraryBig,
-  },
-  {
-    title: "Upload & Transformação",
-    description: "Suba PDFs ou notas e transforme em atividades utilizáveis.",
-    icon: UploadCloud,
-  },
-  {
-    title: "Sugestões inteligentes",
-    description: "Dinâmicas, trabalhos de grupo e diferenciação pedagógica.",
-    icon: Sparkles,
+    title: "Editor completo",
+    text: "Todos os materiais podem ser editados diretamente na plataforma antes de exportar.",
+    points: [],
   },
 ];
 
 export function FeatureGrid() {
   return (
-    <section id="funcionalidades" className="bg-[color:var(--scooli-accent)]/60 py-16 md:py-24">
-      <Container className="space-y-10">
-        <div className="space-y-3">
-          <p className="text-sm font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
-            Funcionalidades essenciais
-          </p>
-          <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
-            Ferramentas alimentadas por IA + Biblioteca Colaborativa
-          </h2>
-          <p className="max-w-3xl text-[color:var(--scooli-muted)]">
-            Gerar, personalizar, guardar e partilhar com micro-interações que
-            mantêm a experiência rápida e acessível.
-          </p>
-        </div>
+    <section id="funcionalidades" className="py-16 md:py-24">
+      <Container>
+        <h2 className="text-center text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
+          Funcionalidades principais
+        </h2>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ delay: index * 0.05, duration: 0.35 }}
-                whileHover={{ y: -4, scale: 1.01 }}
-              >
-                <Card className="h-full overflow-hidden rounded-2xl border-[color:var(--scooli-border)] bg-white/90 shadow-sm backdrop-blur transition hover:shadow-lg">
-                  <CardContent className="space-y-3 p-6">
-                    <div className="aspect-square inline-flex h-12 w-12 min-h-12 min-w-12 items-center justify-center rounded-xl bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
-                      <Icon className="h-6 w-6 shrink-0" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-[color:var(--scooli-muted)]">
-                      {feature.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            );
-          })}
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {features.map((feature) => (
+            <article key={feature.title} className="rounded-2xl border border-[color:var(--scooli-border)] bg-white p-6">
+              <h3 className="text-xl font-semibold text-[color:var(--scooli-ink)]">{feature.title}</h3>
+              <p className="mt-2 text-[color:var(--scooli-muted)]">{feature.text}</p>
+              {feature.points.length > 0 && (
+                <ul className="mt-4 space-y-2 text-sm text-[color:var(--scooli-ink)]">
+                  {feature.points.map((point) => (
+                    <li key={point}>• {point}</li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          ))}
         </div>
       </Container>
     </section>
   );
 }
-

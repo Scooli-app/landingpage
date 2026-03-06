@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   },
   // Add specific homepage OG tags
   openGraph: {
-    title: "Scooli | IA que devolve tempo aos professores portugueses",
+    title: "Scooli | Poupe horas a criar materiais pedagógicos",
     description:
-      "Gere apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais em segundos. Plataforma portuguesa com IA para docentes.",
+      "Crie testes, fichas e planos de aula em segundos. Biblioteca comunitária feita por professores e acesso antecipado antes da Education Summit.",
     url: SITE_URL,
   },
 };
@@ -20,27 +20,23 @@ export const metadata: Metadata = {
 // HowTo schema for better SEO - explains how to use Scooli
 const howToSchema = getHowToSchema(
   "Como usar a Scooli para criar recursos educativos",
-  "Guia passo a passo para criar apresentações, planos de aula e testes com a Scooli.",
+  "Guia rápido para criar materiais pedagógicos com a Scooli.",
   [
     {
-      name: "Criar conta gratuita",
-      text: "Registe-se na Scooli e receba 100 créditos gratuitos para começar a criar recursos educativos.",
+      name: "Escolher tipo de material",
+      text: "Selecione se quer criar um teste, ficha de trabalho, plano de aula ou apresentação.",
     },
     {
-      name: "Escolher tipo de recurso",
-      text: "Selecione o tipo de conteúdo que pretende criar: apresentação, plano de aula, teste, quiz ou ficha de trabalho.",
-    },
-    {
-      name: "Definir parâmetros",
-      text: "Indique a matéria, nível de ensino, objetivos de aprendizagem e outros parâmetros relevantes.",
+      name: "Descrever pedido",
+      text: "Indique disciplina, tema e nível de ensino para adaptar o resultado ao seu contexto.",
     },
     {
       name: "Gerar com IA",
-      text: "A IA da Scooli gera automaticamente o conteúdo alinhado às aprendizagens essenciais portuguesas.",
+      text: "A Scooli cria um primeiro rascunho em segundos para poupar tempo de preparação.",
     },
     {
-      name: "Personalizar e guardar",
-      text: "Reveja, edite conforme necessário e guarde o recurso na sua biblioteca pessoal ou partilhe com a comunidade.",
+      name: "Editar e adaptar",
+      text: "Revise o conteúdo no editor e adapte-o à turma antes de exportar ou partilhar.",
     },
   ]
 );
