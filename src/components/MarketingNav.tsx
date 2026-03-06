@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/Container";
 import { APP_URL } from "@/lib/seo";
+import { Sparkles } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -17,9 +18,9 @@ export function MarketingNav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-[color:var(--scooli-border)] bg-white/95 backdrop-blur">
+    <nav className="sticky top-0 z-50 border-b border-[color:var(--scooli-border)] bg-white/90 backdrop-blur-xl">
       <Container className="flex items-center justify-between py-3">
-        <Link href="/" aria-label="Scooli">
+        <Link href="/" aria-label="Scooli" className="flex items-center gap-2">
           <Image src="/scooli.svg" alt="Logótipo Scooli" width={88} height={36} />
         </Link>
 
@@ -34,8 +35,9 @@ export function MarketingNav() {
           </Link>
           <Link
             href="#acesso"
-            className="rounded-full bg-[color:var(--scooli-primary)] px-5 py-2 text-sm font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)]"
+            className="inline-flex items-center gap-2 rounded-full bg-[color:var(--scooli-primary)] px-5 py-2 text-sm font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)]"
           >
+            <Sparkles className="h-4 w-4" />
             Experimentar
           </Link>
         </div>
