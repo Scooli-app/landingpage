@@ -29,7 +29,8 @@ export function Hero() {
           </h1>
           <p className="mt-5 text-lg text-[color:var(--scooli-muted)]">
             A Scooli ajuda professores a poupar horas de trabalho ao gerar
-            materiais pedagógicos alinhados com o currículo português.
+            materiais pedagógicos em conformidade com as Aprendizagens
+            Essenciais.
           </p>
 
           <ul className="mt-6 space-y-3 text-[color:var(--scooli-ink)]">
@@ -59,6 +60,7 @@ export function Hero() {
           <div className="mt-5 flex flex-wrap gap-2 text-xs">
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-[color:var(--scooli-muted)]"><Timer className="h-3.5 w-3.5" /> Menos horas a preparar</span>
             <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-[color:var(--scooli-muted)]"><Users2 className="h-3.5 w-3.5" /> Comunidade de professores</span>
+            <span className="inline-flex items-center gap-1 rounded-full bg-white px-3 py-1.5 text-[color:var(--scooli-muted)]">Aprendizagens Essenciais</span>
           </div>
         </div>
 

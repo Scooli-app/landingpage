@@ -13,8 +13,12 @@ export function SolutionSection() {
           o conteúdo.
         </p>
         <p className="text-lg text-[color:var(--scooli-muted)]">
+          Todo o conteúdo gerado pode ser editado e é criado em conformidade
+          com as Aprendizagens Essenciais.
+        </p>
+        <p className="text-lg text-[color:var(--scooli-muted)]">
           Em vez de começar do zero, pode gerar um primeiro rascunho em
-          segundos e depois editar ou adaptar conforme necessário.
+          segundos e depois adaptar conforme necessário.
         </p>
       </Container>
     </section>

@@ -18,6 +18,11 @@ const faqs = [
       "Sim. Todos os conteúdos gerados podem ser editados diretamente no editor da plataforma.",
   },
   {
+    question: "Os materiais estão alinhados com as Aprendizagens Essenciais?",
+    answer:
+      "Sim. A geração de conteúdos na Scooli foi pensada para o contexto educativo em Portugal e segue as Aprendizagens Essenciais.",
+  },
+  {
     question: "Posso usar os meus próprios documentos?",
     answer:
       "Sim. Pode carregar documentos e adaptá-los ou modificá-los com ajuda da IA.",

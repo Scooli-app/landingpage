@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scooli | Poupe horas a criar materiais pedagógicos",
     description:
-      "Crie testes, fichas e planos de aula em segundos. Biblioteca comunitária feita por professores e acesso antecipado antes da Education Summit.",
+      "Crie testes, fichas e planos de aula em segundos, em conformidade com as Aprendizagens Essenciais. Biblioteca comunitária feita por professores e acesso antecipado antes da Education Summit.",
     url: SITE_URL,
   },
 };
@@ -32,7 +32,7 @@ const howToSchema = getHowToSchema(
     },
     {
       name: "Gerar com IA",
-      text: "A Scooli cria um primeiro rascunho em segundos para poupar tempo de preparação.",
+      text: "A Scooli cria um primeiro rascunho em segundos, alinhado com as Aprendizagens Essenciais.",
     },
     {
       name: "Editar e adaptar",
