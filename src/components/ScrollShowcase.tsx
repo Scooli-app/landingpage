@@ -1,37 +1,41 @@
-"use client";
+﻿"use client";
 
 import { Container } from "@/components/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import {
-  BookOpenCheck,
-  ClipboardList,
-  Edit3,
-  FileBarChart2,
-  LibraryBig
-} from "lucide-react";
+import { BookOpenCheck, ClipboardList, Edit3, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 const steps = [
   {
-    title: "Escolha o que quer criar",
-    description: "Plano de aula, apresentação, teste ou quiz a partir da sua disciplina ou tema.",
+    title: "Escolha o tipo de material",
+    description: "Teste, ficha de trabalho, plano de aula ou apresentação.",
     icon: ClipboardList,
   },
   {
-    title: "A IA gera com alinhamento curricular",
-    description: "Conteúdos rigorosos criados com base nas aprendizagens essenciais.",
-    icon: FileBarChart2,
+    title: "Descreva o que precisa",
+    description: "Indique disciplina, tema e nível de ensino.",
+    icon: Sparkles,
   },
   {
-    title: "Edite e personalize",
-    description: "Ajuste detalhes, adapte à linguagem e ao nível da sua turma específica.",
+    title: "A IA gera o material",
+    description: "Edite, adapte e exporte.",
     icon: Edit3,
   },
+];
+
+const screenshotCaptions = [
   {
-    title: "Publique na biblioteca comunitária ou reutilize",
-    description: "Lance os seus recursos ou reaproveite as melhores ideias de outros colegas.",
-    icon: LibraryBig,
+    title: "Geração automática de testes",
+    description: "Crie avaliações em segundos com estrutura pronta para ajustar.",
+  },
+  {
+    title: "Editor de documentos com IA",
+    description: "Refine, adapte e personalize materiais sem começar do zero.",
+  },
+  {
+    title: "Biblioteca comunitária de recursos",
+    description: "Encontre conteúdos partilhados por professores e reutilize com facilidade.",
   },
 ];
 
@@ -39,7 +43,7 @@ export function ScrollShowcase() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="showcase" className="py-16 md:py-24">
+    <section id="como-funciona" className="py-16 md:py-24">
       <Container>
         <div className="mb-10 flex flex-col gap-3">
           <p className="text-sm font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
@@ -47,11 +51,10 @@ export function ScrollShowcase() {
           </p>
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
-              Uma narrativa simples para preparar aulas sem esforço.
+              Três passos para criar materiais pedagógicos com IA
             </h2>
             <p className="max-w-xl text-[color:var(--scooli-muted)]">
-              Pensado para o ritmo das escolas em Portugal: rápido, organizado e
-              sempre editável.
+              Processo simples, rápido e sempre editável para o contexto real da sua turma.
             </p>
           </div>
         </div>
@@ -89,9 +92,7 @@ export function ScrollShowcase() {
                       <h3 className="text-lg font-semibold text-[color:var(--scooli-ink)]">
                         {step.title}
                       </h3>
-                      <p className="text-[color:var(--scooli-muted)]">
-                        {step.description}
-                      </p>
+                      <p className="text-[color:var(--scooli-muted)]">{step.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -104,49 +105,26 @@ export function ScrollShowcase() {
               <div className="mb-4 flex items-center gap-2">
                 <BookOpenCheck className="h-5 w-5 text-[color:var(--scooli-primary)]" />
                 <span className="text-sm font-semibold text-[color:var(--scooli-muted)]">
-                  Demo de geração
+                  Capturas do produto
                 </span>
               </div>
               <div className="space-y-3">
-                <div className="rounded-xl border border-[color:var(--scooli-border)] bg-[color:var(--scooli-accent)] px-4 py-3 text-sm text-[color:var(--scooli-ink)]">
-                  Objetivo: Criar uma ficha de avaliação de Matemática (8.º ano)
-                  sobre equações.
-                </div>
-                <div className="space-y-2">
-                  {[1, 2, 3].map((row) => (
-                    <div
-                      key={row}
-                      className="flex items-center justify-between rounded-xl border border-[color:var(--scooli-border)] bg-white px-4 py-3 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.3)]"
-                    >
-                      <div>
-                        <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
-                          {row === 1
-                            ? "Título e estrutura"
-                            : row === 2
-                              ? "Questões abertas e de escolha múltipla"
-                              : "Rubrica de correção"}
-                        </p>
-                        <p className="text-sm text-[color:var(--scooli-muted)]">
-                          {row === 1
-                            ? "Subtópicos, tempo estimado e metas de aprendizagem."
-                            : row === 2
-                              ? "Geração variada com níveis de dificuldade."
-                              : "Critérios claros para avaliação justa."}
-                        </p>
-                      </div>
-                      <span className="h-2 w-12 rounded-full bg-gradient-to-r from-[color:var(--scooli-primary)]/70 to-[color:var(--scooli-primary-strong)]/80" />
+                {screenshotCaptions.map((caption) => (
+                  <div
+                    key={caption.title}
+                    className="flex items-center justify-between rounded-xl border border-[color:var(--scooli-border)] bg-white px-4 py-3 shadow-[0_10px_30px_-18px_rgba(0,0,0,0.3)]"
+                  >
+                    <div>
+                      <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
+                        {caption.title}
+                      </p>
+                      <p className="text-sm text-[color:var(--scooli-muted)]">
+                        {caption.description}
+                      </p>
                     </div>
-                  ))}
-                </div>
-                <div className="rounded-2xl border border-[color:var(--scooli-border)] bg-gradient-to-br from-[color:var(--scooli-primary)]/10 via-white to-white p-4">
-                  <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
-                    Modo edição instantânea
-                  </p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">
-                    Ajuste enunciados, nivele a complexidade e guarde na sua
-                    coleção. Tudo sem perder o histórico.
-                  </p>
-                </div>
+                    <span className="h-2 w-12 rounded-full bg-gradient-to-r from-[color:var(--scooli-primary)]/70 to-[color:var(--scooli-primary-strong)]/80" />
+                  </div>
+                ))}
               </div>
             </CardContent>
           </Card>
@@ -155,4 +133,3 @@ export function ScrollShowcase() {
     </section>
   );
 }
-

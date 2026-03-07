@@ -1,47 +1,34 @@
-"use client";
+﻿"use client";
 
 import { Container } from "@/components/Container";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import {
-    CalendarClock,
-    Layers,
-    LibraryBig,
-    Presentation,
-    Sparkles,
-    UploadCloud
-} from "lucide-react";
+import { CalendarClock, FileCheck2, FileText, SlidersHorizontal } from "lucide-react";
 
 const features = [
   {
-    title: "Apresentações",
-    description: "Slides claros, com imagens sugeridas e ritmo de aula.",
-    icon: Presentation,
+    title: "Criação automática de testes e fichas",
+    description:
+      "Gere exercícios e fichas completas em segundos, adaptadas ao nível de ensino.",
+    icon: FileCheck2,
   },
   {
-    title: "Planificação",
-    description: "Objetivos, metodologias e avaliação, alinhados ao currículo.",
+    title: "Planos de aula completos",
+    description:
+      "Crie planificações com objetivos, atividades e estratégias pedagógicas alinhadas com as Aprendizagens Essenciais.",
     icon: CalendarClock,
   },
   {
-    title: "Testes & Fichas",
-    description: "Itens mistos com rubricas prontas para correção rápida.",
-    icon: Layers,
+    title: "Adaptação de conteúdos",
+    description:
+      "Adapte rapidamente materiais para diferentes níveis de aprendizagem ou alunos com necessidades educativas especiais.",
+    icon: SlidersHorizontal,
   },
   {
-    title: "Biblioteca comunitária",
-    description: "Partilhe, reutilize e aprenda com outros professores.",
-    icon: LibraryBig,
-  },
-  {
-    title: "Upload & Transformação",
-    description: "Suba PDFs ou notas e transforme em atividades utilizáveis.",
-    icon: UploadCloud,
-  },
-  {
-    title: "Sugestões inteligentes",
-    description: "Dinâmicas, trabalhos de grupo e diferenciação pedagógica.",
-    icon: Sparkles,
+    title: "Editor completo",
+    description:
+      "Todos os materiais podem ser editados diretamente na plataforma antes de exportar.",
+    icon: FileText,
   },
 ];
 
@@ -51,18 +38,18 @@ export function FeatureGrid() {
       <Container className="space-y-10">
         <div className="space-y-3">
           <p className="text-sm font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
-            Funcionalidades essenciais
+            Funcionalidades principais
           </p>
           <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
-            Ferramentas alimentadas por IA + Biblioteca Colaborativa
+            Ferramentas feitas para poupar tempo aos professores
           </h2>
           <p className="max-w-3xl text-[color:var(--scooli-muted)]">
-            Gerar, personalizar, guardar e partilhar com micro-interações que
-            mantêm a experiência rápida e acessível.
+            Crie materiais pedagógicos com IA, ajuste ao contexto da sua turma e
+            mantenha sempre o controlo sobre o resultado final.
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
@@ -95,4 +82,3 @@ export function FeatureGrid() {
     </section>
   );
 }
-

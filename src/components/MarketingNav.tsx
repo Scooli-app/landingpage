@@ -1,16 +1,11 @@
-"use client";
+﻿"use client";
 
 import { Container } from "@/components/Container";
 import { usePlans } from "@/contexts/PlansContext";
 import { APP_URL } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
-import {
-    AnimatePresence,
-    motion,
-    useScroll,
-    useTransform,
-} from "framer-motion";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
@@ -31,13 +26,10 @@ export function MarketingNav() {
   const borderOpacity = useTransform(scrollY, [0, 120], [0, 1]);
   const { hasPlans, loading } = usePlans();
 
-  // Filter links based on plans availability
   const links = useMemo(() => {
-    // While loading, show all links
     if (loading) {
       return allLinks;
     }
-    // After loading, filter out links that require plans if no plans available
     return allLinks.filter((link) => !link.requiresPlans || hasPlans);
   }, [hasPlans, loading]);
 
@@ -64,13 +56,7 @@ export function MarketingNav() {
             className="flex items-center gap-2 rounded-full px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
             aria-label="Voltar à página inicial"
           >
-            <Image
-              src="/scooli.svg"
-              alt="Logótipo Scooli"
-              width={70}
-              height={70}
-              priority
-            />
+            <Image src="/scooli.svg" alt="Logótipo Scooli" width={70} height={70} priority />
           </Link>
         </div>
 
@@ -87,7 +73,7 @@ export function MarketingNav() {
           <div className="ml-2 flex items-center gap-3 border-l border-[color:var(--scooli-border)] pl-4">
             <Link
               href={`${APP_URL}/sign-in`}
-              className="px-3 py-2 text-sm font-medium text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] rounded-full"
+              className="rounded-full px-3 py-2 text-sm font-medium text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
             >
               Entrar
             </Link>
@@ -95,7 +81,7 @@ export function MarketingNav() {
               href={`${APP_URL}/sign-up`}
               className="rounded-full bg-[color:var(--scooli-primary)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-lg hover:shadow-[rgba(103,83,255,0.2)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
             >
-              Começar Grátis
+              Começar gratuitamente
             </Link>
           </div>
         </div>
@@ -109,10 +95,7 @@ export function MarketingNav() {
           <motion.span className="relative flex h-5 w-6 flex-col items-center justify-center">
             <motion.span
               className="absolute h-[2px] w-full rounded-full bg-current"
-              animate={{
-                rotate: open ? 45 : 0,
-                y: open ? 0 : -6,
-              }}
+              animate={{ rotate: open ? 45 : 0, y: open ? 0 : -6 }}
               transition={{ duration: 0.2 }}
             />
             <motion.span
@@ -122,10 +105,7 @@ export function MarketingNav() {
             />
             <motion.span
               className="absolute h-[2px] w-full rounded-full bg-current"
-              animate={{
-                rotate: open ? -45 : 0,
-                y: open ? 0 : 6,
-              }}
+              animate={{ rotate: open ? -45 : 0, y: open ? 0 : 6 }}
               transition={{ duration: 0.2 }}
             />
           </motion.span>
@@ -164,7 +144,7 @@ export function MarketingNav() {
                   onClick={() => setOpen(false)}
                   className="flex h-12 items-center justify-center rounded-xl bg-[color:var(--scooli-primary)] text-[15px] font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)]"
                 >
-                  Começar Grátis
+                  Começar gratuitamente
                 </Link>
               </div>
             </Container>

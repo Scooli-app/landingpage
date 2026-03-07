@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
@@ -8,24 +8,22 @@ import { usePlans, type Plan } from "@/contexts/PlansContext";
 import { APP_URL } from "@/lib/seo";
 import { motion } from "framer-motion";
 import {
-    BadgeCheck,
-    BadgePercent,
-    Building2,
-    Coins,
-    Crown,
-    Loader2,
-    MessageSquare,
-    ShieldCheck,
-    Sparkles,
-    X,
-    Zap,
+  BadgeCheck,
+  BadgePercent,
+  Building2,
+  Coins,
+  Crown,
+  Loader2,
+  MessageSquare,
+  ShieldCheck,
+  Sparkles,
+  X,
+  Zap,
 } from "lucide-react";
 import { useState } from "react";
 
-// URL da web app para redirecionamento
 const WEB_APP_URL = APP_URL;
 
-// Mapeamento de features para texto legível
 const featureLabels: Record<string, string> = {
   rag: "Pesquisa inteligente em documentos",
   streaming: "Geração em tempo real",
@@ -33,12 +31,8 @@ const featureLabels: Record<string, string> = {
   priority_support: "Suporte prioritário",
 };
 
-// Features adicionais por plano (não vêm da API)
 const additionalFeatures: Record<string, string[]> = {
-  free: [
-    "Acesso à biblioteca comunitária",
-    "Exportação básica",
-  ],
+  free: ["Acesso à biblioteca comunitária", "Exportação básica"],
   pro_monthly: [
     "Modelos de IA avançados",
     "Acesso antecipado a features",
@@ -52,7 +46,6 @@ const additionalFeatures: Record<string, string[]> = {
   ],
 };
 
-// Features não incluídas por plano
 const excludedFeatures: Record<string, string[]> = {
   free: ["Suporte prioritário", "Modelos de IA avançados"],
   pro_monthly: [],
@@ -103,26 +96,21 @@ function PlanCard({
     }
   };
 
-  // Construir lista de features
   const includedFeatures: string[] = [];
   const notIncludedFeatures: string[] = [];
 
-  // Features da API
   Object.entries(plan.features).forEach(([key, value]) => {
     if (value && featureLabels[key]) {
       includedFeatures.push(featureLabels[key]);
     }
   });
 
-  // Features adicionais
   const extras = additionalFeatures[plan.planCode] || [];
   includedFeatures.push(...extras);
 
-  // Features não incluídas
   const excluded = excludedFeatures[plan.planCode] || [];
   notIncludedFeatures.push(...excluded);
 
-  // Interações
   const interactionsText =
     plan.interactionsPerPeriod >= 500
       ? "Geração ilimitada*"
@@ -164,7 +152,6 @@ function PlanCard({
         }`}
       >
         <CardContent className="flex h-full flex-col p-6 md:p-8">
-          {/* Header */}
           <div className="mb-6 flex items-start justify-between">
             <div>
               <p
@@ -195,16 +182,10 @@ function PlanCard({
                   {formatPrice(plan.priceCents)}
                 </span>
                 {plan.priceCents > 0 && (
-                  <span className="text-slate-500">
-                    {formatPeriod(plan.billingPeriod)}
-                  </span>
+                  <span className="text-slate-500">{formatPeriod(plan.billingPeriod)}</span>
                 )}
               </div>
-              {isAnnual && (
-                <p className="mt-1 text-sm font-medium text-green-600">
-                  Poupe 20% vs mensal
-                </p>
-              )}
+              {isAnnual && <p className="mt-1 text-sm font-medium text-green-600">Poupe 20% vs mensal</p>}
             </div>
             <div
               className={`rounded-xl p-3 ${
@@ -215,71 +196,37 @@ function PlanCard({
                     : "bg-slate-100 text-slate-600"
               }`}
             >
-              {isPro ? (
-                <Crown className="h-6 w-6" />
-              ) : (
-                <Coins className="h-6 w-6" />
-              )}
+              {isPro ? <Crown className="h-6 w-6" /> : <Coins className="h-6 w-6" />}
             </div>
           </div>
 
-          {/* Description */}
           <p className="mb-4 text-slate-600">{plan.description}</p>
 
-          {/* Interactions highlight */}
-          <div
-            className={`mb-6 rounded-xl p-3 ${
-              isPopular
-                ? "bg-[#6753FF]/10"
-                : isAnnual
-                  ? "bg-green-100"
-                  : "bg-slate-50"
-            }`}
-          >
-            <p
-              className={`text-sm font-semibold ${
-                isPopular
-                  ? "text-[#6753FF]"
-                  : isAnnual
-                    ? "text-green-700"
-                    : "text-slate-700"
-              }`}
-            >
+          <div className={`mb-6 rounded-xl p-3 ${isPopular ? "bg-[#6753FF]/10" : isAnnual ? "bg-green-100" : "bg-slate-50"}`}>
+            <p className={`text-sm font-semibold ${isPopular ? "text-[#6753FF]" : isAnnual ? "text-green-700" : "text-slate-700"}`}>
               {interactionsText}
             </p>
           </div>
 
-          {/* Features */}
           <ul className="mb-8 flex-1 space-y-3">
             {includedFeatures.map((feature, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 text-sm text-slate-700"
-              >
+              <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
                 <BadgeCheck
                   className={`mt-0.5 h-4 w-4 flex-shrink-0 ${
-                    isPopular
-                      ? "text-[#6753FF]"
-                      : isAnnual
-                        ? "text-green-600"
-                        : "text-green-500"
+                    isPopular ? "text-[#6753FF]" : isAnnual ? "text-green-600" : "text-green-500"
                   }`}
                 />
                 <span>{feature}</span>
               </li>
             ))}
             {notIncludedFeatures.map((feature, i) => (
-              <li
-                key={`excluded-${i}`}
-                className="flex items-start gap-3 text-sm text-slate-400"
-              >
+              <li key={`excluded-${i}`} className="flex items-start gap-3 text-sm text-slate-400">
                 <X className="mt-0.5 h-4 w-4 flex-shrink-0 text-slate-300" />
                 <span className="line-through">{feature}</span>
               </li>
             ))}
           </ul>
 
-          {/* CTA Button */}
           <Button
             onClick={handleClick}
             className={`h-12 w-full rounded-xl text-base font-semibold transition-all duration-200 ${
@@ -294,12 +241,12 @@ function PlanCard({
             {isPro ? (
               <>
                 <Zap className="mr-2 h-4 w-4" />
-                {isAnnual ? "Subscrever" : "Subscrever"}
+                Subscrever
               </>
             ) : (
               <>
                 <ShieldCheck className="mr-2 h-4 w-4" />
-                Começar Grátis
+                Começar gratuitamente
               </>
             )}
           </Button>
@@ -309,7 +256,6 @@ function PlanCard({
   );
 }
 
-// Enterprise/Institutional plan card (no price — opens contact modal)
 const enterpriseFeatures = [
   "Licenças múltiplas para a escola",
   "Gestão centralizada de contas",
@@ -342,53 +288,34 @@ function EnterprisePlanCard({ index }: { index: number }) {
 
         <Card className="h-full rounded-2xl border-2 border-blue-500 bg-gradient-to-br from-blue-50 to-indigo-50 shadow-lg shadow-blue-500/10 transition-all duration-300">
           <CardContent className="flex h-full flex-col p-6 md:p-8">
-            {/* Header */}
             <div className="mb-6 flex items-start justify-between">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">
-                  Escolas e Instituições
-                </p>
+                <p className="text-sm font-semibold uppercase tracking-wide text-blue-600">Escolas e Instituições</p>
                 <div className="mt-2 flex items-baseline gap-1">
-                  <span className="text-3xl font-bold text-blue-600">
-                    Sob Consulta
-                  </span>
+                  <span className="text-3xl font-bold text-blue-600">Sob Consulta</span>
                 </div>
-                <p className="mt-1 text-sm font-medium text-blue-600">
-                  Plano personalizado
-                </p>
+                <p className="mt-1 text-sm font-medium text-blue-600">Plano personalizado</p>
               </div>
               <div className="rounded-xl bg-blue-100 p-3 text-blue-600">
                 <Building2 className="h-6 w-6" />
               </div>
             </div>
 
-            {/* Description */}
-            <p className="mb-4 text-slate-600">
-              Solução à medida para escolas, agrupamentos e instituições de
-              ensino.
-            </p>
+            <p className="mb-4 text-slate-600">Solução à medida para escolas, agrupamentos e instituições de ensino.</p>
 
-            {/* Highlight */}
             <div className="mb-6 rounded-xl bg-blue-100 p-3">
-              <p className="text-sm font-semibold text-blue-700">
-                Personalizado para a sua instituição
-              </p>
+              <p className="text-sm font-semibold text-blue-700">Personalizado para a sua instituição</p>
             </div>
 
-            {/* Features */}
             <ul className="mb-8 flex-1 space-y-3">
               {enterpriseFeatures.map((feature, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-sm text-slate-700"
-                >
+                <li key={i} className="flex items-start gap-3 text-sm text-slate-700">
                   <BadgeCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-blue-500" />
                   <span>{feature}</span>
                 </li>
               ))}
             </ul>
 
-            {/* CTA Button */}
             <Button
               onClick={() => setContactOpen(true)}
               className="h-12 w-full rounded-xl bg-blue-600 text-base font-semibold text-white transition-all duration-200 hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-500/25"
@@ -414,18 +341,13 @@ function EnterprisePlanCard({ index }: { index: number }) {
 export function PricingSection() {
   const { plans, loading, hasPlans } = usePlans();
 
-  // Don't render anything if plans failed to load
   if (!loading && !hasPlans) {
     return null;
   }
 
   return (
-    <section
-      id="precos"
-      className="bg-gradient-to-b from-slate-50 to-white py-20 md:py-28"
-    >
+    <section id="precos" className="bg-gradient-to-b from-slate-50 to-white py-20 md:py-28">
       <Container className="space-y-12">
-        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -438,15 +360,13 @@ export function PricingSection() {
             Preços transparentes
           </span>
           <h2 className="text-3xl font-bold text-slate-900 md:text-4xl lg:text-5xl">
-            Comece grátis, evolua quando precisar
+            Escolha o plano que melhor se adapta às suas necessidades.
           </h2>
           <p className="text-lg text-slate-600">
-            100 créditos gratuitos para experimentar. Plano Pro para quem quer
-            geração ilimitada e modelos de IA avançados.
+            Comece gratuitamente e gere materiais pedagógicos em segundos com ajuda da IA.
           </p>
         </motion.div>
 
-        {/* Plans Grid */}
         {loading ? (
           <div className="flex items-center justify-center py-12">
             <Loader2 className="h-8 w-8 animate-spin text-[#6753FF]" />
@@ -465,7 +385,6 @@ export function PricingSection() {
           </div>
         )}
 
-        {/* Trust badges */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -487,7 +406,6 @@ export function PricingSection() {
           </div>
         </motion.div>
 
-        {/* Fair use note */}
         <p className="text-center text-xs text-slate-400">
           * Geração ilimitada sujeita à{" "}
           <a href="/terms#precos" className="underline hover:text-slate-600">

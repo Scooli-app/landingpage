@@ -1,8 +1,9 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 import {
   BookOpen,
+  CheckCircle2,
   ClipboardCheck,
   FileText,
   FolderOpen,
@@ -14,7 +15,7 @@ import {
   Upload,
   Users,
   Wand2,
-  Zap
+  Zap,
 } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
@@ -36,6 +37,13 @@ const featureTags = [
   { label: "Currículo PT", icon: BookOpen, x: "45%", y: "72%", rotate: -2 },
   { label: "Rápido", icon: Timer, x: "78%", y: "78%", rotate: 4 },
   { label: "Automático", icon: Zap, x: "88%", y: "45%", rotate: 2 },
+];
+
+const supportingBullets = [
+  "Criar testes e fichas automaticamente",
+  "Gerar planos de aula completos",
+  "Adaptar conteúdos para diferentes níveis de alunos",
+  "Encontrar recursos numa biblioteca criada por professores",
 ];
 
 export function Hero() {
@@ -72,7 +80,7 @@ export function Hero() {
             transition={{ delay: 0.05, duration: 0.5, ease: "easeOut" }}
             className="text-4xl font-bold leading-tight text-[color:var(--scooli-ink)] md:text-5xl"
           >
-            IA + Comunidade para transformar a rotina dos professores
+            Crie testes, planos de aula e fichas em segundos com IA.
           </motion.h1>
 
           <motion.p
@@ -81,15 +89,28 @@ export function Hero() {
             transition={{ delay: 0.1, duration: 0.5, ease: "easeOut" }}
             className="max-w-xl text-lg leading-relaxed text-[color:var(--scooli-muted)]"
           >
-            Crie planos, apresentações, quizzes e mais em segundos — e descubra uma biblioteca colaborativa de recursos validados por docentes portugueses.
+            A Scooli ajuda professores a poupar horas de trabalho ao gerar
+            materiais pedagógicos alinhados com as Aprendizagens Essenciais.
           </motion.p>
+
+          <ul className="space-y-2">
+            {supportingBullets.map((bullet) => (
+              <li
+                key={bullet}
+                className="flex items-start gap-2 text-sm text-[color:var(--scooli-muted)]"
+              >
+                <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
+                <span>{bullet}</span>
+              </li>
+            ))}
+          </ul>
 
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4 sm:flex-row">
               <Link href={`${APP_URL}/sign-up`} className="w-full sm:w-auto">
-                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-8 text-[15px] font-semibold text-white hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.25)] sm:w-auto transition-all">
+                <Button className="h-14 w-full rounded-2xl bg-[color:var(--scooli-primary)] px-8 text-[15px] font-semibold text-white transition-all hover:bg-[color:var(--scooli-primary-strong)] hover:shadow-xl hover:shadow-[rgba(103,83,255,0.25)] sm:w-auto">
                   <Sparkles className="mr-2 h-5 w-5 shrink-0" />
-                  Experimente com 100 créditos gratuitos
+                  Começar gratuitamente
                 </Button>
               </Link>
               <Link href={`${APP_URL}/sign-in`} className="w-full sm:w-auto">
@@ -97,7 +118,7 @@ export function Hero() {
                   variant="outline"
                   className="h-14 w-full rounded-2xl border-2 border-[color:var(--scooli-border)] bg-white px-8 text-lg font-semibold text-[color:var(--scooli-ink)] hover:bg-[color:var(--scooli-accent)] sm:w-auto"
                 >
-                  Entrar na Plataforma
+                  Entrar na plataforma
                 </Button>
               </Link>
             </div>
@@ -107,7 +128,7 @@ export function Hero() {
                 RGPD-ready
               </div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
-                🇵🇹 Professores a construir juntos
+                Professores a construir juntos
               </div>
               <div className="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-2">
                 Aprendizagens Essenciais
@@ -123,8 +144,7 @@ export function Hero() {
           className="relative h-[340px] w-full md:h-[440px]"
           ref={constraintsRef}
         >
-          {/* Centered logo watermark */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
             <Image
               src="/scooli.svg"
               alt="Scooli"
@@ -134,7 +154,6 @@ export function Hero() {
             />
           </div>
 
-          {/* Draggable feature tags */}
           {featureTags.map((tag, index) => {
             const Icon = tag.icon;
             return (
@@ -171,7 +190,7 @@ export function Hero() {
               >
                 <div className="flex items-center gap-2 rounded-xl border border-[color:var(--scooli-border)] bg-white/90 px-3 py-2 shadow-md backdrop-blur-sm transition-shadow hover:shadow-lg hover:shadow-[rgba(103,83,255,0.15)]">
                   <Icon className="h-4 w-4 text-[color:var(--scooli-primary)]" />
-                  <span className="text-sm font-medium text-[color:var(--scooli-ink)] whitespace-nowrap">
+                  <span className="whitespace-nowrap text-sm font-medium text-[color:var(--scooli-ink)]">
                     {tag.label}
                   </span>
                 </div>
@@ -179,9 +198,8 @@ export function Hero() {
             );
           })}
 
-          {/* Hint text */}
           <div className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-[color:var(--scooli-muted)] opacity-60">
-            Arraste para explorar ✨
+            Arraste para explorar
           </div>
         </motion.div>
       </Container>

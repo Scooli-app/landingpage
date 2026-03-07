@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Container } from "@/components/Container";
 import { EmailContact } from "@/components/EmailContact";
@@ -12,8 +12,6 @@ import { getFAQPageSchema } from "@/lib/seo";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
-// FAQ data optimized for SEO and AEO
-// Questions are written to match common search queries
 const faqs = [
   {
     question: "O que é a Biblioteca Comunitária?",
@@ -60,15 +58,28 @@ const faqs = [
     answer:
       "As integrações com Google Classroom, OneDrive e outras plataformas educativas estão planeadas para a próxima fase do desenvolvimento da Scooli. Crie a sua conta para receber notificações e novidades assim que estas funcionalidades estiverem disponíveis.",
   },
+  {
+    question: "A Scooli substitui o trabalho do professor?",
+    answer:
+      "Não. A Scooli ajuda a criar materiais mais rapidamente, mas o professor mantém sempre controlo sobre o conteúdo final.",
+  },
+  {
+    question: "Os materiais podem ser editados?",
+    answer:
+      "Sim. Todos os conteúdos gerados podem ser editados diretamente na plataforma.",
+  },
+  {
+    question: "Posso usar os meus próprios documentos?",
+    answer:
+      "Sim. Pode carregar documentos e adaptá-los ou modificá-los com ajuda da IA.",
+  },
 ];
 
-// Generate FAQ schema for AEO
 const faqSchema = getFAQPageSchema(faqs);
 
 export function FaqSection() {
   return (
     <>
-      {/* FAQ Schema for AEO - helps AI search engines understand Q&A content */}
       <Script
         id="faq-schema"
         type="application/ld+json"

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Container } from "@/components/Container";
 import { Card, CardContent } from "@/components/ui/card";
@@ -7,19 +7,19 @@ import { ArrowRight, BookMarked, Heart, RefreshCw, Users } from "lucide-react";
 
 const resources = [
   {
-    title: "Plano de aula | 5.º ano",
-    meta: "Português • 45 min",
-    badges: ["Partilhado", "+18 downloads"],
+    title: "Fichas de trabalho partilhadas",
+    meta: "Português • 2.º ciclo",
+    badges: ["Pronto a usar", "Editável"],
   },
   {
-    title: "Quiz rápido | Energia",
-    meta: "FQ • 9.º ano",
-    badges: ["Ajuda extra", "Popular"],
+    title: "Teste de avaliação formativa",
+    meta: "Matemática • 3.º ciclo",
+    badges: ["Mais utilizado", "Adaptável"],
   },
   {
-    title: "Apresentação | Arte",
-    meta: "Educação Visual • 7.º ano",
-    badges: ["Mais utilizado", "+80 partilhas"],
+    title: "Plano de aula com apresentação",
+    meta: "História • Secundário",
+    badges: ["Partilhado", "Reutilizável"],
   },
 ];
 
@@ -31,61 +31,64 @@ export function CommunitySection() {
         <div className="space-y-6">
           <div className="space-y-4">
             <p className="text-sm font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
-              ⭐ A Grande Vantagem da Scooli
+              Biblioteca comunitária
             </p>
             <h2 className="text-3xl font-semibold text-[color:var(--scooli-ink)] md:text-4xl">
-              Biblioteca Comunitária
+              Uma biblioteca de recursos criada por professores.
             </h2>
-            <p className="text-[color:var(--scooli-muted)] text-lg">
-              Explore e reutilize materiais criados por outros professores. Partilhe os seus recursos para ajudar a construir um ecossistema educativo mais forte.
+            <p className="text-lg text-[color:var(--scooli-muted)]">
+              Nem sempre é necessário criar tudo do zero.
+            </p>
+            <p className="text-[color:var(--scooli-muted)]">
+              Na Scooli pode encontrar materiais pedagógicos partilhados por outros professores.
             </p>
           </div>
 
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <div className="flex mt-1 h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
                 <BookMarked className="h-4 w-4" />
               </div>
               <div>
-                <p className="font-semibold text-[color:var(--scooli-ink)]">Recursos reais criados por professores como você</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">A comunidade conhece melhor o seu currículo e partilha materiais que funcionam em sala de aula.</p>
+                <p className="font-semibold text-[color:var(--scooli-ink)]">Encontre fichas de trabalho e testes</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">Recursos práticos para usar, adaptar e poupar tempo de preparação.</p>
               </div>
             </div>
-            
+
             <div className="flex items-start gap-3">
-              <div className="flex mt-1 h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
                 <RefreshCw className="h-4 w-4" />
               </div>
               <div>
-                <p className="font-semibold text-[color:var(--scooli-ink)]">Reutilize em 1 clique e adapte aos seus alunos</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">Materiais que todos podem reutilizar. Descarregue e ajuste instantaneamente ao nível da sua turma.</p>
+                <p className="font-semibold text-[color:var(--scooli-ink)]">Descubra planos de aula e apresentações</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">Use materiais já estruturados e adapte ao seu contexto pedagógico.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="flex mt-1 h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
                 <Heart className="h-4 w-4" />
               </div>
               <div>
-                <p className="font-semibold text-[color:var(--scooli-ink)]">Inspire colegas de todo o país</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">O seu trabalho ganha uma nova vida e pode ter um impacto real nas aprendizagens de outros alunos.</p>
+                <p className="font-semibold text-[color:var(--scooli-ink)]">Use, adapte ou partilhe os seus recursos</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">A biblioteca inclui fichas, testes, planos, apresentações e outros recursos educativos.</p>
               </div>
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="flex mt-1 h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
+              <div className="mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[color:var(--scooli-primary)]/10 text-[color:var(--scooli-primary)]">
                 <Users className="h-4 w-4" />
               </div>
               <div>
-                <p className="font-semibold text-[color:var(--scooli-ink)]">Professores a construir juntos</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">Não apenas IA: criamos em conjunto uma enorme fonte de boas práticas adaptadas à nossa realidade.</p>
+                <p className="font-semibold text-[color:var(--scooli-ink)]">Uma comunidade onde professores ajudam professores</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">Partilha real de boas práticas pensadas para a escola portuguesa.</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="relative h-full">
-          <div className="absolute -left-8 -right-8 -top-6 -bottom-6 rounded-3xl bg-white/70 shadow-[0_20px_100px_-60px_rgba(103,83,255,0.45)]" />
+          <div className="absolute -bottom-6 -left-8 -right-8 -top-6 rounded-3xl bg-white/70 shadow-[0_20px_100px_-60px_rgba(103,83,255,0.45)]" />
           <div className="relative grid gap-4">
             {resources.map((resource, index) => (
               <motion.div
@@ -142,4 +145,3 @@ export function CommunitySection() {
     </section>
   );
 }
-

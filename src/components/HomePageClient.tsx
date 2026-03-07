@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { CommunitySection } from "@/components/CommunitySection";
 import { ContactSection } from "@/components/ContactSection";
@@ -9,6 +9,7 @@ import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { MarketingNav } from "@/components/MarketingNav";
 import { PricingSection } from "@/components/PricingSection";
+import { ProblemSolutionSection } from "@/components/ProblemSolutionSection";
 import { ScrollShowcase } from "@/components/ScrollShowcase";
 import { PlansProvider } from "@/contexts/PlansContext";
 
@@ -16,52 +17,44 @@ export function HomePageClient() {
   return (
     <PlansProvider>
       <div className="min-h-screen bg-white">
-        {/* Semantic header with navigation */}
         <header role="banner">
           <MarketingNav />
         </header>
 
-        {/* Main content area with semantic article structure */}
         <main role="main" id="main-content">
-          {/* Hero section - primary landing content */}
           <article aria-label="Introdução à Scooli">
             <Hero />
           </article>
 
-          {/* Community Section */}
-          <section aria-label="Biblioteca Comunitária">
-            <CommunitySection />
+          <section aria-label="Desafio e solução">
+            <ProblemSolutionSection />
           </section>
 
-          {/* Product showcase */}
-          <section aria-label="Demonstração do produto">
-            <ScrollShowcase />
-          </section>
-
-          {/* Features grid */}
           <article aria-label="Funcionalidades principais">
             <FeatureGrid />
           </article>
 
-          {/* Pricing section - only renders if plans are available */}
+          <section aria-label="Biblioteca comunitária">
+            <CommunitySection />
+          </section>
+
+          <section aria-label="Como funciona e capturas do produto">
+            <ScrollShowcase />
+          </section>
+
           <PricingSection />
 
-          {/* FAQ section with schema */}
           <FaqSection />
 
-          {/* Contact section */}
           <ContactSection />
 
-          {/* Final call to action */}
           <aside aria-label="Chamada para ação">
             <FinalCta />
           </aside>
         </main>
 
-        {/* Footer with navigation and legal links */}
         <Footer />
       </div>
     </PlansProvider>
   );
 }
-
