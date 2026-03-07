@@ -44,17 +44,20 @@ const faqs = [
       "Sim, a Scooli está em total conformidade com o RGPD (Regulamento Geral sobre a Proteção de Dados). Os dados são tratados com base legal clara e nunca vendemos dados pessoais a terceiros. Todos os dados são processados e armazenados de acordo com a legislação portuguesa e europeia. Consulte a nossa Política de Privacidade para informações detalhadas.",
   },
   {
-    question: "Posso usar os materiais gerados pela Scooli diretamente com alunos?",
+    question:
+      "Posso usar os materiais gerados pela Scooli diretamente com alunos?",
     answer:
       "Sim, pode usar os materiais gerados pela Scooli diretamente nas suas aulas. No entanto, recomendamos sempre rever e adaptar o conteúdo ao seu contexto específico e às necessidades da sua turma. A IA acelera a criação de recursos, mas o professor continua a ser essencial na validação e personalização do conteúdo educativo.",
   },
   {
-    question: "Os recursos da Scooli estão alinhados com as aprendizagens essenciais portuguesas?",
+    question:
+      "Os recursos da Scooli estão alinhados com as aprendizagens essenciais portuguesas?",
     answer:
       "Sim, a Scooli foi desenvolvida especificamente para o contexto educativo português. Todos os recursos gerados são alinhados com as aprendizagens essenciais e metas curriculares do sistema de ensino português, desde o ensino básico ao secundário. A IA conhece o currículo português e adapta os conteúdos de acordo.",
   },
   {
-    question: "Quando estarão disponíveis integrações com Google Classroom e OneDrive?",
+    question:
+      "Quando estarão disponíveis integrações com Google Classroom e OneDrive?",
     answer:
       "As integrações com Google Classroom, OneDrive e outras plataformas educativas estão planeadas para a próxima fase do desenvolvimento da Scooli. Crie a sua conta para receber notificações e novidades assim que estas funcionalidades estiverem disponíveis.",
   },
