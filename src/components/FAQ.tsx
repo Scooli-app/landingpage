@@ -37,7 +37,7 @@ const faqData: FAQItem[] = [
   {
     question: "A Scooli é gratuita?",
     answer:
-      "A Scooli oferece um pacote de boas-vindas com 100 créditos gratuitos para novos utilizadores. Existe também um plano Scooli Pro (€9,99/mês) com funcionalidades ilimitadas e acesso aos modelos de IA mais avançados.",
+      "A Scooli oferece um plano gratuito com 20 gerações por mês. Existe também um plano Scooli Pro (€9,99/mês) com funcionalidades ilimitadas e acesso aos modelos de IA mais avançados.",
     category: "Preços",
   },
 
@@ -60,9 +60,9 @@ const faqData: FAQItem[] = [
     category: "Funcionalidades",
   },
   {
-    question: "Como funciona o sistema de créditos?",
+    question: "Como funciona o limite de gerações?",
     answer:
-      "Cada geração de conteúdo consome créditos. Novos utilizadores recebem 100 créditos gratuitos. O plano Scooli Pro oferece geração ilimitada e acesso aos modelos de IA mais avançados.",
+      "No plano gratuito, tem 20 gerações por mês. O plano Scooli Pro oferece geração ilimitada e acesso aos modelos de IA mais avançados.",
     category: "Preços",
   },
   {

@@ -92,7 +92,7 @@ const howToSchema = getHowToSchema(
   [
     {
       name: "Criar conta gratuita",
-      text: "Registe-se na Scooli e receba 100 créditos gratuitos para começar a criar recursos educativos.",
+      text: "Registe-se na Scooli e tenha acesso a 20 gerações por mês no plano gratuito.",
     },
     {
       name: "Escolher tipo de recurso",

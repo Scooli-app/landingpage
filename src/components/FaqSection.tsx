@@ -24,9 +24,9 @@ const faqs = [
       "A comunidade é livre e todos os recursos partilhados nela são de acesso a todos os professores registados. A flexibilidade do editor permite que os reutilize e ajuste ao seu contexto escolar. Desta forma, as boas ideias circulam mais rápido pelas escolas inter-ajudando quem mais precisa.",
   },
   {
-    question: "Como funciona o pacote de boas-vindas da Scooli?",
+    question: "Como funciona o plano gratuito da Scooli?",
     answer:
-      "Ao criar conta na Scooli recebe 100 créditos gratuitos para começar. Pode usar estes créditos para gerar apresentações, planos de aula, testes e quizzes. Quando os créditos terminarem, pode subscrever o plano Scooli Pro para geração ilimitada.",
+      "Ao criar conta na Scooli tem acesso a 20 gerações por mês no plano gratuito. Quando atingir esse limite mensal, pode subscrever o plano Scooli Pro para geração ilimitada.",
   },
   {
     question: "Quanto custa o Scooli Pro e quais são os benefícios?",

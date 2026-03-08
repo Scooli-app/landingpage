@@ -164,7 +164,7 @@ function PlanCard({
                 }`}
               >
                 {plan.planCode === "free"
-                  ? "Pacote de Boas-Vindas"
+                  ? "Plano Gratuito"
                   : isAnnual
                     ? "Pro Anual"
                     : "Pro Mensal"}

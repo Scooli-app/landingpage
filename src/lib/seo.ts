@@ -20,7 +20,7 @@ export const SITE_LANGUAGE = "pt-PT";
 // Pricing constants (in cents and euros)
 export const PRICING = {
   free: {
-    credits: 100,
+    generationsPerMonth: 20,
     price: 0,
   },
   pro_monthly: {
@@ -138,8 +138,8 @@ export function getSoftwareApplicationSchema() {
     offers: [
       {
         "@type": "Offer",
-        name: "Pacote de Boas-vindas",
-        description: `${PRICING.free.credits} créditos gratuitos para novos utilizadores`,
+        name: "Plano Gratuito",
+        description: `${PRICING.free.generationsPerMonth} gerações por mês para novos utilizadores`,
         price: "0",
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
@@ -454,8 +454,8 @@ export function getServiceSchema() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Pacote de Boas-vindas",
-            description: `${PRICING.free.credits} créditos gratuitos para experimentar a plataforma`,
+            name: "Plano Gratuito",
+            description: `${PRICING.free.generationsPerMonth} gerações por mês para experimentar a plataforma`,
           },
           price: "0",
           priceCurrency: "EUR",

@@ -252,16 +252,14 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Coins className="h-6 w-6 text-white" />}
-              title="6) Créditos, Plano Pro e Cancelamentos"
+              title="6) Gerações, Plano Pro e Cancelamentos"
             >
               <p>
-                Algumas funcionalidades podem depender de créditos, planos pagos ou
-                condições promocionais (ex.: pacote de boas-vindas).
+                Algumas funcionalidades dependem do limite de gerações de cada plano.
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  Créditos não têm valor monetário, não são transferíveis e podem
-                  estar sujeitos a expiração e alterações de regras.
+                  O plano gratuito inclui 20 gerações por mês.
                 </li>
                 <li>
                   Preços, funcionalidades e limites podem ser atualizados ao longo
@@ -506,16 +504,14 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Coins className="h-6 w-6 text-white" />}
-              title="6) Credits, Pro Plan and Cancellations"
+              title="6) Generations, Pro Plan and Cancellations"
             >
               <p>
-                Some features may depend on credits, paid plans, or promotional
-                conditions (e.g., a welcome package).
+                Some features depend on the generation limits of each plan.
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  Credits have no cash value, are non-transferable, and may be
-                  subject to expiration and rule changes.
+                  The free plan includes 20 generations per month.
                 </li>
                 <li>
                   Pricing, features, and limits may change over time.

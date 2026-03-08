@@ -174,7 +174,7 @@ export function CancelSubscription() {
             <AlertDescription className="text-amber-800">
               <strong>Atenção:</strong> Ao cancelar, perderá acesso às
               funcionalidades Pro no final do período de faturação atual.
-              Manterá acesso ao plano gratuito com 100 créditos.
+              Manterá acesso ao plano gratuito com 20 gerações por mês.
             </AlertDescription>
           </Alert>
 
