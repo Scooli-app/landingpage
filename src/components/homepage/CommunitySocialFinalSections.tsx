@@ -56,11 +56,11 @@ export function CommunityLibrarySection() {
         <div className="space-y-6">
           <SectionHeading
             eyebrow="Biblioteca comunitária"
-            title="Um diferencial claro para não começar sempre do zero"
-            description="A biblioteca dá-te acesso a materiais partilhados por outros professores, para poupares tempo e aproveitares trabalho que já foi feito."
+            title="Não comece do zero: use materiais já criados"
+            description="Aceda a recursos partilhados por outros professores e poupe ainda mais tempo."
           />
           <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_-42px_rgba(19,35,58,0.35)]">
-            <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Reutilizar também é ganhar tempo</p>
+            <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Use materiais da comunidade e avance mais depressa</p>
             <ul className="mt-5 grid gap-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
               {libraryBenefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3">
@@ -91,8 +91,8 @@ export function SocialProofSection() {
       <Container className="space-y-10">
         <SectionHeading
           eyebrow="Prova social"
-          title="O tipo de feedback que queremos validar com utilizadores reais"
-          description="Ainda estamos a reunir testemunhos autorizados. Até lá, mostramos exemplos do tipo de ganhos que a Scooli pretende entregar: menos tempo perdido, menos trabalho repetitivo e mais facilidade em adaptar materiais."
+          title="Ganhos que fazem diferença semana após semana"
+          description="Ainda estamos a reunir testemunhos autorizados. Até lá, estes exemplos mostram o tipo de impacto que queremos documentar com utilizadores reais."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -115,10 +115,10 @@ export function LandingFinalCtaSection() {
               <SectionBadge>Último passo</SectionBadge>
               <div className="space-y-4">
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl lg:text-5xl">
-                  Experimenta a Scooli e prepara a próxima aula com menos fricção.
+                  Comece hoje e poupe horas todas as semanas.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                  Começa com o plano gratuito, cria o primeiro material em minutos e ajusta tudo ao teu ritmo antes de usar.
+                  Crie planificações, fichas e testes em minutos, ajuste tudo ao seu ritmo e leve materiais prontos para a próxima aula.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">

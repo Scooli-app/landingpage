@@ -109,8 +109,8 @@ export function OutputCard({ output }: { output: OutputItem }) {
       </span>
       <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">{output.title}</h3>
       <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">{output.description}</p>
-      <div className="mt-6 flex-1 rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-4">
-        <div className="mx-auto h-full max-w-[340px] rounded-[24px] border border-slate-200 bg-white p-5 shadow-[0_18px_40px_-34px_rgba(19,35,58,0.3)]">
+      <div className="mt-6 flex-1 rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-3">
+        <div className="h-full rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_18px_40px_-34px_rgba(19,35,58,0.3)]">
           <OutputDocument kind={output.kind} />
         </div>
       </div>

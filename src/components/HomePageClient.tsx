@@ -4,7 +4,7 @@ import { CommunityLibrarySection, LandingFinalCtaSection, SocialProofSection } f
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
 import { EditorSection, RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
-import { ImpactSection, ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
+import { BeforeAfterSection, ImpactSection, ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
 
 export function HomePageClient() {
   return (
@@ -17,6 +17,7 @@ export function HomePageClient() {
         <HeroSection />
         <ImpactSection />
         <ProblemSection />
+        <BeforeAfterSection />
         <SolutionSection />
         <HowItWorksSection />
         <RealOutputsSection />

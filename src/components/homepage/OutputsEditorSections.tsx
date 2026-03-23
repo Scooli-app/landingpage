@@ -74,7 +74,7 @@ export function RealOutputsSection() {
         <SectionHeading
           eyebrow="Resultados reais"
           title="Vê logo o que podes criar"
-          description="Planificações, fichas e testes apresentados como documentos reais, para perceberes o valor da Scooli em segundos."
+          description="Planificações, fichas e testes apresentados como documentos reais. Materiais que pode usar imediatamente na sala de aula."
           centered
         />
         <div className="grid gap-6 xl:grid-cols-3">

@@ -43,27 +43,27 @@ export type QuoteItem = {
 
 export const painPoints: InfoItem[] = [
   {
-    title: "Planear demora demasiado",
+    title: "Perde horas todas as semanas a preparar aulas",
     description:
-      "Entre objetivos, atividades e avaliação, a primeira versão de uma aula rouba tempo que faz falta noutro lado.",
+      "Entre objetivos, atividades e avaliação, a preparação estende-se muito para lá do horário e rouba tempo ao que realmente importa.",
     icon: Clock3,
   },
   {
-    title: "Há trabalho que se repete",
+    title: "Repete o mesmo trabalho semana após semana",
     description:
-      "As mesmas estruturas de fichas, testes e planificações acabam por ser refeitas vezes sem conta.",
+      "Fichas, testes e planificações acabam por recomeçar quase do zero, mesmo quando a estrutura já é conhecida.",
     icon: FileText,
   },
   {
-    title: "Adaptar materiais pesa",
+    title: "Adaptar materiais para cada turma demora demasiado",
     description:
-      "Mudar dificuldade, linguagem ou ritmo para outra turma ainda é um processo demasiado manual.",
+      "Mudar dificuldade, linguagem ou ritmo continua a exigir trabalho manual demais sempre que a turma muda.",
     icon: SlidersHorizontal,
   },
   {
-    title: "Nem sempre há um bom ponto de partida",
+    title: "Quando falta uma boa base, tudo atrasa",
     description:
-      "Quando não existe um recurso pronto a usar, começar do zero atrasa tudo o resto.",
+      "Quando não existe um recurso pronto a adaptar, o tempo de preparação dispara e acumula-se para a aula seguinte.",
     icon: FolderSearch,
   },
 ];
@@ -99,19 +99,19 @@ export const steps: StepItem[] = [
   {
     title: "Introduzir pedido ou carregar material",
     description:
-      "Escolhe o tipo de recurso, dá contexto à turma ou parte de um documento que já tens.",
+      "Indica o tema, o ano e o que precisas, ou parte de um documento que já tens.",
     icon: Upload,
   },
   {
-    title: "Gerar com IA",
+    title: "Gerar automaticamente o material completo",
     description:
-      "Recebes uma primeira versão estruturada com base no tema, ano e objetivo da aula.",
+      "Recebes uma planificação, ficha ou teste já organizado e pronto a editar.",
     icon: Bot,
   },
   {
-    title: "Editar e exportar",
+    title: "Ajustar e ter tudo pronto a usar",
     description:
-      "Ajustas o que for preciso, validas o conteúdo e ficas com o material pronto a usar.",
+      "Mudas o que precisares, validas o conteúdo e ficas com tudo pronto em segundos.",
     icon: Download,
   },
 ];
@@ -119,21 +119,21 @@ export const steps: StepItem[] = [
 export const outputs: OutputItem[] = [
   {
     label: "Planificação",
-    title: "Planificação clara e pronta a orientar a aula",
+    title: "Planificação clara para usar já na próxima aula",
     description:
       "Objetivos, materiais, sequência e avaliação reunidos num documento simples de seguir.",
     kind: "plan",
   },
   {
     label: "Ficha de trabalho",
-    title: "Ficha organizada para imprimir ou adaptar",
+    title: "Ficha pronta a imprimir, adaptar e usar",
     description:
       "Instruções claras, exercícios bem distribuídos e espaço para resposta sem ruído visual.",
     kind: "worksheet",
   },
   {
     label: "Teste",
-    title: "Teste com estrutura, cotação e critérios",
+    title: "Teste completo com cotação e critérios",
     description:
       "Questões equilibradas e critérios de correção visíveis para ganhares tempo na preparação.",
     kind: "test",
@@ -162,9 +162,9 @@ export const editorBenefits: InfoItem[] = [
 ];
 
 export const libraryBenefits = [
-  "Pesquisa por disciplina, ano e tipo de recurso",
-  "Duplicar um material da comunidade e adaptar em minutos",
-  "Guardar os teus favoritos para reutilizar depois",
+  "Encontrar recursos por disciplina, ano e tipo de material",
+  "Duplicar um material já criado e adaptá-lo em minutos",
+  "Guardar boas bases para reutilizar sempre que precisares",
 ];
 
 export const libraryCards = [
@@ -187,15 +187,15 @@ export const libraryCards = [
 
 export const socialProof: QuoteItem[] = [
   {
-    quote: "Poupei horas todas as semanas a preparar aulas.",
+    quote: "Poupei várias horas por semana na preparação das aulas.",
     role: "Professora do 2.º ciclo",
   },
   {
-    quote: "Deixei de começar cada ficha do zero.",
+    quote: "Deixei de refazer quase do zero cada ficha que preparava.",
     role: "Docente de Português",
   },
   {
-    quote: "Adaptei materiais para níveis diferentes muito mais depressa.",
+    quote: "Passei a adaptar materiais para níveis diferentes muito mais depressa.",
     role: "Professora do ensino básico",
   },
 ];

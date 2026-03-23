@@ -8,8 +8,8 @@ export function HowItWorksSection() {
       <Container className="space-y-12">
         <SectionHeading
           eyebrow="Como funciona"
-          title="Três passos simples para sair da ideia ao recurso pronto"
-          description="A experiência foi desenhada para reduzir complexidade: dás contexto, recebes uma primeira versão e ajustas só o que faz sentido para a tua turma."
+          title="Da ideia ao material pronto a usar em três passos"
+          description="Sem configuração complicada: dá o contexto, recebe o material completo e ajusta só o que faz sentido para a tua turma."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
