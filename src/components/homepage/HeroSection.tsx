@@ -13,7 +13,7 @@ const heroHighlights = [
 
 function HeroPreview() {
   return (
-    <BrowserFrame title="Scooli - criar recurso" subtitle="Rascunho em segundos" className="relative z-10">
+    <BrowserFrame title="Scooli - criar recurso" subtitle="Primeira versão em segundos" className="relative z-10">
       <div className="grid gap-4 xl:grid-cols-[0.82fr_1.18fr]">
         <div className="rounded-[26px] bg-[color:var(--scooli-surface-alt)] p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Pedido</p>

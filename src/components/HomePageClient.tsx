@@ -4,7 +4,7 @@ import { CommunityLibrarySection, LandingFinalCtaSection, SocialProofSection } f
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
 import { EditorSection, RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
-import { ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
+import { ImpactSection, ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
 
 export function HomePageClient() {
   return (
@@ -15,6 +15,7 @@ export function HomePageClient() {
 
       <main id="main-content" role="main" className="overflow-hidden">
         <HeroSection />
+        <ImpactSection />
         <ProblemSection />
         <SolutionSection />
         <HowItWorksSection />

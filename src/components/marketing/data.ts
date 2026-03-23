@@ -52,6 +52,25 @@ export const teacherStats = [
   },
 ];
 
+export const impactStats = [
+  {
+    value: "1000+",
+    label: "documentos gerados",
+  },
+  {
+    value: "7h+",
+    label: "poupadas por semana",
+  },
+  {
+    value: "400+",
+    label: "materiais adaptados",
+  },
+  {
+    value: "300+",
+    label: "professores ativos",
+  },
+];
+
 export const trustCards: MarketingCard[] = [
   {
     title: "Professor no controlo",

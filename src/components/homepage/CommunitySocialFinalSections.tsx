@@ -179,7 +179,7 @@ export function LandingFinalCtaSection() {
                 <p className="text-sm font-semibold text-slate-800">Pronto a editar</p>
                 <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[color:var(--scooli-accent)] px-4 py-3 text-sm text-[color:var(--scooli-primary-strong)]">
                   <CheckCircle2 className="h-4 w-4" />
-                  Rascunho gerado
+                  Documento gerado
                 </div>
                 <div className="mt-3 flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm text-slate-700">
                   <PencilLine className="h-4 w-4 text-[color:var(--scooli-primary)]" />

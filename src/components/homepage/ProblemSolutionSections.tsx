@@ -1,5 +1,5 @@
 ﻿import { Container } from "@/components/Container";
-import { teacherStats, trustCards } from "@/components/marketing/data";
+import { impactStats, teacherStats, trustCards } from "@/components/marketing/data";
 import { ArrowRight } from "lucide-react";
 import { benefits, painPoints } from "./data";
 import { InfoCard, SectionHeading } from "./shared";
@@ -53,7 +53,7 @@ export function SolutionSection() {
               <div className="flex flex-wrap items-center gap-3 text-sm font-semibold text-slate-500">
                 <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Pedido</span>
                 <ArrowRight className="h-4 w-4 text-slate-300" />
-                <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Rascunho</span>
+                <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Primeira versão</span>
                 <ArrowRight className="h-4 w-4 text-slate-300" />
                 <span className="rounded-full border border-slate-200 bg-white px-4 py-2">Edição</span>
                 <ArrowRight className="h-4 w-4 text-slate-300" />
@@ -78,6 +78,37 @@ export function SolutionSection() {
         <div className="grid gap-4 lg:grid-cols-3">
           {trustCards.map((item) => (
             <InfoCard key={item.title} item={item} />
+          ))}
+        </div>
+      </Container>
+    </section>
+  );
+}
+
+export function ImpactSection() {
+  return (
+    <section id="impacto" className="py-20 sm:py-24 lg:py-28">
+      <Container className="space-y-10">
+        <SectionHeading
+          eyebrow="Impacto da Scooli"
+          title="Números que já mostram a utilização da Scooli"
+          description="Da criação de documentos à adaptação de materiais, estes números ajudam a perceber o impacto da Scooli no trabalho do dia a dia."
+          centered
+        />
+
+        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          {impactStats.map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]"
+            >
+              <p className="font-display text-5xl leading-none text-[color:var(--scooli-ink)]">
+                {stat.value}
+              </p>
+              <p className="mt-4 text-sm font-medium leading-7 text-[color:var(--scooli-ink-soft)]">
+                {stat.label}
+              </p>
+            </div>
           ))}
         </div>
       </Container>
