@@ -100,8 +100,8 @@ export function BeforeAfterSection() {
       <Container className="space-y-12">
         <SectionHeading
           eyebrow="Antes e depois"
-          title="O mesmo trabalho, com muito menos fricção"
-          description="Sem Scooli, a preparação arrasta-se. Com Scooli, ganha uma base pronta a editar e chega mais depressa a materiais úteis."
+          title="Menos tempo a preparar, mais tempo para ensinar"
+          description="Sem Scooli, perde horas a preparar. Com Scooli, tem uma base pronta a editar e chega rapidamente a materiais úteis."
           centered
         />
 
