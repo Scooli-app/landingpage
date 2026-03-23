@@ -83,20 +83,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       alternates: withAlternates("/terms"),
     },
-    {
-      url: `${SITE_URL}/cancelar-subscricao`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.4,
-      alternates: withAlternates("/cancelar-subscricao"),
-    },
-    {
-      url: `${SITE_URL}/billing`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.3,
-      alternates: withAlternates("/billing"),
-    },
   ];
 
   const toolRoutes: MetadataRoute.Sitemap = toolPages.map((tool) => ({

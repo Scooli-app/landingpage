@@ -17,7 +17,6 @@ const primaryLinks = [
 const legalLinks = [
   { label: "Política de Privacidade", href: "/privacy" },
   { label: "Termos de Utilização", href: "/terms" },
-  { label: "Cancelar subscrição", href: "/cancelar-subscricao" },
 ];
 
 export function Footer() {

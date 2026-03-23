@@ -27,7 +27,7 @@ WAITLIST_DESTINATION=<opcional para forwarding futuro>
 
 ## Estrutura relevante
 - `src/app/page.tsx` — homepage com todas as secções de marketing.
-- `src/app/politica-de-privacidade`, `termos-de-utilizacao`, `cancelar-subscricao`, `billing` — páginas legais e faturação (placeholder).
+- `src/app/privacy`, `terms` — páginas legais públicas.
 - `src/app/api/waitlist/route.ts` — endpoint de lista de espera (stub in-memory).
 - `src/components/*` — componentes de marketing (Hero, nav, grids, etc.).
 - `src/content/legal/*.md` — conteúdos em Markdown facilmente editáveis.

@@ -270,13 +270,13 @@ export function TermsOfUse() {
                   Política de Uso Justo descrita na secção 7.
                 </li>
                 <li>
-                  Para gestão/cancelamento de subscrição, consulte{" "}
-                  <Link
-                    href="/cancelar-subscricao"
+                  Para gestão ou cancelamento de subscrição, contacte-nos em{" "}
+                  <a
+                    href="mailto:info@scooli.app"
                     className="underline transition-colors duration-200 hover:text-slate-900"
                   >
-                    Cancelar Subscrição
-                  </Link>
+                    info@scooli.app
+                  </a>
                   .
                 </li>
               </ul>
@@ -521,13 +521,13 @@ export function TermsOfUse() {
                   to the Fair Use Policy described in section 7.
                 </li>
                 <li>
-                  For subscription management/cancellation, see{" "}
-                  <Link
-                    href="/cancelar-subscricao"
+                  For subscription management or cancellation, contact us at{" "}
+                  <a
+                    href="mailto:info@scooli.app"
                     className="underline transition-colors duration-200 hover:text-slate-900"
                   >
-                    Cancel Subscription
-                  </Link>
+                    info@scooli.app
+                  </a>
                   .
                 </li>
               </ul>
@@ -647,5 +647,4 @@ export function TermsOfUse() {
     </div>
   );
 }
-
 
