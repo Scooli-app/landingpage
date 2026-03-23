@@ -1,24 +1,18 @@
-import { ImageResponse } from "next/og";
+﻿import { ImageResponse } from "next/og";
 
-// Route segment config
 export const runtime = "edge";
 
-// Image metadata
-export const alt = "Scooli - IA para professores portugueses";
+export const alt = "Scooli - IA para professores em Portugal";
 export const size = {
   width: 1200,
   height: 630,
 };
 export const contentType = "image/png";
 
-// Image generation
 export default async function OGImage() {
-  // Fetch the SVG logo from the public directory
   const logoUrl = new URL("/scooli.svg", "https://www.scooli.app");
   const logoResponse = await fetch(logoUrl);
   const logoSvg = await logoResponse.text();
-  
-  // Convert SVG to data URL for embedding
   const logoDataUrl = `data:image/svg+xml,${encodeURIComponent(logoSvg)}`;
 
   return new ImageResponse(
@@ -36,7 +30,6 @@ export default async function OGImage() {
           position: "relative",
         }}
       >
-        {/* Decorative gradient orbs */}
         <div
           style={{
             position: "absolute",
@@ -60,7 +53,6 @@ export default async function OGImage() {
           }}
         />
 
-        {/* Main content */}
         <div
           style={{
             display: "flex",
@@ -71,7 +63,6 @@ export default async function OGImage() {
             zIndex: 10,
           }}
         >
-          {/* Logo - using actual Scooli SVG logo */}
           <div
             style={{
               display: "flex",
@@ -92,7 +83,6 @@ export default async function OGImage() {
             />
           </div>
 
-          {/* Main headline */}
           <h1
             style={{
               fontSize: "56px",
@@ -107,7 +97,6 @@ export default async function OGImage() {
             IA que devolve tempo aos professores
           </h1>
 
-          {/* Subheadline */}
           <p
             style={{
               fontSize: "28px",
@@ -118,10 +107,9 @@ export default async function OGImage() {
               margin: 0,
             }}
           >
-            Apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais portuguesas
+            Apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais
           </p>
 
-          {/* Features pills */}
           <div
             style={{
               display: "flex",
@@ -131,7 +119,7 @@ export default async function OGImage() {
               justifyContent: "center",
             }}
           >
-            {["🇵🇹 Made in Portugal", "⚡ RGPD-ready", "🎓 Aprendizagens Essenciais"].map((tag) => (
+            {["Made in Portugal", "RGPD-ready", "Aprendizagens Essenciais"].map((tag) => (
               <div
                 key={tag}
                 style={{
@@ -150,7 +138,6 @@ export default async function OGImage() {
           </div>
         </div>
 
-        {/* Domain footer */}
         <div
           style={{
             position: "absolute",

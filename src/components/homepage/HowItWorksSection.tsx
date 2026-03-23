@@ -9,7 +9,7 @@ export function HowItWorksSection() {
         <SectionHeading
           eyebrow="Como funciona"
           title="Três passos simples para sair da ideia ao recurso pronto"
-          description="A experiência foi desenhada para reduzir complexidade: dás contexto, recebes um rascunho e ajustas só o que faz sentido para a tua turma."
+          description="A experiência foi desenhada para reduzir complexidade: dás contexto, recebes uma primeira versão e ajustas só o que faz sentido para a tua turma."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">

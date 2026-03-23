@@ -18,7 +18,7 @@ export async function generateMetadata({
   if (!tool) {
     return getPageMetadata({
       title: "Ferramenta Scooli",
-      description: "Página de ferramenta da Scooli.",
+      description: "Ferramenta da Scooli para criar materiais educativos com IA.",
       path: `/ferramentas/${slug}`,
     });
   }

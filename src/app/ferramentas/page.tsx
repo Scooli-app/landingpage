@@ -15,7 +15,7 @@ import Link from "next/link";
 export const metadata = getPageMetadata({
   title: "Ferramentas Scooli",
   description:
-    "Índice das páginas de ferramenta da Scooli, criado para suportar discovery, SEO e páginas de intenção específicas com placeholders prontos para conteúdo real.",
+    "Explora as ferramentas da Scooli e escolhe o tipo de recurso que queres criar: testes, fichas, planificações, quizzes e mais.",
   path: "/ferramentas",
 });
 
@@ -31,7 +31,7 @@ function ToolsPreview() {
                 <Icon className="h-5 w-5" />
               </div>
               <p className="mt-4 text-lg font-semibold text-slate-800">{tool.shortTitle}</p>
-              <p className="mt-2 text-sm text-slate-500">Página pronta para SEO e prova futura.</p>
+              <p className="mt-2 text-sm text-slate-500">Criação rápida com edição total antes de usar.</p>
             </div>
           );
         })}
@@ -45,17 +45,17 @@ export default function ToolsIndexPage() {
     <PublicSiteShell>
       <PageHero
         eyebrow="Ferramentas"
-        title="Páginas de intenção específicas para aquilo que os professores realmente procuram"
-        description="Em vez de fazer a homepage responder a tudo, estas páginas passam a corresponder a intenções concretas como testes, fichas, planificações ou adaptação de materiais."
+        title="Escolhe o tipo de recurso que queres criar"
+        description="Se já sabes o que precisas de preparar, estas páginas mostram-te rapidamente em que situações a Scooli ajuda e que resultado podes esperar."
         secondaryHref="/professores"
         secondaryLabel="Ver percurso para professores"
         aside={<ToolsPreview />}
       >
         <Checklist
           items={[
-            "Melhor estrutura para SEO",
-            "Páginas curtas e focadas por intenção",
-            "Placeholders prontos para screenshots e exemplos reais",
+            "Páginas curtas focadas numa tarefa concreta",
+            "Exemplos do que podes criar",
+            "Acesso direto para começar gratuitamente",
           ]}
         />
       </PageHero>
@@ -63,9 +63,9 @@ export default function ToolsIndexPage() {
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Páginas disponíveis"
-            title="Arquitetura já preparada para crescer com o produto"
-            description="Cada página de ferramenta tem estrutura própria para hero, exemplos, casos de uso e CTA, mesmo antes de o conteúdo final estar completo."
+            eyebrow="Ferramentas disponíveis"
+            title="Escolhe a opção mais próxima do que precisas hoje"
+            description="Cada ferramenta responde a uma necessidade concreta, para perceberes logo se a Scooli encaixa no trabalho que queres adiantar."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -92,8 +92,8 @@ export default function ToolsIndexPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer que estas páginas passem de estrutura a prova real?"
-            description="O passo seguinte é ligar screenshots, documentos exportados, exemplos reais e copy final a cada intenção de procura."
+            title="Quer começar por um pedido simples?"
+            description="Escolhe a ferramenta mais próxima do que precisas ou entra diretamente na plataforma para criar o primeiro material."
             secondaryHref="/biblioteca"
             secondaryLabel="Ver biblioteca"
           />

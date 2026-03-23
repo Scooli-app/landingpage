@@ -1,141 +1,117 @@
 ﻿import { Container } from "@/components/Container";
-import { aboutPrinciples, supportCards } from "@/components/marketing/data";
-import { getPageMetadata } from "@/lib/seo";
 import {
-  Checklist,
-  InfoCard,
-  MarketingSectionHeading,
-  PageCtaBanner,
-  PageHero,
-  PlaceholderCard,
+  MarketingSectionBadge,
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
+import { getPageMetadata } from "@/lib/seo";
 
 export const metadata = getPageMetadata({
   title: "Sobre a Scooli",
   description:
-    "Conheça a missão, os princípios e a estrutura pública da página Sobre da Scooli, preparada para receber equipa e história real.",
+    "Conhece a missão da Scooli, o problema que queremos resolver e a equipa pública que está a construir o produto.",
   path: "/sobre",
 });
 
-function StoryPreview() {
-  return (
-    <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-      <div className="space-y-3">
-        {[
-          "Porque é que a Scooli existe",
-          "O que acredita sobre o papel do professor",
-          "Quem está por trás do projeto",
-        ].map((item, index) => (
-          <div key={item} className="rounded-[24px] border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Bloco 0{index + 1}</p>
-            <p className="mt-2 text-lg font-semibold text-slate-800">{item}</p>
-            <div className="mt-4 h-2.5 w-4/5 rounded-full bg-slate-200" />
-            <div className="mt-2 h-2.5 w-3/5 rounded-full bg-slate-200" />
-          </div>
-        ))}
-      </div>
-    </SurfacePanel>
-  );
-}
+const missionPoints = [
+  {
+    title: "Devolver tempo aos professores",
+    description:
+      "Queremos reduzir o trabalho repetitivo da preparação de aulas para libertar tempo para ensinar, acompanhar alunos e ajustar melhor o que acontece em sala.",
+  },
+  {
+    title: "Criar comunidade, não só uma ferramenta",
+    description:
+      "O trabalho de um professor é muitas vezes solitário. A Scooli também quer aproximar docentes através da biblioteca comunitária e da partilha de materiais úteis.",
+  },
+  {
+    title: "Construir para a realidade portuguesa",
+    description:
+      "A linguagem, os exemplos e a forma de usar a Scooli são pensados para professores, escolas e currículo em Portugal.",
+  },
+];
+
+const team = [
+  {
+    name: "Miguel Rodrigues",
+    role: "CEO e Software & AI Engineer",
+  },
+  {
+    name: "Pedro Rocha",
+    role: "COO e Software & AI Engineer",
+  },
+];
 
 export default function AboutPage() {
   return (
     <PublicSiteShell>
-      <PageHero
-        eyebrow="Sobre"
-        title="Uma página para explicar por que existe a Scooli e quem a está a construir"
-        description="A homepage não deve carregar sozinha a missão e a credibilidade humana do projeto. Esta página cria esse espaço de forma clara e honesta."
-        secondaryHref="mailto:info@scooli.app?subject=Sobre%20a%20Scooli"
-        secondaryLabel="Falar connosco"
-        aside={<StoryPreview />}
-      >
-        <Checklist
-          items={[
-            "Missão explicada sem discurso vazio",
-            "Princípios claros para o produto",
-            "Estrutura pronta para equipa real e contactos",
-          ]}
-        />
-      </PageHero>
-
-      <section className="py-20 sm:py-24 lg:py-28">
-        <Container className="space-y-12">
-          <MarketingSectionHeading
-            eyebrow="Princípios"
-            title="O que esta página deve transmitir"
-            description="Antes de existirem fotos, bios ou marcos públicos, a página já pode mostrar a lógica do produto e a forma como a equipa pensa o problema."
-            centered
-          />
-          <div className="grid gap-5 lg:grid-cols-3">
-            {aboutPrinciples.map((card) => (
-              <InfoCard key={card.title} icon={card.icon} title={card.title} description={card.description} />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
-        <Container className="grid gap-6 lg:grid-cols-3">
-          <PlaceholderCard
-            title="História do projeto"
-            description="Placeholder para contar o percurso da Scooli, o contexto em que surgiu e os marcos mais importantes à medida que existirem."
-            bullets={[
-              "Origem da ideia",
-              "Aprendizagens iniciais",
-              "Marcos e evolução futura",
-            ]}
-          />
-          <PlaceholderCard
-            title="Equipa"
-            description="Placeholder para perfis reais, fotos e funções assim que a equipa pública estiver pronta para aparecer nesta página."
-            bullets={[
-              "Nome e função",
-              "Breve biografia",
-              "Ligação ao problema educativo",
-            ]}
-          />
-          <PlaceholderCard
-            title="Parceiros ou pilotos"
-            description="Placeholder para prova externa real, sempre que existirem colaborações ou pilotos que possam ser mencionados publicamente."
-            bullets={[
-              "Contexto autorizado",
-              "O que foi testado",
-              "O que aprendemos",
-            ]}
-          />
-        </Container>
-      </section>
-
-      <section className="py-20 sm:py-24 lg:py-28">
-        <Container className="space-y-12">
-          <MarketingSectionHeading
-            eyebrow="Suporte ao crescimento"
-            title="Estrutura pronta para o que vier a seguir"
-            description="Nem tudo precisa de estar preenchido já. O importante é deixar a casa feita para conteúdo real e verificável."
-            centered
-          />
-          <div className="grid gap-5 lg:grid-cols-2">
-            {supportCards.map((card) => (
-              <InfoCard key={card.title} icon={card.icon} title={card.title} description={card.description} tone="soft" />
-            ))}
+      <section className="relative isolate pt-8 sm:pt-10">
+        <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(circle_at_top_left,rgba(103,83,255,0.16),transparent_40%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.10),transparent_24%)]" />
+        <Container className="pb-16 pt-10 sm:pb-20 lg:pb-24">
+          <div className="space-y-6">
+            <MarketingSectionBadge>Sobre</MarketingSectionBadge>
+            <div className="max-w-4xl space-y-4">
+              <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
+                A Scooli existe para devolver tempo aos professores e aproximar uma comunidade que muitas vezes trabalha sozinha
+              </h1>
+              <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
+                Estamos a construir a Scooli para reduzir o trabalho repetitivo da preparação de aulas e ajudar docentes a chegar mais depressa a materiais úteis, sempre com controlo humano sobre o resultado final.
+              </p>
+            </div>
           </div>
         </Container>
       </section>
 
       <section className="pb-20 sm:pb-24 lg:pb-28">
-        <Container>
-          <PageCtaBanner
-            title="Quer ver como esta história se liga à homepage e às páginas públicas?"
-            description="A homepage explica o produto em segundos. Esta página ajuda a sustentar confiança, missão e identidade da marca ao longo do tempo."
-            secondaryHref="/"
-            secondaryLabel="Voltar à homepage"
-          />
+        <Container className="space-y-6">
+          <section>
+            <SurfacePanel>
+              <div className="max-w-3xl space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">Missão</p>
+                <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
+                  Queremos aliviar o lado mais pesado do trabalho docente e criar mais ligação entre professores
+                </h2>
+                <p className="text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">
+                  A Scooli nasce da ideia de que a IA deve ser prática, útil e respeitadora do papel do professor. Mas a missão não acaba na automação: queremos também criar uma comunidade onde os professores encontrem boas bases, partilhem materiais e sintam menos isolamento no trabalho diário.
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-4 lg:grid-cols-3">
+                {missionPoints.map((item) => (
+                  <div key={item.title} className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
+                    <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{item.title}</p>
+                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </SurfacePanel>
+          </section>
+
+          <section>
+            <SurfacePanel>
+              <div className="max-w-3xl space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">Equipa</p>
+                <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
+                  Quem está a construir a Scooli
+                </h2>
+                <p className="text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">
+                  A equipa pública atual junta produto, operação, software e IA na construção da Scooli.
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-5 lg:grid-cols-2">
+                {team.map((member) => (
+                  <div key={member.name} className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
+                    <div className="h-32 rounded-[24px] bg-[linear-gradient(135deg,rgba(103,83,255,0.14),rgba(59,130,246,0.10))]" />
+                    <p className="mt-5 text-2xl font-semibold text-[color:var(--scooli-ink)]">{member.name}</p>
+                    <p className="mt-2 text-base text-[color:var(--scooli-muted)]">{member.role}</p>
+                  </div>
+                ))}
+              </div>
+            </SurfacePanel>
+          </section>
         </Container>
       </section>
     </PublicSiteShell>
   );
 }
-
-

@@ -169,14 +169,6 @@ export function SurfacePanel({ children, className }: { children: ReactNode; cla
   );
 }
 
-export function PlaceholderTag({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
-      {children}
-    </span>
-  );
-}
-
 export function Checklist({ items }: { items: string[] }) {
   return (
     <ul className="grid gap-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
@@ -226,27 +218,6 @@ export function PageCtaBanner({
             </Link>
           )}
         </div>
-      </div>
-    </SurfacePanel>
-  );
-}
-
-export function PlaceholderCard({
-  title,
-  description,
-  bullets,
-}: {
-  title: string;
-  description: string;
-  bullets: string[];
-}) {
-  return (
-    <SurfacePanel>
-      <PlaceholderTag>Placeholder</PlaceholderTag>
-      <h3 className="mt-5 text-2xl font-semibold text-[color:var(--scooli-ink)]">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">{description}</p>
-      <div className="mt-5">
-        <Checklist items={bullets} />
       </div>
     </SurfacePanel>
   );

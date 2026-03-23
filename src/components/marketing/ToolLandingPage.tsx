@@ -1,14 +1,14 @@
 ﻿import { Container } from "@/components/Container";
 import { APP_URL } from "@/lib/seo";
-import { CheckCircle2, ChevronRight } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 import { toolCardIcons, type ToolPageData } from "./data";
-import { MarketingSectionHeading, PageCtaBanner, PageHero, PlaceholderCard, PlaceholderTag, PublicSiteShell, SurfacePanel } from "./shared";
+import { Checklist, MarketingSectionHeading, PageCtaBanner, PageHero, PublicSiteShell, SurfacePanel } from "./shared";
 
 function ToolPreview({ title, outputs }: { title: string; outputs: string[] }) {
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="rounded-[26px] border border-slate-200 bg-white p-5">
-        <PlaceholderTag>Preview estruturado</PlaceholderTag>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">O que normalmente sai</p>
         <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">{title}</h3>
         <div className="mt-5 grid gap-3">
           {outputs.map((output, index) => (
@@ -23,6 +23,10 @@ function ToolPreview({ title, outputs }: { title: string; outputs: string[] }) {
       </div>
     </SurfacePanel>
   );
+}
+
+function getUseCaseDescription(useCase: string) {
+  return `Ideal para ${useCase.toLowerCase()}, quando queres chegar depressa a uma primeira versão organizada e depois ajustar ao teu contexto.`;
 }
 
 export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
@@ -58,8 +62,8 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
                 <Icon className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">O que esta página precisa de provar</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">Estrutura pronta para receber exemplos e screenshots reais.</p>
+                <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">O que consegues criar</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">Partes de um pedido simples e recebes uma base pronta a rever e ajustar.</p>
               </div>
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
@@ -74,15 +78,18 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
             </div>
           </SurfacePanel>
 
-          <PlaceholderCard
-            title="Exemplos reais ainda por ligar"
-            description="Este espaço foi criado para receber provas mais concretas desta ferramenta assim que houver screenshots, outputs exportados ou casos reais autorizados."
-            bullets={[
-              "Screenshot do editor nesta funcionalidade",
-              "Documento real exportado",
-              "Exemplo de prompt ou pedido inicial",
-            ]}
-          />
+          <SurfacePanel>
+            <p className="text-2xl font-semibold text-[color:var(--scooli-ink)]">O que ganhas</p>
+            <div className="mt-5">
+              <Checklist
+                items={[
+                  "Menos tempo a montar a primeira versão",
+                  "Mais facilidade em ajustar nível, formato e linguagem",
+                  "Documento editável antes de exportar ou usar",
+                ]}
+              />
+            </div>
+          </SurfacePanel>
         </Container>
       </section>
 
@@ -91,21 +98,14 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
           <MarketingSectionHeading
             eyebrow="Casos de uso"
             title={`Quando faz mais sentido usar ${tool.shortTitle.toLowerCase()}`}
-            description="Cada landing page de ferramenta deve corresponder a uma intenção concreta de procura. Por agora, estas páginas já ficam preparadas para SEO, navegação e conteúdo futuro."
+            description="Estas são situações comuns em que esta ferramenta te ajuda a arrancar mais depressa, com uma boa base para editar depois."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
             {tool.useCases.map((useCase) => (
               <SurfacePanel key={useCase}>
-                <PlaceholderTag>Uso típico</PlaceholderTag>
-                <p className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">{useCase}</p>
-                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                  Placeholder para exemplo concreto desta situação, com uma breve explicação do antes e do depois.
-                </p>
-                <div className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]">
-                  Ver exemplo futuro
-                  <ChevronRight className="h-4 w-4" />
-                </div>
+                <p className="text-xl font-semibold text-[color:var(--scooli-ink)]">{useCase}</p>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{getUseCaseDescription(useCase)}</p>
               </SurfacePanel>
             ))}
           </div>
@@ -115,8 +115,8 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
       <section className="py-20 sm:py-24 lg:py-28">
         <Container>
           <PageCtaBanner
-            title={`Quer explorar ${tool.shortTitle.toLowerCase()} na Scooli?`}
-            description="A base desta página já está preparada. O próximo passo é ligar exemplos reais, screenshots e prova de uso à medida que o produto avança."
+            title={`Quer experimentar ${tool.shortTitle.toLowerCase()} na Scooli?`}
+            description="Começa gratuitamente, gera uma primeira versão e ajusta tudo antes de usar ou exportar."
             primaryHref={`${APP_URL}/sign-up`}
             primaryLabel="Começar gratuitamente"
             secondaryHref="/ferramentas"
@@ -127,5 +127,3 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
     </PublicSiteShell>
   );
 }
-
-

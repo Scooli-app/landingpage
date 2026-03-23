@@ -46,7 +46,7 @@ export function SolutionSection() {
           <div className="space-y-6">
             <SectionHeading
               eyebrow="A solução Scooli"
-              title="A Scooli trata do rascunho para poderes focar-te na aula"
+              title="A Scooli prepara a base para poderes focar-te na aula"
               description="Dás o tema, o ano e o objetivo. A Scooli gera uma base editável, ajuda-te a adaptar o material e deixa tudo pronto para revisão e exportação."
             />
             <div className="rounded-[28px] border border-slate-200 bg-[color:var(--scooli-surface-alt)] p-6">

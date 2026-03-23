@@ -70,6 +70,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: withAlternates("/sobre"),
     },
     {
+      url: `${SITE_URL}/contacto`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: withAlternates("/contacto"),
+    },
+    {
       url: `${SITE_URL}/privacy`,
       lastModified,
       changeFrequency: "monthly",

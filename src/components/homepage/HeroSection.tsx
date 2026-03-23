@@ -34,7 +34,7 @@ function HeroPreview() {
             </div>
             <div className="inline-flex items-center justify-center gap-2 rounded-2xl bg-[color:var(--scooli-primary)] px-4 py-3 text-sm font-semibold text-white shadow-[0_16px_28px_-16px_rgba(103,83,255,0.48)]">
               <WandSparkles className="h-4 w-4" />
-              Gerar rascunho
+              Gerar material
             </div>
           </div>
         </div>
@@ -94,7 +94,7 @@ function HeroPreview() {
               <div className="rounded-[24px] border border-[color:var(--scooli-accent)] bg-[color:var(--scooli-accent)]/60 p-4">
                 <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">Sem começar do zero</p>
                 <p className="mt-2 text-sm leading-7 text-slate-600">
-                  O rascunho fica pronto para rever, ajustar e reutilizar na próxima aula.
+                  O documento fica pronto para rever, ajustar e reutilizar na próxima aula.
                 </p>
               </div>
             </div>
@@ -118,7 +118,7 @@ export function HeroSection() {
                 Crie planificações, fichas e testes em minutos com IA.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                A Scooli ajuda professores em Portugal a gerar um primeiro rascunho, adaptar à turma e exportar materiais prontos a usar sem começar do zero.
+                A Scooli ajuda professores em Portugal a gerar materiais, adaptar à turma e exportar documentos prontos a usar sem começar do zero.
               </p>
             </div>
 

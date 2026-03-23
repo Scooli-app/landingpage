@@ -140,7 +140,7 @@ export function QuoteCard({ item }: { item: QuoteItem }) {
   return (
     <div className="flex h-full flex-col rounded-[28px] border border-slate-200/80 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.38)]">
       <span className="inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">
-        Placeholder
+        Exemplo
       </span>
       <p className="mt-5 text-xl font-semibold leading-9 text-[color:var(--scooli-ink)]">“{item.quote}”</p>
       <p className="mt-4 text-sm text-[color:var(--scooli-muted)]">{item.role}</p>

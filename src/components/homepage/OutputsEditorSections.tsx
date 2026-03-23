@@ -73,8 +73,8 @@ export function RealOutputsSection() {
       <Container className="space-y-12">
         <SectionHeading
           eyebrow="Resultados reais"
-          title="Mostra logo o que vais conseguir criar"
-          description="Em vez de promessas vagas, a página passa a mostrar os tipos de documentos que um professor reconhece de imediato e consegue imaginar a usar."
+          title="Vê logo o que podes criar"
+          description="Planificações, fichas e testes apresentados como documentos reais, para perceberes o valor da Scooli em segundos."
           centered
         />
         <div className="grid gap-6 xl:grid-cols-3">

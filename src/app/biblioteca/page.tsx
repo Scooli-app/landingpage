@@ -6,7 +6,6 @@ import {
   MarketingSectionHeading,
   PageCtaBanner,
   PageHero,
-  PlaceholderTag,
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
@@ -15,7 +14,7 @@ import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
 export const metadata = getPageMetadata({
   title: "Biblioteca comunitária Scooli",
   description:
-    "Explore a estrutura pública da biblioteca comunitária da Scooli, com previews, filtros e placeholders prontos para conteúdo real.",
+    "Explora a biblioteca comunitária da Scooli e descobre materiais que podes duplicar, adaptar e usar como ponto de partida.",
   path: "/biblioteca",
 });
 
@@ -55,17 +54,17 @@ export default function LibraryPage() {
     <PublicSiteShell>
       <PageHero
         eyebrow="Biblioteca"
-        title="Uma biblioteca pública preparada para descoberta, reutilização e SEO"
-        description="A homepage deve mostrar a biblioteca como diferencial. Esta página passa a ser o lugar para navegar, filtrar e perceber o valor de não começar sempre do zero."
+        title="Uma biblioteca comunitária para encontrar boas bases mais depressa"
+        description="Explora materiais partilhados, percebe o tipo de recursos disponíveis e entra na plataforma para duplicar e adaptar ao teu contexto."
         secondaryHref="/professores"
         secondaryLabel="Ver percurso para professores"
         aside={<LibraryPreviewGrid />}
       >
         <Checklist
           items={[
-            "Preview público com conteúdo controlado",
-            "Estrutura para filtros por disciplina, ano e tipo",
-            "CTA claro para iniciar sessão e adaptar",
+            "Procurar por disciplina, ano e tipo de recurso",
+            "Ver exemplos antes de entrar",
+            "Duplicar e adaptar em vez de começar do zero",
           ]}
         />
       </PageHero>
@@ -73,9 +72,9 @@ export default function LibraryPage() {
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Como deve funcionar"
-            title="Primeiro descobrir, depois entrar para adaptar"
-            description="A biblioteca deixa de ser só uma secção da homepage e passa a ter uma lógica própria de descoberta e conversão."
+            eyebrow="Como funciona"
+            title="Descobrir primeiro. Adaptar depois."
+            description="A biblioteca ajuda-te a perceber rapidamente se já existe uma boa base para o que precisas de preparar."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -97,8 +96,8 @@ export default function LibraryPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
                 <LockKeyhole className="h-5 w-5" />
               </div>
-              <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">Gating com clareza</h3>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">O preview pode ser público, mas a edição e o uso completo devem incentivar registo sem criar fricção desnecessária.</p>
+              <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">Preview com caminho claro</h3>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">Os previews ajudam a decidir. A edição, a duplicação e o trabalho completo acontecem dentro da conta.</p>
             </SurfacePanel>
           </div>
         </Container>
@@ -107,16 +106,15 @@ export default function LibraryPage() {
       <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Conteúdo preparado"
-            title="Cards já prontos para receber recursos reais"
-            description="Enquanto não existirem previews públicos finais, a estrutura fica montada com placeholders explícitos."
+            eyebrow="Exemplos de recursos"
+            title="O tipo de materiais que podes encontrar na biblioteca"
+            description="Fichas, planificações, testes, apresentações e recursos de apoio prontos para servir de base ao teu trabalho."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
             {libraryPageCards.map((card) => (
               <SurfacePanel key={card.title}>
-                <PlaceholderTag>Placeholder</PlaceholderTag>
-                <p className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">{card.title}</p>
+                <p className="text-xl font-semibold text-[color:var(--scooli-ink)]">{card.title}</p>
                 <p className="mt-2 text-sm text-[color:var(--scooli-muted)]">{card.meta}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {card.tags.map((tag) => (
@@ -133,14 +131,13 @@ export default function LibraryPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer explorar a biblioteca já com uma conta?"
-            description="Esta página deixa a arquitetura pública pronta. O próximo passo é ligar previews reais e regras de acesso mais finas conforme a biblioteca crescer."
+            title="Quer usar um destes recursos como ponto de partida?"
+            description="Entra na Scooli, escolhe um material da biblioteca e adapta-o à tua turma em vez de começares tudo do zero."
             secondaryHref="/ferramentas"
-            secondaryLabel="Ver páginas de ferramenta"
+            secondaryLabel="Ver ferramentas"
           />
         </Container>
       </section>
     </PublicSiteShell>
   );
 }
-

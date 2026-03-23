@@ -15,6 +15,7 @@ const primaryLinks = [
 ];
 
 const legalLinks = [
+  { label: "Contacto", href: "/contacto" },
   { label: "Política de Privacidade", href: "/privacy" },
   { label: "Termos de Utilização", href: "/terms" },
 ];
@@ -28,10 +29,16 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-4">
             <Link href="/" aria-label="Scooli - Página inicial">
-              <Image src="/scooli.svg" alt="Logótipo Scooli" width={100} height={40} />
+              <Image
+                src="/scooli.svg"
+                alt="Logótipo Scooli"
+                width={100}
+                height={40}
+              />
             </Link>
             <p className="max-w-md text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Feito em Portugal para professores que querem preparar melhor, adaptar mais depressa e recuperar tempo.
+              Feito em Portugal para professores que querem preparar melhor,
+              adaptar mais depressa e recuperar tempo.
             </p>
             <div className="flex flex-wrap gap-2">
               <Link
@@ -51,7 +58,9 @@ export function Footer() {
 
           <div className="grid gap-8 sm:grid-cols-2">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Explorar</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Explorar
+              </p>
               <div className="mt-4 grid gap-2">
                 {primaryLinks.map((link) => (
                   <Link
@@ -65,7 +74,9 @@ export function Footer() {
               </div>
             </div>
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Legal e contacto</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Legal e contacto
+              </p>
               <div className="mt-4 grid gap-2">
                 {legalLinks.map((link) => (
                   <Link
@@ -82,7 +93,10 @@ export function Footer() {
                 >
                   Entrar
                 </Link>
-                <EmailContact className="px-0 py-0 text-sm text-[color:var(--scooli-muted)] hover:bg-transparent hover:text-[color:var(--scooli-primary)]" showIcon={false} />
+                <EmailContact
+                  className="px-0 py-0 text-sm text-[color:var(--scooli-muted)] hover:bg-transparent hover:text-[color:var(--scooli-primary)]"
+                  showIcon={false}
+                />
               </div>
             </div>
           </div>
@@ -90,7 +104,6 @@ export function Footer() {
 
         <div className="flex flex-col gap-3 border-t border-[color:var(--scooli-border)] pt-6 text-xs text-[color:var(--scooli-muted)] sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Scooli. Todos os direitos reservados.</p>
-          <p>Homepage para clareza. Páginas próprias para confiança, preços, biblioteca e contexto institucional.</p>
         </div>
       </Container>
     </footer>

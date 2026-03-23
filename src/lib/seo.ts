@@ -86,7 +86,7 @@ export const BRAND_KEYWORDS = [
   "biblioteca comunitária",
   "ferramentas para professores",
   "gerador de apresentações",
-  "gerador de planos de aula",
+  "gerador de planificações",
   "gerador de testes",
   "ensino básico",
   "ensino secundário",
@@ -111,8 +111,7 @@ export function getOrganizationSchema() {
       height: 512,
     },
     description:
-      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planos de aula, testes e quizzes alinhados ao currículo.",
-    foundingDate: "2024",
+      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planificações, testes e quizzes alinhados com o currículo.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
@@ -137,7 +136,7 @@ export function getWebsiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Scooli - Ferramentas de IA para professores portugueses criarem apresentações, planos de aula, testes e quizzes.",
+      "Scooli - Ferramentas de IA para professores criarem apresentações, planificações, testes e quizzes.",
     inLanguage: SITE_LANGUAGE,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
@@ -165,7 +164,7 @@ export function getSoftwareApplicationSchema() {
     "@id": `${SITE_URL}/#app`,
     name: SITE_NAME,
     description:
-      "Plataforma de inteligência artificial para professores portugueses. Gera apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais.",
+      "Plataforma de inteligência artificial para professores em Portugal. Gera apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais.",
     url: SITE_URL,
     applicationCategory: "EducationalApplication",
     operatingSystem: "Web",
@@ -202,13 +201,13 @@ export function getSoftwareApplicationSchema() {
     ],
     featureList: [
       "Geração de apresentações com IA",
-      "Criação de planos de aula",
+      "Criação de planificações",
       "Geração de testes e quizzes",
       "Alinhamento com aprendizagens essenciais",
       "Biblioteca comunitária",
       "Upload e transformação de documentos",
       "Templates personalizáveis",
-      "Conformidade RGPD",
+      "RGPD-ready",
     ],
     screenshot: `${SITE_URL}/opengraph-image`,
     author: {
@@ -329,29 +328,6 @@ export function getProductSchema() {
       "@type": "Audience",
       audienceType: "Professores",
     },
-    // AggregateRating - placeholder for when you have real reviews
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "25",
-    },
-    // Review - sample review (replace with real reviews when available)
-    review: {
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-      author: {
-        "@type": "Person",
-        name: "Professor Utilizador",
-      },
-      reviewBody:
-        "A Scooli revolucionou a forma como preparo as minhas aulas. A IA gera recursos de qualidade alinhados com as aprendizagens essenciais.",
-    },
   };
 }
 
@@ -471,7 +447,7 @@ export function getServiceSchema() {
     "@id": `${SITE_URL}/#service`,
     name: "Scooli - Geração de Recursos Educativos com IA",
     description:
-      "Serviço de geração automática de apresentações, planos de aula, testes e quizzes para professores portugueses, utilizando inteligência artificial alinhada ao currículo nacional.",
+      "Serviço de geração automática de apresentações, planificações, testes e quizzes para professores em Portugal, utilizando inteligência artificial alinhada com o currículo nacional.",
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -529,10 +505,10 @@ export const EDUCATIONAL_FEATURES = {
     ],
   },
   lessonPlans: {
-    title: "Gerador de Planos de Aula",
+    title: "Gerador de Planificações",
     description:
-      "Planificações completas com objetivos, metodologias e avaliação alinhados às aprendizagens essenciais portuguesas.",
-    keywords: ["plano de aula", "planificação", "objetivos de aprendizagem"],
+      "Planificações completas com objetivos, metodologias e avaliação alinhadas com as Aprendizagens Essenciais.",
+    keywords: ["planificação", "planificações", "objetivos de aprendizagem"],
   },
   tests: {
     title: "Gerador de Testes e Quizzes",

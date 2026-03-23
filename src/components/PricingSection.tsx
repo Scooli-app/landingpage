@@ -167,6 +167,7 @@ function PlanCard({ plan }: { plan: DisplayPlan }) {
   const isAnnual = plan.highlight === "annual";
   const isFree = plan.planCode === "free";
   const href = isFree ? `${APP_URL}/sign-up` : `${APP_URL}/checkout?plan=${plan.planCode}`;
+  const ctaLabel = isFree ? "Experimentar grátis" : "Subscrever";
   const interactionText =
     plan.interactionsPerPeriod >= 500
       ? "Geração ilimitada*"
@@ -237,12 +238,12 @@ function PlanCard({ plan }: { plan: DisplayPlan }) {
           asChild
           variant={isFree ? "outline" : "default"}
           className={cn(
-            "mt-8 h-12 w-full rounded-full text-base font-semibold",
+            "mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold sm:text-[15px]",
             !isFree && "shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
           )}
         >
           <Link href={href}>
-            {isFree ? "Começar gratuitamente" : "Subscrever"}
+            {ctaLabel}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
@@ -287,9 +288,9 @@ function EnterpriseCard() {
             </li>
           ))}
         </ul>
-        <Button asChild className="mt-8 h-12 w-full rounded-full text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
+        <Button asChild className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]">
           <Link href="/escolas">
-            Ver percurso institucional
+            Falar com a equipa
             <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>

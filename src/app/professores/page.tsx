@@ -17,7 +17,7 @@ import { CalendarClock, LibraryBig } from "lucide-react";
 export const metadata = getPageMetadata({
   title: "Scooli para professores",
   description:
-    "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo e mais controlo.",
+    "Descobre como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo e mais controlo.",
   path: "/professores",
 });
 
@@ -48,14 +48,14 @@ export default function TeachersPage() {
       <PageHero
         eyebrow="Para professores"
         title="Uma forma mais simples de preparar aulas, fichas e testes sem começar do zero"
-        description="A Scooli foi pensada para professores que precisam de ganhar tempo no trabalho repetitivo sem abdicar do controlo pedagógico e da revisão final."
+        description="A Scooli ajuda-te a ganhar tempo nas tarefas que mais se repetem, mantendo sempre o controlo do conteúdo final antes de usar em aula."
         secondaryHref="/biblioteca"
         secondaryLabel="Ver biblioteca"
         aside={<WeeklyFlowPreview />}
       >
         <Checklist
           items={[
-            "Criar rascunhos em minutos",
+            "Criar materiais em minutos",
             "Editar tudo antes de usar",
             "Reutilizar materiais da comunidade",
           ]}
@@ -66,8 +66,8 @@ export default function TeachersPage() {
         <Container className="space-y-12">
           <MarketingSectionHeading
             eyebrow="Como ajuda"
-            title="Pensada para o trabalho real de quem dá aulas"
-            description="Em vez de uma lista genérica de funcionalidades, esta página foca-se no que muda no dia a dia do professor."
+            title="O que muda na prática durante a semana"
+            description="A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptar recursos para turmas diferentes."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -81,9 +81,9 @@ export default function TeachersPage() {
       <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="O que pode criar"
-            title="Exemplos de outputs que fazem sentido para professores"
-            description="A homepage já dá uma visão rápida. Aqui fica a estrutura preparada para aprofundar cada tipo de documento com casos reais."
+            eyebrow="O que podes criar"
+            title="Vês logo o tipo de documento que sai"
+            description="Planificações, fichas e testes aparecem com estrutura, texto e organização suficientes para começares a editar em vez de começares do zero."
             centered
           />
           <div className="grid gap-6 xl:grid-cols-3">
@@ -111,7 +111,7 @@ export default function TeachersPage() {
                 "Pesquisar por disciplina e ano",
                 "Duplicar uma base já existente",
                 "Guardar materiais para reutilizar mais tarde",
-                "Placeholder para previews públicos reais",
+                "Entrar num recurso, adaptar e exportar",
               ].map((item) => (
                 <div key={item} className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
                   {item}
@@ -144,8 +144,8 @@ export default function TeachersPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer testar a Scooli no seu ritmo?"
-            description="Comece gratuitamente, veja o tipo de materiais que consegue gerar e adapte tudo ao seu contexto antes de usar em aula."
+            title="Quer testar a Scooli no teu ritmo?"
+            description="Começa gratuitamente, experimenta um pedido real da próxima aula e ajusta tudo ao teu contexto antes de usar."
             secondaryHref="/precos"
             secondaryLabel="Ver preços"
           />
@@ -154,4 +154,3 @@ export default function TeachersPage() {
     </PublicSiteShell>
   );
 }
-

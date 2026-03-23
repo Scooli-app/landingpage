@@ -1,4 +1,4 @@
-import type { MetadataRoute } from "next";
+﻿import type { MetadataRoute } from "next";
 
 /**
  * PWA Web App Manifest
@@ -6,10 +6,10 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Scooli - IA para Professores Portugueses",
+    name: "Scooli - IA para Professores em Portugal",
     short_name: "Scooli",
     description:
-      "Plataforma portuguesa com IA que devolve tempo aos professores. Gere apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais em segundos.",
+      "Plataforma portuguesa com IA que devolve tempo aos professores. Gera apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais em segundos.",
     start_url: "/",
     id: "/",
     display: "standalone",
@@ -76,9 +76,9 @@ export default function manifest(): MetadataRoute.Manifest {
         icons: [{ src: "/favicon-96x96.png?v=4", sizes: "96x96" }],
       },
       {
-        name: "Criar Plano de Aula",
-        short_name: "Plano",
-        description: "Gerar um novo plano de aula com IA",
+        name: "Criar Planificação",
+        short_name: "Planificação",
+        description: "Gerar uma nova planificação com IA",
         url: "/?action=lesson-plan",
         icons: [{ src: "/favicon-96x96.png?v=4", sizes: "96x96" }],
       },

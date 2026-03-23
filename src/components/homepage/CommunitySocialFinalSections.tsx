@@ -91,8 +91,8 @@ export function SocialProofSection() {
       <Container className="space-y-10">
         <SectionHeading
           eyebrow="Prova social"
-          title="Estrutura pronta para testemunhos reais"
-          description="Enquanto reunimos testemunhos validados e autorizados, esta secção usa textos provisórios para manter o espaço de prova social sem inventar escolas, números ou resultados."
+          title="O tipo de feedback que queremos validar com utilizadores reais"
+          description="Ainda estamos a reunir testemunhos autorizados. Até lá, mostramos exemplos do tipo de ganhos que a Scooli pretende entregar: menos tempo perdido, menos trabalho repetitivo e mais facilidade em adaptar materiais."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -118,7 +118,7 @@ export function LandingFinalCtaSection() {
                   Experimenta a Scooli e prepara a próxima aula com menos fricção.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                  Começa com o plano gratuito, gera o primeiro rascunho em minutos e ajusta tudo ao teu ritmo antes de usar.
+                  Começa com o plano gratuito, cria o primeiro material em minutos e ajusta tudo ao teu ritmo antes de usar.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">

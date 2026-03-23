@@ -72,7 +72,7 @@ export const benefits: InfoItem[] = [
   {
     title: "Mais rapidez no arranque",
     description:
-      "Começas com um rascunho útil em segundos, em vez de começares com uma folha em branco.",
+      "Começas com uma base útil em segundos, em vez de começares com uma folha em branco.",
     icon: Sparkles,
   },
   {
@@ -105,7 +105,7 @@ export const steps: StepItem[] = [
   {
     title: "Gerar com IA",
     description:
-      "Recebes um primeiro rascunho estruturado com base no tema, ano e objetivo da aula.",
+      "Recebes uma primeira versão estruturada com base no tema, ano e objetivo da aula.",
     icon: Bot,
   },
   {

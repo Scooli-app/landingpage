@@ -34,7 +34,7 @@ export function ProblemSolutionSection() {
             criar materiais pedagógicos rapidamente.
           </p>
           <p className="text-[color:var(--scooli-muted)]">
-            Em vez de começar do zero, pode gerar um primeiro rascunho em
+            Em vez de começar do zero, pode gerar uma primeira versão em
             segundos e depois editar ou adaptar conforme necessário.
           </p>
         </div>
