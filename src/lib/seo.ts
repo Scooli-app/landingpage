@@ -1,3 +1,4 @@
+﻿import type { Metadata } from "next";
 /**
  * SEO & AEO (Answer Engine Optimization) utilities for Scooli
  *
@@ -16,6 +17,39 @@ export const APP_URL =
 export const SITE_NAME = "Scooli";
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
+
+export function getPageMetadata({
+  title,
+  description,
+  path,
+}: {
+  title: string;
+  description: string;
+  path: string;
+}): Metadata {
+  const url = path ? `${SITE_URL}${path}` : SITE_URL;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      locale: SITE_LOCALE,
+      siteName: SITE_NAME,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 // Pricing constants (in cents and euros)
 export const PRICING = {
@@ -40,8 +74,8 @@ export const PRICING = {
 export const BRAND_KEYWORDS = [
   "Scooli",
   "IA para professores",
-  "inteligência artificial educação",
-  "plano de aula",
+  "inteligência artificial na educação",
+  "planificação de aulas",
   "apresentações escolares",
   "testes escolares",
   "quizzes educativos",
@@ -413,7 +447,7 @@ export interface HowToStep {
 export function getHowToSchema(
   name: string,
   description: string,
-  steps: HowToStep[]
+  steps: HowToStep[],
 ) {
   return {
     "@context": "https://schema.org",

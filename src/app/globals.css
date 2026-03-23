@@ -1,23 +1,25 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 
 :root {
   --scooli-primary: #6753ff;
   --scooli-primary-strong: #4e3bc0;
+  --scooli-secondary: #3b82f6;
+  --scooli-secondary-strong: #2563eb;
   --scooli-surface: #ffffff;
-  --scooli-surface-alt: #f7f7ff;
+  --scooli-surface-alt: #f5f6ff;
   --scooli-ink: #0b0d17;
-  --scooli-ink-soft: #2e2f38;
-  --scooli-muted: #6c6f80;
-  --scooli-border: #e4e4e7;
+  --scooli-ink-soft: #475569;
+  --scooli-muted: #64748b;
+  --scooli-border: #e2e8f0;
   --scooli-accent: #eef0ff;
-  --scooli-success: #1db67d;
-  --scooli-warning: #ffc857;
-  --scooli-error: #ff4f4f;
+  --scooli-success: #3b82f6;
+  --scooli-warning: #d97706;
+  --scooli-error: #dc2626;
   --radius-sm: 10px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
-  --shadow-soft: 0 14px 40px -18px rgba(79, 70, 229, 0.35),
-    0 10px 30px -24px rgba(0, 0, 0, 0.25);
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --shadow-soft: 0 24px 60px -36px rgba(19, 35, 58, 0.22),
+    0 12px 28px -22px rgba(103, 83, 255, 0.24);
 }
 
 * {
@@ -29,25 +31,28 @@ html {
 }
 
 body {
-  font-family: "Inter", system-ui, -apple-system, sans-serif;
-  background: radial-gradient(circle at 10% 20%, #eef0ff 0, #ffffff 38%),
-    radial-gradient(circle at 80% 0%, rgba(103, 83, 255, 0.14), transparent 40%),
-    linear-gradient(180deg, rgba(78, 59, 192, 0.06) 0%, transparent 36%),
-    #ffffff;
+  font-family: var(--font-body), sans-serif;
+  background: radial-gradient(circle at top left, rgba(103, 83, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 100% 0, rgba(59, 130, 246, 0.08), transparent 24%),
+    linear-gradient(180deg, #f8f9fa 0%, #ffffff 22%, #f5f6ff 100%);
   color: var(--scooli-ink);
   min-height: 100vh;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
 
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
 ::selection {
-  background: rgba(103, 83, 255, 0.12);
+  background: rgba(103, 83, 255, 0.15);
   color: var(--scooli-ink);
 }
 
 .glass {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(228, 228, 231, 0.8);
+  background: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(216, 225, 232, 0.9);
   box-shadow: var(--shadow-soft);
   backdrop-filter: blur(16px);
 }
@@ -55,29 +60,16 @@ body {
 .gradient-border {
   border: 1px solid transparent;
   background: linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(135deg, rgba(103, 83, 255, 0.5), rgba(78, 59, 192, 0.5))
-      border-box;
+    linear-gradient(135deg, rgba(103, 83, 255, 0.45), rgba(59, 130, 246, 0.35)) border-box;
 }
 
 .noise-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(
-      1px 1px at 20% 30%,
-      rgba(11, 13, 23, 0.08),
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 70% 40%,
-      rgba(11, 13, 23, 0.08),
-      transparent
-    ),
-    radial-gradient(
-      1px 1px at 40% 80%,
-      rgba(11, 13, 23, 0.06),
-      transparent
-    );
+  background-image: radial-gradient(1px 1px at 20% 30%, rgba(19, 35, 58, 0.08), transparent),
+    radial-gradient(1px 1px at 70% 40%, rgba(19, 35, 58, 0.08), transparent),
+    radial-gradient(1px 1px at 40% 80%, rgba(19, 35, 58, 0.06), transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {

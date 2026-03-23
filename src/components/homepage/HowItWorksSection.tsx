@@ -1,0 +1,44 @@
+﻿import { Container } from "@/components/Container";
+import { steps } from "./data";
+import { SectionHeading, StepVisual } from "./shared";
+
+export function HowItWorksSection() {
+  return (
+    <section id="como-funciona" className="py-20 sm:py-24 lg:py-28">
+      <Container className="space-y-12">
+        <SectionHeading
+          eyebrow="Como funciona"
+          title="Três passos simples para sair da ideia ao recurso pronto"
+          description="A experiência foi desenhada para reduzir complexidade: dás contexto, recebes um rascunho e ajustas só o que faz sentido para a tua turma."
+          centered
+        />
+        <div className="grid gap-5 lg:grid-cols-3">
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+
+            return (
+              <div
+                key={step.title}
+                className="rounded-[32px] border border-slate-200/80 bg-white p-6 shadow-[0_24px_80px_-60px_rgba(19,35,58,0.4)]"
+              >
+                <div className="flex items-center justify-between gap-4">
+                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--scooli-accent)] text-sm font-semibold text-[color:var(--scooli-primary)]">
+                    0{index + 1}
+                  </span>
+                  <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-50 text-[color:var(--scooli-primary)]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                </div>
+                <h3 className="mt-6 text-2xl font-semibold text-[color:var(--scooli-ink)]">{step.title}</h3>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">{step.description}</p>
+                <div className="mt-6">
+                  <StepVisual step={index} />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </Container>
+    </section>
+  );
+}

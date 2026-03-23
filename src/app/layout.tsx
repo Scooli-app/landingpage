@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/sonner";
+﻿import { Toaster } from "@/components/ui/sonner";
 import {
   BRAND_KEYWORDS,
   getHomePageSchemas,
@@ -9,19 +9,27 @@ import {
 } from "@/lib/seo";
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-display",
+  weight: ["600", "700"],
 });
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: light)", color: "#eef0ff" },
     { media: "(prefers-color-scheme: dark)", color: "#6753FF" },
   ],
   width: "device-width",
@@ -33,11 +41,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE_NAME} | IA para professores em Portugal`,
+    default: `${SITE_NAME} | IA prática para professores em Portugal`,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Scooli é a plataforma portuguesa com IA que devolve tempo aos professores. Gere apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais em segundos. RGPD-ready.",
+    "Crie planificações, fichas e testes com IA, edite tudo ao seu ritmo e recupere tempo para ensinar. A Scooli foi pensada para professores em Portugal.",
   keywords: [...BRAND_KEYWORDS],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
@@ -73,15 +81,15 @@ export const metadata: Metadata = {
     locale: SITE_LOCALE,
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: `${SITE_NAME} | Ferramentas com IA para professores portugueses`,
+    title: `${SITE_NAME} | Planificações, fichas e testes em minutos`,
     description:
-      "Poupe horas todas as semanas. Geração de apresentações, planos de aula, testes e quizzes alinhados ao currículo português. Organização e comunidade para docentes em Portugal.",
+      "A Scooli ajuda professores em Portugal a criar materiais prontos a editar, adaptar à turma e exportar sem começar do zero.",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE_NAME} | Ferramentas com IA para professores portugueses`,
+    title: `${SITE_NAME} | IA prática para professores`,
     description:
-      "Poupe horas com geração de recursos educativos alinhados às aprendizagens essenciais. Apresentações, planos de aula, testes e quizzes em segundos.",
+      "Planificações, fichas e testes com IA, feitos para poupar tempo e manter o professor no controlo.",
     creator: "@scooli_app",
     site: "@scooli_app",
   },
@@ -98,25 +106,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // Add verification tokens when available
-    // google: "your-google-verification-token",
-    // yandex: "your-yandex-verification-token",
-  },
   other: {
-    // AI/LLM crawler hints
     "ai-content-declaration": "human-created",
-    // Geo targeting
     "geo.region": "PT",
     "geo.placename": "Portugal",
-    // Content language
     "content-language": SITE_LANGUAGE,
-    // Dublin Core metadata for better indexing
-    "DC.title": `${SITE_NAME} - IA para professores em Portugal`,
+    "DC.title": `${SITE_NAME} - IA prática para professores em Portugal`,
     "DC.creator": SITE_NAME,
     "DC.subject": "Educação, Inteligência Artificial, Professores, Portugal",
     "DC.description":
-      "Plataforma de IA para professores portugueses criarem recursos educativos",
+      "Ferramenta para criar planificações, fichas e testes com IA em contexto escolar português",
     "DC.publisher": SITE_NAME,
     "DC.language": SITE_LANGUAGE,
     "DC.type": "Software",
@@ -124,14 +123,12 @@ export const metadata: Metadata = {
   },
 };
 
-// Pre-generate schemas for SSR
 const schemas = getHomePageSchemas();
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="pt-PT" className={inter.className}>
+    <html lang="pt-PT" className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
-        {/* Structured Data for SEO & AEO */}
         {schemas.map((schema, index) => (
           <script
             key={`schema-${index}`}
@@ -141,16 +138,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             }}
           />
         ))}
-
-        {/* Preconnect to critical domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-
-        {/* DNS prefetch for potential external resources */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
       </head>
       <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">

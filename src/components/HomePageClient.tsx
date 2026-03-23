@@ -1,60 +1,31 @@
-﻿"use client";
-
-import { CommunitySection } from "@/components/CommunitySection";
-import { ContactSection } from "@/components/ContactSection";
-import { FaqSection } from "@/components/FaqSection";
-import { FeatureGrid } from "@/components/FeatureGrid";
-import { FinalCta } from "@/components/FinalCta";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
+﻿import { Footer } from "@/components/Footer";
 import { MarketingNav } from "@/components/MarketingNav";
-import { PricingSection } from "@/components/PricingSection";
-import { ProblemSolutionSection } from "@/components/ProblemSolutionSection";
-import { ScrollShowcase } from "@/components/ScrollShowcase";
-import { PlansProvider } from "@/contexts/PlansContext";
+import { CommunityLibrarySection, LandingFinalCtaSection, SocialProofSection } from "@/components/homepage/CommunitySocialFinalSections";
+import { HeroSection } from "@/components/homepage/HeroSection";
+import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
+import { EditorSection, RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
+import { ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
 
 export function HomePageClient() {
   return (
-    <PlansProvider>
-      <div className="min-h-screen bg-white">
-        <header role="banner">
-          <MarketingNav />
-        </header>
+    <div className="min-h-screen bg-transparent text-[color:var(--scooli-ink)]">
+      <header role="banner">
+        <MarketingNav />
+      </header>
 
-        <main role="main" id="main-content">
-          <article aria-label="Introdução à Scooli">
-            <Hero />
-          </article>
+      <main id="main-content" role="main" className="overflow-hidden">
+        <HeroSection />
+        <ProblemSection />
+        <SolutionSection />
+        <HowItWorksSection />
+        <RealOutputsSection />
+        <EditorSection />
+        <CommunityLibrarySection />
+        <SocialProofSection />
+        <LandingFinalCtaSection />
+      </main>
 
-          <section aria-label="Desafio e solução">
-            <ProblemSolutionSection />
-          </section>
-
-          <article aria-label="Funcionalidades principais">
-            <FeatureGrid />
-          </article>
-
-          <section aria-label="Biblioteca comunitária">
-            <CommunitySection />
-          </section>
-
-          <section aria-label="Como funciona e capturas do produto">
-            <ScrollShowcase />
-          </section>
-
-          <PricingSection />
-
-          <FaqSection />
-
-          <ContactSection />
-
-          <aside aria-label="Chamada para ação">
-            <FinalCta />
-          </aside>
-        </main>
-
-        <Footer />
-      </div>
-    </PlansProvider>
+      <Footer />
+    </div>
   );
 }
