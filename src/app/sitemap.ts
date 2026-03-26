@@ -96,7 +96,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}/ferramentas/${tool.slug}`,
     lastModified,
     changeFrequency: "weekly",
-    priority: 0.75,
+    priority: tool.slug === "fichas-de-trabalho" ? 0.9 : 0.8,
     alternates: withAlternates(`/ferramentas/${tool.slug}`),
   }));
 

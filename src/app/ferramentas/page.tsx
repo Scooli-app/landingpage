@@ -17,6 +17,15 @@ export const metadata = getPageMetadata({
   description:
     "Explora as ferramentas da Scooli e escolhe o tipo de recurso que queres criar: testes, fichas, planificações, quizzes e mais.",
   path: "/ferramentas",
+  keywords: [
+    "ferramentas para professores",
+    "gerador de fichas de trabalho",
+    "gerador de testes",
+    "planificações com IA",
+    "quizzes com IA",
+    "apresentações com IA",
+    "adaptação de materiais",
+  ],
 });
 
 function ToolsPreview() {
@@ -79,7 +88,7 @@ export default function ToolsIndexPage() {
                   <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">{tool.shortTitle}</h3>
                   <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{tool.description}</p>
                   <Link href={`/ferramentas/${tool.slug}`} className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]">
-                    Abrir página
+                    Ver {tool.shortTitle.toLowerCase()}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </SurfacePanel>

@@ -22,16 +22,19 @@ export function getPageMetadata({
   title,
   description,
   path,
+  keywords,
 }: {
   title: string;
   description: string;
   path: string;
+  keywords?: readonly string[];
 }): Metadata {
   const url = path ? `${SITE_URL}${path}` : SITE_URL;
 
   return {
     title,
     description,
+    keywords: keywords ? [...keywords] : undefined,
     alternates: {
       canonical: url,
     },
@@ -76,9 +79,14 @@ export const BRAND_KEYWORDS = [
   "IA para professores",
   "inteligência artificial na educação",
   "planificação de aulas",
+  "fichas de trabalho",
+  "gerador de fichas de trabalho",
+  "fichas para imprimir",
   "apresentações escolares",
   "testes escolares",
   "quizzes educativos",
+  "adaptação de materiais",
+  "carregar documentos",
   "edtech Portugal",
   "currículo português",
   "aprendizagens essenciais",
