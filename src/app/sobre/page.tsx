@@ -1,15 +1,16 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import {
   MarketingSectionBadge,
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { getPageMetadata } from "@/lib/seo";
+import Image from "next/image";
 
 export const metadata = getPageMetadata({
   title: "Sobre a Scooli",
   description:
-    "Conhece a missão da Scooli, o problema que queremos resolver e a equipa pública que está a construir o produto.",
+    "Conhece a missão da Scooli, o problema que queremos resolver e a equipa que está a construir o produto.",
   path: "/sobre",
 });
 
@@ -34,11 +35,17 @@ const missionPoints = [
 const team = [
   {
     name: "Miguel Rodrigues",
-    role: "CEO e Software & AI Engineer",
+    role: "Fundador e Engenheiro de Software & IA",
+    image: "/team/miguel.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    alt: "Miguel Rodrigues, Fundador e Engenheiro de Software & IA da Scooli",
   },
   {
     name: "Pedro Rocha",
-    role: "COO e Software & AI Engineer",
+    role: "Co-Fundador e Engenheiro de Software & IA",
+    image: "/team/pedro.jpeg",
+    location: "Vila Nova de Gaia, Porto",
+    alt: "Pedro Rocha, Co-Fundador e Engenheiro de Software & IA da Scooli",
   },
 ];
 
@@ -52,10 +59,14 @@ export default function AboutPage() {
             <MarketingSectionBadge>Sobre</MarketingSectionBadge>
             <div className="max-w-4xl space-y-4">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                A Scooli existe para devolver tempo aos professores e aproximar uma comunidade que muitas vezes trabalha sozinha
+                A Scooli existe para devolver tempo aos professores e aproximar
+                uma comunidade que muitas vezes trabalha sozinha
               </h1>
               <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Estamos a construir a Scooli para reduzir o trabalho repetitivo da preparação de aulas e ajudar docentes a chegar mais depressa a materiais úteis, sempre com controlo humano sobre o resultado final.
+                Estamos a construir a Scooli para reduzir o trabalho repetitivo
+                da preparação de aulas e ajudar docentes a chegar mais depressa
+                a materiais úteis, sempre com controlo humano sobre o resultado
+                final.
               </p>
             </div>
           </div>
@@ -67,20 +78,34 @@ export default function AboutPage() {
           <section>
             <SurfacePanel>
               <div className="max-w-3xl space-y-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">Missão</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">
+                  Missão
+                </p>
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                  Queremos aliviar o lado mais pesado do trabalho docente e criar mais ligação entre professores
+                  Queremos aliviar o lado mais pesado do trabalho docente e
+                  criar mais ligação entre professores
                 </h2>
                 <p className="text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">
-                  A Scooli nasce da ideia de que a IA deve ser prática, útil e respeitadora do papel do professor. Mas a missão não acaba na automação: queremos também criar uma comunidade onde os professores encontrem boas bases, partilhem materiais e sintam menos isolamento no trabalho diário.
+                  A Scooli nasce da ideia de que a IA deve ser prática, útil e
+                  respeitadora do papel do professor. Mas a missão não acaba na
+                  automação: queremos também criar uma comunidade onde os
+                  professores encontrem boas bases, partilhem materiais e sintam
+                  menos isolamento no trabalho diário.
                 </p>
               </div>
 
               <div className="mt-8 grid gap-4 lg:grid-cols-3">
                 {missionPoints.map((item) => (
-                  <div key={item.title} className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
-                    <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{item.title}</p>
-                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{item.description}</p>
+                  <div
+                    key={item.title}
+                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-5"
+                  >
+                    <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                      {item.title}
+                    </p>
+                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                      {item.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -90,21 +115,44 @@ export default function AboutPage() {
           <section>
             <SurfacePanel>
               <div className="max-w-3xl space-y-4">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">Equipa</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">
+                  Equipa
+                </p>
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
                   Quem está a construir a Scooli
                 </h2>
                 <p className="text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">
-                  A equipa pública atual junta produto, operação, software e IA na construção da Scooli.
+                  A equipa atual junta produto, operação, software e IA na
+                  construção da Scooli.
                 </p>
               </div>
 
               <div className="mt-8 grid gap-5 lg:grid-cols-2">
                 {team.map((member) => (
-                  <div key={member.name} className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-                    <div className="h-32 rounded-[24px] bg-[linear-gradient(135deg,rgba(103,83,255,0.14),rgba(59,130,246,0.10))]" />
-                    <p className="mt-5 text-2xl font-semibold text-[color:var(--scooli-ink)]">{member.name}</p>
-                    <p className="mt-2 text-base text-[color:var(--scooli-muted)]">{member.role}</p>
+                  <div
+                    key={member.name}
+                    className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]"
+                  >
+                    <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgba(103,83,255,0.14),rgba(59,130,246,0.10))]">
+                      <Image
+                        src={member.image}
+                        alt={member.alt}
+                        fill
+                        className="object-cover"
+                        sizes="(min-width: 1024px) 420px, 100vw"
+                      />
+                    </div>
+                    <div className="mt-5 space-y-2">
+                      <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">
+                        {member.role}
+                      </p>
+                      <p className="text-2xl font-semibold text-[color:var(--scooli-ink)]">
+                        {member.name}
+                      </p>
+                      <p className="text-base text-[color:var(--scooli-muted)]">
+                        {member.location}
+                      </p>
+                    </div>
                   </div>
                 ))}
               </div>
