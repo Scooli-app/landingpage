@@ -9,6 +9,7 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { getPageMetadata } from "@/lib/seo";
+import Image from "next/image";
 import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
 
 export const metadata = getPageMetadata({
@@ -21,36 +22,20 @@ export const metadata = getPageMetadata({
 function LibraryPreviewGrid() {
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-      <div className="grid gap-3">
-        <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
-          <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
-            <FolderSearch className="h-4 w-4 text-[color:var(--scooli-primary)]" />
-            Procurar por disciplina, ano, tipo de recurso ou tema
-          </div>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-            {["Português", "Matemática", "Fichas", "Testes"].map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full border border-slate-200 bg-white px-2 py-1 flex items-center"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+      <div className="space-y-4">
+        <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
+          <FolderSearch className="h-4 w-4 text-[color:var(--scooli-primary)]" />
+          Pesquisa por disciplina, filtros por tipo e recursos prontos a reutilizar.
         </div>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {libraryPageCards.slice(0, 3).map((card) => (
-            <div
-              key={card.title}
-              className="rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_-40px_rgba(19,35,58,0.28)]"
-            >
-              <p className="text-lg font-semibold text-slate-800">
-                {card.title}
-              </p>
-              <p className="mt-2 text-sm text-slate-500">{card.meta}</p>
-              <div className="mt-4 h-24 rounded-[20px] bg-[linear-gradient(180deg,rgba(238,240,255,0.55),rgba(226,232,240,0.85))]" />
-            </div>
-          ))}
+        <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
+          <Image
+            src="/screenshots/biblioteca.png"
+            alt="Biblioteca comunitária da Scooli com pesquisa, filtros e recursos prontos a reutilizar"
+            width={1600}
+            height={900}
+            sizes="(min-width: 1024px) 40vw, 100vw"
+            className="h-auto w-full object-cover object-top"
+          />
         </div>
       </div>
     </SurfacePanel>

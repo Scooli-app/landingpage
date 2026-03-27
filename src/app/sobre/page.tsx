@@ -46,6 +46,7 @@ const team = [
     image: "/team/pedro.jpeg",
     location: "Vila Nova de Gaia, Porto",
     alt: "Pedro Rocha, Co-Fundador e Engenheiro de Software & IA da Scooli",
+    imageClassName: "scale-[1.28]",
   },
 ];
 
@@ -133,13 +134,13 @@ export default function AboutPage() {
                     key={member.name}
                     className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]"
                   >
-                    <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgba(103,83,255,0.14),rgba(59,130,246,0.10))]">
+                    <div className="relative mx-auto aspect-[4/5] w-full max-w-[260px] overflow-hidden rounded-[24px] bg-[linear-gradient(135deg,rgba(103,83,255,0.14),rgba(59,130,246,0.10))] sm:max-w-[280px]">
                       <Image
                         src={member.image}
                         alt={member.alt}
                         fill
-                        className="object-cover"
-                        sizes="(min-width: 1024px) 420px, 100vw"
+                        className={`object-cover ${member.imageClassName ?? ""}`}
+                        sizes="(min-width: 1024px) 280px, (min-width: 640px) 260px, 100vw"
                       />
                     </div>
                     <div className="mt-5 space-y-2">

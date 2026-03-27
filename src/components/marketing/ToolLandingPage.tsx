@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { APP_URL } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { toolCardIcons, type ToolPageData } from "./data";
 import {
@@ -18,15 +19,66 @@ import {
   SurfacePanel,
 } from "./shared";
 
-function ToolPreview({ title, outputs }: { title: string; outputs: string[] }) {
+const toolPreviewImages: Partial<Record<string, { src: string; alt: string }>> = {
+  planificacoes: {
+    src: "/screenshots/plano-pdf.png",
+    alt: "Exemplo real de uma planificação criada com a Scooli",
+  },
+  "fichas-de-trabalho": {
+    src: "/screenshots/ficha-pdf.png",
+    alt: "Exemplo real de uma ficha de trabalho criada com a Scooli",
+  },
+  "gerador-de-testes": {
+    src: "/screenshots/teste-pdf.png",
+    alt: "Exemplo real de um teste criado com a Scooli",
+  },
+};
+
+function ToolPreview({ tool }: { tool: ToolPageData }) {
+  const previewImage = toolPreviewImages[tool.slug];
+
+  if (previewImage) {
+    return (
+      <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
+        <div className="space-y-4">
+          <div className="rounded-[26px] border border-slate-200 bg-white p-4">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+              Exemplo real criado na Scooli
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold text-[color:var(--scooli-ink)]">
+              {tool.shortTitle}
+            </h3>
+          </div>
+          <div className="overflow-hidden rounded-[26px] border border-slate-200 bg-white shadow-[0_20px_50px_-40px_rgba(19,35,58,0.28)]">
+            <Image
+              src={previewImage.src}
+              alt={previewImage.alt}
+              width={1600}
+              height={2000}
+              sizes="(min-width: 1024px) 34vw, 100vw"
+              className="h-auto w-full object-cover object-top"
+            />
+          </div>
+        </div>
+      </SurfacePanel>
+    );
+  }
+
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="rounded-[26px] border border-slate-200 bg-white p-5">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">O que costuma sair</p>
-        <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">{title}</h3>
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+          O que costuma sair
+        </p>
+        <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">
+          {tool.shortTitle}
+        </h3>
         <div className="mt-5 grid gap-3">
-          {outputs.map((output, index) => (
-            <div key={output} className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+          {tool.outputs.map((output, index) => (
+            <div
+              key={output}
+              className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
+            >
               <span className="mr-3 inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-semibold text-[color:var(--scooli-primary)]">
                 {index + 1}
               </span>
@@ -56,11 +108,14 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
         primaryLabel="Começar gratuitamente"
         secondaryHref="/professores"
         secondaryLabel="Ver percurso para professores"
-        aside={<ToolPreview title={tool.shortTitle} outputs={tool.outputs} />}
+        aside={<ToolPreview tool={tool} />}
       >
         <div className="flex flex-wrap gap-3">
           {tool.useCases.map((useCase) => (
-            <span key={useCase} className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600">
+            <span
+              key={useCase}
+              className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600"
+            >
               <CheckCircle2 className="h-4 w-4 text-[color:var(--scooli-primary)]" />
               {useCase}
             </span>
@@ -76,13 +131,20 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
                 <Icon className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">O que consegues criar</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">Partes de um pedido simples e recebes um material editável pronto a rever e ajustar.</p>
+                <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
+                  O que consegues criar
+                </p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">
+                  Partes de um pedido simples e recebes um material editável pronto a rever e ajustar.
+                </p>
               </div>
             </div>
             <div className="mt-6 grid gap-4 sm:grid-cols-2">
               {tool.outputs.map((output) => (
-                <div key={output} className="rounded-[24px] border border-slate-200 bg-slate-50 p-4">
+                <div
+                  key={output}
+                  className="rounded-[24px] border border-slate-200 bg-slate-50 p-4"
+                >
                   <p className="text-sm font-semibold text-slate-800">{output}</p>
                   <div className="mt-3 h-2.5 w-4/5 rounded-full bg-slate-200" />
                   <div className="mt-2 h-2.5 w-3/5 rounded-full bg-slate-200" />
@@ -112,8 +174,12 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
           <div className="grid gap-5 lg:grid-cols-3">
             {tool.useCases.map((useCase) => (
               <SurfacePanel key={useCase}>
-                <p className="text-xl font-semibold text-[color:var(--scooli-ink)]">{useCase}</p>
-                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{getUseCaseDescription(useCase)}</p>
+                <p className="text-xl font-semibold text-[color:var(--scooli-ink)]">
+                  {useCase}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                  {getUseCaseDescription(useCase)}
+                </p>
               </SurfacePanel>
             ))}
           </div>
@@ -131,8 +197,12 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
           <div className="grid gap-5 lg:grid-cols-2">
             {tool.contentSections.map((section) => (
               <SurfacePanel key={section.title}>
-                <h3 className="text-2xl font-semibold text-[color:var(--scooli-ink)]">{section.title}</h3>
-                <p className="mt-4 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">{section.description}</p>
+                <h3 className="text-2xl font-semibold text-[color:var(--scooli-ink)]">
+                  {section.title}
+                </h3>
+                <p className="mt-4 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">
+                  {section.description}
+                </p>
                 {section.bullets && section.bullets.length > 0 && (
                   <div className="mt-5">
                     <Checklist items={section.bullets} />
@@ -174,8 +244,12 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
             </SurfacePanel>
 
             <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Continua a explorar</p>
-              <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">Páginas relacionadas</h3>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+                Continua a explorar
+              </p>
+              <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">
+                Páginas relacionadas
+              </h3>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
                 Se estás a comparar formas de preparar materiais, estas páginas ajudam-te a encontrar a ferramenta certa mais depressa.
               </p>

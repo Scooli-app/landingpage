@@ -8,8 +8,9 @@ import {
   Layers3,
   PencilLine,
 } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import { libraryBenefits, libraryCards, socialProof } from "./data";
+import { libraryBenefits, socialProof } from "./data";
 import {
   BrowserFrame,
   QuoteCard,
@@ -24,52 +25,18 @@ function LibraryPreview() {
       subtitle="Recursos partilhados"
     >
       <div className="space-y-4">
-        <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
-          <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
-            Procurar por disciplina, ano ou recurso
-          </div>
-          <div className="flex flex-wrap gap-2 text-xs font-semibold text-slate-500">
-            {["Português", "Matemática", "Fichas", "Planificações"].map(
-              (tag) => (
-                <span
-                  key={tag}
-                  className="rounded-full border border-slate-200 bg-white px-3 py-2 flex items-center"
-                >
-                  {tag}
-                </span>
-              ),
-            )}
-          </div>
+        <div className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
+          Pesquisa por disciplina, filtros por tipo e recursos prontos a reutilizar na biblioteca da Scooli.
         </div>
-        <div className="grid gap-4 lg:grid-cols-3">
-          {libraryCards.map((card) => (
-            <div
-              key={card.title}
-              className="rounded-[26px] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_-40px_rgba(19,35,58,0.28)]"
-            >
-              <p className="text-lg font-semibold text-slate-800">
-                {card.title}
-              </p>
-              <p className="mt-2 text-sm text-slate-500">{card.meta}</p>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {card.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded-full bg-slate-50 px-3 py-1.5 text-xs font-semibold text-slate-600"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              <Link
-                href="/biblioteca"
-                className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
-              >
-                Abrir e adaptar
-                <ChevronRight className="h-4 w-4" />
-              </Link>
-            </div>
-          ))}
+        <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
+          <Image
+            src="/screenshots/biblioteca.png"
+            alt="Biblioteca comunitária da Scooli com pesquisa, filtros e recursos prontos a reutilizar"
+            width={1600}
+            height={900}
+            sizes="(min-width: 1024px) 52vw, 100vw"
+            className="h-auto w-full object-cover object-top"
+          />
         </div>
       </div>
     </BrowserFrame>
