@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -14,6 +14,7 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
 
 type Language = "pt" | "en";
@@ -93,6 +94,7 @@ function SectionCard({
 }
 
 export function TermsOfUse() {
+  const router = useRouter();
   const [language, setLanguage] = useState<Language>("pt");
   const lastUpdated = "5 de Janeiro de 2026";
   const lastUpdatedEn = "January 5, 2026";
@@ -102,13 +104,14 @@ export function TermsOfUse() {
       {/* Header */}
       <div className="mb-12 text-center">
         <div>
-          <Link
-            href="/"
+          <button
+            type="button"
+            onClick={() => router.back()}
             className="mb-8 inline-flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Voltar à página principal
-          </Link>
+            {language === "pt" ? "Voltar" : "Go back"}
+          </button>
         </div>
 
         <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600">
@@ -647,4 +650,3 @@ export function TermsOfUse() {
     </div>
   );
 }
-
