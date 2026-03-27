@@ -69,13 +69,15 @@ function SectionCard({
   icon,
   title,
   children,
+  id,
 }: {
   icon: ReactNode;
   title: string;
   children: ReactNode;
+  id?: string;
 }) {
   return (
-    <Card className="border-slate-200/50 bg-white/80 shadow-lg backdrop-blur-sm">
+    <Card id={id} className="scroll-mt-28 border-slate-200/50 bg-white/80 shadow-lg backdrop-blur-sm">
       <CardContent className="p-8">
         <div className="flex items-start gap-4">
           <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600">
@@ -287,6 +289,7 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Scale className="h-6 w-6 text-white" />}
+              id="uso-justo"
               title="7) Política de Uso Justo (Fair Use)"
             >
               <p>

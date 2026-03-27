@@ -342,7 +342,7 @@ export function PricingSection() {
         </div>
 
         <p className="text-center text-xs text-slate-400">
-          * Geração ilimitada sujeita à <Link href="/terms#precos" className="underline hover:text-slate-600">Política de Uso Justo</Link>.
+          * Geração ilimitada sujeita à <Link href="/terms#uso-justo" className="underline hover:text-slate-600">Política de Uso Justo</Link>.
         </p>
       </Container>
     </section>
