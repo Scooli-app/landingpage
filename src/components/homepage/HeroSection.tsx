@@ -44,7 +44,7 @@ function HeroPreview() {
               muted
               loop
               playsInline
-              preload="metadata"
+              preload="none"
               disablePictureInPicture
             >
               <source src={heroVideoSrc} type="video/mp4" />O seu navegador não

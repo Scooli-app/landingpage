@@ -1,4 +1,4 @@
-﻿import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/sonner";
 import {
   BRAND_KEYWORDS,
   getHomePageSchemas,
@@ -17,7 +17,7 @@ const manrope = Manrope({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-body",
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
 });
 
 const fraunces = Fraunces({
@@ -138,9 +138,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             }}
           />
         ))}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        {process.env.NODE_ENV === "production" && (
+          <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
+        )}
       </head>
       <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">
         {children}
@@ -150,7 +150,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             className: "glass border border-[color:var(--scooli-border)]",
           }}
         />
-        <Analytics />
+        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );
