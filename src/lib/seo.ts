@@ -37,6 +37,10 @@ export function getPageMetadata({
     keywords: keywords ? [...keywords] : undefined,
     alternates: {
       canonical: url,
+      languages: {
+        "pt-PT": url,
+        "x-default": url,
+      },
     },
     openGraph: {
       title,
@@ -45,11 +49,24 @@ export function getPageMetadata({
       type: "website",
       locale: SITE_LOCALE,
       siteName: SITE_NAME,
+      images: [
+        {
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME} - ${title}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [`${SITE_URL}/twitter-image`],
+    },
+    robots: {
+      index: true,
+      follow: true,
     },
   };
 }
@@ -148,14 +165,6 @@ export function getWebsiteSchema() {
     inLanguage: SITE_LANGUAGE,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
     },
   };
 }
@@ -308,7 +317,7 @@ export function getProductSchema() {
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/#precos`,
+        url: `${SITE_URL}/precos`,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -322,7 +331,7 @@ export function getProductSchema() {
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/#precos`,
+        url: `${SITE_URL}/precos`,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -537,10 +546,12 @@ export const EDUCATIONAL_FEATURES = {
 } as const;
 
 // Generate all homepage schemas
+export function getGlobalSchemas() {
+  return [getOrganizationSchema(), getWebsiteSchema()];
+}
+
 export function getHomePageSchemas() {
   return [
-    getOrganizationSchema(),
-    getWebsiteSchema(),
     getSoftwareApplicationSchema(),
     getProductSchema(),
     getServiceSchema(),

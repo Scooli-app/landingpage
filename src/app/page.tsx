@@ -1,10 +1,14 @@
 ﻿import { HomePageClient } from "@/components/HomePageClient";
-import { getHowToSchema, SITE_URL } from "@/lib/seo";
+import {
+  getHomePageSchemas,
+  getHowToSchema,
+  SITE_URL,
+} from "@/lib/seo";
 import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Scooli | Crie planificações, fichas e testes em minutos",
+  title: "Crie planificações, fichas e testes em minutos",
   description:
     "Crie planificações, fichas de trabalho e testes com IA, edite tudo ao seu ritmo e exporte materiais prontos a usar. A Scooli foi pensada para professores em Portugal.",
   keywords: [
@@ -105,9 +109,22 @@ const howToSchema = getHowToSchema(
   ],
 );
 
+const homeSchemas = getHomePageSchemas();
+
 export default function Home() {
   return (
     <>
+      {homeSchemas.map((schema, index) => (
+        <Script
+          key={`home-schema-${index}`}
+          id={`home-schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+          strategy="afterInteractive"
+        />
+      ))}
       <Script
         id="howto-schema"
         type="application/ld+json"

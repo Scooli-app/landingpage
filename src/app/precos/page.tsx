@@ -12,7 +12,7 @@ import {
 import { CreditCard, ShieldCheck, Sparkles } from "lucide-react";
 
 export const metadata = getPageMetadata({
-  title: "Preços Scooli",
+  title: "Preços",
   description:
     "Vê os preços da Scooli, percebe o que inclui cada plano e descobre qual é o caminho certo para professores e escolas.",
   path: "/precos",

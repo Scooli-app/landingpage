@@ -9,7 +9,7 @@ const pageUrl = `${SITE_URL}/privacy`;
 export const metadata: Metadata = {
   title: "Política de Privacidade",
   description:
-    "Política de Privacidade da Scooli. Saiba como tratamos e protegemos os dados pessoais de professores e visitantes em conformidade com o RGPD. Transparência total sobre cookies, direitos dos utilizadores e segurança de dados.",
+    "Política de Privacidade da Scooli, com informação clara sobre tratamento de dados, RGPD, segurança e direitos dos utilizadores.",
   alternates: {
     canonical: pageUrl,
     languages: {
@@ -23,6 +23,21 @@ export const metadata: Metadata = {
       "Como a Scooli trata e protege os dados pessoais de professores e visitantes, em conformidade com o RGPD.",
     url: pageUrl,
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Política de Privacidade da Scooli",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Política de Privacidade | Scooli",
+    description:
+      "Como a Scooli trata e protege os dados pessoais de professores e visitantes, em conformidade com o RGPD.",
+    images: [`${SITE_URL}/twitter-image`],
   },
   robots: {
     index: true,
@@ -30,7 +45,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Breadcrumb schema for this page
 const breadcrumbItems = [
   { name: "Scooli", url: SITE_URL },
   { name: "Política de Privacidade", url: pageUrl },
@@ -49,7 +63,6 @@ const webPageSchema = getWebPageSchema({
 export default function PrivacyPage() {
   return (
     <>
-      {/* Structured Data for SEO */}
       <Script
         id="breadcrumb-schema"
         type="application/ld+json"

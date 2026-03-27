@@ -15,7 +15,7 @@ import {
 import { CalendarClock, LibraryBig } from "lucide-react";
 
 export const metadata = getPageMetadata({
-  title: "Scooli para professores",
+  title: "Para professores",
   description:
     "Descobre como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo e mais controlo.",
   path: "/professores",

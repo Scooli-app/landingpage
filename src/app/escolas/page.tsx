@@ -13,7 +13,7 @@ import { getPageMetadata } from "@/lib/seo";
 import { ShieldCheck, Users } from "lucide-react";
 
 export const metadata = getPageMetadata({
-  title: "Scooli para escolas e instituições",
+  title: "Para escolas e instituições",
   description:
     "Descobre como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
   path: "/escolas",

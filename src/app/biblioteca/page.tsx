@@ -13,7 +13,7 @@ import Image from "next/image";
 import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
 
 export const metadata = getPageMetadata({
-  title: "Biblioteca comunitária Scooli",
+  title: "Biblioteca comunitária",
   description:
     "Explora a biblioteca comunitária da Scooli e descobre materiais que podes duplicar, adaptar e usar como ponto de partida.",
   path: "/biblioteca",

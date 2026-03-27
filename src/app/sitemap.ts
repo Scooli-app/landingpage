@@ -3,7 +3,11 @@ import { SITE_URL } from "@/lib/seo";
 import type { MetadataRoute } from "next";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date();
+  const lastModified = new Date(
+    process.env.VERCEL_GIT_COMMIT_DATE ??
+      process.env.BUILD_DATE ??
+      "2026-03-27T00:00:00.000Z",
+  );
 
   const withAlternates = (path: string) => ({
     languages: {

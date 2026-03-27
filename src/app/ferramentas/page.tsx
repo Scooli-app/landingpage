@@ -13,7 +13,7 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = getPageMetadata({
-  title: "Ferramentas Scooli",
+  title: "Ferramentas para professores",
   description:
     "Explora as ferramentas da Scooli e escolhe o tipo de recurso que queres criar: testes, fichas, planificações, quizzes e mais.",
   path: "/ferramentas",

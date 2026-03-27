@@ -17,85 +17,85 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/", "/*.json$", "/private/"],
+        disallow: ["/api/", "/admin/", "/*.json$", "/private/"],
       },
       // Google Search crawler - full access
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Bing crawler - full access
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Google Extended (AI features like Bard/SGE) - ALLOW for AEO
       {
         userAgent: "Google-Extended",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // OpenAI's GPTBot - ALLOW for ChatGPT search features (AEO)
       {
         userAgent: "GPTBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // OpenAI's ChatGPT-User - ALLOW for ChatGPT browsing
       {
         userAgent: "ChatGPT-User",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Anthropic's AI crawler - ALLOW for Claude search features
       {
         userAgent: "anthropic-ai",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Anthropic's Claude-Web - ALLOW for Claude browsing
       {
         userAgent: "Claude-Web",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Common Crawl (used by many AI training datasets) - ALLOW
       {
         userAgent: "CCBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Perplexity AI crawler - ALLOW for Perplexity search
       {
         userAgent: "PerplexityBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Meta AI crawler - ALLOW
       {
         userAgent: "FacebookBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Apple's Applebot (Siri, Spotlight) - ALLOW
       {
         userAgent: "Applebot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // DuckDuckGo crawler - ALLOW
       {
         userAgent: "DuckDuckBot",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
       // Yandex crawler - ALLOW
       {
         userAgent: "Yandex",
         allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: ["/api/", "/admin/"],
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

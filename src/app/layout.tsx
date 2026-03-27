@@ -1,7 +1,7 @@
 import { Toaster } from "@/components/ui/sonner";
 import {
   BRAND_KEYWORDS,
-  getHomePageSchemas,
+  getGlobalSchemas,
   SITE_LANGUAGE,
   SITE_LOCALE,
   SITE_NAME,
@@ -123,7 +123,7 @@ export const metadata: Metadata = {
   },
 };
 
-const schemas = getHomePageSchemas();
+const schemas = getGlobalSchemas();
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (

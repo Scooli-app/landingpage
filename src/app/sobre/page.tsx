@@ -8,7 +8,7 @@ import { getPageMetadata } from "@/lib/seo";
 import Image from "next/image";
 
 export const metadata = getPageMetadata({
-  title: "Sobre a Scooli",
+  title: "Sobre",
   description:
     "Conhece a missão da Scooli, o problema que queremos resolver e a equipa que está a construir o produto.",
   path: "/sobre",
@@ -164,3 +164,4 @@ export default function AboutPage() {
     </PublicSiteShell>
   );
 }
+
