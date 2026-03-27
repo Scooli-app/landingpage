@@ -9,7 +9,7 @@ const pageUrl = `${SITE_URL}/terms`;
 export const metadata: Metadata = {
   title: "Termos de Utilização",
   description:
-    "Termos de Utilização da Scooli. Regras e condições para utilização da plataforma de IA para professores. Inclui informações sobre propriedade intelectual, responsabilidades e direitos dos utilizadores.",
+    "Termos de utilização da Scooli para professores e escolas, com regras, responsabilidades e condições de uso da plataforma.",
   alternates: {
     canonical: pageUrl,
     languages: {
@@ -23,6 +23,21 @@ export const metadata: Metadata = {
       "Regras e condições de utilização do website e serviço Scooli para professores.",
     url: pageUrl,
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/opengraph-image`,
+        width: 1200,
+        height: 630,
+        alt: "Termos de Utilização da Scooli",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Termos de Utilização | Scooli",
+    description:
+      "Regras e condições de utilização da plataforma Scooli para professores e escolas.",
+    images: [`${SITE_URL}/twitter-image`],
   },
   robots: {
     index: true,
@@ -30,7 +45,6 @@ export const metadata: Metadata = {
   },
 };
 
-// Breadcrumb schema for this page
 const breadcrumbItems = [
   { name: "Scooli", url: SITE_URL },
   { name: "Termos de Utilização", url: pageUrl },
@@ -49,7 +63,6 @@ const webPageSchema = getWebPageSchema({
 export default function TermsPage() {
   return (
     <>
-      {/* Structured Data for SEO */}
       <Script
         id="breadcrumb-schema"
         type="application/ld+json"

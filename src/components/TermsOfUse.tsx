@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -14,6 +14,7 @@ import {
   Users,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, type ReactNode } from "react";
 
 type Language = "pt" | "en";
@@ -68,13 +69,15 @@ function SectionCard({
   icon,
   title,
   children,
+  id,
 }: {
   icon: ReactNode;
   title: string;
   children: ReactNode;
+  id?: string;
 }) {
   return (
-    <Card className="border-slate-200/50 bg-white/80 shadow-lg backdrop-blur-sm">
+    <Card id={id} className="scroll-mt-28 border-slate-200/50 bg-white/80 shadow-lg backdrop-blur-sm">
       <CardContent className="p-8">
         <div className="flex items-start gap-4">
           <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600">
@@ -93,6 +96,7 @@ function SectionCard({
 }
 
 export function TermsOfUse() {
+  const router = useRouter();
   const [language, setLanguage] = useState<Language>("pt");
   const lastUpdated = "5 de Janeiro de 2026";
   const lastUpdatedEn = "January 5, 2026";
@@ -102,13 +106,14 @@ export function TermsOfUse() {
       {/* Header */}
       <div className="mb-12 text-center">
         <div>
-          <Link
-            href="/"
+          <button
+            type="button"
+            onClick={() => router.back()}
             className="mb-8 inline-flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            Voltar à página principal
-          </Link>
+            {language === "pt" ? "Voltar" : "Go back"}
+          </button>
         </div>
 
         <div className="mx-auto mb-6 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600">
@@ -270,13 +275,13 @@ export function TermsOfUse() {
                   Política de Uso Justo descrita na secção 7.
                 </li>
                 <li>
-                  Para gestão/cancelamento de subscrição, consulte{" "}
-                  <Link
-                    href="/cancelar-subscricao"
+                  Para gestão ou cancelamento de subscrição, contacte-nos em{" "}
+                  <a
+                    href="mailto:info@scooli.app"
                     className="underline transition-colors duration-200 hover:text-slate-900"
                   >
-                    Cancelar Subscrição
-                  </Link>
+                    info@scooli.app
+                  </a>
                   .
                 </li>
               </ul>
@@ -284,6 +289,7 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Scale className="h-6 w-6 text-white" />}
+              id="uso-justo"
               title="7) Política de Uso Justo (Fair Use)"
             >
               <p>
@@ -521,13 +527,13 @@ export function TermsOfUse() {
                   to the Fair Use Policy described in section 7.
                 </li>
                 <li>
-                  For subscription management/cancellation, see{" "}
-                  <Link
-                    href="/cancelar-subscricao"
+                  For subscription management or cancellation, contact us at{" "}
+                  <a
+                    href="mailto:info@scooli.app"
                     className="underline transition-colors duration-200 hover:text-slate-900"
                   >
-                    Cancel Subscription
-                  </Link>
+                    info@scooli.app
+                  </a>
                   .
                 </li>
               </ul>
@@ -647,5 +653,3 @@ export function TermsOfUse() {
     </div>
   );
 }
-
-

@@ -12,9 +12,9 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 // Tipos para os planos da API
 interface PlanFeatures {
-  rag: boolean;
-  streaming: boolean;
-  templates: boolean;
+  rag?: boolean;
+  streaming?: boolean;
+  templates?: boolean;
   priority_support?: boolean;
 }
 
@@ -42,6 +42,47 @@ const PlansContext = createContext<PlansContextType>({
   hasPlans: false,
 });
 
+function toFiniteNumber(value: unknown, fallback = 0) {
+  const parsed = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(parsed) ? parsed : fallback;
+}
+
+function normalizePlan(rawPlan: unknown): Plan | null {
+  if (!rawPlan || typeof rawPlan !== "object") {
+    return null;
+  }
+
+  const plan = rawPlan as Record<string, unknown>;
+  const planCode = typeof plan.planCode === "string" ? plan.planCode : "";
+
+  if (!planCode) {
+    return null;
+  }
+
+  const rawFeatures =
+    plan.features && typeof plan.features === "object"
+      ? (plan.features as Record<string, unknown>)
+      : {};
+
+  return {
+    planCode,
+    name:
+      typeof plan.name === "string" && plan.name.trim().length > 0
+        ? plan.name
+        : planCode,
+    description: typeof plan.description === "string" ? plan.description : "",
+    interactionsPerPeriod: toFiniteNumber(plan.interactionsPerPeriod),
+    priceCents: toFiniteNumber(plan.priceCents),
+    billingPeriod: plan.billingPeriod === "year" ? "year" : "month",
+    features: {
+      rag: Boolean(rawFeatures.rag),
+      streaming: Boolean(rawFeatures.streaming),
+      templates: Boolean(rawFeatures.templates),
+      priority_support: Boolean(rawFeatures.priority_support),
+    },
+  };
+}
+
 export function PlansProvider({ children }: { children: ReactNode }) {
   const [plans, setPlans] = useState<Plan[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,8 +97,16 @@ export function PlansProvider({ children }: { children: ReactNode }) {
         }
         const data = await response.json();
         if (data && Array.isArray(data) && data.length > 0) {
+          const normalizedPlans = data
+            .map(normalizePlan)
+            .filter((plan): plan is Plan => plan !== null);
+
+          if (normalizedPlans.length === 0) {
+            throw new Error("No valid plans returned from API");
+          }
+
           // Ordenar: free primeiro, depois pro_monthly, depois pro_annual
-          const sorted = data.sort((a: Plan, b: Plan) => {
+          const sorted = normalizedPlans.sort((a: Plan, b: Plan) => {
             const order: Record<string, number> = {
               free: 0,
               pro_monthly: 1,

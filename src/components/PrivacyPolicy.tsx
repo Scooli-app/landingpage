@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   ArrowLeft,
@@ -10,7 +10,7 @@ import {
   Shield,
   UserCheck,
 } from "lucide-react";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { EmailContact } from "./EmailContact";
 
@@ -63,6 +63,7 @@ function LanguageToggle({
 }
 
 export function PrivacyPolicy() {
+  const router = useRouter();
   const [language, setLanguage] = useState<Language>("pt");
   const lastUpdated = "15 de Julho de 2025";
   const lastUpdatedEn = "July 15, 2025";
@@ -72,13 +73,14 @@ export function PrivacyPolicy() {
       {/* Header */}
       <div className="text-center mb-12">
         <div>
-          <Link
-            href="/"
+          <button
+            type="button"
+            onClick={() => router.back()}
             className="inline-flex items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
-            {language === "pt" ? "Voltar à página principal" : "Back to home"}
-          </Link>
+            {language === "pt" ? "Voltar" : "Go back"}
+          </button>
         </div>
 
         <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">

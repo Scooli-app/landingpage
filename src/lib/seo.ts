@@ -1,3 +1,4 @@
+﻿import type { Metadata } from "next";
 /**
  * SEO & AEO (Answer Engine Optimization) utilities for Scooli
  *
@@ -16,6 +17,59 @@ export const APP_URL =
 export const SITE_NAME = "Scooli";
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
+
+export function getPageMetadata({
+  title,
+  description,
+  path,
+  keywords,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  keywords?: readonly string[];
+}): Metadata {
+  const url = path ? `${SITE_URL}${path}` : SITE_URL;
+
+  return {
+    title,
+    description,
+    keywords: keywords ? [...keywords] : undefined,
+    alternates: {
+      canonical: url,
+      languages: {
+        "pt-PT": url,
+        "x-default": url,
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url,
+      type: "website",
+      locale: SITE_LOCALE,
+      siteName: SITE_NAME,
+      images: [
+        {
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${SITE_NAME} - ${title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [`${SITE_URL}/twitter-image`],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 // Pricing constants (in cents and euros)
 export const PRICING = {
@@ -40,11 +94,16 @@ export const PRICING = {
 export const BRAND_KEYWORDS = [
   "Scooli",
   "IA para professores",
-  "inteligência artificial educação",
-  "plano de aula",
+  "inteligência artificial na educação",
+  "planificação de aulas",
+  "fichas de trabalho",
+  "gerador de fichas de trabalho",
+  "fichas para imprimir",
   "apresentações escolares",
   "testes escolares",
   "quizzes educativos",
+  "adaptação de materiais",
+  "carregar documentos",
   "edtech Portugal",
   "currículo português",
   "aprendizagens essenciais",
@@ -52,7 +111,7 @@ export const BRAND_KEYWORDS = [
   "biblioteca comunitária",
   "ferramentas para professores",
   "gerador de apresentações",
-  "gerador de planos de aula",
+  "gerador de planificações",
   "gerador de testes",
   "ensino básico",
   "ensino secundário",
@@ -77,8 +136,7 @@ export function getOrganizationSchema() {
       height: 512,
     },
     description:
-      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planos de aula, testes e quizzes alinhados ao currículo.",
-    foundingDate: "2024",
+      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planificações, testes e quizzes alinhados com o currículo.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
@@ -103,18 +161,10 @@ export function getWebsiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Scooli - Ferramentas de IA para professores portugueses criarem apresentações, planos de aula, testes e quizzes.",
+      "Scooli - Ferramentas de IA para professores criarem apresentações, planificações, testes e quizzes.",
     inLanguage: SITE_LANGUAGE,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/?q={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
     },
   };
 }
@@ -131,7 +181,7 @@ export function getSoftwareApplicationSchema() {
     "@id": `${SITE_URL}/#app`,
     name: SITE_NAME,
     description:
-      "Plataforma de inteligência artificial para professores portugueses. Gera apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais.",
+      "Plataforma de inteligência artificial para professores em Portugal. Gera apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais.",
     url: SITE_URL,
     applicationCategory: "EducationalApplication",
     operatingSystem: "Web",
@@ -168,13 +218,13 @@ export function getSoftwareApplicationSchema() {
     ],
     featureList: [
       "Geração de apresentações com IA",
-      "Criação de planos de aula",
+      "Criação de planificações",
       "Geração de testes e quizzes",
       "Alinhamento com aprendizagens essenciais",
       "Biblioteca comunitária",
       "Upload e transformação de documentos",
       "Templates personalizáveis",
-      "Conformidade RGPD",
+      "RGPD-ready",
     ],
     screenshot: `${SITE_URL}/opengraph-image`,
     author: {
@@ -267,7 +317,7 @@ export function getProductSchema() {
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/#precos`,
+        url: `${SITE_URL}/precos`,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -281,7 +331,7 @@ export function getProductSchema() {
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/#precos`,
+        url: `${SITE_URL}/precos`,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -294,29 +344,6 @@ export function getProductSchema() {
     audience: {
       "@type": "Audience",
       audienceType: "Professores",
-    },
-    // AggregateRating - placeholder for when you have real reviews
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      bestRating: "5",
-      worstRating: "1",
-      ratingCount: "25",
-    },
-    // Review - sample review (replace with real reviews when available)
-    review: {
-      "@type": "Review",
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: "5",
-        bestRating: "5",
-      },
-      author: {
-        "@type": "Person",
-        name: "Professor Utilizador",
-      },
-      reviewBody:
-        "A Scooli revolucionou a forma como preparo as minhas aulas. A IA gera recursos de qualidade alinhados com as aprendizagens essenciais.",
     },
   };
 }
@@ -413,7 +440,7 @@ export interface HowToStep {
 export function getHowToSchema(
   name: string,
   description: string,
-  steps: HowToStep[]
+  steps: HowToStep[],
 ) {
   return {
     "@context": "https://schema.org",
@@ -437,7 +464,7 @@ export function getServiceSchema() {
     "@id": `${SITE_URL}/#service`,
     name: "Scooli - Geração de Recursos Educativos com IA",
     description:
-      "Serviço de geração automática de apresentações, planos de aula, testes e quizzes para professores portugueses, utilizando inteligência artificial alinhada ao currículo nacional.",
+      "Serviço de geração automática de apresentações, planificações, testes e quizzes para professores em Portugal, utilizando inteligência artificial alinhada com o currículo nacional.",
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -495,10 +522,10 @@ export const EDUCATIONAL_FEATURES = {
     ],
   },
   lessonPlans: {
-    title: "Gerador de Planos de Aula",
+    title: "Gerador de Planificações",
     description:
-      "Planificações completas com objetivos, metodologias e avaliação alinhados às aprendizagens essenciais portuguesas.",
-    keywords: ["plano de aula", "planificação", "objetivos de aprendizagem"],
+      "Planificações completas com objetivos, metodologias e avaliação alinhadas com as Aprendizagens Essenciais.",
+    keywords: ["planificação", "planificações", "objetivos de aprendizagem"],
   },
   tests: {
     title: "Gerador de Testes e Quizzes",
@@ -519,10 +546,12 @@ export const EDUCATIONAL_FEATURES = {
 } as const;
 
 // Generate all homepage schemas
+export function getGlobalSchemas() {
+  return [getOrganizationSchema(), getWebsiteSchema()];
+}
+
 export function getHomePageSchemas() {
   return [
-    getOrganizationSchema(),
-    getWebsiteSchema(),
     getSoftwareApplicationSchema(),
     getProductSchema(),
     getServiceSchema(),

@@ -98,7 +98,7 @@ export function ContactModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md border-slate-200 bg-white sm:max-w-lg">
+        <DialogContent className="max-w-md border-slate-200 bg-white sm:max-w-lg">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2 text-xl text-slate-900">
             <div className="rounded-lg bg-[#6753FF]/10 p-2">
@@ -221,7 +221,7 @@ export function ContactModal({
             .
           </p>
         </form>
-      </DialogContent>
-    </Dialog>
+        </DialogContent>
+      </Dialog>
   );
 }

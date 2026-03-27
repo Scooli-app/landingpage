@@ -1,32 +1,29 @@
 ﻿import { HomePageClient } from "@/components/HomePageClient";
-import { getHowToSchema, SITE_URL } from "@/lib/seo";
+import {
+  getHomePageSchemas,
+  getHowToSchema,
+  SITE_URL,
+} from "@/lib/seo";
 import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Scooli | IA que devolve tempo aos professores portugueses",
+  title: "Crie planificações, fichas e testes em minutos",
   description:
-    "A Scooli é a plataforma de IA para professores em Portugal: crie planos de aula, testes, fichas, quizzes e apresentações em segundos, com conteúdos alinhados às Aprendizagens Essenciais e acesso a uma biblioteca comunitária de recursos partilhados por professores.",
+    "Crie planificações, fichas de trabalho e testes com IA, edite tudo ao seu ritmo e exporte materiais prontos a usar. A Scooli foi pensada para professores em Portugal.",
   keywords: [
     "Scooli",
     "plataforma de IA para professores",
     "inteligência artificial para professores",
     "inteligência artificial para educação",
     "ferramentas de IA para educação",
-    "site para professores",
     "ferramentas para professores",
     "software para professores",
-    "site para fazer plano de aula",
-    "fazer plano de aula online",
-    "criar plano de aula",
-    "gerador de plano de aula",
-    "gerador de planos de aula",
     "planificação de aulas",
-    "planeamento de aulas",
-    "planeamento de aula com IA",
-    "planejamento de aula com IA",
-    "site para planejamento de aula",
-    "planos de aula prontos",
+    "planificações com IA",
+    "criar planificações",
+    "gerador de planificações",
+    "planificar aulas",
     "criar testes online",
     "fazer testes online",
     "gerador de testes",
@@ -67,55 +64,67 @@ export const metadata: Metadata = {
     "edtech Portugal",
     "plataforma educativa Portugal",
   ],
-
   alternates: {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Scooli | IA que devolve tempo aos professores portugueses",
+    title: "Scooli | Crie planificações, fichas e testes em minutos",
     description:
-      "Gere apresentações, planos de aula, testes e quizzes alinhados às aprendizagens essenciais em segundos. Plataforma portuguesa com IA para docentes.",
+      "A Scooli ajuda professores em Portugal a gerar materiais prontos a editar, adaptar à turma e exportar sem começar do zero.",
     url: SITE_URL,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scooli | Site para fazer plano de aula com IA",
+    title: "Scooli | IA prática para professores",
     description:
-      "Site para fazer plano de aula online, testes e fichas com IA, pensado para professores.",
+      "Planificações, fichas e testes com IA, feitos para poupar tempo e manter o professor no controlo.",
   },
 };
 
 const howToSchema = getHowToSchema(
-  "Como usar a Scooli para criar recursos educativos",
-  "Guia passo a passo para criar apresentações, planos de aula e testes com a Scooli.",
+  "Como usar a Scooli para criar materiais de aula",
+  "Guia simples para gerar, editar e exportar planificações, fichas e testes com a Scooli.",
   [
     {
       name: "Criar conta gratuita",
-      text: "Registe-se na Scooli e tenha acesso a 20 gerações por mês no plano gratuito.",
+      text: "Regista-te na Scooli e começa a explorar a plataforma com o plano gratuito.",
     },
     {
-      name: "Escolher tipo de recurso",
-      text: "Selecione o tipo de conteúdo que pretende criar: apresentação, plano de aula, teste, quiz ou ficha de trabalho.",
+      name: "Escolher o tipo de recurso",
+      text: "Seleciona se queres criar uma planificação, uma ficha de trabalho ou um teste.",
     },
     {
-      name: "Definir parâmetros",
-      text: "Indique a matéria, nível de ensino, objetivos de aprendizagem e outros parâmetros relevantes.",
+      name: "Dar contexto ou carregar material",
+      text: "Indica o tema, o ano e o objetivo da aula, ou parte de um documento que já tens.",
     },
     {
       name: "Gerar com IA",
-      text: "A IA da Scooli gera automaticamente o conteúdo alinhado às aprendizagens essenciais portuguesas.",
+      text: "Recebe uma primeira versão em segundos para começares com uma base pronta a editar.",
     },
     {
-      name: "Personalizar e guardar",
-      text: "Reveja, edite conforme necessário e guarde o recurso na sua biblioteca pessoal ou partilhe com a comunidade.",
+      name: "Editar e exportar",
+      text: "Ajusta o conteúdo, valida antes de usar e exporta o material final quando estiver pronto.",
     },
   ],
 );
 
+const homeSchemas = getHomePageSchemas();
+
 export default function Home() {
   return (
     <>
+      {homeSchemas.map((schema, index) => (
+        <Script
+          key={`home-schema-${index}`}
+          id={`home-schema-${index}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(schema),
+          }}
+          strategy="afterInteractive"
+        />
+      ))}
       <Script
         id="howto-schema"
         type="application/ld+json"
