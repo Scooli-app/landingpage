@@ -1,4 +1,5 @@
-﻿import { APP_URL } from "@/lib/seo";
+import { APP_URL } from "@/lib/seo";
+import { Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { Container } from "./Container";
@@ -18,6 +19,19 @@ const legalLinks = [
   { label: "Contacto", href: "/contacto" },
   { label: "Política de Privacidade", href: "/privacy" },
   { label: "Termos de Utilização", href: "/terms" },
+];
+
+const socialLinks = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/scooliapp/",
+    icon: Instagram,
+  },
+  {
+    label: "Facebook",
+    href: "https://www.facebook.com/people/Scooli/61588415560096/",
+    icon: Facebook,
+  },
 ];
 
 export function Footer() {
@@ -53,6 +67,24 @@ export function Footer() {
               >
                 Para escolas
               </Link>
+            </div>
+            <div className="flex items-center gap-3 pt-1">
+              {socialLinks.map((social) => {
+                const Icon = social.icon;
+
+                return (
+                  <Link
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={social.label}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--scooli-border)] text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] hover:text-[color:var(--scooli-primary)]"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
