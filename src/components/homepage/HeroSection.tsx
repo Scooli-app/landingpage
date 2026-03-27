@@ -39,13 +39,13 @@ function HeroPreview() {
         <div className="rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-3 sm:p-4">
           <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
             <video
-              className="aspect-[16/10] w-full object-cover md:aspect-[16/9]"
+              className="pointer-events-none aspect-[16/10] w-full object-cover md:aspect-[16/9]"
               autoPlay
               muted
               loop
               playsInline
-              controls
               preload="metadata"
+              disablePictureInPicture
             >
               <source src={heroVideoSrc} type="video/mp4" />O seu navegador não
               suporta vídeo HTML5.
