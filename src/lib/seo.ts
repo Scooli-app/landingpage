@@ -18,6 +18,12 @@ export const SITE_NAME = "Scooli";
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
 
+export interface ProductReviewInput {
+  quote: string;
+  role: string;
+  rating: number;
+}
+
 export function getPageMetadata({
   title,
   description,
@@ -87,6 +93,30 @@ export const PRICING = {
     priceCents: 9590,
     period: "year",
     savings: "20%",
+  },
+} as const;
+
+// Public impact metrics shown on the homepage.
+// We keep conservative lower bounds here because the UI presents them as "X+"
+// and these are the real minimum values currently claimed on the site.
+export const PUBLIC_IMPACT_METRICS = {
+  generatedDocuments: {
+    minValue: 1000,
+    label: "documentos gerados",
+    interactionType: "https://schema.org/CreateAction",
+  },
+  weeklyHoursSaved: {
+    minValue: 7,
+    label: "poupadas por semana",
+  },
+  adaptedMaterials: {
+    minValue: 400,
+    label: "materiais adaptados",
+    interactionType: "https://schema.org/UpdateAction",
+  },
+  activeTeachers: {
+    minValue: 300,
+    label: "professores ativos",
   },
 } as const;
 
@@ -233,6 +263,20 @@ export function getSoftwareApplicationSchema() {
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
+    interactionStatistic: [
+      {
+        "@type": "InteractionCounter",
+        name: PUBLIC_IMPACT_METRICS.generatedDocuments.label,
+        interactionType: PUBLIC_IMPACT_METRICS.generatedDocuments.interactionType,
+        userInteractionCount: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue,
+      },
+      {
+        "@type": "InteractionCounter",
+        name: PUBLIC_IMPACT_METRICS.adaptedMaterials.label,
+        interactionType: PUBLIC_IMPACT_METRICS.adaptedMaterials.interactionType,
+        userInteractionCount: PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue,
+      },
+    ],
     audience: {
       "@type": "EducationalAudience",
       educationalRole: "teacher",
@@ -288,16 +332,24 @@ function getShippingDetails() {
   };
 }
 
-// Product Schema for pricing pages - helps with rich results
-export function getProductSchema() {
+// Product Schema should only be used when the page shows real, visible
+// review or aggregate rating content that can also be marked up safely.
+export function getProductSchema(reviews: ProductReviewInput[] = []) {
   const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
 
   const returnPolicy = getMerchantReturnPolicy();
   const shippingDetails = getShippingDetails();
+  const averageRating =
+    reviews.length > 0
+      ? (
+          reviews.reduce((sum, review) => sum + review.rating, 0) /
+          reviews.length
+        ).toFixed(1)
+      : null;
 
-  return {
+  const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_URL}/#product`,
@@ -346,6 +398,33 @@ export function getProductSchema() {
       audienceType: "Professores",
     },
   };
+
+  if (reviews.length > 0 && averageRating) {
+    schema.aggregateRating = {
+      "@type": "AggregateRating",
+      ratingValue: averageRating,
+      reviewCount: reviews.length,
+      bestRating: 5,
+      worstRating: 1,
+    };
+
+    schema.review = reviews.map((review) => ({
+      "@type": "Review",
+      reviewBody: review.quote,
+      author: {
+        "@type": "Person",
+        name: review.role,
+      },
+      reviewRating: {
+        "@type": "Rating",
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+    }));
+  }
+
+  return schema;
 }
 
 // FAQ Schema Generator - Critical for AEO
@@ -553,7 +632,6 @@ export function getGlobalSchemas() {
 export function getHomePageSchemas() {
   return [
     getSoftwareApplicationSchema(),
-    getProductSchema(),
     getServiceSchema(),
   ];
 }

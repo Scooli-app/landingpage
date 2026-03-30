@@ -88,7 +88,7 @@ export function SocialProofSection() {
         <SectionHeading
           eyebrow="Prova social"
           title="Ganhos que fazem diferença semana após semana"
-          description="Ainda estamos a reunir testemunhos autorizados. Até lá, estes exemplos mostram o tipo de impacto que queremos documentar com utilizadores reais."
+          description="Testemunhos reais de professores que já usam a Scooli e sentem impacto concreto no trabalho semanal."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">

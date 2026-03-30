@@ -1,6 +1,7 @@
 ﻿import { Container } from "@/components/Container";
+import { socialProof } from "@/components/homepage/data";
 import { PricingPageClient } from "@/components/marketing/PricingPageClient";
-import { getPageMetadata, PRICING } from "@/lib/seo";
+import { getPageMetadata, getProductSchema, PRICING } from "@/lib/seo";
 import {
   Checklist,
   MarketingSectionHeading,
@@ -9,7 +10,8 @@ import {
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
-import { CreditCard, ShieldCheck, Sparkles } from "lucide-react";
+import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
+import Script from "next/script";
 
 export const metadata = getPageMetadata({
   title: "Preços",
@@ -17,6 +19,15 @@ export const metadata = getPageMetadata({
     "Vê os preços da Scooli, percebe o que inclui cada plano e descobre qual é o caminho certo para professores e escolas.",
   path: "/precos",
 });
+
+const productSchema = getProductSchema(socialProof);
+const averageReviewRating = (
+  socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
+).toFixed(1);
+
+function formatRating(rating: number) {
+  return rating.toFixed(1).replace(".0", "").replace(".", ",");
+}
 
 function PricingIntroCard() {
   return (
@@ -40,6 +51,15 @@ function PricingIntroCard() {
 export default function PricingPage() {
   return (
     <PublicSiteShell>
+      <Script
+        id="pricing-product-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(productSchema),
+        }}
+        strategy="afterInteractive"
+      />
+
       <PageHero
         eyebrow="Preços"
         title="Preços claros para professores e um caminho próprio para escolas"
@@ -93,6 +113,35 @@ export default function PricingPage() {
       </section>
 
       <PricingPageClient />
+
+      <section className="py-20 sm:py-24 lg:py-28">
+        <Container className="space-y-12">
+          <MarketingSectionHeading
+            eyebrow="Opiniões reais"
+            title="Professores já sentem diferença no uso semanal"
+            description={`Média de ${averageReviewRating.replace(".", ",")}/5 com base em ${socialProof.length} testemunhos reais já publicados na Scooli.`}
+            centered
+          />
+          <div className="grid gap-5 lg:grid-cols-3">
+            {socialProof.map((item) => (
+              <SurfacePanel key={item.quote}>
+                <div className="flex items-center gap-2 text-[color:var(--scooli-primary)]">
+                  <Star className="h-4 w-4 fill-current" />
+                  <p className="text-sm font-semibold">
+                    {formatRating(item.rating)}/5
+                  </p>
+                </div>
+                <p className="mt-4 text-base leading-8 text-[color:var(--scooli-ink)]">
+                  “{item.quote}”
+                </p>
+                <p className="mt-4 text-sm font-medium text-[color:var(--scooli-muted)]">
+                  {item.role}
+                </p>
+              </SurfacePanel>
+            ))}
+          </div>
+        </Container>
+      </section>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">

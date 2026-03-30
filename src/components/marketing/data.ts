@@ -17,6 +17,7 @@
   WandSparkles,
   type LucideIcon,
 } from "lucide-react";
+import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 
 export type MarketingCard = {
   title: string;
@@ -81,20 +82,20 @@ export const teacherStats = [
 
 export const impactStats = [
   {
-    value: "1000+",
-    label: "documentos gerados",
+    value: `${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`,
+    label: PUBLIC_IMPACT_METRICS.generatedDocuments.label,
   },
   {
-    value: "7h+",
-    label: "poupadas por semana",
+    value: `${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue}h+`,
+    label: PUBLIC_IMPACT_METRICS.weeklyHoursSaved.label,
   },
   {
-    value: "400+",
-    label: "materiais adaptados",
+    value: `${PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue}+`,
+    label: PUBLIC_IMPACT_METRICS.adaptedMaterials.label,
   },
   {
-    value: "300+",
-    label: "professores ativos",
+    value: `${PUBLIC_IMPACT_METRICS.activeTeachers.minValue}+`,
+    label: PUBLIC_IMPACT_METRICS.activeTeachers.label,
   },
 ];
 

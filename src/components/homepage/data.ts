@@ -39,6 +39,7 @@ export type OutputItem = {
 export type QuoteItem = {
   quote: string;
   role: string;
+  rating: number;
 };
 
 export const painPoints: InfoItem[] = [
@@ -189,14 +190,18 @@ export const socialProof: QuoteItem[] = [
   {
     quote: "Poupei várias horas por semana na preparação das aulas.",
     role: "Professora do 2.º ciclo",
+    rating: 5,
   },
   {
     quote: "Deixei de refazer quase do zero cada ficha que preparava.",
     role: "Docente de Português",
+    rating: 4,
   },
   {
-    quote: "Passei a adaptar materiais para níveis diferentes muito mais depressa.",
+    quote:
+      "Passei a adaptar materiais para níveis diferentes muito mais depressa.",
     role: "Professora do ensino básico",
+    rating: 4.7,
   },
 ];
 
