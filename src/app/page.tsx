@@ -8,9 +8,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Crie planificações, fichas e testes em minutos",
+  title: "Scooli | Crie planificações, fichas e testes em minutos",
   description:
-    "Crie planificações, fichas de trabalho e testes com IA, edite tudo ao seu ritmo e exporte materiais prontos a usar. A Scooli foi pensada para professores em Portugal.",
+    "Scooli é uma plataforma de IA para professores em Portugal. Crie planificações, fichas, testes, quizzes e apresentações, adapte materiais e exporte tudo sem começar do zero.",
   keywords: [
     "Scooli",
     "plataforma de IA para professores",
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scooli | Crie planificações, fichas e testes em minutos",
     description:
-      "A Scooli ajuda professores em Portugal a gerar materiais prontos a editar, adaptar à turma e exportar sem começar do zero.",
+      "Scooli é uma plataforma de IA para professores em Portugal. Gere materiais editáveis, adapte-os à turma e exporte tudo sem começar do zero.",
     url: SITE_URL,
     type: "website",
   },
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Scooli | IA prática para professores",
     description:
-      "Planificações, fichas e testes com IA, feitos para poupar tempo e manter o professor no controlo.",
+      "Plataforma de IA para professores em Portugal, com planificações, fichas, testes e adaptações feitas para poupar tempo.",
   },
 };
 
