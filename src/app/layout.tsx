@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
 import { StructuredData } from "@/components/StructuredData";
 import {
   BRAND_KEYWORDS,
@@ -142,13 +143,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         )}
       </head>
       <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">
-        {children}
-        <Toaster
-          position="bottom-right"
-          toastOptions={{
-            className: "glass border border-[color:var(--scooli-border)]",
-          }}
-        />
+        <a href="#main-content" className="skip-link">
+          Saltar para o conteúdo principal
+        </a>
+        <ReducedMotionProvider>
+          {children}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              className: "glass border border-[color:var(--scooli-border)]",
+            }}
+          />
+        </ReducedMotionProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>

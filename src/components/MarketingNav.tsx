@@ -26,6 +26,8 @@ export function MarketingNav() {
   const [scrolled, setScrolled] = useState(false);
   const [toolsOpen, setToolsOpen] = useState(false);
   const [mobileToolsOpen, setMobileToolsOpen] = useState(false);
+  const desktopToolsPanelId = "desktop-tools-panel";
+  const mobileToolsPanelId = "mobile-tools-panel";
 
   const isLinkActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
@@ -90,8 +92,9 @@ export function MarketingNav() {
                 >
                   <Link
                     href={link.href}
-                    aria-haspopup="menu"
                     aria-expanded={toolsOpen}
+                    aria-controls={desktopToolsPanelId}
+                    aria-current={pathname === link.href ? "page" : undefined}
                     className={cn(
                       "inline-flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                       isActive
@@ -104,6 +107,9 @@ export function MarketingNav() {
                   </Link>
 
                   <div
+                    id={desktopToolsPanelId}
+                    role="region"
+                    aria-label="Ferramentas Scooli"
                     className={cn(
                       "absolute left-0 top-full z-20 pt-3 transition-all duration-200",
                       toolsOpen ? "pointer-events-auto translate-y-0 opacity-100" : "pointer-events-none translate-y-2 opacity-0"
@@ -132,6 +138,7 @@ export function MarketingNav() {
                             <Link
                               key={tool.slug}
                               href={`/ferramentas/${tool.slug}`}
+                              aria-current={pathname === `/ferramentas/${tool.slug}` ? "page" : undefined}
                               className={cn(
                                 "rounded-[22px] border px-4 py-4 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                                 isToolActive
@@ -162,6 +169,7 @@ export function MarketingNav() {
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={pathname === link.href ? "page" : undefined}
                 className={cn(
                   "rounded-full px-3 py-2 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                   isActive
@@ -203,7 +211,7 @@ export function MarketingNav() {
       </Container>
 
       {open && (
-        <div id="mobile-menu" className="border-t border-[color:var(--scooli-border)] bg-white/95 xl:hidden">
+        <div id="mobile-menu" role="region" aria-label="Menu principal" className="border-t border-[color:var(--scooli-border)] bg-white/95 xl:hidden">
           <Container className="flex flex-col gap-2 py-4">
             {links.map((link) => {
               const isActive = isLinkActive(link.href);
@@ -214,6 +222,7 @@ export function MarketingNav() {
                     <div className="flex items-center gap-2">
                       <Link
                         href={link.href}
+                        aria-current={pathname === link.href ? "page" : undefined}
                         className={cn(
                           "flex-1 rounded-2xl px-4 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                           isActive
@@ -227,6 +236,7 @@ export function MarketingNav() {
                         type="button"
                         aria-label={mobileToolsOpen ? "Fechar lista de ferramentas" : "Abrir lista de ferramentas"}
                         aria-expanded={mobileToolsOpen}
+                        aria-controls={mobileToolsPanelId}
                         onClick={() => setMobileToolsOpen((previous) => !previous)}
                         className="inline-flex h-11 w-11 items-center justify-center rounded-2xl text-[color:var(--scooli-muted)] transition hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                       >
@@ -235,7 +245,7 @@ export function MarketingNav() {
                     </div>
 
                     {mobileToolsOpen && (
-                      <div className="mt-2 grid gap-2 border-t border-[color:var(--scooli-border)] pt-3">
+                      <div id={mobileToolsPanelId} className="mt-2 grid gap-2 border-t border-[color:var(--scooli-border)] pt-3">
                         {toolPages.map((tool) => {
                           const Icon = toolCardIcons[tool.slug];
                           const isToolActive = isLinkActive(`/ferramentas/${tool.slug}`);
@@ -244,6 +254,7 @@ export function MarketingNav() {
                             <Link
                               key={tool.slug}
                               href={`/ferramentas/${tool.slug}`}
+                              aria-current={pathname === `/ferramentas/${tool.slug}` ? "page" : undefined}
                               className={cn(
                                 "flex items-start gap-3 rounded-2xl px-4 py-3 text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                                 isToolActive
@@ -271,6 +282,7 @@ export function MarketingNav() {
                 <Link
                   key={link.href}
                   href={link.href}
+                  aria-current={pathname === link.href ? "page" : undefined}
                   className={cn(
                     "rounded-2xl px-4 py-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]",
                     isActive

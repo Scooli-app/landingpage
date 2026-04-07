@@ -9,7 +9,12 @@ import { Container } from "@/components/Container";
 
 export default function NotFound() {
   return (
-    <main className="relative min-h-screen overflow-hidden flex items-center justify-center">
+    <main
+      id="main-content"
+      tabIndex={-1}
+      aria-labelledby="not-found-heading"
+      className="relative min-h-screen overflow-hidden flex items-center justify-center"
+    >
       {/* Background gradients */}
       <div className="absolute left-[-12%] top-[-25%] h-[36vh] w-[36vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(103,83,255,0.16),transparent)] blur-3xl" />
       <div className="absolute right-[-8%] bottom-[-14%] h-[28vh] w-[28vw] rounded-full bg-[radial-gradient(circle_at_center,rgba(78,59,192,0.14),transparent)] blur-3xl" />
@@ -63,7 +68,7 @@ export default function NotFound() {
             transition={{ delay: 0.2, duration: 0.5 }}
             className="space-y-3 max-w-md"
           >
-            <h1 className="text-2xl md:text-3xl font-bold text-[color:var(--scooli-ink)]">
+            <h1 id="not-found-heading" className="text-2xl md:text-3xl font-bold text-[color:var(--scooli-ink)]">
               Página não encontrada
             </h1>
             <p className="text-base md:text-lg text-[color:var(--scooli-muted)] leading-relaxed">

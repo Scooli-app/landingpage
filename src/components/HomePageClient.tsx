@@ -13,7 +13,7 @@ export function HomePageClient() {
         <MarketingNav />
       </header>
 
-      <main id="main-content" role="main" className="overflow-hidden">
+      <main id="main-content" role="main" tabIndex={-1} className="overflow-hidden">
         <HeroSection />
         <ImpactSection />
         <ProblemSection />

@@ -43,28 +43,26 @@ export function Footer() {
       <Container className="space-y-10">
         <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="space-y-4">
-            <Link href="/" aria-label="Scooli - Página inicial">
-              <Image
-                src="/scooli.svg"
-                alt="Logótipo Scooli"
-                width={100}
-                height={40}
-              />
+            <Link
+              href="/"
+              aria-label="Scooli - Página inicial"
+              className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
+            >
+              <Image src="/scooli.svg" alt="Logótipo Scooli" width={100} height={40} />
             </Link>
             <p className="max-w-md text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Feito em Portugal para professores que querem preparar melhor,
-              adaptar mais depressa e recuperar tempo.
+              Feito em Portugal para professores que querem preparar melhor, adaptar mais depressa e recuperar tempo.
             </p>
             <div className="flex flex-wrap gap-2">
               <Link
                 href={`${APP_URL}/sign-up`}
-                className="rounded-full bg-[color:var(--scooli-primary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)]"
+                className="rounded-full bg-[color:var(--scooli-primary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
               >
                 Começar gratuitamente
               </Link>
               <Link
                 href="/escolas"
-                className="rounded-full border border-[color:var(--scooli-border)] px-4 py-2 text-sm font-semibold text-[color:var(--scooli-ink)] transition hover:bg-[color:var(--scooli-accent)]"
+                className="rounded-full border border-[color:var(--scooli-border)] px-4 py-2 text-sm font-semibold text-[color:var(--scooli-ink)] transition hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
               >
                 Para escolas
               </Link>
@@ -79,8 +77,8 @@ export function Footer() {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={social.label}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--scooli-border)] text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] hover:text-[color:var(--scooli-primary)]"
+                    aria-label={`${social.label} da Scooli`}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--scooli-border)] text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
                     <Icon className="h-4 w-4" />
                   </Link>
@@ -90,39 +88,35 @@ export function Footer() {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Explorar
-              </p>
+            <nav aria-label="Explorar">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Explorar</p>
               <div className="mt-4 grid gap-2">
                 {primaryLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)]"
+                    className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
                     {link.label}
                   </Link>
                 ))}
               </div>
-            </div>
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Legal e contacto
-              </p>
+            </nav>
+            <nav aria-label="Legal e contacto">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Legal e contacto</p>
               <div className="mt-4 grid gap-2">
                 {legalLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className="text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)]"
+                    className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
                     {link.label}
                   </Link>
                 ))}
                 <Link
                   href={`${APP_URL}/sign-in`}
-                  className="text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)]"
+                  className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                 >
                   Entrar
                 </Link>
@@ -131,7 +125,7 @@ export function Footer() {
                   showIcon={false}
                 />
               </div>
-            </div>
+            </nav>
           </div>
         </div>
 
