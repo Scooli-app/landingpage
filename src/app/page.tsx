@@ -1,16 +1,12 @@
 import { HomePageClient } from "@/components/HomePageClient";
 import { StructuredData } from "@/components/StructuredData";
-import {
-  getHomePageSchemas,
-  getHowToSchema,
-  SITE_URL,
-} from "@/lib/seo";
+import { getHomePageSchemas, getHowToSchema, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Scooli | Crie planificações, fichas e testes em minutos",
   description:
-    "Scooli é uma plataforma de IA para professores em Portugal. Crie planificações, fichas, testes, quizzes e apresentações, adapte materiais e exporte tudo sem começar do zero.",
+    "Scooli é uma plataforma de IA para professores em Portugal. Crie planificações, fichas, testes, quizzes e apresentações de acordo com as Aprendizagens Essenciais, adapte materiais e exporte tudo sem começar do zero.",
   keywords: [
     "Scooli",
     "plataforma de IA para professores",
@@ -57,6 +53,7 @@ export const metadata: Metadata = {
     "partilha de recursos educativos",
     "comunidade de professores",
     "aprendizagens essenciais",
+    "alinhamento curricular",
     "currículo português",
     "ensino básico",
     "ensino secundário",
@@ -70,7 +67,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Scooli | Crie planificações, fichas e testes em minutos",
     description:
-      "Scooli é uma plataforma de IA para professores em Portugal. Gere materiais editáveis, adapte-os à turma e exporte tudo sem começar do zero.",
+      "Scooli é uma plataforma de IA para professores em Portugal. Gere materiais editáveis de acordo com as Aprendizagens Essenciais, adapte-os à turma e exporte tudo sem começar do zero.",
     url: SITE_URL,
     type: "website",
   },
@@ -78,7 +75,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Scooli | IA prática para professores",
     description:
-      "Plataforma de IA para professores em Portugal, com planificações, fichas, testes e adaptações feitas para poupar tempo.",
+      "Plataforma de IA para professores em Portugal, com planificações, fichas, testes e adaptações segundo as Aprendizagens Essenciais.",
   },
 };
 
@@ -96,7 +93,7 @@ const howToSchema = getHowToSchema(
     },
     {
       name: "Dar contexto ou carregar material",
-      text: "Indica o tema, o ano e o objetivo da aula, ou parte de um documento que já tens.",
+      text: "Indica o tema, o ano, o objetivo da aula e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tens.",
     },
     {
       name: "Gerar com IA",

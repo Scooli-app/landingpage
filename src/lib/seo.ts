@@ -137,6 +137,9 @@ export const BRAND_KEYWORDS = [
   "edtech Portugal",
   "currículo português",
   "aprendizagens essenciais",
+  "alinhamento curricular",
+  "conteúdos alinhados com aprendizagens essenciais",
+  "plataforma para professores em portugal",
   "recursos educativos",
   "biblioteca comunitária",
   "ferramentas para professores",
@@ -166,7 +169,7 @@ export function getOrganizationSchema() {
       height: 512,
     },
     description:
-      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planificações, testes e quizzes alinhados com o currículo.",
+      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais, para melhor alinhamento curricular, qualidade e confiança.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
@@ -191,7 +194,7 @@ export function getWebsiteSchema() {
     name: SITE_NAME,
     url: SITE_URL,
     description:
-      "Scooli - Ferramentas de IA para professores criarem apresentações, planificações, testes e quizzes.",
+      "Scooli - Ferramentas de IA para professores criarem apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais.",
     inLanguage: SITE_LANGUAGE,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
@@ -211,7 +214,7 @@ export function getSoftwareApplicationSchema() {
     "@id": `${SITE_URL}/#app`,
     name: SITE_NAME,
     description:
-      "Plataforma de inteligência artificial para professores em Portugal. Gera apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais.",
+      "Plataforma de inteligência artificial para professores em Portugal. Gera apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais, para melhor alinhamento curricular, qualidade e confiança.",
     url: SITE_URL,
     applicationCategory: "EducationalApplication",
     operatingSystem: "Web",
@@ -250,7 +253,7 @@ export function getSoftwareApplicationSchema() {
       "Geração de apresentações com IA",
       "Criação de planificações",
       "Geração de testes e quizzes",
-      "Alinhamento com aprendizagens essenciais",
+      "Conteúdos de acordo com as Aprendizagens Essenciais",
       "Biblioteca comunitária",
       "Upload e transformação de documentos",
       "Templates personalizáveis",
@@ -543,7 +546,7 @@ export function getServiceSchema() {
     "@id": `${SITE_URL}/#service`,
     name: "Scooli - Geração de Recursos Educativos com IA",
     description:
-      "Serviço de geração automática de apresentações, planificações, testes e quizzes para professores em Portugal, utilizando inteligência artificial alinhada com o currículo nacional.",
+      "Serviço de geração automática de apresentações, planificações, testes e quizzes para professores em Portugal, utilizando inteligência artificial de acordo com as Aprendizagens Essenciais para melhor alinhamento curricular, qualidade e confiança.",
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },

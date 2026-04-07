@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { trustCards } from "@/components/marketing/data";
 import {
   InfoCard,
@@ -12,7 +12,7 @@ import Link from "next/link";
 export const metadata = getPageMetadata({
   title: "Confiança e Privacidade",
   description:
-    "Percebe como a Scooli trata privacidade, revisão humana e uso responsável da IA com linguagem simples e direta.",
+    "Percebe como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta.",
   path: "/confianca",
 });
 
@@ -21,6 +21,7 @@ const summaryPoints = [
   "Professor no controlo do resultado final",
   "Os dados dos utilizadores não são usados para treinar modelos",
   "Revisão humana antes de usar em aula",
+  "Materiais orientados pelas Aprendizagens Essenciais",
 ];
 
 const commitments = [
@@ -40,6 +41,11 @@ const commitments = [
       "Os outputs devem ser revistos, ajustados e validados antes de serem usados com alunos.",
   },
   {
+    title: "Alinhamento com Aprendizagens Essenciais",
+    description:
+      "A Scooli é posicionada para gerar materiais de acordo com as Aprendizagens Essenciais, o que ajuda a reforçar alinhamento curricular, qualidade do conteúdo e confiança.",
+  },
+  {
     title: "Privacidade explicada sem jargão",
     description:
       "A postura da Scooli sobre privacidade e uso responsável pode ser percebida rapidamente, sem depender só dos textos legais.",
@@ -49,6 +55,7 @@ const commitments = [
 const goodPractices = [
   "Evita inserir dados pessoais desnecessários de alunos.",
   "Usa contexto pedagógico sempre que possível, em vez de informação identificável.",
+  "Confirma sempre que o material final está alinhado com as Aprendizagens Essenciais e com o teu contexto de aula.",
   "Trata a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica.",
 ];
 
@@ -62,10 +69,10 @@ export default function TrustPage() {
             <MarketingSectionBadge>Confiança e Privacidade</MarketingSectionBadge>
             <div className="max-w-4xl space-y-4">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                Privacidade, revisão humana e uso responsável, explicados sem jargão
+                Privacidade, revisão humana, alinhamento curricular e uso responsável, explicados sem jargão
               </h1>
               <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Se queres perceber rapidamente como a Scooli lida com estes temas, aqui tens o essencial: o que acontece aos dados, onde fica o controlo do professor e que cuidados devem existir antes de usar materiais em aula.
+                Se queres perceber rapidamente como a Scooli lida com estes temas, aqui tens o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.
               </p>
             </div>
 
@@ -111,10 +118,7 @@ export default function TrustPage() {
               </h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {commitments.map((item) => (
-                  <div
-                    key={item.title}
-                    className="rounded-[24px] border border-slate-200 bg-slate-50 p-5"
-                  >
+                  <div key={item.title} className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
                     <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{item.title}</p>
                     <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{item.description}</p>
                   </div>

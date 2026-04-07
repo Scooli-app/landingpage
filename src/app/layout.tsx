@@ -1,6 +1,6 @@
-import { Toaster } from "@/components/ui/sonner";
 import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
 import { StructuredData } from "@/components/StructuredData";
+import { Toaster } from "@/components/ui/sonner";
 import {
   BRAND_KEYWORDS,
   getGlobalSchemas,
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Crie planificações, fichas e testes com IA, edite tudo ao seu ritmo e recupere tempo para ensinar. A Scooli foi pensada para professores em Portugal.",
+    "Crie planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, edite tudo ao seu ritmo e recupere tempo para ensinar. A Scooli foi pensada para professores em Portugal.",
   keywords: [...BRAND_KEYWORDS],
   authors: [{ name: SITE_NAME, url: SITE_URL }],
   creator: SITE_NAME,
@@ -85,13 +85,13 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: `${SITE_NAME} | Planificações, fichas e testes em minutos`,
     description:
-      "A Scooli ajuda professores em Portugal a criar materiais prontos a editar, adaptar à turma e exportar sem começar do zero.",
+      "A Scooli ajuda professores em Portugal a criar materiais prontos a editar de acordo com as Aprendizagens Essenciais, adaptar à turma e exportar sem começar do zero.",
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} | IA prática para professores`,
     description:
-      "Planificações, fichas e testes com IA, feitos para poupar tempo e manter o professor no controlo.",
+      "Planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, feitos para poupar tempo e manter o professor no controlo.",
     creator: "@scooli_app",
     site: "@scooli_app",
   },
@@ -117,7 +117,7 @@ export const metadata: Metadata = {
     "DC.creator": SITE_NAME,
     "DC.subject": "Educação, Inteligência Artificial, Professores, Portugal",
     "DC.description":
-      "Ferramenta para criar planificações, fichas e testes com IA em contexto escolar português",
+      "Ferramenta para criar planificações, fichas e testes com IA em contexto escolar português, de acordo com as Aprendizagens Essenciais",
     "DC.publisher": SITE_NAME,
     "DC.language": SITE_LANGUAGE,
     "DC.type": "Software",

@@ -1,8 +1,7 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { OutputCard } from "@/components/homepage/OutputCard";
 import { outputs } from "@/components/homepage/data";
 import { teacherPageCards } from "@/components/marketing/data";
-import { getPageMetadata } from "@/lib/seo";
 import {
   Checklist,
   InfoCard,
@@ -12,12 +11,13 @@ import {
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
+import { getPageMetadata } from "@/lib/seo";
 import { CalendarClock, LibraryBig } from "lucide-react";
 
 export const metadata = getPageMetadata({
   title: "Para professores",
   description:
-    "Descobre como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo e mais controlo.",
+    "Descobre como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
   path: "/professores",
 });
 
@@ -48,7 +48,7 @@ export default function TeachersPage() {
       <PageHero
         eyebrow="Para professores"
         title="Uma forma mais simples de preparar aulas, fichas e testes sem começar do zero"
-        description="A Scooli ajuda-te a ganhar tempo nas tarefas que mais se repetem, mantendo sempre o controlo do conteúdo final antes de usar em aula."
+        description="A Scooli ajuda-te a ganhar tempo nas tarefas que mais se repetem, mantendo sempre o controlo do conteúdo final antes de usar em aula. O objetivo é gerar materiais editáveis de acordo com as Aprendizagens Essenciais, com melhor alinhamento curricular e mais confiança no ponto de partida."
         secondaryHref="/biblioteca"
         secondaryLabel="Ver biblioteca"
         aside={<WeeklyFlowPreview />}
@@ -56,8 +56,8 @@ export default function TeachersPage() {
         <Checklist
           items={[
             "Criar materiais em minutos",
+            "Alinhar melhor com as Aprendizagens Essenciais",
             "Editar tudo antes de usar",
-            "Reutilizar materiais da comunidade",
           ]}
         />
       </PageHero>
@@ -67,7 +67,7 @@ export default function TeachersPage() {
           <MarketingSectionHeading
             eyebrow="Como ajuda"
             title="O que muda na prática durante a semana"
-            description="A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptar recursos para turmas diferentes."
+            description="A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptar recursos para turmas diferentes, sempre com o contexto do currículo português em mente."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -129,7 +129,7 @@ export default function TeachersPage() {
             <div className="mt-6 space-y-3">
               {[
                 "Preparar uma aula mais depressa no início da semana",
-                "Gerar uma ficha de consolidação a meio",
+                "Gerar uma ficha de consolidação alinhada com as Aprendizagens Essenciais",
                 "Fechar um teste ou quiz sem reconstruir a estrutura toda",
               ].map((item) => (
                 <div key={item} className="rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">

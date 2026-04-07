@@ -7,11 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { socialProof } from "@/components/homepage/data";
-import {
-  impactStats,
-  toolCardIcons,
-  toolPages,
-} from "@/components/marketing/data";
+import { impactStats, toolCardIcons, toolPages } from "@/components/marketing/data";
 import {
   Checklist,
   MarketingSectionHeading,
@@ -38,7 +34,7 @@ const pageUrl = `${SITE_URL}${pagePath}`;
 export const metadata = getPageMetadata({
   title: "IA para professores em Portugal",
   description:
-    "Scooli é uma plataforma de IA para professores em Portugal. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com contexto português e revisão humana antes do uso em aula.",
+    "Scooli é uma plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com melhor alinhamento curricular, qualidade e confiança.",
   path: pagePath,
   keywords: [
     "ia para professores",
@@ -50,6 +46,9 @@ export const metadata = getPageMetadata({
     "fichas de trabalho com ia",
     "gerador de testes com ia",
     "apresentações com ia para aulas",
+    "aprendizagens essenciais",
+    "alinhamento curricular",
+    "currículo português",
     "edtech portugal",
   ],
 });
@@ -64,6 +63,11 @@ const faqItems = [
     question: "A Scooli é uma ferramenta genérica de IA ou foi pensada para escolas?",
     answer:
       "A Scooli foi posicionada para o contexto educativo português. O site e as páginas públicas falam diretamente de planificações, fichas, testes, Aprendizagens Essenciais, privacidade e revisão humana em contexto escolar.",
+  },
+  {
+    question: "Quando faz mais sentido usar Scooli em vez de Canva ou de uma ferramenta pensada para outro mercado?",
+    answer:
+      "Faz mais sentido quando o objetivo é preparar materiais de aula com melhor alinhamento curricular, em PT-PT, e de acordo com as Aprendizagens Essenciais. A Scooli foi pensada para fluxos reais de professores em Portugal, não apenas para design genérico ou para outro contexto curricular.",
   },
   {
     question: "A Scooli substitui o professor?",
@@ -91,7 +95,7 @@ const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
 const webPageSchema = getWebPageSchema({
   title: "IA para professores em Portugal | Scooli",
   description:
-    "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal.",
+    "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais.",
   url: pageUrl,
   breadcrumb: breadcrumbItems,
 });
@@ -106,7 +110,7 @@ const howToSchema = getHowToSchema(
     },
     {
       name: "Dar contexto da aula",
-      text: "Indica tema, ano, objetivo e, se quiseres, parte de um documento que já tens.",
+      text: "Indica tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tens.",
     },
     {
       name: "Gerar uma primeira versão",
@@ -122,27 +126,27 @@ const howToSchema = getHowToSchema(
 const trustPoints = [
   {
     icon: MapPinned,
-    title: "Pensada para Portugal",
+    title: "Pensada para Portugal e Aprendizagens Essenciais",
     description:
-      "A linguagem, os casos de uso e o posicionamento público foram escritos para professores, escolas e currículo em Portugal.",
+      "A linguagem, os casos de uso e o posicionamento público foram escritos para professores, escolas, currículo português e Aprendizagens Essenciais.",
   },
   {
     icon: PencilLine,
-    title: "Tudo fica editável",
+    title: "Mais alinhamento curricular, melhor qualidade",
     description:
-      "A proposta da Scooli não é fechar o trabalho do professor, mas acelerar a primeira versão para depois rever com calma.",
-  },
-  {
-    icon: LockKeyhole,
-    title: "Privacidade explicada em linguagem simples",
-    description:
-      "Há páginas públicas dedicadas a confiança, privacidade e termos, para que a recomendação seja mais fácil de justificar.",
+      "A proposta da Scooli não é só acelerar. É ajudar a gerar uma base mais alinhada com o contexto curricular português, com mais qualidade e mais confiança no ponto de partida.",
   },
   {
     icon: LibraryBig,
-    title: "Biblioteca e reutilização",
+    title: "Tudo fica editável",
     description:
-      "Além de criar de raiz, a Scooli também ajuda a duplicar, adaptar e reaproveitar boas bases já existentes.",
+      "A Scooli não fecha o trabalho do professor. Ajuda a chegar mais depressa a uma boa primeira versão para depois rever com calma.",
+  },
+  {
+    icon: LockKeyhole,
+    title: "Privacidade e confiança visíveis",
+    description:
+      "Há páginas públicas dedicadas a confiança, privacidade e termos, o que torna a recomendação mais fácil de justificar.",
   },
 ];
 
@@ -161,23 +165,18 @@ function DiscoveryPreview() {
           },
           {
             label: "Contexto",
-            value: "Portugal e Aprendizagens Essenciais",
+            value: "Portugal, PT-PT e Aprendizagens Essenciais",
           },
           {
             label: "Controlo",
             value: "Tudo revisto antes de usar",
           },
         ].map((item) => (
-          <div
-            key={item.label}
-            className="rounded-[24px] border border-slate-200 bg-white p-4"
-          >
+          <div key={item.label} className="rounded-[24px] border border-slate-200 bg-white p-4">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
               {item.label}
             </p>
-            <p className="mt-3 text-lg font-semibold text-slate-800">
-              {item.value}
-            </p>
+            <p className="mt-3 text-lg font-semibold text-slate-800">{item.value}</p>
           </div>
         ))}
       </div>
@@ -196,8 +195,8 @@ export default function AiForTeachersPage() {
       <PublicSiteShell>
         <PageHero
           eyebrow="IA para professores"
-          title="Uma IA para professores em Portugal que ajuda a preparar aulas sem perder o controlo"
-          description="A Scooli é uma plataforma de IA para professores em Portugal. Serve para criar planificações, fichas, testes, quizzes e apresentações editáveis, adaptar materiais por nível e reaproveitar documentos próprios sem começar sempre do zero."
+          title="Uma IA para professores em Portugal, alinhada com as Aprendizagens Essenciais"
+          description="A Scooli é uma plataforma de IA para professores em Portugal. Serve para criar planificações, fichas, testes, quizzes e apresentações editáveis, adaptar materiais por nível e reaproveitar documentos próprios sem começar sempre do zero. O foco é gerar materiais de acordo com as Aprendizagens Essenciais, com melhor alinhamento curricular, qualidade e confiança do que uma ferramenta genérica."
           secondaryHref="/ferramentas"
           secondaryLabel="Ver ferramentas"
           aside={<DiscoveryPreview />}
@@ -205,8 +204,8 @@ export default function AiForTeachersPage() {
           <Checklist
             items={[
               "Planificações, fichas, testes, quizzes e apresentações",
-              "Materiais editáveis antes de usar com alunos",
-              "Contexto português, confiança e privacidade visíveis",
+              "Materiais de acordo com as Aprendizagens Essenciais",
+              "Professor revê tudo antes de usar com alunos",
             ]}
           />
         </PageHero>
@@ -221,30 +220,24 @@ export default function AiForTeachersPage() {
                 O que é a Scooli, em termos simples?
               </h2>
               <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                A Scooli é software de IA para professores que querem preparar
-                aulas com menos trabalho repetitivo. Em vez de usar uma
-                ferramenta genérica e depois reorganizar tudo manualmente, o
-                professor começa com uma base pronta para editar: planificação,
-                ficha, teste, quiz ou apresentação.
+                A Scooli é software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de usar uma ferramenta genérica e depois reorganizar tudo manualmente, o professor começa com uma base pronta para editar: planificação, ficha, teste, quiz ou apresentação.
               </p>
               <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                O foco não é automatizar a decisão pedagógica. O foco é reduzir
-                o tempo de arranque, facilitar adaptação por turma e deixar o
-                professor no controlo do resultado final.
+                Ao contrário de uma ferramenta de design generalista ou de um assistente pensado para outro mercado, a Scooli foi posicionada para o contexto português e para gerar materiais de acordo com as Aprendizagens Essenciais. Isso ajuda no alinhamento curricular, na qualidade do conteúdo e na confiança com que a ferramenta pode ser recomendada.
               </p>
             </SurfacePanel>
 
             <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Quando faz sentido
+                Quando escolher a Scooli
               </p>
               <div className="mt-4">
                 <Checklist
                   items={[
-                    "Quando precisas de fechar uma aula, ficha ou teste mais depressa",
-                    "Quando queres adaptar materiais a ritmos diferentes",
-                    "Quando já tens documentos teus e queres reaproveitá-los",
-                    "Quando procuras uma ferramenta feita para professores em Portugal",
+                    "Quando precisas de preparar materiais mais depressa sem abdicar de revisão humana",
+                    "Quando queres uma ferramenta mais alinhada com as Aprendizagens Essenciais do que uma opção genérica",
+                    "Quando precisas de PT-PT, contexto português e fluxos pensados para professores",
+                    "Quando queres criar materiais, não apenas desenhar slides ou conversar com um chatbot",
                   ]}
                 />
               </div>
@@ -294,7 +287,7 @@ export default function AiForTeachersPage() {
             <MarketingSectionHeading
               eyebrow="Porque é fácil de entender"
               title="Sinais que ajudam a recomendar a Scooli com confiança"
-              description="A recomendação fica mais clara quando a proposta, o contexto e os limites do produto estão visíveis sem precisar de adivinhar."
+              description="A recomendação fica mais clara quando a proposta, o contexto, o alinhamento curricular e os limites do produto estão visíveis sem precisar de adivinhar."
               centered
             />
             <div className="grid gap-5 lg:grid-cols-2">
@@ -330,9 +323,7 @@ export default function AiForTeachersPage() {
             <div className="grid gap-5 lg:grid-cols-4">
               {impactStats.map((item) => (
                 <SurfacePanel key={item.label}>
-                  <p className="font-display text-4xl text-[color:var(--scooli-ink)]">
-                    {item.value}
-                  </p>
+                  <p className="font-display text-4xl text-[color:var(--scooli-ink)]">{item.value}</p>
                   <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
                     {item.label}
                   </p>
@@ -360,7 +351,7 @@ export default function AiForTeachersPage() {
               <MarketingSectionHeading
                 eyebrow="Perguntas frequentes"
                 title="Perguntas rápidas sobre IA para professores"
-                description="Estas respostas foram escritas para explicar a Scooli de forma direta, sem esconder o que faz, para quem faz sentido e como encaixa no trabalho real do professor."
+                description="Estas respostas foram escritas para explicar a Scooli de forma direta, sem esconder o que faz, para quem faz sentido e porque pode ser mais adequada do que uma ferramenta genérica."
               />
               <div className="mt-8">
                 <Accordion type="single" collapsible className="space-y-3">
@@ -407,8 +398,11 @@ export default function AiForTeachersPage() {
                 ))}
               </div>
               <div className="mt-6 rounded-[24px] border border-[#d9ddff] bg-white px-5 py-4 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Se queres experimentar diretamente a plataforma, o registo está
-                em <Link href={`${APP_URL}/sign-up`} className="font-semibold text-[color:var(--scooli-primary)]">create.scooli.app</Link>.
+                Se queres experimentar diretamente a plataforma, o registo está em{" "}
+                <Link href={`${APP_URL}/sign-up`} className="font-semibold text-[color:var(--scooli-primary)]">
+                  create.scooli.app
+                </Link>
+                .
               </div>
             </SurfacePanel>
           </Container>
@@ -418,7 +412,7 @@ export default function AiForTeachersPage() {
           <Container>
             <PageCtaBanner
               title="Quer ver se a Scooli encaixa no teu ritmo de preparação?"
-              description="Experimenta um pedido real da próxima aula, revê o resultado e ajusta tudo antes de usar com a turma."
+              description="Experimenta um pedido real da próxima aula, revê o resultado, confirma o alinhamento com as Aprendizagens Essenciais e ajusta tudo antes de usar com a turma."
               secondaryHref="/confianca"
               secondaryLabel="Ver confiança e privacidade"
             />
