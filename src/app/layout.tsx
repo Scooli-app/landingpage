@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/sonner";
+import { StructuredData } from "@/components/StructuredData";
 import {
   BRAND_KEYWORDS,
   getGlobalSchemas,
@@ -130,12 +131,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="pt-PT" className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
         {schemas.map((schema, index) => (
-          <script
+          <StructuredData
             key={`schema-${index}`}
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(schema),
-            }}
+            id={`schema-${index}`}
+            data={schema}
           />
         ))}
         {process.env.NODE_ENV === "production" && (

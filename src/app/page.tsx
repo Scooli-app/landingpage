@@ -1,11 +1,11 @@
-﻿import { HomePageClient } from "@/components/HomePageClient";
+import { HomePageClient } from "@/components/HomePageClient";
+import { StructuredData } from "@/components/StructuredData";
 import {
   getHomePageSchemas,
   getHowToSchema,
   SITE_URL,
 } from "@/lib/seo";
 import type { Metadata } from "next";
-import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Scooli | Crie planificações, fichas e testes em minutos",
@@ -115,24 +115,13 @@ export default function Home() {
   return (
     <>
       {homeSchemas.map((schema, index) => (
-        <Script
+        <StructuredData
           key={`home-schema-${index}`}
           id={`home-schema-${index}`}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(schema),
-          }}
-          strategy="afterInteractive"
+          data={schema}
         />
       ))}
-      <Script
-        id="howto-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(howToSchema),
-        }}
-        strategy="afterInteractive"
-      />
+      <StructuredData id="howto-schema" data={howToSchema} />
 
       <HomePageClient />
     </>

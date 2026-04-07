@@ -7,6 +7,7 @@ import { EmailContact } from "./EmailContact";
 
 const primaryLinks = [
   { label: "Professores", href: "/professores" },
+  { label: "IA para professores", href: "/ia-para-professores" },
   { label: "Escolas", href: "/escolas" },
   { label: "Biblioteca", href: "/biblioteca" },
   { label: "Ferramentas", href: "/ferramentas" },

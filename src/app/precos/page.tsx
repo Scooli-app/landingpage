@@ -1,4 +1,5 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
+import { StructuredData } from "@/components/StructuredData";
 import { socialProof } from "@/components/homepage/data";
 import { PricingPageClient } from "@/components/marketing/PricingPageClient";
 import { getPageMetadata, getProductSchema, PRICING } from "@/lib/seo";
@@ -11,7 +12,6 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
-import Script from "next/script";
 
 export const metadata = getPageMetadata({
   title: "Preços",
@@ -34,14 +34,28 @@ function PricingIntroCard() {
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-[24px] border border-slate-200 bg-white p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Plano gratuito</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-800">{PRICING.free.generationsPerMonth} gerações / mês</p>
-          <p className="mt-2 text-sm text-slate-500">Para experimentar a Scooli com pedidos reais e perceber o fluxo de trabalho.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Plano gratuito
+          </p>
+          <p className="mt-2 text-2xl font-semibold text-slate-800">
+            {PRICING.free.generationsPerMonth} gerações / mês
+          </p>
+          <p className="mt-2 text-sm text-slate-500">
+            Para experimentar a Scooli com pedidos reais e perceber o fluxo de
+            trabalho.
+          </p>
         </div>
         <div className="rounded-[24px] border border-slate-200 bg-white p-4">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Plano Pro</p>
-          <p className="mt-2 text-2xl font-semibold text-slate-800">Uso contínuo com mais liberdade</p>
-          <p className="mt-2 text-sm text-slate-500">Para quem quer usar a plataforma todas as semanas sem pensar em limites curtos.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Plano Pro
+          </p>
+          <p className="mt-2 text-2xl font-semibold text-slate-800">
+            Uso contínuo com mais liberdade
+          </p>
+          <p className="mt-2 text-sm text-slate-500">
+            Para quem quer usar a plataforma todas as semanas sem pensar em
+            limites curtos.
+          </p>
         </div>
       </div>
     </SurfacePanel>
@@ -51,14 +65,7 @@ function PricingIntroCard() {
 export default function PricingPage() {
   return (
     <PublicSiteShell>
-      <Script
-        id="pricing-product-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(productSchema),
-        }}
-        strategy="afterInteractive"
-      />
+      <StructuredData id="pricing-product-schema" data={productSchema} />
 
       <PageHero
         eyebrow="Preços"
@@ -83,30 +90,39 @@ export default function PricingPage() {
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
               <Sparkles className="h-5 w-5" />
             </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">O que é uma geração?</h3>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              O que é uma geração?
+            </h3>
             <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Na prática, uma geração é cada novo documento criado com IA. Se pedires outra versão do mesmo material,
-              isso conta como uma nova geração.
+              Na prática, uma geração é cada novo documento criado com IA. Se
+              pedires outra versão do mesmo material, isso conta como uma nova
+              geração.
             </p>
           </SurfacePanel>
           <SurfacePanel>
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
               <ShieldCheck className="h-5 w-5" />
             </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">Uso justo sem letras pequenas</h3>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              Uso justo sem letras pequenas
+            </h3>
             <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              No Pro não tens um limite mensal rígido. A política de uso justo existe para evitar abuso automatizado e
-              manter a qualidade do serviço para todos.
+              No Pro não tens um limite mensal rígido. A política de uso justo
+              existe para evitar abuso automatizado e manter a qualidade do
+              serviço para todos.
             </p>
           </SurfacePanel>
           <SurfacePanel>
             <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
               <CreditCard className="h-5 w-5" />
             </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">Professores e escolas não seguem o mesmo caminho</h3>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              Professores e escolas não seguem o mesmo caminho
+            </h3>
             <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Professores podem começar logo. Escolas e agrupamentos têm um percurso próprio, com contacto inicial e
-              avaliação do contexto antes de avançar.
+              Professores podem começar logo. Escolas e agrupamentos têm um
+              percurso próprio, com contacto inicial e avaliação do contexto
+              antes de avançar.
             </p>
           </SurfacePanel>
         </Container>
@@ -153,24 +169,31 @@ export default function PricingPage() {
           />
           <div className="grid gap-5 lg:grid-cols-3">
             <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Pagamento</p>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Pagamento
+              </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Os pagamentos são processados de forma segura. Se precisares de ajuda com faturação ou subscrição,
-                responde-nos por email.
+                Os pagamentos são processados de forma segura. Se precisares de
+                ajuda com faturação ou subscrição, responde-nos por email.
               </p>
             </SurfacePanel>
             <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Uso justo</p>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Uso justo
+              </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Queremos que possas trabalhar com liberdade. Só intervimos quando há padrões anómalos ou automatizados
-                que coloquem o serviço em risco.
+                Queremos que possas trabalhar com liberdade. Só intervimos
+                quando há padrões anómalos ou automatizados que coloquem o
+                serviço em risco.
               </p>
             </SurfacePanel>
             <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Escolas</p>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Escolas
+              </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Para equipas, agrupamentos ou projetos-piloto, definimos o percurso caso a caso, sempre com contacto
-                direto com a equipa.
+                Para equipas, agrupamentos ou projetos-piloto, definimos o
+                percurso caso a caso, sempre com contacto direto com a equipa.
               </p>
             </SurfacePanel>
           </div>

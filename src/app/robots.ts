@@ -2,100 +2,91 @@ import { SITE_URL } from "@/lib/seo";
 import type { MetadataRoute } from "next";
 
 /**
- * Robots.txt configuration optimized for SEO and AEO (Answer Engine Optimization)
+ * Robots configuration for search visibility and AI discovery.
  *
- * This configuration:
- * - Allows all major search engine crawlers
- * - Explicitly allows AI/LLM crawlers for AEO (GPTBot, Google-Extended, etc.)
- * - Blocks sensitive paths (API, admin, internal Next.js routes)
- * - Points to sitemap for better crawl efficiency
+ * OpenAI currently separates:
+ * - OAI-SearchBot: search inclusion and citation in ChatGPT Search
+ * - ChatGPT-User: user-triggered browsing / agent fetches
+ * - GPTBot: model-training crawler
  */
 export default function robots(): MetadataRoute.Robots {
+  const sharedDisallow = ["/api/", "/admin/"];
+
   return {
     rules: [
-      // Main rule for all standard crawlers
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/admin/", "/*.json$", "/private/"],
+        disallow: [...sharedDisallow, "/*.json$", "/private/"],
       },
-      // Google Search crawler - full access
       {
         userAgent: "Googlebot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Bing crawler - full access
       {
         userAgent: "Bingbot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Google Extended (AI features like Bard/SGE) - ALLOW for AEO
       {
         userAgent: "Google-Extended",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // OpenAI's GPTBot - ALLOW for ChatGPT search features (AEO)
       {
-        userAgent: "GPTBot",
+        userAgent: "OAI-SearchBot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // OpenAI's ChatGPT-User - ALLOW for ChatGPT browsing
       {
         userAgent: "ChatGPT-User",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Anthropic's AI crawler - ALLOW for Claude search features
+      {
+        userAgent: "GPTBot",
+        disallow: "/",
+      },
       {
         userAgent: "anthropic-ai",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Anthropic's Claude-Web - ALLOW for Claude browsing
       {
         userAgent: "Claude-Web",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Common Crawl (used by many AI training datasets) - ALLOW
       {
         userAgent: "CCBot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Perplexity AI crawler - ALLOW for Perplexity search
       {
         userAgent: "PerplexityBot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Meta AI crawler - ALLOW
       {
         userAgent: "FacebookBot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Apple's Applebot (Siri, Spotlight) - ALLOW
       {
         userAgent: "Applebot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // DuckDuckGo crawler - ALLOW
       {
         userAgent: "DuckDuckBot",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
-      // Yandex crawler - ALLOW
       {
         userAgent: "Yandex",
         allow: "/",
-        disallow: ["/api/", "/admin/"],
+        disallow: sharedDisallow,
       },
     ],
     sitemap: `${SITE_URL}/sitemap.xml`,

@@ -1,8 +1,8 @@
 import { Container } from "@/components/Container";
 import { PrivacyPolicy } from "@/components/PrivacyPolicy";
+import { StructuredData } from "@/components/StructuredData";
 import { getBreadcrumbSchema, getWebPageSchema, SITE_URL } from "@/lib/seo";
 import type { Metadata } from "next";
-import Script from "next/script";
 
 const pageUrl = `${SITE_URL}/privacy`;
 
@@ -63,22 +63,8 @@ const webPageSchema = getWebPageSchema({
 export default function PrivacyPage() {
   return (
     <>
-      <Script
-        id="breadcrumb-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(breadcrumbSchema),
-        }}
-        strategy="afterInteractive"
-      />
-      <Script
-        id="webpage-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(webPageSchema),
-        }}
-        strategy="afterInteractive"
-      />
+      <StructuredData id="breadcrumb-schema" data={breadcrumbSchema} />
+      <StructuredData id="webpage-schema" data={webPageSchema} />
 
       <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12 md:py-16">
         <Container>

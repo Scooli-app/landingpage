@@ -635,8 +635,3 @@ export function getHomePageSchemas() {
     getServiceSchema(),
   ];
 }
-
-// Utility to inject schema into head
-export function schemaToScript(schema: object): string {
-  return JSON.stringify(schema);
-}

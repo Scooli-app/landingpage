@@ -32,6 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: withAlternates("/professores"),
     },
     {
+      url: `${SITE_URL}/ia-para-professores`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.95,
+      alternates: withAlternates("/ia-para-professores"),
+    },
+    {
       url: `${SITE_URL}/escolas`,
       lastModified,
       changeFrequency: "weekly",

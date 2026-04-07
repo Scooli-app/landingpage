@@ -1,4 +1,5 @@
 import { ToolLandingPage } from "@/components/marketing/ToolLandingPage";
+import { StructuredData } from "@/components/StructuredData";
 import { toolPages } from "@/components/marketing/data";
 import {
   getBreadcrumbSchema,
@@ -6,10 +7,8 @@ import {
   getHowToSchema,
   getPageMetadata,
   getWebPageSchema,
-  schemaToScript,
   SITE_URL,
 } from "@/lib/seo";
-import Script from "next/script";
 import { notFound } from "next/navigation";
 
 export async function generateStaticParams() {
@@ -75,33 +74,21 @@ export default async function ToolPage({
 
   return (
     <>
-      <Script
+      <StructuredData
         id={`${tool.slug}-breadcrumb-schema`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: schemaToScript(breadcrumbSchema),
-        }}
+        data={breadcrumbSchema}
       />
-      <Script
+      <StructuredData
         id={`${tool.slug}-webpage-schema`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: schemaToScript(webPageSchema),
-        }}
+        data={webPageSchema}
       />
-      <Script
+      <StructuredData
         id={`${tool.slug}-faq-schema`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: schemaToScript(faqSchema),
-        }}
+        data={faqSchema}
       />
-      <Script
+      <StructuredData
         id={`${tool.slug}-howto-schema`}
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: schemaToScript(howToSchema),
-        }}
+        data={howToSchema}
       />
 
       <ToolLandingPage tool={tool} />
