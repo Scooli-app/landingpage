@@ -14,7 +14,7 @@ import { getFirstContactErrorField, type ContactErrors, type ContactField, valid
 import { cn } from "@/lib/utils";
 import { Building2, Loader2, Mail, Send, User } from "lucide-react";
 import Link from "next/link";
-import { useId, useState } from "react";
+import { useEffect, useId, useState } from "react";
 import { toast } from "sonner";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
@@ -80,6 +80,17 @@ export function ContactModal({
     document.getElementById(fieldIds[field])?.focus();
   };
 
+  useEffect(() => {
+    if (!open && !isLoading) {
+      setName("");
+      setEmail("");
+      setOrganization("");
+      setMessage("");
+      setErrors({});
+      setSubmitMessage(null);
+    }
+  }, [open, isLoading]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -127,10 +138,6 @@ export function ContactModal({
       const successMessage = "Mensagem enviada com sucesso! Receberá um email de confirmação em breve.";
       toast.success(successMessage);
       setSubmitMessage({ tone: "success", text: successMessage });
-      setName("");
-      setEmail("");
-      setOrganization("");
-      setMessage("");
       onOpenChange(false);
     } catch (error) {
       console.error("Error submitting contact form:", error);

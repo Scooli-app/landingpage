@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { APP_URL, PRICING } from "@/lib/seo";
@@ -16,6 +17,7 @@ import {
   Zap,
 } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 type DisplayPlan = {
   planCode: string;
@@ -104,6 +106,7 @@ function formatPeriod(period: "month" | "year") {
 }
 
 function mapPlan(plan: Plan): DisplayPlan {
+  const isFree = plan.planCode === "free";
   const included: string[] = [];
   const features =
     plan.features && typeof plan.features === "object" ? plan.features : {};
@@ -114,8 +117,13 @@ function mapPlan(plan: Plan): DisplayPlan {
     }
   });
 
-  if (plan.planCode === "free") {
-    included.push("Acesso à biblioteca comunitária", "Exportação básica");
+  if (isFree) {
+    included.push(
+      `${PRICING.free.generationsPerMonth} gerações por mês`,
+      "Acesso à biblioteca comunitária",
+      "Exportação básica",
+      "Editor para rever e ajustar"
+    );
   }
 
   if (plan.planCode === "pro_monthly" || plan.planCode === "pro_annual") {
@@ -133,7 +141,7 @@ function mapPlan(plan: Plan): DisplayPlan {
   return {
     planCode: plan.planCode,
     name:
-      plan.planCode === "free"
+      isFree
         ? "Plano Gratuito"
         : plan.planCode === "pro_annual"
           ? "Pro Anual"
@@ -141,10 +149,12 @@ function mapPlan(plan: Plan): DisplayPlan {
     description: plan.description,
     priceCents: plan.priceCents,
     billingPeriod: plan.billingPeriod,
-    interactionsPerPeriod: plan.interactionsPerPeriod,
+    interactionsPerPeriod: isFree
+      ? PRICING.free.generationsPerMonth
+      : plan.interactionsPerPeriod,
     included: [...new Set(included)],
     excluded:
-      plan.planCode === "free"
+      isFree
         ? ["Suporte prioritário", "Modelos de IA avançados"]
         : [],
     badge:
@@ -252,7 +262,7 @@ function PlanCard({ plan }: { plan: DisplayPlan }) {
   );
 }
 
-function EnterpriseCard() {
+function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
   return (
     <div className="relative h-full">
       <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
@@ -288,11 +298,13 @@ function EnterpriseCard() {
             </li>
           ))}
         </ul>
-        <Button asChild className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]">
-          <Link href="/escolas">
-            Falar com a equipa
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+        <Button
+          type="button"
+          onClick={onContactClick}
+          className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]"
+        >
+          Falar com a equipa
+          <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
     </div>
@@ -301,6 +313,7 @@ function EnterpriseCard() {
 
 export function PricingSection() {
   const { plans, hasPlans } = usePlans();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const displayPlans = hasPlans ? plans.map(mapPlan) : fallbackPlans;
 
   return (
@@ -323,7 +336,9 @@ export function PricingSection() {
           {displayPlans.map((plan) => (
             <PlanCard key={plan.planCode} plan={plan} />
           ))}
-          <EnterpriseCard />
+          <EnterpriseCard
+            onContactClick={() => setIsContactModalOpen(true)}
+          />
         </div>
 
         <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-sm text-slate-500">
@@ -345,6 +360,14 @@ export function PricingSection() {
           * Geração ilimitada sujeita à <Link href="/terms#uso-justo" className="underline hover:text-slate-600">Política de Uso Justo</Link>.
         </p>
       </Container>
+
+      <ContactModal
+        open={isContactModalOpen}
+        onOpenChange={setIsContactModalOpen}
+        source="enterprise_plan"
+        title="Fale com a equipa"
+        description="Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo."
+      />
     </section>
   );
 }
