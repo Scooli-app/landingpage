@@ -1,4 +1,5 @@
 ﻿import { Container } from "@/components/Container";
+import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { APP_URL, PRICING } from "@/lib/seo";
 import {
@@ -9,7 +10,6 @@ import {
   PencilLine,
 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { libraryBenefits, socialProof } from "./data";
 import {
   BrowserFrame,
@@ -65,13 +65,18 @@ export function CommunityLibrarySection() {
                 </li>
               ))}
             </ul>
-            <Link
+            <TrackedLink
               href="/biblioteca"
+              eventName="marketing_cta_clicked"
+              eventProperties={{
+                cta_id: "home_library_explore",
+                placement: "home_library_section",
+              }}
               className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
             >
               Explorar a biblioteca
               <ChevronRight className="h-4 w-4" />
-            </Link>
+            </TrackedLink>
           </div>
         </div>
 
@@ -123,26 +128,47 @@ export function LandingFinalCtaSection() {
                   asChild
                   className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
                 >
-                  <Link href={`${APP_URL}/sign-up`}>
+                  <TrackedLink
+                    href={`${APP_URL}/sign-up`}
+                    eventName="marketing_cta_clicked"
+                    eventProperties={{
+                      cta_id: "home_final_cta_start_free",
+                      placement: "home_final_cta_primary",
+                    }}
+                  >
                     Começar gratuitamente
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </TrackedLink>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
                   className="h-12 rounded-full px-6 text-base font-semibold"
                 >
-                  <Link href="/precos">Ver preços</Link>
+                  <TrackedLink
+                    href="/precos"
+                    eventName="marketing_cta_clicked"
+                    eventProperties={{
+                      cta_id: "home_final_cta_pricing",
+                      placement: "home_final_cta_secondary",
+                    }}
+                  >
+                    Ver preços
+                  </TrackedLink>
                 </Button>
               </div>
-              <Link
+              <TrackedLink
                 href="/escolas"
+                eventName="marketing_cta_clicked"
+                eventProperties={{
+                  cta_id: "home_final_cta_schools",
+                  placement: "home_final_cta_institutional",
+                }}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
               >
                 É uma escola ou instituição? Ver percurso institucional
                 <ChevronRight className="h-4 w-4" />
-              </Link>
+              </TrackedLink>
               <ul className="grid gap-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
@@ -214,13 +240,18 @@ export function LandingFinalCtaSection() {
                 <p className="text-sm font-semibold text-slate-800">
                   Próximo passo
                 </p>
-                <Link
+                <TrackedLink
                   href={`${APP_URL}/sign-up`}
+                  eventName="marketing_cta_clicked"
+                  eventProperties={{
+                    cta_id: "home_final_card_enter_platform",
+                    placement: "home_final_cta_card",
+                  }}
                   className="mt-4 inline-flex items-center gap-2 rounded-full bg-[color:var(--scooli-accent)] px-4 py-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
                 >
                   Entrar na plataforma
                   <ChevronRight className="h-4 w-4" />
-                </Link>
+                </TrackedLink>
                 <p className="mt-4 text-sm leading-7 text-slate-500">
                   Mantém o controlo do conteúdo e ganha velocidade no trabalho
                   que mais se repete.

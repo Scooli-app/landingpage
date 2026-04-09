@@ -10,11 +10,15 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  captureMarketingEvent,
+  getErrorType,
+} from "@/lib/analytics";
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Building2, Loader2, Mail, Send, User } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
@@ -42,6 +46,7 @@ export function ContactModal({
   const [errors, setErrors] = useState<ContactErrors>({});
   const [submitMessage, setSubmitMessage] = useState<{ tone: "error" | "success"; text: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const previousOpenRef = useRef(open);
 
   const fieldIds = {
     name: `${formId}-name`,
@@ -91,12 +96,26 @@ export function ContactModal({
     }
   }, [open, isLoading]);
 
+  useEffect(() => {
+    if (open && !previousOpenRef.current) {
+      captureMarketingEvent("marketing_institutional_contact_opened", {
+        source,
+      });
+    }
+
+    previousOpenRef.current = open;
+  }, [open, source]);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const nextErrors = validateContactForm({ name, email, message });
 
     if (Object.keys(nextErrors).length > 0) {
+      captureMarketingEvent("marketing_contact_form_validation_failed", {
+        source,
+        invalid_fields: Object.keys(nextErrors),
+      });
       setErrors(nextErrors);
       setSubmitMessage({
         tone: "error",
@@ -136,11 +155,19 @@ export function ContactModal({
       }
 
       const successMessage = "Mensagem enviada com sucesso! Receberá um email de confirmação em breve.";
+      captureMarketingEvent("marketing_contact_form_submitted", {
+        source,
+        has_organization: Boolean(organization.trim()),
+      });
       toast.success(successMessage);
       setSubmitMessage({ tone: "success", text: successMessage });
       onOpenChange(false);
     } catch (error) {
       console.error("Error submitting contact form:", error);
+      captureMarketingEvent("marketing_contact_form_failed", {
+        source,
+        error_type: getErrorType(error),
+      });
       const errorMessage =
         error instanceof Error ? error.message : "Ocorreu um erro. Tente novamente mais tarde.";
       toast.error(errorMessage);

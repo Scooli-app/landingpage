@@ -1,11 +1,7 @@
 import { Container } from "@/components/Container";
+import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
+import { TrackedLink } from "@/components/TrackedLink";
 import { StructuredData } from "@/components/StructuredData";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { socialProof } from "@/components/homepage/data";
 import { impactStats, toolCardIcons, toolPages } from "@/components/marketing/data";
 import {
@@ -26,7 +22,6 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { ArrowRight, LibraryBig, LockKeyhole, MapPinned, PencilLine } from "lucide-react";
-import Link from "next/link";
 
 const pagePath = "/ia-para-professores";
 const pageUrl = `${SITE_URL}${pagePath}`;
@@ -268,13 +263,18 @@ export default function AiForTeachersPage() {
                     <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
                       {tool.description}
                     </p>
-                    <Link
+                    <TrackedLink
                       href={`/ferramentas/${tool.slug}`}
+                      eventName="marketing_navigation_clicked"
+                      eventProperties={{
+                        location: "ia_para_professores_tools_grid",
+                        link_label: tool.shortTitle.toLowerCase(),
+                      }}
                       className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
                     >
                       Ver página
                       <ArrowRight className="h-4 w-4" />
-                    </Link>
+                    </TrackedLink>
                   </SurfacePanel>
                 );
               })}
@@ -354,22 +354,15 @@ export default function AiForTeachersPage() {
                 description="Estas respostas foram escritas para explicar a Scooli de forma direta, sem esconder o que faz, para quem faz sentido e porque pode ser mais adequada do que uma ferramenta genérica."
               />
               <div className="mt-8">
-                <Accordion type="single" collapsible className="space-y-3">
-                  {faqItems.map((faq, index) => (
-                    <AccordionItem
-                      key={faq.question}
-                      value={`ia-professores-faq-${index}`}
-                      className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 px-4"
-                    >
-                      <AccordionTrigger className="py-4 text-left text-[15px] font-semibold text-[color:var(--scooli-ink)] hover:no-underline">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                <TrackedFaqAccordion
+                  items={faqItems}
+                  faqGroup="ia_para_professores"
+                  itemValuePrefix="ia-professores-faq"
+                  className="space-y-3"
+                  itemClassName="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 px-4"
+                  triggerClassName="py-4 text-left text-[15px] font-semibold text-[color:var(--scooli-ink)] hover:no-underline"
+                  contentClassName="text-sm leading-7 text-[color:var(--scooli-muted)]"
+                />
               </div>
             </SurfacePanel>
 
@@ -387,21 +380,34 @@ export default function AiForTeachersPage() {
                   { label: "Ver preços", href: "/precos" },
                   { label: "Ler confiança e privacidade", href: "/confianca" },
                 ].map((link) => (
-                  <Link
+                  <TrackedLink
                     key={link.href}
                     href={link.href}
+                    eventName="marketing_navigation_clicked"
+                    eventProperties={{
+                      location: "ia_para_professores_next_steps",
+                      link_label: link.label.toLowerCase(),
+                    }}
                     className="inline-flex items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-sm font-semibold text-[color:var(--scooli-ink)] transition-colors hover:border-[color:var(--scooli-primary)] hover:text-[color:var(--scooli-primary)]"
                   >
                     <span>{link.label}</span>
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </TrackedLink>
                 ))}
               </div>
               <div className="mt-6 rounded-[24px] border border-[#d9ddff] bg-white px-5 py-4 text-sm leading-7 text-[color:var(--scooli-muted)]">
                 Se queres experimentar diretamente a plataforma, o registo está em{" "}
-                <Link href={`${APP_URL}/sign-up`} className="font-semibold text-[color:var(--scooli-primary)]">
+                <TrackedLink
+                  href={`${APP_URL}/sign-up`}
+                  eventName="marketing_cta_clicked"
+                  eventProperties={{
+                    cta_id: "ia_para_professores_inline_signup",
+                    placement: "ia_para_professores_next_steps",
+                  }}
+                  className="font-semibold text-[color:var(--scooli-primary)]"
+                >
                   create.scooli.app
-                </Link>
+                </TrackedLink>
                 .
               </div>
             </SurfacePanel>

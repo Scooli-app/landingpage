@@ -2,6 +2,7 @@
 
 import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
+import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { APP_URL, PRICING } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -16,7 +17,6 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
-import Link from "next/link";
 import { useState } from "react";
 
 type DisplayPlan = {
@@ -252,10 +252,20 @@ function PlanCard({ plan }: { plan: DisplayPlan }) {
             !isFree && "shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
           )}
         >
-          <Link href={href}>
+          <TrackedLink
+            href={href}
+            eventName="marketing_plan_selected"
+            eventProperties={{
+              plan_code: plan.planCode,
+              billing_period: plan.billingPeriod,
+              price_cents: plan.priceCents,
+              placement: "pricing_plan_card",
+              target_url: href,
+            }}
+          >
             {ctaLabel}
             <ArrowRight className="h-4 w-4" />
-          </Link>
+          </TrackedLink>
         </Button>
       </div>
     </div>
@@ -357,7 +367,19 @@ export function PricingSection() {
         </div>
 
         <p className="text-center text-xs text-slate-400">
-          * Geração ilimitada sujeita à <Link href="/terms#uso-justo" className="underline hover:text-slate-600">Política de Uso Justo</Link>.
+          * Geração ilimitada sujeita à{" "}
+          <TrackedLink
+            href="/terms#uso-justo"
+            eventName="marketing_navigation_clicked"
+            eventProperties={{
+              location: "pricing_terms_note",
+              link_label: "politica_uso_justo",
+            }}
+            className="underline hover:text-slate-600"
+          >
+            Política de Uso Justo
+          </TrackedLink>
+          .
         </p>
       </Container>
 

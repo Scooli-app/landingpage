@@ -54,6 +54,10 @@ export default function SchoolsPage() {
         description="Se queres avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial."
         primaryHref="mailto:info@scooli.app?subject=Scooli%20para%20escolas"
         primaryLabel="Falar com a equipa"
+        primaryEventName="marketing_institutional_contact_opened"
+        primaryEventProperties={{
+          source: "schools_page_hero",
+        }}
         secondaryHref="/confianca"
         secondaryLabel="Ver confiança e privacidade"
         aside={<InstitutionalPreview />}
@@ -151,6 +155,10 @@ export default function SchoolsPage() {
             description="Podemos começar por uma conversa curta, perceber o contexto e desenhar um piloto simples com a equipa certa."
             primaryHref="mailto:info@scooli.app?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20institucional%20Scooli"
             primaryLabel="Contactar a equipa"
+            primaryEventName="marketing_institutional_contact_opened"
+            primaryEventProperties={{
+              source: "schools_page_cta_banner",
+            }}
             secondaryHref="/confianca"
             secondaryLabel="Ver confiança e privacidade"
           />

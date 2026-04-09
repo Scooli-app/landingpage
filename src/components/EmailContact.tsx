@@ -1,5 +1,6 @@
 "use client";
 
+import { captureMarketingEvent } from "@/lib/analytics";
 import { Check, Copy } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -8,12 +9,14 @@ type EmailContactProps = {
   showLabel?: boolean;
   showIcon?: boolean;
   className?: string;
+  placement?: string;
 };
 
 export function EmailContact({
   showLabel = false,
   showIcon = true,
   className = "",
+  placement = "inline_email",
 }: EmailContactProps) {
   const [copied, setCopied] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
@@ -34,6 +37,9 @@ export function EmailContact({
       }
 
       await navigator.clipboard.writeText("info@scooli.app");
+      captureMarketingEvent("marketing_email_copied", {
+        placement,
+      });
       setCopied(true);
       setStatusMessage("Email copiado para a área de transferência.");
       toast.success("Email copiado!");

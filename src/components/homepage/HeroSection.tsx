@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
+import { TrackedLink } from "@/components/TrackedLink";
 import { APP_URL, PRICING } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import Link from "next/link";
 import { BrowserFrame, SectionBadge } from "./shared";
 
 const heroHighlights = [
@@ -99,17 +99,33 @@ export function HeroSection() {
                 asChild
                 className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
               >
-                <Link href={`${APP_URL}/sign-up`}>
+                <TrackedLink
+                  href={`${APP_URL}/sign-up`}
+                  eventName="marketing_cta_clicked"
+                  eventProperties={{
+                    cta_id: "home_hero_start_free",
+                    placement: "home_hero_primary",
+                  }}
+                >
                   Começar gratuitamente
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </TrackedLink>
               </Button>
               <Button
                 asChild
                 variant="outline"
                 className="h-12 rounded-full px-6 text-base font-semibold"
               >
-                <Link href="#como-funciona">Ver como funciona</Link>
+                <TrackedLink
+                  href="#como-funciona"
+                  eventName="marketing_cta_clicked"
+                  eventProperties={{
+                    cta_id: "home_hero_view_how_it_works",
+                    placement: "home_hero_secondary",
+                  }}
+                >
+                  Ver como funciona
+                </TrackedLink>
               </Button>
             </div>
 
@@ -117,13 +133,18 @@ export function HeroSection() {
               <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
                 Comece gratuitamente. Sem compromisso.
               </p>
-              <Link
+              <TrackedLink
                 href="/escolas"
+                eventName="marketing_cta_clicked"
+                eventProperties={{
+                  cta_id: "home_hero_schools",
+                  placement: "home_hero_institutional",
+                }}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
               >
                 É uma escola ou agrupamento? Ver percurso institucional
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </TrackedLink>
             </div>
 
             <div className="flex flex-wrap gap-3">

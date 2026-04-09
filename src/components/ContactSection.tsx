@@ -5,6 +5,10 @@ import { EmailContact } from "@/components/EmailContact";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import {
+  captureMarketingEvent,
+  getErrorType,
+} from "@/lib/analytics";
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Building2, Clock3, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
@@ -67,6 +71,10 @@ export function ContactSection() {
     const nextErrors = validateContactForm({ name, email, message });
 
     if (Object.keys(nextErrors).length > 0) {
+      captureMarketingEvent("marketing_contact_form_validation_failed", {
+        source: "contact_page",
+        invalid_fields: Object.keys(nextErrors),
+      });
       setErrors(nextErrors);
       setSubmitMessage({
         tone: "error",
@@ -106,6 +114,10 @@ export function ContactSection() {
       }
 
       const successMessage = "Mensagem enviada com sucesso. Vamos responder o mais depressa possível.";
+      captureMarketingEvent("marketing_contact_form_submitted", {
+        source: "contact_page",
+        has_organization: Boolean(organization.trim()),
+      });
       toast.success(successMessage);
       setSubmitMessage({ tone: "success", text: successMessage });
       setName("");
@@ -114,6 +126,10 @@ export function ContactSection() {
       setMessage("");
     } catch (error) {
       console.error("Error submitting contact form:", error);
+      captureMarketingEvent("marketing_contact_form_failed", {
+        source: "contact_page",
+        error_type: getErrorType(error),
+      });
       const errorMessage =
         error instanceof Error ? error.message : "Ocorreu um erro. Tenta novamente mais tarde.";
       toast.error(errorMessage);
@@ -160,6 +176,7 @@ export function ContactSection() {
                 <EmailContact
                   showIcon
                   showLabel={false}
+                  placement="contact_page_email_card"
                   className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 hover:bg-[color:var(--scooli-surface-alt)]"
                 />
               </div>

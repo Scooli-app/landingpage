@@ -1,14 +1,9 @@
 import { Container } from "@/components/Container";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
+import { TrackedLink } from "@/components/TrackedLink";
 import { APP_URL } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { toolCardIcons, type ToolPageData } from "./data";
 import {
   Checklist,
@@ -224,22 +219,15 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
                 description="Respostas rápidas para perceberes o que esta ferramenta faz, como se adapta ao teu contexto e o que podes esperar antes de experimentar."
               />
               <div className="mt-8">
-                <Accordion type="single" collapsible className="space-y-3">
-                  {tool.faq.map((faq, index) => (
-                    <AccordionItem
-                      key={faq.question}
-                      value={`${tool.slug}-faq-${index}`}
-                      className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 px-4"
-                    >
-                      <AccordionTrigger className="py-4 text-left text-[15px] font-semibold text-[color:var(--scooli-ink)] hover:no-underline">
-                        {faq.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-                        {faq.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                <TrackedFaqAccordion
+                  items={tool.faq}
+                  faqGroup={tool.slug}
+                  itemValuePrefix={`${tool.slug}-faq`}
+                  className="space-y-3"
+                  itemClassName="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 px-4"
+                  triggerClassName="py-4 text-left text-[15px] font-semibold text-[color:var(--scooli-ink)] hover:no-underline"
+                  contentClassName="text-sm leading-7 text-[color:var(--scooli-muted)]"
+                />
               </div>
             </SurfacePanel>
 
@@ -255,14 +243,19 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
               </p>
               <div className="mt-6 grid gap-3">
                 {tool.relatedLinks.map((link) => (
-                  <Link
+                  <TrackedLink
                     key={`${tool.slug}-${link.href}`}
                     href={link.href}
+                    eventName="marketing_navigation_clicked"
+                    eventProperties={{
+                      location: "tool_related_links",
+                      link_label: link.label.toLowerCase(),
+                    }}
                     className="inline-flex items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-sm font-semibold text-[color:var(--scooli-ink)] transition-colors hover:border-[color:var(--scooli-primary)] hover:text-[color:var(--scooli-primary)]"
                   >
                     <span>{link.label}</span>
                     <ArrowRight className="h-4 w-4" />
-                  </Link>
+                  </TrackedLink>
                 ))}
               </div>
             </SurfacePanel>
