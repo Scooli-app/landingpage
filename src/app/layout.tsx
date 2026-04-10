@@ -1,3 +1,4 @@
+import { MarketingScrollDepthTracker } from "@/components/MarketingScrollDepthTracker";
 import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
 import { StructuredData } from "@/components/StructuredData";
 import { Toaster } from "@/components/ui/sonner";
@@ -147,6 +148,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Saltar para o conteúdo principal
         </a>
         <ReducedMotionProvider>
+          <MarketingScrollDepthTracker />
           {children}
           <Toaster
             position="bottom-right"

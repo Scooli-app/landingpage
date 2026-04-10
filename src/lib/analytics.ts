@@ -12,7 +12,8 @@ export type MarketingEventName =
   | "marketing_contact_form_submitted"
   | "marketing_contact_form_failed"
   | "marketing_faq_opened"
-  | "marketing_email_copied";
+  | "marketing_email_copied"
+  | "marketing_scroll_depth_reached";
 
 export type MarketingEventProperties = Record<string, unknown>;
 
