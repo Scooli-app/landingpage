@@ -78,8 +78,10 @@ export function PageHero({
   description,
   primaryHref = `${APP_URL}/sign-up`,
   primaryLabel = "Começar gratuitamente",
+  primaryAction,
   secondaryHref,
   secondaryLabel,
+  secondaryAction,
   primaryEventName = "marketing_cta_clicked",
   primaryEventProperties,
   secondaryEventName = "marketing_cta_clicked",
@@ -92,8 +94,10 @@ export function PageHero({
   description: string;
   primaryHref?: string;
   primaryLabel?: string;
+  primaryAction?: ReactNode;
   secondaryHref?: string;
   secondaryLabel?: string;
+  secondaryAction?: ReactNode;
   primaryEventName?: MarketingEventName;
   primaryEventProperties?: MarketingEventProperties;
   secondaryEventName?: MarketingEventName;
@@ -115,35 +119,38 @@ export function PageHero({
               <p className="max-w-3xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">{description}</p>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
-              <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
-                <TrackedLink
-                  href={primaryHref}
-                  eventName={primaryEventName}
-                  eventProperties={{
-                    cta_id: `page_hero_${toTrackingId(primaryLabel)}`,
-                    placement: "page_hero_primary",
-                    ...primaryEventProperties,
-                  }}
-                >
-                  {primaryLabel}
-                  <ArrowRight className="h-4 w-4" />
-                </TrackedLink>
-              </Button>
-              {secondaryHref && secondaryLabel && (
-                <Button asChild variant="outline" className="h-12 rounded-full px-6 text-base font-semibold">
+              {primaryAction ?? (
+                <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
                   <TrackedLink
-                    href={secondaryHref}
-                    eventName={secondaryEventName}
+                    href={primaryHref}
+                    eventName={primaryEventName}
                     eventProperties={{
-                      cta_id: `page_hero_${toTrackingId(secondaryLabel)}`,
-                      placement: "page_hero_secondary",
-                      ...secondaryEventProperties,
+                      cta_id: `page_hero_${toTrackingId(primaryLabel)}`,
+                      placement: "page_hero_primary",
+                      ...primaryEventProperties,
                     }}
                   >
-                    {secondaryLabel}
+                    {primaryLabel}
+                    <ArrowRight className="h-4 w-4" />
                   </TrackedLink>
                 </Button>
               )}
+              {secondaryAction ??
+                (secondaryHref && secondaryLabel && (
+                  <Button asChild variant="outline" className="h-12 rounded-full px-6 text-base font-semibold">
+                    <TrackedLink
+                      href={secondaryHref}
+                      eventName={secondaryEventName}
+                      eventProperties={{
+                        cta_id: `page_hero_${toTrackingId(secondaryLabel)}`,
+                        placement: "page_hero_secondary",
+                        ...secondaryEventProperties,
+                      }}
+                    >
+                      {secondaryLabel}
+                    </TrackedLink>
+                  </Button>
+                ))}
             </div>
             {children}
           </div>
@@ -226,8 +233,10 @@ export function PageCtaBanner({
   description,
   primaryHref = `${APP_URL}/sign-up`,
   primaryLabel = "Começar gratuitamente",
+  primaryAction,
   secondaryHref,
   secondaryLabel,
+  secondaryAction,
   primaryEventName = "marketing_cta_clicked",
   primaryEventProperties,
   secondaryEventName = "marketing_cta_clicked",
@@ -237,8 +246,10 @@ export function PageCtaBanner({
   description: string;
   primaryHref?: string;
   primaryLabel?: string;
+  primaryAction?: ReactNode;
   secondaryHref?: string;
   secondaryLabel?: string;
+  secondaryAction?: ReactNode;
   primaryEventName?: MarketingEventName;
   primaryEventProperties?: MarketingEventProperties;
   secondaryEventName?: MarketingEventName;
@@ -252,35 +263,38 @@ export function PageCtaBanner({
           <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">{description}</p>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-          <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
-            <TrackedLink
-              href={primaryHref}
-              eventName={primaryEventName}
-              eventProperties={{
-                cta_id: `page_cta_banner_${toTrackingId(primaryLabel)}`,
-                placement: "page_cta_banner_primary",
-                ...primaryEventProperties,
-              }}
-            >
-              {primaryLabel}
-              <ArrowRight className="h-4 w-4" />
-            </TrackedLink>
-          </Button>
-          {secondaryHref && secondaryLabel && (
-            <TrackedLink
-              href={secondaryHref}
-              eventName={secondaryEventName}
-              eventProperties={{
-                cta_id: `page_cta_banner_${toTrackingId(secondaryLabel)}`,
-                placement: "page_cta_banner_secondary",
-                ...secondaryEventProperties,
-              }}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
-            >
-              {secondaryLabel}
-              <ChevronRight className="h-4 w-4" />
-            </TrackedLink>
+          {primaryAction ?? (
+            <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
+              <TrackedLink
+                href={primaryHref}
+                eventName={primaryEventName}
+                eventProperties={{
+                  cta_id: `page_cta_banner_${toTrackingId(primaryLabel)}`,
+                  placement: "page_cta_banner_primary",
+                  ...primaryEventProperties,
+                }}
+              >
+                {primaryLabel}
+                <ArrowRight className="h-4 w-4" />
+              </TrackedLink>
+            </Button>
           )}
+          {secondaryAction ??
+            (secondaryHref && secondaryLabel && (
+              <TrackedLink
+                href={secondaryHref}
+                eventName={secondaryEventName}
+                eventProperties={{
+                  cta_id: `page_cta_banner_${toTrackingId(secondaryLabel)}`,
+                  placement: "page_cta_banner_secondary",
+                  ...secondaryEventProperties,
+                }}
+                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
+              >
+                {secondaryLabel}
+                <ChevronRight className="h-4 w-4" />
+              </TrackedLink>
+            ))}
         </div>
       </div>
     </SurfacePanel>

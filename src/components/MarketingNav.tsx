@@ -16,8 +16,8 @@ const links = [
   { label: "Biblioteca", href: "/biblioteca" },
   { label: "Ferramentas", href: "/ferramentas" },
   { label: "Preços", href: "/precos" },
-  { label: "Confiança", href: "/confianca" },
   { label: "Sobre", href: "/sobre" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export function MarketingNav() {

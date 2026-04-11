@@ -1,4 +1,5 @@
 ﻿import { Container } from "@/components/Container";
+import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
 import { schoolPageCards } from "@/components/marketing/data";
 import {
   Checklist,
@@ -52,12 +53,12 @@ export default function SchoolsPage() {
         eyebrow="Para escolas"
         title="Um percurso simples para escolas começarem com um piloto"
         description="Se queres avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial."
-        primaryHref="mailto:info@scooli.app?subject=Scooli%20para%20escolas"
-        primaryLabel="Falar com a equipa"
-        primaryEventName="marketing_institutional_contact_opened"
-        primaryEventProperties={{
-          source: "schools_page_hero",
-        }}
+        primaryAction={
+          <InstitutionalContactButton
+            source="schools_page_hero"
+            className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
+          />
+        }
         secondaryHref="/confianca"
         secondaryLabel="Ver confiança e privacidade"
         aside={<InstitutionalPreview />}
@@ -153,12 +154,12 @@ export default function SchoolsPage() {
           <PageCtaBanner
             title="Quer perceber se a Scooli faz sentido para a tua escola?"
             description="Podemos começar por uma conversa curta, perceber o contexto e desenhar um piloto simples com a equipa certa."
-            primaryHref="mailto:info@scooli.app?subject=Pedido%20de%20informa%C3%A7%C3%A3o%20institucional%20Scooli"
-            primaryLabel="Contactar a equipa"
-            primaryEventName="marketing_institutional_contact_opened"
-            primaryEventProperties={{
-              source: "schools_page_cta_banner",
-            }}
+            primaryAction={
+              <InstitutionalContactButton
+                source="schools_page_cta_banner"
+                className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
+              />
+            }
             secondaryHref="/confianca"
             secondaryLabel="Ver confiança e privacidade"
           />
