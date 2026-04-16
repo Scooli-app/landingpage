@@ -1,6 +1,9 @@
-﻿import { Container } from "@/components/Container";
+"use client";
+
+import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { APP_URL, PRICING } from "@/lib/seo";
 import {
   ArrowRight,
@@ -9,91 +12,23 @@ import {
   Layers3,
   PencilLine,
 } from "lucide-react";
-import Image from "next/image";
-import { libraryBenefits, socialProof } from "./data";
+import { socialProof } from "./data";
 import {
-  BrowserFrame,
   QuoteCard,
   SectionBadge,
   SectionHeading,
 } from "./shared";
 
-function LibraryPreview() {
-  return (
-    <BrowserFrame
-      title="Biblioteca comunitária"
-      subtitle="Recursos partilhados"
-    >
-      <div className="space-y-4">
-        <div className="rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
-          Pesquisa por disciplina, filtros por tipo e recursos prontos a reutilizar na biblioteca da Scooli.
-        </div>
-        <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
-          <Image
-            src="/screenshots/biblioteca.png"
-            alt="Biblioteca comunitária da Scooli com pesquisa, filtros e recursos prontos a reutilizar"
-            width={1600}
-            height={900}
-            sizes="(min-width: 1024px) 52vw, 100vw"
-            className="h-auto w-full object-cover object-top"
-          />
-        </div>
-      </div>
-    </BrowserFrame>
-  );
-}
-
-export function CommunityLibrarySection() {
-  return (
-    <section id="biblioteca" className="bg-white/70 py-20 sm:py-24 lg:py-28">
-      <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div className="space-y-6">
-          <SectionHeading
-            eyebrow="Biblioteca comunitária"
-            title="Não comece do zero: use materiais já criados"
-            description="Aceda a recursos partilhados por outros professores e poupe ainda mais tempo."
-          />
-          <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_18px_50px_-42px_rgba(19,35,58,0.35)]">
-            <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-              Use materiais da comunidade e avance mais depressa
-            </p>
-            <ul className="mt-5 grid gap-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              {libraryBenefits.map((benefit) => (
-                <li key={benefit} className="flex items-start gap-3">
-                  <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
-                  <span>{benefit}</span>
-                </li>
-              ))}
-            </ul>
-            <TrackedLink
-              href="/biblioteca"
-              eventName="marketing_cta_clicked"
-              eventProperties={{
-                cta_id: "home_library_explore",
-                placement: "home_library_section",
-              }}
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
-            >
-              Explorar a biblioteca
-              <ChevronRight className="h-4 w-4" />
-            </TrackedLink>
-          </div>
-        </div>
-
-        <LibraryPreview />
-      </Container>
-    </section>
-  );
-}
-
 export function SocialProofSection() {
+  const ref = useScrollReveal({ stagger: 0.1, y: 20 });
+
   return (
     <section id="prova-social" className="py-20 sm:py-24 lg:py-28">
-      <Container className="space-y-10">
+      <Container ref={ref} className="space-y-10">
         <SectionHeading
           eyebrow="Prova social"
           title="Ganhos que fazem diferença semana após semana"
-          description="Testemunhos reais de professores que já usam a Scooli e sentem impacto concreto no trabalho semanal."
+          description="O que dizem professores que usam a Scooli todas as semanas:"
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -107,8 +42,10 @@ export function SocialProofSection() {
 }
 
 export function LandingFinalCtaSection() {
+  const ref = useScrollReveal({ y: 20 });
+
   return (
-    <section id="cta-final" className="pb-20 sm:pb-24 lg:pb-28">
+    <section id="cta-final" ref={ref} className="pb-20 sm:pb-24 lg:pb-28">
       <Container>
         <div className="overflow-hidden rounded-[36px] border border-slate-200 bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))] p-8 shadow-[0_30px_100px_-60px_rgba(19,35,58,0.45)] sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
@@ -174,21 +111,20 @@ export function LandingFinalCtaSection() {
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
                     {PRICING.free.generationsPerMonth} gerações por mês para
-                    explorares a ferramenta sem compromisso inicial.
+                    explorar a ferramenta sem compromisso inicial.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    Todo o conteúdo continua editável antes de exportares ou
-                    reutilizares.
+                    Todo o conteúdo continua editável antes de exportar ou
+                    reutilizar.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    Podes combinar geração com IA e materiais da biblioteca
-                    comunitária.
+                    Combine geração com IA e materiais da biblioteca comunitária.
                   </span>
                 </li>
               </ul>
@@ -233,7 +169,7 @@ export function LandingFinalCtaSection() {
                 </div>
                 <div className="mt-3 flex items-center gap-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm text-slate-700">
                   <PencilLine className="h-4 w-4 text-[color:var(--scooli-primary)]" />
-                  Ajusta ao teu estilo
+                  Ajuste ao seu gosto
                 </div>
               </div>
               <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-[0_20px_50px_-44px_rgba(19,35,58,0.36)]">
@@ -253,7 +189,7 @@ export function LandingFinalCtaSection() {
                   <ChevronRight className="h-4 w-4" />
                 </TrackedLink>
                 <p className="mt-4 text-sm leading-7 text-slate-500">
-                  Mantém o controlo do conteúdo e ganha velocidade no trabalho
+                  Mantenha o controlo do conteúdo e ganhe velocidade no trabalho
                   que mais se repete.
                 </p>
               </div>

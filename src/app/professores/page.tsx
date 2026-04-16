@@ -17,7 +17,7 @@ import { CalendarClock, LibraryBig } from "lucide-react";
 export const metadata = getPageMetadata({
   title: "Para professores",
   description:
-    "Descobre como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
+    "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
   path: "/professores",
 });
 
@@ -48,7 +48,7 @@ export default function TeachersPage() {
       <PageHero
         eyebrow="Para professores"
         title="Uma forma mais simples de preparar aulas, fichas e testes sem começar do zero"
-        description="A Scooli ajuda-te a ganhar tempo nas tarefas que mais se repetem, mantendo sempre o controlo do conteúdo final antes de usar em aula. O objetivo é gerar materiais editáveis de acordo com as Aprendizagens Essenciais, com melhor alinhamento curricular e mais confiança no ponto de partida."
+        description="Gere recursos editáveis em minutos, alinhados com as Aprendizagens Essenciais e prontos a adaptar para cada turma."
         secondaryHref="/biblioteca"
         secondaryLabel="Ver biblioteca"
         aside={<WeeklyFlowPreview />}
@@ -81,9 +81,9 @@ export default function TeachersPage() {
       <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="O que podes criar"
-            title="Vês logo o tipo de documento que sai"
-            description="Planificações, fichas e testes aparecem com estrutura, texto e organização suficientes para começares a editar em vez de começares do zero."
+            eyebrow="O que pode criar"
+            title="Veja o tipo de documento que sai"
+            description="Planificações, fichas e testes aparecem com estrutura, texto e organização suficientes para começar a editar em vez de começar do zero."
             centered
           />
           <div className="grid gap-6 xl:grid-cols-3">
@@ -144,8 +144,8 @@ export default function TeachersPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer testar a Scooli no teu ritmo?"
-            description="Começa gratuitamente, experimenta um pedido real da próxima aula e ajusta tudo ao teu contexto antes de usar."
+            title="Quer testar a Scooli ao seu ritmo?"
+            description="Comece gratuitamente, experimente um pedido real da próxima aula e ajuste tudo ao seu contexto antes de usar."
             secondaryHref="/precos"
             secondaryLabel="Ver preços"
           />

@@ -73,7 +73,7 @@ export const benefits: InfoItem[] = [
   {
     title: "Mais rapidez no arranque",
     description:
-      "Começas com uma base útil em segundos, em vez de começares com uma folha em branco.",
+      "Parta de uma base útil em segundos, em vez de começar com uma folha em branco.",
     icon: Sparkles,
   },
   {
@@ -85,7 +85,7 @@ export const benefits: InfoItem[] = [
   {
     title: "Adaptação sem refazer tudo",
     description:
-      "Podes ajustar linguagem, dificuldade e formato para diferentes turmas ou necessidades.",
+      "Ajuste linguagem, dificuldade e formato para diferentes turmas ou necessidades.",
     icon: WandSparkles,
   },
   {
@@ -98,21 +98,21 @@ export const benefits: InfoItem[] = [
 
 export const steps: StepItem[] = [
   {
-    title: "Introduzir pedido ou carregar material",
+    title: "Indique o contexto",
     description:
-      "Indica o tema, o ano e o que precisas, ou parte de um documento que já tens.",
+      "Tema, ano e tipo de recurso. Ou carregue um documento já existente.",
     icon: Upload,
   },
   {
-    title: "Gerar automaticamente o material completo",
+    title: "Receba o recurso completo",
     description:
-      "Recebes uma planificação, ficha ou teste já organizado e pronto a editar.",
+      "Uma planificação, ficha ou teste já estruturado e pronto a editar.",
     icon: Bot,
   },
   {
-    title: "Ajustar e ter tudo pronto a usar",
+    title: "Edite e exporte",
     description:
-      "Mudas o que precisares, validas o conteúdo e ficas com tudo pronto em segundos.",
+      "Ajuste o que precisar, valide o conteúdo e exporte quando estiver pronto.",
     icon: Download,
   },
 ];
@@ -145,13 +145,13 @@ export const editorBenefits: InfoItem[] = [
   {
     title: "Editar linha a linha",
     description:
-      "Nada fica fechado. Podes reescrever, cortar, trocar exemplos e afinar o texto ao teu estilo.",
+      "Nada fica fechado. Reescreva, corte, troque exemplos e afine o texto ao seu gosto.",
     icon: CheckCheck,
   },
   {
     title: "Adaptar para níveis diferentes",
     description:
-      "Pede uma versão mais simples, uma extensão ou novos exercícios sem perder o documento base.",
+      "Peça uma versão mais simples, uma extensão ou novos exercícios sem perder o documento base.",
     icon: SlidersHorizontal,
   },
   {
@@ -165,7 +165,7 @@ export const editorBenefits: InfoItem[] = [
 export const libraryBenefits = [
   "Encontrar recursos por disciplina, ano e tipo de material",
   "Duplicar um material já criado e adaptá-lo em minutos",
-  "Guardar boas bases para reutilizar sempre que precisares",
+  "Guardar boas bases para reutilizar sempre que precisar",
 ];
 
 export const libraryCards = [

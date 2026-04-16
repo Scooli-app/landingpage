@@ -120,17 +120,17 @@ export const trustCards: MarketingCard[] = [
 export const teacherPageCards: MarketingCard[] = [
   {
     title: "Preparar a aula com menos atrito",
-    description: "Partes de um pedido simples e recebes uma base editável para a aula, ficha ou teste que precisas de fechar.",
+    description: "Parta de um pedido simples e receba uma base editável para a aula, ficha ou teste que precisa de fechar.",
     icon: NotebookPen,
   },
   {
     title: "Adaptar materiais sem refazer tudo",
-    description: "Ajusta dificuldade, linguagem, extensão e formato para turmas diferentes sem partir sempre do zero.",
+    description: "Ajuste dificuldade, linguagem, extensão e formato para turmas diferentes sem partir sempre do zero.",
     icon: SlidersHorizontal,
   },
   {
     title: "Reutilizar boas ideias",
-    description: "A biblioteca comunitária ajuda-te a descobrir materiais que podes duplicar e adaptar ao teu contexto.",
+    description: "A biblioteca comunitária ajuda a descobrir materiais que pode duplicar e adaptar ao seu contexto.",
     icon: LibraryBig,
   },
 ];

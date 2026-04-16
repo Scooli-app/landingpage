@@ -1,5 +1,6 @@
 import { MarketingScrollDepthTracker } from "@/components/MarketingScrollDepthTracker";
 import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
+import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { StructuredData } from "@/components/StructuredData";
 import { Toaster } from "@/components/ui/sonner";
 import {
@@ -148,14 +149,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           Saltar para o conteúdo principal
         </a>
         <ReducedMotionProvider>
-          <MarketingScrollDepthTracker />
-          {children}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              className: "glass border border-[color:var(--scooli-border)]",
-            }}
-          />
+          <SmoothScrollProvider>
+            <MarketingScrollDepthTracker />
+            {children}
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                className: "glass border border-[color:var(--scooli-border)]",
+              }}
+            />
+          </SmoothScrollProvider>
         </ReducedMotionProvider>
         {process.env.NODE_ENV === "production" && <Analytics />}
       </body>

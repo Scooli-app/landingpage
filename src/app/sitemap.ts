@@ -46,6 +46,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: withAlternates("/escolas"),
     },
     {
+      url: `${SITE_URL}/recomendar-instituicao`,
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: withAlternates("/recomendar-instituicao"),
+    },
+    {
       url: `${SITE_URL}/biblioteca`,
       lastModified,
       changeFrequency: "weekly",

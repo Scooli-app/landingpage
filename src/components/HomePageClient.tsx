@@ -1,10 +1,10 @@
-﻿import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import { MarketingNav } from "@/components/MarketingNav";
-import { CommunityLibrarySection, LandingFinalCtaSection, SocialProofSection } from "@/components/homepage/CommunitySocialFinalSections";
+import { LandingFinalCtaSection, SocialProofSection } from "@/components/homepage/CommunitySocialFinalSections";
+import { CorePillarsSection } from "@/components/homepage/CorePillarsSection";
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
-import { EditorSection, RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
-import { BeforeAfterSection, ImpactSection, ProblemSection, SolutionSection } from "@/components/homepage/ProblemSolutionSections";
+import { RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
 
 export function HomePageClient() {
   return (
@@ -13,16 +13,11 @@ export function HomePageClient() {
         <MarketingNav />
       </header>
 
-      <main id="main-content" role="main" tabIndex={-1} className="overflow-hidden">
+      <main id="main-content" role="main" tabIndex={-1} className="overflow-x-hidden">
         <HeroSection />
-        <ImpactSection />
-        <ProblemSection />
-        <BeforeAfterSection />
-        <SolutionSection />
+        <CorePillarsSection />
         <HowItWorksSection />
         <RealOutputsSection />
-        <EditorSection />
-        <CommunityLibrarySection />
         <SocialProofSection />
         <LandingFinalCtaSection />
       </main>

@@ -46,6 +46,10 @@ export function getPageCategory(pathname = getCurrentPathname()) {
     return "schools";
   }
 
+  if (pathname === "/recomendar-instituicao") {
+    return "institution_referral";
+  }
+
   if (pathname === "/professores" || pathname === "/ia-para-professores") {
     return "teachers";
   }
@@ -130,6 +134,10 @@ export function getTargetKind(targetUrl: string) {
 
   if (targetUrl.startsWith("/escolas")) {
     return "schools";
+  }
+
+  if (targetUrl.startsWith("/recomendar-instituicao")) {
+    return "institution_referral";
   }
 
   if (targetUrl.startsWith("/biblioteca")) {

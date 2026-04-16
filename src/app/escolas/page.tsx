@@ -1,5 +1,6 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
+import { TrackedLink } from "@/components/TrackedLink";
 import { schoolPageCards } from "@/components/marketing/data";
 import {
   Checklist,
@@ -10,13 +11,14 @@ import {
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
+import { Button } from "@/components/ui/button";
 import { getPageMetadata } from "@/lib/seo";
-import { ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 
 export const metadata = getPageMetadata({
   title: "Para escolas e instituições",
   description:
-    "Descobre como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
+    "Descubra como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
   path: "/escolas",
 });
 
@@ -52,7 +54,7 @@ export default function SchoolsPage() {
       <PageHero
         eyebrow="Para escolas"
         title="Um percurso simples para escolas começarem com um piloto"
-        description="Se queres avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial."
+        description="Para avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial."
         primaryAction={
           <InstitutionalContactButton
             source="schools_page_hero"
@@ -94,11 +96,11 @@ export default function SchoolsPage() {
       </section>
 
       <section className="py-20 sm:py-24 lg:py-28">
-        <Container className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
+        <Container>
           <SurfacePanel>
             <div className="flex items-center gap-3">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                <ShieldCheck className="h-5 w-5" />
+                <ShieldCheck className="h-5 w-5" aria-hidden="true" />
               </div>
               <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
                 O que costuma travar a decisão logo no início
@@ -110,36 +112,12 @@ export default function SchoolsPage() {
                 "Se os dados dos utilizadores são usados para treinar modelos",
                 "Quem mantém o controlo do conteúdo final",
                 "Como garantir revisão humana antes de usar em aula",
+                "Como arrancar com um piloto antes de tomar uma decisão maior",
+                "A adaptação de materiais para turmas e níveis diferentes continua demasiado manual",
               ].map((item) => (
                 <div
                   key={item}
                   className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
-                >
-                  {item}
-                </div>
-              ))}
-            </div>
-          </SurfacePanel>
-
-          <SurfacePanel>
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                <Users className="h-5 w-5" />
-              </div>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                Problemas que costumam levar uma escola a procurar a Scooli
-              </p>
-            </div>
-            <div className="mt-6 space-y-3">
-              {[
-                "A preparação de planificações, fichas e testes está a consumir demasiado tempo às equipas docentes",
-                "A adaptação de materiais para turmas e níveis diferentes continua demasiado manual",
-                "A escola quer testar IA útil sem abdicar de controlo pedagógico e revisão humana",
-                "Há procura por uma forma simples de arrancar com um piloto antes de tomar uma decisão maior",
-              ].map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
                 >
                   {item}
                 </div>
@@ -151,9 +129,48 @@ export default function SchoolsPage() {
 
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
+          <SurfacePanel className="bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))]">
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+              <div className="space-y-4">
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
+                  Recomendação interna
+                </p>
+                <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
+                  Trabalha numa escola mas não está na direção?
+                </h2>
+                <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
+                  Pode abrir a conversa na mesma. Criamos uma página dedicada
+                  para professores e equipas que querem sugerir a Scooli à
+                  direção, coordenação ou agrupamento onde trabalham.
+                </p>
+              </div>
+
+              <Button
+                asChild
+                className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
+              >
+                <TrackedLink
+                  href="/recomendar-instituicao"
+                  eventName="marketing_cta_clicked"
+                  eventProperties={{
+                    cta_id: "schools_page_recommend_institution",
+                    placement: "schools_page_referral_callout",
+                  }}
+                >
+                  Recomendar a minha escola
+                  <ArrowRight className="h-4 w-4" />
+                </TrackedLink>
+              </Button>
+            </div>
+          </SurfacePanel>
+        </Container>
+      </section>
+
+      <section className="pb-20 sm:pb-24 lg:pb-28">
+        <Container>
           <PageCtaBanner
-            title="Quer perceber se a Scooli faz sentido para a tua escola?"
-            description="Podemos começar por uma conversa curta, perceber o contexto e desenhar um piloto simples com a equipa certa."
+            title="Quer perceber se a Scooli faz sentido para a sua escola?"
+            description="Comece por uma conversa curta, perceba o contexto e desenhe um piloto simples com a equipa certa."
             primaryAction={
               <InstitutionalContactButton
                 source="schools_page_cta_banner"

@@ -9,6 +9,7 @@ const primaryLinks = [
   { label: "Professores", href: "/professores" },
   { label: "IA para professores", href: "/ia-para-professores" },
   { label: "Escolas", href: "/escolas" },
+  { label: "Recomendar a Scooli", href: "/recomendar-instituicao" },
   { label: "Biblioteca", href: "/biblioteca" },
   { label: "Ferramentas", href: "/ferramentas" },
   { label: "Preços", href: "/precos" },

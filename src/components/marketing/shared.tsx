@@ -64,7 +64,7 @@ export function PublicSiteShell({ children }: { children: ReactNode }) {
       <header role="banner">
         <MarketingNav />
       </header>
-      <main id="main-content" role="main" tabIndex={-1} className="overflow-hidden">
+      <main id="main-content" role="main" tabIndex={-1} className="overflow-x-hidden">
         {children}
       </main>
       <Footer />

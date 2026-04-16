@@ -5,35 +5,19 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { BrowserFrame, SectionBadge } from "./shared";
 
 const heroHighlights = [
-  `${PRICING.free.generationsPerMonth} gerações por mês para experimentar`,
-  "Planificações, fichas e testes prontos a editar",
-  "Professor no controlo do resultado final",
-  "Biblioteca partilhada por professores",
+  "Alinhado com as Aprendizagens Essenciais",
+  "Adapta para NEEs e diferentes ritmos",
+  `${PRICING.free.generationsPerMonth} gerações grátis por mês`,
 ];
 
-const heroTags = ["Dashboard", "Criar teste", "Exportar"];
 const heroVideoSrc = "/videos/test-creation.mp4";
 
 function HeroPreview() {
   return (
     <div className="relative">
-      <div className="mb-4 flex flex-wrap items-center gap-3">
-        <span className="inline-flex rounded-full border border-slate-200 bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 shadow-[0_16px_32px_-28px_rgba(19,35,58,0.35)]">
-          Crie recursos em 20 segundos
-        </span>
-        {heroTags.map((tag) => (
-          <span
-            key={tag}
-            className="inline-flex rounded-full bg-[color:var(--scooli-accent)] px-3 py-1.5 text-xs font-semibold text-[color:var(--scooli-primary)]"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
-
       <BrowserFrame
         title="Scooli em ação"
-        subtitle="Da dashboard ao teste"
+        subtitle="Da ideia ao recurso completo"
         className="relative z-10"
       >
         <div className="rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-3 sm:p-4">
@@ -46,6 +30,7 @@ function HeroPreview() {
               playsInline
               preload="none"
               disablePictureInPicture
+              aria-label="Demonstração da criação de um teste na Scooli"
             >
               <source src={heroVideoSrc} type="video/mp4" />O seu navegador não
               suporta vídeo HTML5.
@@ -54,9 +39,9 @@ function HeroPreview() {
 
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {[
-              "Entrar na dashboard e escolher o que criar",
-              "Gerar um teste completo com IA",
-              "Rever, finalizar e exportar",
+              "Indique o tema, o ano e o tipo de recurso",
+              "Receba o material completo e estruturado",
+              "Edite, adapte e exporte quando estiver pronto",
             ].map((step, index) => (
               <div
                 key={step}
@@ -82,15 +67,14 @@ export function HeroSection() {
       <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8 md:max-w-7xl md:px-12 sm:pb-24 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
           <div className="space-y-7">
-            <SectionBadge>Poupe horas todas as semanas</SectionBadge>
+            <SectionBadge>IA alinhada com as Aprendizagens Essenciais</SectionBadge>
             <div className="space-y-5">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                Crie planificações, fichas e testes em minutos, sem perder horas
-                a preparar.
+                Crie planificações, fichas e testes em minutos.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Para professores que querem menos trabalho administrativo e mais
-                tempo para ensinar.
+                A Scooli gera recursos editáveis com IA — alinhados com as
+                Aprendizagens Essenciais e prontos a adaptar para cada aluno.
               </p>
             </div>
 
