@@ -25,7 +25,7 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (prefersReducedMotion || !ref.current) return;
+    if (prefersReducedMotion || !ref.current) { return; }
 
     const { y = 28, duration = 0.7, stagger = 0.1, delay = 0, start = "top 88%" } = options;
 

@@ -14,7 +14,7 @@ export function SmoothScrollProvider({
   children: React.ReactNode;
 }) {
   useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
 
     const lenis = new Lenis({
       lerp: 0.07,        // trailing inertia — lower = more glide
@@ -37,5 +37,5 @@ export function SmoothScrollProvider({
     };
   }, []);
 
-  return <>{children}</>;
+  return children;
 }
