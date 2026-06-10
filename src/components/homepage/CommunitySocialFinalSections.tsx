@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL, PRICING } from "@/lib/seo";
+import { APP_URL, PRICING, PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import {
   ArrowRight,
   CheckCircle2,
@@ -19,6 +19,24 @@ import {
   SectionHeading,
 } from "./shared";
 
+const formatCount = (value: number) =>
+  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+const impactMetrics = [
+  {
+    value: `${formatCount(PUBLIC_IMPACT_METRICS.activeTeachers.minValue)}+`,
+    label: "professores ativos",
+  },
+  {
+    value: `${formatCount(PUBLIC_IMPACT_METRICS.generatedDocuments.minValue)}+`,
+    label: "documentos gerados",
+  },
+  {
+    value: `${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue}h+`,
+    label: "poupadas por semana",
+  },
+];
+
 export function SocialProofSection() {
   const ref = useScrollReveal({ stagger: 0.1, y: 20 });
 
@@ -26,11 +44,26 @@ export function SocialProofSection() {
     <section id="prova-social" className="py-20 sm:py-24 lg:py-28">
       <Container ref={ref} className="space-y-10">
         <SectionHeading
-          eyebrow="Prova social"
-          title="Ganhos que fazem diferença semana após semana"
-          description="O que dizem professores que usam a Scooli todas as semanas:"
+          eyebrow="Quem já usa"
+          title="O que dizem os professores que usam a Scooli"
+          description="Testemunhos reais de docentes em Portugal."
           centered
         />
+        <div
+          data-reveal
+          className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 rounded-[28px] border border-slate-200/80 bg-white px-8 py-7 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]"
+        >
+          {impactMetrics.map((metric) => (
+            <div key={metric.label} className="text-center">
+              <p className="font-display text-4xl leading-none text-[color:var(--scooli-ink)]">
+                {metric.value}
+              </p>
+              <p className="mt-2 text-sm font-medium text-[color:var(--scooli-muted)]">
+                {metric.label}
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {socialProof.map((item) => (
             <QuoteCard key={item.quote} item={item} />
@@ -53,11 +86,11 @@ export function LandingFinalCtaSection() {
               <SectionBadge>Último passo</SectionBadge>
               <div className="space-y-4">
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl lg:text-5xl">
-                  Comece hoje e poupe horas todas as semanas.
+                  A próxima aula pode começar com uma base pronta.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                  Crie planificações, fichas e testes em minutos, ajuste tudo ao
-                  seu ritmo e leve materiais prontos para a próxima aula.
+                  Crie a primeira planificação, ficha ou teste em minutos —
+                  alinhado com as AE e pronto a adaptar à sua turma.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -110,15 +143,14 @@ export function LandingFinalCtaSection() {
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    {PRICING.free.generationsPerMonth} gerações por mês para
-                    explorar a ferramenta sem compromisso inicial.
+                    {PRICING.free.generationsPerMonth} gerações grátis por mês
+                    — sem cartão, sem compromisso.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    Todo o conteúdo continua editável antes de exportar ou
-                    reutilizar.
+                    Tudo editável: o professor decide sempre o resultado final.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">

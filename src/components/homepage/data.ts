@@ -1,17 +1,12 @@
-﻿import {
+import {
+  BookOpenCheck,
   Bot,
-  CheckCheck,
   Clock3,
   Download,
-  FileText,
-  FolderSearch,
   LibraryBig,
-  PencilLine,
   ShieldCheck,
   SlidersHorizontal,
-  Sparkles,
   Upload,
-  WandSparkles,
   type LucideIcon,
 } from "lucide-react";
 
@@ -46,74 +41,83 @@ export const painPoints: InfoItem[] = [
   {
     title: "Perde horas todas as semanas a preparar aulas",
     description:
-      "Entre objetivos, atividades e avaliação, a preparação estende-se muito para lá do horário e rouba tempo ao que realmente importa.",
+      "Planificações, fichas e testes consomem noites e fins de semana — em média, 7,4 horas semanais só de preparação (TALIS 2024 · Portugal).",
     icon: Clock3,
   },
   {
-    title: "Repete o mesmo trabalho semana após semana",
+    title: "O ChatGPT não conhece o currículo português",
     description:
-      "Fichas, testes e planificações acabam por recomeçar quase do zero, mesmo quando a estrutura já é conhecida.",
-    icon: FileText,
-  },
-  {
-    title: "Adaptar materiais para cada turma demora demasiado",
-    description:
-      "Mudar dificuldade, linguagem ou ritmo continua a exigir trabalho manual demais sempre que a turma muda.",
-    icon: SlidersHorizontal,
-  },
-  {
-    title: "Quando falta uma boa base, tudo atrasa",
-    description:
-      "Quando não existe um recurso pronto a adaptar, o tempo de preparação dispara e acumula-se para a aula seguinte.",
-    icon: FolderSearch,
-  },
-];
-
-export const benefits: InfoItem[] = [
-  {
-    title: "Mais rapidez no arranque",
-    description:
-      "Parta de uma base útil em segundos, em vez de começar com uma folha em branco.",
-    icon: Sparkles,
-  },
-  {
-    title: "Menos tarefas repetidas",
-    description:
-      "A Scooli monta a estrutura, sugere perguntas e organiza o documento sem trabalho mecânico.",
+      "Aprendizagens Essenciais, DL 54/2018, DL 55/2018: nada disto entra na resposta. Corrigir demora tanto como fazer do zero.",
     icon: Bot,
   },
   {
-    title: "Adaptação sem refazer tudo",
+    title: "Adaptar para turmas diferentes continua a ser manual",
     description:
-      "Ajuste linguagem, dificuldade e formato para diferentes turmas ou necessidades.",
-    icon: WandSparkles,
-  },
-  {
-    title: "Fluxo simples do início ao fim",
-    description:
-      "Pedir, editar e exportar acontece no mesmo sítio, sem saltar entre ferramentas.",
-    icon: PencilLine,
+      "Níveis, ritmos e NEEs: cada versão é refeita à mão, semana após semana.",
+    icon: SlidersHorizontal,
   },
 ];
+
+export const beforeAfter = {
+  before: [
+    "Página em branco no Word — ou prompt no ChatGPT",
+    "Texto solto num chat, sem referência às AE nem aos DL 54/2018 e 55/2018",
+    "Correção manual, reformatação e alinhamento curricular",
+    "Na semana seguinte, tudo outra vez",
+  ],
+  after: [
+    "Indica o tema, o ano e o tipo de recurso",
+    "Documento completo, alinhado com as AE à partida",
+    "Edita apenas o que quer mudar — o resto chega pronto",
+    "Fica guardado na sua biblioteca para reutilizar e adaptar",
+  ],
+};
 
 export const steps: StepItem[] = [
   {
-    title: "Indique o contexto",
+    title: "Indique o tema, o ano e o tipo de recurso",
     description:
-      "Tema, ano e tipo de recurso. Ou carregue um documento já existente.",
+      "Planificação, ficha ou teste. Pode também partir de um documento que já tem.",
     icon: Upload,
   },
   {
-    title: "Receba o recurso completo",
+    title: "Receba o documento completo e alinhado com as AE",
     description:
-      "Uma planificação, ficha ou teste já estruturado e pronto a editar.",
+      "Estrutura, conteúdos e critérios já organizados — uma base pronta, não uma página em branco.",
     icon: Bot,
   },
   {
-    title: "Edite e exporte",
+    title: "Edite, adapte e exporte quando estiver pronto",
     description:
-      "Ajuste o que precisar, valide o conteúdo e exporte quando estiver pronto.",
+      "Ajuste ao seu estilo e à sua turma. O professor decide sempre o resultado final.",
     icon: Download,
+  },
+];
+
+export const valueProps: InfoItem[] = [
+  {
+    title: "Alinhada com o currículo português",
+    description:
+      "Aprendizagens Essenciais, DL 54/2018 e DL 55/2018: cada documento parte dos referenciais oficiais — não de um modelo genérico que é preciso vigiar.",
+    icon: BookOpenCheck,
+  },
+  {
+    title: "Adapta para turmas e níveis diferentes",
+    description:
+      "Versões mais simples, mais curtas ou com apoio para NEEs — adaptação alinhada com o DL 54/2018, sem começar de novo.",
+    icon: SlidersHorizontal,
+  },
+  {
+    title: "Professor no controlo",
+    description:
+      "A IA propõe a estrutura; o professor revê, corta, melhora e decide o que entra na aula. Sempre.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "Biblioteca comunitária",
+    description:
+      "Encontre, duplique e adapte materiais criados por outros professores portugueses.",
+    icon: LibraryBig,
   },
 ];
 
@@ -136,53 +140,8 @@ export const outputs: OutputItem[] = [
     label: "Teste",
     title: "Teste completo com cotação e critérios",
     description:
-      "Questões equilibradas e critérios de correção visíveis para ganhares tempo na preparação.",
+      "Questões equilibradas e critérios de correção visíveis para ganhar tempo na preparação.",
     kind: "test",
-  },
-];
-
-export const editorBenefits: InfoItem[] = [
-  {
-    title: "Editar linha a linha",
-    description:
-      "Nada fica fechado. Reescreva, corte, troque exemplos e afine o texto ao seu gosto.",
-    icon: CheckCheck,
-  },
-  {
-    title: "Adaptar para níveis diferentes",
-    description:
-      "Peça uma versão mais simples, uma extensão ou novos exercícios sem perder o documento base.",
-    icon: SlidersHorizontal,
-  },
-  {
-    title: "Manter o controlo do resultado",
-    description:
-      "A IA sugere, mas a decisão final continua sempre do lado do professor.",
-    icon: ShieldCheck,
-  },
-];
-
-export const libraryBenefits = [
-  "Encontrar recursos por disciplina, ano e tipo de material",
-  "Duplicar um material já criado e adaptá-lo em minutos",
-  "Guardar boas bases para reutilizar sempre que precisar",
-];
-
-export const libraryCards = [
-  {
-    title: "Ficha de leitura orientada",
-    meta: "Português · 2.º ciclo · Ficha",
-    tags: ["Compreensão", "Editável", "45 min"],
-  },
-  {
-    title: "Planificação semanal: frações",
-    meta: "Matemática · 5.º ano · Planificação",
-    tags: ["Aprendizagens", "Blocos de aula", "Avaliação"],
-  },
-  {
-    title: "Teste diagnóstico: sistema digestivo",
-    meta: "Ciências · 6.º ano · Teste",
-    tags: ["Cotação", "Critérios", "Duplicar"],
   },
 ];
 
@@ -204,5 +163,3 @@ export const socialProof: QuoteItem[] = [
     rating: 4.7,
   },
 ];
-
-export const libraryTitleIcon = LibraryBig;

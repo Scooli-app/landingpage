@@ -136,7 +136,7 @@ function ProPlanCard({
     "Modelos de IA avançados",
     "Exportação em múltiplos formatos",
     "Acesso antecipado a novidades",
-    "Biblioteca comunitárioa",
+    "Biblioteca comunitária",
     "Geração de imagens",
   ];
 

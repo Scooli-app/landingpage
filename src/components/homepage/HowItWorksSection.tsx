@@ -1,7 +1,11 @@
 "use client";
 
 import { Container } from "@/components/Container";
+import { TrackedLink } from "@/components/TrackedLink";
+import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { APP_URL } from "@/lib/seo";
+import { ArrowRight } from "lucide-react";
 import { steps } from "./data";
 import { SectionHeading } from "./shared";
 
@@ -13,8 +17,8 @@ export function HowItWorksSection() {
       <Container ref={ref} className="space-y-12">
         <SectionHeading
           eyebrow="Como funciona"
-          title="Da ideia ao material pronto a usar em três passos"
-          description="Sem configuração complicada: indique o contexto, receba o material completo e ajuste apenas o que fizer sentido para a sua turma."
+          title="Três passos. Sem configuração."
+          description="Indique o contexto, receba o documento completo e ajuste apenas o que fizer sentido para a sua turma."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -44,6 +48,24 @@ export function HowItWorksSection() {
               </div>
             );
           })}
+        </div>
+        <div data-reveal className="flex justify-center">
+          <Button
+            asChild
+            className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
+          >
+            <TrackedLink
+              href={`${APP_URL}/sign-up`}
+              eventName="marketing_cta_clicked"
+              eventProperties={{
+                cta_id: "home_how_it_works_create_first",
+                placement: "home_how_it_works",
+              }}
+            >
+              Criar o primeiro recurso
+              <ArrowRight className="h-4 w-4" />
+            </TrackedLink>
+          </Button>
         </div>
       </Container>
     </section>

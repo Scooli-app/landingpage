@@ -5,9 +5,9 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { BrowserFrame, SectionBadge } from "./shared";
 
 const heroHighlights = [
-  "Alinhado com as Aprendizagens Essenciais",
-  "Adapta para NEEs e diferentes ritmos",
-  `${PRICING.free.generationsPerMonth} gerações grátis por mês`,
+  "Alinhado com as AE e os DL 54/2018 e 55/2018",
+  "Professor no controlo — a decisão final é sempre sua",
+  "RGPD — os seus dados não treinam modelos de IA",
 ];
 
 const heroVideoSrc = "/videos/test-creation.mp4";
@@ -67,14 +67,17 @@ export function HeroSection() {
       <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8 md:max-w-7xl md:px-12 sm:pb-24 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
           <div className="space-y-7">
-            <SectionBadge>IA alinhada com as Aprendizagens Essenciais</SectionBadge>
+            <SectionBadge>Construída para o currículo português</SectionBadge>
             <div className="space-y-5">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                Crie planificações, fichas e testes em minutos.
+                Planificações, fichas e testes alinhados com as Aprendizagens
+                Essenciais — em minutos.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                A Scooli gera recursos editáveis com IA — alinhados com as
-                Aprendizagens Essenciais e prontos a adaptar para cada aluno.
+                Provavelmente já usa o ChatGPT para preparar aulas. A Scooli
+                conhece os documentos que regem o ensino português — das
+                Aprendizagens Essenciais aos DL 54/2018 e 55/2018 — e devolve
+                documentos estruturados e editáveis, não respostas de chat.
               </p>
             </div>
 
@@ -115,7 +118,8 @@ export function HeroSection() {
 
             <div className="space-y-2">
               <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
-                Comece gratuitamente. Sem compromisso.
+                {PRICING.free.generationsPerMonth} gerações grátis por mês. Sem
+                cartão, sem compromisso.
               </p>
               <TrackedLink
                 href="/escolas"
