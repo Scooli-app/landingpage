@@ -63,7 +63,7 @@ function HeroPreview() {
 export function HeroSection() {
   return (
     <section id="hero" className="relative isolate pt-6 sm:pt-10">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[620px] bg-[radial-gradient(circle_at_top_left,rgba(103,83,255,0.18),transparent_42%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_24%)]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[620px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.09),transparent)]" />
       <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8 md:max-w-7xl md:px-12 sm:pb-24 lg:pb-28">
         <div className="grid items-center gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
           <div className="space-y-7">

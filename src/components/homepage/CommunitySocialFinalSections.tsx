@@ -4,7 +4,7 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL, PRICING, PUBLIC_IMPACT_METRICS } from "@/lib/seo";
+import { APP_URL, PRICING } from "@/lib/seo";
 import {
   ArrowRight,
   CheckCircle2,
@@ -19,29 +19,11 @@ import {
   SectionHeading,
 } from "./shared";
 
-const formatCount = (value: number) =>
-  String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-const impactMetrics = [
-  {
-    value: `${formatCount(PUBLIC_IMPACT_METRICS.activeTeachers.minValue)}+`,
-    label: "professores ativos",
-  },
-  {
-    value: `${formatCount(PUBLIC_IMPACT_METRICS.generatedDocuments.minValue)}+`,
-    label: "documentos gerados",
-  },
-  {
-    value: `${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue}h+`,
-    label: "poupadas por semana",
-  },
-];
-
 export function SocialProofSection() {
   const ref = useScrollReveal({ stagger: 0.1, y: 20 });
 
   return (
-    <section id="prova-social" className="py-20 sm:py-24 lg:py-28">
+    <section id="prova-social" className="py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-10">
         <SectionHeading
           eyebrow="Quem já usa"
@@ -49,21 +31,6 @@ export function SocialProofSection() {
           description="Testemunhos reais de docentes em Portugal."
           centered
         />
-        <div
-          data-reveal
-          className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6 rounded-[28px] border border-slate-200/80 bg-white px-8 py-7 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]"
-        >
-          {impactMetrics.map((metric) => (
-            <div key={metric.label} className="text-center">
-              <p className="font-display text-4xl leading-none text-[color:var(--scooli-ink)]">
-                {metric.value}
-              </p>
-              <p className="mt-2 text-sm font-medium text-[color:var(--scooli-muted)]">
-                {metric.label}
-              </p>
-            </div>
-          ))}
-        </div>
         <div className="grid gap-5 lg:grid-cols-3">
           {socialProof.map((item) => (
             <QuoteCard key={item.quote} item={item} />
@@ -78,7 +45,7 @@ export function LandingFinalCtaSection() {
   const ref = useScrollReveal({ y: 20 });
 
   return (
-    <section id="cta-final" ref={ref} className="pb-20 sm:pb-24 lg:pb-28">
+    <section id="cta-final" ref={ref} className="pb-16 sm:pb-20 lg:pb-24">
       <Container>
         <div className="overflow-hidden rounded-[36px] border border-slate-200 bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))] p-8 shadow-[0_30px_100px_-60px_rgba(19,35,58,0.45)] sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">

@@ -12,7 +12,7 @@ export function WeeklyHabitSection() {
   const ref = useScrollReveal({ y: 20 });
 
   return (
-    <section id="habito-semanal" className="bg-white/70 py-20 sm:py-24 lg:py-28">
+    <section id="habito-semanal" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container ref={ref}>
         <div
           data-reveal

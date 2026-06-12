@@ -101,15 +101,15 @@ const howToSchema = getHowToSchema(
   [
     {
       name: "Escolher o tipo de material",
-      text: "Seleciona se queres criar uma planificação, ficha, teste, quiz ou apresentação.",
+      text: "Selecione se quer criar uma planificação, ficha, teste, quiz ou apresentação.",
     },
     {
       name: "Dar contexto da aula",
-      text: "Indica tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tens.",
+      text: "Indique tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem.",
     },
     {
       name: "Gerar uma primeira versão",
-      text: "Recebe uma base pronta a editar, em vez de começares a partir de uma página em branco.",
+      text: "Receba uma base pronta a editar, em vez de começar a partir de uma página em branco.",
     },
     {
       name: "Rever e adaptar",
@@ -229,10 +229,10 @@ export default function AiForTeachersPage() {
               <div className="mt-4">
                 <Checklist
                   items={[
-                    "Quando precisas de preparar materiais mais depressa sem abdicar de revisão humana",
-                    "Quando queres uma ferramenta mais alinhada com as Aprendizagens Essenciais do que uma opção genérica",
-                    "Quando precisas de PT-PT, contexto português e fluxos pensados para professores",
-                    "Quando queres criar materiais, não apenas desenhar slides ou conversar com um chatbot",
+                    "Quando precisa de preparar materiais mais depressa sem abdicar de revisão humana",
+                    "Quando quer uma ferramenta mais alinhada com as Aprendizagens Essenciais do que uma opção genérica",
+                    "Quando precisa de pt-PT, contexto português e fluxos pensados para professores",
+                    "Quando quer criar materiais, não apenas desenhar slides ou conversar com um chatbot",
                   ]}
                 />
               </div>
@@ -396,7 +396,7 @@ export default function AiForTeachersPage() {
                 ))}
               </div>
               <div className="mt-6 rounded-[24px] border border-[#d9ddff] bg-white px-5 py-4 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Se queres experimentar diretamente a plataforma, o registo está em{" "}
+                Se quer experimentar diretamente a plataforma, o registo está em{" "}
                 <TrackedLink
                   href={`${APP_URL}/sign-up`}
                   eventName="marketing_cta_clicked"
@@ -417,8 +417,8 @@ export default function AiForTeachersPage() {
         <section className="pb-20 sm:pb-24 lg:pb-28">
           <Container>
             <PageCtaBanner
-              title="Quer ver se a Scooli encaixa no teu ritmo de preparação?"
-              description="Experimenta um pedido real da próxima aula, revê o resultado, confirma o alinhamento com as Aprendizagens Essenciais e ajusta tudo antes de usar com a turma."
+              title="Quer ver se a Scooli encaixa no seu ritmo de preparação?"
+              description="Experimente um pedido real da próxima aula, reveja o resultado, confirme o alinhamento com as Aprendizagens Essenciais e ajuste tudo antes de usar com a turma."
               secondaryHref="/confianca"
               secondaryLabel="Ver confiança e privacidade"
             />

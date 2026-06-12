@@ -16,7 +16,7 @@ import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
 export const metadata = getPageMetadata({
   title: "Preços",
   description:
-    "Vê os preços da Scooli, percebe o que inclui cada plano e descobre qual é o caminho certo para professores e escolas.",
+    "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas.",
   path: "/precos",
 });
 
@@ -70,7 +70,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Preços"
         title="Preços claros para professores e um caminho próprio para escolas"
-        description="Experimenta a Scooli com o plano gratuito. Se precisares de usar a plataforma todas as semanas, escolhe Pro. Se representas uma escola, fala connosco para definir um piloto ou percurso institucional."
+        description="Experimente a Scooli com o plano gratuito. Se precisar de usar a plataforma todas as semanas, escolha Pro. Se representa uma escola, fale connosco para definir um piloto ou percurso institucional."
         secondaryHref="/escolas"
         secondaryLabel="Ver opção para escolas"
         aside={<PricingIntroCard />}
@@ -107,7 +107,7 @@ export default function PricingPage() {
               Uso justo sem letras pequenas
             </h3>
             <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              No Pro não tens um limite mensal rígido. A política de uso justo
+              No Pro não tem um limite mensal rígido. A política de uso justo
               existe para evitar abuso automatizado e manter a qualidade do
               serviço para todos.
             </p>
@@ -164,7 +164,7 @@ export default function PricingPage() {
           <MarketingSectionHeading
             eyebrow="Notas importantes"
             title="Ajudar a decidir com mais clareza"
-            description="Em vez de esconder os detalhes, aqui tens o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional."
+            description="Em vez de esconder os detalhes, aqui tem o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -173,8 +173,8 @@ export default function PricingPage() {
                 Pagamento
               </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Os pagamentos são processados de forma segura. Se precisares de
-                ajuda com faturação ou subscrição, responde-nos por email.
+                Os pagamentos são processados de forma segura. Se precisar de
+                ajuda com faturação ou subscrição, escreva-nos por email.
               </p>
             </SurfacePanel>
             <SurfacePanel>
@@ -182,7 +182,7 @@ export default function PricingPage() {
                 Uso justo
               </p>
               <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Queremos que possas trabalhar com liberdade. Só intervimos
+                Queremos que possa trabalhar com liberdade. Só intervimos
                 quando há padrões anómalos ou automatizados que coloquem o
                 serviço em risco.
               </p>
@@ -204,7 +204,7 @@ export default function PricingPage() {
         <Container>
           <PageCtaBanner
             title="Quer experimentar antes de decidir?"
-            description="Começa gratuitamente, gera alguns materiais reais e percebe se a Scooli encaixa no teu ritmo de trabalho."
+            description="Comece gratuitamente, gere alguns materiais reais e perceba se a Scooli encaixa no seu ritmo de trabalho."
             secondaryHref="/confianca"
             secondaryLabel="Ver confiança e privacidade"
           />

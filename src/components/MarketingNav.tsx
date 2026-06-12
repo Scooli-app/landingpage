@@ -10,10 +10,11 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Início", href: "/" },
   { label: "Como funciona", href: "/#como-funciona" },
-  { label: "Preços", href: "/precos" },
+  { label: "Ferramentas", href: "/ferramentas" },
   { label: "Biblioteca", href: "/biblioteca" },
+  { label: "Preços", href: "/precos" },
+  { label: "Sobre nós", href: "/sobre" },
 ];
 
 export function MarketingNav() {

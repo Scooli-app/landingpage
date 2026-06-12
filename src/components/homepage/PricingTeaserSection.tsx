@@ -41,7 +41,7 @@ export function PricingTeaserSection() {
   const ref = useScrollReveal({ stagger: 0.1, y: 24 });
 
   return (
-    <section id="precos" className="py-20 sm:py-24 lg:py-28">
+    <section id="precos" className="py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
           eyebrow="Preços"

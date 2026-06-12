@@ -13,7 +13,7 @@ export function HowItWorksSection() {
   const ref = useScrollReveal({ stagger: 0.12, y: 24 });
 
   return (
-    <section id="como-funciona" className="py-20 sm:py-24 lg:py-28">
+    <section id="como-funciona" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
           eyebrow="Como funciona"

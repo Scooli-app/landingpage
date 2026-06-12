@@ -53,17 +53,17 @@ const commitments = [
 ];
 
 const goodPractices = [
-  "Evita inserir dados pessoais desnecessários de alunos.",
-  "Usa contexto pedagógico sempre que possível, em vez de informação identificável.",
-  "Confirma sempre que o material final está alinhado com as Aprendizagens Essenciais e com o teu contexto de aula.",
-  "Trata a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica.",
+  "Evite inserir dados pessoais desnecessários de alunos.",
+  "Use contexto pedagógico sempre que possível, em vez de informação identificável.",
+  "Confirme sempre que o material final está alinhado com as Aprendizagens Essenciais e com o seu contexto de aula.",
+  "Trate a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica.",
 ];
 
 export default function TrustPage() {
   return (
     <PublicSiteShell>
       <section className="relative isolate pt-8 sm:pt-10">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(circle_at_top_left,rgba(103,83,255,0.16),transparent_40%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.10),transparent_24%)]" />
+        <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
         <Container className="pb-16 pt-10 sm:pb-20 lg:pb-24">
           <div className="space-y-6">
             <MarketingSectionBadge>Confiança e Privacidade</MarketingSectionBadge>
@@ -72,7 +72,7 @@ export default function TrustPage() {
                 Privacidade, revisão humana, alinhamento curricular e uso responsável, explicados sem jargão
               </h1>
               <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Se queres perceber rapidamente como a Scooli lida com estes temas, aqui tens o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.
+                Se quer perceber rapidamente como a Scooli lida com estes temas, aqui tem o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.
               </p>
             </div>
 

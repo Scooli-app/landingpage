@@ -47,27 +47,27 @@ function validateRecommendationForm(values: {
   const errors: RecommendationErrors = {};
 
   if (!values.name.trim()) {
-    errors.name = "Indica o teu nome para sabermos quem está a recomendar.";
+    errors.name = "Indique o seu nome para sabermos quem está a recomendar.";
   }
 
   if (!values.email.trim()) {
-    errors.email = "Indica um email para podermos responder ao pedido.";
+    errors.email = "Indique um email para podermos responder ao pedido.";
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
-    errors.email = "Introduz um endereço de email válido.";
+    errors.email = "Introduza um endereço de email válido.";
   }
 
   if (!values.role.trim()) {
-    errors.role = "Partilha o teu papel na escola ou instituição.";
+    errors.role = "Partilhe o seu papel na escola ou instituição.";
   }
 
   if (!values.institution.trim()) {
     errors.institution =
-      "Indica a escola, instituição ou agrupamento que queres recomendar.";
+      "Indique a escola, instituição ou agrupamento que quer recomendar.";
   }
 
   if (!values.leadershipContact.trim()) {
     errors.leadershipContact =
-      "Indica o contacto da direção ou coordenação.";
+      "Indique o contacto da direção ou coordenação.";
   }
 
   return errors;
@@ -323,7 +323,7 @@ export function InstitutionRecommendationPage() {
                       id={fieldIds.name}
                       name="name"
                       type="text"
-                      placeholder="O teu nome"
+                      placeholder="O seu nome"
                       value={name}
                       onChange={(event) => {
                         setName(event.target.value);
@@ -515,7 +515,7 @@ export function InstitutionRecommendationPage() {
                     aria-describedby={getFieldDescribedBy("message", fieldIds.ccHint)}
                   />
                   <p id={fieldIds.ccHint} className="text-xs text-slate-500">
-                    Usamos o teu email para te responder e para te manter em CC
+                    Usamos o seu email para responder e para o manter em CC
                     se avançarmos com o contacto.
                   </p>
                   {errors.message && (
