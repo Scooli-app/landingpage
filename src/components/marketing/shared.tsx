@@ -107,8 +107,8 @@ export function PageHero({
 }) {
   return (
     <section className="relative isolate pt-8 sm:pt-10">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[540px] bg-[radial-gradient(circle_at_top_left,rgba(103,83,255,0.18),transparent_42%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_24%)]" />
-      <Container className="pb-20 pt-8 sm:pb-24 lg:pb-28">
+      <div className="absolute inset-x-0 top-0 -z-10 h-[540px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
+      <Container className="pb-12 pt-8 sm:pb-16 lg:pb-20">
         <div className={cn("grid gap-10 lg:items-center", aside ? "lg:grid-cols-[0.95fr_1.05fr]" : "max-w-4xl")}>
           <div className="space-y-7">
             <MarketingSectionBadge>{eyebrow}</MarketingSectionBadge>

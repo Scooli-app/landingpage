@@ -11,7 +11,6 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import type { ReactNode } from "react";
@@ -160,7 +159,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             />
           </SmoothScrollProvider>
         </ReducedMotionProvider>
-        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   );

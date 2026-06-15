@@ -1,10 +1,14 @@
 import { Footer } from "@/components/Footer";
 import { MarketingNav } from "@/components/MarketingNav";
 import { LandingFinalCtaSection, SocialProofSection } from "@/components/homepage/CommunitySocialFinalSections";
-import { CorePillarsSection } from "@/components/homepage/CorePillarsSection";
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
+import { MetricsStripSection } from "@/components/homepage/MetricsStripSection";
 import { RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
+import { PricingTeaserSection } from "@/components/homepage/PricingTeaserSection";
+import { ProblemSolutionSection } from "@/components/homepage/ProblemSolutionSection";
+import { ValuePropsSection } from "@/components/homepage/ValuePropsSection";
+import { WeeklyHabitSection } from "@/components/homepage/WeeklyHabitSection";
 
 export function HomePageClient() {
   return (
@@ -15,10 +19,14 @@ export function HomePageClient() {
 
       <main id="main-content" role="main" tabIndex={-1} className="overflow-x-hidden">
         <HeroSection />
-        <CorePillarsSection />
+        <MetricsStripSection />
+        <ProblemSolutionSection />
         <HowItWorksSection />
         <RealOutputsSection />
+        <ValuePropsSection />
         <SocialProofSection />
+        <WeeklyHabitSection />
+        <PricingTeaserSection />
         <LandingFinalCtaSection />
       </main>
 

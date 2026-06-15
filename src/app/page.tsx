@@ -85,23 +85,23 @@ const howToSchema = getHowToSchema(
   [
     {
       name: "Criar conta gratuita",
-      text: "Regista-te na Scooli e começa a explorar a plataforma com o plano gratuito.",
+      text: "Registe-se na Scooli e comece a explorar a plataforma com o plano gratuito.",
     },
     {
       name: "Escolher o tipo de recurso",
-      text: "Seleciona se queres criar uma planificação, uma ficha de trabalho ou um teste.",
+      text: "Selecione se quer criar uma planificação, uma ficha de trabalho ou um teste.",
     },
     {
       name: "Dar contexto ou carregar material",
-      text: "Indica o tema, o ano, o objetivo da aula e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tens.",
+      text: "Indique o tema, o ano, o objetivo da aula e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem.",
     },
     {
       name: "Gerar com IA",
-      text: "Recebe uma primeira versão em segundos para começares com uma base pronta a editar.",
+      text: "Receba uma primeira versão em segundos para começar com uma base pronta a editar.",
     },
     {
       name: "Editar e exportar",
-      text: "Ajusta o conteúdo, valida antes de usar e exporta o material final quando estiver pronto.",
+      text: "Ajuste o conteúdo, valide antes de usar e exporte o material final quando estiver pronto.",
     },
   ],
 );

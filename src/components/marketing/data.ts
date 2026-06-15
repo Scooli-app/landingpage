@@ -1,11 +1,13 @@
-﻿import {
+import {
   BookOpenCheck,
   Building2,
+  CalendarDays,
   FileCheck2,
   FileSearch,
   FileText,
   GraduationCap,
   LibraryBig,
+  ListOrdered,
   LockKeyhole,
   MapPinned,
   NotebookPen,
@@ -60,6 +62,7 @@ export type ToolPageData = {
   relatedLinks: ToolRelatedLink[];
   howToSteps: ToolHowToStep[];
   seoKeywords: string[];
+  layout?: "planning" | "assessment";
 };
 
 export const teacherStats = [
@@ -206,6 +209,249 @@ export const libraryPageCards = [
 
 export const toolPages: ToolPageData[] = [
   {
+    slug: "planificacoes",
+    title: "Planificações com IA alinhadas com as Aprendizagens Essenciais",
+    shortTitle: "Planificações",
+    description: "Crie planificações de unidades, períodos e anos com as Aprendizagens Essenciais e o DL 55/2018 integrados desde o início.",
+    hero: "O início do ano letivo que custava dias inteiros de planificação — agora demora minutos.",
+    useCases: ["Planificação anual", "Planificação de unidade didática", "Planificação por período"],
+    outputs: ["Sequência de aulas com descritores AE", "Referência ao DL 55/2018 e flexibilidade curricular", "Instrumentos e momentos de avaliação"],
+    benefits: [
+      "Ter as AE e descritores do Perfil do Aluno referenciados sem procurar manualmente",
+      "Gerar uma planificação completa de unidade em minutos, não em horas",
+      "Ajustar objetivos, sequência e avaliação antes de entregar",
+    ],
+    contentSections: [
+      {
+        title: "O que inclui uma planificação criada na Scooli",
+        description: "A base gerada parte das Aprendizagens Essenciais e do DL 55/2018 para que não tenha de os procurar por conta própria antes de começar.",
+        bullets: [
+          "AE e descritores do Perfil do Aluno referenciados e contextualizados",
+          "Sequência de aulas com objetivos encadeados",
+          "Momentos de avaliação formativa e sumativa distribuídos ao longo da unidade",
+        ],
+      },
+      {
+        title: "Como a Scooli apoia a flexibilidade curricular",
+        description: "O DL 55/2018 introduziu a possibilidade de adaptar a sequência e os recursos curriculares. A Scooli ajuda a documentar essas opções de forma clara e editável.",
+        bullets: [
+          "Documentar opções de gestão curricular em linha com o DL 55/2018",
+          "Ajustar a sequência de conteúdos ao contexto da turma",
+          "Gerar alternativas quando o plano muda a meio do período",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "As planificações incluem as Aprendizagens Essenciais referenciadas?",
+        answer: "Sim. A Scooli integra as AE e os descritores do Perfil do Aluno para que não tenha de os consultar separadamente. O resultado é editável para ajustar ao seu contexto.",
+      },
+      {
+        question: "A Scooli conhece o DL 55/2018 e a flexibilidade curricular?",
+        answer: "Sim. O DL 55/2018 é um dos documentos que a Scooli tem em conta para ajudar a documentar opções de gestão curricular de forma alinhada com a legislação vigente.",
+      },
+      {
+        question: "Posso gerar uma planificação anual completa?",
+        answer: "Sim. Pode pedir uma planificação anual, por período ou de unidade — a Scooli gera a estrutura e os objetivos, que ficam editáveis para afinar ao seu contexto.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Ver planos letivos", href: "/ferramentas/sequencias-de-aulas" },
+      { label: "Criar planos de aula", href: "/ferramentas/plano-de-aula" },
+      { label: "Gerar fichas de trabalho", href: "/ferramentas/fichas-de-trabalho" },
+    ],
+    howToSteps: [
+      {
+        name: "Definir o âmbito",
+        text: "Indica a disciplina, o ano, o período ou a unidade que quer planificar.",
+      },
+      {
+        name: "Indicar o contexto da turma",
+        text: "Partilha informação relevante sobre o grupo — ritmo, necessidades específicas ou prioridades curriculares.",
+      },
+      {
+        name: "Gerar a planificação",
+        text: "Recebe uma planificação com objetivos, AE referenciadas, sequência e avaliação integrada.",
+      },
+      {
+        name: "Afinar e entregar",
+        text: "Edita a planificação, ajusta o que precisar e exporta quando estiver pronta a usar.",
+      },
+    ],
+    seoKeywords: [
+      "planificações com IA",
+      "planificação anual com IA",
+      "planificação AE professores",
+      "DL 55/2018 planificação",
+      "planificação por período",
+      "planificação unidade didática",
+      "preparar planificações Portugal",
+    ],
+    layout: "planning",
+  },
+  {
+    slug: "plano-de-aula",
+    title: "Plano de aula com IA para professores — preparação em minutos",
+    shortTitle: "Plano de aula",
+    description: "Gere um plano de aula com objetivos, sequência de atividades, materiais e avaliação — tudo editável e pronto a usar.",
+    hero: "Prepare uma aula completa em minutos e afine antes de entrar na sala.",
+    useCases: ["Aula nova de raiz", "Adaptar para outra turma", "Substituição de última hora"],
+    outputs: ["Objetivos e competências", "Sequência de atividades com duração", "Materiais e avaliação formativa"],
+    benefits: [
+      "Ter a estrutura completa de uma aula sem partir de um documento vazio",
+      "Adaptar o mesmo plano para turmas com ritmos diferentes",
+      "Editar objetivos, atividades e materiais antes de usar na sala",
+    ],
+    contentSections: [
+      {
+        title: "O que inclui um plano de aula gerado na Scooli",
+        description: "A base cobre os elementos essenciais de um plano de 45 a 90 minutos, para que passe mais tempo a afinar decisões pedagógicas e menos a montar o documento.",
+        bullets: [
+          "Objetivo da aula alinhado com as Aprendizagens Essenciais",
+          "Sequência de atividades com duração estimada por momento",
+          "Materiais, recursos necessários e momento de avaliação formativa",
+        ],
+      },
+      {
+        title: "Quando o plano de aula faz mais diferença",
+        description: "É útil tanto quando está a preparar uma aula nova como quando precisa de adaptar um plano já existente para uma turma diferente ou uma aula mais curta.",
+        bullets: [
+          "Preparar uma aula de raiz para uma turma nova",
+          "Adaptar rapidamente para turma com necessidades educativas diferentes",
+          "Fechar a preparação de última hora com uma base sólida",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "O plano de aula inclui os objetivos alinhados com as AE?",
+        answer: "Sim. A Scooli parte das Aprendizagens Essenciais da disciplina e ano que indicar para gerar objetivos contextualizados ao que está a ensinar.",
+      },
+      {
+        question: "Posso adaptar o plano para uma aula mais curta ou mais longa?",
+        answer: "Sim. Pode pedir uma versão de 45, 50 ou 90 minutos e a Scooli ajusta a sequência de atividades ao tempo disponível.",
+      },
+      {
+        question: "O plano fica editável antes de usar?",
+        answer: "Sim. Recebe um documento editável para rever objetivos, atividades, materiais e tempo antes de levar a aula para a sala.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Ver planificações de unidade", href: "/ferramentas/planificacoes" },
+      { label: "Ver planos letivos", href: "/ferramentas/sequencias-de-aulas" },
+      { label: "Gerar fichas de trabalho", href: "/ferramentas/fichas-de-trabalho" },
+    ],
+    howToSteps: [
+      {
+        name: "Indicar o tema e o ano",
+        text: "Define o conteúdo, a disciplina, o ano e a duração da aula que quer preparar.",
+      },
+      {
+        name: "Escolher o foco da aula",
+        text: "Indica se é uma aula de introdução, prática, revisão ou avaliação.",
+      },
+      {
+        name: "Gerar o plano de aula",
+        text: "Recebe um plano com objetivos, atividades, materiais e avaliação numa base editável.",
+      },
+      {
+        name: "Afinar e usar",
+        text: "Edita o que precisar e leva o plano para a sala quando estiver alinhado com a aula.",
+      },
+    ],
+    seoKeywords: [
+      "plano de aula com IA",
+      "criar plano de aula",
+      "planear aula professores",
+      "plano de aula editável",
+      "preparar aula com IA",
+      "objetivos de aula AE",
+      "plano de aula Portugal",
+    ],
+    layout: "planning",
+  },
+  {
+    slug: "sequencias-de-aulas",
+    title: "Planos letivos com IA — organize o ano letivo sessão a sessão",
+    shortTitle: "Planos letivos",
+    description: "Defina a disciplina, o período e o horário. A Scooli distribui as aulas pelo calendário — com o tópico de cada sessão sugerido — e gera o plano de aula quando precisar.",
+    hero: "Distribua os tópicos pelas aulas do período — e gere o plano de cada sessão quando chegar a hora.",
+    useCases: ["Organizar o período completo", "Distribuir o programa pelo ano", "Preparar a estrutura antes de começar"],
+    outputs: ["Aulas distribuídas pelo horário com tópico por sessão", "Distribuição do programa no tempo", "Plano de aula gerado a partir de qualquer sessão"],
+    benefits: [
+      "Ver a distribuição do programa ao longo do período num só lugar",
+      "Gerar o plano de aula de qualquer sessão a partir da estrutura já definida",
+      "Reorganizar rapidamente quando uma aula é perdida ou o ritmo da turma muda",
+    ],
+    contentSections: [
+      {
+        title: "Como a Scooli distribui as aulas pelo período",
+        description: "A Scooli usa o horário semanal e as datas de início e fim do período para preencher automaticamente as aulas. Em cada sessão, sugere o tópico a abordar com base nas AE e no programa.",
+        bullets: [
+          "Aulas criadas automaticamente a partir do horário semanal e das datas",
+          "Tópico de cada sessão sugerido com base nas Aprendizagens Essenciais",
+          "Visualização do período completo num só ecrã",
+        ],
+      },
+      {
+        title: "Gerar o plano de aula de qualquer sessão",
+        description: "Quando chegar o momento de preparar uma aula, parte diretamente dessa sessão no plano letivo e gera o plano de aula — já com o tópico e o contexto definidos, sem ter de repetir a informação.",
+        bullets: [
+          "Plano de aula gerado a partir da sessão, com o contexto já preenchido",
+          "Possibilidade de gerar ficha, quiz ou apresentação para a mesma sessão",
+          "A geração é sempre uma ação do professor — a Scooli não gera automaticamente",
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "O plano letivo cria os planos de aula automaticamente?",
+        answer: "Não. O plano letivo organiza as aulas com os tópicos de cada sessão. A partir de qualquer aula pode gerar o plano individual quando precisar — a geração é sempre uma decisão do professor.",
+      },
+      {
+        question: "Existe um limite de aulas ou de período?",
+        answer: "Não. O plano letivo escala do bloco de uma semana ao ano letivo completo. A Scooli preenche as aulas com base no horário e nas datas definidas, sem limite de sessões.",
+      },
+      {
+        question: "Posso reorganizar os tópicos a meio do período?",
+        answer: "Sim. As aulas e os tópicos são editáveis a qualquer momento. Se uma sessão for perdida ou a turma precisar de mais tempo num tema, pode reorganizar sem perder o resto da estrutura.",
+      },
+    ],
+    relatedLinks: [
+      { label: "Ver planificações por unidade", href: "/ferramentas/planificacoes" },
+      { label: "Criar plano de aula individual", href: "/ferramentas/plano-de-aula" },
+      { label: "Ver percurso para professores", href: "/professores" },
+    ],
+    howToSteps: [
+      {
+        name: "Indicar a disciplina e o período",
+        text: "Define a disciplina, o ano, a data de início e fim e o horário semanal.",
+      },
+      {
+        name: "Rever as aulas distribuídas",
+        text: "A Scooli distribui as aulas pelo período com um tópico sugerido em cada sessão. Ajusta conforme o programa.",
+      },
+      {
+        name: "Gerar planos de aula à medida",
+        text: "Quando precisar, parte de qualquer sessão e gera o plano de aula com o contexto já preenchido.",
+      },
+      {
+        name: "Adaptar quando o plano muda",
+        text: "Se uma aula for perdida ou a turma mudar de ritmo, reorganiza as sessões sem recomeçar do zero.",
+      },
+    ],
+    seoKeywords: [
+      "planos letivos com IA",
+      "organizar aulas por período",
+      "distribuição do programa escolar",
+      "plano letivo IA professores",
+      "plano letivo por horário",
+      "planear ano letivo",
+      "planeamento letivo Portugal",
+    ],
+    layout: "planning",
+  },
+  {
     slug: "gerador-de-testes",
     title: "Gerador de testes com IA para professores",
     shortTitle: "Gerador de testes",
@@ -222,7 +468,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "O que pode incluir num teste criado na Scooli",
         description:
-          "A ferramenta ajuda-te a chegar mais depressa a uma estrutura equilibrada, pronta para rever e adaptar ao objetivo da avaliação.",
+          "A ferramenta ajuda a chegar mais depressa a uma estrutura equilibrada, pronta para rever e adaptar ao objetivo da avaliação.",
         bullets: [
           "Perguntas de escolha múltipla, resposta curta e desenvolvimento",
           "Cotação por item e critérios de correção visíveis",
@@ -232,7 +478,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "Quando faz mais diferença usar o gerador de testes",
         description:
-          "É especialmente útil quando tens pouco tempo para preparar uma avaliação, mas não queres abdicar de controlo sobre a qualidade final.",
+          "É especialmente útil quando há pouco tempo para preparar uma avaliação, mas não se quer abdicar de controlo sobre a qualidade final.",
         bullets: [
           "Preparar um teste diagnóstico no arranque de uma unidade",
           "Fechar uma avaliação intermédia sem repetir sempre a mesma estrutura",
@@ -244,28 +490,28 @@ export const toolPages: ToolPageData[] = [
       {
         question: "Posso criar testes com tipos de pergunta diferentes?",
         answer:
-          "Sim. Podes pedir perguntas de escolha múltipla, resposta curta, desenvolvimento ou uma combinação adequada ao tipo de avaliação que queres preparar.",
+          "Sim. Pode pedir perguntas de escolha múltipla, resposta curta, desenvolvimento ou uma combinação adequada ao tipo de avaliação que quer preparar.",
       },
       {
         question: "O teste fica editável antes de imprimir?",
         answer:
-          "Sim. A Scooli gera uma base editável para reveres, reorganizares, ajustares a cotação e mudares o texto antes de usares o teste com alunos.",
+          "Sim. A Scooli gera uma base editável para rever, reorganizar, ajustar a cotação e mudar o texto antes de usar o teste com alunos.",
       },
       {
         question: "Posso adaptar um teste para outra turma?",
         answer:
-          "Sim. Podes pedir uma versão mais simples, mais curta ou com outro nível de dificuldade sem reconstruir tudo de novo.",
+          "Sim. Pode pedir uma versão mais simples, mais curta ou com outro nível de dificuldade sem reconstruir tudo de novo.",
       },
     ],
     relatedLinks: [
       { label: "Ver fichas de trabalho", href: "/ferramentas/fichas-de-trabalho" },
-      { label: "Transformar documentos teus", href: "/ferramentas/carregar-documentos" },
+      { label: "Transformar documentos seus", href: "/ferramentas/carregar-documentos" },
       { label: "Explorar o percurso para professores", href: "/professores" },
     ],
     howToSteps: [
       {
         name: "Indicar o tema e o ano",
-        text: "Define o conteúdo, o ano e o tipo de avaliação que queres preparar.",
+        text: "Define o conteúdo, o ano e o tipo de avaliação que quer preparar.",
       },
       {
         name: "Pedir a estrutura do teste",
@@ -277,7 +523,7 @@ export const toolPages: ToolPageData[] = [
       },
       {
         name: "Rever e exportar",
-        text: "Ajusta o que precisares e exporta o teste quando estiver pronto a usar.",
+        text: "Ajusta o que precisar e exporta o teste quando estiver pronto a usar.",
       },
     ],
     seoKeywords: [
@@ -289,6 +535,7 @@ export const toolPages: ToolPageData[] = [
       "critérios de correção",
       "testes para professores",
     ],
+    layout: "assessment",
   },
   {
     slug: "fichas-de-trabalho",
@@ -307,7 +554,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "O que pode sair numa ficha de trabalho criada na Scooli",
         description:
-          "A Scooli ajuda-te a montar fichas de trabalho com estrutura clara, linguagem ajustada e exercícios pensados para serem usados logo depois de uma revisão rápida.",
+          "A Scooli ajuda a montar fichas de trabalho com estrutura clara, linguagem ajustada e exercícios pensados para serem usados logo depois de uma revisão rápida.",
         bullets: [
           "Instruções simples e fáceis de seguir",
           "Exercícios alinhados com o objetivo da aula",
@@ -317,7 +564,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "Como adaptar fichas de trabalho a ritmos diferentes",
         description:
-          "Quando precisas de diferenciar trabalho para a turma, podes partir de uma base comum e pedir versões com outra dificuldade, extensão ou apoio adicional.",
+          "Quando é preciso diferenciar trabalho para a turma, pode partir de uma base comum e pedir versões com outra dificuldade, extensão ou apoio adicional.",
         bullets: [
           "Versão mais simples com linguagem mais acessível",
           "Versão mais curta para apoio ou reforço",
@@ -329,40 +576,40 @@ export const toolPages: ToolPageData[] = [
       {
         question: "Posso criar fichas de trabalho prontas a imprimir?",
         answer:
-          "Sim. A Scooli gera uma ficha organizada e editável, que podes rever, ajustar e depois imprimir ou exportar no formato que precisares.",
+          "Sim. A Scooli gera uma ficha organizada e editável, que pode rever, ajustar e depois imprimir ou exportar no formato que precisar.",
       },
       {
         question: "Posso criar versões diferentes da mesma ficha?",
         answer:
-          "Sim. Podes partir da mesma base e pedir versões por nível, linguagem mais simples, menos itens ou mais apoio para a turma que tens à frente.",
+          "Sim. Pode partir da mesma base e pedir versões por nível, linguagem mais simples, menos itens ou mais apoio para a turma que tem à frente.",
       },
       {
         question: "Posso usar um texto ou documento meu para gerar a ficha?",
         answer:
-          "Sim. Se já tens um texto, uma ficha antiga ou outro material, podes usá-lo como base e transformar esse conteúdo numa nova ficha de trabalho.",
+          "Sim. Se já tem um texto, uma ficha antiga ou outro material, pode usá-lo como base e transformar esse conteúdo numa nova ficha de trabalho.",
       },
     ],
     relatedLinks: [
       { label: "Adaptar materiais por nível", href: "/ferramentas/adaptacao-de-materiais" },
-      { label: "Partir de um documento teu", href: "/ferramentas/carregar-documentos" },
+      { label: "Partir de um documento seu", href: "/ferramentas/carregar-documentos" },
       { label: "Explorar a biblioteca comunitária", href: "/biblioteca" },
     ],
     howToSteps: [
       {
-        name: "Descrever a ficha que precisas",
-        text: "Indica o tema, o ano, o objetivo da aula e o tipo de exercício que queres incluir.",
+        name: "Descrever a ficha que precisa",
+        text: "Indica o tema, o ano, o objetivo da aula e o tipo de exercício que quer incluir.",
       },
       {
         name: "Gerar a ficha de trabalho",
         text: "Recebe uma ficha com instruções, exercícios e uma estrutura pronta para rever.",
       },
       {
-        name: "Adaptar à tua turma",
+        name: "Adaptar à sua turma",
         text: "Pede versões mais simples, mais curtas ou com apoio adicional sem refazer tudo.",
       },
       {
         name: "Rever, imprimir ou exportar",
-        text: "Faz os últimos ajustes e leva a ficha para a aula no formato que preferires.",
+        text: "Faz os últimos ajustes e leva a ficha para a aula no formato que preferir.",
       },
     ],
     seoKeywords: [
@@ -373,91 +620,6 @@ export const toolPages: ToolPageData[] = [
       "fichas de trabalho para professores",
       "fichas diferenciadas",
       "exercícios para imprimir",
-    ],
-  },
-  {
-    slug: "planificacoes",
-    title: "Planificações com IA para preparar aulas com mais rapidez",
-    shortTitle: "Planificações",
-    description: "Organiza objetivos, sequência da aula, materiais e avaliação num documento claro e editável.",
-    hero: "Passa de uma ideia solta para uma planificação editável em poucos minutos.",
-    useCases: ["Aula individual", "Sequência semanal", "Preparação de unidade"],
-    outputs: ["Objetivos e competências", "Sequência da aula", "Avaliação e materiais"],
-    benefits: [
-      "Organizar a aula com objetivos, etapas e avaliação no mesmo documento",
-      "Chegar mais depressa a uma planificação clara e editável",
-      "Ajustar a estrutura à turma, ao tempo disponível e ao teu estilo de trabalho",
-    ],
-    contentSections: [
-      {
-        title: "O que inclui uma planificação criada na Scooli",
-        description:
-          "A base gerada ajuda-te a estruturar o essencial da aula para que passes mais tempo a melhorar decisões pedagógicas e menos tempo a montar o documento.",
-        bullets: [
-          "Objetivos, competências e sequência das atividades",
-          "Materiais e momentos de avaliação no mesmo plano",
-          "Organização pensada para rever e adaptar rapidamente",
-        ],
-      },
-      {
-        title: "Quando usar planificações com IA faz mais sentido",
-        description:
-          "A ferramenta é útil tanto para preparar uma aula isolada como para organizar uma semana ou unidade quando o tempo de preparação está apertado.",
-        bullets: [
-          "Planificar uma aula de raiz mais depressa",
-          "Fechar uma sequência semanal com coerência entre aulas",
-          "Preparar uma unidade com objetivos e avaliação alinhados",
-        ],
-      },
-    ],
-    faq: [
-      {
-        question: "A Scooli ajuda a criar planificações completas?",
-        answer:
-          "Sim. Podes gerar uma base com objetivos, sequência da aula, materiais e momentos de avaliação para depois ajustares ao teu contexto.",
-      },
-      {
-        question: "Posso adaptar a planificação ao tempo disponível?",
-        answer:
-          "Sim. Podes pedir uma versão mais curta, reorganizar etapas ou adaptar o ritmo da aula antes de a usares.",
-      },
-      {
-        question: "As planificações ficam editáveis?",
-        answer:
-          "Sim. O resultado é sempre editável, para poderes rever linguagem, atividades, objetivos e materiais antes de levar a aula para a sala.",
-      },
-    ],
-    relatedLinks: [
-      { label: "Gerar fichas de trabalho", href: "/ferramentas/fichas-de-trabalho" },
-      { label: "Criar apresentações para a aula", href: "/ferramentas/apresentacoes" },
-      { label: "Ver o percurso para professores", href: "/professores" },
-    ],
-    howToSteps: [
-      {
-        name: "Definir o tema da aula",
-        text: "Indica o ano, o tema e o objetivo principal da aula ou da sequência que queres planificar.",
-      },
-      {
-        name: "Escolher o formato",
-        text: "Pede uma planificação para uma aula, uma semana ou uma unidade, consoante o que precisas.",
-      },
-      {
-        name: "Gerar a estrutura da planificação",
-        text: "Recebe um documento com objetivos, etapas, materiais e avaliação.",
-      },
-      {
-        name: "Afinar antes de usar",
-        text: "Edita o plano, ajusta o tempo e exporta quando estiver alinhado com a tua aula.",
-      },
-    ],
-    seoKeywords: [
-      "planificações com IA",
-      "gerador de planificações",
-      "planificação de aulas",
-      "criar planificações",
-      "preparar aulas com IA",
-      "objetivos e avaliação",
-      "planificar aulas",
     ],
   },
   {
@@ -477,7 +639,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "Como usar quizzes na rotina da aula",
         description:
-          "Os quizzes funcionam bem em momentos curtos, quando queres verificar compreensão, rever matéria ou arrancar a aula com foco.",
+          "Os quizzes funcionam bem em momentos curtos, quando se quer verificar compreensão, rever matéria ou arrancar a aula com foco.",
         bullets: [
           "Revisão rápida no fim da aula",
           "Aquecimento no início da sessão seguinte",
@@ -485,9 +647,9 @@ export const toolPages: ToolPageData[] = [
         ],
       },
       {
-        title: "O que consegues ajustar num quiz gerado pela Scooli",
+        title: "O que se consegue ajustar num quiz gerado pela Scooli",
         description:
-          "A base pode ser afinada ao tempo que tens, ao ritmo da turma e ao tipo de resposta que queres pedir aos alunos.",
+          "A base pode ser afinada ao tempo disponível, ao ritmo da turma e ao tipo de resposta que se quer pedir aos alunos.",
         bullets: [
           "Número de perguntas e tempo total",
           "Perguntas mais simples ou mais desafiantes",
@@ -504,12 +666,12 @@ export const toolPages: ToolPageData[] = [
       {
         question: "Posso alterar o número de perguntas?",
         answer:
-          "Sim. Podes pedir um quiz mais curto, aumentar o número de itens ou adaptar o formato consoante a dinâmica da aula.",
+          "Sim. Pode pedir um quiz mais curto, aumentar o número de itens ou adaptar o formato consoante a dinâmica da aula.",
       },
       {
         question: "Os quizzes ficam editáveis?",
         answer:
-          "Sim. O conteúdo pode ser revisto e ajustado antes de o usares com a turma.",
+          "Sim. O conteúdo pode ser revisto e ajustado antes de usar com a turma.",
       },
     ],
     relatedLinks: [
@@ -520,7 +682,7 @@ export const toolPages: ToolPageData[] = [
     howToSteps: [
       {
         name: "Escolher o tema a rever",
-        text: "Indica o conteúdo, o ano e o momento da aula em que queres usar o quiz.",
+        text: "Indica o conteúdo, o ano e o momento da aula em que quer usar o quiz.",
       },
       {
         name: "Definir o formato do quiz",
@@ -544,6 +706,7 @@ export const toolPages: ToolPageData[] = [
       "perguntas para revisão",
       "quizzes para professores",
     ],
+    layout: "assessment",
   },
   {
     slug: "apresentacoes",
@@ -562,7 +725,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "O que pode incluir uma apresentação criada na Scooli",
         description:
-          "A ferramenta ajuda-te a estruturar a sequência da explicação para que tenhas uma base clara antes de afinar conteúdo, exemplos e tom da aula.",
+          "A ferramenta ajuda a estruturar a sequência da explicação para que se tenha uma base clara antes de afinar conteúdo, exemplos e tom da aula.",
         bullets: [
           "Tópicos principais por slide",
           "Exemplos para apoiar a explicação",
@@ -572,7 +735,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "Quando faz sentido usar apresentações com IA",
         description:
-          "Funciona bem quando precisas de introduzir um tema, apoiar uma aula expositiva ou fechar uma unidade com uma síntese clara.",
+          "Funciona bem quando é preciso introduzir um tema, apoiar uma aula expositiva ou fechar uma unidade com uma síntese clara.",
         bullets: [
           "Introdução de conteúdos novos",
           "Aula expositiva com sequência já organizada",
@@ -584,32 +747,32 @@ export const toolPages: ToolPageData[] = [
       {
         question: "A Scooli ajuda a criar a estrutura dos slides?",
         answer:
-          "Sim. Podes gerar uma base com tópicos, sequência lógica e exemplos para depois afinares a apresentação ao teu estilo de aula.",
+          "Sim. Pode gerar uma base com tópicos, sequência lógica e exemplos para depois afinar a apresentação ao seu estilo de aula.",
       },
       {
         question: "Posso adaptar a linguagem da apresentação?",
         answer:
-          "Sim. Podes simplificar texto, mudar o foco dos slides ou reorganizar a explicação antes de usares a apresentação.",
+          "Sim. Pode simplificar texto, mudar o foco dos slides ou reorganizar a explicação antes de usar a apresentação.",
       },
       {
         question: "As apresentações ficam prontas a completar?",
         answer:
-          "Sim. Recebes uma base organizada para editares, acrescentares o que fizer falta e usares como apoio em aula.",
+          "Sim. Recebe uma base organizada para editar, acrescentar o que fizer falta e usar como apoio em aula.",
       },
     ],
     relatedLinks: [
-      { label: "Criar planificações para a mesma aula", href: "/ferramentas/planificacoes" },
+      { label: "Criar planos de aula", href: "/ferramentas/plano-de-aula" },
       { label: "Gerar quizzes de revisão", href: "/ferramentas/quizzes" },
       { label: "Ver o percurso para professores", href: "/professores" },
     ],
     howToSteps: [
       {
         name: "Definir o tema e o ano",
-        text: "Indica o conteúdo, o ano e o objetivo da apresentação que queres preparar.",
+        text: "Indica o conteúdo, o ano e o objetivo da apresentação que quer preparar.",
       },
       {
         name: "Pedir a estrutura dos slides",
-        text: "Escolhe o foco da aula e o tipo de explicação que precisas de montar.",
+        text: "Escolhe o foco da aula e o tipo de explicação que precisa de montar.",
       },
       {
         name: "Gerar a apresentação",
@@ -617,7 +780,7 @@ export const toolPages: ToolPageData[] = [
       },
       {
         name: "Afinar antes da aula",
-        text: "Edita linguagem, ordem e exemplos para deixares a apresentação pronta a usar.",
+        text: "Edita linguagem, ordem e exemplos para deixar a apresentação pronta a usar.",
       },
     ],
     seoKeywords: [
@@ -647,7 +810,7 @@ export const toolPages: ToolPageData[] = [
       {
         title: "Como a adaptação de materiais ajuda no dia a dia",
         description:
-          "Quando tens turmas com ritmos diferentes, esta ferramenta permite ajustar o mesmo material com menos esforço manual e mais consistência entre versões.",
+          "Quando há turmas com ritmos diferentes, esta ferramenta permite ajustar o mesmo material com menos esforço manual e mais consistência entre versões.",
         bullets: [
           "Simplificar linguagem sem perder o objetivo do exercício",
           "Reduzir extensão para apoio ou reforço",
@@ -655,9 +818,9 @@ export const toolPages: ToolPageData[] = [
         ],
       },
       {
-        title: "Que tipo de versões podes criar",
+        title: "Que tipo de versões se pode criar",
         description:
-          "A Scooli ajuda-te a partir de um material base e a gerar novas versões para contextos diferentes, mantendo o professor no controlo do resultado final.",
+          "A Scooli ajuda a partir de um material base e a gerar novas versões para contextos diferentes, mantendo o professor no controlo do resultado final.",
         bullets: [
           "Versão simplificada",
           "Versão mais curta ou resumida",
@@ -669,7 +832,7 @@ export const toolPages: ToolPageData[] = [
       {
         question: "Posso adaptar um material para alunos com ritmos diferentes?",
         answer:
-          "Sim. Podes gerar versões mais simples, mais curtas ou com mais apoio a partir do mesmo material base.",
+          "Sim. Pode gerar versões mais simples, mais curtas ou com mais apoio a partir do mesmo material base.",
       },
       {
         question: "A adaptação mantém o conteúdo principal?",
@@ -684,13 +847,13 @@ export const toolPages: ToolPageData[] = [
     ],
     relatedLinks: [
       { label: "Criar fichas de trabalho", href: "/ferramentas/fichas-de-trabalho" },
-      { label: "Partir de um documento teu", href: "/ferramentas/carregar-documentos" },
+      { label: "Partir de um documento seu", href: "/ferramentas/carregar-documentos" },
       { label: "Ler a página de confiança", href: "/confianca" },
     ],
     howToSteps: [
       {
         name: "Escolher o material base",
-        text: "Parte de um exercício, ficha, texto ou documento que já tens preparado.",
+        text: "Parte de um exercício, ficha, texto ou documento que já tem preparado.",
       },
       {
         name: "Indicar o tipo de adaptação",
@@ -719,30 +882,30 @@ export const toolPages: ToolPageData[] = [
     slug: "carregar-documentos",
     title: "Carregar documentos e transformar materiais com IA",
     shortTitle: "Carregar documentos",
-    description: "Parte de um documento teu e transforma-o em fichas, testes ou versões adaptadas com menos trabalho manual.",
-    hero: "Usa documentos que já tens e transforma-os em novos recursos mais depressa.",
+    description: "Parte de um documento seu e transforma-o em fichas, testes ou versões adaptadas com menos trabalho manual.",
+    hero: "Usa documentos que já tem e transforma-os em novos recursos mais depressa.",
     useCases: ["Aproveitar materiais antigos", "Adaptar um teste", "Criar ficha a partir de texto"],
     outputs: ["Ficha a partir de documento", "Teste a partir de texto", "Nova versão adaptada"],
     benefits: [
       "Aproveitar materiais antigos sem copiar e colar tudo de novo",
       "Transformar um documento base em ficha, teste ou nova versão adaptada",
-      "Reduzir trabalho manual quando já tens conteúdo preparado",
+      "Reduzir trabalho manual quando já tem conteúdo preparado",
     ],
     contentSections: [
       {
-        title: "Quando vale a pena começar por um documento teu",
+        title: "Quando vale a pena começar por um documento seu",
         description:
-          "Se já tens textos, fichas antigas, testes ou materiais próprios, esta ferramenta ajuda-te a reutilizar esse trabalho em vez de começares de novo.",
+          "Se já tem textos, fichas antigas, testes ou materiais próprios, esta ferramenta ajuda a reutilizar esse trabalho em vez de começar de novo.",
         bullets: [
           "Aproveitar uma ficha antiga como base",
           "Transformar um texto num novo conjunto de exercícios",
-          "Adaptar um teste que já usaste noutro ano ou turma",
+          "Adaptar um teste que já usou noutro ano ou turma",
         ],
       },
       {
-        title: "O que podes gerar a partir de um documento",
+        title: "O que pode gerar a partir de um documento",
         description:
-          "A Scooli lê o teu ponto de partida e ajuda-te a transformá-lo num novo recurso, mantendo o processo mais rápido e controlado.",
+          "A Scooli lê o ponto de partida e ajuda a transformá-lo num novo recurso, mantendo o processo mais rápido e controlado.",
         bullets: [
           "Ficha de trabalho a partir de texto",
           "Teste a partir de material já existente",
@@ -754,17 +917,17 @@ export const toolPages: ToolPageData[] = [
       {
         question: "Posso usar materiais que já preparei?",
         answer:
-          "Sim. Esta ferramenta existe precisamente para te ajudar a aproveitar documentos teus e transformá-los em novos recursos com menos trabalho manual.",
+          "Sim. Esta ferramenta existe precisamente para ajudar a aproveitar documentos seus e transformá-los em novos recursos com menos trabalho manual.",
       },
       {
         question: "Que tipo de recurso posso gerar a partir de um documento?",
         answer:
-          "Podes transformar um documento numa ficha de trabalho, num teste ou numa versão adaptada do material original.",
+          "Pode transformar um documento numa ficha de trabalho, num teste ou numa versão adaptada do material original.",
       },
       {
         question: "O resultado final continua editável?",
         answer:
-          "Sim. Mesmo quando partes de um documento teu, a nova versão continua editável para reveres tudo antes de usar.",
+          "Sim. Mesmo quando parte de um documento seu, a nova versão continua editável para rever tudo antes de usar.",
       },
     ],
     relatedLinks: [
@@ -775,15 +938,15 @@ export const toolPages: ToolPageData[] = [
     howToSteps: [
       {
         name: "Escolher o documento base",
-        text: "Parte de um material teu que queiras reaproveitar ou transformar.",
+        text: "Parte de um material seu que queira reaproveitar ou transformar.",
       },
       {
         name: "Indicar o novo formato",
-        text: "Explica se queres gerar uma ficha, um teste ou uma versão adaptada do conteúdo.",
+        text: "Explica se quer gerar uma ficha, um teste ou uma versão adaptada do conteúdo.",
       },
       {
         name: "Gerar com IA",
-        text: "Recebe um novo recurso construído a partir do documento que carregaste.",
+        text: "Recebe um novo recurso construído a partir do documento que carregou.",
       },
       {
         name: "Editar e validar",
@@ -805,7 +968,9 @@ export const toolPages: ToolPageData[] = [
 export const toolCardIcons: Record<string, LucideIcon> = {
   "gerador-de-testes": FileCheck2,
   "fichas-de-trabalho": FileText,
-  planificacoes: NotebookPen,
+  planificacoes: CalendarDays,
+  "plano-de-aula": NotebookPen,
+  "sequencias-de-aulas": ListOrdered,
   quizzes: BookOpenCheck,
   apresentacoes: FileSearch,
   "adaptacao-de-materiais": WandSparkles,

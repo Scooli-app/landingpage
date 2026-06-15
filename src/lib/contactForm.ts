@@ -12,17 +12,17 @@ export function validateContactForm(values: {
   const errors: ContactErrors = {};
 
   if (!values.name.trim()) {
-    errors.name = "Indica o teu nome para sabermos como responder.";
+    errors.name = "Indique o seu nome para sabermos como responder.";
   }
 
   if (!values.email.trim()) {
-    errors.email = "Indica um email para podermos entrar em contacto.";
+    errors.email = "Indique um email para podermos entrar em contacto.";
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
-    errors.email = "Introduz um endereço de email válido.";
+    errors.email = "Introduza um endereço de email válido.";
   }
 
   if (!values.message.trim()) {
-    errors.message = "Escreve uma mensagem com o que precisas.";
+    errors.message = "Escreva uma mensagem com o que precisa.";
   }
 
   return errors;

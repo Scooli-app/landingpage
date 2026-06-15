@@ -10,7 +10,7 @@ export function RealOutputsSection() {
   const ref = useScrollReveal({ stagger: 0.1, y: 24 });
 
   return (
-    <section id="outputs" className="bg-white/70 py-20 sm:py-24 lg:py-28">
+    <section id="outputs" className="py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
           eyebrow="Resultados reais"

@@ -15,7 +15,7 @@ import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
 export const metadata = getPageMetadata({
   title: "Biblioteca comunitária",
   description:
-    "Explora a biblioteca comunitária da Scooli e descobre materiais que podes duplicar, adaptar e usar como ponto de partida.",
+    "Explore a biblioteca comunitária da Scooli e descubra materiais que pode duplicar, adaptar e usar como ponto de partida.",
   path: "/biblioteca",
 });
 
@@ -48,7 +48,7 @@ export default function LibraryPage() {
       <PageHero
         eyebrow="Biblioteca"
         title="Uma biblioteca comunitária para encontrar boas bases mais depressa"
-        description="Explora materiais partilhados, percebe o tipo de recursos disponíveis e entra na plataforma para duplicar e adaptar ao teu contexto."
+        description="Explore materiais partilhados, perceba o tipo de recursos disponíveis e entre na plataforma para duplicar e adaptar ao seu contexto."
         secondaryHref="/professores"
         secondaryLabel="Ver percurso para professores"
         aside={<LibraryPreviewGrid />}
@@ -67,7 +67,7 @@ export default function LibraryPage() {
           <MarketingSectionHeading
             eyebrow="Como funciona"
             title="Descobrir primeiro. Adaptar depois."
-            description="A biblioteca ajuda-te a perceber rapidamente se já existe uma boa base para o que precisas de preparar."
+            description="A biblioteca ajuda a perceber rapidamente se já existe uma boa base para o que precisa de preparar."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -115,8 +115,8 @@ export default function LibraryPage() {
         <Container className="space-y-12">
           <MarketingSectionHeading
             eyebrow="Exemplos de recursos"
-            title="O tipo de materiais que podes encontrar na biblioteca"
-            description="Fichas, planificações, testes, apresentações e recursos de apoio prontos para servir de base ao teu trabalho."
+            title="O tipo de materiais que pode encontrar na biblioteca"
+            description="Fichas, planificações, testes, apresentações e recursos de apoio prontos para servir de base ao seu trabalho."
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -149,7 +149,7 @@ export default function LibraryPage() {
         <Container>
           <PageCtaBanner
             title="Quer usar um destes recursos como ponto de partida?"
-            description="Entra na Scooli, escolhe um material da biblioteca e adapta-o à tua turma em vez de começares tudo do zero."
+            description="Entre na Scooli, escolha um material da biblioteca e adapte-o à sua turma em vez de começar tudo do zero."
             secondaryHref="/ferramentas"
             secondaryLabel="Ver ferramentas"
           />

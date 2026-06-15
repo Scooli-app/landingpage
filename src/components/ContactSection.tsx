@@ -141,7 +141,7 @@ export function ContactSection() {
 
   return (
     <section className="relative isolate pb-20 pt-8 sm:pb-24 sm:pt-10 lg:pb-28">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(circle_at_top_left,rgba(103,83,255,0.16),transparent_40%),radial-gradient(circle_at_top_right,rgba(59,130,246,0.10),transparent_24%)]" />
+      <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
       <Container className="space-y-10">
         <div className="max-w-4xl space-y-6">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
@@ -153,7 +153,7 @@ export function ContactSection() {
               Fala connosco
             </h1>
             <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-              Se tens perguntas sobre a Scooli, queres falar sobre um piloto ou precisas de ajuda, usa o formulário ou envia-nos um email.
+              Se tem perguntas sobre a Scooli, quer falar sobre um piloto ou precisa de ajuda, use o formulário ou envie-nos um email.
             </p>
           </div>
         </div>
@@ -202,7 +202,7 @@ export function ContactSection() {
                 <div>
                   <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Escolas e instituições</p>
                   <p className="text-sm text-[color:var(--scooli-muted)]">
-                    Se queres falar sobre pilotos, adoção institucional ou dúvidas de implementação, também podes escrever-nos por aqui.
+                    Se quer falar sobre pilotos, adoção institucional ou dúvidas de implementação, também pode escrever-nos por aqui.
                   </p>
                 </div>
               </div>
@@ -266,7 +266,7 @@ export function ContactSection() {
                   required
                 />
                 <p id={fieldIds.emailHint} className="text-xs text-slate-500">
-                  Usamos o teu email apenas para responder ao pedido.
+                  Usamos o seu email apenas para responder ao pedido.
                 </p>
                 {errors.email && (
                   <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">

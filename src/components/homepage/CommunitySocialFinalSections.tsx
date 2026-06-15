@@ -23,12 +23,12 @@ export function SocialProofSection() {
   const ref = useScrollReveal({ stagger: 0.1, y: 20 });
 
   return (
-    <section id="prova-social" className="py-20 sm:py-24 lg:py-28">
+    <section id="prova-social" className="py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-10">
         <SectionHeading
-          eyebrow="Prova social"
-          title="Ganhos que fazem diferença semana após semana"
-          description="O que dizem professores que usam a Scooli todas as semanas:"
+          eyebrow="Quem já usa"
+          title="O que dizem os professores que usam a Scooli"
+          description="Testemunhos reais de docentes em Portugal."
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -45,7 +45,7 @@ export function LandingFinalCtaSection() {
   const ref = useScrollReveal({ y: 20 });
 
   return (
-    <section id="cta-final" ref={ref} className="pb-20 sm:pb-24 lg:pb-28">
+    <section id="cta-final" ref={ref} className="pb-16 sm:pb-20 lg:pb-24">
       <Container>
         <div className="overflow-hidden rounded-[36px] border border-slate-200 bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))] p-8 shadow-[0_30px_100px_-60px_rgba(19,35,58,0.45)] sm:p-10 lg:p-12">
           <div className="grid gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
@@ -53,11 +53,11 @@ export function LandingFinalCtaSection() {
               <SectionBadge>Último passo</SectionBadge>
               <div className="space-y-4">
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl lg:text-5xl">
-                  Comece hoje e poupe horas todas as semanas.
+                  A próxima aula pode começar com uma base pronta.
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                  Crie planificações, fichas e testes em minutos, ajuste tudo ao
-                  seu ritmo e leve materiais prontos para a próxima aula.
+                  Crie a primeira planificação, ficha ou teste em minutos —
+                  alinhado com as AE e pronto a adaptar à sua turma.
                 </p>
               </div>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -110,15 +110,14 @@ export function LandingFinalCtaSection() {
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    {PRICING.free.generationsPerMonth} gerações por mês para
-                    explorar a ferramenta sem compromisso inicial.
+                    {PRICING.free.generationsPerMonth} gerações grátis por mês
+                    — sem cartão, sem compromisso.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    Todo o conteúdo continua editável antes de exportar ou
-                    reutilizar.
+                    Tudo editável: o professor decide sempre o resultado final.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">

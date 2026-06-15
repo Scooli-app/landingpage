@@ -13,7 +13,7 @@ const primaryLinks = [
   { label: "Biblioteca", href: "/biblioteca" },
   { label: "Ferramentas", href: "/ferramentas" },
   { label: "Preços", href: "/precos" },
-  { label: "Confiança", href: "/confianca" },
+  { label: "Confiança e Privacidade", href: "/confianca" },
   { label: "Sobre", href: "/sobre" },
 ];
 

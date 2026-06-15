@@ -5,7 +5,7 @@ import { getPageMetadata } from "@/lib/seo";
 export const metadata = getPageMetadata({
   title: "Contacto",
   description:
-    "Fala com a equipa da Scooli para tirar dúvidas, pedir informações ou discutir um piloto para a tua escola.",
+    "Fale com a equipa da Scooli para tirar dúvidas, pedir informações ou discutir um piloto para a sua escola.",
   path: "/contacto",
 });
 
