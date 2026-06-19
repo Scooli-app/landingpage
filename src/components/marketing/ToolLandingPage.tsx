@@ -29,6 +29,10 @@ const toolPreviewImages: Partial<Record<string, { src: string; alt: string }>> =
     src: "/screenshots/teste-pdf.png",
     alt: "Exemplo real de um teste criado com a Scooli",
   },
+  "plano-de-aula": {
+    src: "/screenshots/app-plano-aula.jpg",
+    alt: "Editor de plano de aula da Scooli com estrutura e painel de IA integrado",
+  },
 };
 
 function UseCaseChips({ items }: { items: string[] }) {
@@ -283,7 +287,7 @@ function PlanningToolPage({ tool }: { tool: ToolPageData }) {
         primaryLabel="Começar gratuitamente"
         secondaryHref="/ferramentas"
         secondaryLabel="Ver todas as ferramentas"
-        aside={<PlanningHeroVisual slug={tool.slug} />}
+        aside={toolPreviewImages[tool.slug] ? <DocumentPreview tool={tool} /> : <PlanningHeroVisual slug={tool.slug} />}
       >
         <UseCaseChips items={tool.useCases} />
       </PageHero>

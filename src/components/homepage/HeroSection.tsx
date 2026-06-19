@@ -65,7 +65,7 @@ export function HeroSection() {
     <section id="hero" className="relative isolate pt-6 sm:pt-10">
       <div className="absolute inset-x-0 top-0 -z-10 h-[620px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.09),transparent)]" />
       <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8 md:max-w-7xl md:px-12 sm:pb-24 lg:pb-28">
-        <div className="grid items-center gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
           <div className="space-y-7">
             <SectionBadge>Construída para o currículo português</SectionBadge>
             <div className="space-y-5">

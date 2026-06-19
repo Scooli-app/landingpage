@@ -4,6 +4,7 @@ import { LandingFinalCtaSection, SocialProofSection } from "@/components/homepag
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
 import { MetricsStripSection } from "@/components/homepage/MetricsStripSection";
+import { AppPreviewSection } from "@/components/homepage/AppPreviewSection";
 import { RealOutputsSection } from "@/components/homepage/OutputsEditorSections";
 import { PricingTeaserSection } from "@/components/homepage/PricingTeaserSection";
 import { ProblemSolutionSection } from "@/components/homepage/ProblemSolutionSection";
@@ -22,6 +23,7 @@ export function HomePageClient() {
         <MetricsStripSection />
         <ProblemSolutionSection />
         <HowItWorksSection />
+        <AppPreviewSection />
         <RealOutputsSection />
         <ValuePropsSection />
         <SocialProofSection />
