@@ -257,14 +257,14 @@ export function TermsOfUse() {
 
             <SectionCard
               icon={<Coins className="h-6 w-6 text-white" />}
-              title="6) Gerações, Plano Pro e Cancelamentos"
+              title="6) Créditos, Plano Pro e Cancelamentos"
             >
               <p>
-                Algumas funcionalidades dependem do limite de gerações de cada plano.
+                Algumas funcionalidades dependem do limite de créditos de cada plano.
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
-                  O plano gratuito inclui 20 gerações por mês.
+                  O plano gratuito inclui 20 créditos por mês.
                 </li>
                 <li>
                   Preços, funcionalidades e limites podem ser atualizados ao longo

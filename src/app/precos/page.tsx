@@ -38,7 +38,7 @@ function PricingIntroCard() {
             Plano gratuito
           </p>
           <p className="mt-2 text-2xl font-semibold text-slate-800">
-            {PRICING.free.generationsPerMonth} gerações / mês
+            {PRICING.free.generationsPerMonth} créditos / mês
           </p>
           <p className="mt-2 text-sm text-slate-500">
             Para experimentar a Scooli com pedidos reais e perceber o fluxo de

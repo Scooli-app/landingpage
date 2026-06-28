@@ -15,7 +15,7 @@ const plans = [
   {
     name: "Gratuito",
     price: "€0",
-    detail: `${PRICING.free.generationsPerMonth} gerações por mês`,
+    detail: `${PRICING.free.generationsPerMonth} créditos por mês`,
     description: "Para testar com aulas reais, sem cartão e sem compromisso.",
     highlighted: false,
   },
@@ -24,7 +24,7 @@ const plans = [
     price: `${euro(PRICING.pro_monthly.price)}/mês`,
     detail: `ou ${euro(PRICING.pro_annual.price)}/ano (poupa ${PRICING.pro_annual.savings})`,
     description:
-      "Para quem prepara aulas todas as semanas. Gerações ilimitadas, com política de utilização justa.",
+      "Para quem prepara aulas todas as semanas. Créditos ilimitados, com política de utilização justa.",
     highlighted: true,
   },
   {
@@ -46,7 +46,7 @@ export function PricingTeaserSection() {
         <SectionHeading
           eyebrow="Preços"
           title="Comece grátis. Pague só quando fizer parte da sua semana."
-          description="Sem letras pequenas: o plano gratuito inclui 20 gerações por mês, todos os meses."
+          description="Sem letras pequenas: o plano gratuito inclui 20 créditos por mês, todos os meses."
           centered
         />
 

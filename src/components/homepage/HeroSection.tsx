@@ -118,7 +118,7 @@ export function HeroSection() {
 
             <div className="space-y-2">
               <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
-                {PRICING.free.generationsPerMonth} gerações grátis por mês. Sem
+                {PRICING.free.generationsPerMonth} créditos grátis por mês. Sem
                 cartão, sem compromisso.
               </p>
               <TrackedLink

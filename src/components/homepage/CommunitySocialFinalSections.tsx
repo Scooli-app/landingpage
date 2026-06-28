@@ -110,7 +110,7 @@ export function LandingFinalCtaSection() {
                 <li className="flex items-start gap-3">
                   <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
                   <span>
-                    {PRICING.free.generationsPerMonth} gerações grátis por mês
+                    {PRICING.free.generationsPerMonth} créditos grátis por mês
                     — sem cartão, sem compromisso.
                   </span>
                 </li>

@@ -56,12 +56,12 @@ function FreePlanCard() {
       </p>
 
       <div className="mt-5 rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-        {PRICING.free.generationsPerMonth} gerações/mês
+        {PRICING.free.generationsPerMonth} créditos/mês
       </div>
 
       <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
         {[
-          `${PRICING.free.generationsPerMonth} gerações por mês`,
+          `${PRICING.free.generationsPerMonth} créditos por mês`,
           "Acesso à biblioteca comunitária",
           "Exportação básica",
           "Editor para rever e ajustar",

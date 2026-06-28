@@ -222,7 +222,7 @@ export function getSoftwareApplicationSchema() {
       {
         "@type": "Offer",
         name: "Plano Gratuito",
-        description: `${PRICING.free.generationsPerMonth} gerações por mês para novos utilizadores`,
+        description: `${PRICING.free.generationsPerMonth} créditos por mês para novos utilizadores`,
         price: "0",
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
@@ -564,7 +564,7 @@ export function getServiceSchema() {
           itemOffered: {
             "@type": "Service",
             name: "Plano Gratuito",
-            description: `${PRICING.free.generationsPerMonth} gerações por mês para experimentar a plataforma`,
+            description: `${PRICING.free.generationsPerMonth} créditos por mês para experimentar a plataforma`,
           },
           price: "0",
           priceCurrency: "EUR",

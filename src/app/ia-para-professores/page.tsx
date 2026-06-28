@@ -77,7 +77,7 @@ const faqItems = [
   {
     question: "Como funciona o preço da Scooli?",
     answer:
-      "Existe um plano gratuito com 20 gerações por mês e um plano Pro para uso contínuo. As escolas e agrupamentos seguem um percurso próprio, com contacto direto para avaliar piloto, contexto e adoção.",
+      "Existe um plano gratuito com 20 créditos por mês e um plano Pro para uso contínuo. As escolas e agrupamentos seguem um percurso próprio, com contacto direto para avaliar piloto, contexto e adoção.",
   },
 ];
 
@@ -152,7 +152,7 @@ function DiscoveryPreview() {
         {[
           {
             label: "Plano gratuito",
-            value: "20 gerações / mês",
+            value: "20 créditos / mês",
           },
           {
             label: "Materiais",
