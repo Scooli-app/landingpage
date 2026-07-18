@@ -29,6 +29,18 @@ function formatEur(cents: number): string {
   }).format(cents / 100);
 }
 
+function calculateSavingsPercent(
+  monthlyCents: number,
+  annualCents: number,
+): string | null {
+  const yearlyFromMonthly = monthlyCents * 12;
+  const savings = yearlyFromMonthly - annualCents;
+  if (savings <= 0) {
+    return null;
+  }
+  return `${Math.round((savings / yearlyFromMonthly) * 100)}%`;
+}
+
 function FreePlanCard() {
   const href = `${APP_URL}/sign-up`;
   return (
@@ -126,6 +138,11 @@ function ProPlanCard({
 
   const annualTotalCents =
     annualApiPlan?.priceCents ?? PRICING.pro_annual.priceCents;
+  const savingsPercent =
+    calculateSavingsPercent(
+      monthlyApiPlan?.priceCents ?? PRICING.pro_monthly.priceCents,
+      annualTotalCents,
+    ) ?? PRICING.pro_annual.savings;
   const currentPriceCents =
     apiPlan?.priceCents ??
     (isAnnual ? PRICING.pro_annual.priceCents : PRICING.pro_monthly.priceCents);
@@ -177,8 +194,7 @@ function ProPlanCard({
             </div>
             {isAnnual ? (
               <p className="mt-1 text-xs text-slate-400">
-                {formatEur(annualTotalCents)}/ano · poupe{" "}
-                {PRICING.pro_annual.savings}
+                {formatEur(annualTotalCents)}/ano · poupe {savingsPercent}
               </p>
             ) : (
               <p className="mt-1 text-xs text-slate-400">
@@ -293,10 +309,20 @@ function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
 function BillingToggle({
   billing,
   onChange,
+  apiPlans,
 }: {
   billing: BillingCycle;
   onChange: (b: BillingCycle) => void;
+  apiPlans: Plan[];
 }) {
+  const monthlyApiPlan = apiPlans.find((p) => p.planCode === "pro_monthly");
+  const annualApiPlan = apiPlans.find((p) => p.planCode === "pro_annual");
+  const savingsPercent =
+    calculateSavingsPercent(
+      monthlyApiPlan?.priceCents ?? PRICING.pro_monthly.priceCents,
+      annualApiPlan?.priceCents ?? PRICING.pro_annual.priceCents,
+    ) ?? PRICING.pro_annual.savings;
+
   return (
     <div className="flex items-center justify-center">
       <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 shadow-sm">
@@ -331,7 +357,7 @@ function BillingToggle({
                 : "bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]",
             )}
           >
-            -{PRICING.pro_annual.savings}
+            -{savingsPercent}
           </span>
         </button>
       </div>
@@ -365,7 +391,11 @@ export function PricingSection() {
           </p>
         </div>
 
-        <BillingToggle billing={billing} onChange={setBilling} />
+        <BillingToggle
+          billing={billing}
+          onChange={setBilling}
+          apiPlans={apiPlans}
+        />
 
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           <FreePlanCard />
