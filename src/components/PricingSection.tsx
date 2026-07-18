@@ -210,7 +210,7 @@ function ProPlanCard({
             </p>
             {promoActive && (
               <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
-                Oferta de lançamento
+                Oferta limitada
               </span>
             )}
             <div className="mt-2 flex items-baseline gap-2">
