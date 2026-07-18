@@ -6,6 +6,7 @@ import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
 import { APP_URL, PRICING } from "@/lib/seo";
+import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { cn } from "@/lib/utils";
 import {
   ArrowRight,
@@ -27,6 +28,18 @@ function formatEur(cents: number): string {
     currency: "EUR",
     minimumFractionDigits: 2,
   }).format(cents / 100);
+}
+
+function calculateSavingsPercent(
+  monthlyCents: number,
+  annualCents: number,
+): string | null {
+  const yearlyFromMonthly = monthlyCents * 12;
+  const savings = yearlyFromMonthly - annualCents;
+  if (savings <= 0) {
+    return null;
+  }
+  return `${Math.round((savings / yearlyFromMonthly) * 100)}%`;
 }
 
 function FreePlanCard() {
@@ -126,11 +139,37 @@ function ProPlanCard({
 
   const annualTotalCents =
     annualApiPlan?.priceCents ?? PRICING.pro_annual.priceCents;
+  const savingsPercent =
+    calculateSavingsPercent(
+      monthlyApiPlan?.priceCents ?? PRICING.pro_monthly.priceCents,
+      annualTotalCents,
+    ) ?? PRICING.pro_annual.savings;
   const currentPriceCents =
     apiPlan?.priceCents ??
     (isAnnual ? PRICING.pro_annual.priceCents : PRICING.pro_monthly.priceCents);
 
-  const href = `${APP_URL}/checkout?plan=${planCode}`;
+  // Time-limited launch offer: replaces the regular price/plan code while
+  // active. Not fetched from the API since promo plans are excluded from the
+  // public /subscriptions/plans listing on purpose.
+  const promoActive = isPromoActive();
+  const promoPriceCents = isAnnual
+    ? PROMO_PRICE_CENTS.annual
+    : PROMO_PRICE_CENTS.monthly;
+  const promoMonthlyDisplayCents = isAnnual
+    ? Math.round(PROMO_PRICE_CENTS.annual / 12)
+    : PROMO_PRICE_CENTS.monthly;
+
+  const displayPlanCode = promoActive
+    ? isAnnual
+      ? PROMO_PLAN_CODES.annual
+      : PROMO_PLAN_CODES.monthly
+    : planCode;
+  const displayMonthlyCents = promoActive
+    ? promoMonthlyDisplayCents
+    : monthlyDisplayCents;
+  const displayPriceCents = promoActive ? promoPriceCents : currentPriceCents;
+
+  const href = `${APP_URL}/checkout?plan=${displayPlanCode}`;
 
   const included = [
     "Modelos de IA avançados",
@@ -169,16 +208,31 @@ function ProPlanCard({
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
               Pro
             </p>
-            <div className="mt-2 flex items-baseline gap-1">
+            {promoActive && (
+              <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
+                Oferta limitada
+              </span>
+            )}
+            <div className="mt-2 flex items-baseline gap-2">
+              {promoActive && (
+                <span className="text-lg font-medium text-slate-400 line-through">
+                  {formatEur(monthlyDisplayCents)}
+                </span>
+              )}
               <span className="text-4xl font-bold text-[color:var(--scooli-ink)]">
-                {formatEur(monthlyDisplayCents)}
+                {formatEur(displayMonthlyCents)}
               </span>
               <span className="text-slate-500">/mês</span>
             </div>
-            {isAnnual ? (
+            {promoActive ? (
               <p className="mt-1 text-xs text-slate-400">
-                {formatEur(annualTotalCents)}/ano · poupe{" "}
-                {PRICING.pro_annual.savings}
+                {isAnnual ? `${formatEur(promoPriceCents)}/ano · ` : ""}
+                válido nos primeiros 30 dias · depois mantém este preço para
+                sempre
+              </p>
+            ) : isAnnual ? (
+              <p className="mt-1 text-xs text-slate-400">
+                {formatEur(annualTotalCents)}/ano · poupe {savingsPercent}
               </p>
             ) : (
               <p className="mt-1 text-xs text-slate-400">
@@ -218,9 +272,9 @@ function ProPlanCard({
             href={href}
             eventName="marketing_plan_selected"
             eventProperties={{
-              plan_code: planCode,
+              plan_code: displayPlanCode,
               billing_period: isAnnual ? "year" : "month",
-              price_cents: currentPriceCents,
+              price_cents: displayPriceCents,
               placement: "pricing_plan_card",
               target_url: href,
             }}
@@ -293,10 +347,20 @@ function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
 function BillingToggle({
   billing,
   onChange,
+  apiPlans,
 }: {
   billing: BillingCycle;
   onChange: (b: BillingCycle) => void;
+  apiPlans: Plan[];
 }) {
+  const monthlyApiPlan = apiPlans.find((p) => p.planCode === "pro_monthly");
+  const annualApiPlan = apiPlans.find((p) => p.planCode === "pro_annual");
+  const savingsPercent =
+    calculateSavingsPercent(
+      monthlyApiPlan?.priceCents ?? PRICING.pro_monthly.priceCents,
+      annualApiPlan?.priceCents ?? PRICING.pro_annual.priceCents,
+    ) ?? PRICING.pro_annual.savings;
+
   return (
     <div className="flex items-center justify-center">
       <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 shadow-sm">
@@ -331,7 +395,7 @@ function BillingToggle({
                 : "bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]",
             )}
           >
-            -{PRICING.pro_annual.savings}
+            -{savingsPercent}
           </span>
         </button>
       </div>
@@ -365,7 +429,11 @@ export function PricingSection() {
           </p>
         </div>
 
-        <BillingToggle billing={billing} onChange={setBilling} />
+        <BillingToggle
+          billing={billing}
+          onChange={setBilling}
+          apiPlans={apiPlans}
+        />
 
         <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
           <FreePlanCard />

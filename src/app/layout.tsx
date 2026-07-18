@@ -1,4 +1,5 @@
 import { MarketingScrollDepthTracker } from "@/components/MarketingScrollDepthTracker";
+import { PromoBanner } from "@/components/PromoBanner";
 import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
 import { StructuredData } from "@/components/StructuredData";
@@ -149,6 +150,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         </a>
         <ReducedMotionProvider>
           <SmoothScrollProvider>
+            <PromoBanner />
             <MarketingScrollDepthTracker />
             {children}
             <Toaster
