@@ -2,24 +2,13 @@
 
 import { TrackedLink } from "@/components/TrackedLink";
 import { APP_URL } from "@/lib/seo";
+import { isPromoActive } from "@/lib/promo";
 import { X } from "lucide-react";
 import { useState } from "react";
 
-// Time-limited, unadvertised promo: Pro at a discounted price, kept forever by
-// anyone who subscribes before NEXT_PUBLIC_PROMO_ENDS_AT. Intentionally shown
-// only here and in the web-app popup, not on the pricing page - the plan
-// codes below (pro_monthly_promo / pro_annual_promo) are excluded from the
-// public /subscriptions/plans listing on the backend.
-const PROMO_ENDS_AT = process.env.NEXT_PUBLIC_PROMO_ENDS_AT;
-
-function isPromoActive(): boolean {
-  if (!PROMO_ENDS_AT) {
-    return false;
-  }
-  const endsAt = new Date(PROMO_ENDS_AT);
-  return !Number.isNaN(endsAt.getTime()) && new Date() < endsAt;
-}
-
+// Time-limited promo: Pro at a discounted price, kept forever by anyone who
+// subscribes before NEXT_PUBLIC_PROMO_ENDS_AT. Not advertised externally
+// (no social posts), but shown here, on the pricing page, and in the web-app.
 export function PromoBanner() {
   const [dismissed, setDismissed] = useState(false);
 
