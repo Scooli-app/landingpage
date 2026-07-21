@@ -1,20 +1,33 @@
 "use client";
 
 import { TrackedLink } from "@/components/TrackedLink";
+import { captureMarketingEvent } from "@/lib/analytics";
 import { APP_URL } from "@/lib/seo";
 import { isPromoActive } from "@/lib/promo";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Time-limited promo: Pro at a discounted price, kept forever by anyone who
 // subscribes before NEXT_PUBLIC_PROMO_ENDS_AT. Not advertised externally
 // (no social posts), but shown here, on the pricing page, and in the web-app.
 export function PromoBanner() {
   const [dismissed, setDismissed] = useState(false);
+  const shouldShow = !dismissed && isPromoActive();
 
-  if (dismissed || !isPromoActive()) {
+  useEffect(() => {
+    if (shouldShow) {
+      captureMarketingEvent("marketing_promo_banner_viewed");
+    }
+  }, [shouldShow]);
+
+  if (!shouldShow) {
     return null;
   }
+
+  const handleDismiss = () => {
+    captureMarketingEvent("marketing_promo_banner_dismissed");
+    setDismissed(true);
+  };
 
   const monthlyHref = `${APP_URL}/checkout?plan=pro_monthly_promo`;
   const annualHref = `${APP_URL}/checkout?plan=pro_annual_promo`;
@@ -58,7 +71,7 @@ export function PromoBanner() {
       </div>
       <button
         type="button"
-        onClick={() => setDismissed(true)}
+        onClick={handleDismiss}
         aria-label="Fechar"
         className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 transition-colors hover:text-white sm:static sm:translate-y-0"
       >
