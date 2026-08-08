@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/TrackedLink";
 import { APP_URL, PRICING } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { HeroVideo } from "./HeroVideo";
 import { BrowserFrame, SectionBadge } from "./shared";
 
 const heroHighlights = [
@@ -21,21 +22,11 @@ function HeroPreview() {
         className="relative z-10"
       >
         <div className="rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-3 sm:p-4">
-          <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
-            <video
-              className="pointer-events-none aspect-[16/10] w-full object-cover md:aspect-[16/9]"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="none"
-              disablePictureInPicture
-              aria-label="Demonstração da criação de um teste na Scooli"
-            >
-              <source src={heroVideoSrc} type="video/mp4" />O seu navegador não
-              suporta vídeo HTML5.
-            </video>
-          </div>
+          <HeroVideo
+            src={heroVideoSrc}
+            className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]"
+            ariaLabel="Demonstração da criação de um teste na Scooli"
+          />
 
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {[
