@@ -158,7 +158,16 @@ const missionPoints = [
   },
 ];
 
-const team = [
+type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  alt: string;
+  location: string;
+  imageClassName?: string;
+};
+
+const team: TeamMember[] = [
   {
     name: "Miguel Rodrigues",
     role: "Co-Fundador · Engenheiro de Software & IA",
@@ -174,6 +183,22 @@ const team = [
     location: "Vila Nova de Gaia, Porto",
     alt: "Pedro Rocha, Co-Fundador e Engenheiro de Software & IA da Scooli",
     imageClassName: "scale-[1.28] group-hover:scale-[1.33]",
+  },
+  {
+    name: "Hugo Silva",
+    role: "Sócio · Chief Growth Officer",
+    image: "/team/hugo.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    alt: "Hugo Silva, Sócio e Chief Growth Officer da Scooli",
+    imageClassName: "group-hover:scale-105",
+  },
+  {
+    name: "Sílvia Valério",
+    role: "Advisor Pedagógica · Professora do 1.º ciclo",
+    image: "/team/silvia.jpg",
+    location: "Lisboa",
+    alt: "Sílvia Valério, Advisor Pedagógica da Scooli",
+    imageClassName: "group-hover:scale-105",
   },
 ];
 
@@ -487,12 +512,13 @@ function TeamSection() {
             Quem está a construir a Scooli
           </h2>
           <p className="text-base leading-8 text-[color:var(--scooli-muted)]">
-            Dois engenheiros de software e IA, a construir a Scooli em contacto
-            direto com professores portugueses.
+            Dois engenheiros de software e IA, um responsável de crescimento e
+            uma professora como advisor pedagógica — a construir a Scooli em
+            contacto direto com professores portugueses.
           </p>
         </div>
 
-        <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2">
+        <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member) => (
             <div
               key={member.name}
@@ -504,8 +530,8 @@ function TeamSection() {
                   src={member.image}
                   alt={member.alt}
                   fill
-                  className={`object-cover transition-transform duration-500 ease-out ${member.imageClassName}`}
-                  sizes="(min-width: 640px) 340px, 100vw"
+                  className={`object-cover transition-transform duration-500 ease-out ${member.imageClassName ?? ""}`}
+                  sizes="(min-width: 1024px) 280px, (min-width: 640px) 340px, 100vw"
                 />
               </div>
               <div className="mt-5 space-y-2">
@@ -515,8 +541,11 @@ function TeamSection() {
                 <p className="text-2xl font-semibold text-[color:var(--scooli-ink)]">
                   {member.name}
                 </p>
-                <p className="flex items-center gap-1.5 text-sm text-[color:var(--scooli-muted)]">
-                  <MapPin className="h-3.5 w-3.5" aria-hidden="true" />
+                <p className="flex items-start gap-1.5 text-sm text-[color:var(--scooli-muted)]">
+                  <MapPin
+                    className="mt-0.5 h-3.5 w-3.5 shrink-0"
+                    aria-hidden="true"
+                  />
                   {member.location}
                 </p>
               </div>
