@@ -184,9 +184,9 @@ export function PricingTeaserSection() {
           className="mx-auto flex max-w-3xl flex-col items-center gap-6 text-center"
         >
           <p className="rounded-[22px] border border-slate-200 bg-white px-6 py-4 text-sm leading-7 text-[color:var(--scooli-ink-soft)]">
-            O ChatGPT é gratuito, mas não conhece os documentos do ensino
-            português — e corrigir os erros custa tempo. O Pro compensa pela
-            primeira semana que poupar.
+            O ChatGPT é gratuito, mas não conhece verdadeiramente o ensino
+            português. Corrigir os erros e dar contexto constantemente custa
+            tempo.
           </p>
           <Button
             asChild
