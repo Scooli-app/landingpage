@@ -17,24 +17,26 @@ function ScreenFrame({
   priority?: boolean;
 }) {
   return (
-    <div className="overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-[0_24px_80px_-48px_rgba(19,35,58,0.38)]">
+    <figure className="overflow-hidden rounded-[20px] border border-slate-200/80 bg-white shadow-[0_24px_80px_-48px_rgba(19,35,58,0.38)]">
       <div className="flex items-center gap-2 border-b border-slate-200 bg-slate-50 px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff8a80]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#ffd180]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#7aa2ff]" />
-        <span className="ml-3 rounded-full border border-slate-200 bg-white px-3 py-0.5 text-xs font-medium text-slate-500">
+        <span className="ml-3 truncate rounded-full border border-slate-200 bg-white px-3 py-0.5 text-xs font-medium text-slate-500">
           {label}
         </span>
       </div>
-      <Image
-        src={src}
-        alt={alt}
-        width={1400}
-        height={760}
-        className="w-full"
-        priority={priority}
-      />
-    </div>
+      <div className="relative aspect-[16/7]">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(min-width: 1280px) 1184px, 100vw"
+          className="object-cover object-top"
+          priority={priority}
+        />
+      </div>
+    </figure>
   );
 }
 
@@ -60,7 +62,7 @@ export function AppPreviewSection() {
           />
         </div>
 
-        <div data-reveal className="grid gap-5 sm:grid-cols-2">
+        <div data-reveal>
           <ScreenFrame
             label="Calendário · Plano letivo semanal"
             src="/screenshots/app-calendario.png"

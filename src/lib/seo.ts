@@ -84,13 +84,13 @@ export const PRICING = {
     price: 0,
   },
   pro_monthly: {
-    price: 9.99,
-    priceCents: 999,
+    price: 6.99,
+    priceCents: 699,
     period: "month",
   },
   pro_annual: {
-    price: 95.9,
-    priceCents: 9590,
+    price: 67.1,
+    priceCents: 6710,
     period: "year",
     savings: "20%",
   },

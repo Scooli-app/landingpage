@@ -1,5 +1,6 @@
 import { Footer } from "@/components/Footer";
 import { MarketingNav } from "@/components/MarketingNav";
+import { PromoModal } from "@/components/PromoModal";
 import { LandingFinalCtaSection, SocialProofSection } from "@/components/homepage/CommunitySocialFinalSections";
 import { HeroSection } from "@/components/homepage/HeroSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
@@ -33,6 +34,8 @@ export function HomePageClient() {
       </main>
 
       <Footer />
+
+      <PromoModal />
     </div>
   );
 }

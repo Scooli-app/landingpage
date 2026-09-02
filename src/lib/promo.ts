@@ -9,14 +9,14 @@ export function isPromoActive(): boolean {
 }
 
 export const PROMO_PLAN_CODES = {
-  monthly: "pro_monthly_promo",
-  annual: "pro_annual_promo",
+  monthly: "pro_monthly_promo_rega2026",
+  annual: "pro_annual_promo_rega2026",
 } as const;
 
 // Mirrors the real Stripe promo prices - these plan codes are excluded from
 // the public /subscriptions/plans listing (checkout-only via direct link),
 // so there's no live source to fetch this display data from.
 export const PROMO_PRICE_CENTS = {
-  monthly: 299,
-  annual: 2870,
+  monthly: 499,
+  annual: 4790,
 } as const;
