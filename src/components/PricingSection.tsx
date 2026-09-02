@@ -210,7 +210,7 @@ function ProPlanCard({
             </p>
             {promoActive && (
               <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
-                Oferta limitada
+                Regresso às Aulas 2026
               </span>
             )}
             <div className="mt-2 flex items-baseline gap-2">
@@ -227,8 +227,8 @@ function ProPlanCard({
             {promoActive ? (
               <p className="mt-1 text-xs text-slate-400">
                 {isAnnual ? `${formatEur(promoPriceCents)}/ano · ` : ""}
-                válido nos primeiros 30 dias · depois mantém este preço para
-                sempre
+                Regresso às Aulas 2026 · ative durante a promoção e mantém este
+                preço para sempre
               </p>
             ) : isAnnual ? (
               <p className="mt-1 text-xs text-slate-400">
