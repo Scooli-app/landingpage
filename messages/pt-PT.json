@@ -1,0 +1,18 @@
+{
+  "nav": {
+    "howItWorks": "Como funciona",
+    "tools": "Ferramentas",
+    "library": "Biblioteca",
+    "pricing": "Preços",
+    "about": "Sobre nós",
+    "teachers": "Professores",
+    "schools": "Escolas",
+    "contact": "Contacto"
+  },
+  "common": {
+    "skipToContent": "Saltar para o conteúdo",
+    "languageSwitcher": "Idioma",
+    "availableInEnglish": "This page is also available in English",
+    "dismiss": "Dispensar"
+  }
+}
