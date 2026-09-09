@@ -2,6 +2,7 @@ import { AboutPageClient } from "@/components/AboutPageClient";
 import { PublicSiteShell } from "@/components/marketing/shared";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -9,11 +10,11 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "about.meta" });
 
   return getPageMetadata({
-    title: "Sobre nós",
-    description:
-      "Conheça a história da Scooli, a missão que nos move e a equipa que está a construir o produto para os professores portugueses.",
+    title: t("title"),
+    description: t("description"),
     path: "/sobre",
     locale,
   });

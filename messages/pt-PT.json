@@ -537,5 +537,401 @@
         "howDescription": "Parte de um contexto simples, recebe uma base estruturada e ajusta antes de usar."
       }
     }
+  },
+  "about": {
+    "meta": {
+      "title": "Sobre nós",
+      "description": "Conheça a história da Scooli, a missão que nos move e a equipa que está a construir o produto para os professores portugueses."
+    },
+    "hero": {
+      "badge": "Sobre nós",
+      "title": "A Scooli existe para devolver tempo aos professores",
+      "description": "Estamos a reduzir o trabalho repetitivo da preparação de aulas e a aproximar uma comunidade que muitas vezes trabalha sozinha — sempre com o professor no controlo do resultado final."
+    },
+    "story": {
+      "badge": "A nossa história",
+      "title": "Começou com os professores à nossa volta",
+      "chapters": [
+        {
+          "title": "O que víamos",
+          "description": "Professores próximos de nós a chegar ao fim do dia com as aulas dadas e as reuniões feitas — e ainda uma noite de planificações, fichas e testes pela frente. Serões e fins de semana de família a desaparecer em trabalho que se repete, semana após semana."
+        },
+        {
+          "title": "A pergunta",
+          "description": "Somos dois jovens engenheiros portugueses, o Miguel e o Pedro. Quando a IA generativa começou a mostrar o que conseguia fazer, a pergunta tornou-se óbvia: porque é que estas horas não voltam para quem ensina? A resposta habitual — «usa-se o ChatGPT» — não chegava: faltava-lhe o currículo português, as Aprendizagens Essenciais, os DL 54/2018 e 55/2018, e o formato de documento que um professor usa de verdade."
+        },
+        {
+          "title": "A Scooli",
+          "description": "Por isso construímos a Scooli: feita em Portugal, para o ensino português, com a IA a fazer o trabalho mecânico e o professor a manter a decisão final. O objetivo é o mesmo desde o primeiro dia — devolver tempo a quem ensina. E às famílias de quem ensina."
+        }
+      ],
+      "videoAria": "Demonstração da criação de um teste na Scooli",
+      "videoCaption": "Scooli em ação · um teste a ganhar forma",
+      "miguelAlt": "Miguel Rodrigues, fundador da Scooli",
+      "miguelCaption": "Miguel · Santa Maria da Feira",
+      "pedroAlt": "Pedro Rocha, co-fundador da Scooli",
+      "pedroCaption": "Pedro · Vila Nova de Gaia"
+    },
+    "metrics": {
+      "eyebrow": "A Scooli hoje",
+      "activeTeachers": "professores ativos",
+      "generatedDocuments": "documentos gerados",
+      "weeklyHoursSaved": "poupadas por semana",
+      "adaptedMaterials": "materiais adaptados"
+    },
+    "mission": {
+      "badge": "Missão",
+      "title": "Aliviar o lado mais pesado do trabalho docente",
+      "description": "A IA deve ser prática, útil e respeitadora do papel do professor. E a missão não acaba na automação: queremos uma comunidade onde os professores encontrem boas bases e sintam menos isolamento.",
+      "points": [
+        {
+          "title": "Devolver tempo aos professores",
+          "description": "Reduzir o trabalho repetitivo da preparação de aulas para libertar tempo para ensinar, acompanhar alunos e ajustar melhor o que acontece em sala."
+        },
+        {
+          "title": "Criar comunidade, não só uma ferramenta",
+          "description": "O trabalho de um professor é muitas vezes solitário. A Scooli também quer aproximar docentes através da biblioteca comunitária e da partilha de materiais úteis."
+        },
+        {
+          "title": "Construir para a realidade portuguesa",
+          "description": "A linguagem, os exemplos e a forma de usar a Scooli são pensados para professores, escolas e currículo em Portugal."
+        }
+      ]
+    },
+    "team": {
+      "badge": "Equipa",
+      "title": "Quem está a construir a Scooli",
+      "description": "Dois engenheiros de software e IA, um responsável de crescimento e uma professora como advisor pedagógica — a construir a Scooli em contacto direto com professores portugueses.",
+      "members": [
+        {
+          "role": "Co-Fundador · Engenheiro de Software & IA",
+          "alt": "Miguel Rodrigues, Fundador e Engenheiro de Software & IA da Scooli"
+        },
+        {
+          "role": "Co-Fundador · Engenheiro de Software & IA",
+          "alt": "Pedro Rocha, Co-Fundador e Engenheiro de Software & IA da Scooli"
+        },
+        {
+          "role": "Sócio · Chief Growth Officer",
+          "alt": "Hugo Silva, Sócio e Chief Growth Officer da Scooli"
+        },
+        {
+          "role": "Advisor Pedagógica · Professora do 1.º ciclo",
+          "alt": "Sílvia Valério, Advisor Pedagógica da Scooli"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Quer fazer parte desta história?",
+      "description": "Junte-se a 300+ professores que já preparam aulas com a Scooli. Gratuito, sem cartão, sem compromisso.",
+      "secondaryLabel": "Falar connosco"
+    }
+  },
+  "teachers": {
+    "meta": {
+      "title": "Para professores",
+      "description": "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais."
+    },
+    "preview": {
+      "days": {
+        "monday": "2.ª feira",
+        "wednesday": "4.ª feira",
+        "friday": "6.ª feira"
+      },
+      "tasks": {
+        "monday": "Planificação da semana",
+        "wednesday": "Ficha de consolidação",
+        "friday": "Teste ou quiz rápido"
+      }
+    },
+    "hero": {
+      "eyebrow": "Para professores",
+      "title": "Uma forma mais simples de preparar aulas, fichas e testes sem começar do zero",
+      "description": "Gere recursos editáveis em minutos, alinhados com as Aprendizagens Essenciais e prontos a adaptar para cada turma.",
+      "secondaryLabel": "Ver biblioteca",
+      "checklist": [
+        "Criar materiais em minutos",
+        "Alinhar melhor com as Aprendizagens Essenciais",
+        "Editar tudo antes de usar"
+      ]
+    },
+    "howItHelps": {
+      "eyebrow": "Como ajuda",
+      "title": "O que muda na prática durante a semana",
+      "description": "A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptar recursos para turmas diferentes, sempre com o contexto do currículo português em mente."
+    },
+    "outputs": {
+      "eyebrow": "O que pode criar",
+      "title": "Veja o tipo de documento que sai",
+      "description": "Planificações, fichas e testes aparecem com estrutura, texto e organização suficientes para começar a editar em vez de começar do zero."
+    },
+    "library": {
+      "title": "Biblioteca comunitária",
+      "subtitle": "Descobrir, duplicar e adaptar",
+      "items": [
+        "Pesquisar por disciplina e ano",
+        "Duplicar uma base já existente",
+        "Guardar materiais para reutilizar mais tarde",
+        "Entrar num recurso, adaptar e exportar"
+      ]
+    },
+    "weeklyFit": {
+      "title": "Como encaixa na semana",
+      "items": [
+        "Preparar uma aula mais depressa no início da semana",
+        "Gerar uma ficha de consolidação alinhada com as Aprendizagens Essenciais",
+        "Fechar um teste ou quiz sem reconstruir a estrutura toda"
+      ]
+    },
+    "finalCta": {
+      "title": "Quer testar a Scooli ao seu ritmo?",
+      "description": "Comece gratuitamente, experimente um pedido real da próxima aula e ajuste tudo ao seu contexto antes de usar.",
+      "secondaryLabel": "Ver preços"
+    }
+  },
+  "schools": {
+    "meta": {
+      "title": "Para escolas e instituições",
+      "description": "Descubra como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável."
+    },
+    "preview": {
+      "items": [
+        "Conversa inicial sobre contexto e objetivos",
+        "Piloto com uma equipa pequena",
+        "Avaliação do uso e próximos passos"
+      ],
+      "stepLabel": "Passo {number}"
+    },
+    "hero": {
+      "eyebrow": "Para escolas",
+      "title": "Um percurso simples para escolas começarem com um piloto",
+      "description": "Para avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial.",
+      "secondaryLabel": "Ver confiança e privacidade",
+      "checklist": [
+        "Conversa inicial sobre contexto e objetivos",
+        "Piloto com equipa pequena e critérios claros",
+        "Professor no controlo do resultado final"
+      ]
+    },
+    "howWeWork": {
+      "eyebrow": "Como trabalhamos",
+      "title": "Um caminho leve para avaliar a Scooli em contexto real",
+      "description": "Em vez de um processo pesado, começamos pequeno, percebemos o contexto da escola e acompanhamos a primeira fase de utilização."
+    },
+    "blockers": {
+      "title": "O que costuma travar a decisão logo no início",
+      "items": [
+        "Como é tratada a privacidade em contexto escolar",
+        "Se os dados dos utilizadores são usados para treinar modelos",
+        "Quem mantém o controlo do conteúdo final",
+        "Como garantir revisão humana antes de usar em aula",
+        "Como arrancar com um piloto antes de tomar uma decisão maior",
+        "A adaptação de materiais para turmas e níveis diferentes continua demasiado manual"
+      ]
+    },
+    "recommend": {
+      "eyebrow": "Recomendação interna",
+      "title": "Trabalha numa escola mas não está na direção?",
+      "description": "Pode abrir a conversa na mesma. Criamos uma página dedicada para professores e equipas que querem sugerir a Scooli à direção, coordenação ou agrupamento onde trabalham.",
+      "buttonLabel": "Recomendar a minha escola"
+    },
+    "finalCta": {
+      "title": "Quer perceber se a Scooli faz sentido para a sua escola?",
+      "description": "Comece por uma conversa curta, perceba o contexto e desenhe um piloto simples com a equipa certa.",
+      "secondaryLabel": "Ver confiança e privacidade"
+    }
+  },
+  "trust": {
+    "meta": {
+      "title": "Confiança e Privacidade",
+      "description": "Percebe como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta."
+    },
+    "badge": "Confiança e Privacidade",
+    "title": "Privacidade, revisão humana, alinhamento curricular e uso responsável, explicados sem jargão",
+    "description": "Se quer perceber rapidamente como a Scooli lida com estes temas, aqui tem o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.",
+    "summaryPoints": [
+      "RGPD-ready",
+      "Professor no controlo do resultado final",
+      "Os dados dos utilizadores não são usados para treinar modelos",
+      "Revisão humana antes de usar em aula",
+      "Materiais orientados pelas Aprendizagens Essenciais"
+    ],
+    "principles": {
+      "eyebrow": "Princípios",
+      "title": "O essencial para usar a Scooli com confiança"
+    },
+    "commitments": {
+      "title": "Compromissos públicos",
+      "items": [
+        {
+          "title": "Professor no controlo",
+          "description": "A Scooli ajuda a gerar um ponto de partida, mas a decisão final sobre o que vai para a aula continua do lado do professor."
+        },
+        {
+          "title": "Sem treino com dados dos utilizadores",
+          "description": "Os materiais e pedidos feitos na plataforma não são usados para treinar modelos de IA."
+        },
+        {
+          "title": "Revisão humana sempre recomendada",
+          "description": "Os outputs devem ser revistos, ajustados e validados antes de serem usados com alunos."
+        },
+        {
+          "title": "Alinhamento com Aprendizagens Essenciais",
+          "description": "A Scooli é posicionada para gerar materiais de acordo com as Aprendizagens Essenciais, o que ajuda a reforçar alinhamento curricular, qualidade do conteúdo e confiança."
+        },
+        {
+          "title": "Privacidade explicada sem jargão",
+          "description": "A postura da Scooli sobre privacidade e uso responsável pode ser percebida rapidamente, sem depender só dos textos legais."
+        }
+      ]
+    },
+    "goodPractices": {
+      "title": "Antes de usar em aula",
+      "items": [
+        "Evite inserir dados pessoais desnecessários de alunos.",
+        "Use contexto pedagógico sempre que possível, em vez de informação identificável.",
+        "Confirme sempre que o material final está alinhado com as Aprendizagens Essenciais e com o seu contexto de aula.",
+        "Trate a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica."
+      ]
+    },
+    "documents": {
+      "title": "Documentos úteis",
+      "privacy": {
+        "title": "Política de Privacidade",
+        "description": "Detalhes legais sobre tratamento de dados, responsabilidades e informação adicional."
+      },
+      "terms": {
+        "title": "Termos de Utilização",
+        "description": "Condições de uso, princípios de utilização e notas sobre subscrição e uso justo."
+      }
+    }
+  },
+  "recommendInstitution": {
+    "meta": {
+      "title": "Recomendar a Scooli a uma instituição",
+      "description": "Sugira a Scooli à direção da sua escola, instituição ou agrupamento. Partilhe o contexto e a nossa equipa prepara o próximo contacto."
+    },
+    "backLabel": "Voltar",
+    "badge": "Recomendar a Scooli",
+    "title": "Quer que falemos com a sua escola?",
+    "description": "Preencha este formulário com o essencial e nós tratamos do próximo passo.",
+    "noteLabel": "Nota importante",
+    "noteText": "Se avançarmos com um primeiro email para a direção ou coordenação, colocamos o seu email em CC.",
+    "form": {
+      "requiredNote": "Os campos assinalados com * são obrigatórios.",
+      "nameLabel": "Nome *",
+      "namePlaceholder": "O seu nome",
+      "emailLabel": "Email *",
+      "emailPlaceholder": "o.seu.email@exemplo.com",
+      "roleLabel": "Cargo / papel *",
+      "rolePlaceholder": "Professor, coordenação, etc.",
+      "institutionLabel": "Escola / instituição *",
+      "institutionPlaceholder": "Nome da escola, instituição ou agrupamento",
+      "leadershipContactLabel": "Contacto da direção ou coordenação *",
+      "leadershipContactPlaceholder": "Email, telefone ou nome da pessoa",
+      "messageLabel": "Contexto",
+      "messagePlaceholder": "Explique em poucas linhas porque faz sentido falarmos com esta escola.",
+      "ccHint": "Usamos o seu email para responder e para o manter em CC se avançarmos com o contacto.",
+      "submitLabel": "Enviar pedido",
+      "submittingLabel": "A enviar...",
+      "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
+      "errors": {
+        "name": "Indique o seu nome para sabermos quem está a recomendar.",
+        "emailRequired": "Indique um email para podermos responder ao pedido.",
+        "emailInvalid": "Introduza um endereço de email válido.",
+        "role": "Partilhe o seu papel na escola ou instituição.",
+        "institution": "Indique a escola, instituição ou agrupamento que quer recomendar.",
+        "leadershipContact": "Indique o contacto da direção ou coordenação."
+      },
+      "validationNotice": "Revê os campos assinalados e tenta novamente.",
+      "fetchErrorFallback": "Erro ao enviar o pedido. Tenta novamente.",
+      "successMessage": "Pedido enviado com sucesso. Vamos analisar o contexto e responder o mais depressa possível.",
+      "genericErrorFallback": "Ocorreu um erro. Tenta novamente mais tarde."
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contacto",
+      "description": "Fale com a equipa da Scooli para tirar dúvidas, pedir informações ou discutir um piloto para a sua escola."
+    },
+    "badge": "Contacto",
+    "title": "Fala connosco",
+    "description": "Se tem perguntas sobre a Scooli, quer falar sobre um piloto ou precisa de ajuda, use o formulário ou envie-nos um email.",
+    "cards": {
+      "email": {
+        "title": "Email",
+        "subtitle": "A forma mais simples de falar connosco"
+      },
+      "responseTime": {
+        "title": "Tempo de resposta",
+        "subtitle": "Normalmente respondemos em 24 a 48 horas úteis."
+      },
+      "institutions": {
+        "title": "Escolas e instituições",
+        "subtitle": "Se quer falar sobre pilotos, adoção institucional ou dúvidas de implementação, também pode escrever-nos por aqui."
+      }
+    },
+    "form": {
+      "requiredNote": "Os campos assinalados com * são obrigatórios.",
+      "nameLabel": "Nome *",
+      "namePlaceholder": "O seu nome",
+      "emailLabel": "Email *",
+      "emailPlaceholder": "o.seu.email@exemplo.com",
+      "emailHint": "Usamos o seu email apenas para responder ao pedido.",
+      "organizationLabel": "Organização / Escola",
+      "organizationPlaceholder": "Nome da sua organização (opcional)",
+      "messageLabel": "Mensagem *",
+      "messagePlaceholder": "Como podemos ajudar?",
+      "messageHint": "Partilha o contexto necessário para te conseguirmos ajudar.",
+      "submitLabel": "Enviar mensagem",
+      "submittingLabel": "A enviar...",
+      "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
+      "validationNotice": "Revê os campos assinalados e tenta novamente.",
+      "fetchErrorFallback": "Erro ao enviar a mensagem. Tenta novamente.",
+      "successMessage": "Mensagem enviada com sucesso. Vamos responder o mais depressa possível.",
+      "genericErrorFallback": "Ocorreu um erro. Tenta novamente mais tarde."
+    }
+  },
+  "contactForm": {
+    "nameRequired": "Indique o seu nome para sabermos como responder.",
+    "emailRequired": "Indique um email para podermos entrar em contacto.",
+    "emailInvalid": "Introduza um endereço de email válido.",
+    "messageRequired": "Escreva uma mensagem com o que precisa."
+  },
+  "contactModal": {
+    "defaultTitle": "Fale connosco",
+    "defaultDescription": "Preencha o formulário e entraremos em contacto consigo o mais brevemente possível.",
+    "requiredNote": "Os campos assinalados com * são obrigatórios.",
+    "nameLabel": "Nome *",
+    "namePlaceholder": "O seu nome",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "o.seu.email@exemplo.com",
+    "emailHint": "Usamos o seu email apenas para responder ao pedido.",
+    "organizationLabel": "Organização / Escola",
+    "organizationPlaceholder": "Nome da sua instituição (opcional)",
+    "messageLabel": "Mensagem *",
+    "messagePlaceholder": "Como podemos ajudar?",
+    "messageHint": "Inclua o contexto necessário para conseguirmos ajudar.",
+    "submitLabel": "Enviar mensagem",
+    "submittingLabel": "A enviar...",
+    "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
+    "validationNotice": "Revê os campos assinalados e tente novamente.",
+    "fetchErrorFallback": "Erro ao enviar a mensagem. Tente novamente.",
+    "successMessage": "Mensagem enviada com sucesso! Receberá um email de confirmação em breve.",
+    "genericErrorFallback": "Ocorreu um erro. Tente novamente mais tarde."
+  },
+  "institutionalContactButton": {
+    "defaultTitle": "Fale com a equipa",
+    "defaultDescription": "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo.",
+    "defaultLabel": "Falar com a equipa"
+  },
+  "emailContact": {
+    "copyAriaLabel": "Copiar email info@scooli.app",
+    "copyTitle": "Copiar info@scooli.app",
+    "label": "Email:",
+    "copiedStatus": "Email copiado para a área de transferência.",
+    "copiedToast": "Email copiado!",
+    "errorStatus": "Não foi possível copiar o email. Tenta novamente.",
+    "errorToast": "Não foi possível copiar o email."
   }
 }

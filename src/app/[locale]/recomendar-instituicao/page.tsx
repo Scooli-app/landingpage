@@ -1,6 +1,7 @@
 import { InstitutionRecommendationPage } from "@/components/InstitutionRecommendationPage";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -8,11 +9,11 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "recommendInstitution.meta" });
 
   return getPageMetadata({
-    title: "Recomendar a Scooli a uma instituição",
-    description:
-      "Sugira a Scooli à direção da sua escola, instituição ou agrupamento. Partilhe o contexto e a nossa equipa prepara o próximo contacto.",
+    title: t("title"),
+    description: t("description"),
     path: "/recomendar-instituicao",
     locale,
   });

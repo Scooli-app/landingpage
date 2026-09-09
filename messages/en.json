@@ -538,5 +538,401 @@
         "howDescription": "Start from a simple context, get a structured draft, and adjust before you use it."
       }
     }
+  },
+  "about": {
+    "meta": {
+      "title": "About us",
+      "description": "Learn Scooli's story, the mission behind it, and meet the team building the product for Portuguese teachers."
+    },
+    "hero": {
+      "badge": "About us",
+      "title": "Scooli exists to give teachers their time back",
+      "description": "We're cutting the repetitive work out of lesson preparation and bringing together a community that often works alone — with the teacher always in control of the final result."
+    },
+    "story": {
+      "badge": "Our story",
+      "title": "It started with the teachers around us",
+      "chapters": [
+        {
+          "title": "What we saw",
+          "description": "Teachers close to us reaching the end of the day with classes taught and meetings done — and still facing an evening of lesson plans, worksheets and tests. Evenings and weekends with family disappearing into work that repeats, week after week."
+        },
+        {
+          "title": "The question",
+          "description": "We're two young Portuguese engineers, Miguel and Pedro. When generative AI started showing what it could do, the question became obvious: why doesn't that time go back to the people who teach? The usual answer — \"just use ChatGPT\" — fell short: it didn't know the Portuguese curriculum, the Aprendizagens Essenciais (Portugal's national curriculum standards), Decree-Laws 54/2018 and 55/2018, or the document format a teacher actually uses."
+        },
+        {
+          "title": "Scooli",
+          "description": "So we built Scooli: made in Portugal, for Portuguese teaching, with AI doing the mechanical work and the teacher keeping the final decision. The goal has stayed the same since day one — give time back to the people who teach. And to their families."
+        }
+      ],
+      "videoAria": "Demo of creating a test in Scooli",
+      "videoCaption": "Scooli in action · a test taking shape",
+      "miguelAlt": "Miguel Rodrigues, Scooli founder",
+      "miguelCaption": "Miguel · Santa Maria da Feira",
+      "pedroAlt": "Pedro Rocha, Scooli co-founder",
+      "pedroCaption": "Pedro · Vila Nova de Gaia"
+    },
+    "metrics": {
+      "eyebrow": "Scooli today",
+      "activeTeachers": "active teachers",
+      "generatedDocuments": "documents generated",
+      "weeklyHoursSaved": "saved every week",
+      "adaptedMaterials": "materials adapted"
+    },
+    "mission": {
+      "badge": "Mission",
+      "title": "Take the heaviest part of teaching off your plate",
+      "description": "AI should be practical, useful and respectful of the teacher's role. And the mission doesn't stop at automation: we want a community where teachers find a solid starting point and feel less alone in the work.",
+      "points": [
+        {
+          "title": "Give teachers their time back",
+          "description": "Cut the repetitive work out of lesson prep so more time goes to teaching, following students and adjusting what actually matters in the classroom."
+        },
+        {
+          "title": "Build a community, not just a tool",
+          "description": "Teaching is often solitary work. Scooli also wants to bring teachers closer together through the community library and the sharing of useful materials."
+        },
+        {
+          "title": "Build for Portugal, specifically",
+          "description": "The language, the examples and the way Scooli works are designed around teachers, schools and the curriculum in Portugal."
+        }
+      ]
+    },
+    "team": {
+      "badge": "Team",
+      "title": "Who's building Scooli",
+      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor — building Scooli in direct contact with Portuguese teachers.",
+      "members": [
+        {
+          "role": "Co-Founder · Software & AI Engineer",
+          "alt": "Miguel Rodrigues, Founder and Software & AI Engineer at Scooli"
+        },
+        {
+          "role": "Co-Founder · Software & AI Engineer",
+          "alt": "Pedro Rocha, Co-Founder and Software & AI Engineer at Scooli"
+        },
+        {
+          "role": "Partner · Chief Growth Officer",
+          "alt": "Hugo Silva, Partner and Chief Growth Officer at Scooli"
+        },
+        {
+          "role": "Pedagogical Advisor · Primary school teacher",
+          "alt": "Sílvia Valério, Pedagogical Advisor at Scooli"
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Want to be part of this story?",
+      "description": "Join 300+ teachers already preparing lessons with Scooli. Free, no card, no commitment.",
+      "secondaryLabel": "Talk to us"
+    }
+  },
+  "teachers": {
+    "meta": {
+      "title": "For teachers",
+      "description": "See how Scooli helps teachers create lesson plans, worksheets and tests with less repetitive work, more control, and better alignment with Portugal's Aprendizagens Essenciais."
+    },
+    "preview": {
+      "days": {
+        "monday": "Monday",
+        "wednesday": "Wednesday",
+        "friday": "Friday"
+      },
+      "tasks": {
+        "monday": "Plan the week ahead",
+        "wednesday": "Consolidation worksheet",
+        "friday": "Quick test or quiz"
+      }
+    },
+    "hero": {
+      "eyebrow": "For teachers",
+      "title": "An easier way to prepare lessons, worksheets and tests without starting from a blank page",
+      "description": "Generate editable resources in minutes, aligned with the Aprendizagens Essenciais and ready to adapt for each class.",
+      "secondaryLabel": "See the library",
+      "checklist": [
+        "Create materials in minutes",
+        "Stay better aligned with the Aprendizagens Essenciais",
+        "Edit everything before you use it"
+      ]
+    },
+    "howItHelps": {
+      "eyebrow": "How it helps",
+      "title": "What actually changes during the week",
+      "description": "Scooli fits the tasks that repeat most: planning, creating materials and adapting resources for different classes, always with the Portuguese curriculum in mind."
+    },
+    "outputs": {
+      "eyebrow": "What you can create",
+      "title": "See the kind of document you get",
+      "description": "Lesson plans, worksheets and tests come out with enough structure, text and organisation to start editing instead of starting from scratch."
+    },
+    "library": {
+      "title": "Community library",
+      "subtitle": "Discover, duplicate and adapt",
+      "items": [
+        "Search by subject and year group",
+        "Duplicate a resource that already exists",
+        "Save materials to reuse later",
+        "Open a resource, adapt it and export"
+      ]
+    },
+    "weeklyFit": {
+      "title": "How it fits your week",
+      "items": [
+        "Prepare a lesson faster at the start of the week",
+        "Generate a consolidation worksheet aligned with the Aprendizagens Essenciais",
+        "Finish a test or quiz without rebuilding the whole structure"
+      ]
+    },
+    "finalCta": {
+      "title": "Want to try Scooli at your own pace?",
+      "description": "Start for free, try a real request for your next lesson, and adjust everything to your context before you use it.",
+      "secondaryLabel": "See pricing"
+    }
+  },
+  "schools": {
+    "meta": {
+      "title": "For schools and institutions",
+      "description": "See how schools and school groups can evaluate Scooli through a simple path: an initial conversation, a pilot, and responsible adoption."
+    },
+    "preview": {
+      "items": [
+        "An initial conversation about context and goals",
+        "A pilot with a small team",
+        "Reviewing usage and next steps"
+      ],
+      "stepLabel": "Step {number}"
+    },
+    "hero": {
+      "eyebrow": "For schools",
+      "title": "A simple path for schools to start with a pilot",
+      "description": "To evaluate Scooli with a coordination team, school leadership or a small group of teachers, here's how to get started with clarity, accountability and support from the outset.",
+      "secondaryLabel": "See trust and privacy",
+      "checklist": [
+        "An initial conversation about context and goals",
+        "A pilot with a small team and clear criteria",
+        "The teacher stays in control of the final result"
+      ]
+    },
+    "howWeWork": {
+      "eyebrow": "How we work",
+      "title": "A light-touch way to evaluate Scooli in a real setting",
+      "description": "Instead of a heavy process, we start small, understand the school's context, and stay close through the first phase of use."
+    },
+    "blockers": {
+      "title": "What usually holds up the decision early on",
+      "items": [
+        "How privacy is handled in a school setting",
+        "Whether user data is used to train models",
+        "Who keeps control of the final content",
+        "How to guarantee human review before classroom use",
+        "How to start with a pilot before making a bigger decision",
+        "Adapting materials for different classes and levels still feels too manual"
+      ]
+    },
+    "recommend": {
+      "eyebrow": "Internal recommendation",
+      "title": "Work at a school but aren't part of school leadership?",
+      "description": "You can still start the conversation. We built a dedicated page for teachers and teams who want to suggest Scooli to the leadership, coordination team or school group they work with.",
+      "buttonLabel": "Recommend my school"
+    },
+    "finalCta": {
+      "title": "Want to see if Scooli is a fit for your school?",
+      "description": "Start with a short conversation, understand the context, and put together a simple pilot with the right team.",
+      "secondaryLabel": "See trust and privacy"
+    }
+  },
+  "trust": {
+    "meta": {
+      "title": "Trust and Privacy",
+      "description": "See how Scooli handles privacy, human review, the Aprendizagens Essenciais and responsible use of AI, explained in plain language."
+    },
+    "badge": "Trust and Privacy",
+    "title": "Privacy, human review, curriculum alignment and responsible use, explained without the jargon",
+    "description": "If you want to quickly understand how Scooli handles these topics, here's the essential version: what happens to data, where teacher control sits, and why alignment with the Aprendizagens Essenciais is also part of trusting the product.",
+    "summaryPoints": [
+      "Built for GDPR",
+      "The teacher controls the final result",
+      "User data is never used to train models",
+      "Human review before classroom use",
+      "Materials guided by the Aprendizagens Essenciais"
+    ],
+    "principles": {
+      "eyebrow": "Principles",
+      "title": "The essentials for using Scooli with confidence"
+    },
+    "commitments": {
+      "title": "Public commitments",
+      "items": [
+        {
+          "title": "The teacher stays in control",
+          "description": "Scooli helps generate a starting point, but the final decision on what reaches the classroom always stays with the teacher."
+        },
+        {
+          "title": "Your data never trains a model",
+          "description": "The materials and prompts created on the platform are not used to train AI models."
+        },
+        {
+          "title": "Human review, always recommended",
+          "description": "Outputs should be reviewed, adjusted and validated before being used with students."
+        },
+        {
+          "title": "Aligned with the Aprendizagens Essenciais",
+          "description": "Scooli is built to generate materials in line with the Aprendizagens Essenciais, which helps reinforce curriculum alignment, content quality and trust."
+        },
+        {
+          "title": "Privacy explained without the jargon",
+          "description": "Scooli's approach to privacy and responsible use should be easy to understand quickly, without relying only on legal text."
+        }
+      ]
+    },
+    "goodPractices": {
+      "title": "Before you use it in class",
+      "items": [
+        "Avoid entering unnecessary personal data about students.",
+        "Use pedagogical context wherever possible, rather than identifiable information.",
+        "Always confirm the final material is aligned with the Aprendizagens Essenciais and your classroom context.",
+        "Treat AI as support for creating and adapting materials, never as a replacement for pedagogical judgement."
+      ]
+    },
+    "documents": {
+      "title": "Useful documents",
+      "privacy": {
+        "title": "Privacy Policy",
+        "description": "Legal details on how data is handled, responsibilities and additional information."
+      },
+      "terms": {
+        "title": "Terms of Use",
+        "description": "Terms of use, usage principles and notes on subscriptions and fair use."
+      }
+    }
+  },
+  "recommendInstitution": {
+    "meta": {
+      "title": "Recommend Scooli to an institution",
+      "description": "Suggest Scooli to your school's, institution's or school group's leadership. Share the context and our team prepares the next contact."
+    },
+    "backLabel": "Back",
+    "badge": "Recommend Scooli",
+    "title": "Want us to reach out to your school?",
+    "description": "Fill in this form with the essentials and we'll take care of the next step.",
+    "noteLabel": "Important note",
+    "noteText": "If we follow up with a first email to school leadership or coordination, we'll CC you on it.",
+    "form": {
+      "requiredNote": "Fields marked with * are required.",
+      "nameLabel": "Name *",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email *",
+      "emailPlaceholder": "your.email@example.com",
+      "roleLabel": "Role *",
+      "rolePlaceholder": "Teacher, coordination, etc.",
+      "institutionLabel": "School / institution *",
+      "institutionPlaceholder": "Name of the school, institution or school group",
+      "leadershipContactLabel": "Leadership or coordination contact *",
+      "leadershipContactPlaceholder": "Email, phone number or the person's name",
+      "messageLabel": "Context",
+      "messagePlaceholder": "Explain in a few lines why it makes sense for us to talk to this school.",
+      "ccHint": "We use your email to reply, and to keep you CC'd if we follow up with the contact.",
+      "submitLabel": "Send request",
+      "submittingLabel": "Sending...",
+      "consent": "By submitting, you agree to our <link>Privacy Policy</link>.",
+      "errors": {
+        "name": "Enter your name so we know who's recommending Scooli.",
+        "emailRequired": "Enter an email so we can reply to your request.",
+        "emailInvalid": "Enter a valid email address.",
+        "role": "Share your role at the school or institution.",
+        "institution": "Enter the school, institution or school group you'd like to recommend.",
+        "leadershipContact": "Enter a contact for school leadership or coordination."
+      },
+      "validationNotice": "Check the fields marked below and try again.",
+      "fetchErrorFallback": "Error sending the request. Please try again.",
+      "successMessage": "Request sent successfully. We'll review the context and get back to you as soon as possible.",
+      "genericErrorFallback": "Something went wrong. Please try again later."
+    }
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact",
+      "description": "Get in touch with the Scooli team to ask questions, request information, or discuss a pilot for your school."
+    },
+    "badge": "Contact",
+    "title": "Talk to us",
+    "description": "If you have questions about Scooli, want to talk about a pilot, or need help, use the form or send us an email.",
+    "cards": {
+      "email": {
+        "title": "Email",
+        "subtitle": "The simplest way to reach us"
+      },
+      "responseTime": {
+        "title": "Response time",
+        "subtitle": "We usually reply within 24 to 48 business hours."
+      },
+      "institutions": {
+        "title": "Schools and institutions",
+        "subtitle": "If you want to talk about pilots, institutional adoption or implementation questions, you can also write to us here."
+      }
+    },
+    "form": {
+      "requiredNote": "Fields marked with * are required.",
+      "nameLabel": "Name *",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email *",
+      "emailPlaceholder": "your.email@example.com",
+      "emailHint": "We only use your email to reply to your request.",
+      "organizationLabel": "Organisation / School",
+      "organizationPlaceholder": "Your organisation's name (optional)",
+      "messageLabel": "Message *",
+      "messagePlaceholder": "How can we help?",
+      "messageHint": "Share the context we need to help you.",
+      "submitLabel": "Send message",
+      "submittingLabel": "Sending...",
+      "consent": "By submitting, you agree to our <link>Privacy Policy</link>.",
+      "validationNotice": "Check the fields marked below and try again.",
+      "fetchErrorFallback": "Error sending the message. Please try again.",
+      "successMessage": "Message sent successfully. We'll reply as soon as possible.",
+      "genericErrorFallback": "Something went wrong. Please try again later."
+    }
+  },
+  "contactForm": {
+    "nameRequired": "Enter your name so we know how to reply.",
+    "emailRequired": "Enter an email so we can get in touch.",
+    "emailInvalid": "Enter a valid email address.",
+    "messageRequired": "Write a message describing what you need."
+  },
+  "contactModal": {
+    "defaultTitle": "Talk to us",
+    "defaultDescription": "Fill in the form and we'll get in touch with you as soon as possible.",
+    "requiredNote": "Fields marked with * are required.",
+    "nameLabel": "Name *",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Email *",
+    "emailPlaceholder": "your.email@example.com",
+    "emailHint": "We only use your email to reply to your request.",
+    "organizationLabel": "Organisation / School",
+    "organizationPlaceholder": "Your institution's name (optional)",
+    "messageLabel": "Message *",
+    "messagePlaceholder": "How can we help?",
+    "messageHint": "Include the context we need to help you.",
+    "submitLabel": "Send message",
+    "submittingLabel": "Sending...",
+    "consent": "By submitting, you agree to our <link>Privacy Policy</link>.",
+    "validationNotice": "Check the fields marked below and try again.",
+    "fetchErrorFallback": "Error sending the message. Please try again.",
+    "successMessage": "Message sent successfully! You'll receive a confirmation email shortly.",
+    "genericErrorFallback": "Something went wrong. Please try again later."
+  },
+  "institutionalContactButton": {
+    "defaultTitle": "Talk to the team",
+    "defaultDescription": "Share the context of your school or institution and we'll get in touch to figure out the best next step.",
+    "defaultLabel": "Talk to the team"
+  },
+  "emailContact": {
+    "copyAriaLabel": "Copy email info@scooli.app",
+    "copyTitle": "Copy info@scooli.app",
+    "label": "Email:",
+    "copiedStatus": "Email copied to clipboard.",
+    "copiedToast": "Email copied!",
+    "errorStatus": "Couldn't copy the email. Please try again.",
+    "errorToast": "Couldn't copy the email."
   }
 }

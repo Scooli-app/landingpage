@@ -2,6 +2,7 @@
 import { PublicSiteShell } from "@/components/marketing/shared";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -9,11 +10,11 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "contact.meta" });
 
   return getPageMetadata({
-    title: "Contacto",
-    description:
-      "Fale com a equipa da Scooli para tirar dúvidas, pedir informações ou discutir um piloto para a sua escola.",
+    title: t("title"),
+    description: t("description"),
     path: "/contacto",
     locale,
   });

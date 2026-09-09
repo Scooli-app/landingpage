@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { getTrustCards } from "@/components/marketing/data";
+import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import {
   InfoCard,
@@ -8,7 +9,7 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { getPageMetadata } from "@/lib/seo";
-import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -16,58 +17,15 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "trust.meta" });
 
   return getPageMetadata({
-    title: "Confiança e Privacidade",
-    description:
-      "Percebe como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta.",
+    title: t("title"),
+    description: t("description"),
     path: "/confianca",
     locale,
   });
 }
-
-const summaryPoints = [
-  "RGPD-ready",
-  "Professor no controlo do resultado final",
-  "Os dados dos utilizadores não são usados para treinar modelos",
-  "Revisão humana antes de usar em aula",
-  "Materiais orientados pelas Aprendizagens Essenciais",
-];
-
-const commitments = [
-  {
-    title: "Professor no controlo",
-    description:
-      "A Scooli ajuda a gerar um ponto de partida, mas a decisão final sobre o que vai para a aula continua do lado do professor.",
-  },
-  {
-    title: "Sem treino com dados dos utilizadores",
-    description:
-      "Os materiais e pedidos feitos na plataforma não são usados para treinar modelos de IA.",
-  },
-  {
-    title: "Revisão humana sempre recomendada",
-    description:
-      "Os outputs devem ser revistos, ajustados e validados antes de serem usados com alunos.",
-  },
-  {
-    title: "Alinhamento com Aprendizagens Essenciais",
-    description:
-      "A Scooli é posicionada para gerar materiais de acordo com as Aprendizagens Essenciais, o que ajuda a reforçar alinhamento curricular, qualidade do conteúdo e confiança.",
-  },
-  {
-    title: "Privacidade explicada sem jargão",
-    description:
-      "A postura da Scooli sobre privacidade e uso responsável pode ser percebida rapidamente, sem depender só dos textos legais.",
-  },
-];
-
-const goodPractices = [
-  "Evite inserir dados pessoais desnecessários de alunos.",
-  "Use contexto pedagógico sempre que possível, em vez de informação identificável.",
-  "Confirme sempre que o material final está alinhado com as Aprendizagens Essenciais e com o seu contexto de aula.",
-  "Trate a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica.",
-];
 
 export default async function TrustPage({
   params,
@@ -76,6 +34,10 @@ export default async function TrustPage({
 }) {
   const { locale } = await params;
   const trustCards = getTrustCards(locale);
+  const t = await getTranslations({ locale, namespace: "trust" });
+  const summaryPoints = t.raw("summaryPoints") as string[];
+  const commitments = t.raw("commitments.items") as { title: string; description: string }[];
+  const goodPractices = t.raw("goodPractices.items") as string[];
 
   return (
     <PublicSiteShell>
@@ -83,13 +45,13 @@ export default async function TrustPage({
         <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
         <Container className="pb-16 pt-10 sm:pb-20 lg:pb-24">
           <div className="space-y-6">
-            <MarketingSectionBadge>Confiança e Privacidade</MarketingSectionBadge>
+            <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
             <div className="max-w-4xl space-y-4">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                Privacidade, revisão humana, alinhamento curricular e uso responsável, explicados sem jargão
+                {t("title")}
               </h1>
               <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Se quer perceber rapidamente como a Scooli lida com estes temas, aqui tem o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.
+                {t("description")}
               </p>
             </div>
 
@@ -111,9 +73,9 @@ export default async function TrustPage({
         <Container className="space-y-6">
           <section className="space-y-6">
             <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">Princípios</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">{t("principles.eyebrow")}</p>
               <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                O essencial para usar a Scooli com confiança
+                {t("principles.title")}
               </h2>
             </div>
             <div className="grid gap-5 lg:grid-cols-3">
@@ -131,7 +93,7 @@ export default async function TrustPage({
           <section>
             <SurfacePanel>
               <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                Compromissos públicos
+                {t("commitments.title")}
               </h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 {commitments.map((item) => (
@@ -147,7 +109,7 @@ export default async function TrustPage({
           <section>
             <SurfacePanel>
               <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                Antes de usar em aula
+                {t("goodPractices.title")}
               </h2>
               <div className="mt-6 grid gap-3">
                 {goodPractices.map((item) => (
@@ -165,25 +127,25 @@ export default async function TrustPage({
           <section>
             <SurfacePanel>
               <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                Documentos úteis
+                {t("documents.title")}
               </h2>
               <div className="mt-6 grid gap-4 sm:grid-cols-2">
                 <Link
                   href="/privacy"
                   className="rounded-[24px] border border-slate-200 bg-white p-5 transition hover:border-[color:var(--scooli-primary)]/30 hover:bg-[color:var(--scooli-surface-alt)]"
                 >
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Política de Privacidade</p>
+                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("documents.privacy.title")}</p>
                   <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    Detalhes legais sobre tratamento de dados, responsabilidades e informação adicional.
+                    {t("documents.privacy.description")}
                   </p>
                 </Link>
                 <Link
                   href="/terms"
                   className="rounded-[24px] border border-slate-200 bg-white p-5 transition hover:border-[color:var(--scooli-primary)]/30 hover:bg-[color:var(--scooli-surface-alt)]"
                 >
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Termos de Utilização</p>
+                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("documents.terms.title")}</p>
                   <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    Condições de uso, princípios de utilização e notas sobre subscrição e uso justo.
+                    {t("documents.terms.description")}
                   </p>
                 </Link>
               </div>
