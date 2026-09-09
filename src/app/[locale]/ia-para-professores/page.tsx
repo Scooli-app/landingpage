@@ -2,8 +2,10 @@ import { Container } from "@/components/Container";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
 import { StructuredData } from "@/components/StructuredData";
-import { socialProof } from "@/components/homepage/data";
-import { impactStats, toolCardIcons, toolPages } from "@/components/marketing/data";
+import { withRatings } from "@/components/homepage/data";
+import { getImpactStats, getToolPages, toolCardIcons } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
+import { localizedUrl } from "@/i18n/urls";
 import {
   Checklist,
   MarketingSectionHeading,
@@ -21,12 +23,19 @@ import {
   getWebPageSchema,
   SITE_URL,
 } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, LibraryBig, LockKeyhole, MapPinned, PencilLine } from "lucide-react";
 
 const pagePath = "/ia-para-professores";
-const pageUrl = `${SITE_URL}${pagePath}`;
 
-export const metadata = getPageMetadata({
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+
+  return getPageMetadata({
   title: "IA para professores em Portugal",
   description:
     "Scooli é uma plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com melhor alinhamento curricular, qualidade e confiança.",
@@ -46,7 +55,9 @@ export const metadata = getPageMetadata({
     "currículo português",
     "edtech portugal",
   ],
-});
+  locale,
+  });
+}
 
 const faqItems = [
   {
@@ -81,19 +92,25 @@ const faqItems = [
   },
 ];
 
-const breadcrumbItems = [
-  { name: "Scooli", url: SITE_URL },
-  { name: "IA para professores", url: pageUrl },
-];
+function buildPageSchemas(locale: Locale) {
+  const pageUrl = localizedUrl(SITE_URL, pagePath, locale);
+  const breadcrumbItems = [
+    { name: "Scooli", url: localizedUrl(SITE_URL, "/", locale) },
+    { name: "IA para professores", url: pageUrl },
+  ];
 
-const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
-const webPageSchema = getWebPageSchema({
-  title: "IA para professores em Portugal | Scooli",
-  description:
-    "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais.",
-  url: pageUrl,
-  breadcrumb: breadcrumbItems,
-});
+  return {
+    breadcrumbSchema: getBreadcrumbSchema(breadcrumbItems),
+    webPageSchema: getWebPageSchema({
+      title: "IA para professores em Portugal | Scooli",
+      description:
+        "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais.",
+      url: pageUrl,
+      breadcrumb: breadcrumbItems,
+      locale,
+    }),
+  };
+}
 const faqSchema = getFAQPageSchema(faqItems);
 const howToSchema = getHowToSchema(
   "Como usar a Scooli como IA para professores",
@@ -179,7 +196,20 @@ function DiscoveryPreview() {
   );
 }
 
-export default function AiForTeachersPage() {
+export default async function AiForTeachersPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const { breadcrumbSchema, webPageSchema } = buildPageSchemas(locale);
+  const toolPages = getToolPages(locale);
+  const impactStats = getImpactStats(locale);
+  const tSocial = await getTranslations({ locale, namespace: "home.socialProof" });
+  const socialProof = withRatings(
+    tSocial.raw("quotes") as { quote: string; role: string }[],
+  );
+
   return (
     <>
       <StructuredData id="ia-professores-breadcrumb" data={breadcrumbSchema} />

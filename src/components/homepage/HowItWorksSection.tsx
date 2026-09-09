@@ -6,19 +6,26 @@ import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { APP_URL } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
-import { steps } from "./data";
+import { useTranslations } from "next-intl";
+import { stepIcons, withIcons } from "./data";
 import { SectionHeading } from "./shared";
 
 export function HowItWorksSection() {
+  const t = useTranslations("home.howItWorks");
   const ref = useScrollReveal({ stagger: 0.12, y: 24 });
+
+  const steps = withIcons(
+    t.raw("steps") as { title: string; description: string }[],
+    stepIcons,
+  );
 
   return (
     <section id="como-funciona" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
-          eyebrow="Como funciona"
-          title="Três passos. Sem configuração."
-          description="Indique o contexto, receba o documento completo e ajuste apenas o que fizer sentido para a sua turma."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -62,7 +69,7 @@ export function HowItWorksSection() {
                 placement: "home_how_it_works",
               }}
             >
-              Criar o primeiro recurso
+              {t("cta")}
               <ArrowRight className="h-4 w-4" />
             </TrackedLink>
           </Button>

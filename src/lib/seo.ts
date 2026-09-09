@@ -1,4 +1,6 @@
 ﻿import type { Metadata } from "next";
+import { defaultLocale, type Locale } from "@/i18n/routing";
+import { canonicalUrl, hreflangAlternates, localizedUrl } from "@/i18n/urls";
 /**
  * SEO & AEO (Answer Engine Optimization) utilities for Scooli
  *
@@ -15,8 +17,21 @@ export const APP_URL =
   "https://create.scooli.app";
 
 export const SITE_NAME = "Scooli";
+
+/**
+ * Portuguese remains the site's primary language: it is the default locale, the
+ * `x-default` target and the language of the structured data describing the
+ * organisation. `SITE_LOCALE`/`SITE_LANGUAGE` are those defaults — anything
+ * rendered per page must use the request locale instead, via
+ * `openGraphLocale()` / `getPageMetadata({ locale })`.
+ */
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
+
+/** BCP-47 locale to the underscored form Open Graph expects. */
+export function openGraphLocale(locale: Locale) {
+  return locale.replace("-", "_");
+}
 
 export interface ProductReviewInput {
   quote: string;
@@ -29,31 +44,43 @@ export function getPageMetadata({
   description,
   path,
   keywords,
+  locale = defaultLocale,
+  params,
 }: {
   title: string;
   description: string;
+  /**
+   * The *internal* pathname key from `src/i18n/routing.ts` — always the
+   * Portuguese spelling (`/precos`, `/ferramentas/[slug]`). The English URL is
+   * derived from it, so callers never hardcode `/en/...`.
+   */
   path: string;
   keywords?: readonly string[];
+  locale?: Locale;
+  /** Values for dynamic segments, e.g. `{ slug: "fichas-de-trabalho" }`. */
+  params?: Record<string, string>;
 }): Metadata {
-  const url = path ? `${SITE_URL}${path}` : SITE_URL;
+  const url = path ? localizedUrl(SITE_URL, path, locale, params) : SITE_URL;
 
   return {
     title,
     description,
     keywords: keywords ? [...keywords] : undefined,
     alternates: {
-      canonical: url,
-      languages: {
-        "pt-PT": url,
-        "x-default": url,
-      },
+      // Self-referencing canonical for translated pages, so the Portuguese and
+      // English versions are understood as translations rather than as
+      // duplicates competing with each other. Pages whose body copy is still
+      // only Portuguese canonicalise back to the Portuguese URL — see
+      // `localizedPaths` in `src/i18n/urls.ts`.
+      canonical: path ? canonicalUrl(SITE_URL, path, locale, params) : SITE_URL,
+      languages: hreflangAlternates(SITE_URL, path, params),
     },
     openGraph: {
       title,
       description,
       url,
       type: "website",
-      locale: SITE_LOCALE,
+      locale: openGraphLocale(locale),
       siteName: SITE_NAME,
       images: [
         {
@@ -479,6 +506,8 @@ export interface WebPageSchemaOptions {
   datePublished?: string;
   dateModified?: string;
   breadcrumb?: BreadcrumbItem[];
+  /** The language this page is actually written in; defaults to Portuguese. */
+  locale?: Locale;
 }
 
 export function getWebPageSchema(options: WebPageSchemaOptions) {
@@ -489,7 +518,7 @@ export function getWebPageSchema(options: WebPageSchemaOptions) {
     name: options.title,
     description: options.description,
     url: options.url,
-    inLanguage: SITE_LANGUAGE,
+    inLanguage: options.locale ?? SITE_LANGUAGE,
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
     },

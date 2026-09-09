@@ -7,12 +7,535 @@
     "about": "Sobre nós",
     "teachers": "Professores",
     "schools": "Escolas",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "ariaLabel": "Navegação principal",
+    "mobileMenuLabel": "Menu principal",
+    "openMenu": "Abrir menu",
+    "closeMenu": "Fechar menu",
+    "backToHome": "Voltar ao início",
+    "logoAlt": "Logótipo Scooli"
   },
   "common": {
-    "skipToContent": "Saltar para o conteúdo",
+    "skipToContent": "Saltar para o conteúdo principal",
     "languageSwitcher": "Idioma",
     "availableInEnglish": "This page is also available in English",
-    "dismiss": "Dispensar"
+    "dismiss": "Dispensar",
+    "startFree": "Começar gratuitamente",
+    "signIn": "Entrar",
+    "allTools": "Ver todas as ferramentas",
+    "teacherJourney": "Ver percurso para professores",
+    "forSchools": "Para escolas"
+  },
+  "curriculum": {
+    "badge": "Construída para o currículo português",
+    "short": "Alinhada com o currículo nacional português — as Aprendizagens Essenciais.",
+    "long": "Cada documento parte dos referenciais oficiais do ensino português: as Aprendizagens Essenciais e os Decretos-Lei 54/2018 e 55/2018."
+  },
+  "languageSwitcher": {
+    "label": "Idioma",
+    "pt-PT": "Português",
+    "en": "English",
+    "switchTo": "Mudar para {language}"
+  },
+  "footer": {
+    "tagline": "Feito em Portugal para professores que querem preparar melhor, adaptar mais depressa e recuperar tempo.",
+    "exploreHeading": "Explorar",
+    "legalHeading": "Legal e contacto",
+    "homeAria": "Scooli - Página inicial",
+    "socialAria": "{network} da Scooli",
+    "rights": "© {year} Scooli. Todos os direitos reservados.",
+    "links": {
+      "teachers": "Professores",
+      "aiForTeachers": "IA para professores",
+      "schools": "Escolas",
+      "recommend": "Recomendar a Scooli",
+      "library": "Biblioteca",
+      "tools": "Ferramentas",
+      "pricing": "Preços",
+      "trust": "Confiança e Privacidade",
+      "about": "Sobre",
+      "contact": "Contacto",
+      "privacy": "Política de Privacidade",
+      "terms": "Termos de Utilização"
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "Scooli | Crie planificações, fichas e testes em minutos",
+      "description": "Scooli é uma plataforma de IA para professores em Portugal. Crie planificações, fichas, testes, quizzes e apresentações de acordo com as Aprendizagens Essenciais, adapte materiais e exporte tudo sem começar do zero.",
+      "ogTitle": "Scooli | Crie planificações, fichas e testes em minutos",
+      "ogDescription": "Scooli é uma plataforma de IA para professores em Portugal. Gere materiais editáveis de acordo com as Aprendizagens Essenciais, adapte-os à turma e exporte tudo sem começar do zero.",
+      "twitterTitle": "Scooli | IA prática para professores",
+      "twitterDescription": "Plataforma de IA para professores em Portugal, com planificações, fichas, testes e adaptações segundo as Aprendizagens Essenciais."
+    },
+    "howToSchema": {
+      "name": "Como usar a Scooli para criar materiais de aula",
+      "description": "Guia simples para gerar, editar e exportar planificações, fichas e testes com a Scooli.",
+      "steps": [
+        {
+          "name": "Criar conta gratuita",
+          "text": "Registe-se na Scooli e comece a explorar a plataforma com o plano gratuito."
+        },
+        {
+          "name": "Escolher o tipo de recurso",
+          "text": "Selecione se quer criar uma planificação, uma ficha de trabalho ou um teste."
+        },
+        {
+          "name": "Dar contexto ou carregar material",
+          "text": "Indique o tema, o ano, o objetivo da aula e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem."
+        },
+        {
+          "name": "Gerar com IA",
+          "text": "Receba uma primeira versão em segundos para começar com uma base pronta a editar."
+        },
+        {
+          "name": "Editar e exportar",
+          "text": "Ajuste o conteúdo, valide antes de usar e exporte o material final quando estiver pronto."
+        }
+      ]
+    },
+    "hero": {
+      "title": "Planificações, fichas e testes alinhados com as Aprendizagens Essenciais — em minutos.",
+      "description": "Provavelmente já usa o ChatGPT para preparar aulas. A Scooli conhece os documentos que regem o ensino português — das Aprendizagens Essenciais aos DL 54/2018 e 55/2018 — e devolve documentos estruturados e editáveis, não respostas de chat.",
+      "seeHowItWorks": "Ver como funciona",
+      "freeCredits": "{credits} créditos grátis por mês. Sem cartão, sem compromisso.",
+      "schoolsLink": "É uma escola ou agrupamento? Ver percurso institucional",
+      "highlights": [
+        "Alinhado com as AE e os DL 54/2018 e 55/2018",
+        "Professor no controlo — a decisão final é sempre sua",
+        "RGPD — os seus dados não treinam modelos de IA"
+      ],
+      "previewTitle": "Scooli em ação",
+      "previewSubtitle": "Da ideia ao recurso completo",
+      "videoAria": "Demonstração da criação de um teste na Scooli",
+      "stepLabel": "Passo {number}",
+      "previewSteps": [
+        "Indique o tema, o ano e o tipo de recurso",
+        "Receba o material completo e estruturado",
+        "Edite, adapte e exporte quando estiver pronto"
+      ]
+    },
+    "metrics": {
+      "ariaLabel": "Impacto da Scooli",
+      "activeTeachers": "professores ativos",
+      "generatedDocuments": "documentos gerados",
+      "weeklyHoursSaved": "poupadas por semana",
+      "adaptedMaterials": "materiais adaptados"
+    },
+    "problem": {
+      "eyebrow": "O problema",
+      "title": "Preparar aulas continua a roubar horas — e a IA genérica devolve trabalho extra",
+      "description": "A maioria dos professores já experimentou o ChatGPT. O problema não é usar IA — é usar uma IA que não conhece o programa português.",
+      "painPoints": [
+        {
+          "title": "Perde horas todas as semanas a preparar aulas",
+          "description": "Planificações, fichas e testes consomem noites e fins de semana — em média, 7,4 horas semanais só de preparação (TALIS 2024 · Portugal)."
+        },
+        {
+          "title": "O ChatGPT não conhece o currículo português",
+          "description": "Aprendizagens Essenciais, DL 54/2018, DL 55/2018: nada disto entra na resposta. Corrigir demora tanto como fazer do zero."
+        },
+        {
+          "title": "Adaptar para turmas diferentes continua a ser manual",
+          "description": "Níveis, ritmos e NEEs: cada versão é refeita à mão, semana após semana."
+        }
+      ],
+      "todayLabel": "Hoje",
+      "withScooliLabel": "Com a Scooli",
+      "before": [
+        "Página em branco no Word — ou prompt no ChatGPT",
+        "Texto solto num chat, sem referência às AE nem aos DL 54/2018 e 55/2018",
+        "Correção manual, reformatação e alinhamento curricular",
+        "Na semana seguinte, tudo outra vez"
+      ],
+      "after": [
+        "Indica o tema, o ano e o tipo de recurso",
+        "Documento completo, alinhado com as AE à partida",
+        "Edita apenas o que quer mudar — o resto chega pronto",
+        "Fica guardado na sua biblioteca para reutilizar e adaptar"
+      ],
+      "disclaimer": "A IA pode falhar. Por isso, tudo o que a Scooli gera é editável e passa sempre pela sua revisão antes de chegar à aula."
+    },
+    "howItWorks": {
+      "eyebrow": "Como funciona",
+      "title": "Três passos. Sem configuração.",
+      "description": "Indique o contexto, receba o documento completo e ajuste apenas o que fizer sentido para a sua turma.",
+      "cta": "Criar o primeiro recurso",
+      "steps": [
+        {
+          "title": "Indique o tema, o ano e o tipo de recurso",
+          "description": "Planificação, ficha ou teste. Pode também partir de um documento que já tem."
+        },
+        {
+          "title": "Receba o documento completo e alinhado com as AE",
+          "description": "Estrutura, conteúdos e critérios já organizados — uma base pronta, não uma página em branco."
+        },
+        {
+          "title": "Edite, adapte e exporte quando estiver pronto",
+          "description": "Ajuste ao seu estilo e à sua turma. O professor decide sempre o resultado final."
+        }
+      ]
+    },
+    "appPreview": {
+      "eyebrow": "A plataforma",
+      "title": "O ambiente onde trabalha",
+      "description": "Da planificação ao plano de aula, tudo num só sítio — com IA integrada que sugere, gera e adapta sem sair do documento.",
+      "editorLabel": "Editor · Planificação Semestral de Matemática",
+      "editorAlt": "Editor de planificação da Scooli com estrutura de secções e painel de IA à direita",
+      "calendarLabel": "Calendário · Plano letivo semanal",
+      "calendarAlt": "Vista semanal do calendário da Scooli com aulas distribuídas pelos dias"
+    },
+    "outputs": {
+      "eyebrow": "Resultados reais",
+      "title": "Veja o que pode criar",
+      "description": "Planificações, fichas e testes prontos a editar — materiais concretos, alinhados com as Aprendizagens Essenciais e adaptáveis a qualquer turma.",
+      "note": "Edite linha a linha, adapte por nível e mantenha sempre o controlo do resultado final.",
+      "items": [
+        {
+          "label": "Planificação",
+          "title": "Planificação clara para usar já na próxima aula",
+          "description": "Objetivos, materiais, sequência e avaliação reunidos num documento simples de seguir.",
+          "alt": "Exemplo real de uma planificação criada com a Scooli"
+        },
+        {
+          "label": "Ficha de trabalho",
+          "title": "Ficha pronta a imprimir, adaptar e usar",
+          "description": "Instruções claras, exercícios bem distribuídos e espaço para resposta sem ruído visual.",
+          "alt": "Exemplo real de uma ficha de trabalho criada com a Scooli"
+        },
+        {
+          "label": "Teste",
+          "title": "Teste completo com cotação e critérios",
+          "description": "Questões equilibradas e critérios de correção visíveis para ganhar tempo na preparação.",
+          "alt": "Exemplo real de um teste criado com a Scooli"
+        }
+      ]
+    },
+    "valueProps": {
+      "eyebrow": "Porquê a Scooli",
+      "title": "Não é mais uma IA. É a que foi feita para o programa que ensina.",
+      "description": "Quatro diferenças concretas em relação a uma IA genérica.",
+      "items": [
+        {
+          "title": "Alinhada com o currículo português",
+          "description": "Aprendizagens Essenciais, DL 54/2018 e DL 55/2018: cada documento parte dos referenciais oficiais — não de um modelo genérico que é preciso vigiar."
+        },
+        {
+          "title": "Adapta para turmas e níveis diferentes",
+          "description": "Versões mais simples, mais curtas ou com apoio para NEEs — adaptação alinhada com o DL 54/2018, sem começar de novo."
+        },
+        {
+          "title": "Professor no controlo",
+          "description": "A IA propõe a estrutura; o professor revê, corta, melhora e decide o que entra na aula. Sempre."
+        },
+        {
+          "title": "Biblioteca comunitária",
+          "description": "Encontre, duplique e adapte materiais criados por outros professores portugueses."
+        }
+      ]
+    },
+    "socialProof": {
+      "eyebrow": "Quem já usa",
+      "title": "O que dizem os professores que usam a Scooli",
+      "description": "Testemunhos reais de docentes em Portugal.",
+      "quotes": [
+        {
+          "quote": "Poupei várias horas por semana na preparação das aulas.",
+          "role": "Professora do 2.º ciclo"
+        },
+        {
+          "quote": "Deixei de refazer quase do zero cada ficha que preparava.",
+          "role": "Docente de Português"
+        },
+        {
+          "quote": "Passei a adaptar materiais para níveis diferentes muito mais depressa.",
+          "role": "Professora do ensino básico"
+        }
+      ]
+    },
+    "weeklyHabit": {
+      "badge": "Semana após semana",
+      "title": "Feita para todas as semanas — não para experimentar uma vez.",
+      "description": "Cada material que cria fica guardado na sua biblioteca pessoal. Na semana seguinte, não recomeça: duplica a ficha do 5.º A e adapta-a para o 5.º B em minutos. Quanto mais semanas usa, mais a biblioteca trabalha por si — é assim que os professores ativos chegam às 7+ horas poupadas por semana.",
+      "cta": "Criar a minha biblioteca"
+    },
+    "pricingTeaser": {
+      "eyebrow": "Preços",
+      "title": "Comece grátis. Pague só quando fizer parte da sua semana.",
+      "description": "Sem letras pequenas: o plano gratuito inclui {credits} créditos por mês, todos os meses.",
+      "mostPopular": "Mais popular",
+      "promoBadge": "Regresso às Aulas 2026 · preço bloqueado para sempre",
+      "promoAnnual": "ou {price}/ano · poupa {savings}",
+      "comparison": "O ChatGPT é gratuito, mas não conhece verdadeiramente o ensino português. Corrigir os erros e dar contexto constantemente custa tempo.",
+      "cta": "Ver preços e detalhes",
+      "footnote": "* Geração ilimitada sujeita a política de uso justo.",
+      "free": {
+        "name": "Gratuito",
+        "period": "para sempre",
+        "detail": "{credits} créditos por mês",
+        "description": "Para testar com aulas reais, sem cartão e sem compromisso.",
+        "features": [
+          "{credits} créditos todos os meses",
+          "Biblioteca comunitária",
+          "Editor para rever e ajustar"
+        ]
+      },
+      "pro": {
+        "name": "Pro",
+        "period": "/mês",
+        "detail": "ou {annualPrice}/ano · poupa {savings}",
+        "description": "Para quem prepara aulas todas as semanas, com política de utilização justa.",
+        "features": [
+          "Geração ilimitada*",
+          "Modelos de IA avançados",
+          "Exportação em vários formatos"
+        ]
+      },
+      "schools": {
+        "name": "Escolas",
+        "price": "Sob contacto",
+        "detail": "Pilotos passo a passo",
+        "description": "Para escolas e agrupamentos que querem testar com uma equipa pequena antes de alargar.",
+        "features": [
+          "Plano adaptado à equipa",
+          "Apoio à implementação",
+          "Formação e onboarding"
+        ]
+      }
+    },
+    "finalCta": {
+      "badge": "Último passo",
+      "title": "A próxima aula pode começar com uma base pronta.",
+      "description": "Crie a primeira planificação, ficha ou teste em minutos — alinhado com as AE e pronto a adaptar à sua turma.",
+      "viewPricing": "Ver preços",
+      "schoolsLink": "É uma escola ou instituição? Ver percurso institucional",
+      "bullets": [
+        "{credits} créditos grátis por mês — sem cartão, sem compromisso.",
+        "Tudo editável: o professor decide sempre o resultado final.",
+        "Combine geração com IA e materiais da biblioteca comunitária."
+      ],
+      "outputsTitle": "O que sai no fim",
+      "outputsSubtitle": "Materiais prontos a rever e a usar",
+      "outputLabels": [
+        "Planificação",
+        "Ficha",
+        "Teste"
+      ],
+      "readyTitle": "Pronto a editar",
+      "readyGenerated": "Documento gerado",
+      "readyAdjust": "Ajuste ao seu gosto",
+      "nextStepTitle": "Próximo passo",
+      "nextStepCta": "Entrar na plataforma",
+      "nextStepNote": "Mantenha o controlo do conteúdo e ganhe velocidade no trabalho que mais se repete."
+    },
+    "videoFallback": "O seu navegador não suporta vídeo HTML5."
+  },
+  "tools": {
+    "index": {
+      "eyebrow": "Ferramentas",
+      "title": "Escolha o tipo de recurso que quer criar",
+      "description": "Cada ferramenta responde a uma necessidade concreta. Se já sabe o que precisa de preparar, escolha diretamente; se não, explore por categoria.",
+      "metaTitle": "Ferramentas para professores",
+      "metaDescription": "Explore as ferramentas da Scooli: planificações, planos de aula, sequências de aulas, testes, fichas, quizzes e mais — tudo alinhado com o currículo português.",
+      "previewAlt": "Pré-visualização: {tool}",
+      "seeTool": "Ver {tool}",
+      "ctaTitle": "Quer começar por um pedido simples?",
+      "ctaDescription": "Escolha a ferramenta mais próxima do que precisa ou entre diretamente na plataforma para criar o primeiro material.",
+      "ctaSecondary": "Ver biblioteca",
+      "categories": {
+        "planning": {
+          "label": "Planificação e preparação",
+          "description": "Da planificação anual ao plano letivo por período e ao plano de aula individual — documentos e estruturas alinhados com as AE e o DL 55/2018."
+        },
+        "assessment": {
+          "label": "Avaliação",
+          "description": "Testes e quizzes com diferentes tipos de pergunta, cotação e critérios de correção, prontos a rever e exportar."
+        },
+        "content": {
+          "label": "Conteúdo e materiais",
+          "description": "Fichas de trabalho, apresentações e adaptações de materiais para diferentes turmas e ritmos de aprendizagem."
+        }
+      }
+    },
+    "detail": {
+      "eyebrowPlanning": "Planificação",
+      "eyebrowAssessment": "Avaliação",
+      "eyebrowDefault": "Ferramenta",
+      "realExample": "Exemplo real criado na Scooli",
+      "typicalOutput": "O que costuma sair",
+      "whatYouGain": "O que ganha",
+      "howToName": "Como usar {tool} na Scooli",
+      "previewAlt": {
+        "planificacoes": "Exemplo real de uma planificação criada com a Scooli",
+        "fichas-de-trabalho": "Exemplo real de uma ficha de trabalho criada com a Scooli",
+        "gerador-de-testes": "Exemplo real de um teste criado com a Scooli",
+        "plano-de-aula": "Editor de plano de aula da Scooli com estrutura e painel de IA integrado"
+      },
+      "faq": {
+        "eyebrow": "Perguntas frequentes",
+        "title": "Dúvidas sobre {tool}",
+        "description": "Respostas rápidas para perceber o que esta ferramenta faz, como se adapta ao seu contexto e o que pode esperar antes de experimentar."
+      },
+      "related": {
+        "eyebrow": "Continua a explorar",
+        "title": "Páginas relacionadas",
+        "description": "Se está a comparar formas de preparar materiais, estas páginas ajudam a encontrar a ferramenta certa mais depressa."
+      },
+      "cta": {
+        "title": "Quer experimentar {tool} na Scooli?",
+        "description": "Começa gratuitamente, gera um primeiro material e ajusta tudo antes de usar, imprimir ou exportar."
+      },
+      "planning": {
+        "structureEyebrow": "A estrutura",
+        "documentEyebrow": "O documento",
+        "scheduleTitle": "O que encontra no plano letivo",
+        "scheduleDescription": "Cada plano letivo mostra as aulas distribuídas pelo período com o tópico de cada sessão — pronto a consultar e a gerar planos de aula quando precisar.",
+        "documentTitle": "O que encontra no documento gerado",
+        "documentDescription": "Cada documento parte dos referenciais curriculares portugueses e chega pronto a rever, editar e usar.",
+        "practiceEyebrow": "Na prática",
+        "practiceTitle": "Como usar {tool} na sua rotina",
+        "practiceDescription": "Estas são as situações em que esta ferramenta faz mais diferença e o que pode esperar do resultado.",
+        "howEyebrow": "Como funciona",
+        "howScheduleTitle": "Do horário ao plano letivo organizado",
+        "howScheduleDescription": "Indique a disciplina, o período e o horário — a Scooli distribui as aulas e sugere os tópicos. Gere o plano de aula de qualquer sessão quando precisar.",
+        "howDocumentTitle": "Do pedido ao documento editável",
+        "howDocumentDescription": "O processo é simples: parte de um contexto, recebe uma base estruturada e ajusta até estar pronto a usar.",
+        "controlEyebrow": "Professor no controlo",
+        "controlScheduleTitle": "A Scooli organiza as aulas — o professor gera o plano quando quiser",
+        "controlScheduleDescription": "O plano letivo define a estrutura temporal. A geração do plano de aula de cada sessão é sempre uma decisão do professor — a Scooli não gera automaticamente sem pedido.",
+        "controlDocumentTitle": "A Scooli gera a base — o professor decide o que fica",
+        "controlDocumentDescription": "Todos os documentos são editáveis antes de imprimir, exportar ou partilhar. A decisão final é sempre do professor, não da IA.",
+        "editable": "Editável",
+        "generateLessonPlan": "Gerar plano de aula",
+        "exportPdf": "Exportar PDF",
+        "createdWithScooli": "Criado na Scooli",
+        "visuals": {
+          "sequencias-de-aulas": {
+            "label": "Plano letivo",
+            "sub": "Ciências Naturais · 6.º ano · Set–Dez",
+            "badge": "Por horário",
+            "rows": [
+              {
+                "title": "Seg 16 Set · Sistemas do corpo humano",
+                "meta": "Introdução ao tema · sem plano gerado"
+              },
+              {
+                "title": "Qua 18 Set · Aparelho respiratório",
+                "meta": "Plano de aula gerado ✓"
+              },
+              {
+                "title": "Seg 23 Set · Aparelho circulatório",
+                "meta": "Plano de aula gerado ✓ · ficha incluída"
+              },
+              {
+                "title": "Qua 25 Set · Revisão dos sistemas",
+                "meta": "Aguarda geração"
+              }
+            ]
+          },
+          "planificacoes": {
+            "label": "Planificação anual",
+            "sub": "Ciências Naturais · 6.º ano · 1.º período",
+            "badge": "AE · DL 55/2018",
+            "rows": [
+              {
+                "title": "Objetivos de aprendizagem",
+                "meta": "4 descritores AE · alinhados com o Perfil do Aluno"
+              },
+              {
+                "title": "Conteúdos e sequência didática",
+                "meta": "8 sessões previstas · tópicos distribuídos"
+              },
+              {
+                "title": "Estratégias e atividades",
+                "meta": "Trabalho em grupo · aula expositiva · pesquisa guiada"
+              },
+              {
+                "title": "Avaliação",
+                "meta": "Formativa contínua + sumativa · critérios definidos"
+              }
+            ]
+          },
+          "default": {
+            "label": "Plano de aula",
+            "sub": "Ciências Naturais · 6.º ano · 50 min",
+            "badge": "AE alinhadas",
+            "rows": [
+              {
+                "title": "Motivação",
+                "meta": "10 min · Ativação de conhecimentos"
+              },
+              {
+                "title": "Desenvolvimento",
+                "meta": "25 min · Explicação e exemplo"
+              },
+              {
+                "title": "Prática",
+                "meta": "10 min · Exercício orientado"
+              },
+              {
+                "title": "Síntese",
+                "meta": "5 min · Avaliação formativa"
+              }
+            ]
+          }
+        }
+      },
+      "assessment": {
+        "stats": [
+          {
+            "value": "6,9 h/semana",
+            "label": "gasto em correção e avaliação por docente em Portugal",
+            "source": "TALIS 2024"
+          },
+          {
+            "value": "77%",
+            "label": "identificam o excesso de correções como fonte de stress",
+            "source": "TALIS 2024"
+          }
+        ],
+        "formatsEyebrow": "Formatos de questão",
+        "formatsTitle": "Perguntas variadas, num só documento",
+        "formatsDescription": "Pode combinar diferentes tipos de pergunta no mesmo instrumento de avaliação, com cotação e critérios já incluídos.",
+        "questionTypes": [
+          {
+            "symbol": "A · B · C · D",
+            "label": "Escolha múltipla",
+            "detail": "Opções com resposta única ou múltipla"
+          },
+          {
+            "symbol": "___",
+            "label": "Resposta curta",
+            "detail": "Uma ou duas frases, foco na compreensão"
+          },
+          {
+            "symbol": "¶",
+            "label": "Desenvolvimento",
+            "detail": "Resposta extensa com critérios visíveis"
+          },
+          {
+            "symbol": "✓",
+            "label": "Critérios de correção",
+            "detail": "Pontuação por item e descritores de classificação"
+          }
+        ],
+        "practiceEyebrow": "Na prática",
+        "practiceTitle": "O que muda com {tool} na Scooli",
+        "practiceDescription": "Estas são as situações em que a ferramenta faz mais diferença no dia a dia de preparação e avaliação.",
+        "howEyebrow": "Como funciona",
+        "howTitle": "Do tema ao instrumento de avaliação",
+        "howDescription": "Quatro passos desde o primeiro pedido até ter um instrumento revisado e pronto a entregar."
+      },
+      "default": {
+        "whenEyebrow": "Quando usar",
+        "whenTitle": "Situações em que esta ferramenta faz a diferença",
+        "practiceEyebrow": "Na prática",
+        "practiceTitle": "O que pode fazer com {tool}",
+        "practiceDescription": "Esta página resume o tipo de resultado que pode esperar e em que situações faz sentido usar esta ferramenta.",
+        "howEyebrow": "Como funciona",
+        "howTitle": "Quatro passos do pedido ao material pronto",
+        "howDescription": "Parte de um contexto simples, recebe uma base estruturada e ajusta antes de usar."
+      }
+    }
   }
 }

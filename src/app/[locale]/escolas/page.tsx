@@ -1,7 +1,8 @@
 import { Container } from "@/components/Container";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
 import { TrackedLink } from "@/components/TrackedLink";
-import { schoolPageCards } from "@/components/marketing/data";
+import { getSchoolPageCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   Checklist,
   InfoCard,
@@ -15,12 +16,21 @@ import { Button } from "@/components/ui/button";
 import { getPageMetadata } from "@/lib/seo";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Para escolas e instituições",
-  description:
-    "Descubra como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
-  path: "/escolas",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+
+  return getPageMetadata({
+    title: "Para escolas e instituições",
+    description:
+      "Descubra como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
+    path: "/escolas",
+    locale,
+  });
+}
 
 function InstitutionalPreview() {
   return (
@@ -48,7 +58,14 @@ function InstitutionalPreview() {
   );
 }
 
-export default function SchoolsPage() {
+export default async function SchoolsPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const schoolPageCards = getSchoolPageCards(locale);
+
   return (
     <PublicSiteShell>
       <PageHero

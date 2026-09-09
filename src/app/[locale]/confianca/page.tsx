@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
-import { trustCards } from "@/components/marketing/data";
+import { getTrustCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   InfoCard,
   MarketingSectionBadge,
@@ -9,12 +10,21 @@ import {
 import { getPageMetadata } from "@/lib/seo";
 import Link from "next/link";
 
-export const metadata = getPageMetadata({
-  title: "Confiança e Privacidade",
-  description:
-    "Percebe como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta.",
-  path: "/confianca",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+
+  return getPageMetadata({
+    title: "Confiança e Privacidade",
+    description:
+      "Percebe como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta.",
+    path: "/confianca",
+    locale,
+  });
+}
 
 const summaryPoints = [
   "RGPD-ready",
@@ -59,7 +69,14 @@ const goodPractices = [
   "Trate a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica.",
 ];
 
-export default function TrustPage() {
+export default async function TrustPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const trustCards = getTrustCards(locale);
+
   return (
     <PublicSiteShell>
       <section className="relative isolate pt-8 sm:pt-10">

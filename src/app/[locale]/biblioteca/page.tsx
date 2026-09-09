@@ -1,5 +1,6 @@
 ﻿import { Container } from "@/components/Container";
-import { libraryPageCards } from "@/components/marketing/data";
+import { getLibraryPageCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   Checklist,
   MarketingSectionHeading,
@@ -12,12 +13,21 @@ import { getPageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Biblioteca comunitária",
-  description:
-    "Explore a biblioteca comunitária da Scooli e descubra materiais que pode duplicar, adaptar e usar como ponto de partida.",
-  path: "/biblioteca",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+
+  return getPageMetadata({
+    title: "Biblioteca comunitária",
+    description:
+      "Explore a biblioteca comunitária da Scooli e descubra materiais que pode duplicar, adaptar e usar como ponto de partida.",
+    path: "/biblioteca",
+    locale,
+  });
+}
 
 function LibraryPreviewGrid() {
   return (
@@ -42,7 +52,14 @@ function LibraryPreviewGrid() {
   );
 }
 
-export default function LibraryPage() {
+export default async function LibraryPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const libraryPageCards = getLibraryPageCards(locale);
+
   return (
     <PublicSiteShell>
       <PageHero

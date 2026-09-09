@@ -1,45 +1,43 @@
+// Deliberately a Server Component: next-intl's `useTranslations` works in RSC,
+// so the hero (the LCP element) keeps rendering as HTML instead of shipping as
+// JavaScript. Only `HeroVideo` and `CurriculumNote` cross the client boundary.
+import { CurriculumNote } from "@/components/CurriculumNote";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/TrackedLink";
 import { APP_URL, PRICING } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { HeroVideo } from "./HeroVideo";
 import { BrowserFrame, SectionBadge } from "./shared";
-
-const heroHighlights = [
-  "Alinhado com as AE e os DL 54/2018 e 55/2018",
-  "Professor no controlo — a decisão final é sempre sua",
-  "RGPD — os seus dados não treinam modelos de IA",
-];
 
 const heroVideoSrc = "/videos/test-creation.mp4";
 
 function HeroPreview() {
+  const t = useTranslations("home.hero");
+  const steps = t.raw("previewSteps") as string[];
+
   return (
     <div className="relative">
       <BrowserFrame
-        title="Scooli em ação"
-        subtitle="Da ideia ao recurso completo"
+        title={t("previewTitle")}
+        subtitle={t("previewSubtitle")}
         className="relative z-10"
       >
         <div className="rounded-[28px] bg-[color:var(--scooli-surface-alt)] p-3 sm:p-4">
           <HeroVideo
             src={heroVideoSrc}
             className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]"
-            ariaLabel="Demonstração da criação de um teste na Scooli"
+            ariaLabel={t("videoAria")}
           />
 
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
-            {[
-              "Indique o tema, o ano e o tipo de recurso",
-              "Receba o material completo e estruturado",
-              "Edite, adapte e exporte quando estiver pronto",
-            ].map((step, index) => (
+            {steps.map((step, index) => (
               <div
                 key={step}
                 className="rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-sm text-slate-700"
               >
                 <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Passo {index + 1}
+                  {t("stepLabel", { number: index + 1 })}
                 </p>
                 <p className="mt-2 font-medium leading-6">{step}</p>
               </div>
@@ -52,23 +50,24 @@ function HeroPreview() {
 }
 
 export function HeroSection() {
+  const t = useTranslations("home.hero");
+  const tCommon = useTranslations("common");
+  const tCurriculum = useTranslations("curriculum");
+  const highlights = t.raw("highlights") as string[];
+
   return (
     <section id="hero" className="relative isolate pt-6 sm:pt-10">
       <div className="absolute inset-x-0 top-0 -z-10 h-[620px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.09),transparent)]" />
       <div className="mx-auto w-full max-w-6xl px-6 pb-20 pt-8 md:max-w-7xl md:px-12 sm:pb-24 lg:pb-28">
         <div className="grid items-start gap-12 lg:grid-cols-[0.94fr_1.06fr] lg:gap-16">
           <div className="space-y-7">
-            <SectionBadge>Construída para o currículo português</SectionBadge>
+            <SectionBadge>{tCurriculum("badge")}</SectionBadge>
             <div className="space-y-5">
               <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                Planificações, fichas e testes alinhados com as Aprendizagens
-                Essenciais — em minutos.
+                {t("title")}
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                Provavelmente já usa o ChatGPT para preparar aulas. A Scooli
-                conhece os documentos que regem o ensino português — das
-                Aprendizagens Essenciais aos DL 54/2018 e 55/2018 — e devolve
-                documentos estruturados e editáveis, não respostas de chat.
+                {t("description")}
               </p>
             </div>
 
@@ -85,7 +84,7 @@ export function HeroSection() {
                     placement: "home_hero_primary",
                   }}
                 >
-                  Começar gratuitamente
+                  {tCommon("startFree")}
                   <ArrowRight className="h-4 w-4" />
                 </TrackedLink>
               </Button>
@@ -102,15 +101,16 @@ export function HeroSection() {
                     placement: "home_hero_secondary",
                   }}
                 >
-                  Ver como funciona
+                  {t("seeHowItWorks")}
                 </TrackedLink>
               </Button>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm font-semibold text-[color:var(--scooli-ink)]">
-                {PRICING.free.generationsPerMonth} créditos grátis por mês. Sem
-                cartão, sem compromisso.
+                {t("freeCredits", {
+                  credits: PRICING.free.generationsPerMonth,
+                })}
               </p>
               <TrackedLink
                 href="/escolas"
@@ -121,13 +121,13 @@ export function HeroSection() {
                 }}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
               >
-                É uma escola ou agrupamento? Ver percurso institucional
+                {t("schoolsLink")}
                 <ArrowRight className="h-4 w-4" />
               </TrackedLink>
             </div>
 
             <div className="flex flex-wrap gap-3">
-              {heroHighlights.map((highlight) => (
+              {highlights.map((highlight) => (
                 <span
                   key={highlight}
                   className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/90 px-4 py-2 text-sm font-medium text-slate-600 shadow-[0_12px_28px_-24px_rgba(19,35,58,0.35)]"
@@ -137,6 +137,8 @@ export function HeroSection() {
                 </span>
               ))}
             </div>
+
+            <CurriculumNote className="max-w-2xl" />
           </div>
 
           <HeroPreview />

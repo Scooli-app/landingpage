@@ -1,7 +1,8 @@
 import { Container } from "@/components/Container";
 import { OutputCard } from "@/components/homepage/OutputCard";
-import { outputs } from "@/components/homepage/data";
-import { teacherPageCards } from "@/components/marketing/data";
+import { withKinds } from "@/components/homepage/data";
+import { getTeacherPageCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   Checklist,
   InfoCard,
@@ -12,14 +13,24 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 import { CalendarClock, LibraryBig } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Para professores",
-  description:
-    "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
-  path: "/professores",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+
+  return getPageMetadata({
+    title: "Para professores",
+    description:
+      "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
+    path: "/professores",
+    locale,
+  });
+}
 
 function WeeklyFlowPreview() {
   return (
@@ -42,7 +53,23 @@ function WeeklyFlowPreview() {
   );
 }
 
-export default function TeachersPage() {
+export default async function TeachersPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const teacherPageCards = getTeacherPageCards(locale);
+  const tOutputs = await getTranslations({ locale, namespace: "home.outputs" });
+  const outputs = withKinds(
+    tOutputs.raw("items") as {
+      label: string;
+      title: string;
+      description: string;
+      alt: string;
+    }[],
+  );
+
   return (
     <PublicSiteShell>
       <PageHero

@@ -13,7 +13,8 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, getTranslations } from "next-intl/server";
+import { hreflangAlternates } from "@/i18n/urls";
 import { routing } from "@/i18n/routing";
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -77,10 +78,9 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   alternates: {
     canonical: SITE_URL,
-    languages: {
-      "pt-PT": SITE_URL,
-      "x-default": SITE_URL,
-    },
+    // Root-level defaults; every page overrides these with its own canonical
+    // and hreflang set via `getPageMetadata`.
+    languages: hreflangAlternates(SITE_URL, "/"),
   },
   category: "education",
   classification: "Educational Software",
@@ -153,6 +153,7 @@ export default async function RootLayout({
   }
 
   const messages = await getMessages();
+  const t = await getTranslations({ locale, namespace: "common" });
 
   return (
     <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`}>
@@ -170,7 +171,7 @@ export default async function RootLayout({
       </head>
       <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">
         <a href="#main-content" className="skip-link">
-          Saltar para o conteúdo principal
+          {t("skipToContent")}
         </a>
         <NextIntlClientProvider locale={locale} messages={messages}>
         <ReducedMotionProvider>

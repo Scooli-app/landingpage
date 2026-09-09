@@ -1,5 +1,8 @@
 import { Container } from "@/components/Container";
-import { toolCardIcons, toolPages } from "@/components/marketing/data";
+import { CurriculumNote } from "@/components/CurriculumNote";
+import { getToolPages, toolCardIcons } from "@/components/marketing/data";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
 import {
   PageCtaBanner,
@@ -8,8 +11,9 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { ArrowRight } from "lucide-react";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 
 const toolScreenshots: Record<string, string> = {
   "planificacoes":        "/screenshots/landing-planificacoes.jpg",
@@ -23,68 +27,103 @@ const toolScreenshots: Record<string, string> = {
   "carregar-documentos":  "/screenshots/landing-carregar.jpg",
 };
 
-export const metadata = getPageMetadata({
-  title: "Ferramentas para professores",
-  description:
-    "Explore as ferramentas da Scooli: planificações, planos de aula, sequências de aulas, testes, fichas, quizzes e mais — tudo alinhado com o currículo português.",
-  path: "/ferramentas",
-  keywords: [
-    "ferramentas para professores",
-    "gerador de fichas de trabalho",
-    "gerador de testes",
-    "planificações com IA",
-    "plano de aula com IA",
-    "sequências de aulas",
-    "quizzes com IA",
-    "apresentações com IA",
-    "adaptação de materiais",
-  ],
-});
-
+/** Category membership is structural; the labels come from the catalogues. */
 const categories = [
+  { key: "planning", slugs: ["planificacoes", "plano-de-aula", "sequencias-de-aulas"] },
+  { key: "assessment", slugs: ["gerador-de-testes", "quizzes"] },
   {
-    label: "Planificação e preparação",
-    description: "Da planificação anual ao plano letivo por período e ao plano de aula individual — documentos e estruturas alinhados com as AE e o DL 55/2018.",
-    slugs: ["planificacoes", "plano-de-aula", "sequencias-de-aulas"],
-  },
-  {
-    label: "Avaliação",
-    description: "Testes e quizzes com diferentes tipos de pergunta, cotação e critérios de correção, prontos a rever e exportar.",
-    slugs: ["gerador-de-testes", "quizzes"],
-  },
-  {
-    label: "Conteúdo e materiais",
-    description: "Fichas de trabalho, apresentações e adaptações de materiais para diferentes turmas e ritmos de aprendizagem.",
+    key: "content",
     slugs: ["fichas-de-trabalho", "apresentacoes", "adaptacao-de-materiais", "carregar-documentos"],
   },
+] as const;
+
+const ptKeywords = [
+  "ferramentas para professores",
+  "gerador de fichas de trabalho",
+  "gerador de testes",
+  "planificações com IA",
+  "plano de aula com IA",
+  "sequências de aulas",
+  "quizzes com IA",
+  "apresentações com IA",
+  "adaptação de materiais",
 ];
 
-export default function ToolsIndexPage() {
+const enKeywords = [
+  "tools for teachers",
+  "AI worksheet generator",
+  "AI test generator",
+  "AI lesson planning",
+  "AI lesson plan generator",
+  "teaching plan generator",
+  "AI quiz generator",
+  "AI presentation generator",
+  "material adaptation",
+];
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "tools.index" });
+
+  return getPageMetadata({
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+    path: "/ferramentas",
+    keywords: locale === "en" ? enKeywords : ptKeywords,
+    locale,
+  });
+}
+
+export default async function ToolsIndexPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const toolPages = getToolPages(locale);
+
+  return <ToolsIndexContent toolPages={toolPages} />;
+}
+
+function ToolsIndexContent({
+  toolPages,
+}: {
+  toolPages: ReturnType<typeof getToolPages>;
+}) {
+  const t = useTranslations("tools.index");
+  const tCommon = useTranslations("common");
+
   return (
     <PublicSiteShell>
       <PageHero
-        eyebrow="Ferramentas"
-        title="Escolha o tipo de recurso que quer criar"
-        description="Cada ferramenta responde a uma necessidade concreta. Se já sabe o que precisa de preparar, escolha diretamente; se não, explore por categoria."
+        eyebrow={t("eyebrow")}
+        title={t("title")}
+        description={t("description")}
         secondaryHref="/professores"
-        secondaryLabel="Ver percurso para professores"
-      />
+        secondaryLabel={tCommon("teacherJourney")}
+      >
+        <CurriculumNote className="max-w-2xl" />
+      </PageHero>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-20">
           {categories.map((category) => {
             const tools = category.slugs
-              .map((slug) => toolPages.find((t) => t.slug === slug))
-              .filter(Boolean) as typeof toolPages;
+              .map((slug) => toolPages.find((tool) => tool.slug === slug))
+              .filter((tool): tool is (typeof toolPages)[number] => Boolean(tool));
 
             return (
-              <div key={category.label} className="space-y-8">
+              <div key={category.key} className="space-y-8">
                 <div className="max-w-2xl">
                   <h2 className="text-2xl font-semibold text-[color:var(--scooli-ink)]">
-                    {category.label}
+                    {t(`categories.${category.key}.label`)}
                   </h2>
                   <p className="mt-2 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    {category.description}
+                    {t(`categories.${category.key}.description`)}
                   </p>
                 </div>
                 <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -96,7 +135,7 @@ export default function ToolsIndexPage() {
                           <div className="relative h-40 w-full overflow-hidden bg-slate-100">
                             <Image
                               src={toolScreenshots[tool.slug]}
-                              alt={`Pré-visualização: ${tool.shortTitle}`}
+                              alt={t("previewAlt", { tool: tool.shortTitle })}
                               fill
                               className="object-cover object-top"
                               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -114,10 +153,13 @@ export default function ToolsIndexPage() {
                             {tool.description}
                           </p>
                           <Link
-                            href={`/ferramentas/${tool.slug}`}
+                            href={{
+                              pathname: "/ferramentas/[slug]",
+                              params: { slug: tool.slug },
+                            }}
                             className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
                           >
-                            Ver {tool.shortTitle.toLowerCase()}
+                            {t("seeTool", { tool: tool.shortTitle.toLowerCase() })}
                             <ArrowRight className="h-4 w-4" />
                           </Link>
                         </div>
@@ -134,10 +176,10 @@ export default function ToolsIndexPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer começar por um pedido simples?"
-            description="Escolha a ferramenta mais próxima do que precisa ou entre diretamente na plataforma para criar o primeiro material."
+            title={t("ctaTitle")}
+            description={t("ctaDescription")}
             secondaryHref="/biblioteca"
-            secondaryLabel="Ver biblioteca"
+            secondaryLabel={t("ctaSecondary")}
           />
         </Container>
       </section>

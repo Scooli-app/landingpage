@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { StructuredData } from "@/components/StructuredData";
-import { socialProof } from "@/components/homepage/data";
+import { withRatings } from "@/components/homepage/data";
+import type { Locale } from "@/i18n/routing";
 import { PricingPageClient } from "@/components/marketing/PricingPageClient";
 import { getPageMetadata, getProductSchema, PRICING } from "@/lib/seo";
 import {
@@ -11,19 +12,24 @@ import {
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
+import { getTranslations } from "next-intl/server";
 import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Preços",
-  description:
-    "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas.",
-  path: "/precos",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
 
-const productSchema = getProductSchema(socialProof);
-const averageReviewRating = (
-  socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
-).toFixed(1);
+  return getPageMetadata({
+    title: "Preços",
+    description:
+      "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas.",
+    path: "/precos",
+    locale,
+  });
+}
 
 function formatRating(rating: number) {
   return rating.toFixed(1).replace(".0", "").replace(".", ",");
@@ -62,7 +68,23 @@ function PricingIntroCard() {
   );
 }
 
-export default function PricingPage() {
+export default async function PricingPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home.socialProof" });
+  // The quotes are copy, the ratings are not — they are the values marked up as
+  // AggregateRating, so they have to be identical across locales.
+  const socialProof = withRatings(
+    t.raw("quotes") as { quote: string; role: string }[],
+  );
+  const productSchema = getProductSchema(socialProof);
+  const averageReviewRating = (
+    socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
+  ).toFixed(1);
+
   return (
     <PublicSiteShell>
       <StructuredData id="pricing-product-schema" data={productSchema} />
