@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { getLibraryPageCards } from "@/components/marketing/data";
 import type { Locale } from "@/i18n/routing";
 import {
@@ -12,6 +12,7 @@ import {
 import { getPageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { BookCopy, FolderSearch, LibraryBig, LockKeyhole } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -19,28 +20,30 @@ export async function generateMetadata({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "library.meta" });
 
   return getPageMetadata({
-    title: "Biblioteca comunitária",
-    description:
-      "Explore a biblioteca comunitária da Scooli e descubra materiais que pode duplicar, adaptar e usar como ponto de partida.",
+    title: t("title"),
+    description: t("description"),
     path: "/biblioteca",
     locale,
   });
 }
 
-function LibraryPreviewGrid() {
+async function LibraryPreviewGrid({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "library.preview" });
+
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="space-y-4">
         <div className="flex items-center gap-3 rounded-[24px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-500">
           <FolderSearch className="h-4 w-4 text-[color:var(--scooli-primary)]" />
-          Pesquisa por disciplina, filtros por tipo e recursos prontos a reutilizar.
+          {t("searchNote")}
         </div>
         <div className="overflow-hidden rounded-[28px] border border-slate-200 bg-slate-950 shadow-[0_24px_60px_-40px_rgba(19,35,58,0.55)]">
           <Image
             src="/screenshots/biblioteca.png"
-            alt="Biblioteca comunitária da Scooli com pesquisa, filtros e recursos prontos a reutilizar"
+            alt={t("imageAlt")}
             width={1600}
             height={900}
             sizes="(min-width: 1024px) 40vw, 100vw"
@@ -59,71 +62,52 @@ export default async function LibraryPage({
 }) {
   const { locale } = await params;
   const libraryPageCards = getLibraryPageCards(locale);
+  const t = await getTranslations({ locale, namespace: "library" });
+  const heroChecklist = t.raw("hero.checklist") as string[];
+  const howItWorksCards = t.raw("howItWorks.cards") as {
+    title: string;
+    description: string;
+  }[];
+  const howItWorksIcons = [LibraryBig, BookCopy, LockKeyhole];
 
   return (
     <PublicSiteShell>
       <PageHero
-        eyebrow="Biblioteca"
-        title="Uma biblioteca comunitária para encontrar boas bases mais depressa"
-        description="Explore materiais partilhados, perceba o tipo de recursos disponíveis e entre na plataforma para duplicar e adaptar ao seu contexto."
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
         secondaryHref="/professores"
-        secondaryLabel="Ver percurso para professores"
-        aside={<LibraryPreviewGrid />}
+        secondaryLabel={t("hero.secondaryLabel")}
+        aside={<LibraryPreviewGrid locale={locale} />}
       >
-        <Checklist
-          items={[
-            "Procurar por disciplina, ano e tipo de recurso",
-            "Ver exemplos antes de entrar",
-            "Duplicar e adaptar em vez de começar do zero",
-          ]}
-        />
+        <Checklist items={heroChecklist} />
       </PageHero>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Como funciona"
-            title="Descobrir primeiro. Adaptar depois."
-            description="A biblioteca ajuda a perceber rapidamente se já existe uma boa base para o que precisa de preparar."
+            eyebrow={t("howItWorks.eyebrow")}
+            title={t("howItWorks.title")}
+            description={t("howItWorks.description")}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
-            <SurfacePanel>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                <LibraryBig className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-                Descobrir materiais relevantes
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Pesquisar por disciplina, ciclo, tema e tipo de recurso aproxima
-                a biblioteca da procura real dos professores.
-              </p>
-            </SurfacePanel>
-            <SurfacePanel>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                <BookCopy className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-                Duplicar e adaptar
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                O objetivo não é só ver um recurso: é usar essa base para chegar
-                mais depressa a uma versão final útil.
-              </p>
-            </SurfacePanel>
-            <SurfacePanel>
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                <LockKeyhole className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-                Preview com caminho claro
-              </h3>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Os previews ajudam a decidir. A edição, a duplicação e o
-                trabalho completo acontecem dentro da conta.
-              </p>
-            </SurfacePanel>
+            {howItWorksCards.map((card, index) => {
+              const Icon = howItWorksIcons[index];
+              return (
+                <SurfacePanel key={card.title}>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
+                    <Icon className="h-5 w-5" />
+                  </div>
+                  <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+                    {card.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                    {card.description}
+                  </p>
+                </SurfacePanel>
+              );
+            })}
           </div>
         </Container>
       </section>
@@ -131,9 +115,9 @@ export default async function LibraryPage({
       <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Exemplos de recursos"
-            title="O tipo de materiais que pode encontrar na biblioteca"
-            description="Fichas, planificações, testes, apresentações e recursos de apoio prontos para servir de base ao seu trabalho."
+            eyebrow={t("examples.eyebrow")}
+            title={t("examples.title")}
+            description={t("examples.description")}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -165,10 +149,10 @@ export default async function LibraryPage({
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer usar um destes recursos como ponto de partida?"
-            description="Entre na Scooli, escolha um material da biblioteca e adapte-o à sua turma em vez de começar tudo do zero."
+            title={t("cta.title")}
+            description={t("cta.description")}
             secondaryHref="/ferramentas"
-            secondaryLabel="Ver ferramentas"
+            secondaryLabel={t("cta.secondaryLabel")}
           />
         </Container>
       </section>
