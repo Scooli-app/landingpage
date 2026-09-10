@@ -24,14 +24,26 @@ export type PathnameKey = keyof typeof pathnames;
  * **Add a path here the moment its copy is translated** — that is the whole
  * mechanism, there is nothing else to switch on.
  */
-const localizedPaths = new Set<string>([
-  "/",
-  "/ferramentas",
-  "/ferramentas/[slug]",
-]);
+/**
+ * Paths whose English version is not ready, and which must therefore keep
+ * canonicalising to the Portuguese URL instead of being indexed as English.
+ *
+ * Derived by exclusion from `pathnames` on purpose. This was previously a
+ * hand-written allowlist of the three paths that happened to be localized first,
+ * and it silently stopped matching reality as the rest were translated: every
+ * newly localized page kept pointing its canonical at the Portuguese URL, so the
+ * English version would never have been indexed. Two lists that have to agree is
+ * the bug. One list plus explicit exceptions cannot drift.
+ *
+ * Empty today — every route in `pathnames` has authored English copy.
+ */
+const notYetLocalized = new Set<string>([]);
 
 export function isFullyLocalized(path: string) {
-  return localizedPaths.has(path);
+  return (
+    Object.prototype.hasOwnProperty.call(pathnames, path) &&
+    !notYetLocalized.has(path)
+  );
 }
 
 function isPathnameKey(path: string): path is PathnameKey {
