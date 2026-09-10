@@ -4,10 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Home, Search, ArrowLeft } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Container } from "@/components/Container";
 
 export default function NotFound() {
+  const t = useTranslations("notFound");
+  const tags = t.raw("tags") as string[];
+
   return (
     <main
       id="main-content"
@@ -69,11 +73,10 @@ export default function NotFound() {
             className="space-y-3 max-w-md"
           >
             <h1 id="not-found-heading" className="text-2xl md:text-3xl font-bold text-[color:var(--scooli-ink)]">
-              Página não encontrada
+              {t("heading")}
             </h1>
             <p className="text-base md:text-lg text-[color:var(--scooli-muted)] leading-relaxed">
-              Parece que esta página foi para o recreio e não voltou. 
-              Vamos levá-lo de volta ao início!
+              {t("description")}
             </p>
           </motion.div>
 
@@ -89,14 +92,14 @@ export default function NotFound() {
               className="inline-flex items-center justify-center gap-2 bg-[#6753FF] hover:bg-[#4E3BC0] text-white px-6 py-3 rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#6753FF] focus:ring-offset-2"
             >
               <Home className="h-5 w-5" />
-              Voltar ao Início
+              {t("backHome")}
             </Link>
             <button
               onClick={() => window.history.back()}
               className="inline-flex items-center justify-center gap-2 border border-[#C7C9D9] text-[#0B0D17] bg-white hover:bg-[#EEF0FF] px-6 py-3 rounded-xl font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-[#6753FF] focus:ring-offset-2"
             >
               <ArrowLeft className="h-5 w-5" />
-              Página Anterior
+              {t("previousPage")}
             </button>
           </motion.div>
 
@@ -107,7 +110,7 @@ export default function NotFound() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="mt-8 flex flex-wrap justify-center gap-3"
           >
-            {["Apresentações", "Planos de Aula", "Testes", "Quizzes"].map(
+            {tags.map(
               (tag, index) => (
                 <motion.span
                   key={tag}
