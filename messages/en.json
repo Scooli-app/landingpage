@@ -1617,5 +1617,13 @@
       "breadcrumbHome": "Scooli",
       "breadcrumbPage": "Terms of Use"
     }
+  },
+  "shareImage": {
+    "alt": "Scooli - AI for teachers",
+    "headline": "AI that gives teachers their time back",
+    "subline": "Presentations, lesson plans, tests and quizzes aligned with the Portuguese curriculum (Aprendizagens Essenciais)",
+    "tagOrigin": "Made in Portugal",
+    "tagPrivacy": "GDPR-ready",
+    "tagCurriculum": "Aprendizagens Essenciais"
   }
 }

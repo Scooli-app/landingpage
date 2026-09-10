@@ -6,6 +6,8 @@ import {
   getHomePageSchemas,
   getHowToSchema,
   openGraphLocale,
+  SHARE_IMAGE_SIZE,
+  shareImageUrl,
   SITE_URL,
 } from "@/lib/seo";
 import type { Metadata } from "next";
@@ -123,11 +125,17 @@ export async function generateMetadata({
       url,
       type: "website",
       locale: openGraphLocale(locale),
+      // A page-level `openGraph` replaces the layout's wholesale, images
+      // included, so the share card has to be repeated here.
+      images: [
+        { url: shareImageUrl(locale), ...SHARE_IMAGE_SIZE, alt: t("ogTitle") },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: t("twitterTitle"),
       description: t("twitterDescription"),
+      images: [shareImageUrl(locale)],
     },
   };
 }

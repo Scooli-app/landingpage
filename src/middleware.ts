@@ -17,12 +17,13 @@ const intlMiddleware = createMiddleware(routing);
 
 /**
  * Paths locale routing must not touch: API routes, Next internals, the PostHog
- * proxy rewrites, and anything with a file extension (sitemap.xml, robots.txt,
+ * proxy rewrites, the social share image (`/og`, which takes the locale as a
+ * query parameter), and anything with a file extension (sitemap.xml, robots.txt,
  * images). Host canonicalization still applies to all of them, which is why this
  * is a check inside the handler rather than a `config.matcher` — a matcher would
  * narrow canonicalization too, and that is what fixed the Search Console issue.
  */
-const SKIP_LOCALE_ROUTING = /^\/(?:api|_next|_vercel|ingest|_ph)(?:\/|$)|\.[^/]+$/;
+const SKIP_LOCALE_ROUTING = /^\/(?:api|_next|_vercel|ingest|_ph|og)(?:\/|$)|\.[^/]+$/;
 
 export function middleware(request: NextRequest) {
   const requestHost = request.nextUrl.host.toLowerCase();

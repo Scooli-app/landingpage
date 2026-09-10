@@ -33,6 +33,18 @@ export function openGraphLocale(locale: Locale) {
   return locale.replace("-", "_");
 }
 
+export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 } as const;
+
+/**
+ * The social share card for a locale, rendered by `src/app/og/route.tsx`.
+ * Portuguese keeps the bare URL so the default card has one stable address.
+ */
+export function shareImageUrl(locale: Locale = defaultLocale) {
+  return locale === defaultLocale
+    ? `${SITE_URL}/og`
+    : `${SITE_URL}/og?locale=${locale}`;
+}
+
 export interface ProductReviewInput {
   quote: string;
   role: string;
@@ -84,9 +96,8 @@ export function getPageMetadata({
       siteName: SITE_NAME,
       images: [
         {
-          url: `${SITE_URL}/opengraph-image`,
-          width: 1200,
-          height: 630,
+          url: shareImageUrl(locale),
+          ...SHARE_IMAGE_SIZE,
           alt: `${SITE_NAME} - ${title}`,
         },
       ],
@@ -95,7 +106,7 @@ export function getPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`${SITE_URL}/twitter-image`],
+      images: [shareImageUrl(locale)],
     },
     robots: {
       index: true,
@@ -286,7 +297,7 @@ export function getSoftwareApplicationSchema() {
       "Templates personalizáveis",
       "RGPD-ready",
     ],
-    screenshot: `${SITE_URL}/opengraph-image`,
+    screenshot: shareImageUrl(),
     author: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -386,7 +397,7 @@ export function getProductSchema(reviews: ProductReviewInput[] = []) {
     name: "Scooli Pro",
     description:
       "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
-    image: `${SITE_URL}/opengraph-image`,
+    image: shareImageUrl(),
     brand: {
       "@type": "Brand",
       name: SITE_NAME,

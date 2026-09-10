@@ -1616,5 +1616,13 @@
       "breadcrumbHome": "Scooli",
       "breadcrumbPage": "Termos de Utilização"
     }
+  },
+  "shareImage": {
+    "alt": "Scooli - IA para professores em Portugal",
+    "headline": "IA que devolve tempo aos professores",
+    "subline": "Apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais",
+    "tagOrigin": "Made in Portugal",
+    "tagPrivacy": "RGPD-ready",
+    "tagCurriculum": "Aprendizagens Essenciais"
   }
 }

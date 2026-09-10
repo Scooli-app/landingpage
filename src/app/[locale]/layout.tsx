@@ -8,6 +8,8 @@ import {
   BRAND_KEYWORDS,
   getGlobalSchemas,
   openGraphLocale,
+  SHARE_IMAGE_SIZE,
+  shareImageUrl,
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
@@ -103,11 +105,19 @@ export async function generateMetadata({
       url: SITE_URL,
       title: `${SITE_NAME} | ${t("ogTitleSuffix")}`,
       description: t("ogDescription"),
+      images: [
+        {
+          url: shareImageUrl(locale),
+          ...SHARE_IMAGE_SIZE,
+          alt: `${SITE_NAME} | ${t("ogTitleSuffix")}`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: `${SITE_NAME} | ${t("twitterTitleSuffix")}`,
       description: t("twitterDescription"),
+      images: [shareImageUrl(locale)],
       creator: "@scooli_app",
       site: "@scooli_app",
     },
