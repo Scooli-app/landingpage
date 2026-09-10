@@ -933,5 +933,688 @@
     "copiedToast": "Email copiado!",
     "errorStatus": "Não foi possível copiar o email. Tenta novamente.",
     "errorToast": "Não foi possível copiar o email."
+  },
+  "notFound": {
+    "heading": "Página não encontrada",
+    "description": "Parece que esta página foi para o recreio e não voltou. Vamos levá-lo de volta ao início!",
+    "backHome": "Voltar ao Início",
+    "previousPage": "Página Anterior",
+    "tags": [
+      "Apresentações",
+      "Planos de Aula",
+      "Testes",
+      "Quizzes"
+    ]
+  },
+  "promoBanner": {
+    "message": "Regresso às Aulas 2026: Scooli Pro a partir de <strong>{price}/mês</strong> — fica com este preço para sempre.",
+    "monthlyCta": "Mensal {price}",
+    "annualCta": "Anual {price}",
+    "closeAriaLabel": "Fechar"
+  },
+  "promoModal": {
+    "title": "Regresso às Aulas 2026",
+    "description": "Scooli Pro por apenas {price}/mês se ativar durante a promoção — e fica com este preço para sempre.",
+    "unlimitedTitle": "Gerações ilimitadas",
+    "unlimitedDescription": "Acesso a todas as funcionalidades Pro",
+    "lockedPriceTitle": "Preço bloqueado para sempre",
+    "lockedPriceDescription": "Sem aumentos depois de a promoção terminar",
+    "activateMonthly": "Ativar por {price}/mês",
+    "preferAnnual": "Prefiro o anual por {price}",
+    "maybeLater": "Talvez mais tarde"
+  },
+  "library": {
+    "meta": {
+      "title": "Biblioteca comunitária",
+      "description": "Explore a biblioteca comunitária da Scooli e descubra materiais que pode duplicar, adaptar e usar como ponto de partida."
+    },
+    "preview": {
+      "searchNote": "Pesquisa por disciplina, filtros por tipo e recursos prontos a reutilizar.",
+      "imageAlt": "Biblioteca comunitária da Scooli com pesquisa, filtros e recursos prontos a reutilizar"
+    },
+    "hero": {
+      "eyebrow": "Biblioteca",
+      "title": "Uma biblioteca comunitária para encontrar boas bases mais depressa",
+      "description": "Explore materiais partilhados, perceba o tipo de recursos disponíveis e entre na plataforma para duplicar e adaptar ao seu contexto.",
+      "secondaryLabel": "Ver percurso para professores",
+      "checklist": [
+        "Procurar por disciplina, ano e tipo de recurso",
+        "Ver exemplos antes de entrar",
+        "Duplicar e adaptar em vez de começar do zero"
+      ]
+    },
+    "howItWorks": {
+      "eyebrow": "Como funciona",
+      "title": "Descobrir primeiro. Adaptar depois.",
+      "description": "A biblioteca ajuda a perceber rapidamente se já existe uma boa base para o que precisa de preparar.",
+      "cards": [
+        {
+          "title": "Descobrir materiais relevantes",
+          "description": "Pesquisar por disciplina, ciclo, tema e tipo de recurso aproxima a biblioteca da procura real dos professores."
+        },
+        {
+          "title": "Duplicar e adaptar",
+          "description": "O objetivo não é só ver um recurso: é usar essa base para chegar mais depressa a uma versão final útil."
+        },
+        {
+          "title": "Preview com caminho claro",
+          "description": "Os previews ajudam a decidir. A edição, a duplicação e o trabalho completo acontecem dentro da conta."
+        }
+      ]
+    },
+    "examples": {
+      "eyebrow": "Exemplos de recursos",
+      "title": "O tipo de materiais que pode encontrar na biblioteca",
+      "description": "Fichas, planificações, testes, apresentações e recursos de apoio prontos para servir de base ao seu trabalho."
+    },
+    "cta": {
+      "title": "Quer usar um destes recursos como ponto de partida?",
+      "description": "Entre na Scooli, escolha um material da biblioteca e adapte-o à sua turma em vez de começar tudo do zero.",
+      "secondaryLabel": "Ver ferramentas"
+    }
+  },
+  "aiForTeachers": {
+    "meta": {
+      "title": "IA para professores em Portugal",
+      "description": "Scooli é uma plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com melhor alinhamento curricular, qualidade e confiança.",
+      "keywords": [
+        "ia para professores",
+        "ia para professores em portugal",
+        "ferramenta de ia para professores",
+        "software para professores",
+        "plataforma de ia para professores",
+        "planificações com ia",
+        "fichas de trabalho com ia",
+        "gerador de testes com ia",
+        "apresentações com ia para aulas",
+        "aprendizagens essenciais",
+        "alinhamento curricular",
+        "currículo português",
+        "edtech portugal"
+      ]
+    },
+    "breadcrumb": {
+      "home": "Scooli",
+      "page": "IA para professores"
+    },
+    "webPage": {
+      "title": "IA para professores em Portugal | Scooli",
+      "description": "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais."
+    },
+    "howToSchema": {
+      "name": "Como usar a Scooli como IA para professores",
+      "description": "Passos curtos para criar materiais editáveis com a Scooli.",
+      "steps": [
+        {
+          "name": "Escolher o tipo de material",
+          "text": "Selecione se quer criar uma planificação, ficha, teste, quiz ou apresentação."
+        },
+        {
+          "name": "Dar contexto da aula",
+          "text": "Indique tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem."
+        },
+        {
+          "name": "Gerar uma primeira versão",
+          "text": "Receba uma base pronta a editar, em vez de começar a partir de uma página em branco."
+        },
+        {
+          "name": "Rever e adaptar",
+          "text": "Ajusta linguagem, dificuldade, estrutura e detalhes antes de usar o material em aula."
+        }
+      ]
+    },
+    "faq": [
+      {
+        "question": "O que faz a Scooli para professores?",
+        "answer": "A Scooli ajuda professores em Portugal a criar planificações, fichas de trabalho, testes, quizzes e apresentações. Também permite adaptar materiais por nível, reaproveitar documentos próprios e editar tudo antes de usar em aula."
+      },
+      {
+        "question": "A Scooli é uma ferramenta genérica de IA ou foi pensada para escolas?",
+        "answer": "A Scooli foi posicionada para o contexto educativo português. O site e as páginas públicas falam diretamente de planificações, fichas, testes, Aprendizagens Essenciais, privacidade e revisão humana em contexto escolar."
+      },
+      {
+        "question": "Quando faz mais sentido usar Scooli em vez de Canva ou de uma ferramenta pensada para outro mercado?",
+        "answer": "Faz mais sentido quando o objetivo é preparar materiais de aula com melhor alinhamento curricular, em PT-PT, e de acordo com as Aprendizagens Essenciais. A Scooli foi pensada para fluxos reais de professores em Portugal, não apenas para design genérico ou para outro contexto curricular."
+      },
+      {
+        "question": "A Scooli substitui o professor?",
+        "answer": "Não. A plataforma ajuda a arrancar mais depressa e a reduzir trabalho repetitivo, mas o professor mantém sempre o controlo do resultado final antes de imprimir, exportar ou usar o material com alunos."
+      },
+      {
+        "question": "A Scooli funciona com documentos que o professor já tem?",
+        "answer": "Sim. É possível carregar materiais próprios e transformá-los em novas fichas, testes ou versões adaptadas, em vez de começar tudo do zero."
+      },
+      {
+        "question": "Como funciona o preço da Scooli?",
+        "answer": "Existe um plano gratuito com 20 créditos por mês e um plano Pro para uso contínuo. As escolas e agrupamentos seguem um percurso próprio, com contacto direto para avaliar piloto, contexto e adoção."
+      }
+    ],
+    "trustPoints": [
+      {
+        "title": "Pensada para Portugal e Aprendizagens Essenciais",
+        "description": "A linguagem, os casos de uso e o posicionamento público foram escritos para professores, escolas, currículo português e Aprendizagens Essenciais."
+      },
+      {
+        "title": "Mais alinhamento curricular, melhor qualidade",
+        "description": "A proposta da Scooli não é só acelerar. É ajudar a gerar uma base mais alinhada com o contexto curricular português, com mais qualidade e mais confiança no ponto de partida."
+      },
+      {
+        "title": "Tudo fica editável",
+        "description": "A Scooli não fecha o trabalho do professor. Ajuda a chegar mais depressa a uma boa primeira versão para depois rever com calma."
+      },
+      {
+        "title": "Privacidade e confiança visíveis",
+        "description": "Há páginas públicas dedicadas a confiança, privacidade e termos, o que torna a recomendação mais fácil de justificar."
+      }
+    ],
+    "discoveryPreview": [
+      {
+        "label": "Plano gratuito",
+        "value": "20 créditos / mês"
+      },
+      {
+        "label": "Materiais",
+        "value": "Planos, fichas, testes e slides"
+      },
+      {
+        "label": "Contexto",
+        "value": "Portugal, PT-PT e Aprendizagens Essenciais"
+      },
+      {
+        "label": "Controlo",
+        "value": "Tudo revisto antes de usar"
+      }
+    ],
+    "hero": {
+      "eyebrow": "IA para professores",
+      "title": "Uma IA para professores em Portugal, alinhada com as Aprendizagens Essenciais",
+      "description": "A Scooli é uma plataforma de IA para professores em Portugal. Serve para criar planificações, fichas, testes, quizzes e apresentações editáveis, adaptar materiais por nível e reaproveitar documentos próprios sem começar sempre do zero. O foco é gerar materiais de acordo com as Aprendizagens Essenciais, com melhor alinhamento curricular, qualidade e confiança do que uma ferramenta genérica.",
+      "secondaryLabel": "Ver ferramentas",
+      "checklist": [
+        "Planificações, fichas, testes, quizzes e apresentações",
+        "Materiais de acordo com as Aprendizagens Essenciais",
+        "Professor revê tudo antes de usar com alunos"
+      ]
+    },
+    "quickAnswer": {
+      "eyebrow": "Resposta curta",
+      "title": "O que é a Scooli, em termos simples?",
+      "paragraph1": "A Scooli é software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de usar uma ferramenta genérica e depois reorganizar tudo manualmente, o professor começa com uma base pronta para editar: planificação, ficha, teste, quiz ou apresentação.",
+      "paragraph2": "Ao contrário de uma ferramenta de design generalista ou de um assistente pensado para outro mercado, a Scooli foi posicionada para o contexto português e para gerar materiais de acordo com as Aprendizagens Essenciais. Isso ajuda no alinhamento curricular, na qualidade do conteúdo e na confiança com que a ferramenta pode ser recomendada."
+    },
+    "whenToChoose": {
+      "eyebrow": "Quando escolher a Scooli",
+      "checklist": [
+        "Quando precisa de preparar materiais mais depressa sem abdicar de revisão humana",
+        "Quando quer uma ferramenta mais alinhada com as Aprendizagens Essenciais do que uma opção genérica",
+        "Quando precisa de pt-PT, contexto português e fluxos pensados para professores",
+        "Quando quer criar materiais, não apenas desenhar slides ou conversar com um chatbot"
+      ]
+    },
+    "toolsSection": {
+      "eyebrow": "O que consegue criar",
+      "title": "Páginas claras para cada tarefa que um professor quer resolver",
+      "description": "Cada ferramenta tem uma página própria, com explicação curta, perguntas frequentes e casos de uso para que seja fácil perceber o que a Scooli faz.",
+      "seeTool": "Ver página"
+    },
+    "trustSection": {
+      "eyebrow": "Porque é fácil de entender",
+      "title": "Sinais que ajudam a recomendar a Scooli com confiança",
+      "description": "A recomendação fica mais clara quando a proposta, o contexto, o alinhamento curricular e os limites do produto estão visíveis sem precisar de adivinhar."
+    },
+    "socialSection": {
+      "eyebrow": "Sinais públicos",
+      "title": "Prova social e impacto que já aparecem no site",
+      "description": "Uma recomendação fica mais credível quando existem números públicos, páginas dedicadas e testemunhos visíveis em vez de promessas vagas."
+    },
+    "faqSection": {
+      "eyebrow": "Perguntas frequentes",
+      "title": "Perguntas rápidas sobre IA para professores",
+      "description": "Estas respostas foram escritas para explicar a Scooli de forma direta, sem esconder o que faz, para quem faz sentido e porque pode ser mais adequada do que uma ferramenta genérica."
+    },
+    "nextSteps": {
+      "eyebrow": "Próximos passos",
+      "title": "Páginas úteis para perceber melhor a Scooli",
+      "links": [
+        {
+          "label": "Ver todas as ferramentas",
+          "href": "/ferramentas"
+        },
+        {
+          "label": "Ler a página para professores",
+          "href": "/professores"
+        },
+        {
+          "label": "Ver preços",
+          "href": "/precos"
+        },
+        {
+          "label": "Ler confiança e privacidade",
+          "href": "/confianca"
+        }
+      ],
+      "signupNote": "Se quer experimentar diretamente a plataforma, o registo está em <link>create.scooli.app</link>."
+    },
+    "cta": {
+      "title": "Quer ver se a Scooli encaixa no seu ritmo de preparação?",
+      "description": "Experimente um pedido real da próxima aula, reveja o resultado, confirme o alinhamento com as Aprendizagens Essenciais e ajuste tudo antes de usar com a turma.",
+      "secondaryLabel": "Ver confiança e privacidade"
+    }
+  },
+  "pricingPage": {
+    "meta": {
+      "title": "Preços",
+      "description": "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas."
+    },
+    "intro": {
+      "freeLabel": "Plano gratuito",
+      "freeCredits": "{credits} créditos / mês",
+      "freeDescription": "Para experimentar a Scooli com pedidos reais e perceber o fluxo de trabalho.",
+      "proLabel": "Plano Pro",
+      "proHeadline": "Uso contínuo com mais liberdade",
+      "proDescription": "Para quem quer usar a plataforma todas as semanas sem pensar em limites curtos."
+    },
+    "hero": {
+      "eyebrow": "Preços",
+      "title": "Preços claros para professores e um caminho próprio para escolas",
+      "description": "Experimente a Scooli com o plano gratuito. Se precisar de usar a plataforma todas as semanas, escolha Pro. Se representa uma escola, fale connosco para definir um piloto ou percurso institucional.",
+      "secondaryLabel": "Ver opção para escolas",
+      "checklist": [
+        "Plano gratuito para experimentar sem compromisso",
+        "Plano Pro para uso contínuo com mais liberdade",
+        "Escolas seguem por contacto direto com a equipa"
+      ]
+    },
+    "faqCards": [
+      {
+        "title": "O que é uma geração?",
+        "description": "Na prática, uma geração é cada novo documento criado com IA. Se pedires outra versão do mesmo material, isso conta como uma nova geração."
+      },
+      {
+        "title": "Uso justo sem letras pequenas",
+        "description": "No Pro não tem um limite mensal rígido. A política de uso justo existe para evitar abuso automatizado e manter a qualidade do serviço para todos."
+      },
+      {
+        "title": "Professores e escolas não seguem o mesmo caminho",
+        "description": "Professores podem começar logo. Escolas e agrupamentos têm um percurso próprio, com contacto inicial e avaliação do contexto antes de avançar."
+      }
+    ],
+    "reviews": {
+      "eyebrow": "Opiniões reais",
+      "title": "Professores já sentem diferença no uso semanal",
+      "description": "Média de {rating}/5 com base em {count} testemunhos reais já publicados na Scooli."
+    },
+    "notes": {
+      "eyebrow": "Notas importantes",
+      "title": "Ajudar a decidir com mais clareza",
+      "description": "Em vez de esconder os detalhes, aqui tem o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional.",
+      "cards": [
+        {
+          "title": "Pagamento",
+          "description": "Os pagamentos são processados de forma segura. Se precisar de ajuda com faturação ou subscrição, escreva-nos por email."
+        },
+        {
+          "title": "Uso justo",
+          "description": "Queremos que possa trabalhar com liberdade. Só intervimos quando há padrões anómalos ou automatizados que coloquem o serviço em risco."
+        },
+        {
+          "title": "Escolas",
+          "description": "Para equipas, agrupamentos ou projetos-piloto, definimos o percurso caso a caso, sempre com contacto direto com a equipa."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Quer experimentar antes de decidir?",
+      "description": "Comece gratuitamente, gere alguns materiais reais e perceba se a Scooli encaixa no seu ritmo de trabalho.",
+      "secondaryLabel": "Ver confiança e privacidade"
+    }
+  },
+  "pricingSection": {
+    "eyebrow": "Preços e opções",
+    "title": "Escolha a opção certa para a forma como quer usar a Scooli.",
+    "description": "O plano gratuito ajuda a experimentar. Os planos pagos dão mais continuidade. As escolas seguem por um percurso próprio.",
+    "billingToggle": {
+      "monthly": "Mensal",
+      "annual": "Anual"
+    },
+    "free": {
+      "label": "Plano Gratuito",
+      "price": "Grátis",
+      "period": "para sempre",
+      "description": "Para experimentar a Scooli e perceber o fluxo de criação antes de avançar.",
+      "creditsBadge": "{credits} créditos/mês",
+      "features": [
+        "{credits} créditos por mês",
+        "Acesso à biblioteca comunitária",
+        "Exportação básica",
+        "Editor para rever e ajustar"
+      ],
+      "lockedFeatures": [
+        "Suporte prioritário",
+        "Modelos de IA avançados"
+      ],
+      "cta": "Experimentar grátis"
+    },
+    "pro": {
+      "label": "Pro",
+      "mostPopular": "Mais popular",
+      "bestValue": "Melhor valor",
+      "promoBadge": "Regresso às Aulas 2026",
+      "perMonth": "/mês",
+      "promoAnnualPrefix": "{price}/ano · ",
+      "annualNote": "{price}/ano · poupe {savings}",
+      "monthlyNote": "faturado mensalmente",
+      "descriptionAnnual": "Para quem quer estabilidade ao longo do ano letivo e melhor relação custo-benefício.",
+      "descriptionMonthly": "Para quem usa a plataforma todas as semanas e quer um ritmo de trabalho mais fluido.",
+      "unlimitedBadge": "Geração ilimitada*",
+      "features": [
+        "Modelos de IA avançados",
+        "Exportação em múltiplos formatos",
+        "Acesso antecipado a novidades",
+        "Biblioteca comunitária",
+        "Geração de imagens"
+      ],
+      "cta": "Subscrever",
+      "promoTagline": "Regresso às Aulas 2026 · ative durante a promoção e mantém este preço para sempre"
+    },
+    "enterprise": {
+      "badge": "Institucional",
+      "label": "Escolas e instituições",
+      "price": "Sob consulta",
+      "detail": "Plano ajustado ao contexto",
+      "description": "Para agrupamentos, escolas e equipas que precisam de um percurso institucional, apoio e formação.",
+      "features": [
+        "Plano adaptado ao volume e à equipa",
+        "Apoio à implementação",
+        "Formação e onboarding",
+        "Caminho próprio para validação interna"
+      ],
+      "cta": "Falar com a equipa"
+    },
+    "trustBadges": {
+      "securePayment": "Pagamento seguro via Stripe",
+      "cancelAnytime": "Cancele a qualquer momento",
+      "instantActivation": "Ativação imediata"
+    },
+    "fairUseFootnote": "* Geração ilimitada sujeita à <link>Política de Uso Justo</link>.",
+    "contactModal": {
+      "title": "Fale com a equipa",
+      "description": "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo."
+    }
+  },
+  "siteMeta": {
+    "titleSuffix": "IA prática para professores em Portugal",
+    "description": "Crie planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, edite tudo ao seu ritmo e recupere tempo para ensinar. A Scooli foi pensada para professores em Portugal.",
+    "ogTitleSuffix": "Planificações, fichas e testes em minutos",
+    "ogDescription": "A Scooli ajuda professores em Portugal a criar materiais prontos a editar de acordo com as Aprendizagens Essenciais, adaptar à turma e exportar sem começar do zero.",
+    "twitterTitleSuffix": "IA prática para professores",
+    "twitterDescription": "Planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, feitos para poupar tempo e manter o professor no controlo.",
+    "dcTitleSuffix": "IA prática para professores em Portugal",
+    "dcSubject": "Educação, Inteligência Artificial, Professores, Portugal",
+    "dcDescription": "Ferramenta para criar planificações, fichas e testes com IA em contexto escolar português, de acordo com as Aprendizagens Essenciais"
+  },
+  "legalLayout": {
+    "backToHome": "Voltar à página principal",
+    "documentLabel": "Documento Legal",
+    "lastUpdated": "Última atualização: {date}"
+  },
+  "privacyPolicy": {
+    "header": {
+      "title": "Política de Privacidade",
+      "tagline": "A sua privacidade é importante para nós. Esta política explica como recolhemos, utilizamos e protegemos os seus dados pessoais.",
+      "backLabel": "Voltar",
+      "lastUpdated": "Última atualização: {date}",
+      "lastUpdatedValue": "15 de Julho de 2025"
+    },
+    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculativa deste documento.",
+    "sections": {
+      "intro": {
+        "heading": "Introdução",
+        "paragraph": "A Scooli (\"nós\", \"nosso\" ou \"nossa\") respeita a sua privacidade e está comprometido em proteger os seus dados pessoais. Esta Política de Privacidade informa-o sobre como recolhemos, utilizamos, divulgamos e protegemos as suas informações quando utiliza o nosso serviço, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD)."
+      },
+      "dataCollection": {
+        "heading": "Dados que Recolhemos",
+        "provided": {
+          "heading": "Dados Fornecidos por Si",
+          "items": [
+            "Endereço de email (quando se regista para receber notificações)",
+            "Informações de contacto que nos forneça voluntariamente",
+            "Feedback e comunicações que nos envie"
+          ]
+        },
+        "automatic": {
+          "heading": "Dados Recolhidos Automaticamente",
+          "items": [
+            "Dados de utilização do website (páginas visitadas, tempo de permanência)",
+            "Cookies e tecnologias similares"
+          ]
+        }
+      },
+      "dataUse": {
+        "heading": "Como Utilizamos os Seus Dados",
+        "intro": "Utilizamos os seus dados pessoais para os seguintes fins:",
+        "items": [
+          "Enviar notificações sobre o lançamento da Scooli e atualizações importantes",
+          "Melhorar e personalizar a sua experiência no nosso website",
+          "Responder às suas perguntas e pedidos de suporte",
+          "Analisar o uso do website para melhorar os nossos serviços",
+          "Cumprir obrigações legais e regulamentares",
+          "Proteger os nossos direitos e prevenir fraudes"
+        ]
+      },
+      "legalBasis": {
+        "heading": "Base Legal para o Tratamento",
+        "intro": "Tratamos os seus dados pessoais com base nas seguintes bases legais:",
+        "items": [
+          {
+            "bold": "Consentimento:",
+            "text": "Quando nos dá consentimento explícito para processar os seus dados"
+          },
+          {
+            "bold": "Interesses legítimos:",
+            "text": "Para melhorar os nossos serviços e comunicar consigo"
+          },
+          {
+            "bold": "Cumprimento legal:",
+            "text": "Quando necessário para cumprir obrigações legais"
+          }
+        ]
+      },
+      "dataSharing": {
+        "heading": "Partilha de Dados",
+        "intro": "Não vendemos, alugamos ou partilhamos os seus dados pessoais com terceiros para fins comerciais. Podemos partilhar os seus dados apenas nas seguintes circunstâncias:",
+        "items": [
+          "Com fornecedores de serviços que nos ajudam a operar o website (ex: serviços de email)",
+          "Quando exigido por lei ou por autoridades competentes",
+          "Para proteger os nossos direitos, propriedade ou segurança",
+          "Com o seu consentimento explícito"
+        ]
+      },
+      "rights": {
+        "heading": "Os Seus Direitos",
+        "intro": "Ao abrigo do RGPD, tem os seguintes direitos:",
+        "columnOne": [
+          {
+            "bold": "Acesso:",
+            "text": "Solicitar cópias dos seus dados pessoais"
+          },
+          {
+            "bold": "Retificação:",
+            "text": "Corrigir dados incorretos ou incompletos"
+          },
+          {
+            "bold": "Apagamento:",
+            "text": "Solicitar a eliminação dos seus dados"
+          },
+          {
+            "bold": "Limitação:",
+            "text": "Restringir o processamento dos seus dados"
+          }
+        ],
+        "columnTwo": [
+          {
+            "bold": "Portabilidade:",
+            "text": "Transferir os seus dados para outro serviço"
+          },
+          {
+            "bold": "Oposição:",
+            "text": "Opor-se ao processamento dos seus dados"
+          },
+          {
+            "bold": "Retirar consentimento:",
+            "text": "A qualquer momento"
+          },
+          {
+            "bold": "Apresentar queixa:",
+            "text": "À autoridade de proteção de dados"
+          }
+        ]
+      },
+      "security": {
+        "heading": "Segurança dos Dados",
+        "intro": "Implementamos medidas técnicas e organizacionais adequadas para proteger os seus dados pessoais contra:",
+        "items": [
+          "Acesso não autorizado ou ilegal",
+          "Perda, destruição ou danos acidentais",
+          "Alteração, divulgação ou processamento não autorizado"
+        ],
+        "closing": "Utilizamos encriptação SSL/TLS para proteger a transmissão de dados e armazenamos as informações em servidores seguros com acesso restrito."
+      },
+      "retention": {
+        "heading": "Retenção de Dados",
+        "intro": "Conservamos os seus dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos:",
+        "items": [
+          "Dados de subscrição: Até cancelar a subscrição ou solicitar a eliminação",
+          "Dados de contacto: Até 3 anos após o último contacto",
+          "Dados de utilização: Até 2 anos para fins analíticos",
+          "Dados legais: Conforme exigido por lei"
+        ]
+      },
+      "contact": {
+        "heading": "Contacte-nos",
+        "intro": "Se tiver questões sobre esta Política de Privacidade ou quiser exercer os seus direitos, pode contactar-nos através de:",
+        "closing": "Responderemos ao seu pedido no prazo de 30 dias, conforme exigido pelo RGPD."
+      }
+    },
+    "meta": {
+      "title": "Política de Privacidade",
+      "description": "Política de Privacidade da Scooli, com informação clara sobre tratamento de dados, RGPD, segurança e direitos dos utilizadores.",
+      "ogTitle": "Política de Privacidade | Scooli",
+      "ogDescription": "Como a Scooli trata e protege os dados pessoais de professores e visitantes, em conformidade com o RGPD.",
+      "ogImageAlt": "Política de Privacidade da Scooli",
+      "webPageTitle": "Política de Privacidade - Scooli",
+      "breadcrumbHome": "Scooli",
+      "breadcrumbPage": "Política de Privacidade"
+    }
+  },
+  "termsOfUse": {
+    "header": {
+      "title": "Termos de Utilização",
+      "tagline": "Estes Termos regulam o acesso e utilização do website e (quando disponível) da aplicação Scooli, incluindo funcionalidades de geração de conteúdos e componentes comunitários.",
+      "backLabel": "Voltar",
+      "lastUpdated": "Última atualização: {date}",
+      "lastUpdatedValue": "5 de Janeiro de 2026"
+    },
+    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculativa deste documento.",
+    "sections": {
+      "section1": {
+        "title": "1) Aceitação dos Termos",
+        "paragraphs": [
+          "Ao aceder ou utilizar a Scooli, concorda com estes Termos. Se não concordar, não deve utilizar o serviço.",
+          "Estes Termos aplicam-se ao website, a eventuais versões beta e à aplicação Scooli, bem como a funcionalidades associadas (por exemplo, biblioteca comunitária)."
+        ]
+      },
+      "section2": {
+        "title": "2) O Serviço e Contas",
+        "intro": "A Scooli é um produto de tecnologia educativa para apoiar professores em Portugal na criação e organização de recursos pedagógicos.",
+        "items": [
+          "Poderá ser necessário criar uma conta para aceder a determinadas funcionalidades.",
+          "Deve fornecer informação verdadeira e manter os seus dados atualizados.",
+          "É responsável pela confidencialidade das suas credenciais e por qualquer atividade realizada na sua conta."
+        ]
+      },
+      "section3": {
+        "title": "3) Uso Aceitável",
+        "intro": "Compromete-se a não:",
+        "items": [
+          "Usar o serviço para fins ilegais, fraudulentos ou abusivos.",
+          "Carregar, gerar, partilhar ou solicitar conteúdos que violem direitos de terceiros (ex.: direitos de autor, privacidade).",
+          "Tentar contornar limites de segurança, explorar vulnerabilidades ou interferir com o funcionamento do serviço.",
+          "Partilhar dados pessoais de alunos (ou outros menores) sem base legal e consentimentos aplicáveis."
+        ]
+      },
+      "section4": {
+        "title": "4) Conteúdos do Utilizador e Biblioteca Comunitária",
+        "intro": "Se o serviço permitir carregar ou partilhar recursos, é responsável por garantir que tem direitos para o fazer.",
+        "items": [
+          "Ao submeter conteúdos para áreas comunitárias, concede à Scooli uma licença não exclusiva para alojar, reproduzir e disponibilizar esse conteúdo no âmbito do serviço.",
+          "Poderemos moderar, remover ou restringir conteúdos que violem estes Termos, a lei ou padrões de qualidade/segurança da comunidade."
+        ]
+      },
+      "section5": {
+        "title": "5) Conteúdo Gerado por IA",
+        "intro": "A Scooli pode gerar sugestões e materiais através de inteligência artificial. Estes resultados podem conter imprecisões.",
+        "items": [
+          "Deve rever e validar todo o conteúdo antes de o utilizar em sala de aula, avaliações ou comunicações oficiais.",
+          "A Scooli não garante a exatidão, adequação curricular ou ausência de erros nos conteúdos gerados."
+        ]
+      },
+      "section6": {
+        "title": "6) Créditos, Plano Pro e Cancelamentos",
+        "intro": "Algumas funcionalidades dependem do limite de créditos de cada plano.",
+        "items": [
+          "O plano gratuito inclui 20 créditos por mês.",
+          "Preços, funcionalidades e limites podem ser atualizados ao longo do tempo.",
+          "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na secção 7."
+        ],
+        "contactItem": "Para gestão ou cancelamento de subscrição, contacte-nos em <email>info@scooli.app</email>."
+      },
+      "section7": {
+        "title": "7) Política de Uso Justo (Fair Use)",
+        "paragraph1": "O Plano Pro da Scooli oferece capacidade de geração de conteúdos de forma ilimitada para fins de uso pessoal e profissional do docente subscritor.",
+        "paragraph2": "Para garantir a estabilidade da plataforma e a qualidade do serviço para todos os utilizadores, a Scooli aplica uma <strong>Política de Uso Justo</strong>. Esta política destina-se a evitar utilizações abusivas, automáticas ou não-humanas que coloquem em causa a integridade do sistema.",
+        "abuseBox": {
+          "heading": "Considera-se uso abusivo:",
+          "items": [
+            "A partilha de credenciais de acesso com terceiros;",
+            "A utilização de scripts, bots ou qualquer forma de automação para geração massiva de conteúdos;",
+            "A utilização da conta por múltiplos utilizadores em simultâneo;",
+            "Qualquer outra forma de utilização que exceda manifestamente o padrão de uso individual humano."
+          ]
+        },
+        "paragraph3": "Caso o volume de utilização de um utilizador exceda manifestamente a média expectável para um uso individual humano num período de 30 dias, a Scooli reserva-se o direito de:",
+        "alphaItems": [
+          "Ajustar temporariamente a velocidade de processamento ou o modelo de IA utilizado;",
+          "Contactar o utilizador para validar a conformidade da utilização;",
+          "Suspender temporariamente o acesso em casos extremos de violação técnica;",
+          "Rescindir a subscrição em caso de violação reiterada ou grave, com devolução proporcional do valor não utilizado."
+        ],
+        "paragraph4": "A aplicação desta política será sempre proporcional e precedida, sempre que possível, de contacto com o utilizador para esclarecimento."
+      },
+      "section8": {
+        "title": "8) Propriedade Intelectual, Responsabilidade e Lei Aplicável",
+        "items": [
+          "A Scooli (incluindo marca, software e design) é protegida por direitos de propriedade intelectual.",
+          "O serviço é fornecido “tal como está” e pode estar sujeito a indisponibilidades, especialmente em fases beta.",
+          "Na medida permitida por lei, a Scooli não será responsável por perdas indiretas ou consequenciais decorrentes do uso do serviço.",
+          "Estes Termos regem-se pela lei portuguesa, sem prejuízo de normas imperativas aplicáveis."
+        ],
+        "closingParagraph": "Para privacidade e dados pessoais, consulte a <privacyLink>Política de Privacidade</privacyLink>."
+      },
+      "section9": {
+        "title": "9) Contacto",
+        "paragraph": "Para questões sobre estes Termos, contacte-nos em <email>info@scooli.app</email>."
+      }
+    },
+    "meta": {
+      "title": "Termos de Utilização",
+      "description": "Termos de Utilização da Scooli: regras de acesso, uso aceitável, Política de Uso Justo do Plano Pro e demais condições do serviço.",
+      "ogTitle": "Termos de Utilização | Scooli",
+      "ogDescription": "Regras de acesso e utilização do website e da aplicação Scooli, incluindo a Política de Uso Justo do Plano Pro.",
+      "ogImageAlt": "Termos de Utilização da Scooli",
+      "webPageTitle": "Termos de Utilização - Scooli",
+      "breadcrumbHome": "Scooli",
+      "breadcrumbPage": "Termos de Utilização"
+    }
   }
 }
