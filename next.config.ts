@@ -29,6 +29,16 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/pricing",
+        destination: "/precos",
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [
       {
