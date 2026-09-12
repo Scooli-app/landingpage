@@ -105,7 +105,6 @@ export function MarketingNav() {
         </div>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <LanguageSwitcher />
           <TrackedLink
             href={`${APP_URL}/sign-in`}
             eventName="marketing_cta_clicked"
@@ -128,6 +127,7 @@ export function MarketingNav() {
           >
             {tCommon("startFree")}
           </TrackedLink>
+          <LanguageSwitcher />
         </div>
 
         <div className="flex items-center gap-2 lg:hidden">
