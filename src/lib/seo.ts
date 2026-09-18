@@ -16,6 +16,25 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
   "https://create.scooli.app";
 
+/**
+ * The app's sign-up page, carrying the language this visitor is reading the
+ * site in.
+ *
+ * The app cannot work it out for itself. This site and the app live on
+ * different hosts, so the `NEXT_LOCALE` cookie does not cross, and the only
+ * thing left to fall back on is the browser's language — which would sign a
+ * Portuguese teacher whose browser is set to English up into an English app,
+ * with English emails, the opposite of what they were just reading. Passed for
+ * every locale, Portuguese included, so the default is stated rather than
+ * guessed.
+ *
+ * Sign-up only: an existing account already has its own saved preference, so
+ * sign-in links stay bare.
+ */
+export function appSignUpUrl(locale: Locale): string {
+  return `${APP_URL}/sign-up?locale=${encodeURIComponent(locale)}`;
+}
+
 export const SITE_NAME = "Scooli";
 
 /**

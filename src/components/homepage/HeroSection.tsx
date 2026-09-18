@@ -4,9 +4,10 @@
 import { CurriculumNote } from "@/components/CurriculumNote";
 import { Button } from "@/components/ui/button";
 import { TrackedLink } from "@/components/TrackedLink";
-import { APP_URL, PRICING } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl, PRICING } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { HeroVideo } from "./HeroVideo";
 import { BrowserFrame, SectionBadge } from "./shared";
 
@@ -50,6 +51,7 @@ function HeroPreview() {
 }
 
 export function HeroSection() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("home.hero");
   const tCommon = useTranslations("common");
   const tCurriculum = useTranslations("curriculum");
@@ -77,7 +79,7 @@ export function HeroSection() {
                 className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
               >
                 <TrackedLink
-                  href={`${APP_URL}/sign-up`}
+                  href={appSignUpUrl(locale)}
                   eventName="marketing_cta_clicked"
                   eventProperties={{
                     cta_id: "home_hero_start_free",

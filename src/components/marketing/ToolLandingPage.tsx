@@ -2,7 +2,6 @@ import { Container } from "@/components/Container";
 import { CurriculumNote } from "@/components/CurriculumNote";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
-import { APP_URL } from "@/lib/seo";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
@@ -174,7 +173,6 @@ function CtaSection({ tool }: { tool: ToolPageData }) {
         <PageCtaBanner
           title={t("cta.title", { tool: tool.shortTitle.toLowerCase() })}
           description={t("cta.description")}
-          primaryHref={`${APP_URL}/sign-up`}
           secondaryHref="/ferramentas"
           secondaryLabel={tCommon("allTools")}
         />
@@ -266,7 +264,6 @@ function PlanningToolPage({ tool }: { tool: ToolPageData }) {
         eyebrow={t("eyebrowPlanning")}
         title={tool.hero}
         description={tool.description}
-        primaryHref={`${APP_URL}/sign-up`}
         secondaryHref="/ferramentas"
         secondaryLabel={tCommon("allTools")}
         aside={toolPreviewImages[tool.slug] ? <DocumentPreview tool={tool} /> : <PlanningHeroVisual slug={tool.slug} />}
@@ -424,7 +421,6 @@ function AssessmentToolPage({ tool }: { tool: ToolPageData }) {
         eyebrow={t("eyebrowAssessment")}
         title={tool.hero}
         description={tool.description}
-        primaryHref={`${APP_URL}/sign-up`}
         secondaryHref="/ferramentas"
         secondaryLabel={tCommon("allTools")}
         aside={<DocumentPreview tool={tool} />}
@@ -560,7 +556,6 @@ function DefaultToolPage({ tool }: { tool: ToolPageData }) {
         eyebrow={t("eyebrowDefault")}
         title={tool.hero}
         description={tool.description}
-        primaryHref={`${APP_URL}/sign-up`}
         secondaryHref="/professores"
         secondaryLabel={tCommon("teacherJourney")}
         aside={<DocumentPreview tool={tool} />}

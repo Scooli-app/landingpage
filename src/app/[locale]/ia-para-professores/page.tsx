@@ -15,7 +15,7 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import {
-  APP_URL,
+  appSignUpUrl,
   getBreadcrumbSchema,
   getFAQPageSchema,
   getHowToSchema,
@@ -342,7 +342,7 @@ export default async function AiForTeachersPage({
                 {t.rich("nextSteps.signupNote", {
                   link: (chunks) => (
                     <TrackedLink
-                      href={`${APP_URL}/sign-up`}
+                      href={appSignUpUrl(locale)}
                       eventName="marketing_cta_clicked"
                       eventProperties={{
                         cta_id: "ia_para_professores_inline_signup",

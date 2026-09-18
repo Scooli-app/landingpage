@@ -4,10 +4,11 @@ import { Container } from "@/components/Container";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { TrackedLink } from "@/components/TrackedLink";
 import { usePathname } from "@/i18n/navigation";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { APP_URL, appSignUpUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -25,6 +26,7 @@ const links = [
 ] as const;
 
 export function MarketingNav() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
   // next-intl's `usePathname` returns the internal pathname, so the active-link
@@ -117,7 +119,7 @@ export function MarketingNav() {
             {tCommon("signIn")}
           </TrackedLink>
           <TrackedLink
-            href={`${APP_URL}/sign-up`}
+            href={appSignUpUrl(locale)}
             eventName="marketing_cta_clicked"
             eventProperties={{
               cta_id: "header_start_free",
@@ -186,7 +188,7 @@ export function MarketingNav() {
                 {tCommon("signIn")}
               </TrackedLink>
               <TrackedLink
-                href={`${APP_URL}/sign-up`}
+                href={appSignUpUrl(locale)}
                 eventName="marketing_cta_clicked"
                 eventProperties={{
                   cta_id: "header_mobile_start_free",

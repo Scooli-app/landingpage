@@ -4,7 +4,8 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL, PRICING } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl, PRICING } from "@/lib/seo";
 import {
   ArrowRight,
   CheckCircle2,
@@ -12,7 +13,7 @@ import {
   Layers3,
   PencilLine,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { withRatings } from "./data";
 import {
   QuoteCard,
@@ -48,6 +49,7 @@ export function SocialProofSection() {
 }
 
 export function LandingFinalCtaSection() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("home.finalCta");
   const tCommon = useTranslations("common");
   const ref = useScrollReveal({ y: 20 });
@@ -76,7 +78,7 @@ export function LandingFinalCtaSection() {
                   className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
                 >
                   <TrackedLink
-                    href={`${APP_URL}/sign-up`}
+                    href={appSignUpUrl(locale)}
                     eventName="marketing_cta_clicked"
                     eventProperties={{
                       cta_id: "home_final_cta_start_free",
@@ -181,7 +183,7 @@ export function LandingFinalCtaSection() {
                   {t("nextStepTitle")}
                 </p>
                 <TrackedLink
-                  href={`${APP_URL}/sign-up`}
+                  href={appSignUpUrl(locale)}
                   eventName="marketing_cta_clicked"
                   eventProperties={{
                     cta_id: "home_final_card_enter_platform",

@@ -7,9 +7,10 @@ import {
   type MarketingEventName,
   type MarketingEventProperties,
 } from "@/lib/analytics";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
   CheckCircle2,
@@ -77,7 +78,7 @@ export function PageHero({
   eyebrow,
   title,
   description,
-  primaryHref = `${APP_URL}/sign-up`,
+  primaryHref,
   primaryLabel,
   primaryAction,
   secondaryHref,
@@ -107,7 +108,11 @@ export function PageHero({
   children?: ReactNode;
 }) {
   const t = useTranslations("common");
+  const locale = useLocale() as Locale;
   const resolvedPrimaryLabel = primaryLabel ?? t("startFree");
+  // Sign-up by default, carrying the visitor's language so the app does not have
+  // to guess it from the browser — see appSignUpUrl.
+  const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
 
   return (
     <section className="relative isolate pt-8 sm:pt-10">
@@ -126,7 +131,7 @@ export function PageHero({
               {primaryAction ?? (
                 <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
                   <TrackedLink
-                    href={primaryHref}
+                    href={resolvedPrimaryHref}
                     eventName={primaryEventName}
                     eventProperties={{
                       cta_id: `page_hero_${toTrackingId(resolvedPrimaryLabel)}`,
@@ -235,7 +240,7 @@ export function Checklist({ items }: { items: string[] }) {
 export function PageCtaBanner({
   title,
   description,
-  primaryHref = `${APP_URL}/sign-up`,
+  primaryHref,
   primaryLabel,
   primaryAction,
   secondaryHref,
@@ -260,7 +265,9 @@ export function PageCtaBanner({
   secondaryEventProperties?: MarketingEventProperties;
 }) {
   const t = useTranslations("common");
+  const locale = useLocale() as Locale;
   const resolvedPrimaryLabel = primaryLabel ?? t("startFree");
+  const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
 
   return (
     <SurfacePanel className="bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))]">
@@ -273,7 +280,7 @@ export function PageCtaBanner({
           {primaryAction ?? (
             <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
               <TrackedLink
-                href={primaryHref}
+                href={resolvedPrimaryHref}
                 eventName={primaryEventName}
                 eventProperties={{
                   cta_id: `page_cta_banner_${toTrackingId(resolvedPrimaryLabel)}`,

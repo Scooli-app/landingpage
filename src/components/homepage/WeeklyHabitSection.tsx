@@ -4,12 +4,14 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { SectionBadge } from "./shared";
 
 export function WeeklyHabitSection() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("home.weeklyHabit");
   const ref = useScrollReveal({ y: 20 });
 
@@ -32,7 +34,7 @@ export function WeeklyHabitSection() {
             className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
           >
             <TrackedLink
-              href={`${APP_URL}/sign-up`}
+              href={appSignUpUrl(locale)}
               eventName="marketing_cta_clicked"
               eventProperties={{
                 cta_id: "home_weekly_habit_create_library",

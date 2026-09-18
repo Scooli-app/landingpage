@@ -5,7 +5,8 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
-import { APP_URL, PRICING } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { APP_URL, appSignUpUrl, PRICING } from "@/lib/seo";
 import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { cn } from "@/lib/utils";
 import {
@@ -46,7 +47,8 @@ function calculateSavingsPercent(
 
 function FreePlanCard() {
   const t = useTranslations("pricingSection.free");
-  const href = `${APP_URL}/sign-up`;
+  const locale = useLocale() as Locale;
+  const href = appSignUpUrl(locale);
   const credits = PRICING.free.generationsPerMonth;
   const features = (t.raw("features") as string[]).map((_, index) =>
     t(`features.${index}`, { credits }),

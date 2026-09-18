@@ -1,6 +1,7 @@
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { APP_URL, appSignUpUrl } from "@/lib/seo";
 import { Facebook, Instagram } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Container } from "./Container";
 import { EmailContact } from "./EmailContact";
@@ -42,6 +43,7 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const locale = useLocale() as Locale;
   const t = useTranslations("footer");
   const tCommon = useTranslations("common");
   const tNav = useTranslations("nav");
@@ -69,7 +71,7 @@ export function Footer() {
             </p>
             <div className="flex flex-wrap gap-2">
               <TrackedLink
-                href={`${APP_URL}/sign-up`}
+                href={appSignUpUrl(locale)}
                 eventName="marketing_cta_clicked"
                 eventProperties={{
                   cta_id: "footer_start_free",
