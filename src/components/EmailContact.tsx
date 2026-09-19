@@ -2,6 +2,7 @@
 
 import { captureMarketingEvent } from "@/lib/analytics";
 import { Check, Copy } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -18,6 +19,7 @@ export function EmailContact({
   className = "",
   placement = "inline_email",
 }: EmailContactProps) {
+  const t = useTranslations("emailContact");
   const [copied, setCopied] = useState(false);
   const [statusMessage, setStatusMessage] = useState("");
   const resetTimerRef = useRef<number | null>(null);
@@ -41,8 +43,8 @@ export function EmailContact({
         placement,
       });
       setCopied(true);
-      setStatusMessage("Email copiado para a área de transferência.");
-      toast.success("Email copiado!");
+      setStatusMessage(t("copiedStatus"));
+      toast.success(t("copiedToast"));
 
       if (resetTimerRef.current !== null) {
         window.clearTimeout(resetTimerRef.current);
@@ -55,8 +57,8 @@ export function EmailContact({
     } catch (error) {
       console.error("Error copying email:", error);
       setCopied(false);
-      setStatusMessage("Não foi possível copiar o email. Tenta novamente.");
-      toast.error("Não foi possível copiar o email.");
+      setStatusMessage(t("errorStatus"));
+      toast.error(t("errorToast"));
     }
   };
 
@@ -65,11 +67,11 @@ export function EmailContact({
       <button
         type="button"
         onClick={handleCopy}
-        aria-label="Copiar email info@scooli.app"
-        title="Copiar info@scooli.app"
+        aria-label={t("copyAriaLabel")}
+        title={t("copyTitle")}
         className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-[color:var(--scooli-ink)] transition-colors duration-200 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] ${className}`}
       >
-        {showLabel && <span className="text-[color:var(--scooli-muted)]">Email:</span>}
+        {showLabel && <span className="text-[color:var(--scooli-muted)]">{t("label")}</span>}
         <span className="font-medium">info@scooli.app</span>
         {showIcon &&
           (copied ? (

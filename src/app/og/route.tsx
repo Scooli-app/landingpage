@@ -1,19 +1,36 @@
-﻿import { ImageResponse } from "next/og";
+import { routing } from "@/i18n/routing";
+import { SHARE_IMAGE_SIZE, SITE_URL } from "@/lib/seo";
+import { hasLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
+import { ImageResponse } from "next/og";
+import type { NextRequest } from "next/server";
 
-export const runtime = "edge";
+/**
+ * The social share card (Open Graph and Twitter), rendered in the reader's
+ * locale: `/og` is Portuguese, `/og?locale=en` English.
+ *
+ * This replaces the file-convention `opengraph-image.tsx` / `twitter-image.tsx`
+ * at the app root, which could only ever render one language and, once locale
+ * routing arrived, were rewritten by the middleware to `/pt-PT/opengraph-image`,
+ * where nothing answers. Metadata points here via `shareImageUrl()` in
+ * `src/lib/seo.ts`.
+ *
+ * It lives at `/og` rather than under `/api/` on purpose: robots.txt disallows
+ * `/api/`, and the Facebook, LinkedIn and Twitter crawlers honour robots.txt, so
+ * an image there would never show up in a share preview. The middleware skips
+ * locale routing for `/og`.
+ */
+export async function GET(request: NextRequest) {
+  const requested = request.nextUrl.searchParams.get("locale");
+  const locale = hasLocale(routing.locales, requested)
+    ? requested
+    : routing.defaultLocale;
+  const t = await getTranslations({ locale, namespace: "shareImage" });
 
-export const alt = "Scooli - IA para professores em Portugal";
-export const size = {
-  width: 1200,
-  height: 630,
-};
-export const contentType = "image/png";
-
-export default async function TwitterImage() {
-  const logoUrl = new URL("/scooli.svg", "https://www.scooli.app");
-  const logoResponse = await fetch(logoUrl);
+  const logoResponse = await fetch(new URL("/scooli.svg", SITE_URL));
   const logoSvg = await logoResponse.text();
   const logoDataUrl = `data:image/svg+xml,${encodeURIComponent(logoSvg)}`;
+  const tags = [t("tagOrigin"), t("tagPrivacy"), t("tagCurriculum")];
 
   return new ImageResponse(
     (
@@ -94,7 +111,7 @@ export default async function TwitterImage() {
               margin: "0 0 24px 0",
             }}
           >
-            IA que devolve tempo aos professores
+            {t("headline")}
           </h1>
 
           <p
@@ -107,7 +124,7 @@ export default async function TwitterImage() {
               margin: 0,
             }}
           >
-            Apresentações, planificações, testes e quizzes alinhados com as Aprendizagens Essenciais
+            {t("subline")}
           </p>
 
           <div
@@ -119,7 +136,7 @@ export default async function TwitterImage() {
               justifyContent: "center",
             }}
           >
-            {["Made in Portugal", "RGPD-ready", "Aprendizagens Essenciais"].map((tag) => (
+            {tags.map((tag) => (
               <div
                 key={tag}
                 style={{
@@ -152,7 +169,7 @@ export default async function TwitterImage() {
       </div>
     ),
     {
-      ...size,
-    }
+      ...SHARE_IMAGE_SIZE,
+    },
   );
 }

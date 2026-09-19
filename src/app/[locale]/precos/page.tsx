@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { StructuredData } from "@/components/StructuredData";
-import { socialProof } from "@/components/homepage/data";
+import { withRatings } from "@/components/homepage/data";
+import type { Locale } from "@/i18n/routing";
 import { PricingPageClient } from "@/components/marketing/PricingPageClient";
 import { getPageMetadata, getProductSchema, PRICING } from "@/lib/seo";
 import {
@@ -11,120 +12,115 @@ import {
   PublicSiteShell,
   SurfacePanel,
 } from "@/components/marketing/shared";
+import { getTranslations } from "next-intl/server";
 import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Preços",
-  description:
-    "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas.",
-  path: "/precos",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pricingPage.meta" });
 
-const productSchema = getProductSchema(socialProof);
-const averageReviewRating = (
-  socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
-).toFixed(1);
-
-function formatRating(rating: number) {
-  return rating.toFixed(1).replace(".0", "").replace(".", ",");
+  return getPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/precos",
+    locale,
+  });
 }
 
-function PricingIntroCard() {
+function formatRating(rating: number, locale: Locale) {
+  const trimmed = rating.toFixed(1).replace(".0", "");
+  return locale === "en" ? trimmed : trimmed.replace(".", ",");
+}
+
+async function PricingIntroCard({ locale }: { locale: Locale }) {
+  const t = await getTranslations({ locale, namespace: "pricingPage.intro" });
+
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="rounded-[24px] border border-slate-200 bg-white p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            Plano gratuito
+            {t("freeLabel")}
           </p>
           <p className="mt-2 text-2xl font-semibold text-slate-800">
-            {PRICING.free.generationsPerMonth} créditos / mês
+            {t("freeCredits", { credits: PRICING.free.generationsPerMonth })}
           </p>
-          <p className="mt-2 text-sm text-slate-500">
-            Para experimentar a Scooli com pedidos reais e perceber o fluxo de
-            trabalho.
-          </p>
+          <p className="mt-2 text-sm text-slate-500">{t("freeDescription")}</p>
         </div>
         <div className="rounded-[24px] border border-slate-200 bg-white p-4">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            Plano Pro
+            {t("proLabel")}
           </p>
           <p className="mt-2 text-2xl font-semibold text-slate-800">
-            Uso contínuo com mais liberdade
+            {t("proHeadline")}
           </p>
-          <p className="mt-2 text-sm text-slate-500">
-            Para quem quer usar a plataforma todas as semanas sem pensar em
-            limites curtos.
-          </p>
+          <p className="mt-2 text-sm text-slate-500">{t("proDescription")}</p>
         </div>
       </div>
     </SurfacePanel>
   );
 }
 
-export default function PricingPage() {
+const faqIcons = [Sparkles, ShieldCheck, CreditCard];
+
+export default async function PricingPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pricingPage" });
+  const tSocial = await getTranslations({ locale, namespace: "home.socialProof" });
+  // The quotes are copy, the ratings are not — they are the values marked up as
+  // AggregateRating, so they have to be identical across locales.
+  const socialProof = withRatings(
+    tSocial.raw("quotes") as { quote: string; role: string }[],
+  );
+  const productSchema = getProductSchema(socialProof);
+  const averageReviewRating = (
+    socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
+  ).toFixed(1);
+  const heroChecklist = t.raw("hero.checklist") as string[];
+  const faqCards = t.raw("faqCards") as { title: string; description: string }[];
+  const notesCards = t.raw("notes.cards") as { title: string; description: string }[];
+
   return (
     <PublicSiteShell>
       <StructuredData id="pricing-product-schema" data={productSchema} />
 
       <PageHero
-        eyebrow="Preços"
-        title="Preços claros para professores e um caminho próprio para escolas"
-        description="Experimente a Scooli com o plano gratuito. Se precisar de usar a plataforma todas as semanas, escolha Pro. Se representa uma escola, fale connosco para definir um piloto ou percurso institucional."
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
         secondaryHref="/escolas"
-        secondaryLabel="Ver opção para escolas"
-        aside={<PricingIntroCard />}
+        secondaryLabel={t("hero.secondaryLabel")}
+        aside={<PricingIntroCard locale={locale} />}
       >
-        <Checklist
-          items={[
-            "Plano gratuito para experimentar sem compromisso",
-            "Plano Pro para uso contínuo com mais liberdade",
-            "Escolas seguem por contacto direto com a equipa",
-          ]}
-        />
+        <Checklist items={heroChecklist} />
       </PageHero>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="grid gap-6 lg:grid-cols-3">
-          <SurfacePanel>
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-              <Sparkles className="h-5 w-5" />
-            </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-              O que é uma geração?
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Na prática, uma geração é cada novo documento criado com IA. Se
-              pedires outra versão do mesmo material, isso conta como uma nova
-              geração.
-            </p>
-          </SurfacePanel>
-          <SurfacePanel>
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-              <ShieldCheck className="h-5 w-5" />
-            </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-              Uso justo sem letras pequenas
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              No Pro não tem um limite mensal rígido. A política de uso justo
-              existe para evitar abuso automatizado e manter a qualidade do
-              serviço para todos.
-            </p>
-          </SurfacePanel>
-          <SurfacePanel>
-            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-              <CreditCard className="h-5 w-5" />
-            </div>
-            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-              Professores e escolas não seguem o mesmo caminho
-            </h3>
-            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-              Professores podem começar logo. Escolas e agrupamentos têm um
-              percurso próprio, com contacto inicial e avaliação do contexto
-              antes de avançar.
-            </p>
-          </SurfacePanel>
+          {faqCards.map((card, index) => {
+            const Icon = faqIcons[index];
+            return (
+              <SurfacePanel key={card.title}>
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
+                  <Icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+                  {card.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                  {card.description}
+                </p>
+              </SurfacePanel>
+            );
+          })}
         </Container>
       </section>
 
@@ -133,9 +129,12 @@ export default function PricingPage() {
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Opiniões reais"
-            title="Professores já sentem diferença no uso semanal"
-            description={`Média de ${averageReviewRating.replace(".", ",")}/5 com base em ${socialProof.length} testemunhos reais já publicados na Scooli.`}
+            eyebrow={t("reviews.eyebrow")}
+            title={t("reviews.title")}
+            description={t("reviews.description", {
+              rating: locale === "en" ? averageReviewRating : averageReviewRating.replace(".", ","),
+              count: socialProof.length,
+            })}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -144,11 +143,11 @@ export default function PricingPage() {
                 <div className="flex items-center gap-2 text-[color:var(--scooli-primary)]">
                   <Star className="h-4 w-4 fill-current" />
                   <p className="text-sm font-semibold">
-                    {formatRating(item.rating)}/5
+                    {formatRating(item.rating, locale)}/5
                   </p>
                 </div>
                 <p className="mt-4 text-base leading-8 text-[color:var(--scooli-ink)]">
-                  “{item.quote}”
+                  &ldquo;{item.quote}&rdquo;
                 </p>
                 <p className="mt-4 text-sm font-medium text-[color:var(--scooli-muted)]">
                   {item.role}
@@ -162,40 +161,22 @@ export default function PricingPage() {
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Notas importantes"
-            title="Ajudar a decidir com mais clareza"
-            description="Em vez de esconder os detalhes, aqui tem o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional."
+            eyebrow={t("notes.eyebrow")}
+            title={t("notes.title")}
+            description={t("notes.description")}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
-            <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                Pagamento
-              </p>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Os pagamentos são processados de forma segura. Se precisar de
-                ajuda com faturação ou subscrição, escreva-nos por email.
-              </p>
-            </SurfacePanel>
-            <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                Uso justo
-              </p>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Queremos que possa trabalhar com liberdade. Só intervimos
-                quando há padrões anómalos ou automatizados que coloquem o
-                serviço em risco.
-              </p>
-            </SurfacePanel>
-            <SurfacePanel>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                Escolas
-              </p>
-              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Para equipas, agrupamentos ou projetos-piloto, definimos o
-                percurso caso a caso, sempre com contacto direto com a equipa.
-              </p>
-            </SurfacePanel>
+            {notesCards.map((card) => (
+              <SurfacePanel key={card.title}>
+                <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                  {card.title}
+                </p>
+                <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                  {card.description}
+                </p>
+              </SurfacePanel>
+            ))}
           </div>
         </Container>
       </section>
@@ -203,10 +184,10 @@ export default function PricingPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer experimentar antes de decidir?"
-            description="Comece gratuitamente, gere alguns materiais reais e perceba se a Scooli encaixa no seu ritmo de trabalho."
+            title={t("cta.title")}
+            description={t("cta.description")}
             secondaryHref="/confianca"
-            secondaryLabel="Ver confiança e privacidade"
+            secondaryLabel={t("cta.secondaryLabel")}
           />
         </Container>
       </section>

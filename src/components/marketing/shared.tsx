@@ -1,4 +1,4 @@
-﻿import { Container } from "@/components/Container";
+import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
 import { TrackedLink } from "@/components/TrackedLink";
 import { MarketingNav } from "@/components/MarketingNav";
@@ -7,8 +7,10 @@ import {
   type MarketingEventName,
   type MarketingEventProperties,
 } from "@/lib/analytics";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 import {
   ArrowRight,
   CheckCircle2,
@@ -76,8 +78,8 @@ export function PageHero({
   eyebrow,
   title,
   description,
-  primaryHref = `${APP_URL}/sign-up`,
-  primaryLabel = "Começar gratuitamente",
+  primaryHref,
+  primaryLabel,
   primaryAction,
   secondaryHref,
   secondaryLabel,
@@ -105,6 +107,13 @@ export function PageHero({
   aside?: ReactNode;
   children?: ReactNode;
 }) {
+  const t = useTranslations("common");
+  const locale = useLocale() as Locale;
+  const resolvedPrimaryLabel = primaryLabel ?? t("startFree");
+  // Sign-up by default, carrying the visitor's language so the app does not have
+  // to guess it from the browser — see appSignUpUrl.
+  const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
+
   return (
     <section className="relative isolate pt-8 sm:pt-10">
       <div className="absolute inset-x-0 top-0 -z-10 h-[540px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
@@ -122,15 +131,15 @@ export function PageHero({
               {primaryAction ?? (
                 <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
                   <TrackedLink
-                    href={primaryHref}
+                    href={resolvedPrimaryHref}
                     eventName={primaryEventName}
                     eventProperties={{
-                      cta_id: `page_hero_${toTrackingId(primaryLabel)}`,
+                      cta_id: `page_hero_${toTrackingId(resolvedPrimaryLabel)}`,
                       placement: "page_hero_primary",
                       ...primaryEventProperties,
                     }}
                   >
-                    {primaryLabel}
+                    {resolvedPrimaryLabel}
                     <ArrowRight className="h-4 w-4" />
                   </TrackedLink>
                 </Button>
@@ -231,8 +240,8 @@ export function Checklist({ items }: { items: string[] }) {
 export function PageCtaBanner({
   title,
   description,
-  primaryHref = `${APP_URL}/sign-up`,
-  primaryLabel = "Começar gratuitamente",
+  primaryHref,
+  primaryLabel,
   primaryAction,
   secondaryHref,
   secondaryLabel,
@@ -255,6 +264,11 @@ export function PageCtaBanner({
   secondaryEventName?: MarketingEventName;
   secondaryEventProperties?: MarketingEventProperties;
 }) {
+  const t = useTranslations("common");
+  const locale = useLocale() as Locale;
+  const resolvedPrimaryLabel = primaryLabel ?? t("startFree");
+  const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
+
   return (
     <SurfacePanel className="bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))]">
       <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
@@ -266,15 +280,15 @@ export function PageCtaBanner({
           {primaryAction ?? (
             <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
               <TrackedLink
-                href={primaryHref}
+                href={resolvedPrimaryHref}
                 eventName={primaryEventName}
                 eventProperties={{
-                  cta_id: `page_cta_banner_${toTrackingId(primaryLabel)}`,
+                  cta_id: `page_cta_banner_${toTrackingId(resolvedPrimaryLabel)}`,
                   placement: "page_cta_banner_primary",
                   ...primaryEventProperties,
                 }}
               >
-                {primaryLabel}
+                {resolvedPrimaryLabel}
                 <ArrowRight className="h-4 w-4" />
               </TrackedLink>
             </Button>

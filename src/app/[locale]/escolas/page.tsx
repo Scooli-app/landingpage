@@ -1,7 +1,8 @@
 import { Container } from "@/components/Container";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
 import { TrackedLink } from "@/components/TrackedLink";
-import { schoolPageCards } from "@/components/marketing/data";
+import { getSchoolPageCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   Checklist,
   InfoCard,
@@ -13,30 +14,40 @@ import {
 } from "@/components/marketing/shared";
 import { Button } from "@/components/ui/button";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Para escolas e instituições",
-  description:
-    "Descubra como a Scooli pode ser avaliada por escolas e agrupamentos através de um percurso simples de contacto, piloto e adoção responsável.",
-  path: "/escolas",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "schools.meta" });
+
+  return getPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/escolas",
+    locale,
+  });
+}
 
 function InstitutionalPreview() {
+  const t = useTranslations("schools.preview");
+  const items = t.raw("items") as string[];
+
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="grid gap-3">
-        {[
-          "Conversa inicial sobre contexto e objetivos",
-          "Piloto com uma equipa pequena",
-          "Avaliação do uso e próximos passos",
-        ].map((item, index) => (
+        {items.map((item, index) => (
           <div
             key={item}
             className="rounded-[24px] border border-slate-200 bg-white p-4"
           >
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              Passo 0{index + 1}
+              {t("stepLabel", { number: String(index + 1).padStart(2, "0") })}
             </p>
             <p className="mt-2 text-lg font-semibold text-slate-800">{item}</p>
             <div className="mt-4 h-2.5 w-4/5 rounded-full bg-slate-200" />
@@ -48,13 +59,21 @@ function InstitutionalPreview() {
   );
 }
 
-export default function SchoolsPage() {
+export default async function SchoolsPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const schoolPageCards = getSchoolPageCards(locale);
+  const t = await getTranslations({ locale, namespace: "schools" });
+
   return (
     <PublicSiteShell>
       <PageHero
-        eyebrow="Para escolas"
-        title="Um percurso simples para escolas começarem com um piloto"
-        description="Para avaliar a Scooli com coordenação, direção ou uma equipa pequena de docentes, explicamos aqui como arrancar com clareza, responsabilidade e apoio inicial."
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
         primaryAction={
           <InstitutionalContactButton
             source="schools_page_hero"
@@ -62,24 +81,18 @@ export default function SchoolsPage() {
           />
         }
         secondaryHref="/confianca"
-        secondaryLabel="Ver confiança e privacidade"
+        secondaryLabel={t("hero.secondaryLabel")}
         aside={<InstitutionalPreview />}
       >
-        <Checklist
-          items={[
-            "Conversa inicial sobre contexto e objetivos",
-            "Piloto com equipa pequena e critérios claros",
-            "Professor no controlo do resultado final",
-          ]}
-        />
+        <Checklist items={t.raw("hero.checklist") as string[]} />
       </PageHero>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Como trabalhamos"
-            title="Um caminho leve para avaliar a Scooli em contexto real"
-            description="Em vez de um processo pesado, começamos pequeno, percebemos o contexto da escola e acompanhamos a primeira fase de utilização."
+            eyebrow={t("howWeWork.eyebrow")}
+            title={t("howWeWork.title")}
+            description={t("howWeWork.description")}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -103,18 +116,11 @@ export default function SchoolsPage() {
                 <ShieldCheck className="h-5 w-5" aria-hidden="true" />
               </div>
               <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
-                O que costuma travar a decisão logo no início
+                {t("blockers.title")}
               </p>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Como é tratada a privacidade em contexto escolar",
-                "Se os dados dos utilizadores são usados para treinar modelos",
-                "Quem mantém o controlo do conteúdo final",
-                "Como garantir revisão humana antes de usar em aula",
-                "Como arrancar com um piloto antes de tomar uma decisão maior",
-                "A adaptação de materiais para turmas e níveis diferentes continua demasiado manual",
-              ].map((item) => (
+              {(t.raw("blockers.items") as string[]).map((item) => (
                 <div
                   key={item}
                   className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
@@ -133,15 +139,13 @@ export default function SchoolsPage() {
             <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
               <div className="space-y-4">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Recomendação interna
+                  {t("recommend.eyebrow")}
                 </p>
                 <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                  Trabalha numa escola mas não está na direção?
+                  {t("recommend.title")}
                 </h2>
                 <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                  Pode abrir a conversa na mesma. Criamos uma página dedicada
-                  para professores e equipas que querem sugerir a Scooli à
-                  direção, coordenação ou agrupamento onde trabalham.
+                  {t("recommend.description")}
                 </p>
               </div>
 
@@ -157,7 +161,7 @@ export default function SchoolsPage() {
                     placement: "schools_page_referral_callout",
                   }}
                 >
-                  Recomendar a minha escola
+                  {t("recommend.buttonLabel")}
                   <ArrowRight className="h-4 w-4" />
                 </TrackedLink>
               </Button>
@@ -169,8 +173,8 @@ export default function SchoolsPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer perceber se a Scooli faz sentido para a sua escola?"
-            description="Comece por uma conversa curta, perceba o contexto e desenhe um piloto simples com a equipa certa."
+            title={t("finalCta.title")}
+            description={t("finalCta.description")}
             primaryAction={
               <InstitutionalContactButton
                 source="schools_page_cta_banner"
@@ -178,7 +182,7 @@ export default function SchoolsPage() {
               />
             }
             secondaryHref="/confianca"
-            secondaryLabel="Ver confiança e privacidade"
+            secondaryLabel={t("finalCta.secondaryLabel")}
           />
         </Container>
       </section>

@@ -1,6 +1,7 @@
 import { Container } from "@/components/Container";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, Shield } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
@@ -11,12 +12,14 @@ type LegalLayoutProps = {
   children: ReactNode;
 };
 
-export function LegalLayout({
+export async function LegalLayout({
   title,
   description,
   updated,
   children,
 }: LegalLayoutProps) {
+  const t = await getTranslations("legalLayout");
+
   return (
     <section className="min-h-screen py-12 md:py-16">
       <Container className="max-w-3xl">
@@ -25,7 +28,7 @@ export function LegalLayout({
           <Button asChild variant="ghost" className="gap-2 rounded-xl px-3 py-2">
             <Link href="/">
               <ArrowLeft className="h-4 w-4" />
-              Voltar à página principal
+              {t("backToHome")}
             </Link>
           </Button>
         </div>
@@ -38,7 +41,7 @@ export function LegalLayout({
             </div>
             <div>
               <p className="text-xs font-semibold uppercase tracking-wide text-[color:var(--scooli-muted)]">
-                Documento Legal
+                {t("documentLabel")}
               </p>
               <h1 className="text-2xl font-bold text-[color:var(--scooli-ink)] md:text-3xl">
                 {title}
@@ -50,7 +53,7 @@ export function LegalLayout({
           )}
           {updated && (
             <p className="mt-2 text-sm text-[color:var(--scooli-muted)]">
-              Última atualização: {updated}
+              {t("lastUpdated", { date: updated })}
             </p>
           )}
         </div>

@@ -1,7 +1,8 @@
 import { Container } from "@/components/Container";
 import { OutputCard } from "@/components/homepage/OutputCard";
-import { outputs } from "@/components/homepage/data";
-import { teacherPageCards } from "@/components/marketing/data";
+import { withKinds } from "@/components/homepage/data";
+import { getTeacherPageCards } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
 import {
   Checklist,
   InfoCard,
@@ -12,27 +13,42 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import { getPageMetadata } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
+import { useTranslations } from "next-intl";
 import { CalendarClock, LibraryBig } from "lucide-react";
 
-export const metadata = getPageMetadata({
-  title: "Para professores",
-  description:
-    "Descubra como a Scooli ajuda professores a criar planificações, fichas e testes com menos trabalho repetitivo, mais controlo e melhor alinhamento com as Aprendizagens Essenciais.",
-  path: "/professores",
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "teachers.meta" });
+
+  return getPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: "/professores",
+    locale,
+  });
+}
 
 function WeeklyFlowPreview() {
+  const t = useTranslations("teachers.preview");
+
+  const items = [
+    { key: "monday" as const },
+    { key: "wednesday" as const },
+    { key: "friday" as const },
+  ];
+
   return (
     <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
       <div className="grid gap-3 sm:grid-cols-3">
-        {[
-          { day: "2.ª feira", task: "Planificação da semana" },
-          { day: "4.ª feira", task: "Ficha de consolidação" },
-          { day: "6.ª feira", task: "Teste ou quiz rápido" },
-        ].map((item) => (
-          <div key={item.day} className="rounded-[24px] border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{item.day}</p>
-            <p className="mt-3 text-lg font-semibold text-slate-800">{item.task}</p>
+        {items.map((item) => (
+          <div key={item.key} className="rounded-[24px] border border-slate-200 bg-white p-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{t(`days.${item.key}`)}</p>
+            <p className="mt-3 text-lg font-semibold text-slate-800">{t(`tasks.${item.key}`)}</p>
             <div className="mt-4 h-2.5 w-4/5 rounded-full bg-slate-200" />
             <div className="mt-2 h-2.5 w-3/5 rounded-full bg-slate-200" />
           </div>
@@ -42,32 +58,43 @@ function WeeklyFlowPreview() {
   );
 }
 
-export default function TeachersPage() {
+export default async function TeachersPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const teacherPageCards = getTeacherPageCards(locale);
+  const tOutputs = await getTranslations({ locale, namespace: "home.outputs" });
+  const outputs = withKinds(
+    tOutputs.raw("items") as {
+      label: string;
+      title: string;
+      description: string;
+      alt: string;
+    }[],
+  );
+  const t = await getTranslations({ locale, namespace: "teachers" });
+
   return (
     <PublicSiteShell>
       <PageHero
-        eyebrow="Para professores"
-        title="Uma forma mais simples de preparar aulas, fichas e testes sem começar do zero"
-        description="Gere recursos editáveis em minutos, alinhados com as Aprendizagens Essenciais e prontos a adaptar para cada turma."
+        eyebrow={t("hero.eyebrow")}
+        title={t("hero.title")}
+        description={t("hero.description")}
         secondaryHref="/biblioteca"
-        secondaryLabel="Ver biblioteca"
+        secondaryLabel={t("hero.secondaryLabel")}
         aside={<WeeklyFlowPreview />}
       >
-        <Checklist
-          items={[
-            "Criar materiais em minutos",
-            "Alinhar melhor com as Aprendizagens Essenciais",
-            "Editar tudo antes de usar",
-          ]}
-        />
+        <Checklist items={t.raw("hero.checklist") as string[]} />
       </PageHero>
 
       <section className="py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="Como ajuda"
-            title="O que muda na prática durante a semana"
-            description="A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptar recursos para turmas diferentes, sempre com o contexto do currículo português em mente."
+            eyebrow={t("howItHelps.eyebrow")}
+            title={t("howItHelps.title")}
+            description={t("howItHelps.description")}
             centered
           />
           <div className="grid gap-5 lg:grid-cols-3">
@@ -81,9 +108,9 @@ export default function TeachersPage() {
       <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
         <Container className="space-y-12">
           <MarketingSectionHeading
-            eyebrow="O que pode criar"
-            title="Veja o tipo de documento que sai"
-            description="Planificações, fichas e testes aparecem com estrutura, texto e organização suficientes para começar a editar em vez de começar do zero."
+            eyebrow={t("outputs.eyebrow")}
+            title={t("outputs.title")}
+            description={t("outputs.description")}
             centered
           />
           <div className="grid gap-6 xl:grid-cols-3">
@@ -102,17 +129,12 @@ export default function TeachersPage() {
                 <LibraryBig className="h-5 w-5" />
               </div>
               <div>
-                <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Biblioteca comunitária</p>
-                <p className="text-sm text-[color:var(--scooli-muted)]">Descobrir, duplicar e adaptar</p>
+                <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("library.title")}</p>
+                <p className="text-sm text-[color:var(--scooli-muted)]">{t("library.subtitle")}</p>
               </div>
             </div>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {[
-                "Pesquisar por disciplina e ano",
-                "Duplicar uma base já existente",
-                "Guardar materiais para reutilizar mais tarde",
-                "Entrar num recurso, adaptar e exportar",
-              ].map((item) => (
+              {(t.raw("library.items") as string[]).map((item) => (
                 <div key={item} className="rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
                   {item}
                 </div>
@@ -124,14 +146,10 @@ export default function TeachersPage() {
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
                 <CalendarClock className="h-5 w-5" />
               </div>
-              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Como encaixa na semana</p>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("weeklyFit.title")}</p>
             </div>
             <div className="mt-6 space-y-3">
-              {[
-                "Preparar uma aula mais depressa no início da semana",
-                "Gerar uma ficha de consolidação alinhada com as Aprendizagens Essenciais",
-                "Fechar um teste ou quiz sem reconstruir a estrutura toda",
-              ].map((item) => (
+              {(t.raw("weeklyFit.items") as string[]).map((item) => (
                 <div key={item} className="rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700">
                   {item}
                 </div>
@@ -144,10 +162,10 @@ export default function TeachersPage() {
       <section className="pb-20 sm:pb-24 lg:pb-28">
         <Container>
           <PageCtaBanner
-            title="Quer testar a Scooli ao seu ritmo?"
-            description="Comece gratuitamente, experimente um pedido real da próxima aula e ajuste tudo ao seu contexto antes de usar."
+            title={t("finalCta.title")}
+            description={t("finalCta.description")}
             secondaryHref="/precos"
-            secondaryLabel="Ver preços"
+            secondaryLabel={t("finalCta.secondaryLabel")}
           />
         </Container>
       </section>

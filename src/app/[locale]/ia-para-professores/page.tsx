@@ -2,8 +2,10 @@ import { Container } from "@/components/Container";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
 import { StructuredData } from "@/components/StructuredData";
-import { socialProof } from "@/components/homepage/data";
-import { impactStats, toolCardIcons, toolPages } from "@/components/marketing/data";
+import { withRatings } from "@/components/homepage/data";
+import { getImpactStats, getToolPages, toolCardIcons } from "@/components/marketing/data";
+import type { Locale } from "@/i18n/routing";
+import { localizedUrl } from "@/i18n/urls";
 import {
   Checklist,
   MarketingSectionHeading,
@@ -13,7 +15,7 @@ import {
   SurfacePanel,
 } from "@/components/marketing/shared";
 import {
-  APP_URL,
+  appSignUpUrl,
   getBreadcrumbSchema,
   getFAQPageSchema,
   getHowToSchema,
@@ -21,165 +23,111 @@ import {
   getWebPageSchema,
   SITE_URL,
 } from "@/lib/seo";
+import { getTranslations } from "next-intl/server";
 import { ArrowRight, LibraryBig, LockKeyhole, MapPinned, PencilLine } from "lucide-react";
 
 const pagePath = "/ia-para-professores";
-const pageUrl = `${SITE_URL}${pagePath}`;
 
-export const metadata = getPageMetadata({
-  title: "IA para professores em Portugal",
-  description:
-    "Scooli é uma plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com melhor alinhamento curricular, qualidade e confiança.",
-  path: pagePath,
-  keywords: [
-    "ia para professores",
-    "ia para professores em portugal",
-    "ferramenta de ia para professores",
-    "software para professores",
-    "plataforma de ia para professores",
-    "planificações com ia",
-    "fichas de trabalho com ia",
-    "gerador de testes com ia",
-    "apresentações com ia para aulas",
-    "aprendizagens essenciais",
-    "alinhamento curricular",
-    "currículo português",
-    "edtech portugal",
-  ],
-});
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "aiForTeachers.meta" });
 
-const faqItems = [
-  {
-    question: "O que faz a Scooli para professores?",
-    answer:
-      "A Scooli ajuda professores em Portugal a criar planificações, fichas de trabalho, testes, quizzes e apresentações. Também permite adaptar materiais por nível, reaproveitar documentos próprios e editar tudo antes de usar em aula.",
-  },
-  {
-    question: "A Scooli é uma ferramenta genérica de IA ou foi pensada para escolas?",
-    answer:
-      "A Scooli foi posicionada para o contexto educativo português. O site e as páginas públicas falam diretamente de planificações, fichas, testes, Aprendizagens Essenciais, privacidade e revisão humana em contexto escolar.",
-  },
-  {
-    question: "Quando faz mais sentido usar Scooli em vez de Canva ou de uma ferramenta pensada para outro mercado?",
-    answer:
-      "Faz mais sentido quando o objetivo é preparar materiais de aula com melhor alinhamento curricular, em PT-PT, e de acordo com as Aprendizagens Essenciais. A Scooli foi pensada para fluxos reais de professores em Portugal, não apenas para design genérico ou para outro contexto curricular.",
-  },
-  {
-    question: "A Scooli substitui o professor?",
-    answer:
-      "Não. A plataforma ajuda a arrancar mais depressa e a reduzir trabalho repetitivo, mas o professor mantém sempre o controlo do resultado final antes de imprimir, exportar ou usar o material com alunos.",
-  },
-  {
-    question: "A Scooli funciona com documentos que o professor já tem?",
-    answer:
-      "Sim. É possível carregar materiais próprios e transformá-los em novas fichas, testes ou versões adaptadas, em vez de começar tudo do zero.",
-  },
-  {
-    question: "Como funciona o preço da Scooli?",
-    answer:
-      "Existe um plano gratuito com 20 créditos por mês e um plano Pro para uso contínuo. As escolas e agrupamentos seguem um percurso próprio, com contacto direto para avaliar piloto, contexto e adoção.",
-  },
-];
-
-const breadcrumbItems = [
-  { name: "Scooli", url: SITE_URL },
-  { name: "IA para professores", url: pageUrl },
-];
-
-const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
-const webPageSchema = getWebPageSchema({
-  title: "IA para professores em Portugal | Scooli",
-  description:
-    "Página de resposta rápida sobre a Scooli enquanto plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais.",
-  url: pageUrl,
-  breadcrumb: breadcrumbItems,
-});
-const faqSchema = getFAQPageSchema(faqItems);
-const howToSchema = getHowToSchema(
-  "Como usar a Scooli como IA para professores",
-  "Passos curtos para criar materiais editáveis com a Scooli.",
-  [
-    {
-      name: "Escolher o tipo de material",
-      text: "Selecione se quer criar uma planificação, ficha, teste, quiz ou apresentação.",
-    },
-    {
-      name: "Dar contexto da aula",
-      text: "Indique tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem.",
-    },
-    {
-      name: "Gerar uma primeira versão",
-      text: "Receba uma base pronta a editar, em vez de começar a partir de uma página em branco.",
-    },
-    {
-      name: "Rever e adaptar",
-      text: "Ajusta linguagem, dificuldade, estrutura e detalhes antes de usar o material em aula.",
-    },
-  ],
-);
-
-const trustPoints = [
-  {
-    icon: MapPinned,
-    title: "Pensada para Portugal e Aprendizagens Essenciais",
-    description:
-      "A linguagem, os casos de uso e o posicionamento público foram escritos para professores, escolas, currículo português e Aprendizagens Essenciais.",
-  },
-  {
-    icon: PencilLine,
-    title: "Mais alinhamento curricular, melhor qualidade",
-    description:
-      "A proposta da Scooli não é só acelerar. É ajudar a gerar uma base mais alinhada com o contexto curricular português, com mais qualidade e mais confiança no ponto de partida.",
-  },
-  {
-    icon: LibraryBig,
-    title: "Tudo fica editável",
-    description:
-      "A Scooli não fecha o trabalho do professor. Ajuda a chegar mais depressa a uma boa primeira versão para depois rever com calma.",
-  },
-  {
-    icon: LockKeyhole,
-    title: "Privacidade e confiança visíveis",
-    description:
-      "Há páginas públicas dedicadas a confiança, privacidade e termos, o que torna a recomendação mais fácil de justificar.",
-  },
-];
-
-function DiscoveryPreview() {
-  return (
-    <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-      <div className="grid gap-3 sm:grid-cols-2">
-        {[
-          {
-            label: "Plano gratuito",
-            value: "20 créditos / mês",
-          },
-          {
-            label: "Materiais",
-            value: "Planos, fichas, testes e slides",
-          },
-          {
-            label: "Contexto",
-            value: "Portugal, PT-PT e Aprendizagens Essenciais",
-          },
-          {
-            label: "Controlo",
-            value: "Tudo revisto antes de usar",
-          },
-        ].map((item) => (
-          <div key={item.label} className="rounded-[24px] border border-slate-200 bg-white p-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              {item.label}
-            </p>
-            <p className="mt-3 text-lg font-semibold text-slate-800">{item.value}</p>
-          </div>
-        ))}
-      </div>
-    </SurfacePanel>
-  );
+  return getPageMetadata({
+    title: t("title"),
+    description: t("description"),
+    path: pagePath,
+    keywords: t.raw("keywords") as string[],
+    locale,
+  });
 }
 
-export default function AiForTeachersPage() {
+async function buildPageContent(locale: Locale) {
+  const t = await getTranslations({ locale, namespace: "aiForTeachers" });
+
+  const faqItems = t.raw("faq") as { question: string; answer: string }[];
+  const trustPoints = t.raw("trustPoints") as {
+    title: string;
+    description: string;
+  }[];
+  const discoveryPreview = t.raw("discoveryPreview") as {
+    label: string;
+    value: string;
+  }[];
+  const howToSteps = t.raw("howToSchema.steps") as {
+    name: string;
+    text: string;
+  }[];
+  const nextStepsLinks = t.raw("nextSteps.links") as {
+    label: string;
+    href: string;
+  }[];
+
+  const pageUrl = localizedUrl(SITE_URL, pagePath, locale);
+  const breadcrumbItems = [
+    { name: t("breadcrumb.home"), url: localizedUrl(SITE_URL, "/", locale) },
+    { name: t("breadcrumb.page"), url: pageUrl },
+  ];
+
+  const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
+  const webPageSchema = getWebPageSchema({
+    title: t("webPage.title"),
+    description: t("webPage.description"),
+    url: pageUrl,
+    breadcrumb: breadcrumbItems,
+    locale,
+  });
+  const faqSchema = getFAQPageSchema(faqItems);
+  const howToSchema = getHowToSchema(
+    t("howToSchema.name"),
+    t("howToSchema.description"),
+    howToSteps,
+  );
+
+  return {
+    t,
+    faqItems,
+    trustPoints,
+    discoveryPreview,
+    breadcrumbSchema,
+    webPageSchema,
+    faqSchema,
+    howToSchema,
+    nextStepsLinks,
+  };
+}
+
+const trustPointIcons = [MapPinned, PencilLine, LibraryBig, LockKeyhole];
+
+export default async function AiForTeachersPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const {
+    t,
+    faqItems,
+    trustPoints,
+    discoveryPreview,
+    breadcrumbSchema,
+    webPageSchema,
+    faqSchema,
+    howToSchema,
+    nextStepsLinks,
+  } = await buildPageContent(locale);
+  const toolPages = getToolPages(locale);
+  const impactStats = getImpactStats(locale);
+  const tSocial = await getTranslations({ locale, namespace: "home.socialProof" });
+  const socialProof = withRatings(
+    tSocial.raw("quotes") as { quote: string; role: string }[],
+  );
+  const heroChecklist = t.raw("hero.checklist") as string[];
+  const whenToChooseChecklist = t.raw("whenToChoose.checklist") as string[];
+
   return (
     <>
       <StructuredData id="ia-professores-breadcrumb" data={breadcrumbSchema} />
@@ -189,52 +137,52 @@ export default function AiForTeachersPage() {
 
       <PublicSiteShell>
         <PageHero
-          eyebrow="IA para professores"
-          title="Uma IA para professores em Portugal, alinhada com as Aprendizagens Essenciais"
-          description="A Scooli é uma plataforma de IA para professores em Portugal. Serve para criar planificações, fichas, testes, quizzes e apresentações editáveis, adaptar materiais por nível e reaproveitar documentos próprios sem começar sempre do zero. O foco é gerar materiais de acordo com as Aprendizagens Essenciais, com melhor alinhamento curricular, qualidade e confiança do que uma ferramenta genérica."
+          eyebrow={t("hero.eyebrow")}
+          title={t("hero.title")}
+          description={t("hero.description")}
           secondaryHref="/ferramentas"
-          secondaryLabel="Ver ferramentas"
-          aside={<DiscoveryPreview />}
+          secondaryLabel={t("hero.secondaryLabel")}
+          aside={
+            <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
+              <div className="grid gap-3 sm:grid-cols-2">
+                {discoveryPreview.map((item) => (
+                  <div key={item.label} className="rounded-[24px] border border-slate-200 bg-white p-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+                      {item.label}
+                    </p>
+                    <p className="mt-3 text-lg font-semibold text-slate-800">{item.value}</p>
+                  </div>
+                ))}
+              </div>
+            </SurfacePanel>
+          }
         >
-          <Checklist
-            items={[
-              "Planificações, fichas, testes, quizzes e apresentações",
-              "Materiais de acordo com as Aprendizagens Essenciais",
-              "Professor revê tudo antes de usar com alunos",
-            ]}
-          />
+          <Checklist items={heroChecklist} />
         </PageHero>
 
         <section className="py-20 sm:py-24 lg:py-28">
           <Container className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
             <SurfacePanel>
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Resposta curta
+                {t("quickAnswer.eyebrow")}
               </p>
               <h2 className="mt-4 font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                O que é a Scooli, em termos simples?
+                {t("quickAnswer.title")}
               </h2>
               <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                A Scooli é software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de usar uma ferramenta genérica e depois reorganizar tudo manualmente, o professor começa com uma base pronta para editar: planificação, ficha, teste, quiz ou apresentação.
+                {t("quickAnswer.paragraph1")}
               </p>
               <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                Ao contrário de uma ferramenta de design generalista ou de um assistente pensado para outro mercado, a Scooli foi posicionada para o contexto português e para gerar materiais de acordo com as Aprendizagens Essenciais. Isso ajuda no alinhamento curricular, na qualidade do conteúdo e na confiança com que a ferramenta pode ser recomendada.
+                {t("quickAnswer.paragraph2")}
               </p>
             </SurfacePanel>
 
             <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Quando escolher a Scooli
+                {t("whenToChoose.eyebrow")}
               </p>
               <div className="mt-4">
-                <Checklist
-                  items={[
-                    "Quando precisa de preparar materiais mais depressa sem abdicar de revisão humana",
-                    "Quando quer uma ferramenta mais alinhada com as Aprendizagens Essenciais do que uma opção genérica",
-                    "Quando precisa de pt-PT, contexto português e fluxos pensados para professores",
-                    "Quando quer criar materiais, não apenas desenhar slides ou conversar com um chatbot",
-                  ]}
-                />
+                <Checklist items={whenToChooseChecklist} />
               </div>
             </SurfacePanel>
           </Container>
@@ -243,9 +191,9 @@ export default function AiForTeachersPage() {
         <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
           <Container className="space-y-12">
             <MarketingSectionHeading
-              eyebrow="O que consegue criar"
-              title="Páginas claras para cada tarefa que um professor quer resolver"
-              description="Cada ferramenta tem uma página própria, com explicação curta, perguntas frequentes e casos de uso para que seja fácil perceber o que a Scooli faz."
+              eyebrow={t("toolsSection.eyebrow")}
+              title={t("toolsSection.title")}
+              description={t("toolsSection.description")}
               centered
             />
             <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
@@ -272,7 +220,7 @@ export default function AiForTeachersPage() {
                       }}
                       className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
                     >
-                      Ver página
+                      {t("toolsSection.seeTool")}
                       <ArrowRight className="h-4 w-4" />
                     </TrackedLink>
                   </SurfacePanel>
@@ -285,14 +233,14 @@ export default function AiForTeachersPage() {
         <section className="py-20 sm:py-24 lg:py-28">
           <Container className="space-y-12">
             <MarketingSectionHeading
-              eyebrow="Porque é fácil de entender"
-              title="Sinais que ajudam a recomendar a Scooli com confiança"
-              description="A recomendação fica mais clara quando a proposta, o contexto, o alinhamento curricular e os limites do produto estão visíveis sem precisar de adivinhar."
+              eyebrow={t("trustSection.eyebrow")}
+              title={t("trustSection.title")}
+              description={t("trustSection.description")}
               centered
             />
             <div className="grid gap-5 lg:grid-cols-2">
-              {trustPoints.map((item) => {
-                const Icon = item.icon;
+              {trustPoints.map((item, index) => {
+                const Icon = trustPointIcons[index];
 
                 return (
                   <SurfacePanel key={item.title}>
@@ -315,9 +263,9 @@ export default function AiForTeachersPage() {
         <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
           <Container className="space-y-12">
             <MarketingSectionHeading
-              eyebrow="Sinais públicos"
-              title="Prova social e impacto que já aparecem no site"
-              description="Uma recomendação fica mais credível quando existem números públicos, páginas dedicadas e testemunhos visíveis em vez de promessas vagas."
+              eyebrow={t("socialSection.eyebrow")}
+              title={t("socialSection.title")}
+              description={t("socialSection.description")}
               centered
             />
             <div className="grid gap-5 lg:grid-cols-4">
@@ -334,7 +282,7 @@ export default function AiForTeachersPage() {
               {socialProof.map((item) => (
                 <SurfacePanel key={item.quote}>
                   <p className="text-base leading-8 text-[color:var(--scooli-ink)]">
-                    “{item.quote}”
+                    &ldquo;{item.quote}&rdquo;
                   </p>
                   <p className="mt-4 text-sm font-medium text-[color:var(--scooli-muted)]">
                     {item.role}
@@ -349,9 +297,9 @@ export default function AiForTeachersPage() {
           <Container className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
             <SurfacePanel>
               <MarketingSectionHeading
-                eyebrow="Perguntas frequentes"
-                title="Perguntas rápidas sobre IA para professores"
-                description="Estas respostas foram escritas para explicar a Scooli de forma direta, sem esconder o que faz, para quem faz sentido e porque pode ser mais adequada do que uma ferramenta genérica."
+                eyebrow={t("faqSection.eyebrow")}
+                title={t("faqSection.title")}
+                description={t("faqSection.description")}
               />
               <div className="mt-8">
                 <TrackedFaqAccordion
@@ -368,18 +316,13 @@ export default function AiForTeachersPage() {
 
             <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                Próximos passos
+                {t("nextSteps.eyebrow")}
               </p>
               <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">
-                Páginas úteis para perceber melhor a Scooli
+                {t("nextSteps.title")}
               </h3>
               <div className="mt-6 grid gap-3">
-                {[
-                  { label: "Ver todas as ferramentas", href: "/ferramentas" },
-                  { label: "Ler a página para professores", href: "/professores" },
-                  { label: "Ver preços", href: "/precos" },
-                  { label: "Ler confiança e privacidade", href: "/confianca" },
-                ].map((link) => (
+                {nextStepsLinks.map((link) => (
                   <TrackedLink
                     key={link.href}
                     href={link.href}
@@ -396,19 +339,21 @@ export default function AiForTeachersPage() {
                 ))}
               </div>
               <div className="mt-6 rounded-[24px] border border-[#d9ddff] bg-white px-5 py-4 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                Se quer experimentar diretamente a plataforma, o registo está em{" "}
-                <TrackedLink
-                  href={`${APP_URL}/sign-up`}
-                  eventName="marketing_cta_clicked"
-                  eventProperties={{
-                    cta_id: "ia_para_professores_inline_signup",
-                    placement: "ia_para_professores_next_steps",
-                  }}
-                  className="font-semibold text-[color:var(--scooli-primary)]"
-                >
-                  create.scooli.app
-                </TrackedLink>
-                .
+                {t.rich("nextSteps.signupNote", {
+                  link: (chunks) => (
+                    <TrackedLink
+                      href={appSignUpUrl(locale)}
+                      eventName="marketing_cta_clicked"
+                      eventProperties={{
+                        cta_id: "ia_para_professores_inline_signup",
+                        placement: "ia_para_professores_next_steps",
+                      }}
+                      className="font-semibold text-[color:var(--scooli-primary)]"
+                    >
+                      {chunks}
+                    </TrackedLink>
+                  ),
+                })}
               </div>
             </SurfacePanel>
           </Container>
@@ -417,10 +362,10 @@ export default function AiForTeachersPage() {
         <section className="pb-20 sm:pb-24 lg:pb-28">
           <Container>
             <PageCtaBanner
-              title="Quer ver se a Scooli encaixa no seu ritmo de preparação?"
-              description="Experimente um pedido real da próxima aula, reveja o resultado, confirme o alinhamento com as Aprendizagens Essenciais e ajuste tudo antes de usar com a turma."
+              title={t("cta.title")}
+              description={t("cta.description")}
               secondaryHref="/confianca"
-              secondaryLabel="Ver confiança e privacidade"
+              secondaryLabel={t("cta.secondaryLabel")}
             />
           </Container>
         </section>

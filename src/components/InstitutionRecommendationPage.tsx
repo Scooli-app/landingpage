@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { captureMarketingEvent, getErrorType } from "@/lib/analytics";
 import { EMAIL_REGEX } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 import {
   ArrowLeft,
   BriefcaseBusiness,
@@ -18,8 +19,8 @@ import {
   User,
   Users,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
-import Link from "next/link";
 import { useId, useState } from "react";
 import { toast } from "sonner";
 
@@ -37,43 +38,56 @@ type RecommendationField =
 type RecommendationErrors = Partial<Record<RecommendationField, string>>;
 
 
-function validateRecommendationForm(values: {
+type RecommendationFormErrorMessages = {
   name: string;
-  email: string;
+  emailRequired: string;
+  emailInvalid: string;
   role: string;
   institution: string;
   leadershipContact: string;
-}): RecommendationErrors {
+};
+
+function validateRecommendationForm(
+  values: {
+    name: string;
+    email: string;
+    role: string;
+    institution: string;
+    leadershipContact: string;
+  },
+  messages: RecommendationFormErrorMessages,
+): RecommendationErrors {
   const errors: RecommendationErrors = {};
 
   if (!values.name.trim()) {
-    errors.name = "Indique o seu nome para sabermos quem está a recomendar.";
+    errors.name = messages.name;
   }
 
   if (!values.email.trim()) {
-    errors.email = "Indique um email para podermos responder ao pedido.";
+    errors.email = messages.emailRequired;
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
-    errors.email = "Introduza um endereço de email válido.";
+    errors.email = messages.emailInvalid;
   }
 
   if (!values.role.trim()) {
-    errors.role = "Partilhe o seu papel na escola ou instituição.";
+    errors.role = messages.role;
   }
 
   if (!values.institution.trim()) {
-    errors.institution =
-      "Indique a escola, instituição ou agrupamento que quer recomendar.";
+    errors.institution = messages.institution;
   }
 
   if (!values.leadershipContact.trim()) {
-    errors.leadershipContact =
-      "Indique o contacto da direção ou coordenação.";
+    errors.leadershipContact = messages.leadershipContact;
   }
 
   return errors;
 }
 
 export function InstitutionRecommendationPage() {
+  const t = useTranslations("recommendInstitution");
+  const tNav = useTranslations("nav");
+  const tFooter = useTranslations("footer");
   const formId = useId();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -136,13 +150,23 @@ export function InstitutionRecommendationPage() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const nextErrors = validateRecommendationForm({
-      name,
-      email,
-      role,
-      institution,
-      leadershipContact,
-    });
+    const nextErrors = validateRecommendationForm(
+      {
+        name,
+        email,
+        role,
+        institution,
+        leadershipContact,
+      },
+      {
+        name: t("form.errors.name"),
+        emailRequired: t("form.errors.emailRequired"),
+        emailInvalid: t("form.errors.emailInvalid"),
+        role: t("form.errors.role"),
+        institution: t("form.errors.institution"),
+        leadershipContact: t("form.errors.leadershipContact"),
+      },
+    );
 
     if (Object.keys(nextErrors).length > 0) {
       captureMarketingEvent("marketing_contact_form_validation_failed", {
@@ -152,7 +176,7 @@ export function InstitutionRecommendationPage() {
       setErrors(nextErrors);
       setSubmitMessage({
         tone: "error",
-        text: "Revê os campos assinalados e tenta novamente.",
+        text: t("form.validationNotice"),
       });
 
       const firstErrorField = (
@@ -196,12 +220,11 @@ export function InstitutionRecommendationPage() {
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
         throw new Error(
-          errorData.error || "Erro ao enviar o pedido. Tenta novamente."
+          errorData.error || t("form.fetchErrorFallback")
         );
       }
 
-      const successMessage =
-        "Pedido enviado com sucesso. Vamos analisar o contexto e responder o mais depressa possível.";
+      const successMessage = t("form.successMessage");
       captureMarketingEvent("marketing_contact_form_submitted", {
         source: SOURCE,
         has_organization: true,
@@ -225,7 +248,7 @@ export function InstitutionRecommendationPage() {
       const errorMessage =
         error instanceof Error
           ? error.message
-          : "Ocorreu um erro. Tenta novamente mais tarde.";
+          : t("form.genericErrorFallback");
       toast.error(errorMessage);
       setSubmitMessage({ tone: "error", text: errorMessage });
     } finally {
@@ -246,11 +269,11 @@ export function InstitutionRecommendationPage() {
                 link_label: "home_logo",
               }}
               className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-              aria-label="Scooli - Página inicial"
+              aria-label={tFooter("homeAria")}
             >
               <Image
                 src="/scooli.svg"
-                alt="Logótipo Scooli"
+                alt={tNav("logoAlt")}
                 width={92}
                 height={30}
                 priority
@@ -267,7 +290,7 @@ export function InstitutionRecommendationPage() {
               className="inline-flex items-center gap-2 rounded-full border border-[color:var(--scooli-border)] bg-white px-4 py-2 text-sm font-semibold text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
             >
               <ArrowLeft className="h-4 w-4" />
-              Voltar
+              {t("backLabel")}
             </TrackedLink>
           </div>
 
@@ -275,26 +298,24 @@ export function InstitutionRecommendationPage() {
             <section className="space-y-6 lg:pt-6">
               <div className="space-y-4">
                 <span className="inline-flex w-fit items-center rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
-                  Recomendar a Scooli
+                  {t("badge")}
                 </span>
                 <div className="space-y-4">
                   <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl">
-                    Quer que falemos com a sua escola?
+                    {t("title")}
                   </h1>
                   <p className="text-lg leading-8 text-[color:var(--scooli-muted)]">
-                    Preencha este formulário com o essencial e nós tratamos do
-                    próximo passo.
+                    {t("description")}
                   </p>
                 </div>
               </div>
 
               <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
                 <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  Nota importante
+                  {t("noteLabel")}
                 </p>
                 <p className="mt-3 text-base leading-8 text-[color:var(--scooli-ink)]">
-                  Se avançarmos com um primeiro email para a direção ou
-                  coordenação, colocamos o seu email em CC.
+                  {t("noteText")}
                 </p>
               </div>
             </section>
@@ -307,7 +328,7 @@ export function InstitutionRecommendationPage() {
                 className="space-y-5"
               >
                 <p className="text-sm text-[color:var(--scooli-muted)]">
-                  Os campos assinalados com * são obrigatórios.
+                  {t("form.requiredNote")}
                 </p>
 
                 <div className="grid gap-5 sm:grid-cols-2">
@@ -317,13 +338,13 @@ export function InstitutionRecommendationPage() {
                       className="flex items-center gap-2 text-sm font-medium text-slate-700"
                     >
                       <User className="h-3.5 w-3.5 text-slate-400" />
-                      Nome *
+                      {t("form.nameLabel")}
                     </Label>
                     <Input
                       id={fieldIds.name}
                       name="name"
                       type="text"
-                      placeholder="O seu nome"
+                      placeholder={t("form.namePlaceholder")}
                       value={name}
                       onChange={(event) => {
                         setName(event.target.value);
@@ -353,13 +374,13 @@ export function InstitutionRecommendationPage() {
                       className="flex items-center gap-2 text-sm font-medium text-slate-700"
                     >
                       <Mail className="h-3.5 w-3.5 text-slate-400" />
-                      Email *
+                      {t("form.emailLabel")}
                     </Label>
                     <Input
                       id={fieldIds.email}
                       name="email"
                       type="email"
-                      placeholder="o.seu.email@exemplo.com"
+                      placeholder={t("form.emailPlaceholder")}
                       value={email}
                       onChange={(event) => {
                         setEmail(event.target.value);
@@ -390,13 +411,13 @@ export function InstitutionRecommendationPage() {
                       className="flex items-center gap-2 text-sm font-medium text-slate-700"
                     >
                       <BriefcaseBusiness className="h-3.5 w-3.5 text-slate-400" />
-                      Cargo / papel *
+                      {t("form.roleLabel")}
                     </Label>
                     <Input
                       id={fieldIds.role}
                       name="role"
                       type="text"
-                      placeholder="Professor, coordenação, etc."
+                      placeholder={t("form.rolePlaceholder")}
                       value={role}
                       onChange={(event) => {
                         setRole(event.target.value);
@@ -426,13 +447,13 @@ export function InstitutionRecommendationPage() {
                       className="flex items-center gap-2 text-sm font-medium text-slate-700"
                     >
                       <Building2 className="h-3.5 w-3.5 text-slate-400" />
-                      Escola / instituição *
+                      {t("form.institutionLabel")}
                     </Label>
                     <Input
                       id={fieldIds.institution}
                       name="institution"
                       type="text"
-                      placeholder="Nome da escola, instituição ou agrupamento"
+                      placeholder={t("form.institutionPlaceholder")}
                       value={institution}
                       onChange={(event) => {
                         setInstitution(event.target.value);
@@ -463,13 +484,13 @@ export function InstitutionRecommendationPage() {
                     className="flex items-center gap-2 text-sm font-medium text-slate-700"
                   >
                     <Users className="h-3.5 w-3.5 text-slate-400" />
-                    Contacto da direção ou coordenação *
+                    {t("form.leadershipContactLabel")}
                   </Label>
                   <Input
                     id={fieldIds.leadershipContact}
                     name="leadershipContact"
                     type="text"
-                    placeholder="Email, telefone ou nome da pessoa"
+                    placeholder={t("form.leadershipContactPlaceholder")}
                     value={leadershipContact}
                     onChange={(event) => {
                       setLeadershipContact(event.target.value);
@@ -497,12 +518,12 @@ export function InstitutionRecommendationPage() {
                     htmlFor={fieldIds.message}
                     className="text-sm font-medium text-slate-700"
                   >
-                    Contexto
+                    {t("form.messageLabel")}
                   </Label>
                   <textarea
                     id={fieldIds.message}
                     name="message"
-                    placeholder="Explique em poucas linhas porque faz sentido falarmos com esta escola."
+                    placeholder={t("form.messagePlaceholder")}
                     value={message}
                     onChange={(event) => {
                       setMessage(event.target.value);
@@ -515,8 +536,7 @@ export function InstitutionRecommendationPage() {
                     aria-describedby={getFieldDescribedBy("message", fieldIds.ccHint)}
                   />
                   <p id={fieldIds.ccHint} className="text-xs text-slate-500">
-                    Usamos o seu email para responder e para o manter em CC
-                    se avançarmos com o contacto.
+                    {t("form.ccHint")}
                   </p>
                   {errors.message && (
                     <p
@@ -553,25 +573,27 @@ export function InstitutionRecommendationPage() {
                   {isLoading ? (
                     <span className="flex items-center gap-2">
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      A enviar...
+                      {t("form.submittingLabel")}
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
                       <Send className="h-4 w-4" />
-                      Enviar pedido
+                      {t("form.submitLabel")}
                     </span>
                   )}
                 </Button>
 
                 <p className="text-center text-xs text-slate-400">
-                  Ao enviar, concorda com a nossa{" "}
-                  <Link
-                    href="/privacy"
-                    className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]"
-                  >
-                    Política de Privacidade
-                  </Link>
-                  .
+                  {t.rich("form.consent", {
+                    link: (chunks) => (
+                      <Link
+                        href="/privacy"
+                        className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]"
+                      >
+                        {chunks}
+                      </Link>
+                    ),
+                  })}
                 </p>
               </form>
             </section>

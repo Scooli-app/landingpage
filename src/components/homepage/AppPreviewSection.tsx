@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/Container";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { SectionHeading } from "./shared";
 
@@ -41,32 +42,33 @@ function ScreenFrame({
 }
 
 export function AppPreviewSection() {
+  const t = useTranslations("home.appPreview");
   const ref = useScrollReveal({ stagger: 0.12, y: 28 });
 
   return (
     <section id="plataforma" className="py-16 sm:py-20 lg:py-28">
       <Container ref={ref} className="space-y-10">
         <SectionHeading
-          eyebrow="A plataforma"
-          title="O ambiente onde trabalha"
-          description="Da planificação ao plano de aula, tudo num só sítio — com IA integrada que sugere, gera e adapta sem sair do documento."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
           centered
         />
 
         <div data-reveal>
           <ScreenFrame
-            label="Editor · Planificação Semestral de Matemática"
+            label={t("editorLabel")}
             src="/screenshots/app-planificacao.jpg"
-            alt="Editor de planificação da Scooli com estrutura de secções e painel de IA à direita"
+            alt={t("editorAlt")}
             priority
           />
         </div>
 
         <div data-reveal>
           <ScreenFrame
-            label="Calendário · Plano letivo semanal"
+            label={t("calendarLabel")}
             src="/screenshots/app-calendario.png"
-            alt="Vista semanal do calendário da Scooli com aulas distribuídas pelos dias"
+            alt={t("calendarAlt")}
           />
         </div>
       </Container>
