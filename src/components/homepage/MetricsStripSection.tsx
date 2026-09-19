@@ -3,37 +3,35 @@
 import { Container } from "@/components/Container";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
-import { useTranslations } from "next-intl";
 
 const formatCount = (value: number) =>
   String(value).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-export function MetricsStripSection() {
-  const t = useTranslations("home.metrics");
-  const ref = useScrollReveal({ y: 12 });
+const metrics = [
+  {
+    value: `${formatCount(PUBLIC_IMPACT_METRICS.activeTeachers.minValue)}+`,
+    label: "professores ativos",
+  },
+  {
+    value: `${formatCount(PUBLIC_IMPACT_METRICS.generatedDocuments.minValue)}+`,
+    label: "documentos gerados",
+  },
+  {
+    value: `${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue}h+`,
+    label: "poupadas por semana",
+  },
+  {
+    value: `${formatCount(PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue)}+`,
+    label: "materiais adaptados",
+  },
+];
 
-  const metrics = [
-    {
-      value: `${formatCount(PUBLIC_IMPACT_METRICS.activeTeachers.minValue)}+`,
-      label: t("activeTeachers"),
-    },
-    {
-      value: `${formatCount(PUBLIC_IMPACT_METRICS.generatedDocuments.minValue)}+`,
-      label: t("generatedDocuments"),
-    },
-    {
-      value: `${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue}h+`,
-      label: t("weeklyHoursSaved"),
-    },
-    {
-      value: `${formatCount(PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue)}+`,
-      label: t("adaptedMaterials"),
-    },
-  ];
+export function MetricsStripSection() {
+  const ref = useScrollReveal({ y: 12 });
 
   return (
     <section
-      aria-label={t("ariaLabel")}
+      aria-label="Impacto da Scooli"
       className="border-y border-slate-200/70 bg-white py-8 sm:py-10"
     >
       <Container

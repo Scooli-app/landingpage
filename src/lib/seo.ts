@@ -1,6 +1,4 @@
 ﻿import type { Metadata } from "next";
-import { defaultLocale, type Locale } from "@/i18n/routing";
-import { canonicalUrl, hreflangAlternates, localizedUrl } from "@/i18n/urls";
 /**
  * SEO & AEO (Answer Engine Optimization) utilities for Scooli
  *
@@ -16,53 +14,9 @@ export const APP_URL =
   process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") ||
   "https://create.scooli.app";
 
-/**
- * The app's sign-up page, carrying the language this visitor is reading the
- * site in.
- *
- * The app cannot work it out for itself. This site and the app live on
- * different hosts, so the `NEXT_LOCALE` cookie does not cross, and the only
- * thing left to fall back on is the browser's language — which would sign a
- * Portuguese teacher whose browser is set to English up into an English app,
- * with English emails, the opposite of what they were just reading. Passed for
- * every locale, Portuguese included, so the default is stated rather than
- * guessed.
- *
- * Sign-up only: an existing account already has its own saved preference, so
- * sign-in links stay bare.
- */
-export function appSignUpUrl(locale: Locale): string {
-  return `${APP_URL}/sign-up?locale=${encodeURIComponent(locale)}`;
-}
-
 export const SITE_NAME = "Scooli";
-
-/**
- * Portuguese remains the site's primary language: it is the default locale, the
- * `x-default` target and the language of the structured data describing the
- * organisation. `SITE_LOCALE`/`SITE_LANGUAGE` are those defaults — anything
- * rendered per page must use the request locale instead, via
- * `openGraphLocale()` / `getPageMetadata({ locale })`.
- */
 export const SITE_LOCALE = "pt_PT";
 export const SITE_LANGUAGE = "pt-PT";
-
-/** BCP-47 locale to the underscored form Open Graph expects. */
-export function openGraphLocale(locale: Locale) {
-  return locale.replace("-", "_");
-}
-
-export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 } as const;
-
-/**
- * The social share card for a locale, rendered by `src/app/og/route.tsx`.
- * Portuguese keeps the bare URL so the default card has one stable address.
- */
-export function shareImageUrl(locale: Locale = defaultLocale) {
-  return locale === defaultLocale
-    ? `${SITE_URL}/og`
-    : `${SITE_URL}/og?locale=${locale}`;
-}
 
 export interface ProductReviewInput {
   quote: string;
@@ -75,48 +29,37 @@ export function getPageMetadata({
   description,
   path,
   keywords,
-  locale = defaultLocale,
-  params,
 }: {
   title: string;
   description: string;
-  /**
-   * The *internal* pathname key from `src/i18n/routing.ts` — always the
-   * Portuguese spelling (`/precos`, `/ferramentas/[slug]`). The English URL is
-   * derived from it, so callers never hardcode `/en/...`.
-   */
   path: string;
   keywords?: readonly string[];
-  locale?: Locale;
-  /** Values for dynamic segments, e.g. `{ slug: "fichas-de-trabalho" }`. */
-  params?: Record<string, string>;
 }): Metadata {
-  const url = path ? localizedUrl(SITE_URL, path, locale, params) : SITE_URL;
+  const url = path ? `${SITE_URL}${path}` : SITE_URL;
 
   return {
     title,
     description,
     keywords: keywords ? [...keywords] : undefined,
     alternates: {
-      // Self-referencing canonical for translated pages, so the Portuguese and
-      // English versions are understood as translations rather than as
-      // duplicates competing with each other. Pages whose body copy is still
-      // only Portuguese canonicalise back to the Portuguese URL — see
-      // `localizedPaths` in `src/i18n/urls.ts`.
-      canonical: path ? canonicalUrl(SITE_URL, path, locale, params) : SITE_URL,
-      languages: hreflangAlternates(SITE_URL, path, params),
+      canonical: url,
+      languages: {
+        "pt-PT": url,
+        "x-default": url,
+      },
     },
     openGraph: {
       title,
       description,
       url,
       type: "website",
-      locale: openGraphLocale(locale),
+      locale: SITE_LOCALE,
       siteName: SITE_NAME,
       images: [
         {
-          url: shareImageUrl(locale),
-          ...SHARE_IMAGE_SIZE,
+          url: `${SITE_URL}/opengraph-image`,
+          width: 1200,
+          height: 630,
           alt: `${SITE_NAME} - ${title}`,
         },
       ],
@@ -125,7 +68,7 @@ export function getPageMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [shareImageUrl(locale)],
+      images: [`${SITE_URL}/twitter-image`],
     },
     robots: {
       index: true,
@@ -316,7 +259,7 @@ export function getSoftwareApplicationSchema() {
       "Templates personalizáveis",
       "RGPD-ready",
     ],
-    screenshot: shareImageUrl(),
+    screenshot: `${SITE_URL}/opengraph-image`,
     author: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -416,7 +359,7 @@ export function getProductSchema(reviews: ProductReviewInput[] = []) {
     name: "Scooli Pro",
     description:
       "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
-    image: shareImageUrl(),
+    image: `${SITE_URL}/opengraph-image`,
     brand: {
       "@type": "Brand",
       name: SITE_NAME,
@@ -536,8 +479,6 @@ export interface WebPageSchemaOptions {
   datePublished?: string;
   dateModified?: string;
   breadcrumb?: BreadcrumbItem[];
-  /** The language this page is actually written in; defaults to Portuguese. */
-  locale?: Locale;
 }
 
 export function getWebPageSchema(options: WebPageSchemaOptions) {
@@ -548,7 +489,7 @@ export function getWebPageSchema(options: WebPageSchemaOptions) {
     name: options.title,
     description: options.description,
     url: options.url,
-    inLanguage: options.locale ?? SITE_LANGUAGE,
+    inLanguage: SITE_LANGUAGE,
     isPartOf: {
       "@id": `${SITE_URL}/#website`,
     },

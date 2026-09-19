@@ -5,17 +5,7 @@ import { captureMarketingEvent } from "@/lib/analytics";
 import { APP_URL } from "@/lib/seo";
 import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { X } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-
-/**
- * Portuguese writes €4,99 and English €4.99 — matches the formatting already
- * used for the pricing teaser and full pricing page.
- */
-function formatEuro(locale: string, cents: number): string {
-  const value = (cents / 100).toFixed(2);
-  return locale === "en" ? `€${value}` : `€${value.replace(".", ",")}`;
-}
 
 // Time-limited "Regresso às Aulas 2026" promo. Rendered site-wide from the root
 // layout while NEXT_PUBLIC_PROMO_ENDS_AT is in the future. Dismissal is
@@ -45,8 +35,6 @@ function persistDismiss(): void {
 }
 
 export function PromoBanner() {
-  const t = useTranslations("promoBanner");
-  const locale = useLocale();
   // Start hidden and reveal after mount: reading localStorage during render
   // would desync the SSR and client markup.
   const [visible, setVisible] = useState(false);
@@ -75,16 +63,13 @@ export function PromoBanner() {
 
   const monthlyHref = `${APP_URL}/checkout?plan=${PROMO_PLAN_CODES.monthly}`;
   const annualHref = `${APP_URL}/checkout?plan=${PROMO_PLAN_CODES.annual}`;
-  const monthlyPrice = formatEuro(locale, PROMO_PRICE_CENTS.monthly);
-  const annualPrice = formatEuro(locale, PROMO_PRICE_CENTS.annual);
 
   return (
     <div className="relative z-50 flex flex-col items-center justify-center gap-2 bg-[color:var(--scooli-primary)] px-4 py-2.5 text-center text-sm font-medium text-white sm:flex-row sm:gap-4">
       <span>
-        {t.rich("message", {
-          price: monthlyPrice,
-          strong: (chunks) => <strong className="font-bold">{chunks}</strong>,
-        })}
+        Regresso às Aulas 2026: Scooli Pro a partir de{" "}
+        <strong className="font-bold">4,99€/mês</strong> — fica com este preço
+        para sempre.
       </span>
       <div className="flex items-center gap-3">
         <TrackedLink
@@ -100,7 +85,7 @@ export function PromoBanner() {
           }}
           className="rounded-full bg-white px-4 py-1.5 text-xs font-semibold text-[color:var(--scooli-primary)] transition-opacity hover:opacity-90"
         >
-          {t("monthlyCta", { price: monthlyPrice })}
+          Mensal 4,99€
         </TrackedLink>
         <TrackedLink
           href={annualHref}
@@ -115,13 +100,13 @@ export function PromoBanner() {
           }}
           className="rounded-full border border-white/70 px-4 py-1.5 text-xs font-semibold text-white transition-colors hover:bg-white/10"
         >
-          {t("annualCta", { price: annualPrice })}
+          Anual 47,90€
         </TrackedLink>
       </div>
       <button
         type="button"
         onClick={handleDismiss}
-        aria-label={t("closeAriaLabel")}
+        aria-label="Fechar"
         className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 transition-colors hover:text-white sm:static sm:translate-y-0"
       >
         <X className="h-4 w-4" />

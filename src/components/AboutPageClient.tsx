@@ -17,7 +17,6 @@ import {
   Users,
   type LucideIcon,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -88,26 +87,82 @@ function CountUp({
   );
 }
 
-type StoryChapterIcon = {
+type StoryChapter = {
+  title: string;
+  description: string;
   icon: LucideIcon;
 };
 
-const storyChapterIcons: StoryChapterIcon[] = [
-  { icon: Clock3 },
-  { icon: Lightbulb },
-  { icon: GraduationCap },
+const storyChapters: StoryChapter[] = [
+  {
+    title: "O que víamos",
+    description:
+      "Professores próximos de nós a chegar ao fim do dia com as aulas dadas e as reuniões feitas — e ainda uma noite de planificações, fichas e testes pela frente. Serões e fins de semana de família a desaparecer em trabalho que se repete, semana após semana.",
+    icon: Clock3,
+  },
+  {
+    title: "A pergunta",
+    description:
+      "Somos dois jovens engenheiros portugueses, o Miguel e o Pedro. Quando a IA generativa começou a mostrar o que conseguia fazer, a pergunta tornou-se óbvia: porque é que estas horas não voltam para quem ensina? A resposta habitual — «usa-se o ChatGPT» — não chegava: faltava-lhe o currículo português, as Aprendizagens Essenciais, os DL 54/2018 e 55/2018, e o formato de documento que um professor usa de verdade.",
+    icon: Lightbulb,
+  },
+  {
+    title: "A Scooli",
+    description:
+      "Por isso construímos a Scooli: feita em Portugal, para o ensino português, com a IA a fazer o trabalho mecânico e o professor a manter a decisão final. O objetivo é o mesmo desde o primeiro dia — devolver tempo a quem ensina. E às famílias de quem ensina.",
+    icon: GraduationCap,
+  },
 ];
 
-const missionPointIcons: LucideIcon[] = [Sparkles, Users, MapPinned];
+const metrics = [
+  {
+    value: PUBLIC_IMPACT_METRICS.activeTeachers.minValue,
+    suffix: "+",
+    label: "professores ativos",
+  },
+  {
+    value: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue,
+    suffix: "+",
+    label: "documentos gerados",
+  },
+  {
+    value: PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue,
+    suffix: "h+",
+    label: "poupadas por semana",
+  },
+  {
+    value: PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue,
+    suffix: "+",
+    label: "materiais adaptados",
+  },
+];
 
-/**
- * Names, photos and locations are locale-independent (same people, same
- * places). Role titles and alt text come from `about.team.members` in the
- * message catalogues and are zipped in by index.
- */
+const missionPoints = [
+  {
+    title: "Devolver tempo aos professores",
+    description:
+      "Reduzir o trabalho repetitivo da preparação de aulas para libertar tempo para ensinar, acompanhar alunos e ajustar melhor o que acontece em sala.",
+    icon: Sparkles,
+  },
+  {
+    title: "Criar comunidade, não só uma ferramenta",
+    description:
+      "O trabalho de um professor é muitas vezes solitário. A Scooli também quer aproximar docentes através da biblioteca comunitária e da partilha de materiais úteis.",
+    icon: Users,
+  },
+  {
+    title: "Construir para a realidade portuguesa",
+    description:
+      "A linguagem, os exemplos e a forma de usar a Scooli são pensados para professores, escolas e currículo em Portugal.",
+    icon: MapPinned,
+  },
+];
+
 type TeamMember = {
   name: string;
+  role: string;
   image: string;
+  alt: string;
   location: string;
   imageClassName?: string;
 };
@@ -115,26 +170,34 @@ type TeamMember = {
 const team: TeamMember[] = [
   {
     name: "Miguel Rodrigues",
+    role: "Co-Fundador · Engenheiro de Software & IA",
     image: "/team/miguel.jpg",
     location: "Santa Maria da Feira, Aveiro",
+    alt: "Miguel Rodrigues, Fundador e Engenheiro de Software & IA da Scooli",
     imageClassName: "group-hover:scale-105",
   },
   {
     name: "Pedro Rocha",
+    role: "Co-Fundador · Engenheiro de Software & IA",
     image: "/team/pedro.jpeg",
     location: "Vila Nova de Gaia, Porto",
+    alt: "Pedro Rocha, Co-Fundador e Engenheiro de Software & IA da Scooli",
     imageClassName: "scale-[1.28] group-hover:scale-[1.33]",
   },
   {
     name: "Hugo Silva",
+    role: "Sócio · Chief Growth Officer",
     image: "/team/hugo.jpg",
     location: "Santa Maria da Feira, Aveiro",
+    alt: "Hugo Silva, Sócio e Chief Growth Officer da Scooli",
     imageClassName: "group-hover:scale-105",
   },
   {
     name: "Sílvia Valério",
+    role: "Advisor Pedagógica · Professora do 1.º ciclo",
     image: "/team/silvia.jpg",
     location: "Lisboa",
+    alt: "Sílvia Valério, Advisor Pedagógica da Scooli",
     imageClassName: "group-hover:scale-105",
   },
 ];
@@ -174,7 +237,6 @@ function PolaroidCard({
 
 function HeroSection() {
   const ref = useScrollReveal({ stagger: 0.12, y: 20, start: "top 100%" });
-  const t = useTranslations("about.hero");
 
   return (
     <section className="relative isolate pt-8 sm:pt-10">
@@ -182,20 +244,22 @@ function HeroSection() {
       <Container ref={ref} className="pb-14 pt-10 sm:pb-16 lg:pb-20">
         <div className="space-y-6">
           <div data-reveal>
-            <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
+            <MarketingSectionBadge>Sobre nós</MarketingSectionBadge>
           </div>
           <div className="max-w-4xl space-y-4">
             <h1
               data-reveal
               className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl"
             >
-              {t("title")}
+              A Scooli existe para devolver tempo aos professores
             </h1>
             <p
               data-reveal
               className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl"
             >
-              {t("description")}
+              Estamos a reduzir o trabalho repetitivo da preparação de aulas e a
+              aproximar uma comunidade que muitas vezes trabalha sozinha —
+              sempre com o professor no controlo do resultado final.
             </p>
           </div>
         </div>
@@ -208,12 +272,6 @@ function StorySection() {
   const ref = useScrollReveal({ stagger: 0.14, y: 26 });
   const timelineRef = useRef<HTMLOListElement>(null);
   const lineRef = useRef<HTMLSpanElement>(null);
-  const t = useTranslations("about.story");
-  const chapters = t.raw("chapters") as { title: string; description: string }[];
-  const storyChapters = chapters.map((chapter, index) => ({
-    ...chapter,
-    icon: storyChapterIcons[index]?.icon ?? storyChapterIcons[storyChapterIcons.length - 1].icon,
-  }));
 
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
@@ -270,9 +328,9 @@ function StorySection() {
         <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div className="space-y-8">
             <div data-reveal className="space-y-4">
-              <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
+              <MarketingSectionBadge>A nossa história</MarketingSectionBadge>
               <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                {t("title")}
+                Começou com os professores à nossa volta
               </h2>
             </div>
 
@@ -308,14 +366,14 @@ function StorySection() {
           <div data-reveal className="relative hidden h-[620px] lg:block">
             <PolaroidCard
               src="/team/miguel.jpg"
-              alt={t("miguelAlt")}
-              caption={t("miguelCaption")}
+              alt="Miguel Rodrigues, fundador da Scooli"
+              caption="Miguel · Santa Maria da Feira"
               className="absolute left-0 top-0 z-10 w-56 -rotate-6"
             />
             <PolaroidCard
               src="/team/pedro.jpeg"
-              alt={t("pedroAlt")}
-              caption={t("pedroCaption")}
+              alt="Pedro Rocha, co-fundador da Scooli"
+              caption="Pedro · Vila Nova de Gaia"
               className="absolute right-2 top-10 z-10 w-56 rotate-[5deg]"
               imageClassName="scale-[1.28]"
             />
@@ -329,13 +387,13 @@ function StorySection() {
                   playsInline
                   preload="none"
                   disablePictureInPicture
-                  aria-label={t("videoAria")}
+                  aria-label="Demonstração da criação de um teste na Scooli"
                 >
                   <source src="/videos/test-creation.mp4" type="video/mp4" />
                 </video>
               </div>
               <figcaption className="mt-3 text-center text-xs font-semibold text-slate-600">
-                {t("videoCaption")}
+                Scooli em ação · um teste a ganhar forma
               </figcaption>
             </figure>
           </div>
@@ -343,14 +401,14 @@ function StorySection() {
           <div className="grid grid-cols-2 gap-4 lg:hidden">
             <PolaroidCard
               src="/team/miguel.jpg"
-              alt={t("miguelAlt")}
-              caption={t("miguelCaption")}
+              alt="Miguel Rodrigues, fundador da Scooli"
+              caption="Miguel · Santa Maria da Feira"
               className="-rotate-2"
             />
             <PolaroidCard
               src="/team/pedro.jpeg"
-              alt={t("pedroAlt")}
-              caption={t("pedroCaption")}
+              alt="Pedro Rocha, co-fundador da Scooli"
+              caption="Pedro · Vila Nova de Gaia"
               className="rotate-2"
               imageClassName="scale-[1.28]"
             />
@@ -363,33 +421,10 @@ function StorySection() {
 
 function MetricsSection() {
   const ref = useScrollReveal({ stagger: 0.08, y: 16 });
-  const t = useTranslations("about.metrics");
-  const metrics = [
-    {
-      value: PUBLIC_IMPACT_METRICS.activeTeachers.minValue,
-      suffix: "+",
-      label: t("activeTeachers"),
-    },
-    {
-      value: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue,
-      suffix: "+",
-      label: t("generatedDocuments"),
-    },
-    {
-      value: PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue,
-      suffix: "h+",
-      label: t("weeklyHoursSaved"),
-    },
-    {
-      value: PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue,
-      suffix: "+",
-      label: t("adaptedMaterials"),
-    },
-  ];
 
   return (
     <section
-      aria-label={t("eyebrow")}
+      aria-label="A Scooli hoje"
       className="border-y border-slate-200/70 bg-white py-12 sm:py-14"
     >
       <Container ref={ref} className="space-y-8">
@@ -397,7 +432,7 @@ function MetricsSection() {
           data-reveal
           className="text-center text-sm font-semibold uppercase tracking-[0.18em] text-slate-400"
         >
-          {t("eyebrow")}
+          A Scooli hoje
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-14 gap-y-8">
           {metrics.map((metric) => (
@@ -418,25 +453,21 @@ function MetricsSection() {
 
 function MissionSection() {
   const ref = useScrollReveal({ stagger: 0.12, y: 24 });
-  const t = useTranslations("about.mission");
-  const points = t.raw("points") as { title: string; description: string }[];
-  const missionPoints = points.map((point, index) => ({
-    ...point,
-    icon: missionPointIcons[index] ?? missionPointIcons[missionPointIcons.length - 1],
-  }));
 
   return (
     <section className="py-14 sm:py-16 lg:py-20">
       <Container ref={ref} className="space-y-10">
         <div data-reveal className="mx-auto max-w-3xl space-y-4 text-center">
           <div className="flex justify-center">
-            <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
+            <MarketingSectionBadge>Missão</MarketingSectionBadge>
           </div>
           <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-            {t("title")}
+            Aliviar o lado mais pesado do trabalho docente
           </h2>
           <p className="text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-            {t("description")}
+            A IA deve ser prática, útil e respeitadora do papel do professor. E
+            a missão não acaba na automação: queremos uma comunidade onde os
+            professores encontrem boas bases e sintam menos isolamento.
           </p>
         </div>
 
@@ -469,30 +500,26 @@ function MissionSection() {
 
 function TeamSection() {
   const ref = useScrollReveal({ stagger: 0.12, y: 24 });
-  const t = useTranslations("about.team");
-  const memberContent = t.raw("members") as { role: string; alt: string }[];
-  const teamWithContent = team.map((member, index) => ({
-    ...member,
-    ...(memberContent[index] ?? { role: "", alt: member.name }),
-  }));
 
   return (
     <section className="bg-white py-14 sm:py-16 lg:py-20">
       <Container ref={ref} className="space-y-10">
         <div data-reveal className="mx-auto max-w-3xl space-y-4 text-center">
           <div className="flex justify-center">
-            <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
+            <MarketingSectionBadge>Equipa</MarketingSectionBadge>
           </div>
           <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-            {t("title")}
+            Quem está a construir a Scooli
           </h2>
           <p className="text-base leading-8 text-[color:var(--scooli-muted)]">
-            {t("description")}
+            Dois engenheiros de software e IA, um responsável de crescimento e
+            uma professora como advisor pedagógica — a construir a Scooli em
+            contacto direto com professores portugueses.
           </p>
         </div>
 
         <div className="mx-auto grid max-w-6xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {teamWithContent.map((member) => (
+          {team.map((member) => (
             <div
               key={member.name}
               data-reveal
@@ -532,21 +559,20 @@ function TeamSection() {
 
 function FinalCtaSection() {
   const ref = useScrollReveal({ y: 20 });
-  const t = useTranslations("about.finalCta");
 
   return (
     <section className="py-14 sm:py-16 lg:py-20">
       <Container ref={ref}>
         <div data-reveal>
           <PageCtaBanner
-            title={t("title")}
-            description={t("description")}
+            title="Quer fazer parte desta história?"
+            description="Junte-se a 300+ professores que já preparam aulas com a Scooli. Gratuito, sem cartão, sem compromisso."
             primaryEventProperties={{
               cta_id: "about_final_cta_start_free",
               placement: "about_final_cta",
             }}
             secondaryHref="/contacto"
-            secondaryLabel={t("secondaryLabel")}
+            secondaryLabel="Falar connosco"
             secondaryEventProperties={{
               cta_id: "about_final_cta_contact",
               placement: "about_final_cta",

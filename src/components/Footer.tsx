@@ -1,33 +1,27 @@
-import type { Locale } from "@/i18n/routing";
-import { APP_URL, appSignUpUrl } from "@/lib/seo";
+import { APP_URL } from "@/lib/seo";
 import { Facebook, Instagram } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { Container } from "./Container";
 import { EmailContact } from "./EmailContact";
 import { TrackedLink } from "./TrackedLink";
 
-/**
- * `href` values are the internal (Portuguese) pathname keys from
- * `src/i18n/routing.ts`; `TrackedLink` swaps in the English slug on `/en`.
- */
 const primaryLinks = [
-  { labelKey: "teachers", href: "/professores" },
-  { labelKey: "aiForTeachers", href: "/ia-para-professores" },
-  { labelKey: "schools", href: "/escolas" },
-  { labelKey: "recommend", href: "/recomendar-instituicao" },
-  { labelKey: "library", href: "/biblioteca" },
-  { labelKey: "tools", href: "/ferramentas" },
-  { labelKey: "pricing", href: "/precos" },
-  { labelKey: "trust", href: "/confianca" },
-  { labelKey: "about", href: "/sobre" },
-] as const;
+  { label: "Professores", href: "/professores" },
+  { label: "IA para professores", href: "/ia-para-professores" },
+  { label: "Escolas", href: "/escolas" },
+  { label: "Recomendar a Scooli", href: "/recomendar-instituicao" },
+  { label: "Biblioteca", href: "/biblioteca" },
+  { label: "Ferramentas", href: "/ferramentas" },
+  { label: "Preços", href: "/precos" },
+  { label: "Confiança e Privacidade", href: "/confianca" },
+  { label: "Sobre", href: "/sobre" },
+];
 
 const legalLinks = [
-  { labelKey: "contact", href: "/contacto" },
-  { labelKey: "privacy", href: "/privacy" },
-  { labelKey: "terms", href: "/terms" },
-] as const;
+  { label: "Contacto", href: "/contacto" },
+  { label: "Política de Privacidade", href: "/privacy" },
+  { label: "Termos de Utilização", href: "/terms" },
+];
 
 const socialLinks = [
   {
@@ -43,10 +37,6 @@ const socialLinks = [
 ];
 
 export function Footer() {
-  const locale = useLocale() as Locale;
-  const t = useTranslations("footer");
-  const tCommon = useTranslations("common");
-  const tNav = useTranslations("nav");
   const year = new Date().getFullYear();
 
   return (
@@ -61,17 +51,17 @@ export function Footer() {
                 location: "footer_logo",
                 link_label: "home_logo",
               }}
-              aria-label={t("homeAria")}
+              aria-label="Scooli - Página inicial"
               className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
             >
-              <Image src="/scooli.svg" alt={tNav("logoAlt")} width={100} height={40} />
+              <Image src="/scooli.svg" alt="Logótipo Scooli" width={100} height={40} />
             </TrackedLink>
             <p className="max-w-md text-sm leading-7 text-[color:var(--scooli-muted)]">
-              {t("tagline")}
+              Feito em Portugal para professores que querem preparar melhor, adaptar mais depressa e recuperar tempo.
             </p>
             <div className="flex flex-wrap gap-2">
               <TrackedLink
-                href={appSignUpUrl(locale)}
+                href={`${APP_URL}/sign-up`}
                 eventName="marketing_cta_clicked"
                 eventProperties={{
                   cta_id: "footer_start_free",
@@ -79,7 +69,7 @@ export function Footer() {
                 }}
                 className="rounded-full bg-[color:var(--scooli-primary)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[color:var(--scooli-primary-strong)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
               >
-                {tCommon("startFree")}
+                Começar gratuitamente
               </TrackedLink>
               <TrackedLink
                 href="/escolas"
@@ -90,7 +80,7 @@ export function Footer() {
                 }}
                 className="rounded-full border border-[color:var(--scooli-border)] px-4 py-2 text-sm font-semibold text-[color:var(--scooli-ink)] transition hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
               >
-                {tCommon("forSchools")}
+                Para escolas
               </TrackedLink>
             </div>
             <div className="flex items-center gap-3 pt-1">
@@ -108,7 +98,7 @@ export function Footer() {
                     }}
                     target="_blank"
                     rel="noreferrer"
-                    aria-label={t("socialAria", { network: social.label })}
+                    aria-label={`${social.label} da Scooli`}
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[color:var(--scooli-border)] text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:bg-[color:var(--scooli-accent)] hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
                     <Icon className="h-4 w-4" />
@@ -119,8 +109,8 @@ export function Footer() {
           </div>
 
           <div className="grid gap-8 sm:grid-cols-2">
-            <nav aria-label={t("exploreHeading")}>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">{t("exploreHeading")}</p>
+            <nav aria-label="Explorar">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Explorar</p>
               <div className="mt-4 grid gap-2">
                 {primaryLinks.map((link) => (
                   <TrackedLink
@@ -129,17 +119,17 @@ export function Footer() {
                     eventName="marketing_navigation_clicked"
                     eventProperties={{
                       location: "footer_primary_links",
-                      link_label: link.labelKey,
+                      link_label: link.label.toLowerCase(),
                     }}
                     className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
-                    {t(`links.${link.labelKey}`)}
+                    {link.label}
                   </TrackedLink>
                 ))}
               </div>
             </nav>
-            <nav aria-label={t("legalHeading")}>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">{t("legalHeading")}</p>
+            <nav aria-label="Legal e contacto">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">Legal e contacto</p>
               <div className="mt-4 grid gap-2">
                 {legalLinks.map((link) => (
                   <TrackedLink
@@ -148,11 +138,11 @@ export function Footer() {
                     eventName="marketing_navigation_clicked"
                     eventProperties={{
                       location: "footer_legal_links",
-                      link_label: link.labelKey,
+                      link_label: link.label.toLowerCase(),
                     }}
                     className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                   >
-                    {t(`links.${link.labelKey}`)}
+                    {link.label}
                   </TrackedLink>
                 ))}
                 <TrackedLink
@@ -164,7 +154,7 @@ export function Footer() {
                   }}
                   className="rounded-md text-sm text-[color:var(--scooli-muted)] transition hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
                 >
-                  {tCommon("signIn")}
+                  Entrar
                 </TrackedLink>
                 <EmailContact
                   className="px-0 py-0 text-sm text-[color:var(--scooli-muted)] hover:bg-transparent hover:text-[color:var(--scooli-primary)]"
@@ -177,8 +167,7 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-3 border-t border-[color:var(--scooli-border)] pt-6 text-xs text-[color:var(--scooli-muted)] sm:flex-row sm:items-center sm:justify-between">
-          {/* Passed as a string so ICU does not group the digits ("2.026"). */}
-          <p>{t("rights", { year: String(year) })}</p>
+          <p>© {year} Scooli. Todos os direitos reservados.</p>
         </div>
       </Container>
     </footer>

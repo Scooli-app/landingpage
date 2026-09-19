@@ -12,17 +12,7 @@ import { captureMarketingEvent } from "@/lib/analytics";
 import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { APP_URL } from "@/lib/seo";
 import { ArrowRight, PartyPopper, Sparkles, Tag } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
-
-/**
- * Portuguese writes €4,99 and English €4.99 — matches the formatting already
- * used for the pricing teaser, full pricing page and promo banner.
- */
-function formatEuro(locale: string, cents: number): string {
-  const value = (cents / 100).toFixed(2);
-  return locale === "en" ? `€${value}` : `€${value.replace(".", ",")}`;
-}
 
 // "Regresso às Aulas 2026" announcement modal for the marketing site. Shown
 // once per device: once dismissed (X, overlay, Esc, "Talvez mais tarde", or by
@@ -49,12 +39,8 @@ function markDismissed(): void {
 }
 
 export function PromoModal() {
-  const t = useTranslations("promoModal");
-  const locale = useLocale();
   const [open, setOpen] = useState(false);
   const convertingRef = useRef(false);
-  const monthlyPrice = formatEuro(locale, PROMO_PRICE_CENTS.monthly);
-  const annualPrice = formatEuro(locale, PROMO_PRICE_CENTS.annual);
 
   useEffect(() => {
     if (!isPromoActive() || wasDismissed()) {
@@ -111,10 +97,11 @@ export function PromoModal() {
 
           <DialogHeader className="items-center text-center sm:text-center">
             <DialogTitle className="text-2xl font-bold text-slate-900">
-              {t("title")}
+              Regresso às Aulas 2026
             </DialogTitle>
             <DialogDescription className="text-slate-500">
-              {t("description", { price: monthlyPrice })}
+              Scooli Pro por apenas 4,99€/mês se ativar durante a promoção — e
+              fica com este preço para sempre.
             </DialogDescription>
           </DialogHeader>
         </div>
@@ -126,10 +113,10 @@ export function PromoModal() {
             </div>
             <div>
               <p className="text-sm font-semibold text-slate-900">
-                {t("unlimitedTitle")}
+                Gerações ilimitadas
               </p>
               <p className="text-xs text-slate-500">
-                {t("unlimitedDescription")}
+                Acesso a todas as funcionalidades Pro
               </p>
             </div>
           </div>
@@ -140,10 +127,10 @@ export function PromoModal() {
             </div>
             <div>
               <p className="text-sm font-semibold text-slate-900">
-                {t("lockedPriceTitle")}
+                Preço bloqueado para sempre
               </p>
               <p className="text-xs text-slate-500">
-                {t("lockedPriceDescription")}
+                Sem aumentos depois de a promoção terminar
               </p>
             </div>
           </div>
@@ -156,7 +143,7 @@ export function PromoModal() {
             }
             className="group flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-bold text-white shadow-md transition-all hover:shadow-lg hover:shadow-[#6753FF]/25"
           >
-            {t("activateMonthly", { price: monthlyPrice })}
+            Ativar por 4,99€/mês
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <button
@@ -166,14 +153,14 @@ export function PromoModal() {
             }
             className="mt-3 w-full py-1 text-sm font-medium text-[color:var(--scooli-primary)] transition-colors hover:text-[#4E3BC0]"
           >
-            {t("preferAnnual", { price: annualPrice })}
+            Prefiro o anual por 47,90€
           </button>
           <button
             type="button"
             onClick={() => handleOpenChange(false)}
             className="mt-1 w-full py-1 text-sm text-slate-500 transition-colors hover:text-slate-700"
           >
-            {t("maybeLater")}
+            Talvez mais tarde
           </button>
         </div>
       </DialogContent>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -13,10 +13,57 @@ import {
   Shield,
   Users,
 } from "lucide-react";
-import { Link } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
+
+type Language = "pt" | "en";
+
+function LanguageToggle({
+  value,
+  onChange,
+}: {
+  value: Language;
+  onChange: (next: Language) => void;
+}) {
+  const baseBtn =
+    "px-4 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-[#6753FF]";
+
+  return (
+    <div
+      className="inline-flex items-center gap-1 rounded-xl border border-slate-200 bg-white/80 p-1 backdrop-blur-sm"
+      role="tablist"
+      aria-label="Language"
+    >
+      <button
+        type="button"
+        role="tab"
+        aria-selected={value === "pt"}
+        className={`${baseBtn} ${
+          value === "pt"
+            ? "bg-[#6753FF] text-white"
+            : "text-slate-700 hover:bg-white"
+        }`}
+        onClick={() => onChange("pt")}
+      >
+        Português
+      </button>
+      <button
+        type="button"
+        role="tab"
+        aria-selected={value === "en"}
+        className={`${baseBtn} ${
+          value === "en"
+            ? "bg-[#6753FF] text-white"
+            : "text-slate-700 hover:bg-white"
+        }`}
+        onClick={() => onChange("en")}
+      >
+        English
+      </button>
+    </div>
+  );
+}
 
 function SectionCard({
   icon,
@@ -36,9 +83,11 @@ function SectionCard({
           <div className="inline-flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600">
             {icon}
           </div>
-          <div className="flex-1 space-y-3 text-slate-600">
-            <h2 className="text-xl font-bold text-slate-900">{title}</h2>
-            {children}
+          <div className="flex-1">
+            <h2 className="mb-3 text-xl font-bold text-slate-900">{title}</h2>
+            <div className="space-y-4 text-slate-600 leading-relaxed">
+              {children}
+            </div>
           </div>
         </div>
       </CardContent>
@@ -46,55 +95,11 @@ function SectionCard({
   );
 }
 
-function BulletList({ items, style = "disc" }: { items: string[]; style?: "disc" | "alpha" }) {
-  return (
-    <ul
-      className={
-        style === "alpha"
-          ? "ml-4 list-[lower-alpha] list-inside space-y-2"
-          : "list-disc list-inside space-y-2"
-      }
-    >
-      {items.map((item) => (
-        <li key={item}>{item}</li>
-      ))}
-    </ul>
-  );
-}
-
-const sectionIcons = [
-  <Shield key="1" className="h-6 w-6 text-white" />,
-  <Users key="2" className="h-6 w-6 text-white" />,
-  <AlertTriangle key="3" className="h-6 w-6 text-white" />,
-  <FileText key="4" className="h-6 w-6 text-white" />,
-  <Shield key="5" className="h-6 w-6 text-white" />,
-  <Coins key="6" className="h-6 w-6 text-white" />,
-  <Scale key="7" className="h-6 w-6 text-white" />,
-  <Gavel key="8" className="h-6 w-6 text-white" />,
-  <Mail key="9" className="h-6 w-6 text-white" />,
-];
-
-/**
- * The legal body below is rendered verbatim in Portuguese regardless of site
- * locale — see CLAUDE.md: mistranslating legal/GDPR terms is a liability, not
- * a copy problem. Only the page chrome (title, tagline, back link, and the
- * disclaimer shown to English readers) is authored per locale.
- */
 export function TermsOfUse() {
   const router = useRouter();
-  const locale = useLocale();
-  const t = useTranslations("termsOfUse");
-  const isEnglish = locale === "en";
-
-  const section2Items = t.raw("sections.section2.items") as string[];
-  const section3Items = t.raw("sections.section3.items") as string[];
-  const section4Items = t.raw("sections.section4.items") as string[];
-  const section5Items = t.raw("sections.section5.items") as string[];
-  const section6Items = t.raw("sections.section6.items") as string[];
-  const section7AbuseItems = t.raw("sections.section7.abuseBox.items") as string[];
-  const section7AlphaItems = t.raw("sections.section7.alphaItems") as string[];
-  const section8Items = t.raw("sections.section8.items") as string[];
-  const section1Paragraphs = t.raw("sections.section1.paragraphs") as string[];
+  const [language, setLanguage] = useState<Language>("pt");
+  const lastUpdated = "5 de Janeiro de 2026";
+  const lastUpdatedEn = "January 5, 2026";
 
   return (
     <div className="mx-auto w-full max-w-4xl">
@@ -107,7 +112,7 @@ export function TermsOfUse() {
             className="mb-8 inline-flex items-center text-slate-600 transition-colors duration-200 hover:text-slate-900"
           >
             <ArrowLeft className="mr-2 h-4 w-4" />
-            {t("header.backLabel")}
+            {language === "pt" ? "Voltar" : "Go back"}
           </button>
         </div>
 
@@ -116,133 +121,534 @@ export function TermsOfUse() {
         </div>
 
         <h1 className="mb-4 text-3xl font-bold text-slate-900 md:text-4xl">
-          {t("header.title")}
+          Termos de Utilização
         </h1>
-        <p className="mx-auto max-w-2xl text-slate-600 leading-relaxed">
-          {t("header.tagline")}
-        </p>
+        {language === "pt" ? (
+          <p className="mx-auto max-w-2xl text-slate-600 leading-relaxed">
+            Estes Termos regulam o acesso e utilização do website e (quando
+            disponível) da aplicação Scooli, incluindo funcionalidades de
+            geração de conteúdos e componentes comunitários.
+          </p>
+        ) : (
+          <p className="mx-auto max-w-2xl text-slate-600 leading-relaxed">
+            These Terms govern access to and use of the Scooli website and (when
+            available) the Scooli app, including AI content generation and
+            community features.
+          </p>
+        )}
 
         <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm text-slate-600 backdrop-blur-sm">
           <Calendar className="h-4 w-4" />
-          {t("header.lastUpdated", { date: t("header.lastUpdatedValue") })}
+          {language === "pt"
+            ? `Última atualização: ${lastUpdated}`
+            : `Last updated: ${lastUpdatedEn}`}
+        </div>
+
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <LanguageToggle value={language} onChange={setLanguage} />
         </div>
       </div>
 
-      {isEnglish && (
-        <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
-          {t("disclaimer")}
-        </div>
-      )}
-
-      {/* Content — legal body stays in Portuguese for every locale */}
+      {/* Content */}
       <div className="space-y-8">
-        <SectionCard icon={sectionIcons[0]} title={t("sections.section1.title")}>
-          {section1Paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </SectionCard>
+        {language === "pt" ? (
+          <>
+            <SectionCard
+              icon={<Shield className="h-6 w-6 text-white" />}
+              title="1) Aceitação dos Termos"
+            >
+            <p>
+              Ao aceder ou utilizar a Scooli, concorda com estes Termos. Se não
+              concordar, não deve utilizar o serviço.
+            </p>
+            <p>
+              Estes Termos aplicam-se ao website, a eventuais versões beta e à
+              aplicação Scooli, bem como a funcionalidades associadas (por
+              exemplo, biblioteca comunitária).
+            </p>
+          </SectionCard>
 
-        <SectionCard icon={sectionIcons[1]} title={t("sections.section2.title")}>
-          <p>{t("sections.section2.intro")}</p>
-          <BulletList items={section2Items} />
-        </SectionCard>
-
-        <SectionCard icon={sectionIcons[2]} title={t("sections.section3.title")}>
-          <p>{t("sections.section3.intro")}</p>
-          <BulletList items={section3Items} />
-        </SectionCard>
-
-        <SectionCard icon={sectionIcons[3]} title={t("sections.section4.title")}>
-          <p>{t("sections.section4.intro")}</p>
-          <BulletList items={section4Items} />
-        </SectionCard>
-
-        <SectionCard icon={sectionIcons[4]} title={t("sections.section5.title")}>
-          <p>{t("sections.section5.intro")}</p>
-          <BulletList items={section5Items} />
-        </SectionCard>
-
-        <SectionCard icon={sectionIcons[5]} title={t("sections.section6.title")}>
-          <p>{t("sections.section6.intro")}</p>
+            <SectionCard
+              icon={<Users className="h-6 w-6 text-white" />}
+              title="2) O Serviço e Contas"
+            >
+          <p>
+            A Scooli é um produto de tecnologia educativa para apoiar professores
+            em Portugal na criação e organização de recursos pedagógicos.
+          </p>
           <ul className="list-disc list-inside space-y-2">
-            {section6Items.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
             <li>
-              {t.rich("sections.section6.contactItem", {
-                email: (chunks) => (
-                  <a
-                    href="mailto:info@scooli.app"
-                    className="underline transition-colors duration-200 hover:text-slate-900"
-                  >
-                    {chunks}
-                  </a>
-                ),
-              })}
+              Poderá ser necessário criar uma conta para aceder a determinadas
+              funcionalidades.
+            </li>
+            <li>
+              Deve fornecer informação verdadeira e manter os seus dados
+              atualizados.
+            </li>
+            <li>
+              É responsável pela confidencialidade das suas credenciais e por
+              qualquer atividade realizada na sua conta.
             </li>
           </ul>
         </SectionCard>
 
-        <SectionCard
-          icon={sectionIcons[6]}
-          id="uso-justo"
-          title={t("sections.section7.title")}
-        >
-          <p>{t("sections.section7.paragraph1")}</p>
+            <SectionCard
+              icon={<AlertTriangle className="h-6 w-6 text-white" />}
+              title="3) Uso Aceitável"
+            >
+          <p>Compromete-se a não:</p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>Usar o serviço para fins ilegais, fraudulentos ou abusivos.</li>
+            <li>
+              Carregar, gerar, partilhar ou solicitar conteúdos que violem
+              direitos de terceiros (ex.: direitos de autor, privacidade).
+            </li>
+            <li>
+              Tentar contornar limites de segurança, explorar vulnerabilidades
+              ou interferir com o funcionamento do serviço.
+            </li>
+            <li>
+              Partilhar dados pessoais de alunos (ou outros menores) sem base
+              legal e consentimentos aplicáveis.
+            </li>
+          </ul>
+        </SectionCard>
+
+            <SectionCard
+              icon={<FileText className="h-6 w-6 text-white" />}
+              title="4) Conteúdos do Utilizador e Biblioteca Comunitária"
+            >
           <p>
-            {t.rich("sections.section7.paragraph2", {
-              strong: (chunks) => <strong>{chunks}</strong>,
-            })}
+            Se o serviço permitir carregar ou partilhar recursos, é responsável
+            por garantir que tem direitos para o fazer.
           </p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              Ao submeter conteúdos para áreas comunitárias, concede à Scooli uma
+              licença não exclusiva para alojar, reproduzir e disponibilizar esse
+              conteúdo no âmbito do serviço.
+            </li>
+            <li>
+              Poderemos moderar, remover ou restringir conteúdos que violem estes
+              Termos, a lei ou padrões de qualidade/segurança da comunidade.
+            </li>
+          </ul>
+        </SectionCard>
 
-          <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <p className="mb-2 font-semibold text-amber-800">
-              {t("sections.section7.abuseBox.heading")}
-            </p>
-            <ul className="list-disc list-inside space-y-2 text-slate-700">
-              {section7AbuseItems.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
+            <SectionCard
+              icon={<Shield className="h-6 w-6 text-white" />}
+              title="5) Conteúdo Gerado por IA"
+            >
+          <p>
+            A Scooli pode gerar sugestões e materiais através de inteligência
+            artificial. Estes resultados podem conter imprecisões.
+          </p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              Deve rever e validar todo o conteúdo antes de o utilizar em sala de
+              aula, avaliações ou comunicações oficiais.
+            </li>
+            <li>
+              A Scooli não garante a exatidão, adequação curricular ou ausência
+              de erros nos conteúdos gerados.
+            </li>
+          </ul>
+        </SectionCard>
 
-          <p className="mt-4">{t("sections.section7.paragraph3")}</p>
-          <BulletList items={section7AlphaItems} style="alpha" />
-          <p className="mt-4 text-sm text-slate-500">
-            {t("sections.section7.paragraph4")}
+            <SectionCard
+              icon={<Coins className="h-6 w-6 text-white" />}
+              title="6) Créditos, Plano Pro e Cancelamentos"
+            >
+              <p>
+                Algumas funcionalidades dependem do limite de créditos de cada plano.
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>
+                  O plano gratuito inclui 20 créditos por mês.
+                </li>
+                <li>
+                  Preços, funcionalidades e limites podem ser atualizados ao longo
+                  do tempo.
+                </li>
+                <li>
+                  O acesso &ldquo;ilimitado&rdquo; do Plano Pro está sujeito à
+                  Política de Uso Justo descrita na secção 7.
+                </li>
+                <li>
+                  Para gestão ou cancelamento de subscrição, contacte-nos em{" "}
+                  <a
+                    href="mailto:info@scooli.app"
+                    className="underline transition-colors duration-200 hover:text-slate-900"
+                  >
+                    info@scooli.app
+                  </a>
+                  .
+                </li>
+              </ul>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Scale className="h-6 w-6 text-white" />}
+              id="uso-justo"
+              title="7) Política de Uso Justo (Fair Use)"
+            >
+              <p>
+                O Plano Pro da Scooli oferece capacidade de geração de conteúdos
+                de forma ilimitada para fins de uso pessoal e profissional do
+                docente subscritor.
+              </p>
+              <p>
+                Para garantir a estabilidade da plataforma e a qualidade do
+                serviço para todos os utilizadores, a Scooli aplica uma{" "}
+                <strong>Política de Uso Justo</strong>. Esta política destina-se
+                a evitar utilizações abusivas, automáticas ou não-humanas que
+                coloquem em causa a integridade do sistema.
+              </p>
+
+              <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="font-semibold text-amber-800 mb-2">
+                  Considera-se uso abusivo:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-slate-700">
+                  <li>A partilha de credenciais de acesso com terceiros;</li>
+                  <li>
+                    A utilização de scripts, bots ou qualquer forma de automação
+                    para geração massiva de conteúdos;
+                  </li>
+                  <li>
+                    A utilização da conta por múltiplos utilizadores em
+                    simultâneo;
+                  </li>
+                  <li>
+                    Qualquer outra forma de utilização que exceda manifestamente
+                    o padrão de uso individual humano.
+                  </li>
+                </ul>
+              </div>
+
+              <p className="mt-4">
+                Caso o volume de utilização de um utilizador exceda
+                manifestamente a média expectável para um uso individual humano
+                num período de 30 dias, a Scooli reserva-se o direito de:
+              </p>
+              <ul className="list-[lower-alpha] list-inside space-y-2 ml-4">
+                <li>
+                  Ajustar temporariamente a velocidade de processamento ou o
+                  modelo de IA utilizado;
+                </li>
+                <li>
+                  Contactar o utilizador para validar a conformidade da
+                  utilização;
+                </li>
+                <li>
+                  Suspender temporariamente o acesso em casos extremos de
+                  violação técnica;
+                </li>
+                <li>
+                  Rescindir a subscrição em caso de violação reiterada ou grave,
+                  com devolução proporcional do valor não utilizado.
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500">
+                A aplicação desta política será sempre proporcional e precedida,
+                sempre que possível, de contacto com o utilizador para
+                esclarecimento.
+              </p>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Gavel className="h-6 w-6 text-white" />}
+              title="8) Propriedade Intelectual, Responsabilidade e Lei Aplicável"
+            >
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              A Scooli (incluindo marca, software e design) é protegida por
+              direitos de propriedade intelectual.
+            </li>
+            <li>
+              O serviço é fornecido “tal como está” e pode estar sujeito a
+              indisponibilidades, especialmente em fases beta.
+            </li>
+            <li>
+              Na medida permitida por lei, a Scooli não será responsável por
+              perdas indiretas ou consequenciais decorrentes do uso do serviço.
+            </li>
+            <li>
+              Estes Termos regem-se pela lei portuguesa, sem prejuízo de normas
+              imperativas aplicáveis.
+            </li>
+          </ul>
+          <p>
+            Para privacidade e dados pessoais, consulte a{" "}
+            <Link
+              href="/privacy"
+              className="underline transition-colors duration-200 hover:text-slate-900"
+            >
+              Política de Privacidade
+            </Link>
+            .
           </p>
         </SectionCard>
 
-        <SectionCard icon={sectionIcons[7]} title={t("sections.section8.title")}>
-          <BulletList items={section8Items} />
-          <p>
-            {t.rich("sections.section8.closingParagraph", {
-              privacyLink: (chunks) => (
-                <Link
-                  href="/privacy"
-                  className="underline transition-colors duration-200 hover:text-slate-900"
-                >
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-        </SectionCard>
-
-        <SectionCard icon={sectionIcons[8]} title={t("sections.section9.title")}>
-          <p>
-            {t.rich("sections.section9.paragraph", {
-              email: (chunks) => (
+            <SectionCard
+              icon={<Mail className="h-6 w-6 text-white" />}
+              title="9) Contacto"
+            >
+              <p>
+                Para questões sobre estes Termos, contacte-nos em{" "}
                 <a
                   href="mailto:info@scooli.app"
                   className="underline transition-colors duration-200 hover:text-slate-900"
                 >
-                  {chunks}
+                  info@scooli.app
                 </a>
-              ),
-            })}
+                .
+              </p>
+            </SectionCard>
+          </>
+        ) : (
+          <>
+            <SectionCard
+              icon={<Shield className="h-6 w-6 text-white" />}
+              title="1) Acceptance of Terms"
+            >
+            <p>
+              By accessing or using Scooli, you agree to these Terms. If you do
+              not agree, do not use the service.
+            </p>
+            <p>
+              These Terms apply to the website, any beta versions, and the Scooli
+              app (when available), including associated features (such as a
+              community library).
+            </p>
+          </SectionCard>
+
+            <SectionCard
+              icon={<Users className="h-6 w-6 text-white" />}
+              title="2) The Service and Accounts"
+            >
+          <p>
+            Scooli is an education technology product designed to help teachers
+            in Portugal create and organize teaching resources.
+          </p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              You may need an account to access certain features.
+            </li>
+            <li>
+              You must provide accurate information and keep it up to date.
+            </li>
+            <li>
+              You are responsible for safeguarding your credentials and all
+              activity under your account.
+            </li>
+          </ul>
+        </SectionCard>
+
+            <SectionCard
+              icon={<AlertTriangle className="h-6 w-6 text-white" />}
+              title="3) Acceptable Use"
+            >
+          <p>You agree not to:</p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>Use the service for unlawful, fraudulent, or abusive purposes.</li>
+            <li>
+              Upload, generate, share, or request content that infringes third
+              party rights (e.g., copyright, privacy).
+            </li>
+            <li>
+              Attempt to bypass security controls, exploit vulnerabilities, or
+              disrupt the service.
+            </li>
+            <li>
+              Share students’ personal data (or other minors’ data) without a
+              valid legal basis and required consents.
+            </li>
+          </ul>
+        </SectionCard>
+
+            <SectionCard
+              icon={<FileText className="h-6 w-6 text-white" />}
+              title="4) User Content and Community Library"
+            >
+          <p>
+            If the service allows you to upload or share resources, you are
+            responsible for ensuring you have the rights to do so.
+          </p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              By submitting content to community areas, you grant Scooli a
+              non-exclusive license to host, reproduce, and make that content
+              available within the service.
+            </li>
+            <li>
+              We may moderate, remove, or restrict content that violates these
+              Terms, applicable law, or community quality/safety standards.
+            </li>
+          </ul>
+        </SectionCard>
+
+            <SectionCard
+              icon={<Shield className="h-6 w-6 text-white" />}
+              title="5) AI-Generated Content"
+            >
+          <p>
+            Scooli may generate suggestions and materials using artificial
+            intelligence. Outputs may contain inaccuracies.
+          </p>
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              You must review and validate all content before using it in class,
+              assessments, or official communications.
+            </li>
+            <li>
+              Scooli does not guarantee accuracy, curriculum alignment, or
+              error-free outputs.
+            </li>
+          </ul>
+        </SectionCard>
+
+            <SectionCard
+              icon={<Coins className="h-6 w-6 text-white" />}
+              title="6) Generations, Pro Plan and Cancellations"
+            >
+              <p>
+                Some features depend on the generation limits of each plan.
+              </p>
+              <ul className="list-disc list-inside space-y-2">
+                <li>
+                  The free plan includes 20 generations per month.
+                </li>
+                <li>
+                  Pricing, features, and limits may change over time.
+                </li>
+                <li>
+                  &ldquo;Unlimited&rdquo; access under the Pro Plan is subject
+                  to the Fair Use Policy described in section 7.
+                </li>
+                <li>
+                  For subscription management or cancellation, contact us at{" "}
+                  <a
+                    href="mailto:info@scooli.app"
+                    className="underline transition-colors duration-200 hover:text-slate-900"
+                  >
+                    info@scooli.app
+                  </a>
+                  .
+                </li>
+              </ul>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Scale className="h-6 w-6 text-white" />}
+              title="7) Fair Use Policy"
+            >
+              <p>
+                The Scooli Pro Plan offers unlimited content generation capacity
+                for personal and professional use by the subscribing teacher.
+              </p>
+              <p>
+                To ensure platform stability and service quality for all users,
+                Scooli applies a <strong>Fair Use Policy</strong>. This policy
+                is designed to prevent abusive, automatic, or non-human use that
+                compromises system integrity.
+              </p>
+
+              <div className="mt-4 p-4 bg-amber-50 rounded-xl border border-amber-200">
+                <p className="font-semibold text-amber-800 mb-2">
+                  The following constitutes abusive use:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-slate-700">
+                  <li>Sharing login credentials with third parties;</li>
+                  <li>
+                    Using scripts, bots, or any form of automation for mass
+                    content generation;
+                  </li>
+                  <li>Using the account by multiple users simultaneously;</li>
+                  <li>
+                    Any other form of use that manifestly exceeds the pattern of
+                    individual human use.
+                  </li>
+                </ul>
+              </div>
+
+              <p className="mt-4">
+                If a user&apos;s usage volume manifestly exceeds the expected
+                average for individual human use within a 30-day period, Scooli
+                reserves the right to:
+              </p>
+              <ul className="list-[lower-alpha] list-inside space-y-2 ml-4">
+                <li>
+                  Temporarily adjust processing speed or the AI model used;
+                </li>
+                <li>Contact the user to validate usage compliance;</li>
+                <li>
+                  Temporarily suspend access in extreme cases of technical
+                  violation;
+                </li>
+                <li>
+                  Terminate the subscription in case of repeated or serious
+                  violation, with proportional refund of unused value.
+                </li>
+              </ul>
+              <p className="mt-4 text-sm text-slate-500">
+                Application of this policy will always be proportionate and
+                preceded, whenever possible, by contact with the user for
+                clarification.
+              </p>
+            </SectionCard>
+
+            <SectionCard
+              icon={<Gavel className="h-6 w-6 text-white" />}
+              title="8) Intellectual Property, Liability and Governing Law"
+            >
+          <ul className="list-disc list-inside space-y-2">
+            <li>
+              Scooli (including brand, software, and design) is protected by
+              intellectual property laws.
+            </li>
+            <li>
+              The service is provided “as is” and may experience downtime,
+              especially during beta phases.
+            </li>
+            <li>
+              To the extent permitted by law, Scooli is not liable for indirect
+              or consequential losses arising from use of the service.
+            </li>
+            <li>
+              These Terms are governed by Portuguese law, without prejudice to
+              mandatory consumer protection rules where applicable.
+            </li>
+          </ul>
+          <p>
+            For personal data and privacy, see the{" "}
+            <Link
+              href="/privacy"
+              className="underline transition-colors duration-200 hover:text-slate-900"
+            >
+              Privacy Policy
+            </Link>
+            .
           </p>
         </SectionCard>
+
+            <SectionCard
+              icon={<Mail className="h-6 w-6 text-white" />}
+              title="9) Contact"
+            >
+              <p>
+                If you have questions about these Terms, contact us at{" "}
+                <a
+                  href="mailto:info@scooli.app"
+                  className="underline transition-colors duration-200 hover:text-slate-900"
+                >
+                  info@scooli.app
+                </a>
+                .
+              </p>
+            </SectionCard>
+          </>
+        )}
       </div>
     </div>
   );

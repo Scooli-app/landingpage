@@ -1,10 +1,5 @@
-import { getToolPages } from "@/components/marketing/data";
-import { defaultLocale } from "@/i18n/routing";
+import { toolPages } from "@/components/marketing/data";
 import { APP_URL, PRICING, PUBLIC_IMPACT_METRICS, SITE_URL } from "@/lib/seo";
-
-// llms.txt is a single, unlocalised document served at the site root, so it
-// describes the Portuguese site — the canonical one.
-const toolPages = getToolPages(defaultLocale);
 
 function buildSection(title: string, lines: string[]) {
   return [`## ${title}`, ...lines, ""].join("\n");

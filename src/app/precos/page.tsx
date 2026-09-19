@@ -1,0 +1,215 @@
+import { Container } from "@/components/Container";
+import { StructuredData } from "@/components/StructuredData";
+import { socialProof } from "@/components/homepage/data";
+import { PricingPageClient } from "@/components/marketing/PricingPageClient";
+import { getPageMetadata, getProductSchema, PRICING } from "@/lib/seo";
+import {
+  Checklist,
+  MarketingSectionHeading,
+  PageCtaBanner,
+  PageHero,
+  PublicSiteShell,
+  SurfacePanel,
+} from "@/components/marketing/shared";
+import { CreditCard, ShieldCheck, Sparkles, Star } from "lucide-react";
+
+export const metadata = getPageMetadata({
+  title: "Preços",
+  description:
+    "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas.",
+  path: "/precos",
+});
+
+const productSchema = getProductSchema(socialProof);
+const averageReviewRating = (
+  socialProof.reduce((sum, item) => sum + item.rating, 0) / socialProof.length
+).toFixed(1);
+
+function formatRating(rating: number) {
+  return rating.toFixed(1).replace(".0", "").replace(".", ",");
+}
+
+function PricingIntroCard() {
+  return (
+    <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="rounded-[24px] border border-slate-200 bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Plano gratuito
+          </p>
+          <p className="mt-2 text-2xl font-semibold text-slate-800">
+            {PRICING.free.generationsPerMonth} créditos / mês
+          </p>
+          <p className="mt-2 text-sm text-slate-500">
+            Para experimentar a Scooli com pedidos reais e perceber o fluxo de
+            trabalho.
+          </p>
+        </div>
+        <div className="rounded-[24px] border border-slate-200 bg-white p-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
+            Plano Pro
+          </p>
+          <p className="mt-2 text-2xl font-semibold text-slate-800">
+            Uso contínuo com mais liberdade
+          </p>
+          <p className="mt-2 text-sm text-slate-500">
+            Para quem quer usar a plataforma todas as semanas sem pensar em
+            limites curtos.
+          </p>
+        </div>
+      </div>
+    </SurfacePanel>
+  );
+}
+
+export default function PricingPage() {
+  return (
+    <PublicSiteShell>
+      <StructuredData id="pricing-product-schema" data={productSchema} />
+
+      <PageHero
+        eyebrow="Preços"
+        title="Preços claros para professores e um caminho próprio para escolas"
+        description="Experimente a Scooli com o plano gratuito. Se precisar de usar a plataforma todas as semanas, escolha Pro. Se representa uma escola, fale connosco para definir um piloto ou percurso institucional."
+        secondaryHref="/escolas"
+        secondaryLabel="Ver opção para escolas"
+        aside={<PricingIntroCard />}
+      >
+        <Checklist
+          items={[
+            "Plano gratuito para experimentar sem compromisso",
+            "Plano Pro para uso contínuo com mais liberdade",
+            "Escolas seguem por contacto direto com a equipa",
+          ]}
+        />
+      </PageHero>
+
+      <section className="py-20 sm:py-24 lg:py-28">
+        <Container className="grid gap-6 lg:grid-cols-3">
+          <SurfacePanel>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
+              <Sparkles className="h-5 w-5" />
+            </div>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              O que é uma geração?
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+              Na prática, uma geração é cada novo documento criado com IA. Se
+              pedires outra versão do mesmo material, isso conta como uma nova
+              geração.
+            </p>
+          </SurfacePanel>
+          <SurfacePanel>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
+              <ShieldCheck className="h-5 w-5" />
+            </div>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              Uso justo sem letras pequenas
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+              No Pro não tem um limite mensal rígido. A política de uso justo
+              existe para evitar abuso automatizado e manter a qualidade do
+              serviço para todos.
+            </p>
+          </SurfacePanel>
+          <SurfacePanel>
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
+              <CreditCard className="h-5 w-5" />
+            </div>
+            <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
+              Professores e escolas não seguem o mesmo caminho
+            </h3>
+            <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+              Professores podem começar logo. Escolas e agrupamentos têm um
+              percurso próprio, com contacto inicial e avaliação do contexto
+              antes de avançar.
+            </p>
+          </SurfacePanel>
+        </Container>
+      </section>
+
+      <PricingPageClient />
+
+      <section className="py-20 sm:py-24 lg:py-28">
+        <Container className="space-y-12">
+          <MarketingSectionHeading
+            eyebrow="Opiniões reais"
+            title="Professores já sentem diferença no uso semanal"
+            description={`Média de ${averageReviewRating.replace(".", ",")}/5 com base em ${socialProof.length} testemunhos reais já publicados na Scooli.`}
+            centered
+          />
+          <div className="grid gap-5 lg:grid-cols-3">
+            {socialProof.map((item) => (
+              <SurfacePanel key={item.quote}>
+                <div className="flex items-center gap-2 text-[color:var(--scooli-primary)]">
+                  <Star className="h-4 w-4 fill-current" />
+                  <p className="text-sm font-semibold">
+                    {formatRating(item.rating)}/5
+                  </p>
+                </div>
+                <p className="mt-4 text-base leading-8 text-[color:var(--scooli-ink)]">
+                  “{item.quote}”
+                </p>
+                <p className="mt-4 text-sm font-medium text-[color:var(--scooli-muted)]">
+                  {item.role}
+                </p>
+              </SurfacePanel>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      <section className="py-20 sm:py-24 lg:py-28">
+        <Container className="space-y-12">
+          <MarketingSectionHeading
+            eyebrow="Notas importantes"
+            title="Ajudar a decidir com mais clareza"
+            description="Em vez de esconder os detalhes, aqui tem o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional."
+            centered
+          />
+          <div className="grid gap-5 lg:grid-cols-3">
+            <SurfacePanel>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Pagamento
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                Os pagamentos são processados de forma segura. Se precisar de
+                ajuda com faturação ou subscrição, escreva-nos por email.
+              </p>
+            </SurfacePanel>
+            <SurfacePanel>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Uso justo
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                Queremos que possa trabalhar com liberdade. Só intervimos
+                quando há padrões anómalos ou automatizados que coloquem o
+                serviço em risco.
+              </p>
+            </SurfacePanel>
+            <SurfacePanel>
+              <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">
+                Escolas
+              </p>
+              <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+                Para equipas, agrupamentos ou projetos-piloto, definimos o
+                percurso caso a caso, sempre com contacto direto com a equipa.
+              </p>
+            </SurfacePanel>
+          </div>
+        </Container>
+      </section>
+
+      <section className="pb-20 sm:pb-24 lg:pb-28">
+        <Container>
+          <PageCtaBanner
+            title="Quer experimentar antes de decidir?"
+            description="Comece gratuitamente, gere alguns materiais reais e perceba se a Scooli encaixa no seu ritmo de trabalho."
+            secondaryHref="/confianca"
+            secondaryLabel="Ver confiança e privacidade"
+          />
+        </Container>
+      </section>
+    </PublicSiteShell>
+  );
+}

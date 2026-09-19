@@ -3,28 +3,19 @@
 import { Container } from "@/components/Container";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { CheckCircle2, XCircle } from "lucide-react";
-import { useTranslations } from "next-intl";
-import { painPointIcons, withIcons } from "./data";
+import { beforeAfter, painPoints } from "./data";
 import { InfoCard, SectionHeading } from "./shared";
 
 export function ProblemSolutionSection() {
-  const t = useTranslations("home.problem");
   const ref = useScrollReveal({ stagger: 0.1, y: 24 });
-
-  const painPoints = withIcons(
-    t.raw("painPoints") as { title: string; description: string }[],
-    painPointIcons,
-  );
-  const before = t.raw("before") as string[];
-  const after = t.raw("after") as string[];
 
   return (
     <section id="problema" className="py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          description={t("description")}
+          eyebrow="O problema"
+          title="Preparar aulas continua a roubar horas — e a IA genérica devolve trabalho extra"
+          description="A maioria dos professores já experimentou o ChatGPT. O problema não é usar IA — é usar uma IA que não conhece o programa português."
           centered
         />
 
@@ -40,10 +31,10 @@ export function ProblemSolutionSection() {
             className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)] sm:p-8"
           >
             <span className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-              {t("todayLabel")}
+              Hoje
             </span>
             <div className="mt-6 grid gap-3">
-              {before.map((item) => (
+              {beforeAfter.before.map((item) => (
                 <div
                   key={item}
                   className="flex items-start gap-3 rounded-[22px] border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"
@@ -60,10 +51,10 @@ export function ProblemSolutionSection() {
             className="rounded-[32px] border border-[#d9ddff] bg-[color:var(--scooli-surface-alt)] p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)] sm:p-8"
           >
             <span className="inline-flex rounded-full border border-[#d9ddff] bg-white px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">
-              {t("withScooliLabel")}
+              Com a Scooli
             </span>
             <div className="mt-6 grid gap-3">
-              {after.map((item) => (
+              {beforeAfter.after.map((item) => (
                 <div
                   key={item}
                   className="flex items-start gap-3 rounded-[22px] border border-white/80 bg-white px-4 py-3 text-sm text-slate-700"
@@ -80,7 +71,8 @@ export function ProblemSolutionSection() {
           data-reveal
           className="mx-auto max-w-2xl text-center text-sm leading-7 text-[color:var(--scooli-muted)]"
         >
-          {t("disclaimer")}
+          A IA pode falhar. Por isso, tudo o que a Scooli gera é editável e
+          passa sempre pela sua revisão antes de chegar à aula.
         </p>
       </Container>
     </section>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 
 interface HeroVideoProps {
@@ -20,7 +19,6 @@ interface HeroVideoProps {
  * a client-side IntersectionObserver lets text content paint first.
  */
 export function HeroVideo({ src, className, ariaLabel }: HeroVideoProps) {
-  const t = useTranslations("home");
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldLoad, setShouldLoad] = useState(false);
 
@@ -71,7 +69,7 @@ export function HeroVideo({ src, className, ariaLabel }: HeroVideoProps) {
           aria-label={ariaLabel}
         >
           <source src={src} type="video/mp4" />
-          {t("videoFallback")}
+          O seu navegador não suporta vídeo HTML5.
         </video>
       ) : (
         <div

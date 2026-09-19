@@ -60,7 +60,7 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     screenshots: [
       {
-        src: "/og",
+        src: "/opengraph-image",
         sizes: "1200x630",
         type: "image/png",
         label: "Scooli - Página inicial",

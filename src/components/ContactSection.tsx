@@ -11,17 +11,14 @@ import {
 } from "@/lib/analytics";
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
-import { Link } from "@/i18n/navigation";
 import { Building2, Clock3, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 import { useId, useState } from "react";
 import { toast } from "sonner";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export function ContactSection() {
-  const t = useTranslations("contact");
-  const tForm = useTranslations("contactForm");
   const formId = useId();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -71,15 +68,7 @@ export function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const nextErrors = validateContactForm(
-      { name, email, message },
-      {
-        nameRequired: tForm("nameRequired"),
-        emailRequired: tForm("emailRequired"),
-        emailInvalid: tForm("emailInvalid"),
-        messageRequired: tForm("messageRequired"),
-      },
-    );
+    const nextErrors = validateContactForm({ name, email, message });
 
     if (Object.keys(nextErrors).length > 0) {
       captureMarketingEvent("marketing_contact_form_validation_failed", {
@@ -89,7 +78,7 @@ export function ContactSection() {
       setErrors(nextErrors);
       setSubmitMessage({
         tone: "error",
-        text: t("form.validationNotice"),
+        text: "Revê os campos assinalados e tenta novamente.",
       });
 
       const firstErrorField = getFirstContactErrorField(nextErrors);
@@ -121,10 +110,10 @@ export function ContactSection() {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || t("form.fetchErrorFallback"));
+        throw new Error(errorData.error || "Erro ao enviar a mensagem. Tenta novamente.");
       }
 
-      const successMessage = t("form.successMessage");
+      const successMessage = "Mensagem enviada com sucesso. Vamos responder o mais depressa possível.";
       captureMarketingEvent("marketing_contact_form_submitted", {
         source: "contact_page",
         has_organization: Boolean(organization.trim()),
@@ -142,7 +131,7 @@ export function ContactSection() {
         error_type: getErrorType(error),
       });
       const errorMessage =
-        error instanceof Error ? error.message : t("form.genericErrorFallback");
+        error instanceof Error ? error.message : "Ocorreu um erro. Tenta novamente mais tarde.";
       toast.error(errorMessage);
       setSubmitMessage({ tone: "error", text: errorMessage });
     } finally {
@@ -157,14 +146,14 @@ export function ContactSection() {
         <div className="max-w-4xl space-y-6">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
             <MessageSquare className="h-4 w-4" />
-            {t("badge")}
+            Contacto
           </span>
           <div className="space-y-4">
             <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-              {t("title")}
+              Fala connosco
             </h1>
             <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-              {t("description")}
+              Se tem perguntas sobre a Scooli, quer falar sobre um piloto ou precisa de ajuda, use o formulário ou envie-nos um email.
             </p>
           </div>
         </div>
@@ -179,8 +168,8 @@ export function ContactSection() {
                   <Mail className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.email.title")}</p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">{t("cards.email.subtitle")}</p>
+                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Email</p>
+                  <p className="text-sm text-[color:var(--scooli-muted)]">A forma mais simples de falar connosco</p>
                 </div>
               </div>
               <div className="mt-5">
@@ -199,8 +188,8 @@ export function ContactSection() {
                   <Clock3 className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.responseTime.title")}</p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">{t("cards.responseTime.subtitle")}</p>
+                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Tempo de resposta</p>
+                  <p className="text-sm text-[color:var(--scooli-muted)]">Normalmente respondemos em 24 a 48 horas úteis.</p>
                 </div>
               </div>
             </div>
@@ -211,9 +200,9 @@ export function ContactSection() {
                   <Building2 className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.institutions.title")}</p>
+                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">Escolas e instituições</p>
                   <p className="text-sm text-[color:var(--scooli-muted)]">
-                    {t("cards.institutions.subtitle")}
+                    Se quer falar sobre pilotos, adoção institucional ou dúvidas de implementação, também pode escrever-nos por aqui.
                   </p>
                 </div>
               </div>
@@ -222,18 +211,18 @@ export function ContactSection() {
 
           <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-56px_rgba(19,35,58,0.36)] sm:p-8">
             <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-5">
-              <p className="text-sm text-[color:var(--scooli-muted)]">{t("form.requiredNote")}</p>
+              <p className="text-sm text-[color:var(--scooli-muted)]">Os campos assinalados com * são obrigatórios.</p>
 
               <div className="space-y-2">
                 <Label htmlFor={fieldIds.name} className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <User className="h-3.5 w-3.5 text-slate-400" />
-                  {t("form.nameLabel")}
+                  Nome *
                 </Label>
                 <Input
                   id={fieldIds.name}
                   name="name"
                   type="text"
-                  placeholder={t("form.namePlaceholder")}
+                  placeholder="O seu nome"
                   value={name}
                   onChange={(e) => {
                     setName(e.target.value);
@@ -257,13 +246,13 @@ export function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor={fieldIds.email} className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <Mail className="h-3.5 w-3.5 text-slate-400" />
-                  {t("form.emailLabel")}
+                  Email *
                 </Label>
                 <Input
                   id={fieldIds.email}
                   name="email"
                   type="email"
-                  placeholder={t("form.emailPlaceholder")}
+                  placeholder="o.seu.email@exemplo.com"
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
@@ -277,7 +266,7 @@ export function ContactSection() {
                   required
                 />
                 <p id={fieldIds.emailHint} className="text-xs text-slate-500">
-                  {t("form.emailHint")}
+                  Usamos o seu email apenas para responder ao pedido.
                 </p>
                 {errors.email && (
                   <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">
@@ -289,13 +278,13 @@ export function ContactSection() {
               <div className="space-y-2">
                 <Label htmlFor={fieldIds.organization} className="flex items-center gap-2 text-sm font-medium text-slate-700">
                   <Building2 className="h-3.5 w-3.5 text-slate-400" />
-                  {t("form.organizationLabel")}
+                  Organização / Escola
                 </Label>
                 <Input
                   id={fieldIds.organization}
                   name="organization"
                   type="text"
-                  placeholder={t("form.organizationPlaceholder")}
+                  placeholder="Nome da sua organização (opcional)"
                   value={organization}
                   onChange={(e) => setOrganization(e.target.value)}
                   maxLength={200}
@@ -307,12 +296,12 @@ export function ContactSection() {
 
               <div className="space-y-2">
                 <Label htmlFor={fieldIds.message} className="text-sm font-medium text-slate-700">
-                  {t("form.messageLabel")}
+                  Mensagem *
                 </Label>
                 <textarea
                   id={fieldIds.message}
                   name="message"
-                  placeholder={t("form.messagePlaceholder")}
+                  placeholder="Como podemos ajudar?"
                   value={message}
                   onChange={(e) => {
                     setMessage(e.target.value);
@@ -326,7 +315,7 @@ export function ContactSection() {
                   required
                 />
                 <p id={fieldIds.messageHint} className="text-xs text-slate-500">
-                  {t("form.messageHint")}
+                  Partilha o contexto necessário para te conseguirmos ajudar.
                 </p>
                 {errors.message && (
                   <p id={getFieldErrorId("message")} className="text-sm text-[color:var(--scooli-error)]">
@@ -358,24 +347,22 @@ export function ContactSection() {
                 {isLoading ? (
                   <div className="flex items-center gap-2">
                     <Loader2 className="h-4 w-4 animate-spin" />
-                    {t("form.submittingLabel")}
+                    A enviar...
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
                     <Send className="h-4 w-4" />
-                    {t("form.submitLabel")}
+                    Enviar mensagem
                   </div>
                 )}
               </Button>
 
               <p className="text-center text-xs text-slate-400">
-                {t.rich("form.consent", {
-                  link: (chunks) => (
-                    <Link href="/privacy" className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]">
-                      {chunks}
-                    </Link>
-                  ),
-                })}
+                Ao enviar, concorda com a nossa{" "}
+                <Link href="/privacy" className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]">
+                  Política de Privacidade
+                </Link>
+                .
               </p>
             </form>
           </div>
