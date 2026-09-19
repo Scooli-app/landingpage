@@ -12,10 +12,14 @@ import {
   SITE_NAME,
   SITE_URL,
 } from "@/lib/seo";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/i18n/routing";
 import type { Metadata, Viewport } from "next";
+import { notFound } from "next/navigation";
 import { Fraunces, Manrope } from "next/font/google";
 import type { ReactNode } from "react";
-import "./globals.css";
+import "../globals.css";
 
 const manrope = Manrope({
   subsets: ["latin"],
@@ -129,9 +133,29 @@ export const metadata: Metadata = {
 
 const schemas = getGlobalSchemas();
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({
+  children,
+  params,
+}: {
+  children: ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+
+  // A locale outside the registry is a 404, not a silent fall back to Portuguese:
+  // serving Portuguese content at /fr/ would get it indexed as French.
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+
   return (
-    <html lang="pt-PT" className={`${manrope.variable} ${fraunces.variable}`}>
+    <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`}>
       <head>
         {schemas.map((schema, index) => (
           <StructuredData
@@ -148,6 +172,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <a href="#main-content" className="skip-link">
           Saltar para o conteúdo principal
         </a>
+        <NextIntlClientProvider locale={locale} messages={messages}>
         <ReducedMotionProvider>
           <SmoothScrollProvider>
             <PromoBanner />
@@ -161,6 +186,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             />
           </SmoothScrollProvider>
         </ReducedMotionProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
