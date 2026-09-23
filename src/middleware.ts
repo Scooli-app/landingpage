@@ -30,3 +30,12 @@ export function middleware(request: NextRequest) {
 
   return NextResponse.redirect(redirectUrl, 308);
 }
+
+// Without a matcher this runs on every request (JS/CSS chunks, images, video
+// range requests, PostHog proxy calls), which burns Fluid Active CPU. Only
+// page navigations need the apex -> www redirect.
+export const config = {
+  matcher: [
+    "/((?!_next/|_vercel/|_ph/|ingest/|.*\\.(?:js|css|map|png|jpe?g|gif|webp|avif|svg|ico|mp4|webm|woff2?|ttf)$).*)",
+  ],
+};
