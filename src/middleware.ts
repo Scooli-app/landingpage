@@ -50,3 +50,21 @@ export function middleware(request: NextRequest) {
   // Portuguese stays at "/" with no prefix; other locales get "/{locale}/".
   return intlMiddleware(request);
 }
+
+/**
+ * Excludes only compiled/binary asset requests and internal path prefixes —
+ * pages, API routes, sitemap.xml, robots.txt, manifest.json, /og, etc. all
+ * still invoke this middleware unconditionally, so host canonicalization
+ * keeps applying to every URL type that matters for SEO (see
+ * SKIP_LOCALE_ROUTING above for why that has to stay a runtime check rather
+ * than live in this matcher). This exact pattern already ran in production
+ * on main for about a week with no Search Console regression before this
+ * branch was restored, which is what makes it safe to reapply here — without
+ * it, middleware runs (and burns Fluid Active CPU) on every JS/CSS chunk,
+ * image, and video range request too.
+ */
+export const config = {
+  matcher: [
+    "/((?!_next/|_vercel/|_ph/|ingest/|.*\\.(?:js|css|map|png|jpe?g|gif|webp|avif|svg|ico|mp4|webm|woff2?|ttf)$).*)",
+  ],
+};
