@@ -4,21 +4,30 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
-import { steps } from "./data";
+import { useLocale, useTranslations } from "next-intl";
+import { stepIcons, withIcons } from "./data";
 import { SectionHeading } from "./shared";
 
 export function HowItWorksSection() {
+  const locale = useLocale() as Locale;
+  const t = useTranslations("home.howItWorks");
   const ref = useScrollReveal({ stagger: 0.12, y: 24 });
+
+  const steps = withIcons(
+    t.raw("steps") as { title: string; description: string }[],
+    stepIcons,
+  );
 
   return (
     <section id="como-funciona" className="bg-white py-16 sm:py-20 lg:py-24">
       <Container ref={ref} className="space-y-12">
         <SectionHeading
-          eyebrow="Como funciona"
-          title="Três passos. Sem configuração."
-          description="Indique o contexto, receba o documento completo e ajuste apenas o que fizer sentido para a sua turma."
+          eyebrow={t("eyebrow")}
+          title={t("title")}
+          description={t("description")}
           centered
         />
         <div className="grid gap-5 lg:grid-cols-3">
@@ -55,14 +64,14 @@ export function HowItWorksSection() {
             className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
           >
             <TrackedLink
-              href={`${APP_URL}/sign-up`}
+              href={appSignUpUrl(locale)}
               eventName="marketing_cta_clicked"
               eventProperties={{
                 cta_id: "home_how_it_works_create_first",
                 placement: "home_how_it_works",
               }}
             >
-              Criar o primeiro recurso
+              {t("cta")}
               <ArrowRight className="h-4 w-4" />
             </TrackedLink>
           </Button>

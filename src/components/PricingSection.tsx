@@ -1,11 +1,12 @@
-﻿"use client";
+"use client";
 
 import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
-import { APP_URL, PRICING } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { APP_URL, appSignUpUrl, PRICING } from "@/lib/seo";
 import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { cn } from "@/lib/utils";
 import {
@@ -18,16 +19,18 @@ import {
   Sparkles,
   Zap,
 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 type BillingCycle = "monthly" | "annual";
 
-function formatEur(cents: number): string {
-  return new Intl.NumberFormat("pt-PT", {
-    style: "currency",
-    currency: "EUR",
-    minimumFractionDigits: 2,
-  }).format(cents / 100);
+/**
+ * Portuguese writes €6,99 and English €6.99 — matches the formatting already
+ * used for the homepage pricing teaser.
+ */
+function formatEur(locale: string, cents: number): string {
+  const value = (cents / 100).toFixed(2);
+  return locale === "en" ? `€${value}` : `€${value.replace(".", ",")}`;
 }
 
 function calculateSavingsPercent(
@@ -43,20 +46,28 @@ function calculateSavingsPercent(
 }
 
 function FreePlanCard() {
-  const href = `${APP_URL}/sign-up`;
+  const t = useTranslations("pricingSection.free");
+  const locale = useLocale() as Locale;
+  const href = appSignUpUrl(locale);
+  const credits = PRICING.free.generationsPerMonth;
+  const features = (t.raw("features") as string[]).map((_, index) =>
+    t(`features.${index}`, { credits }),
+  );
+  const lockedFeatures = t.raw("lockedFeatures") as string[];
+
   return (
     <div className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.32)] sm:p-7">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-            Plano Gratuito
+            {t("label")}
           </p>
           <div className="mt-2 flex items-baseline gap-1">
             <span className="text-4xl font-bold text-[color:var(--scooli-ink)]">
-              Grátis
+              {t("price")}
             </span>
           </div>
-          <p className="mt-1 text-sm text-slate-400">para sempre</p>
+          <p className="mt-1 text-sm text-slate-400">{t("period")}</p>
         </div>
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
           <Coins className="h-5 w-5" />
@@ -64,27 +75,21 @@ function FreePlanCard() {
       </div>
 
       <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-        Para experimentar a Scooli e perceber o fluxo de criação antes de
-        avançar.
+        {t("description")}
       </p>
 
       <div className="mt-5 rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-        {PRICING.free.generationsPerMonth} créditos/mês
+        {t("creditsBadge", { credits })}
       </div>
 
       <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
-        {[
-          `${PRICING.free.generationsPerMonth} créditos por mês`,
-          "Acesso à biblioteca comunitária",
-          "Exportação básica",
-          "Editor para rever e ajustar",
-        ].map((f) => (
+        {features.map((f) => (
           <li key={f} className="flex items-start gap-3">
             <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
             <span>{f}</span>
           </li>
         ))}
-        {["Suporte prioritário", "Modelos de IA avançados"].map((f) => (
+        {lockedFeatures.map((f) => (
           <li key={f} className="flex items-start gap-3 text-slate-400">
             <span className="mt-0.5 inline-block h-4 w-4 shrink-0 rounded-full border border-slate-300" />
             <span className="line-through">{f}</span>
@@ -108,7 +113,7 @@ function FreePlanCard() {
             target_url: href,
           }}
         >
-          Experimentar grátis
+          {t("cta")}
           <ArrowRight className="h-4 w-4" />
         </TrackedLink>
       </Button>
@@ -123,6 +128,8 @@ function ProPlanCard({
   billing: BillingCycle;
   apiPlans: Plan[];
 }) {
+  const t = useTranslations("pricingSection.pro");
+  const locale = useLocale();
   const isAnnual = billing === "annual";
   const planCode = isAnnual ? "pro_annual" : "pro_monthly";
 
@@ -171,13 +178,7 @@ function ProPlanCard({
 
   const href = `${APP_URL}/checkout?plan=${displayPlanCode}`;
 
-  const included = [
-    "Modelos de IA avançados",
-    "Exportação em múltiplos formatos",
-    "Acesso antecipado a novidades",
-    "Biblioteca comunitária",
-    "Geração de imagens",
-  ];
+  const included = t.raw("features") as string[];
 
   return (
     <div className="relative h-full">
@@ -191,7 +192,7 @@ function ProPlanCard({
           )}
         >
           <Sparkles className="h-3.5 w-3.5" />
-          {isAnnual ? "Melhor valor" : "Mais popular"}
+          {isAnnual ? t("bestValue") : t("mostPopular")}
         </span>
       </div>
 
@@ -206,37 +207,41 @@ function ProPlanCard({
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Pro
+              {t("label")}
             </p>
             {promoActive && (
               <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
-                Regresso às Aulas 2026
+                {t("promoBadge")}
               </span>
             )}
             <div className="mt-2 flex items-baseline gap-2">
               {promoActive && (
                 <span className="text-lg font-medium text-slate-400 line-through">
-                  {formatEur(monthlyDisplayCents)}
+                  {formatEur(locale, monthlyDisplayCents)}
                 </span>
               )}
               <span className="text-4xl font-bold text-[color:var(--scooli-ink)]">
-                {formatEur(displayMonthlyCents)}
+                {formatEur(locale, displayMonthlyCents)}
               </span>
-              <span className="text-slate-500">/mês</span>
+              <span className="text-slate-500">{t("perMonth")}</span>
             </div>
             {promoActive ? (
               <p className="mt-1 text-xs text-slate-400">
-                {isAnnual ? `${formatEur(promoPriceCents)}/ano · ` : ""}
-                Regresso às Aulas 2026 · ative durante a promoção e mantém este
-                preço para sempre
+                {isAnnual
+                  ? t("promoAnnualPrefix", { price: formatEur(locale, promoPriceCents) })
+                  : ""}
+                {t("promoTagline")}
               </p>
             ) : isAnnual ? (
               <p className="mt-1 text-xs text-slate-400">
-                {formatEur(annualTotalCents)}/ano · poupe {savingsPercent}
+                {t("annualNote", {
+                  price: formatEur(locale, annualTotalCents),
+                  savings: savingsPercent,
+                })}
               </p>
             ) : (
               <p className="mt-1 text-xs text-slate-400">
-                faturado mensalmente
+                {t("monthlyNote")}
               </p>
             )}
           </div>
@@ -246,13 +251,11 @@ function ProPlanCard({
         </div>
 
         <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-          {isAnnual
-            ? "Para quem quer estabilidade ao longo do ano letivo e melhor relação custo-benefício."
-            : "Para quem usa a plataforma todas as semanas e quer um ritmo de trabalho mais fluido."}
+          {isAnnual ? t("descriptionAnnual") : t("descriptionMonthly")}
         </p>
 
         <div className="mt-5 rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-          Geração ilimitada*
+          {t("unlimitedBadge")}
         </div>
 
         <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
@@ -279,7 +282,7 @@ function ProPlanCard({
               target_url: href,
             }}
           >
-            Subscrever
+            {t("cta")}
             <ArrowRight className="h-4 w-4" />
           </TrackedLink>
         </Button>
@@ -289,25 +292,28 @@ function ProPlanCard({
 }
 
 function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
+  const t = useTranslations("pricingSection.enterprise");
+  const features = t.raw("features") as string[];
+
   return (
     <div className="relative h-full">
       <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
         <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-semibold text-white shadow-lg">
           <Building2 className="h-3.5 w-3.5" />
-          Institucional
+          {t("badge")}
         </span>
       </div>
       <div className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.32)] sm:p-7">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              Escolas e instituições
+              {t("label")}
             </p>
             <p className="mt-2 text-3xl font-bold text-[color:var(--scooli-ink)]">
-              Sob consulta
+              {t("price")}
             </p>
             <p className="mt-1 text-sm font-medium text-slate-500">
-              Plano ajustado ao contexto
+              {t("detail")}
             </p>
           </div>
           <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
@@ -315,16 +321,10 @@ function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
           </div>
         </div>
         <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-          Para agrupamentos, escolas e equipas que precisam de um percurso
-          institucional, apoio e formação.
+          {t("description")}
         </p>
         <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
-          {[
-            "Plano adaptado ao volume e à equipa",
-            "Apoio à implementação",
-            "Formação e onboarding",
-            "Caminho próprio para validação interna",
-          ].map((feature) => (
+          {features.map((feature) => (
             <li key={feature} className="flex items-start gap-3">
               <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
               <span>{feature}</span>
@@ -336,7 +336,7 @@ function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
           onClick={onContactClick}
           className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]"
         >
-          Falar com a equipa
+          {t("cta")}
           <ArrowRight className="h-4 w-4" />
         </Button>
       </div>
@@ -353,6 +353,7 @@ function BillingToggle({
   onChange: (b: BillingCycle) => void;
   apiPlans: Plan[];
 }) {
+  const t = useTranslations("pricingSection.billingToggle");
   const monthlyApiPlan = apiPlans.find((p) => p.planCode === "pro_monthly");
   const annualApiPlan = apiPlans.find((p) => p.planCode === "pro_annual");
   const savingsPercent =
@@ -374,7 +375,7 @@ function BillingToggle({
               : "text-slate-500 hover:text-slate-700",
           )}
         >
-          Mensal
+          {t("monthly")}
         </button>
         <button
           type="button"
@@ -386,7 +387,7 @@ function BillingToggle({
               : "text-slate-500 hover:text-slate-700",
           )}
         >
-          Anual
+          {t("annual")}
           <span
             className={cn(
               "rounded-full px-2 py-0.5 text-xs font-semibold",
@@ -404,6 +405,7 @@ function BillingToggle({
 }
 
 export function PricingSection() {
+  const t = useTranslations("pricingSection");
   const { plans, hasPlans } = usePlans();
   const [billing, setBilling] = useState<BillingCycle>("annual");
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -418,14 +420,13 @@ export function PricingSection() {
         <div className="mx-auto max-w-3xl space-y-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-medium text-[color:var(--scooli-primary)]">
             <Sparkles className="h-4 w-4" />
-            Preços e opções
+            {t("eyebrow")}
           </span>
           <h2 className="font-display text-3xl text-[color:var(--scooli-ink)] md:text-4xl lg:text-5xl">
-            Escolha a opção certa para a forma como quer usar a Scooli.
+            {t("title")}
           </h2>
           <p className="text-lg text-[color:var(--scooli-muted)]">
-            O plano gratuito ajuda a experimentar. Os planos pagos dão mais
-            continuidade. As escolas seguem por um percurso próprio.
+            {t("description")}
           </p>
         </div>
 
@@ -444,32 +445,34 @@ export function PricingSection() {
         <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-sm text-slate-500">
           <div className="flex items-center gap-2">
             <ShieldCheck className="h-5 w-5 text-[color:var(--scooli-success)]" />
-            <span>Pagamento seguro via Stripe</span>
+            <span>{t("trustBadges.securePayment")}</span>
           </div>
           <div className="flex items-center gap-2">
             <BadgeCheck className="h-5 w-5 text-[color:var(--scooli-primary)]" />
-            <span>Cancele a qualquer momento</span>
+            <span>{t("trustBadges.cancelAnytime")}</span>
           </div>
           <div className="flex items-center gap-2">
             <Zap className="h-5 w-5 text-[color:var(--scooli-warning)]" />
-            <span>Ativação imediata</span>
+            <span>{t("trustBadges.instantActivation")}</span>
           </div>
         </div>
 
         <p className="text-center text-xs text-slate-400">
-          * Geração ilimitada sujeita à{" "}
-          <TrackedLink
-            href="/terms#uso-justo"
-            eventName="marketing_navigation_clicked"
-            eventProperties={{
-              location: "pricing_terms_note",
-              link_label: "politica_uso_justo",
-            }}
-            className="underline hover:text-slate-600"
-          >
-            Política de Uso Justo
-          </TrackedLink>
-          .
+          {t.rich("fairUseFootnote", {
+            link: (chunks) => (
+              <TrackedLink
+                href="/terms#uso-justo"
+                eventName="marketing_navigation_clicked"
+                eventProperties={{
+                  location: "pricing_terms_note",
+                  link_label: "politica_uso_justo",
+                }}
+                className="underline hover:text-slate-600"
+              >
+                {chunks}
+              </TrackedLink>
+            ),
+          })}
         </p>
       </Container>
 
@@ -477,8 +480,8 @@ export function PricingSection() {
         open={isContactModalOpen}
         onOpenChange={setIsContactModalOpen}
         source="enterprise_plan"
-        title="Fale com a equipa"
-        description="Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo."
+        title={t("contactModal.title")}
+        description={t("contactModal.description")}
       />
     </section>
   );

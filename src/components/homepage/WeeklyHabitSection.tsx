@@ -4,11 +4,15 @@ import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-import { APP_URL } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
+import { appSignUpUrl } from "@/lib/seo";
 import { ArrowRight } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { SectionBadge } from "./shared";
 
 export function WeeklyHabitSection() {
+  const locale = useLocale() as Locale;
+  const t = useTranslations("home.weeklyHabit");
   const ref = useScrollReveal({ y: 20 });
 
   return (
@@ -18,30 +22,26 @@ export function WeeklyHabitSection() {
           data-reveal
           className="mx-auto flex max-w-3xl flex-col items-center space-y-6 text-center"
         >
-          <SectionBadge>Semana após semana</SectionBadge>
+          <SectionBadge>{t("badge")}</SectionBadge>
           <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl lg:text-5xl">
-            Feita para todas as semanas — não para experimentar uma vez.
+            {t("title")}
           </h2>
           <p className="text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-            Cada material que cria fica guardado na sua biblioteca pessoal. Na
-            semana seguinte, não recomeça: duplica a ficha do 5.º A e adapta-a
-            para o 5.º B em minutos. Quanto mais semanas usa, mais a biblioteca
-            trabalha por si — é assim que os professores ativos chegam às 7+
-            horas poupadas por semana.
+            {t("description")}
           </p>
           <Button
             asChild
             className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]"
           >
             <TrackedLink
-              href={`${APP_URL}/sign-up`}
+              href={appSignUpUrl(locale)}
               eventName="marketing_cta_clicked"
               eventProperties={{
                 cta_id: "home_weekly_habit_create_library",
                 placement: "home_weekly_habit",
               }}
             >
-              Criar a minha biblioteca
+              {t("cta")}
               <ArrowRight className="h-4 w-4" />
             </TrackedLink>
           </Button>

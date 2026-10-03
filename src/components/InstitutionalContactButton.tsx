@@ -3,6 +3,7 @@
 import { ContactModal } from "@/components/ContactModal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useState } from "react";
 
 interface InstitutionalContactButtonProps {
@@ -15,12 +16,16 @@ interface InstitutionalContactButtonProps {
 
 export function InstitutionalContactButton({
   source,
-  title = "Fale com a equipa",
-  description = "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo.",
-  label = "Falar com a equipa",
+  title,
+  description,
+  label,
   className,
 }: InstitutionalContactButtonProps) {
+  const t = useTranslations("institutionalContactButton");
   const [open, setOpen] = useState(false);
+  const resolvedTitle = title ?? t("defaultTitle");
+  const resolvedDescription = description ?? t("defaultDescription");
+  const resolvedLabel = label ?? t("defaultLabel");
 
   return (
     <>
@@ -29,7 +34,7 @@ export function InstitutionalContactButton({
         onClick={() => setOpen(true)}
         className={className}
       >
-        {label}
+        {resolvedLabel}
         <ArrowRight className="h-4 w-4" />
       </Button>
 
@@ -37,8 +42,8 @@ export function InstitutionalContactButton({
         open={open}
         onOpenChange={setOpen}
         source={source}
-        title={title}
-        description={description}
+        title={resolvedTitle}
+        description={resolvedDescription}
       />
     </>
   );

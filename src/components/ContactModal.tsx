@@ -16,8 +16,9 @@ import {
 } from "@/lib/analytics";
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/navigation";
 import { Building2, Loader2, Mail, Send, User } from "lucide-react";
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -35,9 +36,13 @@ export function ContactModal({
   open,
   onOpenChange,
   source = "contact_page",
-  title = "Fale connosco",
-  description = "Preencha o formulário e entraremos em contacto consigo o mais brevemente possível.",
+  title,
+  description,
 }: ContactModalProps) {
+  const t = useTranslations("contactModal");
+  const tForm = useTranslations("contactForm");
+  const resolvedTitle = title ?? t("defaultTitle");
+  const resolvedDescription = description ?? t("defaultDescription");
   const formId = useId();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -109,7 +114,15 @@ export function ContactModal({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const nextErrors = validateContactForm({ name, email, message });
+    const nextErrors = validateContactForm(
+      { name, email, message },
+      {
+        nameRequired: tForm("nameRequired"),
+        emailRequired: tForm("emailRequired"),
+        emailInvalid: tForm("emailInvalid"),
+        messageRequired: tForm("messageRequired"),
+      },
+    );
 
     if (Object.keys(nextErrors).length > 0) {
       captureMarketingEvent("marketing_contact_form_validation_failed", {
@@ -119,7 +132,7 @@ export function ContactModal({
       setErrors(nextErrors);
       setSubmitMessage({
         tone: "error",
-        text: "Revê os campos assinalados e tente novamente.",
+        text: t("validationNotice"),
       });
 
       const firstErrorField = getFirstContactErrorField(nextErrors);
@@ -151,10 +164,10 @@ export function ContactModal({
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
-        throw new Error(errorData.error || "Erro ao enviar a mensagem. Tente novamente.");
+        throw new Error(errorData.error || t("fetchErrorFallback"));
       }
 
-      const successMessage = "Mensagem enviada com sucesso! Receberá um email de confirmação em breve.";
+      const successMessage = t("successMessage");
       captureMarketingEvent("marketing_contact_form_submitted", {
         source,
         has_organization: Boolean(organization.trim()),
@@ -169,7 +182,7 @@ export function ContactModal({
         error_type: getErrorType(error),
       });
       const errorMessage =
-        error instanceof Error ? error.message : "Ocorreu um erro. Tente novamente mais tarde.";
+        error instanceof Error ? error.message : t("genericErrorFallback");
       toast.error(errorMessage);
       setSubmitMessage({ tone: "error", text: errorMessage });
     } finally {
@@ -185,24 +198,24 @@ export function ContactModal({
             <div className="rounded-lg bg-[#6753FF]/10 p-2">
               <Mail className="h-5 w-5 text-[#6753FF]" />
             </div>
-            {title}
+            {resolvedTitle}
           </DialogTitle>
-          <DialogDescription className="text-slate-500">{description}</DialogDescription>
+          <DialogDescription className="text-slate-500">{resolvedDescription}</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-4 pt-2">
-          <p className="text-sm text-slate-500">Os campos assinalados com * são obrigatórios.</p>
+          <p className="text-sm text-slate-500">{t("requiredNote")}</p>
 
           <div className="space-y-2">
             <Label htmlFor={fieldIds.name} className="flex items-center gap-2 text-sm font-medium text-slate-700">
               <User className="h-3.5 w-3.5 text-slate-400" />
-              Nome *
+              {t("nameLabel")}
             </Label>
             <Input
               id={fieldIds.name}
               name="name"
               type="text"
-              placeholder="O seu nome"
+              placeholder={t("namePlaceholder")}
               value={name}
               onChange={(e) => {
                 setName(e.target.value);
@@ -226,13 +239,13 @@ export function ContactModal({
           <div className="space-y-2">
             <Label htmlFor={fieldIds.email} className="flex items-center gap-2 text-sm font-medium text-slate-700">
               <Mail className="h-3.5 w-3.5 text-slate-400" />
-              Email *
+              {t("emailLabel")}
             </Label>
             <Input
               id={fieldIds.email}
               name="email"
               type="email"
-              placeholder="o.seu.email@exemplo.com"
+              placeholder={t("emailPlaceholder")}
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
@@ -246,7 +259,7 @@ export function ContactModal({
               required
             />
             <p id={fieldIds.emailHint} className="text-xs text-slate-500">
-              Usamos o seu email apenas para responder ao pedido.
+              {t("emailHint")}
             </p>
             {errors.email && (
               <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">
@@ -258,13 +271,13 @@ export function ContactModal({
           <div className="space-y-2">
             <Label htmlFor={fieldIds.organization} className="flex items-center gap-2 text-sm font-medium text-slate-700">
               <Building2 className="h-3.5 w-3.5 text-slate-400" />
-              Organização / Escola
+              {t("organizationLabel")}
             </Label>
             <Input
               id={fieldIds.organization}
               name="organization"
               type="text"
-              placeholder="Nome da sua instituição (opcional)"
+              placeholder={t("organizationPlaceholder")}
               value={organization}
               onChange={(e) => setOrganization(e.target.value)}
               maxLength={200}
@@ -276,12 +289,12 @@ export function ContactModal({
 
           <div className="space-y-2">
             <Label htmlFor={fieldIds.message} className="text-sm font-medium text-slate-700">
-              Mensagem *
+              {t("messageLabel")}
             </Label>
             <textarea
               id={fieldIds.message}
               name="message"
-              placeholder="Como podemos ajudar?"
+              placeholder={t("messagePlaceholder")}
               value={message}
               onChange={(e) => {
                 setMessage(e.target.value);
@@ -295,7 +308,7 @@ export function ContactModal({
               required
             />
             <p id={fieldIds.messageHint} className="text-xs text-slate-500">
-              Inclua o contexto necessário para conseguirmos ajudar.
+              {t("messageHint")}
             </p>
             {errors.message && (
               <p id={getFieldErrorId("message")} className="text-sm text-[color:var(--scooli-error)]">
@@ -327,22 +340,24 @@ export function ContactModal({
             {isLoading ? (
               <div className="flex items-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin" />
-                A enviar...
+                {t("submittingLabel")}
               </div>
             ) : (
               <div className="flex items-center gap-2">
                 <Send className="h-4 w-4" />
-                Enviar mensagem
+                {t("submitLabel")}
               </div>
             )}
           </Button>
 
           <p className="text-center text-xs text-slate-400">
-            Ao enviar, concorda com a nossa{" "}
-            <Link href="/privacy" className="text-[#6753FF] underline hover:text-[#4E3BC0]">
-              Política de Privacidade
-            </Link>
-            .
+            {t.rich("consent", {
+              link: (chunks) => (
+                <Link href="/privacy" className="text-[#6753FF] underline hover:text-[#4E3BC0]">
+                  {chunks}
+                </Link>
+              ),
+            })}
           </p>
         </form>
       </DialogContent>

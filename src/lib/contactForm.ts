@@ -4,25 +4,40 @@ export type ContactErrors = Partial<Record<ContactField, string>>;
 
 export const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function validateContactForm(values: {
-  name: string;
-  email: string;
-  message: string;
-}): ContactErrors {
+export type ContactFormErrorMessages = {
+  nameRequired: string;
+  emailRequired: string;
+  emailInvalid: string;
+  messageRequired: string;
+};
+
+/**
+ * Messages come from the `contactForm` namespace (see `messages/*.json`) and
+ * are passed in by the caller — this module has no React/next-intl context of
+ * its own, and is shared by both the /contacto page and the ContactModal.
+ */
+export function validateContactForm(
+  values: {
+    name: string;
+    email: string;
+    message: string;
+  },
+  messages: ContactFormErrorMessages,
+): ContactErrors {
   const errors: ContactErrors = {};
 
   if (!values.name.trim()) {
-    errors.name = "Indique o seu nome para sabermos como responder.";
+    errors.name = messages.nameRequired;
   }
 
   if (!values.email.trim()) {
-    errors.email = "Indique um email para podermos entrar em contacto.";
+    errors.email = messages.emailRequired;
   } else if (!EMAIL_REGEX.test(values.email.trim())) {
-    errors.email = "Introduza um endereço de email válido.";
+    errors.email = messages.emailInvalid;
   }
 
   if (!values.message.trim()) {
-    errors.message = "Escreva uma mensagem com o que precisa.";
+    errors.message = messages.messageRequired;
   }
 
   return errors;
