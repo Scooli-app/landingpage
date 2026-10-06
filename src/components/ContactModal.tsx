@@ -8,7 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+import { errorClass, hintClass, Input, labelClass, textareaClass } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   captureMarketingEvent,
@@ -17,7 +17,7 @@ import {
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
-import { Building2, Loader2, Mail, Send, User } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -192,23 +192,19 @@ export function ContactModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md border-slate-200 bg-white sm:max-w-lg">
+      <DialogContent className="max-w-md border-line-strong bg-white sm:max-w-lg">
         <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-xl text-slate-900">
-            <div className="rounded-lg bg-[#6753FF]/10 p-2">
-              <Mail className="h-5 w-5 text-[#6753FF]" />
-            </div>
+          <DialogTitle className="font-display text-[26px] font-medium leading-tight tracking-[-0.015em] text-ink">
             {resolvedTitle}
           </DialogTitle>
-          <DialogDescription className="text-slate-500">{resolvedDescription}</DialogDescription>
+          <DialogDescription className="text-[15px] leading-relaxed text-subtle">{resolvedDescription}</DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-4 pt-2">
-          <p className="text-sm text-slate-500">{t("requiredNote")}</p>
+          <p className={hintClass}>{t("requiredNote")}</p>
 
           <div className="space-y-2">
-            <Label htmlFor={fieldIds.name} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <User className="h-3.5 w-3.5 text-slate-400" />
+            <Label htmlFor={fieldIds.name} className={labelClass}>
               {t("nameLabel")}
             </Label>
             <Input
@@ -222,7 +218,7 @@ export function ContactModal({
                 clearFieldError("name");
               }}
               maxLength={200}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+             
               disabled={isLoading}
               autoComplete="name"
               aria-invalid={Boolean(errors.name)}
@@ -230,15 +226,14 @@ export function ContactModal({
               required
             />
             {errors.name && (
-              <p id={getFieldErrorId("name")} className="text-sm text-[color:var(--scooli-error)]">
+              <p id={getFieldErrorId("name")} className={errorClass}>
                 {errors.name}
               </p>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={fieldIds.email} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <Mail className="h-3.5 w-3.5 text-slate-400" />
+            <Label htmlFor={fieldIds.email} className={labelClass}>
               {t("emailLabel")}
             </Label>
             <Input
@@ -251,26 +246,25 @@ export function ContactModal({
                 setEmail(e.target.value);
                 clearFieldError("email");
               }}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+             
               disabled={isLoading}
               autoComplete="email"
               aria-invalid={Boolean(errors.email)}
               aria-describedby={getFieldDescribedBy("email", fieldIds.emailHint)}
               required
             />
-            <p id={fieldIds.emailHint} className="text-xs text-slate-500">
+            <p id={fieldIds.emailHint} className={hintClass}>
               {t("emailHint")}
             </p>
             {errors.email && (
-              <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">
+              <p id={getFieldErrorId("email")} className={errorClass}>
                 {errors.email}
               </p>
             )}
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={fieldIds.organization} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <Building2 className="h-3.5 w-3.5 text-slate-400" />
+            <Label htmlFor={fieldIds.organization} className={labelClass}>
               {t("organizationLabel")}
             </Label>
             <Input
@@ -281,14 +275,14 @@ export function ContactModal({
               value={organization}
               onChange={(e) => setOrganization(e.target.value)}
               maxLength={200}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+             
               disabled={isLoading}
               autoComplete="organization"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor={fieldIds.message} className="text-sm font-medium text-slate-700">
+            <Label htmlFor={fieldIds.message} className={labelClass}>
               {t("messageLabel")}
             </Label>
             <textarea
@@ -301,17 +295,17 @@ export function ContactModal({
                 clearFieldError("message");
               }}
               maxLength={2000}
-              className="flex min-h-[100px] w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-xs placeholder:text-slate-400 focus:border-[#6753FF] focus:outline-none focus:ring-1 focus:ring-[#6753FF] disabled:cursor-not-allowed disabled:opacity-50"
+              className={cn(textareaClass, "min-h-[100px]")}
               disabled={isLoading}
               aria-invalid={Boolean(errors.message)}
               aria-describedby={getFieldDescribedBy("message", fieldIds.messageHint)}
               required
             />
-            <p id={fieldIds.messageHint} className="text-xs text-slate-500">
+            <p id={fieldIds.messageHint} className={hintClass}>
               {t("messageHint")}
             </p>
             {errors.message && (
-              <p id={getFieldErrorId("message")} className="text-sm text-[color:var(--scooli-error)]">
+              <p id={getFieldErrorId("message")} className={errorClass}>
                 {errors.message}
               </p>
             )}
@@ -324,7 +318,7 @@ export function ContactModal({
                 role="status"
                 className={cn(
                   "text-sm",
-                  submitMessage.tone === "error" ? "text-[color:var(--scooli-error)]" : "text-emerald-700"
+                  submitMessage.tone === "error" ? "text-tag-red-ink" : "text-tag-green-ink"
                 )}
               >
                 {submitMessage.text}
@@ -335,7 +329,7 @@ export function ContactModal({
           <Button
             type="submit"
             disabled={isLoading}
-            className="h-11 w-full rounded-xl bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-semibold text-white transition-all duration-200 hover:shadow-lg hover:shadow-[#6753FF]/25 disabled:cursor-not-allowed disabled:opacity-50"
+            size="lg" className="w-full"
           >
             {isLoading ? (
               <div className="flex items-center gap-2">
@@ -344,16 +338,15 @@ export function ContactModal({
               </div>
             ) : (
               <div className="flex items-center gap-2">
-                <Send className="h-4 w-4" />
                 {t("submitLabel")}
               </div>
             )}
           </Button>
 
-          <p className="text-center text-xs text-slate-400">
+          <p className="text-center text-[13px] text-faint">
             {t.rich("consent", {
               link: (chunks) => (
-                <Link href="/privacy" className="text-[#6753FF] underline hover:text-[#4E3BC0]">
+                <Link href="/privacy" className="text-violet-ink underline underline-offset-2">
                   {chunks}
                 </Link>
               ),

@@ -2,9 +2,10 @@
 
 import { ContactModal } from "@/components/ContactModal";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, type ComponentProps } from "react";
+
+type ButtonProps = ComponentProps<typeof Button>;
 
 interface InstitutionalContactButtonProps {
   source: string;
@@ -12,14 +13,19 @@ interface InstitutionalContactButtonProps {
   description?: string;
   label?: string;
   className?: string;
+  variant?: ButtonProps["variant"];
+  size?: ButtonProps["size"];
 }
 
+/** Opens the institutional contact form ("Pedir demonstração" for schools). */
 export function InstitutionalContactButton({
   source,
   title,
   description,
   label,
   className,
+  variant = "primary",
+  size = "lg",
 }: InstitutionalContactButtonProps) {
   const t = useTranslations("institutionalContactButton");
   const [open, setOpen] = useState(false);
@@ -31,11 +37,12 @@ export function InstitutionalContactButton({
     <>
       <Button
         type="button"
+        variant={variant}
+        size={size}
         onClick={() => setOpen(true)}
         className={className}
       >
         {resolvedLabel}
-        <ArrowRight className="h-4 w-4" />
       </Button>
 
       <ContactModal

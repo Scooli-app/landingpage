@@ -1,18 +1,25 @@
-import { Container } from "@/components/Container";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
 import { StructuredData } from "@/components/StructuredData";
-import { withRatings } from "@/components/homepage/data";
-import { getImpactStats, getToolPages, toolCardIcons } from "@/components/marketing/data";
+import { getImpactStats, getToolPages } from "@/components/marketing/data";
+import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
+import {
+  Card,
+  DividerGrid,
+  DividerItem,
+  Kicker,
+  Section,
+  SectionHeader,
+  displayTitle,
+} from "@/components/site/primitives";
 import type { Locale } from "@/i18n/routing";
 import { localizedUrl } from "@/i18n/urls";
 import {
   Checklist,
-  MarketingSectionHeading,
   PageCtaBanner,
   PageHero,
   PublicSiteShell,
-  SurfacePanel,
+  StatCard,
 } from "@/components/marketing/shared";
 import {
   appSignUpUrl,
@@ -24,7 +31,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, LibraryBig, LockKeyhole, MapPinned, PencilLine } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const pagePath = "/ia-para-professores";
 
@@ -100,8 +107,6 @@ async function buildPageContent(locale: Locale) {
   };
 }
 
-const trustPointIcons = [MapPinned, PencilLine, LibraryBig, LockKeyhole];
-
 export default async function AiForTeachersPage({
   params,
 }: {
@@ -121,12 +126,11 @@ export default async function AiForTeachersPage({
   } = await buildPageContent(locale);
   const toolPages = getToolPages(locale);
   const impactStats = getImpactStats(locale);
-  const tSocial = await getTranslations({ locale, namespace: "home.socialProof" });
-  const socialProof = withRatings(
-    tSocial.raw("quotes") as { quote: string; role: string }[],
-  );
   const heroChecklist = t.raw("hero.checklist") as string[];
   const whenToChooseChecklist = t.raw("whenToChoose.checklist") as string[];
+  const tools = NAV_TOOL_SLUGS.map((slug) => toolPages.find((tool) => tool.slug === slug)).filter(
+    (tool): tool is (typeof toolPages)[number] => Boolean(tool),
+  );
 
   return (
     <>
@@ -143,202 +147,147 @@ export default async function AiForTeachersPage({
           secondaryHref="/ferramentas"
           secondaryLabel={t("hero.secondaryLabel")}
           aside={
-            <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {discoveryPreview.map((item) => (
-                  <div key={item.label} className="rounded-[24px] border border-slate-200 bg-white p-4">
-                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                      {item.label}
-                    </p>
-                    <p className="mt-3 text-lg font-semibold text-slate-800">{item.value}</p>
-                  </div>
-                ))}
-              </div>
-            </SurfacePanel>
+            <Card className="grid grid-cols-2">
+              {discoveryPreview.map((item, index) => (
+                <div
+                  key={item.label}
+                  className={cn(
+                    "p-6",
+                    index % 2 === 1 && "border-l border-line",
+                    index > 1 && "border-t border-line",
+                  )}
+                >
+                  <Kicker>{item.label}</Kicker>
+                  <p className="mt-3 text-lg font-semibold leading-snug text-ink">{item.value}</p>
+                </div>
+              ))}
+            </Card>
           }
         >
           <Checklist items={heroChecklist} />
         </PageHero>
 
-        <section className="py-20 sm:py-24 lg:py-28">
-          <Container className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-            <SurfacePanel>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {t("quickAnswer.eyebrow")}
-              </p>
-              <h2 className="mt-4 font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
+        <Section aria-labelledby="ia-quick-title">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)] lg:gap-16">
+            <article data-reveal className="max-w-[720px]">
+              <Kicker>{t("quickAnswer.eyebrow")}</Kicker>
+              <h2
+                id="ia-quick-title"
+                className={cn(displayTitle, "mt-3 text-[clamp(30px,3.4vw,42px)] leading-[1.1]")}
+              >
                 {t("quickAnswer.title")}
               </h2>
-              <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                {t("quickAnswer.paragraph1")}
-              </p>
-              <p className="mt-4 text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">
-                {t("quickAnswer.paragraph2")}
-              </p>
-            </SurfacePanel>
-
-            <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {t("whenToChoose.eyebrow")}
-              </p>
+              <p className="mt-5 text-lg leading-relaxed text-body">{t("quickAnswer.paragraph1")}</p>
+              <p className="mt-4 text-lg leading-relaxed text-body">{t("quickAnswer.paragraph2")}</p>
+            </article>
+            <aside data-reveal className="self-start rounded-xl bg-stone-soft p-7">
+              <Kicker>{t("whenToChoose.eyebrow")}</Kicker>
               <div className="mt-4">
                 <Checklist items={whenToChooseChecklist} />
               </div>
-            </SurfacePanel>
-          </Container>
-        </section>
+            </aside>
+          </div>
+        </Section>
 
-        <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
-          <Container className="space-y-12">
-            <MarketingSectionHeading
-              eyebrow={t("toolsSection.eyebrow")}
-              title={t("toolsSection.title")}
-              description={t("toolsSection.description")}
-              centered
-            />
-            <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
-              {toolPages.slice(0, 4).map((tool) => {
-                const Icon = toolCardIcons[tool.slug];
+        <Section tone="stone" aria-labelledby="ia-tools-title">
+          <SectionHeader
+            id="ia-tools-title"
+            kicker={t("toolsSection.eyebrow")}
+            title={t("toolsSection.title")}
+            description={t("toolsSection.description")}
+          />
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {tools.map((tool) => (
+              <li key={tool.slug} data-reveal>
+                <TrackedLink
+                  href={{ pathname: "/ferramentas/[slug]", params: { slug: tool.slug } }}
+                  eventName="marketing_navigation_clicked"
+                  eventProperties={{
+                    location: "ia_para_professores_tools_grid",
+                    link_label: tool.shortTitle.toLowerCase(),
+                  }}
+                  className="flex h-full flex-col rounded-xl border border-line-strong bg-white p-7 transition-colors hover:border-[#C9C8C3]"
+                >
+                  <h3 className="text-lg font-semibold text-ink">{tool.shortTitle}</h3>
+                  <p className="mt-2 flex-1 text-[15px] leading-relaxed text-subtle">{tool.description}</p>
+                  <span className="mt-5 text-[15px] font-medium text-violet-ink">
+                    {t("toolsSection.seeTool")} →
+                  </span>
+                </TrackedLink>
+              </li>
+            ))}
+          </ul>
+        </Section>
 
-                return (
-                  <SurfacePanel key={tool.slug}>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-                      {tool.shortTitle}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                      {tool.description}
-                    </p>
-                    <TrackedLink
-                      href={`/ferramentas/${tool.slug}`}
-                      eventName="marketing_navigation_clicked"
-                      eventProperties={{
-                        location: "ia_para_professores_tools_grid",
-                        link_label: tool.shortTitle.toLowerCase(),
-                      }}
-                      className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
-                    >
-                      {t("toolsSection.seeTool")}
-                      <ArrowRight className="h-4 w-4" />
-                    </TrackedLink>
-                  </SurfacePanel>
-                );
-              })}
-            </div>
-          </Container>
-        </section>
+        <Section aria-labelledby="ia-trust-title">
+          <SectionHeader
+            id="ia-trust-title"
+            kicker={t("trustSection.eyebrow")}
+            title={t("trustSection.title")}
+            description={t("trustSection.description")}
+          />
+          <DividerGrid columns={4}>
+            {trustPoints.map((item) => (
+              <DividerItem key={item.title} title={item.title}>
+                {item.description}
+              </DividerItem>
+            ))}
+          </DividerGrid>
+        </Section>
 
-        <section className="py-20 sm:py-24 lg:py-28">
-          <Container className="space-y-12">
-            <MarketingSectionHeading
-              eyebrow={t("trustSection.eyebrow")}
-              title={t("trustSection.title")}
-              description={t("trustSection.description")}
-              centered
-            />
-            <div className="grid gap-5 lg:grid-cols-2">
-              {trustPoints.map((item, index) => {
-                const Icon = trustPointIcons[index];
+        <Section tone="stone" aria-labelledby="ia-social-title">
+          <SectionHeader
+            id="ia-social-title"
+            kicker={t("socialSection.eyebrow")}
+            title={t("socialSection.title")}
+            description={t("socialSection.description")}
+          />
+          <div className="grid max-w-[720px] gap-8 sm:grid-cols-2">
+            {impactStats.map((item) => (
+              <StatCard key={item.label} value={item.value} label={item.label} />
+            ))}
+          </div>
+        </Section>
 
-                return (
-                  <SurfacePanel key={item.title}>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                      {item.description}
-                    </p>
-                  </SurfacePanel>
-                );
-              })}
-            </div>
-          </Container>
-        </section>
-
-        <section className="bg-white/70 py-20 sm:py-24 lg:py-28">
-          <Container className="space-y-12">
-            <MarketingSectionHeading
-              eyebrow={t("socialSection.eyebrow")}
-              title={t("socialSection.title")}
-              description={t("socialSection.description")}
-              centered
-            />
-            <div className="grid gap-5 lg:grid-cols-4">
-              {impactStats.map((item) => (
-                <SurfacePanel key={item.label}>
-                  <p className="font-display text-4xl text-[color:var(--scooli-ink)]">{item.value}</p>
-                  <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    {item.label}
-                  </p>
-                </SurfacePanel>
-              ))}
-            </div>
-            <div className="grid gap-5 lg:grid-cols-3">
-              {socialProof.map((item) => (
-                <SurfacePanel key={item.quote}>
-                  <p className="text-base leading-8 text-[color:var(--scooli-ink)]">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                  <p className="mt-4 text-sm font-medium text-[color:var(--scooli-muted)]">
-                    {item.role}
-                  </p>
-                </SurfacePanel>
-              ))}
-            </div>
-          </Container>
-        </section>
-
-        <section className="py-20 sm:py-24 lg:py-28">
-          <Container className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
-            <SurfacePanel>
-              <MarketingSectionHeading
-                eyebrow={t("faqSection.eyebrow")}
+        <Section aria-labelledby="ia-faq-title">
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] lg:gap-16">
+            <div>
+              <SectionHeader
+                id="ia-faq-title"
+                kicker={t("faqSection.eyebrow")}
                 title={t("faqSection.title")}
                 description={t("faqSection.description")}
+                className="mb-8 md:mb-8"
               />
-              <div className="mt-8">
-                <TrackedFaqAccordion
-                  items={faqItems}
-                  faqGroup="ia_para_professores"
-                  itemValuePrefix="ia-professores-faq"
-                  className="space-y-3"
-                  itemClassName="overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 px-4"
-                  triggerClassName="py-4 text-left text-[15px] font-semibold text-[color:var(--scooli-ink)] hover:no-underline"
-                  contentClassName="text-sm leading-7 text-[color:var(--scooli-muted)]"
-                />
-              </div>
-            </SurfacePanel>
-
-            <SurfacePanel className="bg-[color:var(--scooli-surface-alt)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                {t("nextSteps.eyebrow")}
-              </p>
-              <h3 className="mt-4 text-2xl font-semibold text-[color:var(--scooli-ink)]">
-                {t("nextSteps.title")}
-              </h3>
-              <div className="mt-6 grid gap-3">
+              <TrackedFaqAccordion
+                items={faqItems}
+                faqGroup="ia_para_professores"
+                itemValuePrefix="ia-professores-faq"
+                className="border-t border-line"
+              />
+            </div>
+            <aside data-reveal className="self-start rounded-xl bg-stone-soft p-7">
+              <Kicker>{t("nextSteps.eyebrow")}</Kicker>
+              <p className="mt-3 text-xl font-semibold text-ink">{t("nextSteps.title")}</p>
+              <ul className="mt-5 border-t border-line-strong">
                 {nextStepsLinks.map((link) => (
-                  <TrackedLink
-                    key={link.href}
-                    href={link.href}
-                    eventName="marketing_navigation_clicked"
-                    eventProperties={{
-                      location: "ia_para_professores_next_steps",
-                      link_label: link.label.toLowerCase(),
-                    }}
-                    className="inline-flex items-center justify-between rounded-[22px] border border-slate-200 bg-white px-4 py-4 text-sm font-semibold text-[color:var(--scooli-ink)] transition-colors hover:border-[color:var(--scooli-primary)] hover:text-[color:var(--scooli-primary)]"
-                  >
-                    <span>{link.label}</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </TrackedLink>
+                  <li key={link.href} className="border-b border-line-strong">
+                    <TrackedLink
+                      href={link.href}
+                      eventName="marketing_navigation_clicked"
+                      eventProperties={{
+                        location: "ia_para_professores_next_steps",
+                        link_label: link.label.toLowerCase(),
+                      }}
+                      className="flex items-center justify-between gap-4 py-3.5 text-[15px] text-ink transition-colors hover:text-violet-ink"
+                    >
+                      {link.label}
+                      <span aria-hidden className="text-subtle">→</span>
+                    </TrackedLink>
+                  </li>
                 ))}
-              </div>
-              <div className="mt-6 rounded-[24px] border border-[#d9ddff] bg-white px-5 py-4 text-sm leading-7 text-[color:var(--scooli-muted)]">
+              </ul>
+              <p className="mt-5 text-[15px] leading-relaxed text-subtle">
                 {t.rich("nextSteps.signupNote", {
                   link: (chunks) => (
                     <TrackedLink
@@ -348,27 +297,25 @@ export default async function AiForTeachersPage({
                         cta_id: "ia_para_professores_inline_signup",
                         placement: "ia_para_professores_next_steps",
                       }}
-                      className="font-semibold text-[color:var(--scooli-primary)]"
+                      className="font-medium text-violet-ink hover:underline"
                     >
                       {chunks}
                     </TrackedLink>
                   ),
                 })}
-              </div>
-            </SurfacePanel>
-          </Container>
-        </section>
+              </p>
+            </aside>
+          </div>
 
-        <section className="pb-20 sm:pb-24 lg:pb-28">
-          <Container>
+          <div className="mt-20 md:mt-28">
             <PageCtaBanner
               title={t("cta.title")}
               description={t("cta.description")}
               secondaryHref="/confianca"
               secondaryLabel={t("cta.secondaryLabel")}
             />
-          </Container>
-        </section>
+          </div>
+        </Section>
       </PublicSiteShell>
     </>
   );

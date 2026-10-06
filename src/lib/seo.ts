@@ -35,6 +35,18 @@ export function appSignUpUrl(locale: Locale): string {
   return `${APP_URL}/sign-up?locale=${encodeURIComponent(locale)}`;
 }
 
+/**
+ * Sign-up that lands straight in the lesson-plan form with the visitor's topic
+ * filled in (the form reads `?topic=`), so the first thing after the account
+ * exists is the document they asked for.
+ */
+export function appSignUpWithTopicUrl(locale: Locale, topic: string): string {
+  const trimmed = topic.trim();
+  if (!trimmed) {return appSignUpUrl(locale);}
+  const target = `${APP_URL}/lesson-plan?topic=${encodeURIComponent(trimmed)}`;
+  return `${appSignUpUrl(locale)}&redirect_url=${encodeURIComponent(target)}`;
+}
+
 export const SITE_NAME = "Scooli";
 
 /**
@@ -62,12 +74,6 @@ export function shareImageUrl(locale: Locale = defaultLocale) {
   return locale === defaultLocale
     ? `${SITE_URL}/og`
     : `${SITE_URL}/og?locale=${locale}`;
-}
-
-export interface ProductReviewInput {
-  quote: string;
-  role: string;
-  rating: number;
 }
 
 export function getPageMetadata({
@@ -153,36 +159,30 @@ export const PRICING = {
   },
 } as const;
 
-// Public impact metrics shown on the homepage.
-// We keep conservative lower bounds here because the UI presents them as "X+"
-// and these are the real minimum values currently claimed on the site.
+// Public impact metrics. Conservative floors confirmed by the team on
+// 2026-10-05; the UI presents them as "X+". Every page and schema reads from
+// here, so this is the one place to update them.
 export const PUBLIC_IMPACT_METRICS = {
-  generatedDocuments: {
-    minValue: 1000,
-    label: "documentos gerados",
-    interactionType: "https://schema.org/CreateAction",
-  },
-  weeklyHoursSaved: {
-    minValue: 7,
-    label: "poupadas por semana",
-  },
-  adaptedMaterials: {
-    minValue: 400,
-    label: "materiais adaptados",
-    interactionType: "https://schema.org/UpdateAction",
-  },
   activeTeachers: {
-    minValue: 300,
-    label: "professores ativos",
+    minValue: 500,
+  },
+  generatedDocuments: {
+    minValue: 900,
+    interactionType: "https://schema.org/CreateAction",
   },
 } as const;
 
-// Core brand keywords for SEO
-export const BRAND_KEYWORDS = [
+/**
+ * Root-level fallback keywords; every localized page overrides these with its
+ * own list. English is market-agnostic (see CLAUDE.md), so it carries no
+ * Portugal- or curriculum-specific terms.
+ */
+const BRAND_KEYWORDS_PT = [
   "Scooli",
   "IA para professores",
   "inteligência artificial na educação",
   "planificação de aulas",
+  "planos de aula",
   "fichas de trabalho",
   "gerador de fichas de trabalho",
   "fichas para imprimir",
@@ -190,29 +190,131 @@ export const BRAND_KEYWORDS = [
   "testes escolares",
   "quizzes educativos",
   "adaptação de materiais",
-  "carregar documentos",
-  "edtech Portugal",
   "currículo português",
   "aprendizagens essenciais",
   "alinhamento curricular",
-  "conteúdos alinhados com aprendizagens essenciais",
   "plataforma para professores em portugal",
   "recursos educativos",
   "biblioteca comunitária",
   "ferramentas para professores",
-  "gerador de apresentações",
   "gerador de planificações",
   "gerador de testes",
   "ensino básico",
   "ensino secundário",
-  "educação Portugal",
   "RGPD educação",
-  "Scooli Pro preço",
-  "ferramenta IA professores grátis",
 ] as const;
 
+const BRAND_KEYWORDS_EN = [
+  "Scooli",
+  "AI for teachers",
+  "AI in education",
+  "lesson planning",
+  "lesson plan generator",
+  "worksheet generator",
+  "printable worksheets",
+  "test generator",
+  "quiz generator",
+  "slides for lessons",
+  "teaching resources",
+  "material adaptation",
+  "tools for teachers",
+  "teacher workload",
+] as const;
+
+export function brandKeywords(locale: Locale): readonly string[] {
+  return locale === "en" ? BRAND_KEYWORDS_EN : BRAND_KEYWORDS_PT;
+}
+
+/**
+ * Locale-specific wording for the structured data below. The organisation's
+ * factual details (address, contact) are the same in every language; what it
+ * says about itself follows the page language, and the English version makes
+ * no market claims.
+ */
+const schemaCopy = {
+  "pt-PT": {
+    organization:
+      "Plataforma portuguesa com IA que ajuda professores a preparar aulas em menos tempo: planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
+    website:
+      "Scooli - IA para professores: planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
+    application:
+      "Plataforma de inteligência artificial para professores em Portugal. Acompanha o professor ao longo do ano letivo e cria planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
+    service:
+      "Serviço de criação de recursos educativos com IA para professores em Portugal: planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
+    serviceName: "Scooli - Recursos educativos com IA",
+    product:
+      "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
+    audience: "Professores",
+    offers: {
+      free: "Plano Gratuito",
+      freeDescription: `${PRICING.free.generationsPerMonth} créditos por mês`,
+      monthly: "Scooli Pro Mensal",
+      monthlyDescription: "Geração ilimitada, modelos avançados e suporte prioritário",
+      annual: "Scooli Pro Anual",
+      annualDescription: `Geração ilimitada com ${PRICING.pro_annual.savings} de desconto`,
+      pro: "Scooli Pro",
+      catalog: "Planos Scooli",
+    },
+    features: [
+      "Planos de aula",
+      "Fichas de trabalho",
+      "Testes e quizzes",
+      "Planificações anuais e de unidade",
+      "Apresentações",
+      "Calendário de aulas ao longo do ano",
+      "Conteúdos alinhados com as Aprendizagens Essenciais",
+      "Adaptação de materiais",
+      "Biblioteca comunitária",
+      "RGPD",
+    ],
+  },
+  en: {
+    organization:
+      "AI platform that helps teachers prepare lessons in less time: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, structured and ready to edit.",
+    website:
+      "Scooli - AI for teachers: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, ready to edit.",
+    application:
+      "AI platform for teachers. It stays with the teacher through the school year and creates lesson plans, worksheets, tests, quizzes, yearly plans and slide decks the teacher reviews and edits.",
+    service:
+      "AI service that creates teaching resources: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, structured and editable.",
+    serviceName: "Scooli - AI teaching resources",
+    product:
+      "Scooli's premium plan, with unlimited resource generation, advanced AI models and priority support for teachers.",
+    audience: "Teachers",
+    offers: {
+      free: "Free plan",
+      freeDescription: `${PRICING.free.generationsPerMonth} credits per month`,
+      monthly: "Scooli Pro Monthly",
+      monthlyDescription: "Unlimited generation, advanced models and priority support",
+      annual: "Scooli Pro Annual",
+      annualDescription: `Unlimited generation with ${PRICING.pro_annual.savings} off`,
+      pro: "Scooli Pro",
+      catalog: "Scooli plans",
+    },
+    features: [
+      "Lesson plans",
+      "Worksheets",
+      "Tests and quizzes",
+      "Yearly and unit plans",
+      "Slide decks",
+      "Lesson calendar for the school year",
+      "Material adaptation",
+      "Shared library",
+      "GDPR",
+    ],
+  },
+} as const;
+
+/**
+ * The [locale] segment can carry anything (`/nao-existe` renders the page
+ * alongside the layout's notFound()), so never index the copy blindly.
+ */
+function copyFor(locale: string) {
+  return locale === "en" ? schemaCopy.en : schemaCopy["pt-PT"];
+}
+
 // Organization Schema - Used across all pages
-export function getOrganizationSchema() {
+export function getOrganizationSchema(locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -225,14 +327,12 @@ export function getOrganizationSchema() {
       width: 512,
       height: 512,
     },
-    description:
-      "Plataforma portuguesa com IA que ajuda professores a criar apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais, para melhor alinhamento curricular, qualidade e confiança.",
+    description: copyFor(locale).organization,
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer service",
       email: "info@scooli.app",
-      availableLanguage: ["Portuguese"],
-      areaServed: "PT",
+      availableLanguage: ["Portuguese", "English"],
     },
     address: {
       "@type": "PostalAddress",
@@ -242,17 +342,15 @@ export function getOrganizationSchema() {
   };
 }
 
-// Website Schema with search potential action
-export function getWebsiteSchema() {
+export function getWebsiteSchema(locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
     name: SITE_NAME,
     url: SITE_URL,
-    description:
-      "Scooli - Ferramentas de IA para professores criarem apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais.",
-    inLanguage: SITE_LANGUAGE,
+    description: copyFor(locale).website,
+    inLanguage: locale,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -260,7 +358,8 @@ export function getWebsiteSchema() {
 }
 
 // SoftwareApplication Schema - Critical for app discovery
-export function getSoftwareApplicationSchema() {
+export function getSoftwareApplicationSchema(locale: Locale = defaultLocale) {
+  const copy = copyFor(locale);
   const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
@@ -270,25 +369,23 @@ export function getSoftwareApplicationSchema() {
     "@type": "SoftwareApplication",
     "@id": `${SITE_URL}/#app`,
     name: SITE_NAME,
-    description:
-      "Plataforma de inteligência artificial para professores em Portugal. Gera apresentações, planificações, testes e quizzes de acordo com as Aprendizagens Essenciais, para melhor alinhamento curricular, qualidade e confiança.",
-    url: SITE_URL,
+    description: copy.application,
+    url: localizedUrl(SITE_URL, "/", locale),
     applicationCategory: "EducationalApplication",
     operatingSystem: "Web",
     offers: [
       {
         "@type": "Offer",
-        name: "Plano Gratuito",
-        description: `${PRICING.free.generationsPerMonth} créditos por mês para novos utilizadores`,
+        name: copy.offers.free,
+        description: copy.offers.freeDescription,
         price: "0",
         priceCurrency: "EUR",
         availability: "https://schema.org/InStock",
       },
       {
         "@type": "Offer",
-        name: "Scooli Pro Mensal",
-        description:
-          "Geração ilimitada, modelos avançados e suporte prioritário",
+        name: copy.offers.monthly,
+        description: copy.offers.monthlyDescription,
         price: PRICING.pro_monthly.price.toString(),
         priceCurrency: "EUR",
         priceValidUntil,
@@ -297,8 +394,8 @@ export function getSoftwareApplicationSchema() {
       },
       {
         "@type": "Offer",
-        name: "Scooli Pro Anual",
-        description: `Geração ilimitada com ${PRICING.pro_annual.savings} de desconto`,
+        name: copy.offers.annual,
+        description: copy.offers.annualDescription,
         price: PRICING.pro_annual.price.toString(),
         priceCurrency: "EUR",
         priceValidUntil,
@@ -306,17 +403,8 @@ export function getSoftwareApplicationSchema() {
         billingIncrement: "P1Y",
       },
     ],
-    featureList: [
-      "Geração de apresentações com IA",
-      "Criação de planificações",
-      "Geração de testes e quizzes",
-      "Conteúdos de acordo com as Aprendizagens Essenciais",
-      "Biblioteca comunitária",
-      "Upload e transformação de documentos",
-      "Templates personalizáveis",
-      "RGPD-ready",
-    ],
-    screenshot: shareImageUrl(),
+    featureList: [...copy.features],
+    screenshot: shareImageUrl(locale),
     author: {
       "@id": `${SITE_URL}/#organization`,
     },
@@ -326,25 +414,17 @@ export function getSoftwareApplicationSchema() {
     interactionStatistic: [
       {
         "@type": "InteractionCounter",
-        name: PUBLIC_IMPACT_METRICS.generatedDocuments.label,
         interactionType: PUBLIC_IMPACT_METRICS.generatedDocuments.interactionType,
         userInteractionCount: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue,
-      },
-      {
-        "@type": "InteractionCounter",
-        name: PUBLIC_IMPACT_METRICS.adaptedMaterials.label,
-        interactionType: PUBLIC_IMPACT_METRICS.adaptedMaterials.interactionType,
-        userInteractionCount: PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue,
       },
     ],
     audience: {
       "@type": "EducationalAudience",
       educationalRole: "teacher",
-      audienceType: "Professores",
+      audienceType: copy.audience,
     },
-    inLanguage: SITE_LANGUAGE,
+    inLanguage: locale,
     isAccessibleForFree: true,
-    countriesSupported: "PT",
   };
 }
 
@@ -392,31 +472,28 @@ function getShippingDetails() {
   };
 }
 
-// Product Schema should only be used when the page shows real, visible
-// review or aggregate rating content that can also be marked up safely.
-export function getProductSchema(reviews: ProductReviewInput[] = []) {
+/**
+ * Product schema for the Pro plan on the pricing page. It carries no review or
+ * aggregate rating markup: Scooli has no published reviews to mark up yet, and
+ * Google requires ratings to reflect real, visible reviews.
+ */
+export function getProductSchema(locale: Locale = defaultLocale) {
+  const copy = copyFor(locale);
+  const pricingUrl = localizedUrl(SITE_URL, "/precos", locale);
   const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
 
   const returnPolicy = getMerchantReturnPolicy();
   const shippingDetails = getShippingDetails();
-  const averageRating =
-    reviews.length > 0
-      ? (
-          reviews.reduce((sum, review) => sum + review.rating, 0) /
-          reviews.length
-        ).toFixed(1)
-      : null;
 
-  const schema: Record<string, unknown> = {
+  return {
     "@context": "https://schema.org",
     "@type": "Product",
     "@id": `${SITE_URL}/#product`,
     name: "Scooli Pro",
-    description:
-      "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
-    image: shareImageUrl(),
+    description: copy.product,
+    image: shareImageUrl(locale),
     brand: {
       "@type": "Brand",
       name: SITE_NAME,
@@ -424,12 +501,12 @@ export function getProductSchema(reviews: ProductReviewInput[] = []) {
     offers: [
       {
         "@type": "Offer",
-        name: "Scooli Pro Mensal",
+        name: copy.offers.monthly,
         price: PRICING.pro_monthly.price.toString(),
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/precos`,
+        url: pricingUrl,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -438,12 +515,12 @@ export function getProductSchema(reviews: ProductReviewInput[] = []) {
       },
       {
         "@type": "Offer",
-        name: "Scooli Pro Anual",
+        name: copy.offers.annual,
         price: PRICING.pro_annual.price.toString(),
         priceCurrency: "EUR",
         priceValidUntil,
         availability: "https://schema.org/InStock",
-        url: `${SITE_URL}/precos`,
+        url: pricingUrl,
         seller: {
           "@id": `${SITE_URL}/#organization`,
         },
@@ -455,36 +532,9 @@ export function getProductSchema(reviews: ProductReviewInput[] = []) {
     // Use standard Audience type for Product schema (EducationalAudience is not valid here)
     audience: {
       "@type": "Audience",
-      audienceType: "Professores",
+      audienceType: copy.audience,
     },
   };
-
-  if (reviews.length > 0 && averageRating) {
-    schema.aggregateRating = {
-      "@type": "AggregateRating",
-      ratingValue: averageRating,
-      reviewCount: reviews.length,
-      bestRating: 5,
-      worstRating: 1,
-    };
-
-    schema.review = reviews.map((review) => ({
-      "@type": "Review",
-      reviewBody: review.quote,
-      author: {
-        "@type": "Person",
-        name: review.role,
-      },
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: review.rating,
-        bestRating: 5,
-        worstRating: 1,
-      },
-    }));
-  }
-
-  return schema;
 }
 
 // FAQ Schema Generator - Critical for AEO
@@ -598,32 +648,33 @@ export function getHowToSchema(
 }
 
 // Service Schema for better AEO
-export function getServiceSchema() {
+export function getServiceSchema(locale: Locale = defaultLocale) {
+  const copy = copyFor(locale);
+
   return {
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${SITE_URL}/#service`,
-    name: "Scooli - Geração de Recursos Educativos com IA",
-    description:
-      "Serviço de geração automática de apresentações, planificações, testes e quizzes para professores em Portugal, utilizando inteligência artificial de acordo com as Aprendizagens Essenciais para melhor alinhamento curricular, qualidade e confiança.",
+    name: copy.serviceName,
+    description: copy.service,
     provider: {
       "@id": `${SITE_URL}/#organization`,
     },
     serviceType: "Educational Technology Service",
-    areaServed: {
-      "@type": "Country",
-      name: "Portugal",
-    },
+    // The English site is market-agnostic, so only Portuguese names a country.
+    ...(locale === "en"
+      ? {}
+      : { areaServed: { "@type": "Country", name: "Portugal" } }),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Planos Scooli",
+      name: copy.offers.catalog,
       itemListElement: [
         {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Plano Gratuito",
-            description: `${PRICING.free.generationsPerMonth} créditos por mês para experimentar a plataforma`,
+            name: copy.offers.free,
+            description: copy.offers.freeDescription,
           },
           price: "0",
           priceCurrency: "EUR",
@@ -632,9 +683,8 @@ export function getServiceSchema() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Scooli Pro",
-            description:
-              "Geração ilimitada de recursos com modelos de IA avançados",
+            name: copy.offers.pro,
+            description: copy.offers.monthlyDescription,
           },
           price: PRICING.pro_monthly.price.toString(),
           priceCurrency: "EUR",
@@ -650,50 +700,11 @@ export function getServiceSchema() {
   };
 }
 
-// Educational features list for SEO content
-export const EDUCATIONAL_FEATURES = {
-  presentations: {
-    title: "Gerador de Apresentações com IA",
-    description:
-      "Crie apresentações profissionais para aulas em segundos. Slides claros, com sugestões de imagens e ritmo de aula adequado ao nível de ensino.",
-    keywords: [
-      "apresentações escolares",
-      "slides para aulas",
-      "PowerPoint educativo",
-    ],
-  },
-  lessonPlans: {
-    title: "Gerador de Planificações",
-    description:
-      "Planificações completas com objetivos, metodologias e avaliação alinhadas com as Aprendizagens Essenciais.",
-    keywords: ["planificação", "planificações", "objetivos de aprendizagem"],
-  },
-  tests: {
-    title: "Gerador de Testes e Quizzes",
-    description:
-      "Crie testes, fichas de trabalho e quizzes com itens diversificados e rubricas de correção automáticas.",
-    keywords: ["testes escolares", "fichas de trabalho", "quizzes educativos"],
-  },
-  community: {
-    title: "Biblioteca Comunitária",
-    description:
-      "Partilhe e aceda a recursos criados por professores portugueses.",
-    keywords: [
-      "recursos educativos",
-      "partilha de materiais",
-      "comunidade de professores",
-    ],
-  },
-} as const;
-
-// Generate all homepage schemas
-export function getGlobalSchemas() {
-  return [getOrganizationSchema(), getWebsiteSchema()];
+/** Rendered in the <head> of every page, in the page's language. */
+export function getGlobalSchemas(locale: Locale = defaultLocale) {
+  return [getOrganizationSchema(locale), getWebsiteSchema(locale)];
 }
 
-export function getHomePageSchemas() {
-  return [
-    getSoftwareApplicationSchema(),
-    getServiceSchema(),
-  ];
+export function getHomePageSchemas(locale: Locale = defaultLocale) {
+  return [getSoftwareApplicationSchema(locale), getServiceSchema(locale)];
 }

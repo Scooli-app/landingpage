@@ -41,3 +41,5 @@ yarn-error.log*
 next-env.d.ts
 
 /skills/
+# brainstorming companion mockups
+.superpowers/

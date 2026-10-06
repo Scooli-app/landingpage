@@ -1,4 +1,4 @@
-import { HomePageClient } from "@/components/HomePageClient";
+import { HomePage } from "@/components/homepage/HomePage";
 import { StructuredData } from "@/components/StructuredData";
 import type { Locale } from "@/i18n/routing";
 import { canonicalUrl, hreflangAlternates, localizedUrl } from "@/i18n/urls";
@@ -87,19 +87,13 @@ const enKeywords = [
   "classroom quizzes",
   "AI presentation generator",
   "slides for lessons",
+  "yearly plan generator",
   "create teaching materials",
   "AI teaching resources",
   "differentiated instruction",
-  "inclusive education",
-  "special educational needs",
   "editable teaching materials",
   "teacher resource library",
-  "teacher community",
-  "Aprendizagens Essenciais",
-  "Portuguese national curriculum",
-  "curriculum alignment",
-  "edtech Portugal",
-  "education technology Portugal",
+  "teacher workload",
 ];
 
 export async function generateMetadata({
@@ -140,8 +134,6 @@ export async function generateMetadata({
   };
 }
 
-const homeSchemas = getHomePageSchemas();
-
 export default async function Home({
   params,
 }: {
@@ -149,6 +141,7 @@ export default async function Home({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home.howToSchema" });
+  const homeSchemas = getHomePageSchemas(locale);
 
   const howToSchema = getHowToSchema(
     t("name"),
@@ -167,7 +160,7 @@ export default async function Home({
       ))}
       <StructuredData id="howto-schema" data={howToSchema} />
 
-      <HomePageClient />
+      <HomePage />
     </>
   );
 }

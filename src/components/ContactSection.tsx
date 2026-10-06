@@ -3,7 +3,7 @@
 import { Container } from "@/components/Container";
 import { EmailContact } from "@/components/EmailContact";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { errorClass, hintClass, Input, labelClass, textareaClass } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   captureMarketingEvent,
@@ -12,7 +12,8 @@ import {
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
-import { Building2, Clock3, Loader2, Mail, MessageSquare, Send, User } from "lucide-react";
+import { Loader2 } from "lucide-react";
+import { displayTitle, Kicker } from "@/components/site/primitives";
 import { useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { toast } from "sonner";
@@ -151,82 +152,51 @@ export function ContactSection() {
   };
 
   return (
-    <section className="relative isolate pb-20 pt-8 sm:pb-24 sm:pt-10 lg:pb-28">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
-      <Container className="space-y-10">
-        <div className="max-w-4xl space-y-6">
-          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
-            <MessageSquare className="h-4 w-4" />
-            {t("badge")}
-          </span>
-          <div className="space-y-4">
-            <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
+    <section className="pb-[88px] pt-14 md:pb-32 md:pt-20">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div>
+            <Kicker>{t("badge")}</Kicker>
+            <h1
+              className={cn(
+                displayTitle,
+                "mt-4 text-[clamp(40px,5vw,64px)] leading-[1.04] tracking-[-0.03em]",
+              )}
+            >
               {t("title")}
             </h1>
-            <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-              {t("description")}
-            </p>
-          </div>
-        </div>
-      </Container>
+            <p className="mt-5 text-lg leading-relaxed text-subtle md:text-[19px]">{t("description")}</p>
 
-      <Container>
-        <div className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
-          <div className="grid gap-4">
-            <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                  <Mail className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.email.title")}</p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">{t("cards.email.subtitle")}</p>
-                </div>
+            <dl className="mt-10 border-t border-line">
+              <div className="border-b border-line py-5">
+                <dt className="text-[15px] font-semibold text-ink">{t("cards.email.title")}</dt>
+                <dd className="mt-1 text-[15px] text-subtle">{t("cards.email.subtitle")}</dd>
+                <dd className="mt-2">
+                  <EmailContact
+                    showIcon
+                    showLabel={false}
+                    placement="contact_page_email_card"
+                    className="-ml-3 text-[15px]"
+                  />
+                </dd>
               </div>
-              <div className="mt-5">
-                <EmailContact
-                  showIcon
-                  showLabel={false}
-                  placement="contact_page_email_card"
-                  className="rounded-full border border-slate-200 bg-slate-50 px-4 py-2 hover:bg-[color:var(--scooli-surface-alt)]"
-                />
+              <div className="border-b border-line py-5">
+                <dt className="text-[15px] font-semibold text-ink">{t("cards.responseTime.title")}</dt>
+                <dd className="mt-1 text-[15px] text-subtle">{t("cards.responseTime.subtitle")}</dd>
               </div>
-            </div>
-
-            <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                  <Clock3 className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.responseTime.title")}</p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">{t("cards.responseTime.subtitle")}</p>
-                </div>
+              <div className="border-b border-line py-5">
+                <dt className="text-[15px] font-semibold text-ink">{t("cards.institutions.title")}</dt>
+                <dd className="mt-1 text-[15px] text-subtle">{t("cards.institutions.subtitle")}</dd>
               </div>
-            </div>
-
-            <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-              <div className="flex items-center gap-3">
-                <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-                  <Building2 className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("cards.institutions.title")}</p>
-                  <p className="text-sm text-[color:var(--scooli-muted)]">
-                    {t("cards.institutions.subtitle")}
-                  </p>
-                </div>
-              </div>
-            </div>
+            </dl>
           </div>
 
-          <div className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-56px_rgba(19,35,58,0.36)] sm:p-8">
+          <div className="self-start rounded-xl border border-line-strong bg-white p-6 sm:p-9">
             <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-5">
-              <p className="text-sm text-[color:var(--scooli-muted)]">{t("form.requiredNote")}</p>
+              <p className={hintClass}>{t("form.requiredNote")}</p>
 
               <div className="space-y-2">
-                <Label htmlFor={fieldIds.name} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                  <User className="h-3.5 w-3.5 text-slate-400" />
+                <Label htmlFor={fieldIds.name} className={labelClass}>
                   {t("form.nameLabel")}
                 </Label>
                 <Input
@@ -240,7 +210,7 @@ export function ContactSection() {
                     clearFieldError("name");
                   }}
                   maxLength={200}
-                  className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                 
                   disabled={isLoading}
                   autoComplete="name"
                   aria-invalid={Boolean(errors.name)}
@@ -248,15 +218,14 @@ export function ContactSection() {
                   required
                 />
                 {errors.name && (
-                  <p id={getFieldErrorId("name")} className="text-sm text-[color:var(--scooli-error)]">
+                  <p id={getFieldErrorId("name")} className={errorClass}>
                     {errors.name}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor={fieldIds.email} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                  <Mail className="h-3.5 w-3.5 text-slate-400" />
+                <Label htmlFor={fieldIds.email} className={labelClass}>
                   {t("form.emailLabel")}
                 </Label>
                 <Input
@@ -269,26 +238,25 @@ export function ContactSection() {
                     setEmail(e.target.value);
                     clearFieldError("email");
                   }}
-                  className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                 
                   disabled={isLoading}
                   autoComplete="email"
                   aria-invalid={Boolean(errors.email)}
                   aria-describedby={getFieldDescribedBy("email", fieldIds.emailHint)}
                   required
                 />
-                <p id={fieldIds.emailHint} className="text-xs text-slate-500">
+                <p id={fieldIds.emailHint} className={hintClass}>
                   {t("form.emailHint")}
                 </p>
                 {errors.email && (
-                  <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">
+                  <p id={getFieldErrorId("email")} className={errorClass}>
                     {errors.email}
                   </p>
                 )}
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor={fieldIds.organization} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-                  <Building2 className="h-3.5 w-3.5 text-slate-400" />
+                <Label htmlFor={fieldIds.organization} className={labelClass}>
                   {t("form.organizationLabel")}
                 </Label>
                 <Input
@@ -299,14 +267,14 @@ export function ContactSection() {
                   value={organization}
                   onChange={(e) => setOrganization(e.target.value)}
                   maxLength={200}
-                  className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                 
                   disabled={isLoading}
                   autoComplete="organization"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor={fieldIds.message} className="text-sm font-medium text-slate-700">
+                <Label htmlFor={fieldIds.message} className={labelClass}>
                   {t("form.messageLabel")}
                 </Label>
                 <textarea
@@ -319,17 +287,17 @@ export function ContactSection() {
                     clearFieldError("message");
                   }}
                   maxLength={2000}
-                  className="flex min-h-[140px] w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-xs placeholder:text-slate-400 focus:border-[#6753FF] focus:outline-none focus:ring-1 focus:ring-[#6753FF] disabled:cursor-not-allowed disabled:opacity-50"
+                  className={cn(textareaClass, "min-h-[140px]")}
                   disabled={isLoading}
                   aria-invalid={Boolean(errors.message)}
                   aria-describedby={getFieldDescribedBy("message", fieldIds.messageHint)}
                   required
                 />
-                <p id={fieldIds.messageHint} className="text-xs text-slate-500">
+                <p id={fieldIds.messageHint} className={hintClass}>
                   {t("form.messageHint")}
                 </p>
                 {errors.message && (
-                  <p id={getFieldErrorId("message")} className="text-sm text-[color:var(--scooli-error)]">
+                  <p id={getFieldErrorId("message")} className={errorClass}>
                     {errors.message}
                   </p>
                 )}
@@ -342,7 +310,7 @@ export function ContactSection() {
                     role="status"
                     className={cn(
                       "text-sm",
-                      submitMessage.tone === "error" ? "text-[color:var(--scooli-error)]" : "text-emerald-700"
+                      submitMessage.tone === "error" ? "text-tag-red-ink" : "text-tag-green-ink"
                     )}
                   >
                     {submitMessage.text}
@@ -353,7 +321,7 @@ export function ContactSection() {
               <Button
                 type="submit"
                 disabled={isLoading}
-                className="h-12 w-full rounded-xl bg-[color:var(--scooli-primary)] text-base font-semibold text-white transition-all duration-200 hover:bg-[color:var(--scooli-primary-strong)] disabled:cursor-not-allowed disabled:opacity-50"
+                size="lg" className="w-full"
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
@@ -362,16 +330,15 @@ export function ContactSection() {
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Send className="h-4 w-4" />
                     {t("form.submitLabel")}
                   </div>
                 )}
               </Button>
 
-              <p className="text-center text-xs text-slate-400">
+              <p className="text-center text-[13px] text-faint">
                 {t.rich("form.consent", {
                   link: (chunks) => (
-                    <Link href="/privacy" className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]">
+                    <Link href="/privacy" className="text-violet-ink underline underline-offset-2">
                       {chunks}
                     </Link>
                   ),

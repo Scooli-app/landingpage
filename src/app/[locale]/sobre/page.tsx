@@ -1,4 +1,4 @@
-import { AboutPageClient } from "@/components/AboutPageClient";
+import { AboutPage as AboutContent } from "@/components/AboutPage";
 import { PublicSiteShell } from "@/components/marketing/shared";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
@@ -23,7 +23,7 @@ export async function generateMetadata({
 export default function AboutPage() {
   return (
     <PublicSiteShell>
-      <AboutPageClient />
+      <AboutContent />
     </PublicSiteShell>
   );
 }

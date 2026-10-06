@@ -47,11 +47,11 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           type="button"
           aria-label={t("label")}
           className={cn(
-            "inline-flex items-center gap-1.5 rounded-full border border-[color:var(--scooli-border)] bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-[color:var(--scooli-ink)] transition hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] data-[state=open]:bg-[color:var(--scooli-accent)]",
+            "inline-flex h-8 items-center gap-1.5 rounded-md border border-line px-2 font-mono text-xs text-subtle transition-colors hover:border-line-strong hover:text-ink data-[state=open]:border-line-strong data-[state=open]:text-ink",
             className,
           )}
         >
-          <Languages className="h-4 w-4" aria-hidden="true" />
+          <Languages className="size-4" strokeWidth={1.75} aria-hidden="true" />
           {LOCALE_CODES[activeLocale]}
         </button>
       </DropdownMenuPrimitive.Trigger>
@@ -59,7 +59,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         <DropdownMenuPrimitive.Content
           align="end"
           sideOffset={8}
-          className="z-50 min-w-[9rem] overflow-hidden rounded-2xl border border-[color:var(--scooli-border)] bg-white p-1 shadow-[var(--shadow-soft)]"
+          className="z-50 min-w-[9rem] overflow-hidden rounded-lg border border-line bg-white p-1 shadow-[0_16px_44px_-16px_rgba(17,17,17,0.16)]"
         >
           {locales.map((locale) => {
             const isActive = locale === activeLocale;
@@ -73,10 +73,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
                   aria-current={isActive ? "true" : undefined}
                   aria-label={t("switchTo", { language: t(locale) })}
                   className={cn(
-                    "flex cursor-pointer select-none items-center justify-between rounded-xl px-3 py-2 text-sm font-medium outline-none transition",
-                    isActive
-                      ? "bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]"
-                      : "text-[color:var(--scooli-ink)] hover:bg-[color:var(--scooli-accent)]",
+                    "flex cursor-pointer select-none items-center justify-between rounded-md px-3 py-2 text-sm text-ink outline-none transition-colors hover:bg-stone-soft focus:bg-stone-soft",
+                    isActive && "font-medium",
                   )}
                 >
                   {t(locale)}

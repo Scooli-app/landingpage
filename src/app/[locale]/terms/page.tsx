@@ -1,4 +1,5 @@
 import { Container } from "@/components/Container";
+import { PublicSiteShell } from "@/components/marketing/shared";
 import { StructuredData } from "@/components/StructuredData";
 import { TermsOfUse } from "@/components/TermsOfUse";
 import type { Locale } from "@/i18n/routing";
@@ -51,11 +52,13 @@ export default async function TermsPage({
       <StructuredData id="breadcrumb-schema" data={breadcrumbSchema} />
       <StructuredData id="webpage-schema" data={webPageSchema} />
 
-      <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12 md:py-16">
+      <PublicSiteShell>
+      <section className="py-14 md:py-20">
         <Container>
           <TermsOfUse />
         </Container>
       </section>
+      </PublicSiteShell>
     </>
   );
 }

@@ -105,11 +105,8 @@ function buildLlmsText() {
       "- The public trust positioning combines privacy, teacher review, and Aprendizagens Essenciais alignment as a reason to trust the product more than a generic tool.",
     ]),
     buildSection("Public proof points on the site", [
-      `- At least ${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue} generated documents are publicly claimed.`,
-      `- At least ${PUBLIC_IMPACT_METRICS.weeklyHoursSaved.minValue} hours saved per week are publicly claimed.`,
-      `- At least ${PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue} adapted materials are publicly claimed.`,
-      `- At least ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} active teachers are publicly claimed.`,
-      "- The public pricing page also includes visible testimonial quotes from teachers.",
+      `- More than ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} teachers use Scooli.`,
+      `- More than ${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue} documents have been created with Scooli.`,
     ]),
     buildSection("Pricing and commercial model", [
       `- Free plan: ${PRICING.free.generationsPerMonth} generations per month.`,

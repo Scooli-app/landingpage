@@ -1,14 +1,16 @@
-import { Container } from "@/components/Container";
 import { getTrustCards } from "@/components/marketing/data";
-import { Link } from "@/i18n/navigation";
-import type { Locale } from "@/i18n/routing";
+import { Checklist, PageHero, PublicSiteShell } from "@/components/marketing/shared";
 import {
-  InfoCard,
-  MarketingSectionBadge,
-  PublicSiteShell,
-  SurfacePanel,
-} from "@/components/marketing/shared";
+  DividerGrid,
+  DividerItem,
+  Section,
+  SectionHeader,
+  displayTitle,
+} from "@/components/site/primitives";
+import { TrackedLink } from "@/components/TrackedLink";
+import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
+import { cn } from "@/lib/utils";
 import { getTranslations } from "next-intl/server";
 
 export async function generateMetadata({
@@ -39,120 +41,98 @@ export default async function TrustPage({
   const commitments = t.raw("commitments.items") as { title: string; description: string }[];
   const goodPractices = t.raw("goodPractices.items") as string[];
 
+  const documents = [
+    { key: "privacy", href: "/privacy" },
+    { key: "terms", href: "/terms" },
+  ] as const;
+
   return (
     <PublicSiteShell>
-      <section className="relative isolate pt-8 sm:pt-10">
-        <div className="absolute inset-x-0 top-0 -z-10 h-[420px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
-        <Container className="pb-16 pt-10 sm:pb-20 lg:pb-24">
-          <div className="space-y-6">
-            <MarketingSectionBadge>{t("badge")}</MarketingSectionBadge>
-            <div className="max-w-4xl space-y-4">
-              <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                {t("title")}
-              </h1>
-              <p className="text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">
-                {t("description")}
-              </p>
-            </div>
+      <PageHero
+        eyebrow={t("badge")}
+        title={t("title")}
+        description={t("description")}
+        showActions={false}
+      >
+        <Checklist items={summaryPoints} />
+      </PageHero>
 
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              {summaryPoints.map((item) => (
-                <div
-                  key={item}
-                  className="rounded-[24px] border border-slate-200 bg-white px-5 py-4 text-sm font-medium text-slate-700 shadow-[0_24px_60px_-56px_rgba(19,35,58,0.35)]"
-                >
+      <Section aria-labelledby="trust-principles-title">
+        <SectionHeader
+          id="trust-principles-title"
+          kicker={t("principles.eyebrow")}
+          title={t("principles.title")}
+        />
+        <DividerGrid columns={3}>
+          {trustCards.map((card) => (
+            <DividerItem key={card.title} title={card.title}>
+              {card.description}
+            </DividerItem>
+          ))}
+        </DividerGrid>
+      </Section>
+
+      <Section tone="stone" aria-labelledby="trust-commitments-title">
+        <SectionHeader id="trust-commitments-title" title={t("commitments.title")} />
+        <div className="grid gap-x-16 md:grid-cols-2">
+          {commitments.map((item) => (
+            <DividerItem
+              key={item.title}
+              title={item.title}
+              className="border-t border-line-strong py-6"
+            >
+              {item.description}
+            </DividerItem>
+          ))}
+        </div>
+      </Section>
+
+      <Section aria-labelledby="trust-practices-title">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <div data-reveal>
+            <h2
+              id="trust-practices-title"
+              className={cn(displayTitle, "text-[clamp(30px,3.4vw,42px)] leading-[1.1]")}
+            >
+              {t("goodPractices.title")}
+            </h2>
+            <ol className="mt-8 border-t border-line">
+              {goodPractices.map((item, index) => (
+                <li key={item} className="flex gap-5 border-b border-line py-4 text-[16px] leading-relaxed text-body">
+                  <span className="pt-1 font-mono text-xs text-faint">0{index + 1}</span>
                   {item}
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </div>
-        </Container>
-      </section>
 
-      <section className="pb-20 sm:pb-24 lg:pb-28">
-        <Container className="space-y-6">
-          <section className="space-y-6">
-            <div className="space-y-3">
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--scooli-primary)]">{t("principles.eyebrow")}</p>
-              <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">
-                {t("principles.title")}
-              </h2>
-            </div>
-            <div className="grid gap-5 lg:grid-cols-3">
-              {trustCards.map((card) => (
-                <InfoCard
-                  key={card.title}
-                  icon={card.icon}
-                  title={card.title}
-                  description={card.description}
-                />
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <SurfacePanel>
-              <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                {t("commitments.title")}
-              </h2>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                {commitments.map((item) => (
-                  <div key={item.title} className="rounded-[24px] border border-slate-200 bg-slate-50 p-5">
-                    <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{item.title}</p>
-                    <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">{item.description}</p>
-                  </div>
-                ))}
-              </div>
-            </SurfacePanel>
-          </section>
-
-          <section>
-            <SurfacePanel>
-              <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                {t("goodPractices.title")}
-              </h2>
-              <div className="mt-6 grid gap-3">
-                {goodPractices.map((item) => (
-                  <div
-                    key={item}
-                    className="rounded-[22px] border border-slate-200 bg-white px-4 py-3 text-sm leading-7 text-slate-700"
+          <div data-reveal>
+            <h2 className={cn(displayTitle, "text-[clamp(30px,3.4vw,42px)] leading-[1.1]")}>
+              {t("documents.title")}
+            </h2>
+            <ul className="mt-8 border-t border-line">
+              {documents.map((document) => (
+                <li key={document.key} className="border-b border-line">
+                  <TrackedLink
+                    href={document.href}
+                    eventName="marketing_navigation_clicked"
+                    eventProperties={{ location: "trust_documents", link_label: document.key }}
+                    className="group block py-5"
                   >
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </SurfacePanel>
-          </section>
-
-          <section>
-            <SurfacePanel>
-              <h2 className="font-display text-2xl leading-tight text-[color:var(--scooli-ink)] sm:text-3xl">
-                {t("documents.title")}
-              </h2>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
-                <Link
-                  href="/privacy"
-                  className="rounded-[24px] border border-slate-200 bg-white p-5 transition hover:border-[color:var(--scooli-primary)]/30 hover:bg-[color:var(--scooli-surface-alt)]"
-                >
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("documents.privacy.title")}</p>
-                  <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    {t("documents.privacy.description")}
-                  </p>
-                </Link>
-                <Link
-                  href="/terms"
-                  className="rounded-[24px] border border-slate-200 bg-white p-5 transition hover:border-[color:var(--scooli-primary)]/30 hover:bg-[color:var(--scooli-surface-alt)]"
-                >
-                  <p className="text-lg font-semibold text-[color:var(--scooli-ink)]">{t("documents.terms.title")}</p>
-                  <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
-                    {t("documents.terms.description")}
-                  </p>
-                </Link>
-              </div>
-            </SurfacePanel>
-          </section>
-        </Container>
-      </section>
+                    <span className="flex items-center justify-between gap-4 text-[17px] font-semibold text-ink group-hover:text-violet-ink">
+                      {t(`documents.${document.key}.title`)}
+                      <span aria-hidden className="font-normal text-subtle">→</span>
+                    </span>
+                    <span className="mt-1 block text-[15px] leading-relaxed text-subtle">
+                      {t(`documents.${document.key}.description`)}
+                    </span>
+                  </TrackedLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </Section>
     </PublicSiteShell>
   );
 }

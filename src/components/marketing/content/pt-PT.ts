@@ -7,29 +7,9 @@ import type { MarketingContent } from "../data";
  * of an i18n change.
  */
 export const marketingContentPtPT: MarketingContent = {
-  teacherStats: [
-    {
-      value: "7,4 h/semana",
-      label: "em preparação de aulas por docentes a tempo inteiro em Portugal",
-      source: "TALIS 2024 · Portugal",
-    },
-    {
-      value: "6,9 h/semana",
-      label: "em correção e avaliação do trabalho dos alunos",
-      source: "TALIS 2024 · Portugal",
-    },
-    {
-      value: "77%",
-      label: "identificam o excesso de correções como fonte de stress",
-      source: "TALIS 2024 · Portugal",
-    },
-  ],
-
   impactStatLabels: {
-    generatedDocuments: "documentos gerados",
-    weeklyHoursSaved: "poupadas por semana",
-    adaptedMaterials: "materiais adaptados",
-    activeTeachers: "professores ativos",
+    activeTeachers: "professores",
+    generatedDocuments: "documentos criados",
   },
 
   trustCards: [
@@ -47,21 +27,6 @@ export const marketingContentPtPT: MarketingContent = {
     },
   ],
 
-  teacherPageCards: [
-    {
-      title: "Preparar a aula com menos atrito",
-      description: "Parta de um pedido simples e receba uma base editável para a aula, ficha ou teste que precisa de fechar.",
-    },
-    {
-      title: "Adaptar materiais sem refazer tudo",
-      description: "Ajuste dificuldade, linguagem, extensão e formato para turmas diferentes sem partir sempre do zero.",
-    },
-    {
-      title: "Reutilizar boas ideias",
-      description: "A biblioteca comunitária ajuda a descobrir materiais que pode duplicar e adaptar ao seu contexto.",
-    },
-  ],
-
   schoolPageCards: [
     {
       title: "Conversa inicial com contexto",
@@ -74,54 +39,6 @@ export const marketingContentPtPT: MarketingContent = {
     {
       title: "Adoção responsável desde o início",
       description: "Privacidade, revisão humana e controlo do professor entram logo na conversa, sem ficarem escondidos para mais tarde.",
-    },
-  ],
-
-  aboutPrinciples: [
-    {
-      title: "Dar tempo de volta aos professores",
-      description: "A prioridade é reduzir o trabalho repetitivo para que sobre mais tempo para ensinar, acompanhar alunos e ajustar o que importa.",
-    },
-    {
-      title: "Manter o professor no centro",
-      description: "A ferramenta ajuda a produzir materiais e versões, mas a decisão final continua sempre do lado do docente.",
-    },
-    {
-      title: "Construir para Portugal",
-      description: "A linguagem, os exemplos e o posicionamento são pensados para a realidade das escolas e dos professores em Portugal.",
-    },
-  ],
-
-  libraryPageCards: [
-    {
-      title: "Ficha de trabalho sobre frações",
-      meta: "Matemática · 5.º ano · Editável",
-      tags: ["Ficha", "45 min", "Duplicar"],
-    },
-    {
-      title: "Planificação semanal de Português",
-      meta: "Português · 2.º ciclo · Com objetivos",
-      tags: ["Planificação", "Aprendizagens", "Ajustável"],
-    },
-    {
-      title: "Teste diagnóstico de Ciências",
-      meta: "Ciências · 6.º ano · Com critérios",
-      tags: ["Teste", "Cotação", "Preview"],
-    },
-    {
-      title: "Apresentação sobre o ciclo da água",
-      meta: "Estudo do Meio · 1.º ciclo · Apresentação",
-      tags: ["Slides", "Explicação", "Adaptar"],
-    },
-    {
-      title: "Quiz rápido de revisão",
-      meta: "História · 8.º ano · Quiz",
-      tags: ["Revisão", "5 minutos", "Partilhar"],
-    },
-    {
-      title: "Guião de leitura orientada",
-      meta: "Português · 7.º ano · Guião",
-      tags: ["Leitura", "Apoio", "Biblioteca"],
     },
   ],
 
@@ -506,7 +423,7 @@ export const marketingContentPtPT: MarketingContent = {
       relatedLinks: [
         { label: "Adaptar materiais por nível", href: toolHref("adaptacao-de-materiais") },
         { label: "Partir de um documento seu", href: toolHref("carregar-documentos") },
-        { label: "Explorar a biblioteca comunitária", href: "/biblioteca" },
+        { label: "Explorar a biblioteca comunitária", href: "/professores" },
       ],
       howToSteps: [
         {
@@ -591,7 +508,7 @@ export const marketingContentPtPT: MarketingContent = {
       relatedLinks: [
         { label: "Criar testes completos", href: toolHref("gerador-de-testes") },
         { label: "Ver apresentações para a aula", href: toolHref("apresentacoes") },
-        { label: "Explorar recursos na biblioteca", href: "/biblioteca" },
+        { label: "Explorar recursos na biblioteca", href: "/professores" },
       ],
       howToSteps: [
         {

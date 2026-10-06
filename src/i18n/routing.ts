@@ -28,7 +28,6 @@ export const pathnames = {
   "/precos": { "pt-PT": "/precos", en: "/pricing" },
   "/ferramentas": { "pt-PT": "/ferramentas", en: "/tools" },
   "/ferramentas/[slug]": { "pt-PT": "/ferramentas/[slug]", en: "/tools/[slug]" },
-  "/biblioteca": { "pt-PT": "/biblioteca", en: "/library" },
   "/professores": { "pt-PT": "/professores", en: "/teachers" },
   "/escolas": { "pt-PT": "/escolas", en: "/schools" },
   "/ia-para-professores": { "pt-PT": "/ia-para-professores", en: "/ai-for-teachers" },

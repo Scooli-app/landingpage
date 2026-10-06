@@ -18,7 +18,6 @@ const staticRouteConfigs: RouteConfig[] = [
   { path: "/ia-para-professores", changeFrequency: "weekly", priority: 0.95 },
   { path: "/escolas", changeFrequency: "weekly", priority: 0.85 },
   { path: "/recomendar-instituicao", changeFrequency: "weekly", priority: 0.8 },
-  { path: "/biblioteca", changeFrequency: "weekly", priority: 0.9 },
   { path: "/ferramentas", changeFrequency: "weekly", priority: 0.85 },
   { path: "/precos", changeFrequency: "weekly", priority: 0.8 },
   { path: "/confianca", changeFrequency: "weekly", priority: 0.8 },

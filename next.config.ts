@@ -8,6 +8,16 @@ const nextConfig: NextConfig = {
     optimizeCss: true,
   },
 
+  async redirects() {
+    return [
+      // The community library page was folded into the teachers page.
+      { source: "/biblioteca", destination: "/professores#biblioteca", permanent: true },
+      { source: "/en/library", destination: "/en/teachers#biblioteca", permanent: true },
+      // Teachers looking for the app on the marketing domain.
+      { source: "/dashboard", destination: "https://create.scooli.app/dashboard", permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {
