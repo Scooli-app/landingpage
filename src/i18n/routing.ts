@@ -31,6 +31,7 @@ export const pathnames = {
   "/professores": { "pt-PT": "/professores", en: "/teachers" },
   "/escolas": { "pt-PT": "/escolas", en: "/schools" },
   "/ia-para-professores": { "pt-PT": "/ia-para-professores", en: "/ai-for-teachers" },
+  "/comparar/[slug]": { "pt-PT": "/comparar/[slug]", en: "/compare/[slug]" },
   "/sobre": { "pt-PT": "/sobre", en: "/about" },
   "/contacto": { "pt-PT": "/contacto", en: "/contact" },
   "/confianca": { "pt-PT": "/confianca", en: "/trust" },

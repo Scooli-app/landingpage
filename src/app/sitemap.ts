@@ -1,4 +1,5 @@
 import { toolSlugs } from "@/components/marketing/data";
+import { comparisonSlugs } from "@/components/marketing/comparisons";
 import { defaultLocale, locales } from "@/i18n/routing";
 import { hreflangAlternates, isFullyLocalized, localizedUrl } from "@/i18n/urls";
 import { SITE_URL } from "@/lib/seo";
@@ -43,12 +44,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: slug === "fichas-de-trabalho" ? 0.9 : 0.8,
   }));
 
+  const comparisonRouteConfigs: RouteConfig[] = comparisonSlugs.map((slug) => ({
+    path: "/comparar/[slug]",
+    params: { slug },
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
   // Routes are listed once per locale they actually exist in, each carrying the
   // full hreflang set. Previously the sitemap claimed a single `pt-PT`
   // alternate for every URL, which left the English pages unlisted entirely.
   // A route whose copy is still only Portuguese is listed once — submitting an
   // English URL that canonicalises elsewhere just burns crawl budget.
-  return [...staticRouteConfigs, ...toolRouteConfigs].flatMap((route) => {
+  return [...staticRouteConfigs, ...toolRouteConfigs, ...comparisonRouteConfigs].flatMap((route) => {
     const routeLocales = isFullyLocalized(route.path)
       ? locales
       : [defaultLocale];

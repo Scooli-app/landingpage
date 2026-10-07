@@ -37,6 +37,16 @@ const resourceLinks = [
   { labelKey: "terms", href: "/terms" },
 ] as const;
 
+/**
+ * "Scooli vs X" comparison pages. Kept out of `resourceLinks`'s locale-keyed
+ * shape because the titles are PT-PT only (see `comparisons.ts` — these
+ * pages don't have English copy yet), not translation-catalogue entries.
+ */
+const comparisonLinks = [
+  { label: "Scooli vs Canva", slug: "canva-para-educacao" },
+  { label: "Scooli vs MagicSchool AI", slug: "magicschool-ai" },
+] as const;
+
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/scooliapp/", icon: Instagram },
   {
@@ -130,11 +140,18 @@ export function Footer() {
           <FooterColumn
             heading={t("resourcesHeading")}
             location="footer_resources_links"
-            items={resourceLinks.map((link) => ({
-              key: link.labelKey,
-              label: t(`links.${link.labelKey}`),
-              href: link.href,
-            }))}
+            items={[
+              ...resourceLinks.map((link) => ({
+                key: link.labelKey,
+                label: t(`links.${link.labelKey}`),
+                href: link.href as Href,
+              })),
+              ...comparisonLinks.map((link) => ({
+                key: link.slug,
+                label: link.label,
+                href: { pathname: "/comparar/[slug]", params: { slug: link.slug } } as Href,
+              })),
+            ]}
           />
         </div>
 

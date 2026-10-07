@@ -35,9 +35,11 @@ export type PathnameKey = keyof typeof pathnames;
  * English version would never have been indexed. Two lists that have to agree is
  * the bug. One list plus explicit exceptions cannot drift.
  *
- * Empty today — every route in `pathnames` has authored English copy.
+ * `/comparar/[slug]` is PT-PT only by design (see `comparisons.ts`) — the
+ * competitor claims are researched and cited in Portuguese and have not been
+ * translated; remove it from here once an English version exists.
  */
-const notYetLocalized = new Set<string>([]);
+const notYetLocalized = new Set<string>(["/comparar/[slug]"]);
 
 export function isFullyLocalized(path: string) {
   return (
