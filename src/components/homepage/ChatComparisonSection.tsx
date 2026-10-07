@@ -2,19 +2,22 @@ import { Container } from "@/components/Container";
 import { displayTitle } from "@/components/site/primitives";
 import { appMedia } from "@/lib/app-media";
 import { cn } from "@/lib/utils";
-import { Check, Minus } from "lucide-react";
+import { BookOpenCheck, CalendarRange, FileCheck2, Minus, Users } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
 /**
  * The objection teachers actually have: "I already use ChatGPT". One dark band,
  * the page's only high-contrast moment: a generic chat answer (drawn, no brand
- * UI) beside a real Scooli document. Every point must hold for any chat tool.
+ * UI) beside a real Scooli document. The chat side lists the work a chat
+ * leaves to the teacher; the Scooli side carries the visual weight. Every
+ * point must hold for any chat tool.
  */
+const scooliIcons = [Users, BookOpenCheck, FileCheck2, CalendarRange];
 export function ChatComparisonSection() {
   const t = useTranslations("home.chatComparison");
   const chatPoints = t.raw("chat.points") as string[];
-  const scooliPoints = t.raw("scooli.points") as string[];
+  const scooliPoints = t.raw("scooli.points") as { title: string; text: string }[];
   const lessonPlan = appMedia(useLocale()).documents["plano-de-aula"];
 
   return (
@@ -57,11 +60,11 @@ export function ChatComparisonSection() {
                 {t("chat.answer")}
               </p>
             </div>
-            <ul className="mt-6 border-t border-white/10">
+            <ul className="mt-6 border-t border-white/10 lg:mt-auto">
               {chatPoints.map((point) => (
                 <li
                   key={point}
-                  className="flex items-start gap-3 border-b border-white/10 py-3 text-[15px] text-white/60"
+                  className="flex items-start gap-3 border-b border-white/10 py-3 text-[14.5px] leading-snug text-white/55"
                 >
                   <Minus
                     aria-hidden
@@ -96,20 +99,20 @@ export function ChatComparisonSection() {
                 </div>
               </div>
             )}
-            <ul className="mt-6 border-t border-line">
-              {scooliPoints.map((point) => (
-                <li
-                  key={point}
-                  className="flex items-start gap-3 border-b border-line py-3 text-[15px] text-ink"
-                >
-                  <Check
-                    aria-hidden
-                    className="mt-1 size-4 shrink-0 text-violet"
-                    strokeWidth={2}
-                  />
-                  {point}
-                </li>
-              ))}
+            <ul className="mt-7 grid gap-x-6 gap-y-6 sm:grid-cols-2">
+              {scooliPoints.map((point, index) => {
+                const Icon = scooliIcons[index % scooliIcons.length];
+
+                return (
+                  <li key={point.title}>
+                    <Icon aria-hidden className="size-5 text-violet" strokeWidth={1.75} />
+                    <p className="mt-3 text-[17px] font-semibold tracking-[-0.01em] text-ink">
+                      {point.title}
+                    </p>
+                    <p className="mt-1 text-[15px] leading-relaxed text-subtle">{point.text}</p>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

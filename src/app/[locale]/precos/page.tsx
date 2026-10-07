@@ -1,6 +1,7 @@
 import { StructuredData } from "@/components/StructuredData";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import type { Locale } from "@/i18n/routing";
+import { InstitutionalComparison } from "@/components/marketing/InstitutionalComparison";
 import { PricingPageClient } from "@/components/marketing/PricingPageClient";
 import { getFAQPageSchema, getPageMetadata, getProductSchema } from "@/lib/seo";
 import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
@@ -51,11 +52,13 @@ export default async function PricingPage({
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}
         description={t("hero.description")}
-        secondaryHref="/escolas"
+        secondaryHref="#porque-institucional"
         secondaryLabel={t("hero.secondaryLabel")}
       />
 
       <PricingPageClient />
+
+      <InstitutionalComparison />
 
       <Section bordered aria-labelledby="pricing-faq-title">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] lg:gap-16">

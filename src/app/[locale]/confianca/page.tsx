@@ -8,6 +8,7 @@ import {
   displayTitle,
 } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
+import { GdprSeal } from "@/components/site/GdprSeal";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -54,7 +55,13 @@ export default async function TrustPage({
         description={t("description")}
         showActions={false}
       >
-        <Checklist items={summaryPoints} />
+        <div className="flex items-center gap-4">
+          <GdprSeal className="size-16 shrink-0 drop-shadow-[0_10px_18px_rgba(0,51,153,0.22)]" />
+          <p className="text-[16px] font-semibold leading-snug text-ink">{summaryPoints[0]}</p>
+        </div>
+        <div className="mt-6">
+          <Checklist items={summaryPoints.slice(1)} />
+        </div>
       </PageHero>
 
       <Section aria-labelledby="trust-principles-title">

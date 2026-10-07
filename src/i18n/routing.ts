@@ -34,6 +34,8 @@ export const pathnames = {
   "/sobre": { "pt-PT": "/sobre", en: "/about" },
   "/contacto": { "pt-PT": "/contacto", en: "/contact" },
   "/confianca": { "pt-PT": "/confianca", en: "/trust" },
+  "/investidores": { "pt-PT": "/investidores", en: "/investors" },
+  "/roadmap": "/roadmap",
   "/recomendar-instituicao": {
     "pt-PT": "/recomendar-instituicao",
     en: "/recommend-your-school",

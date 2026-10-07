@@ -23,6 +23,8 @@ const productLinks = [
 
 const companyLinks = [
   { labelKey: "about", href: "/sobre" },
+  { labelKey: "investors", href: "/investidores" },
+  { labelKey: "roadmap", href: "/roadmap" },
   { labelKey: "trust", href: "/confianca" },
   { labelKey: "contact", href: "/contacto" },
   { labelKey: "recommend", href: "/recomendar-instituicao" },

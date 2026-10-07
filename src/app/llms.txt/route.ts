@@ -194,6 +194,8 @@ function buildLlmsText() {
       `- Tools index: ${SITE_URL}/ferramentas`,
       `- Pricing: ${SITE_URL}/precos`,
       `- Trust: ${SITE_URL}/confianca`,
+      `- Roadmap: ${SITE_URL}/roadmap`,
+      `- Investors: ${SITE_URL}/investidores`,
       `- Privacy: ${SITE_URL}/privacy`,
       `- Terms: ${SITE_URL}/terms`,
       `- Sign up: ${APP_URL}/sign-up`,

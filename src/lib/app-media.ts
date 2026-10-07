@@ -23,6 +23,8 @@ type AppMedia = {
   dashboard: ImageAsset;
   /** The community library (demo resources from fictional teachers, seeded locally). */
   library: ImageAsset;
+  /** The school admin dashboard (a fictional school, seeded locally: _screenshots/seed-school.sql). */
+  schoolDashboard: ImageAsset;
 };
 
 const doc = (dir: string, name: string): ImageAsset => ({
@@ -68,6 +70,7 @@ const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
   slides: [slide(dir, 1), slide(dir, 3)],
   dashboard: { src: `/app/${dir}/dashboard.png`, width: 2272, height: 1196 },
   library,
+  schoolDashboard: { src: `/app/${dir}/school-dashboard.png`, width: 2272, height: 1832 },
 });
 
 /**

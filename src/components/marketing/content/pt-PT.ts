@@ -18,7 +18,7 @@ export const marketingContentPtPT: MarketingContent = {
       description: "A Scooli ajuda a arrancar mais depressa, mas o professor revê, edita e decide sempre o que segue para a aula.",
     },
     {
-      title: "RGPD-ready",
+      title: "Em conformidade com o RGPD",
       description: "A plataforma foi pensada para contexto educativo e explica privacidade, revisão humana e boas práticas em linguagem simples.",
     },
     {
@@ -98,19 +98,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Definir o âmbito",
-          text: "Indica a disciplina, o ano, o período ou a unidade que quer planificar.",
+          text: "Indique a disciplina, o ano, o período ou a unidade que quer planificar.",
         },
         {
           name: "Indicar o contexto da turma",
-          text: "Partilha informação relevante sobre o grupo — ritmo, necessidades específicas ou prioridades curriculares.",
+          text: "Partilhe informação relevante sobre o grupo — ritmo, necessidades específicas ou prioridades curriculares.",
         },
         {
           name: "Gerar a planificação",
-          text: "Recebe uma planificação com objetivos, AE referenciadas, sequência e avaliação integrada.",
+          text: "Receba uma planificação com objetivos, AE referenciadas, sequência e avaliação integrada.",
         },
         {
           name: "Afinar e entregar",
-          text: "Edita a planificação, ajusta o que precisar e exporta quando estiver pronta a usar.",
+          text: "Edite a planificação, ajuste o que precisar e exporte quando estiver pronta a usar.",
         },
       ],
       seoKeywords: [
@@ -178,19 +178,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Indicar o tema e o ano",
-          text: "Define o conteúdo, a disciplina, o ano e a duração da aula que quer preparar.",
+          text: "Defina o conteúdo, a disciplina, o ano e a duração da aula que quer preparar.",
         },
         {
           name: "Escolher o foco da aula",
-          text: "Indica se é uma aula de introdução, prática, revisão ou avaliação.",
+          text: "Indique se é uma aula de introdução, prática, revisão ou avaliação.",
         },
         {
           name: "Gerar o plano de aula",
-          text: "Recebe um plano com objetivos, atividades, materiais e avaliação numa base editável.",
+          text: "Receba um plano com objetivos, atividades, materiais e avaliação numa base editável.",
         },
         {
           name: "Afinar e usar",
-          text: "Edita o que precisar e leva o plano para a sala quando estiver alinhado com a aula.",
+          text: "Edite o que precisar e leve o plano para a sala quando estiver alinhado com a aula.",
         },
       ],
       seoKeywords: [
@@ -258,11 +258,11 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Indicar a disciplina e o período",
-          text: "Define a disciplina, o ano, a data de início e fim e o horário semanal.",
+          text: "Defina a disciplina, o ano, a data de início e fim e o horário semanal.",
         },
         {
           name: "Rever as aulas distribuídas",
-          text: "A Scooli distribui as aulas pelo período com um tópico sugerido em cada sessão. Ajusta conforme o programa.",
+          text: "A Scooli distribui as aulas pelo período com um tópico sugerido em cada sessão. Ajuste conforme o programa.",
         },
         {
           name: "Gerar planos de aula à medida",
@@ -343,19 +343,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Indicar o tema e o ano",
-          text: "Define o conteúdo, o ano e o tipo de avaliação que quer preparar.",
+          text: "Defina o conteúdo, o ano e o tipo de avaliação que quer preparar.",
         },
         {
           name: "Pedir a estrutura do teste",
-          text: "Escolhe o formato das perguntas, a dificuldade e o comprimento pretendido.",
+          text: "Escolha o formato das perguntas, a dificuldade e o comprimento pretendido.",
         },
         {
           name: "Gerar com IA",
-          text: "Recebe um teste com perguntas, cotação e critérios de correção numa base editável.",
+          text: "Receba um teste com perguntas, cotação e critérios de correção numa base editável.",
         },
         {
           name: "Rever e exportar",
-          text: "Ajusta o que precisar e exporta o teste quando estiver pronto a usar.",
+          text: "Ajuste o que precisar e exporte o teste quando estiver pronto a usar.",
         },
       ],
       seoKeywords: [
@@ -428,19 +428,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Descrever a ficha que precisa",
-          text: "Indica o tema, o ano, o objetivo da aula e o tipo de exercício que quer incluir.",
+          text: "Indique o tema, o ano, o objetivo da aula e o tipo de exercício que quer incluir.",
         },
         {
           name: "Gerar a ficha de trabalho",
-          text: "Recebe uma ficha com instruções, exercícios e uma estrutura pronta para rever.",
+          text: "Receba uma ficha com instruções, exercícios e uma estrutura pronta para rever.",
         },
         {
           name: "Adaptar à sua turma",
-          text: "Pede versões mais simples, mais curtas ou com apoio adicional sem refazer tudo.",
+          text: "Peça versões mais simples, mais curtas ou com apoio adicional sem refazer tudo.",
         },
         {
           name: "Rever, imprimir ou exportar",
-          text: "Faz os últimos ajustes e leva a ficha para a aula no formato que preferir.",
+          text: "Faça os últimos ajustes e leve a ficha para a aula no formato que preferir.",
         },
       ],
       seoKeywords: [
@@ -513,19 +513,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Escolher o tema a rever",
-          text: "Indica o conteúdo, o ano e o momento da aula em que quer usar o quiz.",
+          text: "Indique o conteúdo, o ano e o momento da aula em que quer usar o quiz.",
         },
         {
           name: "Definir o formato do quiz",
-          text: "Pede um conjunto curto de perguntas adequado ao tempo disponível.",
+          text: "Peça um conjunto curto de perguntas adequado ao tempo disponível.",
         },
         {
           name: "Gerar com IA",
-          text: "Recebe um quiz com perguntas prontas para rever e ajustar.",
+          text: "Receba um quiz com perguntas prontas para rever e ajustar.",
         },
         {
           name: "Editar e usar em aula",
-          text: "Afina o nível, muda o número de itens e usa o quiz quando estiver alinhado com a turma.",
+          text: "Afine o nível, mude o número de itens e use o quiz quando estiver alinhado com a turma.",
         },
       ],
       seoKeywords: [
@@ -598,19 +598,19 @@ export const marketingContentPtPT: MarketingContent = {
       howToSteps: [
         {
           name: "Definir o tema e o ano",
-          text: "Indica o conteúdo, o ano e o objetivo da apresentação que quer preparar.",
+          text: "Indique o conteúdo, o ano e o objetivo da apresentação que quer preparar.",
         },
         {
           name: "Pedir a estrutura dos slides",
-          text: "Escolhe o foco da aula e o tipo de explicação que precisa de montar.",
+          text: "Escolha o foco da aula e o tipo de explicação que precisa de montar.",
         },
         {
           name: "Gerar a apresentação",
-          text: "Recebe uma sequência de slides com tópicos e exemplos base.",
+          text: "Receba uma sequência de slides com tópicos e exemplos base.",
         },
         {
           name: "Afinar antes da aula",
-          text: "Edita linguagem, ordem e exemplos para deixar a apresentação pronta a usar.",
+          text: "Edite linguagem, ordem e exemplos para deixar a apresentação pronta a usar.",
         },
       ],
       seoKeywords: [
@@ -687,15 +687,15 @@ export const marketingContentPtPT: MarketingContent = {
         },
         {
           name: "Indicar o tipo de adaptação",
-          text: "Pede simplificação, redução, apoio adicional ou outra mudança adequada à turma.",
+          text: "Peça simplificação, redução, apoio adicional ou outra mudança adequada à turma.",
         },
         {
           name: "Gerar a nova versão",
-          text: "Recebe uma versão adaptada com a mesma base, mas ajustada ao nível pretendido.",
+          text: "Receba uma versão adaptada com a mesma base, mas ajustada ao nível pretendido.",
         },
         {
           name: "Rever antes de usar",
-          text: "Confirma a linguagem, os objetivos e o formato final antes de aplicar o material em aula.",
+          text: "Confirme a linguagem, os objetivos e o formato final antes de aplicar o material em aula.",
         },
       ],
       seoKeywords: [
@@ -776,11 +776,11 @@ export const marketingContentPtPT: MarketingContent = {
         },
         {
           name: "Gerar com IA",
-          text: "Recebe um novo recurso construído a partir do documento que carregou.",
+          text: "Receba um novo recurso construído a partir do documento que carregou.",
         },
         {
           name: "Editar e validar",
-          text: "Revê a nova versão, faz ajustes e usa o material quando estiver pronto.",
+          text: "Reveja a nova versão, faça ajustes e use o material quando estiver pronto.",
         },
       ],
       seoKeywords: [

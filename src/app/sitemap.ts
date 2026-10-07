@@ -22,6 +22,8 @@ const staticRouteConfigs: RouteConfig[] = [
   { path: "/precos", changeFrequency: "weekly", priority: 0.8 },
   { path: "/confianca", changeFrequency: "weekly", priority: 0.8 },
   { path: "/sobre", changeFrequency: "monthly", priority: 0.7 },
+  { path: "/roadmap", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/investidores", changeFrequency: "monthly", priority: 0.5 },
   { path: "/contacto", changeFrequency: "monthly", priority: 0.7 },
   { path: "/privacy", changeFrequency: "monthly", priority: 0.7 },
   { path: "/terms", changeFrequency: "monthly", priority: 0.7 },

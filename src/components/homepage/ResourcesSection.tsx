@@ -3,6 +3,15 @@ import { NAV_TOOL_SLUGS, type NavToolSlug } from "@/components/site/nav-data";
 import { TrackedLink } from "@/components/TrackedLink";
 import { cn } from "@/lib/utils";
 import { appMedia } from "@/lib/app-media";
+import {
+  CalendarRange,
+  ClipboardCheck,
+  FileText,
+  ListChecks,
+  NotebookPen,
+  Presentation,
+  type LucideIcon,
+} from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import type { ReactNode } from "react";
@@ -91,7 +100,20 @@ export function ResourcePreview({
   );
 }
 
-/** The third promise: the resources themselves, in order of relevance. */
+const resourceIcons: Record<NavToolSlug, LucideIcon> = {
+  "plano-de-aula": NotebookPen,
+  "fichas-de-trabalho": FileText,
+  "gerador-de-testes": ClipboardCheck,
+  quizzes: ListChecks,
+  planificacoes: CalendarRange,
+  apresentacoes: Presentation,
+};
+
+/**
+ * The third promise: the resources themselves, in order of relevance. Icons
+ * rather than document crops: six crops side by side read as six copies of the
+ * same page (the crops still illustrate each tool on /ferramentas).
+ */
 export function ResourcesSection() {
   const t = useTranslations("home.resources");
 
@@ -101,43 +123,48 @@ export function ResourcesSection() {
         id="home-resources-title"
         kicker={t("kicker")}
         title={t("title")}
+        description={t("description")}
       />
 
       <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {NAV_TOOL_SLUGS.map((slug, index) => (
-          <li
-            key={slug}
-            data-reveal
-            style={
-              {
-                "--reveal-delay": `${(index % 3) * 80}ms`,
-              } as React.CSSProperties
-            }
-          >
-            <TrackedLink
-              href={{ pathname: "/ferramentas/[slug]", params: { slug } }}
-              eventName="marketing_navigation_clicked"
-              eventProperties={{ location: "home_resources", link_label: slug }}
-              className="group flex h-full flex-col overflow-hidden rounded-xl border border-line-strong bg-white transition-colors hover:border-[#C9C8C3]"
+        {NAV_TOOL_SLUGS.map((slug, index) => {
+          const Icon = resourceIcons[slug];
+
+          return (
+            <li
+              key={slug}
+              data-reveal
+              style={
+                {
+                  "--reveal-delay": `${(index % 3) * 80}ms`,
+                } as React.CSSProperties
+              }
             >
-              <div className="h-[260px] overflow-hidden bg-stone-soft px-7 pt-7">
-                <ResourcePreview
-                  slug={slug}
-                  alt={t(`items.${slug}.previewAlt`)}
-                />
-              </div>
-              <h3 className="flex items-center justify-between gap-4 border-t border-line px-6 py-5 text-[17px] font-semibold text-ink">
-                {t(`items.${slug}.title`)}
-                <span
-                  aria-hidden
-                  className="text-subtle transition-transform group-hover:translate-x-0.5"
-                >
-                  →
+              <TrackedLink
+                href={{ pathname: "/ferramentas/[slug]", params: { slug } }}
+                eventName="marketing_navigation_clicked"
+                eventProperties={{ location: "home_resources", link_label: slug }}
+                className="group flex h-full flex-col rounded-xl border border-line-strong bg-white p-6 transition-colors hover:border-[#C9C8C3] md:p-7"
+              >
+                <span className="grid size-11 place-items-center rounded-lg bg-stone-soft text-ink transition-colors group-hover:bg-violet-wash group-hover:text-violet-ink">
+                  <Icon aria-hidden className="size-5" strokeWidth={1.75} />
                 </span>
-              </h3>
-            </TrackedLink>
-          </li>
-        ))}
+                <h3 className="mt-6 flex items-center justify-between gap-4 text-[17px] font-semibold text-ink">
+                  {t(`items.${slug}.title`)}
+                  <span
+                    aria-hidden
+                    className="text-subtle transition-transform group-hover:translate-x-0.5"
+                  >
+                    →
+                  </span>
+                </h3>
+                <p className="mt-1.5 text-[15px] leading-relaxed text-subtle">
+                  {t(`items.${slug}.description`)}
+                </p>
+              </TrackedLink>
+            </li>
+          );
+        })}
       </ul>
     </Section>
   );

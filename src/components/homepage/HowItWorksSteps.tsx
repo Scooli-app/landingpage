@@ -12,20 +12,24 @@ type Step = { title: string; imageAlt: string; film: VideoAsset };
 /**
  * Three steps as tabs beside one player. Each step is a short clip recorded in
  * the app; when it ends the next step takes over, so the section plays the
- * whole flow on its own. Arrow keys move between steps (WAI-ARIA tabs). Clips
- * play with reduced motion too, so the player has a pause button.
+ * whole flow on its own. The three clips are stacked and preloaded together
+ * and crossfade on a switch, so the next clip is ready before its turn (one
+ * keyed <video> reloaded at every step and flashed its poster). Arrow keys move
+ * between steps (WAI-ARIA tabs). Clips play with reduced motion too, so the
+ * player has a pause button.
  */
 export function HowItWorksSteps({ steps }: { steps: Step[] }) {
   const t = useTranslations("common");
   const [active, setActive] = useState(0);
+  const [nearView, setNearView] = useState(false);
   const [inView, setInView] = useState(false);
   const [paused, setPaused] = useState(false);
   const [isPhone, setIsPhone] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const current = steps[active];
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   // Phones get the portrait cut; the full-width recording is unreadable there.
-  const film = (isPhone && current.film.mobile) || current.film;
+  const clipOf = (step: Step) => (isPhone && step.film.mobile) || step.film;
+  const frame = clipOf(steps[active]);
 
   useEffect(() => {
     const phone = window.matchMedia("(max-width: 767px)");
@@ -34,28 +38,52 @@ export function HowItWorksSteps({ steps }: { steps: Step[] }) {
     phone.addEventListener("change", onChange);
     const element = panelRef.current;
     if (!element || typeof IntersectionObserver === "undefined") {
+      setNearView(true);
       setInView(true);
       return () => phone.removeEventListener("change", onChange);
     }
-    const observer = new IntersectionObserver(
+    // Mount (and start buffering) a little before the section arrives; play
+    // only once a good part of it is on screen.
+    const near = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {setNearView(true);}
+      },
+      { rootMargin: "300px" },
+    );
+    const visible = new IntersectionObserver(
       (entries) => setInView(entries.some((entry) => entry.isIntersecting)),
       { threshold: 0.35 },
     );
-    observer.observe(element);
+    near.observe(element);
+    visible.observe(element);
     return () => {
-      observer.disconnect();
+      near.disconnect();
+      visible.disconnect();
       phone.removeEventListener("change", onChange);
     };
   }, []);
 
+  // The step that just became active restarts from its first frame; the one
+  // it replaces is only paused, so it holds its last frame while it fades out.
+  const startedStep = useRef<number | null>(null);
+
   useEffect(() => {
-    const player = videoRef.current;
-    if (!player) {return;}
-    // Browsers only autoplay muted video; React doesn't reliably set the attribute.
-    player.muted = true;
-    if (inView && !paused) {void player.play().catch(() => {});}
-    else {player.pause();}
-  }, [inView, active, paused, isPhone]);
+    videoRefs.current.forEach((player, index) => {
+      if (!player) {return;}
+      // Browsers only autoplay muted video; React doesn't reliably set the attribute.
+      player.muted = true;
+      if (index !== active) {
+        player.pause();
+        return;
+      }
+      if (startedStep.current !== active) {
+        startedStep.current = active;
+        player.currentTime = 0;
+      }
+      if (inView && !paused) {void player.play().catch(() => {});}
+      else {player.pause();}
+    });
+  }, [active, inView, paused, isPhone, nearView]);
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key !== "ArrowDown" && event.key !== "ArrowUp") {return;}
@@ -105,29 +133,41 @@ export function HowItWorksSteps({ steps }: { steps: Step[] }) {
         <WindowFrame>
           <div
             className="group relative bg-stone-soft"
-            style={{ aspectRatio: `${film.width} / ${film.height}` }}
+            style={{ aspectRatio: `${frame.width} / ${frame.height}` }}
           >
-            {inView ? (
-              <video
-                ref={videoRef}
-                key={film.src}
-                className="absolute inset-0 size-full object-cover"
-                poster={film.poster}
-                autoPlay
-                muted
-                playsInline
-                preload="auto"
-                disablePictureInPicture
-                aria-label={current.imageAlt}
-                onEnded={() => setActive((index) => (index + 1) % steps.length)}
-              >
-                <source src={film.src} type="video/mp4" />
-              </video>
+            {nearView ? (
+              steps.map((step, index) => {
+                const clip = clipOf(step);
+                const current = index === active;
+
+                return (
+                  <video
+                    key={`${index}-${clip.src}`}
+                    ref={(node) => {
+                      videoRefs.current[index] = node;
+                    }}
+                    className={cn(
+                      "absolute inset-0 size-full object-cover transition-opacity duration-500 ease-out",
+                      current ? "opacity-100" : "opacity-0",
+                    )}
+                    poster={clip.poster}
+                    muted
+                    playsInline
+                    preload="auto"
+                    disablePictureInPicture
+                    aria-hidden={!current}
+                    aria-label={current ? step.imageAlt : undefined}
+                    onEnded={() => setActive((value) => (value + 1) % steps.length)}
+                  >
+                    <source src={clip.src} type="video/mp4" />
+                  </video>
+                );
+              })
             ) : (
-              // eslint-disable-next-line @next/next/no-img-element -- poster frame of the step's clip
+              // eslint-disable-next-line @next/next/no-img-element -- poster frame of the first step's clip
               <img
-                src={film.poster}
-                alt={current.imageAlt}
+                src={frame.poster}
+                alt={steps[active].imageAlt}
                 className="absolute inset-0 size-full object-cover"
                 loading="lazy"
               />
@@ -136,7 +176,7 @@ export function HowItWorksSteps({ steps }: { steps: Step[] }) {
               type="button"
               onClick={() => setPaused((value) => !value)}
               aria-label={paused ? t("playVideo") : t("pauseVideo")}
-              className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-full bg-ink/55 text-white opacity-70 backdrop-blur-sm transition-opacity hover:opacity-100 focus-visible:opacity-100 group-hover:opacity-100"
+              className="absolute bottom-3 right-3 z-10 grid size-9 place-items-center rounded-full bg-ink/55 text-white opacity-70 backdrop-blur-sm transition-opacity hover:opacity-100 focus-visible:opacity-100 group-hover:opacity-100"
             >
               {paused ? <Play aria-hidden className="size-4" /> : <Pause aria-hidden className="size-4" />}
             </button>

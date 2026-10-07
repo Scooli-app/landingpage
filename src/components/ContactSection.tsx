@@ -1,5 +1,6 @@
 "use client";
 
+import { BookingEmbed } from "@/components/BookingEmbed";
 import { Container } from "@/components/Container";
 import { EmailContact } from "@/components/EmailContact";
 import { Button } from "@/components/ui/button";
@@ -167,31 +168,16 @@ export function ContactSection() {
             </h1>
             <p className="mt-5 text-lg leading-relaxed text-subtle md:text-[19px]">{t("description")}</p>
 
-            <dl className="mt-10 border-t border-line">
-              <div className="border-b border-line py-5">
-                <dt className="text-[15px] font-semibold text-ink">{t("cards.email.title")}</dt>
-                <dd className="mt-1 text-[15px] text-subtle">{t("cards.email.subtitle")}</dd>
-                <dd className="mt-2">
-                  <EmailContact
-                    showIcon
-                    showLabel={false}
-                    placement="contact_page_email_card"
-                    className="-ml-3 text-[15px]"
-                  />
-                </dd>
-              </div>
-              <div className="border-b border-line py-5">
-                <dt className="text-[15px] font-semibold text-ink">{t("cards.responseTime.title")}</dt>
-                <dd className="mt-1 text-[15px] text-subtle">{t("cards.responseTime.subtitle")}</dd>
-              </div>
-              <div className="border-b border-line py-5">
-                <dt className="text-[15px] font-semibold text-ink">{t("cards.institutions.title")}</dt>
-                <dd className="mt-1 text-[15px] text-subtle">{t("cards.institutions.subtitle")}</dd>
-              </div>
-            </dl>
+            <div className="mt-10 border-t border-line pt-8">
+              <h2 className="text-[17px] font-semibold text-ink">{t("bookingHeading")}</h2>
+              <p className="mt-1 text-[15px] text-subtle">{t("bookingDescription")}</p>
+              <BookingEmbed source="contact_page" className="mt-5" />
+            </div>
           </div>
 
-          <div className="self-start rounded-xl border border-line-strong bg-white p-6 sm:p-9">
+          <div className="self-start lg:pt-2">
+          <h2 className="mb-5 text-[17px] font-semibold text-ink">{t("writeHeading")}</h2>
+          <div className="rounded-xl border border-line-strong bg-white p-6 sm:p-9">
             <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-5">
               <p className={hintClass}>{t("form.requiredNote")}</p>
 
@@ -345,6 +331,25 @@ export function ContactSection() {
                 })}
               </p>
             </form>
+          </div>
+            <dl className="mt-8 border-t border-line">
+              <div className="border-b border-line py-5">
+                <dt className="text-[15px] font-semibold text-ink">{t("cards.email.title")}</dt>
+                <dd className="mt-1 text-[15px] text-subtle">{t("cards.email.subtitle")}</dd>
+                <dd className="mt-2">
+                  <EmailContact
+                    showIcon
+                    showLabel={false}
+                    placement="contact_page_email_card"
+                    className="-ml-3 text-[15px]"
+                  />
+                </dd>
+              </div>
+              <div className="border-b border-line py-5">
+                <dt className="text-[15px] font-semibold text-ink">{t("cards.responseTime.title")}</dt>
+                <dd className="mt-1 text-[15px] text-subtle">{t("cards.responseTime.subtitle")}</dd>
+              </div>
+            </dl>
           </div>
         </div>
       </Container>

@@ -11,10 +11,10 @@ import { TrustSection } from "./TrustSection";
 import { YearSection } from "./YearSection";
 
 /**
- * The homepage argues three things, in this order: Scooli saves preparation
- * time (hero, how it works), stays with the teacher all year (year), and
- * creates the week's resources (resources). The dark band answers the real
- * alternative, a generic AI chat. Then who it is for, trust, and the close.
+ * Product first: Scooli saves preparation time (hero, how it works), stays
+ * with the teacher all year (year) and creates the week's resources
+ * (resources). Then the two objections back to back: a generic AI chat (the
+ * dark band) and data and safety (trust). Then who it is for, and the close.
  */
 export function HomePage() {
   return (
@@ -24,11 +24,11 @@ export function HomePage() {
         <HeroSection />
         <ProofSection />
         <HowItWorksSection />
-        <ChatComparisonSection />
         <YearSection />
         <ResourcesSection />
-        <AudiencesSection />
+        <ChatComparisonSection />
         <TrustSection />
+        <AudiencesSection />
         <FinalCtaSection />
       </main>
       <Footer />

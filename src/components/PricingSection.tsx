@@ -200,7 +200,7 @@ function ProPlanCard({
             : t("monthlyNote")}
       </p>
       <p className="mt-4 text-[15px] leading-relaxed text-subtle">
-        {isAnnual ? t("descriptionAnnual") : t("descriptionMonthly")}
+        {isAnnual ? t("descriptionAnnual", { savings: savingsPercent }) : t("descriptionMonthly")}
       </p>
       <FeatureList items={[t("unlimitedBadge"), ...included]} />
       <TrackedLink

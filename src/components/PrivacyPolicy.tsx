@@ -30,10 +30,9 @@ function BulletList({ items }: { items: (BulletItem | BoldBulletItem)[] }) {
 }
 
 /**
- * The legal body below is rendered verbatim in Portuguese regardless of site
- * locale — see CLAUDE.md: mistranslating legal/GDPR terms is a liability, not
- * a copy problem. Only the page chrome (title, tagline, back link, and the
- * disclaimer shown to English readers) is authored per locale.
+ * The legal body comes from each locale's messages. The Portuguese text is the
+ * binding version; English readers get a translation plus a disclaimer saying
+ * so. Keep both locales in step when the document changes.
  */
 export function PrivacyPolicy() {
   const router = useRouter();
@@ -85,7 +84,7 @@ export function PrivacyPolicy() {
         </div>
       )}
 
-      {/* Content — legal body stays in Portuguese for every locale */}
+      {/* Content — in the page's language; Portuguese prevails */}
       <div className="space-y-8">
         <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
           <CardContent className="px-0 py-9">
