@@ -51,6 +51,30 @@ const film = (dir: string, name: string, width: number, height: number): VideoAs
   },
 });
 
+/**
+ * Real, measured durations (`ffprobe -show_entries format=duration`) for the
+ * desktop cut of each film, keyed by locale and name. Needed for VideoObject
+ * structured data (`src/lib/seo.ts`'s `getVideoObjectSchema`) — Google
+ * validates the declared ISO 8601 duration against what it infers from the
+ * file, so this must stay a real measurement, not an estimate. Re-run
+ * ffprobe and update this table whenever a film is re-recorded.
+ */
+export const FILM_DURATIONS_SECONDS: Record<Locale, Record<string, number>> = {
+  "pt-PT": { hero: 23, "step-1": 6.8, "step-2": 5.3, "step-3": 7.7 },
+  en: { hero: 23.1, "step-1": 5.9, "step-2": 9.6, "step-3": 7.7 },
+};
+
+/**
+ * Publish date for VideoObject's `uploadDate`, keyed the same way. Sourced
+ * from `git log -1 --format=%ad --date=short -- <file>` at the time this
+ * table was written; update alongside `FILM_DURATIONS_SECONDS` when a film
+ * is re-recorded.
+ */
+export const FILM_UPLOAD_DATES: Record<Locale, Record<string, string>> = {
+  "pt-PT": { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
+  en: { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
+};
+
 const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
   heroFilm: { ...film(dir, "hero", 1600, 800), av1Src: `/app/${dir}/hero.av1.mp4` },
   stepFilms: [film(dir, "step-1", 1280, 800), film(dir, "step-2", 1280, 800), film(dir, "step-3", 1280, 800)],

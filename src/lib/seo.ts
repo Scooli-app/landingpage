@@ -357,10 +357,26 @@ export function getWebsiteSchema(locale: Locale = defaultLocale) {
   };
 }
 
+/**
+ * A stable "today" for schema price-validity windows. Deliberately not
+ * `Date.now()`: reading the clock during prerendering makes Next.js treat the
+ * value as request-time-only data under Cache Components (it can change
+ * between renders), which forces this whole route into runtime rendering.
+ * The build timestamp — same source `sitemap.ts` already uses for
+ * `lastModified` — is a fine proxy here: `priceValidUntil` only needs to be
+ * "about a year out", not to the millisecond, and it is refreshed on every
+ * deploy regardless.
+ */
+const BUILD_DATE = new Date(
+  process.env.VERCEL_GIT_COMMIT_DATE ??
+    process.env.BUILD_DATE ??
+    "2026-03-27T00:00:00.000Z",
+);
+
 // SoftwareApplication Schema - Critical for app discovery
 export function getSoftwareApplicationSchema(locale: Locale = defaultLocale) {
   const copy = copyFor(locale);
-  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+  const priceValidUntil = new Date(BUILD_DATE.getTime() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
 
@@ -480,7 +496,7 @@ function getShippingDetails() {
 export function getProductSchema(locale: Locale = defaultLocale) {
   const copy = copyFor(locale);
   const pricingUrl = localizedUrl(SITE_URL, "/precos", locale);
-  const priceValidUntil = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+  const priceValidUntil = new Date(BUILD_DATE.getTime() + 365 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
 
@@ -620,6 +636,55 @@ export function getWebPageSchema(options: WebPageSchemaOptions) {
   }
 
   return schema;
+}
+
+/**
+ * VideoObject schema for a self-hosted product-demo film. Scooli has 18 such
+ * videos (hero + 3 "how it works" steps, per locale) that were previously
+ * decoration-only: visible to a visitor, invisible to search as *content*.
+ * `durationSeconds` must be measured from the actual file (`ffprobe -show_entries
+ * format=duration`), not estimated — Google validates ISO 8601 duration against
+ * what it can infer from the file during indexing.
+ */
+export interface VideoObjectOptions {
+  name: string;
+  description: string;
+  /** Absolute URL to the poster/thumbnail frame. */
+  thumbnailUrl: string;
+  /** Absolute URL to the video file itself. */
+  contentUrl: string;
+  /** The page the video is embedded on. */
+  pageUrl: string;
+  /** ISO 8601 date the asset was published, e.g. "2026-10-06". */
+  uploadDate: string;
+  /** Real duration in seconds, measured from the file — see note above. */
+  durationSeconds: number;
+}
+
+function toIso8601Duration(totalSeconds: number): string {
+  const whole = Math.round(totalSeconds);
+  const minutes = Math.floor(whole / 60);
+  const seconds = whole % 60;
+  return `PT${minutes > 0 ? `${minutes}M` : ""}${seconds}S`;
+}
+
+export function getVideoObjectSchema(options: VideoObjectOptions) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: options.name,
+    description: options.description,
+    thumbnailUrl: [options.thumbnailUrl],
+    uploadDate: options.uploadDate,
+    duration: toIso8601Duration(options.durationSeconds),
+    contentUrl: options.contentUrl,
+    embedUrl: options.pageUrl,
+    isFamilyFriendly: true,
+    inLanguage: SITE_LANGUAGE,
+    publisher: {
+      "@id": `${SITE_URL}/#organization`,
+    },
+  };
 }
 
 // HowTo Schema for feature explanations
