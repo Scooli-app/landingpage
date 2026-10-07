@@ -45,6 +45,8 @@ const resourceLinks = [
 const comparisonLinks = [
   { label: "Scooli vs Canva", slug: "canva-para-educacao" },
   { label: "Scooli vs MagicSchool AI", slug: "magicschool-ai" },
+  { label: "Scooli vs Teachy", slug: "teachy" },
+  { label: "Scooli vs ChatGPT/Gemini/Perplexity", slug: "chatgpt-gemini-perplexity" },
 ] as const;
 
 const socialLinks = [
