@@ -1,5 +1,6 @@
 import { Container } from "@/components/Container";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
+import { AdvisorNote } from "@/components/AdvisorNote";
 import { GdprSeal } from "@/components/site/GdprSeal";
 import { displayTitle, Kicker } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -44,6 +45,7 @@ export function TrustSection() {
             <p className="mt-6 max-w-[420px] text-[16px] leading-relaxed text-subtle">
               {t("schools.text")}
             </p>
+            <AdvisorNote className="mt-6 max-w-[420px]" />
           </div>
 
           <ul data-reveal className="grid gap-4 sm:grid-cols-2">

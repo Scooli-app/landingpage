@@ -61,6 +61,13 @@
     "playVideo": "Play video",
     "talkToTeam": "Talk to our team"
   },
+  "advisorNote": {
+    "photoAlt": "Sílvia Valério, Scooli's pedagogical advisor",
+    "name": "Sílvia Valério",
+    "role": "pedagogical advisor and primary school teacher",
+    "description": "Reviews Scooli's curriculum alignment.",
+    "link": "Meet the team"
+  },
   "languageSwitcher": {
     "label": "Language",
     "pt-PT": "Português",
@@ -135,7 +142,9 @@
       "description": "Scooli lays out each class's lessons from your yearly plan and prepares every week with you, with the lesson plans and materials you need.",
       "videoLabel": "Demo",
       "videoAria": "Demo: the week's lessons in Scooli's calendar; one click on “Generate week” prepares the lesson plans, and one opens ready to edit",
-      "kicker": "AI for teachers"
+      "kicker": "AI for teachers",
+      "roleTeacher": "I'm a teacher",
+      "roleSchool": "I'm a school"
     },
     "proof": {
       "ariaLabel": "Scooli in numbers",

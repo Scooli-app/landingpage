@@ -61,6 +61,13 @@
     "playVideo": "Reproduzir vídeo",
     "talkToTeam": "Falar com a equipa"
   },
+  "advisorNote": {
+    "photoAlt": "Sílvia Valério, consultora pedagógica da Scooli",
+    "name": "Sílvia Valério",
+    "role": "consultora pedagógica e professora do 1.º ciclo",
+    "description": "Acompanha o alinhamento curricular da Scooli com as Aprendizagens Essenciais.",
+    "link": "Conhecer a equipa"
+  },
   "languageSwitcher": {
     "label": "Idioma",
     "pt-PT": "Português",
@@ -135,7 +142,9 @@
       "description": "A Scooli organiza as aulas de cada turma a partir da sua planificação e prepara cada semana consigo, com os planos de aula e materiais de que precisa.",
       "videoLabel": "Demonstração",
       "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em «Gerar semana» prepara os planos de aula e um deles abre pronto a editar",
-      "kicker": "IA para professores"
+      "kicker": "IA para professores",
+      "roleTeacher": "Sou professor(a)",
+      "roleSchool": "Sou escola ou agrupamento"
     },
     "proof": {
       "ariaLabel": "A Scooli em números",
