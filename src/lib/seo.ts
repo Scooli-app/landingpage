@@ -166,6 +166,12 @@ export const PUBLIC_IMPACT_METRICS = {
   activeTeachers: {
     minValue: 500,
   },
+  // Read from the production database on 2026-10-08: 100 accounts, internal and
+  // demo ones excluded, with a successful generation in the last 30 days.
+  // Re-read before raising it.
+  activeLast30Days: {
+    minValue: 100,
+  },
   generatedDocuments: {
     minValue: 900,
     interactionType: "https://schema.org/CreateAction",
@@ -314,18 +320,48 @@ function copyFor(locale: string) {
 }
 
 // Organization Schema - Used across all pages
+/** The company behind Scooli. Named in the Terms and the Privacy Policy. */
+export const LEGAL_ENTITY_NAME = "FICTIONAL CLOUD, LDA.";
+
+/** Official profiles of the brand, used as `sameAs` so search and AI engines can tie them to one entity. */
+export const SOCIAL_PROFILES = [
+  "https://www.instagram.com/scooliapp/",
+  "https://www.facebook.com/people/Scooli/61588415560096/",
+] as const;
+
+/** The people the site names publicly (photos live in /public/team). */
+export const TEAM_PEOPLE = [
+  { id: "miguel", name: "Miguel Rodrigues", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/miguel.jpg", founder: true },
+  { id: "pedro", name: "Pedro Rocha", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/pedro.jpeg", founder: true },
+  { id: "hugo", name: "Hugo Silva", jobTitle: { "pt-PT": "Sócio, Chief Growth Officer", en: "Partner, Chief Growth Officer" }, image: "/team/hugo.jpg", founder: false },
+  { id: "silvia", name: "Sílvia Valério", jobTitle: { "pt-PT": "Consultora pedagógica, professora do 1.º ciclo", en: "Pedagogical advisor, primary school teacher" }, image: "/team/silvia.jpg", founder: false },
+] as const;
+
+export function getPersonSchema(person: (typeof TEAM_PEOPLE)[number], locale: Locale = defaultLocale) {
+  return {
+    "@type": "Person",
+    "@id": `${SITE_URL}/#person-${person.id}`,
+    name: person.name,
+    jobTitle: person.jobTitle[locale],
+    image: `${SITE_URL}${person.image}`,
+    worksFor: { "@id": `${SITE_URL}/#organization` },
+  };
+}
+
 export function getOrganizationSchema(locale: Locale = defaultLocale) {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
     "@id": `${SITE_URL}/#organization`,
     name: SITE_NAME,
+    legalName: LEGAL_ENTITY_NAME,
     url: SITE_URL,
+    // Search engines do not accept SVG for the organization logo.
     logo: {
       "@type": "ImageObject",
-      url: `${SITE_URL}/scooli.svg`,
-      width: 512,
-      height: 512,
+      url: `${SITE_URL}/apple-touch-icon.png`,
+      width: 180,
+      height: 180,
     },
     description: copyFor(locale).organization,
     contactPoint: {
@@ -338,7 +374,8 @@ export function getOrganizationSchema(locale: Locale = defaultLocale) {
       "@type": "PostalAddress",
       addressCountry: "PT",
     },
-    sameAs: [SITE_URL],
+    founder: TEAM_PEOPLE.filter((person) => person.founder).map((person) => getPersonSchema(person, locale)),
+    sameAs: [...SOCIAL_PROFILES],
   };
 }
 
@@ -596,6 +633,8 @@ export function getBreadcrumbSchema(items: BreadcrumbItem[]) {
 
 // WebPage Schema for individual pages
 export interface WebPageSchemaOptions {
+  /** schema.org subtype, e.g. "AboutPage", "ContactPage", "CollectionPage". */
+  type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "FAQPage";
   title: string;
   description: string;
   url: string;
@@ -609,7 +648,7 @@ export interface WebPageSchemaOptions {
 export function getWebPageSchema(options: WebPageSchemaOptions) {
   const schema: Record<string, unknown> = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": options.type ?? "WebPage",
     "@id": `${options.url}/#webpage`,
     name: options.title,
     description: options.description,

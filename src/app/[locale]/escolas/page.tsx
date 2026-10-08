@@ -1,3 +1,5 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
+import { SchoolOverviewCard } from "@/components/site/SchoolOverviewCard";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -5,13 +7,13 @@ import { AdvisorNote } from "@/components/AdvisorNote";
 import { ImpactStats } from "@/components/ImpactStats";
 import type { Locale } from "@/i18n/routing";
 import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
-import { Section, SectionHeader, WindowFrame, displayTitle } from "@/components/site/primitives";
+import { Kicker, Section, SectionHeader, WindowFrame, displayTitle } from "@/components/site/primitives";
 import { buttonVariants } from "@/components/ui/button";
 import { appMedia } from "@/lib/app-media";
 import { getPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { BarChart3, GraduationCap, Layers, Library, ShieldCheck, Users } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 export async function generateMetadata({
@@ -45,15 +47,28 @@ export default async function SchoolsPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "schools" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const dashboard = appMedia(locale).schoolDashboard;
+  const tState = await getTranslations({ locale, namespace: "classState" });
+  const statePoints = tState.raw("school.points") as { title: string; text: string }[];
   const benefits = t.raw("benefits.items") as Item[];
   const startSteps = t.raw("start.items") as Item[];
   const questions = t.raw("questions.items") as { question: string; answer: string }[];
 
+  const tMeta = await getTranslations({ locale, namespace: "schools.meta" });
+
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="schools"
+        path="/escolas"
+        locale={locale}
+        title={tMeta("title")}
+        description={tMeta("description")}
+        faq={questions}
+      />
       <PageHero
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}
@@ -79,6 +94,35 @@ export default async function SchoolsPage({
       />
 
       <ImpactStats className="border-b border-line" />
+
+      <Section tone="stone" aria-labelledby="schools-curriculum-title">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-20">
+          <div data-reveal>
+            <Kicker>{tState("school.kicker")}</Kicker>
+            <h2
+              id="schools-curriculum-title"
+              className={cn(displayTitle, "mt-3 text-[clamp(32px,4vw,50px)] leading-[1.06] tracking-[-0.03em]")}
+            >
+              {tState("school.title")}
+            </h2>
+            <p className="mt-5 text-[18px] leading-relaxed text-subtle">{tState("school.description")}</p>
+            <ul className="mt-8 space-y-6">
+              {statePoints.map((point, index) => (
+                <li key={point.title} className="flex gap-4">
+                  <span className="mt-0.5 grid size-8 shrink-0 place-items-center rounded-full bg-white font-mono text-[12px] font-medium text-violet-ink">
+                    {index + 1}
+                  </span>
+                  <div>
+                    <p className="text-[17px] font-semibold tracking-[-0.01em] text-ink">{point.title}</p>
+                    <p className="mt-1 text-[15px] leading-relaxed text-subtle">{point.text}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <SchoolOverviewCard data-reveal className="w-full" />
+        </div>
+      </Section>
 
       <Section aria-labelledby="schools-benefits-title">
         <SectionHeader

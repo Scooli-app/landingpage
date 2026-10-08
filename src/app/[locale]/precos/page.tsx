@@ -1,3 +1,4 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
 import { StructuredData } from "@/components/StructuredData";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import type { Locale } from "@/i18n/routing";
@@ -6,7 +7,7 @@ import { PricingPageClient } from "@/components/marketing/PricingPageClient";
 import { getFAQPageSchema, getPageMetadata, getProductSchema } from "@/lib/seo";
 import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
 import { Section, SectionHeader } from "@/components/site/primitives";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -33,6 +34,7 @@ export default async function PricingPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "pricingPage" });
   const productSchema = getProductSchema(locale);
 
@@ -43,8 +45,17 @@ export default async function PricingPage({
     ...(t.raw("notes.cards") as Card[]),
   ].map((card) => ({ question: card.title, answer: card.description }));
 
+  const tPageMeta = await getTranslations({ locale, namespace: "pricingPage.meta" });
+
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="precos"
+        path="/precos"
+        locale={locale}
+        title={tPageMeta("title")}
+        description={tPageMeta("description")}
+      />
       <StructuredData id="pricing-product-schema" data={productSchema} />
       <StructuredData id="pricing-faq-schema" data={getFAQPageSchema(faqs)} />
 

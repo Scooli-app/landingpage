@@ -56,4 +56,7 @@ export const routing = defineRouting({
   // Portuguese teachers whose browsers are set to English — which is most of them.
   // Locale is offered, not imposed; the choice is persisted in a cookie.
   localeDetection: false,
+  // hreflang is emitted in the page head and the sitemap; the middleware's Link
+  // header would repeat it with the internal tool slugs.
+  alternateLinks: false,
 });

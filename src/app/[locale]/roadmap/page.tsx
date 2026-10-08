@@ -1,10 +1,11 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
 import { PageHero, PublicSiteShell } from "@/components/marketing/shared";
-import { Section, Tag } from "@/components/site/primitives";
+import { RoadmapJourney } from "@/components/marketing/RoadmapJourney";
+import { Section } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
-import { cn } from "@/lib/utils";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -22,10 +23,6 @@ export async function generateMetadata({
   });
 }
 
-type Column = { status: string; title: string; items: { title: string; description: string }[] };
-
-const columnTones = ["green", "violet", "blue"] as const;
-
 /**
  * The public roadmap: available, in development, next. No dates. Anything not
  * shipped stays in the last two columns and is worded as such.
@@ -36,11 +33,20 @@ export default async function RoadmapPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "roadmap" });
-  const columns = t.raw("columns") as Column[];
+
+  const tPageMeta = await getTranslations({ locale, namespace: "roadmap.meta" });
 
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="roadmap"
+        path="/roadmap"
+        locale={locale}
+        title={tPageMeta("title")}
+        description={tPageMeta("description")}
+      />
       <PageHero
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}
@@ -49,33 +55,7 @@ export default async function RoadmapPage({
       />
 
       <Section aria-label={t("hero.title")}>
-        <div className="grid items-start gap-5 lg:grid-cols-3">
-          {columns.map((column, index) => (
-            <section
-              key={column.status}
-              data-reveal
-              style={{ "--reveal-delay": `${index * 80}ms` } as React.CSSProperties}
-              aria-labelledby={`roadmap-column-${index}`}
-              className={cn(
-                "rounded-xl p-6 md:p-7",
-                index === 1 ? "border-2 border-violet-line bg-violet-wash/50" : "border border-line-strong bg-white",
-              )}
-            >
-              <Tag tone={columnTones[index] ?? "blue"}>{column.status}</Tag>
-              <h2 id={`roadmap-column-${index}`} className="mt-4 text-[20px] font-semibold tracking-[-0.01em] text-ink">
-                {column.title}
-              </h2>
-              <ul className="mt-4 border-t border-line">
-                {column.items.map((item) => (
-                  <li key={item.title} className="border-b border-line py-4 last:border-b-0">
-                    <p className="text-[16px] font-semibold text-ink">{item.title}</p>
-                    <p className="mt-1 text-[15px] leading-relaxed text-subtle">{item.description}</p>
-                  </li>
-                ))}
-              </ul>
-            </section>
-          ))}
-        </div>
+        <RoadmapJourney />
 
         <p data-reveal className="mt-12 text-[16px] text-subtle">
           {t("suggest.text")}{" "}

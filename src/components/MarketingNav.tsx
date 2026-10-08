@@ -20,6 +20,7 @@ const links = [
   { labelKey: "teachers", href: "/professores" },
   { labelKey: "schools", href: "/escolas" },
   { labelKey: "pricing", href: "/precos" },
+  { labelKey: "about", href: "/sobre" },
 ] as const;
 
 const toolHref = (slug: string) => ({

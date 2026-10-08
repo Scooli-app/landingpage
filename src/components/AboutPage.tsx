@@ -69,6 +69,7 @@ export function AboutPage() {
   const metrics = [
     { value: PUBLIC_IMPACT_METRICS.activeTeachers.minValue, label: t("metrics.activeTeachers") },
     { value: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue, label: t("metrics.generatedDocuments") },
+    { value: PUBLIC_IMPACT_METRICS.activeLast30Days.minValue, label: t("metrics.activeMonth") },
   ];
 
   return (
@@ -135,7 +136,7 @@ export function AboutPage() {
       <section aria-label={t("metrics.eyebrow")} className="border-y border-line py-14">
         <div className="mx-auto w-full max-w-[1248px] px-6">
           <Kicker>{t("metrics.eyebrow")}</Kicker>
-          <div className="mt-6 grid max-w-[720px] gap-8 sm:grid-cols-2">
+          <div className="mt-6 grid gap-8 sm:grid-cols-3">
             {metrics.map((metric) => (
               <StatCard key={metric.label} value={`${metric.value}+`} label={metric.label} />
             ))}

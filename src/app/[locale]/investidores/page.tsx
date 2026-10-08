@@ -1,7 +1,10 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
 import { Container } from "@/components/Container";
 import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
 import { PitchDeckForm } from "@/components/investors/PitchDeckForm";
 import { PublicSiteShell } from "@/components/marketing/shared";
+import { ResourcesSection } from "@/components/homepage/ResourcesSection";
+import { ClassStateSection } from "@/components/homepage/ClassStateSection";
 import { LoopingVideo } from "@/components/site/LoopingVideo";
 import { Kicker, Section, SectionHeader, displayTitle } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
@@ -10,8 +13,8 @@ import { appMedia } from "@/lib/app-media";
 import { formatEuro } from "@/lib/format";
 import { getPageMetadata, PRICING, PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import { cn } from "@/lib/utils";
-import { Building2, CalendarRange, Database, FileCheck2 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { Bot, Building2, Database, Layers, LineChart } from "lucide-react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 import type { ComponentProps } from "react";
 
@@ -33,7 +36,7 @@ export async function generateMetadata({
 
 type Item = { title: string; description: string };
 
-const edgeIcons = [FileCheck2, CalendarRange, Database, Building2];
+const moatIcons = [Database, Layers, LineChart, Bot, Building2];
 
 const founders = [
   { name: "Miguel Rodrigues", image: "/team/miguel.jpg" },
@@ -65,10 +68,10 @@ function MoreLink({
 
 /**
  * For investors, in the order they read: what Scooli is (one sentence and the
- * product on screen), the numbers, the problem, why Scooli wins, how it makes
- * money, the market, where it goes, who builds it, and how to follow up. Public
- * numbers and prices only; nothing about a round; Class State only as in
- * development.
+ * product on screen), the numbers, the problem, the Class State idea the whole
+ * product rests on, the moat, how distribution works, how it makes money, the
+ * market, the team and how to follow up. Public numbers and prices only;
+ * nothing about a round.
  */
 export default async function InvestorsPage({
   params,
@@ -76,23 +79,34 @@ export default async function InvestorsPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "investors" });
   const media = appMedia(locale);
   const problem = t.raw("problem.paragraphs") as string[];
-  const edges = t.raw("edge.items") as Item[];
+  const moat = t.raw("moat.items") as Item[];
+  const flywheel = t.raw("flywheel.steps") as Item[];
   const plans = t.raw("model.plans") as (Item & { price: string })[];
   const people = t.raw("team.people") as { role: string; background: string }[];
   const proPrice = formatEuro(locale, PRICING.pro_monthly.priceCents);
 
   const numbers = [
     { value: `${PUBLIC_IMPACT_METRICS.activeTeachers.minValue}+`, label: t("numbers.teachers") },
+    { value: `${PUBLIC_IMPACT_METRICS.activeLast30Days.minValue}+`, label: t("numbers.active") },
     { value: `${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`, label: t("numbers.documents") },
-    { value: proPrice, label: t("numbers.pro") },
     { value: t("numbers.launchValue"), label: t("numbers.launch") },
   ];
 
+  const tPageMeta = await getTranslations({ locale, namespace: "investors.meta" });
+
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="investidores"
+        path="/investidores"
+        locale={locale}
+        title={tPageMeta("title")}
+        description={tPageMeta("description")}
+      />
       <section aria-labelledby="investors-hero-title" className="pt-12 md:pt-16">
         <Container>
           <div className="max-w-[900px]">
@@ -151,23 +165,56 @@ export default async function InvestorsPage({
         </div>
       </Section>
 
-      <Section aria-labelledby="investors-edge-title">
-        <SectionHeader id="investors-edge-title" kicker={t("edge.kicker")} title={t("edge.title")} />
-        <ul className="grid gap-4 sm:grid-cols-2">
-          {edges.map((edge, index) => {
-            const Icon = edgeIcons[index % edgeIcons.length];
+      <ResourcesSection />
+
+      <ClassStateSection id="investors-class-state" />
+
+      <Section tone="stone" aria-labelledby="investors-moat-title">
+        <SectionHeader
+          id="investors-moat-title"
+          kicker={t("moat.kicker")}
+          title={t("moat.title")}
+          description={t("moat.description")}
+        />
+        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {moat.map((layer, index) => {
+            const Icon = moatIcons[index % moatIcons.length];
 
             return (
-              <li key={edge.title} data-reveal className="rounded-xl border border-line-strong bg-white p-7">
-                <span className="grid size-11 place-items-center rounded-lg bg-violet-wash text-violet-ink">
-                  <Icon aria-hidden className="size-5" strokeWidth={1.75} />
-                </span>
-                <h3 className="mt-5 text-[19px] font-semibold tracking-[-0.01em] text-ink">{edge.title}</h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-subtle">{edge.description}</p>
+              <li key={layer.title} data-reveal className="rounded-xl border border-line-strong bg-white p-7">
+                <div className="flex items-center justify-between">
+                  <span className="grid size-11 place-items-center rounded-lg bg-violet-wash text-violet-ink">
+                    <Icon aria-hidden className="size-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="font-mono text-xs text-faint">0{index + 1}</span>
+                </div>
+                <h3 className="mt-5 text-[19px] font-semibold tracking-[-0.01em] text-ink">{layer.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-subtle">{layer.description}</p>
               </li>
             );
           })}
-        </ul>
+        </ol>
+      </Section>
+
+      <Section aria-labelledby="investors-flywheel-title">
+        <SectionHeader
+          id="investors-flywheel-title"
+          kicker={t("flywheel.kicker")}
+          title={t("flywheel.title")}
+          description={t("flywheel.description")}
+        />
+        <ol className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {flywheel.map((step, index) => (
+            <li key={step.title} data-reveal className="relative rounded-xl border border-line-strong bg-white p-6">
+              <span className="font-mono text-xs text-violet-ink">0{index + 1}</span>
+              <h3 className="mt-3 text-[17px] font-semibold leading-snug tracking-[-0.01em] text-ink">{step.title}</h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-subtle">{step.description}</p>
+              {index < flywheel.length - 1 && (
+                <span aria-hidden className="absolute -right-3 top-1/2 z-10 hidden -translate-y-1/2 text-faint lg:block">→</span>
+              )}
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section tone="stone" aria-labelledby="investors-model-title">
@@ -210,13 +257,10 @@ export default async function InvestorsPage({
             <p className="mt-4 text-[17px] leading-relaxed text-subtle">{t("market.description")}</p>
           </div>
           <div data-reveal>
-            <Kicker>{t("next.kicker")}</Kicker>
-            <h2 className={cn(displayTitle, "mt-3 text-[clamp(30px,3.4vw,42px)] leading-[1.1]")}>
-              {t("next.title")}
-            </h2>
-            <p className="mt-4 text-[17px] leading-relaxed text-subtle">{t("next.description")}</p>
+            <p className="font-mono text-xs uppercase tracking-[0.06em] text-subtle">{t("market.roadmapTitle")}</p>
+            <p className="mt-3 text-[17px] leading-relaxed text-subtle">{t("market.roadmapDescription")}</p>
             <div className="mt-6">
-              <MoreLink href="/roadmap" label={t("next.link")} location="investors_next" />
+              <MoreLink href="/roadmap" label={t("market.roadmapLink")} location="investors_market" />
             </div>
           </div>
         </div>

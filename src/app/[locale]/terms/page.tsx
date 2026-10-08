@@ -1,3 +1,4 @@
+import { pageUpdated } from "@/lib/pageDates";
 import { Container } from "@/components/Container";
 import { PublicSiteShell } from "@/components/marketing/shared";
 import { StructuredData } from "@/components/StructuredData";
@@ -5,7 +6,7 @@ import { TermsOfUse } from "@/components/TermsOfUse";
 import type { Locale } from "@/i18n/routing";
 import { localizedUrl } from "@/i18n/urls";
 import { getBreadcrumbSchema, getPageMetadata, getWebPageSchema, SITE_URL } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -29,6 +30,7 @@ export default async function TermsPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "termsOfUse.meta" });
   const pageUrl = localizedUrl(SITE_URL, "/terms", locale);
 
@@ -45,6 +47,7 @@ export default async function TermsPage({
     url: pageUrl,
     breadcrumb: breadcrumbItems,
     locale,
+    dateModified: pageUpdated("/terms"),
   });
 
   return (

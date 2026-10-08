@@ -1,4 +1,6 @@
+import { pageUpdated } from "@/lib/pageDates";
 import { ChatComparisonSection } from "@/components/homepage/ChatComparisonSection";
+import { ClassStateSection } from "@/components/homepage/ClassStateSection";
 import { HowItWorksSection } from "@/components/homepage/HowItWorksSection";
 import { ResourcesSection } from "@/components/homepage/ResourcesSection";
 import { TrustSection } from "@/components/homepage/TrustSection";
@@ -26,7 +28,7 @@ import {
 } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { Check, Minus } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const pagePath = "/ia-para-professores";
 
@@ -59,6 +61,7 @@ export default async function AiForTeachersPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "aiForTeachers" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
   const media = appMedia(locale);
@@ -85,6 +88,7 @@ export default async function AiForTeachersPage({
           url: pageUrl,
           breadcrumb: breadcrumbItems,
           locale,
+          dateModified: pageUpdated(pagePath),
         })}
       />
       <StructuredData id="ia-professores-faq" data={getFAQPageSchema(faqItems)} />
@@ -189,6 +193,7 @@ export default async function AiForTeachersPage({
           </div>
         </Section>
 
+        <ClassStateSection id="ia-class-state" />
         <HowItWorksSection />
         <ChatComparisonSection />
         <ResourcesSection />

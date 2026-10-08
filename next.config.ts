@@ -31,6 +31,18 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        // Product films and captures. Not fingerprinted, so a day (and a week of
+        // stale-while-revalidate) instead of `immutable`: a re-encoded film still
+        // reaches visitors within a day.
+        source: "/app/:path*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400, stale-while-revalidate=604800",
+          },
+        ],
+      },
+      {
         source: "/_ph/static/:path*",
         headers: [
           {

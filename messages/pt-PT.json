@@ -14,8 +14,8 @@
     "backToHome": "Voltar ao início",
     "logoAlt": "Logótipo Scooli",
     "toolsMenu": {
-      "howTitle": "Como funciona",
-      "howDescription": "Do tema ao recurso em três passos, e o ano inteiro organizado.",
+      "howTitle": "Um documento em segundos",
+      "howDescription": "Do tema ao recurso em três passos.",
       "howLink": "Ver como funciona",
       "allTools": "Todas as ferramentas",
       "items": {
@@ -91,7 +91,7 @@
       "contact": "Contacto",
       "privacy": "Privacidade",
       "terms": "Termos",
-      "howItWorks": "Como funciona",
+      "howItWorks": "Criar em segundos",
       "allTools": "Todas as ferramentas",
       "investors": "Investidores",
       "roadmap": "Roadmap"
@@ -103,9 +103,9 @@
   },
   "home": {
     "meta": {
-      "title": "Scooli | Prepare as aulas da semana em minutos",
-      "description": "A Scooli poupa tempo na preparação das aulas: acompanha-o ao longo do ano letivo e cria planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
-      "ogTitle": "Scooli | Prepare as aulas da semana em minutos",
+      "title": "Scooli | IA para professores: prepare a semana de aulas",
+      "description": "A Scooli organiza as aulas de cada turma e prepara a semana: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais.",
+      "ogTitle": "Scooli | IA para professores: prepare a semana de aulas",
       "ogDescription": "Planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais, com o ano letivo inteiro organizado.",
       "twitterTitle": "Scooli | Menos tempo a preparar, mais tempo a ensinar",
       "twitterDescription": "A Scooli acompanha o professor ao longo do ano letivo e cria os recursos da semana, alinhados com as Aprendizagens Essenciais."
@@ -142,9 +142,7 @@
       "description": "A Scooli organiza as aulas de cada turma a partir da sua planificação e prepara cada semana consigo, com os planos de aula e materiais de que precisa.",
       "videoLabel": "Demonstração",
       "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em «Gerar semana» prepara os planos de aula e um deles abre pronto a editar",
-      "kicker": "IA para professores",
-      "roleTeacher": "Sou professor(a)",
-      "roleSchool": "Sou escola ou agrupamento"
+      "kicker": "IA para professores"
     },
     "proof": {
       "ariaLabel": "A Scooli em números",
@@ -152,8 +150,8 @@
       "documents": "documentos criados"
     },
     "howItWorks": {
-      "kicker": "Como funciona",
-      "title": "Do tema ao documento, em três passos.",
+      "kicker": "Em segundos",
+      "title": "Um documento completo em segundos, em três passos.",
       "steps": [
         {
           "title": "Diga o que vai ensinar",
@@ -535,17 +533,17 @@
   },
   "about": {
     "meta": {
-      "title": "Sobre nós",
-      "description": "Conheça a história da Scooli, a missão que nos move e a equipa que está a construir o produto para os professores portugueses."
+      "title": "Sobre a Scooli: a equipa e a história",
+      "description": "Conheça a equipa e a história da Scooli: engenheiros e uma professora a devolver tempo a quem ensina, com os professores portugueses."
     },
     "hero": {
       "badge": "Sobre nós",
-      "title": "A Scooli existe para devolver tempo aos professores.",
-      "description": "Estamos a tirar o trabalho repetitivo da preparação de aulas e a aproximar uma comunidade que muitas vezes trabalha sozinha — sempre com o professor no controlo do resultado final."
+      "title": "A Scooli existe para devolver tempo aos professores",
+      "description": "Estamos a reduzir o trabalho repetitivo da preparação de aulas e a aproximar uma comunidade que muitas vezes trabalha sozinha — sempre com o professor no controlo do resultado final."
     },
     "story": {
       "badge": "A nossa história",
-      "title": "Começou com os professores à nossa volta.",
+      "title": "Começou com os professores à nossa volta",
       "chapters": [
         {
           "title": "O que víamos",
@@ -557,7 +555,7 @@
         },
         {
           "title": "A Scooli",
-          "description": "Por isso construímos a Scooli: feita em Portugal, para o ensino português, com a IA a fazer o trabalho mecânico e o professor a manter a decisão final. Hoje organiza as aulas de cada turma a partir da planificação e prepara cada semana num clique. O objetivo é o mesmo desde o primeiro dia — devolver tempo a quem ensina. E às famílias de quem ensina."
+          "description": "Por isso construímos a Scooli: feita em Portugal, para o ensino português, com a IA a fazer o trabalho mecânico e o professor a manter a decisão final. O objetivo é o mesmo desde o primeiro dia — devolver tempo a quem ensina. E às famílias de quem ensina."
         }
       ],
       "videoAria": "A Scooli em ação: um plano de aula de Matemática a ser gerado",
@@ -571,7 +569,8 @@
     "metrics": {
       "eyebrow": "A Scooli hoje",
       "activeTeachers": "professores",
-      "generatedDocuments": "documentos criados"
+      "generatedDocuments": "documentos criados",
+      "activeMonth": "ativos no último mês"
     },
     "mission": {
       "badge": "Missão",
@@ -595,7 +594,7 @@
     "team": {
       "badge": "Equipa",
       "title": "Quem está a construir a Scooli.",
-      "description": "Dois engenheiros de software e IA, um responsável de crescimento e uma professora como consultora pedagógica, com experiência na Porto Editora, Talkdesk, Körber, Infios e Corticeira Amorim — a construir a Scooli em contacto direto com professores portugueses.",
+      "description": "Dois engenheiros de software e IA, um responsável de crescimento e uma professora como consultora pedagógica — a construir a Scooli em contacto direto com professores portugueses.",
       "members": [
         {
           "role": "Cofundador · Engenheiro de Software & IA",
@@ -628,18 +627,18 @@
     "next": {
       "kicker": "Para onde vamos",
       "title": "Do primeiro ao último dia de aulas.",
-      "description": "A seguir, a Scooli vai lembrar-se de cada turma: o que já foi dado, o que ficou consolidado e o que vem a seguir. Queremos que seja o sítio onde a preparação acontece, ao longo de todo o ano letivo."
+      "description": "Estamos a construir o estado de cada turma, para a Scooli usar o que já foi dado e decidir o que vem a seguir. O caminho leva-nos da aula de amanhã à escola inteira, sempre com o professor a decidir."
     }
   },
   "schools": {
     "meta": {
-      "title": "Scooli para escolas e agrupamentos",
-      "description": "O plano institucional da Scooli: cada professor prepara as aulas com IA alinhada com as Aprendizagens Essenciais e a direção acompanha a utilização num só painel, com implementação, formação e documentação de privacidade."
+      "title": "Plano institucional para escolas e agrupamentos",
+      "description": "O plano institucional da Scooli: os professores preparam as aulas com IA e a direção vê o estado do currículo de todas as turmas num só painel."
     },
     "hero": {
       "eyebrow": "Para escolas e agrupamentos",
       "title": "A Scooli para a escola inteira.",
-      "description": "Um plano para toda a equipa: cada professor prepara as aulas na Scooli e a direção acompanha a utilização num só painel.",
+      "description": "Um plano para toda a equipa: cada professor prepara as aulas na Scooli e a direção vê, num só painel, o estado do currículo em todas as turmas.",
       "secondaryLabel": "Ver preços",
       "imageAlt": "Painel da escola na Scooli com lugares ativos, professores ativos este mês, pedidos de IA e documentos criados"
     },
@@ -660,20 +659,20 @@
       "description": "Tudo o que o Pro inclui para cada professor, mais o que só faz sentido ao nível da escola.",
       "items": [
         {
+          "title": "O currículo à vista",
+          "description": "O estado de cada turma face ao currículo e à planificação, numa só vista, por disciplina e por ano."
+        },
+        {
+          "title": "Atrasos detetados cedo",
+          "description": "Vê onde há tópicos por dar e que turmas precisam de apoio antes do fim do período, não depois."
+        },
+        {
           "title": "Gestão central",
           "description": "Lugares e convites geridos num só sítio. Entra quem a escola convida."
         },
         {
-          "title": "Visão de conjunto",
-          "description": "Um painel com os professores ativos, os pedidos de IA e os documentos criados em cada mês."
-        },
-        {
           "title": "Biblioteca da escola",
           "description": "Os materiais partilhados ficam entre colegas da escola."
-        },
-        {
-          "title": "Preparação consistente",
-          "description": "Os colegas partilham planificações e materiais e alinham a preparação ao longo do ano."
         },
         {
           "title": "Implementação e formação",
@@ -732,7 +731,7 @@
   },
   "trust": {
     "meta": {
-      "title": "Confiança e Privacidade",
+      "title": "Privacidade, RGPD e uso responsável da IA",
       "description": "Perceba como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta."
     },
     "badge": "Confiança e Privacidade",
@@ -840,8 +839,8 @@
   },
   "contact": {
     "meta": {
-      "title": "Contacto",
-      "description": "Fale com a equipa da Scooli para tirar dúvidas, pedir informações ou discutir um piloto para a sua escola."
+      "title": "Contacto e marcação de reunião",
+      "description": "Fale com a equipa da Scooli: marque uma reunião, escreva-nos para tirar dúvidas ou discuta um piloto para a sua escola ou agrupamento."
     },
     "badge": "Contacto",
     "title": "Fale connosco",
@@ -941,8 +940,8 @@
   },
   "aiForTeachers": {
     "meta": {
-      "title": "IA para professores em Portugal",
-      "description": "Scooli é uma plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais. Ajuda a criar planificações, fichas, testes, quizzes e apresentações editáveis, com melhor alinhamento curricular, qualidade e confiança.",
+      "title": "IA para professores: prepare a semana inteira",
+      "description": "Plataforma de IA para professores em Portugal: organiza as aulas de cada turma e prepara planos de aula, fichas, testes e apresentações editáveis.",
       "keywords": [
         "ia para professores",
         "ia para professores em portugal",
@@ -1064,8 +1063,8 @@
   },
   "pricingPage": {
     "meta": {
-      "title": "Preços",
-      "description": "Veja os preços da Scooli, perceba o que inclui cada plano e descubra qual é o caminho certo para professores e escolas."
+      "title": "Preços: grátis, Pro e plano para escolas",
+      "description": "Preços simples da Scooli: plano grátis com 20 créditos por mês, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
     },
     "hero": {
       "eyebrow": "Preços",
@@ -1118,13 +1117,18 @@
     "institutional": {
       "kicker": "Para escolas",
       "title": "Porquê o plano institucional",
-      "description": "Várias licenças Pro dão a Scooli a cada professor. O plano institucional dá-a à escola.",
+      "description": "Várias licenças Pro dão a Scooli a cada professor. O plano institucional dá-a à escola, com o currículo de todas as turmas à vista.",
       "columns": {
         "label": "",
         "pro": "Várias licenças Pro",
         "institutional": "Plano institucional"
       },
       "rows": [
+        {
+          "label": "Currículo",
+          "pro": "Cada professor acompanha as suas turmas",
+          "institutional": "O estado do currículo de todas as turmas da escola, num só painel"
+        },
         {
           "label": "Contas",
           "pro": "Cada professor gere a sua",
@@ -1219,9 +1223,10 @@
       "label": "Escolas e instituições",
       "price": "Sob consulta",
       "detail": "Preço ajustado ao número de professores",
-      "description": "Para escolas e agrupamentos que querem a Scooli para toda a equipa, com gestão central e acompanhamento.",
+      "description": "Para escolas e agrupamentos que querem a Scooli para toda a equipa: o estado do currículo de todas as turmas, gestão central e acompanhamento.",
       "features": [
         "Tudo o que o Pro inclui, para cada professor",
+        "O estado do currículo de todas as turmas, num só painel",
         "Painel da escola com a atividade de cada professor",
         "Lugares e convites geridos num só sítio",
         "Biblioteca interna para partilhar materiais entre colegas",
@@ -1529,7 +1534,7 @@
   "teachers": {
     "meta": {
       "title": "Scooli para professores",
-      "description": "Prepare a semana em menos tempo: planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais, com o ano letivo organizado."
+      "description": "Prepare a semana em menos tempo: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais e prontos a editar."
     },
     "hero": {
       "eyebrow": "Para professores",
@@ -1598,28 +1603,22 @@
   },
   "investors": {
     "meta": {
-      "title": "Investidores",
-      "description": "A Scooli prepara as aulas da semana para cada turma e está a tornar-se o sistema onde os professores gerem o ano letivo. Produto, tração, modelo de negócio, mercado e equipa."
+      "title": "Investidores: a visão e os números da Scooli",
+      "description": "A Scooli prepara a semana de cada turma e está a construir um modelo vivo do currículo para decidir o que fazer a seguir. Produto, tração, fosso, modelo e equipa."
     },
     "hero": {
       "eyebrow": "Investidores",
-      "title": "A Scooli prepara as aulas da semana para <em>cada turma</em>.",
-      "description": "Os professores passam serões a preparar aulas. A Scooli organiza o ano de cada turma a partir da planificação e prepara cada semana num clique. Estamos a fazer dela o sistema onde os professores gerem o ano letivo inteiro.",
+      "title": "Outras ferramentas geram conteúdo. A Scooli vai <em>conhecer cada turma</em>.",
+      "description": "A Scooli prepara a semana de aulas de cada turma, com planos de aula, fichas, testes, quizzes e apresentações prontos a editar, e está a construir um modelo vivo do currículo, o que foi planeado, o que foi dado e o que falta, para decidir o que cada turma deve fazer a seguir. Começa nos professores e já chega à escola inteira.",
       "videoAria": "Demonstração: o mês no calendário da Scooli, a semana de uma turma, «Gerar semana» e os planos de aula prontos"
     },
     "problem": {
       "kicker": "O problema",
-      "title": "Preparar aulas é o trabalho invisível de cada professor.",
+      "title": "A IA gera conteúdo. Ninguém acompanha o currículo.",
       "paragraphs": [
-        "Planos de aula, fichas, testes, apresentações: todas as semanas, para cada turma, quase sempre fora do horário de trabalho e raramente aproveitando o que já foi feito.",
-        "Os chats de IA ajudam a escrever, mas não conhecem a turma, o currículo nem o que já foi dado. O professor continua a explicar, copiar, formatar e confirmar tudo à mão, uma conversa de cada vez."
+        "Há dezenas de ferramentas que geram planos de aula, fichas e testes. Qualquer uma pode ser copiada, e as grandes plataformas podem acrescentá-la quando quiserem.",
+        "O que ninguém tem é um modelo vivo de onde está cada turma no currículo: o que foi planeado, o que foi dado e o que falta. Sem isso, cada pedido parte do zero e a escola não sabe o que realmente acontece nas aulas."
       ]
-    },
-    "next": {
-      "kicker": "Para onde vamos",
-      "title": "Da semana preparada à turma que a Scooli conhece.",
-      "description": "A seguir, a Scooli vai lembrar-se de cada turma: o que já foi dado, o que ficou consolidado e o que vem a seguir, para preparar a aula certa no momento certo. Essa memória por turma está em construção.",
-      "link": "Ver o roadmap"
     },
     "team": {
       "kicker": "Equipa",
@@ -1674,36 +1673,14 @@
     "numbers": {
       "label": "A Scooli em números",
       "teachers": "professores na Scooli",
+      "active": "ativos no último mês",
       "documents": "documentos criados",
-      "pro": "por mês, plano Pro por professor",
       "launchValue": "< 4 semanas",
       "launch": "para pôr a Scooli a funcionar num novo mercado"
     },
-    "edge": {
-      "kicker": "Porque a Scooli ganha",
-      "title": "Não é mais um chat. É o sítio onde a preparação acontece.",
-      "items": [
-        {
-          "title": "Documentos, não respostas",
-          "description": "Planos de aula, fichas, testes e apresentações estruturados, no modelo do professor, prontos a exportar. É isto que se usa numa sala de aula."
-        },
-        {
-          "title": "O ano de cada turma num só sítio",
-          "description": "A planificação vira um calendário de aulas e cada semana é preparada num clique. Quem organiza o ano na Scooli volta todas as semanas."
-        },
-        {
-          "title": "O currículo tratado como dados",
-          "description": "O currículo de cada ano e disciplina é estruturado na plataforma. Um novo mercado é um novo conjunto de dados, não um novo produto."
-        },
-        {
-          "title": "A escola como cliente",
-          "description": "O plano institucional dá à escola gestão de lugares, um painel de utilização e uma biblioteca interna. Os professores entram pela versão grátis; o plano institucional leva a Scooli à escola inteira."
-        }
-      ]
-    },
     "model": {
       "kicker": "Modelo de negócio",
-      "title": "Do professor à escola inteira.",
+      "title": "Três níveis, do grátis à escola.",
       "description": "Preços públicos, em três níveis.",
       "plans": [
         {
@@ -1719,93 +1696,339 @@
         {
           "title": "Institucional",
           "price": "Por escola",
-          "description": "Para escolas e agrupamentos, com preço ajustado ao número de professores, gestão central e acompanhamento."
+          "description": "Para escolas e agrupamentos: o currículo de todas as turmas à vista, gestão central e acompanhamento, com preço ajustado ao número de professores."
         }
       ]
     },
     "market": {
       "kicker": "Mercado",
-      "title": "Começámos em Portugal. O produto está pronto para qualquer mercado.",
-      "description": "Portugal é o mercado que conhecemos melhor, por isso começámos aqui. Tecnicamente, a Scooli está preparada para qualquer currículo e língua: entrar num novo mercado é sobretudo uma questão de distribuição, e conseguimos pôr a Scooli a funcionar num novo país em menos de 4 semanas."
+      "title": "Começámos em Portugal, onde provamos o motor.",
+      "description": "Portugal é o mercado que conhecemos melhor, por isso começámos aqui e é onde estamos a provar o motor de execução curricular. Entrar num novo mercado é sobretudo uma questão de distribuição: tecnicamente, conseguimos pôr a Scooli a funcionar num novo país em menos de 4 semanas.",
+      "roadmapTitle": "Para onde vamos",
+      "roadmapDescription": "Da turma à escola, da escola ao sistema. O percurso completo está no roadmap.",
+      "roadmapLink": "Ver o roadmap"
+    },
+    "moat": {
+      "kicker": "O fosso",
+      "title": "Não é o modelo de IA. É o contexto que se acumula.",
+      "description": "Os modelos vão continuar a melhorar e a ficar baratos. O que não se copia é o contexto de cada turma, construído semana a semana.",
+      "items": [
+        {
+          "title": "Currículo estruturado",
+          "description": "Disciplinas, anos, domínios, tópicos, objetivos e dependências, como dados que a IA pode usar, não como PDF."
+        },
+        {
+          "title": "O estado de cada turma",
+          "description": "O que devia ter sido dado, o que foi dado, onde está a turma e o que vem a seguir."
+        },
+        {
+          "title": "Dados de execução",
+          "description": "Planeado, dado e avaliado, ao longo de anos. Uma funcionalidade copia-se; o contexto de dois anos de aulas não."
+        },
+        {
+          "title": "Fluxos que agem",
+          "description": "A Scooli deixa de esperar pelo pedido: atualiza planos, prepara aulas, deteta atrasos e sugere reforço."
+        },
+        {
+          "title": "Rede institucional",
+          "description": "Professores, turmas, departamentos, escolas. Quanto mais da escola usa, mais valor tem para todos."
+        }
+      ]
+    },
+    "flywheel": {
+      "kicker": "Distribuição",
+      "title": "De um professor à escola inteira.",
+      "description": "Os professores são o canal: cada um que usa a Scooli todas as semanas leva a escola mais perto do plano institucional.",
+      "steps": [
+        {
+          "title": "Um professor descobre a Scooli",
+          "description": "Pesquisa orgânica e recomendação entre colegas."
+        },
+        {
+          "title": "Usa-a nas suas turmas",
+          "description": "A planificação vira calendário e cada semana é preparada."
+        },
+        {
+          "title": "Convida colegas",
+          "description": "Mais professores da mesma escola entram, cada um com as suas turmas."
+        },
+        {
+          "title": "A escola adota o plano institucional",
+          "description": "A direção vê o currículo de todas as turmas, e a conversa deixa de ser \"quer experimentar?\"."
+        }
+      ]
     }
   },
   "roadmap": {
     "meta": {
-      "title": "Roadmap",
-      "description": "O que já pode usar na Scooli, o que estamos a construir e o que vem a seguir."
+      "title": "Roadmap: o que já existe e o que vem a seguir",
+      "description": "O caminho da Scooli: de planear aulas ao estado de cada turma e da escola inteira. O que já pode usar, o que estamos a construir e o que vem a seguir."
     },
     "hero": {
       "eyebrow": "Roadmap",
-      "title": "Para onde vai a Scooli.",
-      "description": "O que já pode usar, o que estamos a construir e o que vem a seguir. Sem datas: preferimos lançar quando estiver bem feito."
+      "title": "Do planeamento à escola inteira.",
+      "description": "A Scooli começou por preparar aulas e já mostra à escola o estado do currículo em cada turma. Estamos a construir o estado de cada turma para o professor, e o caminho continua até à escola inteira. Sem datas: lançamos quando estiver bem feito."
     },
-    "columns": [
-      {
-        "status": "Disponível",
-        "title": "Já pode usar",
-        "items": [
-          {
-            "title": "Planos de aula",
-            "description": "Objetivos, atividades e avaliação para cada aula."
-          },
-          {
-            "title": "Fichas, testes e quizzes",
-            "description": "Com cotações e critérios de correção nos testes."
-          },
-          {
-            "title": "Apresentações",
-            "description": "Diapositivos a partir do tema da aula."
-          },
-          {
-            "title": "Planificações",
-            "description": "Anual, de período ou de unidade."
-          },
-          {
-            "title": "Calendário das turmas",
-            "description": "As aulas de cada turma no calendário, com «Gerar semana»."
-          },
-          {
-            "title": "Adaptar e reaproveitar materiais",
-            "description": "Por nível ou necessidade, a partir dos seus documentos."
-          },
-          {
-            "title": "Biblioteca comunitária",
-            "description": "Materiais partilhados por outros professores."
-          },
-          {
-            "title": "Espaço da escola",
-            "description": "Lugares, painel de utilização e biblioteca interna."
-          }
-        ]
-      },
-      {
-        "status": "Em construção",
-        "title": "A construir agora",
-        "items": [
-          {
-            "title": "Memória por turma",
-            "description": "A Scooli lembra-se do que já foi dado, do que ficou consolidado e do que vem a seguir em cada turma."
-          }
-        ]
-      },
-      {
-        "status": "A seguir",
-        "title": "Depois disso",
-        "items": [
-          {
-            "title": "Planos que acompanham a turma",
-            "description": "A preparação ajusta-se ao andamento real de cada turma."
-          },
-          {
-            "title": "A semana preparada por iniciativa própria",
-            "description": "Um assistente que prepara a semana seguinte antes de o professor pedir."
-          }
-        ]
-      }
-    ],
     "suggest": {
       "text": "Tem uma sugestão para a Scooli?",
       "link": "Fale connosco"
+    },
+    "legend": {
+      "live": "Disponível",
+      "building": "Em construção",
+      "next": "A seguir"
+    },
+    "phaseLabel": "Fase",
+    "phases": [
+      {
+        "name": "Ligar",
+        "title": "Currículo, planificação e calendário no mesmo sítio",
+        "status": "live",
+        "items": [
+          "Planos de aula, fichas, testes, quizzes e apresentações",
+          "Currículo por ano e disciplina",
+          "Planificação anual, de período ou de unidade",
+          "Calendário de aulas de cada turma",
+          "Os documentos que o professor já tem",
+          "Painel da escola com o currículo de todas as turmas"
+        ]
+      },
+      {
+        "name": "Lembrar",
+        "title": "Cada turma tem um estado",
+        "status": "building",
+        "items": [
+          "O que estava planeado e o que foi dado",
+          "O que falta no currículo",
+          "O histórico da turma ao longo do ano"
+        ]
+      },
+      {
+        "name": "Adaptar",
+        "title": "A Scooli propõe o que vem a seguir",
+        "status": "building",
+        "items": [
+          "Reforçar um tópico, mover outro",
+          "Materiais diferenciados por nível",
+          "Calendário e planificação atualizados num clique"
+        ]
+      },
+      {
+        "name": "Agir",
+        "title": "A semana preparada antes de a pedir",
+        "status": "next",
+        "items": [
+          "Prepara a semana seguinte por iniciativa própria",
+          "Avisa de atrasos e sugere reforços",
+          "Propõe a avaliação na altura certa"
+        ]
+      },
+      {
+        "name": "Aprender",
+        "title": "O que os alunos perceberam",
+        "status": "next",
+        "items": [
+          "Evidência das avaliações por tópico",
+          "Dificuldades que se repetem entre turmas",
+          "Intervenções sugeridas com base nos resultados"
+        ]
+      },
+      {
+        "name": "Orquestrar",
+        "title": "A escola inteira em sintonia",
+        "status": "next",
+        "items": [
+          "Visão por departamento e por escola",
+          "Currículo e recursos partilhados",
+          "Integrações e controlo de acessos da escola"
+        ]
+      }
+    ],
+    "today": {
+      "title": "E tudo isto assenta no que já funciona hoje",
+      "items": [
+        "Painel da escola com o currículo de todas as turmas",
+        "Planos de aula",
+        "Fichas de trabalho",
+        "Testes e quizzes",
+        "Apresentações",
+        "Planificações",
+        "Adaptação de materiais",
+        "Carregar documentos",
+        "«Gerar semana»",
+        "Biblioteca comunitária",
+        "Espaço da escola"
+      ]
     }
+  },
+  "classState": {
+    "kicker": "O estado de cada turma",
+    "title": "A Scooli vai saber em que ponto está cada turma.",
+    "description": "Estamos a construir um estado vivo para cada turma: o que o currículo pede, o que já foi dado, o que falta e o que fazer a seguir. A Scooli vai usá-lo para planear, preparar e ajustar cada aula, em vez de começar do zero a cada pedido.",
+    "points": [
+      {
+        "title": "O planeado e o dado, lado a lado",
+        "text": "Vê o que estava previsto e o que foi realmente lecionado, turma a turma."
+      },
+      {
+        "title": "O que falta no currículo",
+        "text": "Os tópicos por dar, os que ficaram para trás e quantas aulas restam até à próxima avaliação."
+      },
+      {
+        "title": "A aula certa a seguir",
+        "text": "A Scooli propõe o ajuste (mais uma aula num tópico, mover outro) e prepara os materiais já diferenciados."
+      }
+    ],
+    "loopTitle": "Um ciclo que se repete a cada semana",
+    "loop": [
+      {
+        "title": "Currículo",
+        "text": "O que o ano pede"
+      },
+      {
+        "title": "Planificação",
+        "text": "O que decidiu dar"
+      },
+      {
+        "title": "Aula dada",
+        "text": "O que aconteceu"
+      },
+      {
+        "title": "Estado da turma",
+        "text": "Onde estamos"
+      },
+      {
+        "title": "Próxima aula",
+        "text": "Plano e materiais prontos"
+      }
+    ],
+    "schoolsLink": "Ver como a escola acompanha todas as turmas",
+    "card": {
+      "label": "Estado da turma",
+      "className": "7.º B · Matemática",
+      "completionLabel": "Currículo cumprido",
+      "completionValue": 38,
+      "topics": [
+        {
+          "name": "Frações",
+          "status": "done"
+        },
+        {
+          "name": "Percentagens",
+          "status": "done"
+        },
+        {
+          "name": "Proporcionalidade",
+          "status": "progress"
+        },
+        {
+          "name": "Equações",
+          "status": "late"
+        }
+      ],
+      "statusLabels": {
+        "done": "Dado",
+        "progress": "Em curso",
+        "late": "Atrasado"
+      },
+      "calendarNote": "3 aulas até à próxima avaliação",
+      "recommendationTitle": "A Scooli recomenda",
+      "recommendations": [
+        "Mais uma aula em Proporcionalidade",
+        "Mover Equações uma aula",
+        "Exercícios diferenciados prontos"
+      ],
+      "action": "Aplicar ao calendário",
+      "caption": "Em construção · exemplo ilustrativo"
+    },
+    "school": {
+      "kicker": "Para a direção",
+      "title": "O currículo da escola, turma a turma.",
+      "description": "Cada professor trabalha nas suas turmas e a escola vê, num só painel, o estado do currículo em todas: quem está em dia, onde há atrasos e que tópicos pedem reforço.",
+      "points": [
+        {
+          "title": "Quem está em dia e quem precisa de apoio",
+          "text": "O progresso de cada turma face ao que o currículo e a planificação pedem."
+        },
+        {
+          "title": "Tópicos que travam várias turmas",
+          "text": "Os mesmos atrasos a repetirem-se no departamento são vistos cedo, não no fim do período."
+        },
+        {
+          "title": "O que ainda não foi dado",
+          "text": "Os objetivos por cumprir antes do fim do período, por disciplina e por ano."
+        }
+      ],
+      "tableLabel": "Currículo cumprido por turma",
+      "columns": {
+        "class": "Turma",
+        "teacher": "Professor",
+        "progress": "Currículo cumprido",
+        "state": "Estado"
+      },
+      "stateLabels": {
+        "ok": "Em dia",
+        "watch": "Atenção",
+        "late": "Atrasada"
+      },
+      "summaryLabels": {
+        "ok": "em dia",
+        "watch": "atenção",
+        "late": "atrasadas"
+      },
+      "rows": [
+        {
+          "className": "5.º A · Matemática",
+          "teacher": "Ana Ferreira",
+          "progress": 64,
+          "state": "ok"
+        },
+        {
+          "className": "5.º B · Ciências Naturais",
+          "teacher": "Rita Carvalho",
+          "progress": 58,
+          "state": "ok"
+        },
+        {
+          "className": "6.º A · Português",
+          "teacher": "João Matos",
+          "progress": 46,
+          "state": "watch"
+        },
+        {
+          "className": "7.º B · Matemática",
+          "teacher": "Inês Lopes",
+          "progress": 38,
+          "state": "late"
+        },
+        {
+          "className": "8.º A · História",
+          "teacher": "Pedro Antunes",
+          "progress": 61,
+          "state": "ok"
+        },
+        {
+          "className": "9.º A · Inglês",
+          "teacher": "Catarina Sousa",
+          "progress": 49,
+          "state": "watch"
+        }
+      ],
+      "caption": "Exemplo ilustrativo"
+    },
+    "badge": "Em construção"
+  },
+  "comparison": {
+    "summary": "Resumo",
+    "summaryTitle": "Resumo da comparação",
+    "detail": "Comparação detalhada",
+    "aspect": "Aspeto",
+    "why": "Porquê a Scooli",
+    "faq": "Perguntas frequentes",
+    "sources": "Fontes",
+    "sourcesTitle": "Todas as afirmações têm fonte",
+    "sourcesDescription": "Cada afirmação sobre outro produto vem da sua documentação pública ou de avaliações independentes. Quando não encontrámos algo, dizemo-lo em vez de o afirmar.",
+    "forSchools": "Para escolas",
+    "pilot": "Falar sobre um piloto na minha escola"
   }
 }

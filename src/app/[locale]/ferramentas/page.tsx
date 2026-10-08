@@ -1,12 +1,13 @@
-import { ResourcePreview } from "@/components/homepage/ResourcesSection";
+import { PageSchemas } from "@/components/marketing/PageSchemas";
+import { resourceIcons } from "@/components/homepage/ResourcesSection";
 import { getToolPages } from "@/components/marketing/data";
 import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
-import { NAV_TOOL_SLUGS, type NavToolSlug } from "@/components/site/nav-data";
+import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
 import { Section, SectionHeader } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 
 const ptKeywords = [
@@ -59,9 +60,23 @@ export default async function ToolsIndexPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const toolPages = getToolPages(locale);
+  const tIndex = await getTranslations({ locale, namespace: "tools.index" });
 
-  return <ToolsIndexContent toolPages={toolPages} />;
+  return (
+    <>
+      <PageSchemas
+        id="tools"
+        path="/ferramentas"
+        locale={locale}
+        type="CollectionPage"
+        title={tIndex("metaTitle")}
+        description={tIndex("metaDescription")}
+      />
+      <ToolsIndexContent toolPages={toolPages} />
+    </>
+  );
 }
 
 type ToolPages = ReturnType<typeof getToolPages>;
@@ -91,6 +106,7 @@ function ToolsIndexContent({ toolPages }: { toolPages: ToolPages }) {
           {NAV_TOOL_SLUGS.map((slug, index) => {
             const tool = find(slug);
             if (!tool) {return null;}
+            const Icon = resourceIcons[slug];
 
             return (
               <li key={slug} data-reveal style={{ "--reveal-delay": `${(index % 3) * 80}ms` } as React.CSSProperties}>
@@ -98,15 +114,14 @@ function ToolsIndexContent({ toolPages }: { toolPages: ToolPages }) {
                   href={{ pathname: "/ferramentas/[slug]", params: { slug } }}
                   eventName="marketing_navigation_clicked"
                   eventProperties={{ location: "tools_index", link_label: slug }}
-                  className="flex h-full flex-col overflow-hidden rounded-xl border border-line-strong bg-white transition-colors hover:border-[#C9C8C3]"
+                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-line-strong bg-white transition-colors hover:border-[#C9C8C3]"
                 >
-                  <div className="h-[200px] overflow-hidden border-b border-line bg-stone-soft px-6 pt-5">
-                    <ResourcePreview
-                      slug={slug as NavToolSlug}
-                      alt={t("previewAlt", { tool: tool.shortTitle })}
-                    />
+                  <div className="px-6 pt-6">
+                    <span className="grid size-11 place-items-center rounded-lg bg-stone-soft text-ink transition-colors group-hover:bg-violet-wash group-hover:text-violet-ink">
+                      <Icon aria-hidden className="size-5" strokeWidth={1.75} />
+                    </span>
                   </div>
-                  <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-1 flex-col p-6 pt-5">
                     <h3 className="text-lg font-semibold text-ink">{tool.shortTitle}</h3>
                     <p className="mt-1.5 flex-1 text-[15px] leading-relaxed text-subtle">
                       {tool.description}

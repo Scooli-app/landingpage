@@ -1,31 +1,30 @@
+import type { Locale } from "@/i18n/routing";
 import type { ToolFaq } from "./data";
 
 /**
- * "Scooli vs X" comparison pages — PT-PT only for now (see
- * `notYetLocalized` in `src/i18n/urls.ts`). This is the single
- * best-evidenced AEO/GEO content format per the 2026 research
- * (`/root/scooli_geo_aeo_research_2026.md`): 32.5% of AI-answer-engine
- * citations go to comparison content, vs. near-zero for llms.txt.
+ * "Scooli vs X" comparison pages, in Portuguese and English. Comparison
+ * content is the best-evidenced AEO/GEO format (about a third of AI-answer
+ * citations), so each page has the same shape: an upfront verdict, a table, the
+ * reasons to pick Scooli, a FAQ and the sources.
  *
- * Every claim about a competitor here must trace back to a cited source in
- * `/root/scooli_technical_seo_2026_research.md`'s companion fact-sheets
- * (Canva for Education, MagicSchool AI — both dated October 2026). Do not
- * add a claim without a citation to carry in `sources`; a wrong claim about
- * a named competitor is a legal and reputational risk, not just a content
- * bug.
- *
- * Every row acknowledges where the competitor is genuinely stronger — tables
- * with declared competitor strengths are generally treated as more credible
- * because they allow the page to be trusted and are more easily quoted
- * by LLMs, per the AEO research.
+ * Rules for this file:
+ * - Every statement about a competitor must be backed by an entry in `sources`
+ *   (their own documentation or independent reviews). Where we could not find
+ *   something in their public pages we say so ("not documented in the pages we
+ *   reviewed"), never that it does not exist.
+ * - The pages argue for Scooli: the competitor column states plainly what they
+ *   do, the Scooli column what Scooli does for the same job. No section is
+ *   given to the competitor's strengths.
+ * - English is market-agnostic (see CLAUDE.md): no Portugal, no Portuguese
+ *   curriculum or legislation, and no claim that Scooli supports another
+ *   country's curriculum. English pages lean on what is true anywhere: the
+ *   teacher's own yearly plan, each class's calendar, the week prepared in one click.
  */
 
 export type ComparisonRow = {
   aspect: string;
   scooli: string;
   competitor: string;
-  /** Who comes out ahead on this specific row — drives the icon. */
-  winner: "scooli" | "competitor" | "tie";
 };
 
 export type ComparisonSource = {
@@ -42,16 +41,13 @@ export type ComparisonPageContent = {
   kicker: string;
   title: string;
   description: string;
-  /** The upfront, scannable answer — the single paragraph most likely to be
-   * quoted whole by an AI answer engine. States who it's for, plainly. */
+  /** The upfront, quotable answer: who should choose what, before the table. */
   verdict: string;
   tableTitle: string;
   tableDescription: string;
   rows: ComparisonRow[];
-  strengthsTitle: string;
-  strengthsDescription: string;
-  /** Competitor strengths stated plainly, each with the source that backs it. */
-  competitorStrengths: { title: string; description: string }[];
+  reasonsTitle: string;
+  reasons: { title: string; description: string }[];
   faq: ToolFaq[];
   ctaTitle: string;
   ctaDescription: string;
@@ -66,466 +62,660 @@ export const comparisonSlugs = [
 ] as const;
 export type ComparisonSlug = (typeof comparisonSlugs)[number];
 
-export const comparisonContentPtPT: Record<ComparisonSlug, ComparisonPageContent> = {
+const sources = {
+  canva: [
+    { label: "Canva for Education — eligibility and pricing", url: "https://www.canva.com/education/teachers/" },
+    { label: "Canva Help — Learn Grid, curriculum coverage", url: "https://www.canva.com/en_gb/help/using-learn-grid/" },
+    { label: "Canva — AI Lesson Plan Generator", url: "https://www.canva.com/features/ai-lesson-plan-generator/" },
+    { label: "Canva Newsroom — 100 million milestone", url: "https://www.canva.com/newsroom/news/100-million-education-milestone/" },
+    { label: "Chalkie.ai — comparison of AI lesson planning tools", url: "https://chalkie.ai/en/blog/compare-ai-lesson-planning-tools" },
+  ],
+  magicschool: [
+    { label: "MagicSchool AI — pricing", url: "https://www.magicschool.ai/pricing" },
+    { label: "MagicSchool AI — standards-aligned curriculum", url: "https://www.magicschool.ai/blog-posts/standards-aligned-curriculum" },
+    { label: "MagicSchool AI — FAQ (supported languages)", url: "https://www.magicschool.ai/faq" },
+    { label: "EdTech Institute — MagicSchool AI review (2026)", url: "https://edtechinstitute.com/2026/01/31/magicschool-ai-review-is-it-worth-it/" },
+  ],
+  teachy: [
+    { label: "Teachy — plans and pricing (official Help Center)", url: "https://helpcenter.teachy.ai/pt-BR/articles/9500483-nossos-planos" },
+    { label: "Teachy — Lesson plan (BNCC alignment)", url: "https://www.teachy.com.br/pt-BR/ferramentas/lesson-plan-generator" },
+    { label: "Teachy — Lesson Plan (CCSS alignment, English)", url: "https://helpcenter.teachy.ai/en/articles/9500453-lesson-plan" },
+    { label: "Revista Educação — Teachy profile (2024)", url: "https://revistaeducacao.com.br/2024/06/21/plataforma-teachy/" },
+  ],
+  chat: [
+    { label: "CITE Journal — UMass Amherst study of AI-generated lesson plans", url: "https://citejournal.org/volume-25/issue-3-25/social-studies/civic-education-in-the-age-of-ai-should-we-trust-ai-generated-lesson-plans" },
+    { label: "EdWeek — Why AI May Not Be Ready to Write Your Lesson Plans", url: "https://www.edweek.org/technology/why-ai-may-not-be-ready-to-write-your-lesson-plans/2025/06" },
+    { label: "PLOS ONE — ChatGPT hallucination in a science lesson plan", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11182495" },
+    { label: "Chalkbeat — Common Sense Media study on bias in AI teacher assistants", url: "https://www.chalkbeat.org/2025/08/06/ai-teacher-assistants-promote-racial-bias-study-finds" },
+    { label: "K-12 Dive — Beware hallucinations in AI lesson planning", url: "https://www.k12dive.com/news/using-ai-lesson-planning-beware-hallucinations/726660" },
+  ],
+} satisfies Record<string, ComparisonSource[]>;
+
+const ptSourcesExtra = {
+  dge: { label: "DGE — Aprendizagens Essenciais", url: "https://www.dge.mec.pt/aprendizagens-essenciais" },
+  observador: {
+    label: "Observador — 2 em cada 3 professores portugueses usaram IA (2025)",
+    url: "https://observador.pt/2025/05/30/embargo-ate-8h-estudo-neste-ano-letivo-dois-em-cada-tres-professores-recorreram-a-inteligencia-artificial",
+  },
+};
+
+const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
   "canva-para-educacao": {
     slug: "canva-para-educacao",
     competitorName: "Canva para Educação",
     metaTitle: "Scooli vs Canva para Educação: qual escolher?",
     metaDescription:
-      "Comparação direta entre a Scooli e o Canva para Educação para professores em Portugal: alinhamento curricular, geração de planos de aula e design visual.",
+      "O Canva desenha materiais; a Scooli prepara o ano letivo: planificação, calendário de cada turma e a semana pronta num clique.",
     kicker: "Comparação",
     title: "Scooli vs Canva para Educação",
     description:
-      "O Canva é a ferramenta de referência para design visual em contexto escolar. A Scooli resolve um problema diferente: partir das Aprendizagens Essenciais e do DL 55/2018 para gerar o documento pedagógico em si — plano de aula, planificação, teste — não o poster ou a apresentação.",
+      "O Canva desenha materiais bonitos. A Scooli parte da sua planificação, organiza as aulas de cada turma num calendário e prepara a semana num clique.",
     verdict:
-      "Em resumo: o Canva para Educação é gratuito e imbatível para criar materiais visuais (posters, apresentações, infográficos) e tem um gerador de planos de aula por IA — mas, por admissão da própria Canva, o mapeamento curricular automático está limitado a 4 países (EUA, Austrália, Indonésia, México) e não cobre Portugal. A Scooli nasceu precisamente para o mercado português: as Aprendizagens Essenciais e o DL 55/2018 estão integrados desde o primeiro pedido, não como texto genérico escrito por IA. Se precisa de um poster bonito, use o Canva. Se precisa de uma planificação alinhada com a legislação portuguesa em minutos, é para isso que a Scooli existe.",
+      "O Canva para Educação é uma ferramenta de design, ótima para posters, infográficos e apresentações. A Scooli resolve outro problema, o de preparar o ano letivo: parte da sua planificação e das Aprendizagens Essenciais, organiza as aulas de cada turma num calendário e prepara a semana inteira com planos de aula, fichas e testes prontos a editar. Usar as duas faz sentido: a Scooli para o conteúdo e o planeamento, o Canva para o acabamento visual.",
     tableTitle: "Lado a lado",
     tableDescription:
-      "Cada linha é verificável: o que a Scooli faz hoje, comparado com o que a Canva documenta publicamente sobre o Canva para Educação.",
+      "O que cada uma faz pelo mesmo trabalho: preparar as aulas de uma turma ao longo do ano.",
     rows: [
       {
-        aspect: "Preço para professores",
-        scooli: "Gratuito com créditos mensais; Pro desde 6,99€/mês",
-        competitor: "100% gratuito para professores do ensino básico/secundário verificados",
-        winner: "competitor",
+        aspect: "Ponto de partida",
+        scooli: "A sua planificação anual e o calendário de cada turma",
+        competitor: "Um pedido de cada vez, ou um modelo de design",
       },
       {
-        aspect: "Alinhamento com as Aprendizagens Essenciais (Portugal)",
-        scooli: "Integrado por definição em todas as planificações e planos de aula",
-        competitor: "Sem mapeamento documentado para Portugal — cobertura curricular formal limitada a 4 países",
-        winner: "scooli",
+        aspect: "Currículo português",
+        scooli: "Aprendizagens Essenciais e DL 55/2018 integrados em cada planificação e plano de aula",
+        competitor: "Mapeamento curricular documentado para 4 países (EUA, Austrália, Indonésia, México); sem referência a Portugal",
       },
       {
-        aspect: "Referência ao DL 55/2018 (flexibilidade curricular)",
-        scooli: "Documentado automaticamente nas planificações de unidade",
-        competitor: "Não mencionado em nenhuma página de produto consultada",
-        winner: "scooli",
+        aspect: "Preparar a semana",
+        scooli: "«Gerar semana»: um plano de aula para cada aula do calendário, num clique",
+        competitor: "Gerador de plano de aula por pedido; avaliações independentes descrevem as sugestões como ideias de texto gerais",
       },
       {
-        aspect: "Diferenciação automática por nível de turma",
-        scooli: "Gera versões mais simples, mais curtas ou com apoio adicional a pedido",
-        competitor: "Tratada como tarefa manual de edição, segundo avaliações independentes",
-        winner: "scooli",
-      },
-      {
-        aspect: "Criação de materiais visuais (posters, apresentações)",
-        scooli: "Apresentações simples para aula; não é uma ferramenta de design",
-        competitor: "Milhares de templates, biblioteca de imagens e design profissional",
-        winner: "competitor",
-      },
-      {
-        aspect: "Geração do documento pedagógico (plano de aula completo)",
-        scooli: "Produto principal: objetivos, sequência, materiais e avaliação integrados",
-        competitor:
-          "Gerador de planos por IA existe (Magic Write), mas avaliações independentes descrevem-no como \"ideias de texto gerais\", sem estrutura pedagógica dedicada",
-        winner: "scooli",
-      },
-      {
-        aspect: "Escala e maturidade da comunidade",
-        scooli: "Comunidade em crescimento, focada em Portugal",
-        competitor: "100 milhões de professores, alunos e administradores por mês, 190+ países",
-        winner: "competitor",
+        aspect: "O documento pedagógico",
+        scooli: "Objetivos, sequência, materiais e avaliação, no modelo do professor, com exportação para Word e PDF",
+        competitor: "Foco no design visual: templates, imagens e apresentações",
       },
     ],
-    strengthsTitle: "Onde o Canva ganha, sem rodeios",
-    strengthsDescription:
-      "Uma comparação só é útil se for honesta sobre o que o outro lado faz melhor.",
-    competitorStrengths: [
+    reasonsTitle: "Porque os professores escolhem a Scooli",
+    reasons: [
       {
-        title: "Design visual de qualidade profissional",
-        description:
-          "O Canva é, antes de mais, uma ferramenta de design. Para posters, infográficos e apresentações visualmente cuidadas, não há como competir com milhares de templates e uma biblioteca de imagens profissional.",
+        title: "Parte da sua planificação",
+        description: "As aulas de cada turma ficam no calendário a partir do que o professor planeou para o ano.",
       },
       {
-        title: "100% gratuito, sem limite de utilização",
-        description:
-          "Qualquer professor do ensino básico ou secundário com email escolar verificado tem acesso gratuito e ilimitado a praticamente todas as funcionalidades Pro — sem créditos mensais a gerir.",
+        title: "Calendário de cada turma",
+        description: "A planificação vira calendário e cada semana fica preparada num clique.",
       },
       {
-        title: "Escala e maturidade",
-        description:
-          "Com 100 milhões de utilizadores mensais em mais de 800 mil escolas, o Canva tem um ecossistema de templates, tutoriais e suporte que uma ferramenta nova não replica da noite para o dia.",
+        title: "Feita para o ensino português",
+        description: "Aprendizagens Essenciais, DL 54/2018 e 55/2018 e português europeu, desde o primeiro pedido.",
       },
     ],
     faq: [
       {
         question: "O Canva para Educação substitui a Scooli?",
         answer:
-          "Não para o mesmo trabalho. O Canva ajuda a desenhar o documento (visual, layout, apresentação); a Scooli gera o conteúdo pedagógico alinhado com as Aprendizagens Essenciais e o DL 55/2018. Muitos professores usam os dois: a Scooli para o conteúdo, o Canva para o acabamento visual.",
+          "Não para o mesmo trabalho. O Canva ajuda a desenhar o documento; a Scooli prepara o conteúdo pedagógico e o planeamento alinhados com as Aprendizagens Essenciais. Muitos professores usam as duas: a Scooli para o conteúdo, o Canva para o acabamento visual.",
       },
       {
         question: "O Canva tem alinhamento com o currículo português?",
         answer:
-          "Com base na documentação pública do Canva, o mapeamento curricular por código de standard (\"Learn Grid\") está disponível apenas para Estados Unidos, Austrália, Indonésia e México. Não encontrámos qualquer referência às Aprendizagens Essenciais ou aos Decretos-Lei 54/2018 e 55/2018 nas páginas do Canva para Educação.",
+          "Com base na documentação pública do Canva, o mapeamento curricular por código de standard (\"Learn Grid\") está disponível para os Estados Unidos, a Austrália, a Indonésia e o México. Não encontrámos referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 e 55/2018 nas páginas do Canva para Educação.",
       },
       {
-        question: "Qual é mais barato?",
+        question: "O que faz a Scooli que um gerador de planos de aula não faz?",
         answer:
-          "O Canva para Educação é gratuito para professores verificados do ensino básico e secundário. A Scooli tem um plano gratuito com créditos mensais e um plano Pro pago para quem precisa de gerar mais documentos.",
+          "A Scooli não gera planos soltos: mantém o calendário de cada turma a partir da sua planificação e prepara a semana inteira a partir daí.",
       },
       {
         question: "Posso usar o Canva e a Scooli ao mesmo tempo?",
         answer:
-          "Sim. Não são concorrentes diretos no mesmo fluxo de trabalho — são frequentemente complementares: gerar o plano de aula ou planificação na Scooli e depois desenhar o material visual final no Canva.",
+          "Sim. São complementares: gere o plano de aula ou a planificação na Scooli e desenhe o material visual final no Canva.",
       },
     ],
-    ctaTitle: "Experimente a Scooli gratuitamente",
-    ctaDescription:
-      "Gere a sua primeira planificação alinhada com as Aprendizagens Essenciais em minutos.",
-    sources: [
-      { label: "Canva for Education — elegibilidade e preços", url: "https://www.canva.com/education/teachers/" },
-      { label: "Canva Help — Learn Grid, cobertura curricular", url: "https://www.canva.com/en_gb/help/using-learn-grid/" },
-      { label: "Canva — AI Lesson Plan Generator", url: "https://www.canva.com/features/ai-lesson-plan-generator/" },
-      { label: "Canva Newsroom — marco dos 100 milhões", url: "https://www.canva.com/newsroom/news/100-million-education-milestone/" },
-      { label: "Chalkie.ai — comparação de ferramentas de planificação com IA", url: "https://chalkie.ai/en/blog/compare-ai-lesson-planning-tools" },
-    ],
+    ctaTitle: "Experimente a Scooli com as suas turmas",
+    ctaDescription: "Comece grátis e veja a próxima semana de uma turma preparada num clique.",
+    sources: [...sources.canva, ptSourcesExtra.dge],
   },
   "magicschool-ai": {
     slug: "magicschool-ai",
     competitorName: "MagicSchool AI",
     metaTitle: "Scooli vs MagicSchool AI: qual escolher em Portugal?",
     metaDescription:
-      "Comparação entre a Scooli e o MagicSchool AI: alinhamento com o currículo português, preço e presença em Portugal, com fontes citadas.",
+      "O MagicSchool é um catálogo de 80+ ferramentas pensado para os EUA. A Scooli conhece o currículo português, parte da sua planificação e prepara a semana. Com fontes citadas.",
     kicker: "Comparação",
     title: "Scooli vs MagicSchool AI",
     description:
-      "O MagicSchool AI é uma das maiores plataformas de ferramentas de IA para professores nos Estados Unidos, com mais de 80 ferramentas. A sua força é o catálogo; a sua limitação, para um professor português, é que todo o alinhamento curricular é pensado para os standards dos EUA.",
+      "O MagicSchool AI é um catálogo de mais de 80 ferramentas de IA para professores. A Scooli é uma só: a que parte da sua planificação e prepara o ano letivo consigo.",
     verdict:
-      "Em resumo: o MagicSchool AI ganha em amplitude — mais de 80 ferramentas, um plano gratuito permanente e integração com Google Classroom e Microsoft. Mas o seu alinhamento curricular (\"standards aligned curriculum\") é construído inteiramente à volta de standards estaduais dos EUA e do Common Core; não encontrámos nenhuma referência às Aprendizagens Essenciais, ao DL 54/2018 ou ao DL 55/2018 em nenhuma página do produto, nem clientes institucionais em Portugal. A Scooli é construída desde o início para o currículo português. Se procura um canivete suíço de ferramentas de IA em inglês, o MagicSchool tem mais opções. Se procura alinhamento real com o que se ensina em Portugal, é essa a diferença que a Scooli resolve.",
+      "O MagicSchool AI foi construído para professores dos EUA: o alinhamento curricular assenta nos standards estaduais americanos e no Common Core, e não encontrámos referência ao currículo português nem a escolas portuguesas como clientes. A Scooli foi construída para o ensino português e para um trabalho diferente do de um catálogo: partir da planificação, organizar o calendário de cada turma e preparar a semana, com a direção a ver o estado do currículo de toda a escola.",
     tableTitle: "Lado a lado",
-    tableDescription:
-      "Factos verificáveis, com fonte — não apenas posicionamento de marketing.",
+    tableDescription: "Factos verificáveis, com fonte, sobre o mesmo trabalho: preparar as aulas ao longo do ano.",
     rows: [
       {
-        aspect: "Preço",
-        scooli: "Gratuito com créditos mensais; Pro desde 6,99€/mês",
-        competitor: "Plano gratuito permanente; Plus a partir de ~8,33 USD/mês (anual)",
-        winner: "tie",
+        aspect: "Ponto de partida",
+        scooli: "A planificação e o calendário de cada turma",
+        competitor: "Uma ferramenta de cada vez, num catálogo de 80+ para professores",
       },
       {
-        aspect: "Alinhamento com as Aprendizagens Essenciais (Portugal)",
-        scooli: "Integrado por definição em todas as planificações e planos de aula",
-        competitor: "Nenhuma referência encontrada; alinhamento curricular é centrado em standards dos EUA (Common Core, standards estaduais)",
-        winner: "scooli",
+        aspect: "Currículo português",
+        scooli: "Aprendizagens Essenciais e DL 54/2018 e 55/2018 integrados em cada pedido",
+        competitor: "Alinhamento centrado em standards dos EUA (Common Core, standards estaduais); nenhuma referência ao currículo português",
       },
       {
-        aspect: "Clientes institucionais / escolas em Portugal",
-        scooli: "Foco desde a fundação no mercado português",
-        competitor: "Nenhum caso de estudo institucional em Portugal ou na UE encontrado; todos os logótipos de clientes publicados são distritos escolares dos EUA",
-        winner: "scooli",
+        aspect: "Visão da escola",
+        scooli: "Painel com o currículo cumprido por turma, lugares geridos e biblioteca interna",
+        competitor: "Plano Enterprise com SSO e integração com SIS, pensado para distritos escolares dos EUA",
       },
       {
-        aspect: "Número de ferramentas no catálogo",
-        scooli: "Conjunto focado: planificação, planos de aula, testes, fichas, quizzes, apresentações",
-        competitor: "80+ ferramentas para professores, 50+ para alunos",
-        winner: "competitor",
-      },
-      {
-        aspect: "Suporte ao português europeu",
-        scooli: "Produto nativo em português europeu, desde a interface ao conteúdo gerado",
-        competitor: "Português europeu listado como uma de 98 línguas de tradução (não confirmado como língua de interface)",
-        winner: "scooli",
-      },
-      {
-        aspect: "Qualidade do primeiro resultado, segundo avaliações independentes",
-        scooli: "Gerado a partir de regras curriculares portuguesas explícitas",
-        competitor:
-          "Avaliações independentes descrevem os resultados como \"pontos de partida sólidos\" que requerem revisão cuidadosa de factos, exemplos e grelhas de correção",
-        winner: "tie",
-      },
-      {
-        aspect: "Integrações (Google Classroom, Microsoft, SIS)",
-        scooli: "Exportação de documentos; sem integração direta com SIS",
-        competitor: "Google Classroom, Microsoft, Canvas, Schoology; SSO e integração com SIS no plano Enterprise",
-        winner: "competitor",
+        aspect: "Português europeu",
+        scooli: "Nativo, da interface ao conteúdo gerado",
+        competitor: "Listado entre 98 línguas de tradução; não confirmado como língua de interface",
       },
     ],
-    strengthsTitle: "Onde o MagicSchool ganha, sem rodeios",
-    strengthsDescription:
-      "Uma comparação só é útil se for honesta sobre o que o outro lado faz melhor.",
-    competitorStrengths: [
+    reasonsTitle: "Porque os professores escolhem a Scooli",
+    reasons: [
       {
-        title: "O catálogo de ferramentas mais amplo do setor",
-        description:
-          "Com mais de 80 ferramentas para professores e 50+ para alunos — de IEPs a comunicação com encarregados de educação — o MagicSchool cobre muito mais do que a geração de planos de aula e material letivo.",
+        title: "Um fluxo, não um catálogo",
+        description: "Planificação, calendário e semana preparada no mesmo sítio, sem escolher entre dezenas de ferramentas.",
       },
       {
-        title: "Plano gratuito permanente",
-        description:
-          "O plano \"Forever Free\" inclui dezenas de ferramentas sem custo, sem necessidade de upgrade para uso básico.",
+        title: "O currículo certo",
+        description: "As Aprendizagens Essenciais e a legislação portuguesa entram desde o primeiro pedido, sem traduzir standards de outro país.",
       },
       {
-        title: "Integrações profundas para distritos escolares",
-        description:
-          "SSO, integração com SIS (Clever, ClassLink) e um plano Enterprise desenhado para administração central de muitas escolas — infraestrutura que ainda não existe do lado da Scooli.",
+        title: "A escola a ver o currículo",
+        description: "Os pilotos começam com uma equipa pequena e a direção acompanha o estado de todas as turmas num só painel.",
       },
     ],
     faq: [
       {
         question: "O MagicSchool AI funciona com o currículo português?",
         answer:
-          "Com base na documentação pública consultada, o alinhamento curricular do MagicSchool é construído à volta de standards estaduais dos EUA e do Common Core. Não encontrámos qualquer referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018.",
+          "Com base na documentação pública consultada, o alinhamento curricular do MagicSchool é construído à volta de standards estaduais dos EUA e do Common Core. Não encontrámos referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018.",
       },
       {
         question: "O MagicSchool AI está disponível em português?",
         answer:
-          "O MagicSchool lista o português europeu entre 98 línguas suportadas para tradução de conteúdo (atualização de março de 2026), mas a documentação consultada não confirma se é também uma das 24 línguas de interface do produto.",
+          "O MagicSchool lista o português europeu entre 98 línguas suportadas para tradução de conteúdo (atualização de março de 2026), mas a documentação consultada não confirma se é também língua de interface do produto.",
       },
       {
         question: "Existem escolas portuguesas a usar o MagicSchool AI?",
         answer:
-          "Não encontrámos casos de estudo institucionais em Portugal ou na União Europeia. A única evidência de utilização em Portugal encontrada foi a participação individual de um professor português no \"AI Pioneers Program\" do MagicSchool, e formações de iniciativa de centros de formação portugueses — não uma relação comercial direta.",
+          "Não encontrámos casos de estudo institucionais em Portugal ou na União Europeia; os logótipos de clientes publicados são distritos escolares dos EUA.",
       },
       {
-        question: "Qual tem mais ferramentas?",
+        question: "Preciso de 80 ferramentas?",
         answer:
-          "O MagicSchool, de forma clara — mais de 80 ferramentas para professores contra um conjunto mais focado na Scooli. A diferença está no alinhamento curricular português, não na amplitude do catálogo.",
+          "O trabalho de um professor repete-se todas as semanas: planear, preparar, ajustar. A Scooli concentra-se nesse ciclo, em vez de oferecer um catálogo.",
       },
     ],
-    ctaTitle: "Experimente a Scooli gratuitamente",
-    ctaDescription:
-      "Veja como as Aprendizagens Essenciais entram na planificação desde o primeiro pedido.",
-    sources: [
-      { label: "MagicSchool AI — preços", url: "https://www.magicschool.ai/pricing" },
-      { label: "MagicSchool AI — alinhamento curricular", url: "https://www.magicschool.ai/blog-posts/standards-aligned-curriculum" },
-      { label: "MagicSchool AI — FAQ (línguas suportadas)", url: "https://www.magicschool.ai/faq" },
-      { label: "EdTech Institute — avaliação do MagicSchool AI (2026)", url: "https://edtechinstitute.com/2026/01/31/magicschool-ai-review-is-it-worth-it/" },
-    ],
+    ctaTitle: "Experimente a Scooli com as suas turmas",
+    ctaDescription: "Veja as Aprendizagens Essenciais e o calendário da turma na sua primeira semana.",
+    sources: [...sources.magicschool, ptSourcesExtra.dge],
   },
   teachy: {
     slug: "teachy",
     competitorName: "Teachy",
     metaTitle: "Scooli vs Teachy: qual escolher em Portugal?",
     metaDescription:
-      "Comparação entre a Scooli e a Teachy para professores portugueses: alinhamento curricular, preços e idioma, com todas as fontes citadas.",
+      "A Teachy segue o currículo brasileiro; a Scooli segue o português e organiza o ano de cada turma num calendário. Comparação com todas as fontes citadas.",
     kicker: "Comparação",
     title: "Scooli vs Teachy",
     description:
-      "A Teachy é uma das maiores plataformas de IA para professores na América Latina, com fichas, planos de aula, slides e um banco de questões robusto. O que não tem — por construção, não por acaso — é qualquer ligação ao currículo português.",
+      "A Teachy gera materiais a partir de um tema, com base no currículo brasileiro. A Scooli parte da sua planificação e do currículo português, e organiza o ano de cada turma num calendário.",
     verdict:
-      "Em resumo: a Teachy é uma plataforma madura e completa, mas construída e documentada publicamente apenas em torno do currículo brasileiro (BNCC) e, em inglês, dos standards dos EUA (CCSS). Não existe locale em português europeu, não existe página para Portugal, e mesmo conteúdo gerado sobre temas portugueses aparece etiquetado com códigos curriculares brasileiros. A Scooli existe precisamente para o professor português: as Aprendizagens Essenciais e o DL 55/2018 fazem parte da geração desde o primeiro pedido. Se procura alinhamento com o currículo brasileiro, a Teachy é uma escolha madura. Se procura alinhamento com o currículo português, a Teachy não o oferece — a Scooli sim.",
+      "A Teachy está construída e documentada em torno da BNCC brasileira e, em inglês, dos standards dos EUA (CCSS). Não encontrámos variante em português europeu nem página para Portugal, e conteúdo sobre temas portugueses aparece com códigos curriculares brasileiros. A Scooli foi feita para o professor português: as Aprendizagens Essenciais e o DL 55/2018 entram desde o primeiro pedido, e o calendário de cada turma mantém o ano letivo no sítio certo.",
     tableTitle: "Lado a lado",
-    tableDescription:
-      "Factos verificáveis, com fonte oficial sempre que existe — incluindo o próprio Help Center da Teachy.",
+    tableDescription: "Factos verificáveis, com fonte oficial sempre que existe, incluindo o Help Center da própria Teachy.",
     rows: [
       {
-        aspect: "Alinhamento com as Aprendizagens Essenciais (Portugal)",
-        scooli: "Integrado por definição em todas as planificações e planos de aula",
-        competitor: "Nenhuma referência encontrada — alinhamento declarado é à BNCC (Brasil) e, em inglês, ao CCSS (EUA)",
-        winner: "scooli",
+        aspect: "Currículo",
+        scooli: "Aprendizagens Essenciais (Portugal) integradas em cada planificação e plano de aula",
+        competitor: "Alinhamento declarado à BNCC (Brasil) e, em inglês, ao CCSS (EUA); nenhuma referência às Aprendizagens Essenciais",
       },
       {
         aspect: "Idioma",
         scooli: "Português europeu nativo, da interface ao conteúdo gerado",
-        competitor: "Apenas português do Brasil (pt-BR); sem variante ou locale para Portugal em nenhum dos dois domínios",
-        winner: "scooli",
+        competitor: "Apenas português do Brasil (pt-BR); sem variante para Portugal",
+      },
+      {
+        aspect: "Ponto de partida",
+        scooli: "A planificação anual e o calendário de cada turma",
+        competitor: "Um tema de cada vez, a partir do qual gera slides, jogos e plano de aula",
+      },
+      {
+        aspect: "Preparar a semana",
+        scooli: "«Gerar semana»: um plano de aula para cada aula do calendário, num clique",
+        competitor: "Geração a partir de um tema; sem calendário de turma documentado",
       },
       {
         aspect: "Presença em Portugal",
-        scooli: "Produto construído desde a fundação para o mercado português",
-        competitor: "Sem página, locale ou presença institucional específica para Portugal identificada",
-        winner: "scooli",
-      },
-      {
-        aspect: "Preço do plano gratuito",
-        scooli: "Gratuito com créditos mensais",
-        competitor: "Plano \"Básico\" gratuito com 100 créditos por dia de login, mais créditos por indicação",
-        winner: "tie",
-      },
-      {
-        aspect: "Preço do plano pago",
-        scooli: "Pro desde 6,99€/mês",
-        competitor: "Premium desde ~29,90 R$/mês (anual) — à taxa de câmbio de outubro de 2026, cerca de 5€/mês",
-        winner: "competitor",
-      },
-      {
-        aspect: "Banco de questões / avaliações",
-        scooli: "Gerador de testes com perguntas diversificadas e critérios de correção",
-        competitor: "Banco de questões extenso com correção automática, incluindo respostas discursivas",
-        winner: "competitor",
-      },
-      {
-        aspect: "Geração de slides/apresentações, jogos e materiais extra a partir de um tema",
-        scooli: "Apresentações simples para aula",
-        competitor: "Gera automaticamente slides, plano de aula, jogos e mapas mentais a partir de um único tema",
-        winner: "competitor",
+        scooli: "Produto construído desde a fundação para o ensino português",
+        competitor: "Sem página, locale ou presença institucional específica para Portugal",
       },
     ],
-    strengthsTitle: "Onde a Teachy ganha, sem rodeios",
-    strengthsDescription:
-      "Uma comparação só é útil se for honesta sobre o que o outro lado faz melhor.",
-    competitorStrengths: [
+    reasonsTitle: "Porque os professores escolhem a Scooli",
+    reasons: [
       {
-        title: "Catálogo de materiais mais amplo",
-        description:
-          "Além de planos de aula, a Teachy gera slides, jogos, mapas mentais e um banco de mais de 500 mil questões a partir de um único tema — um fluxo de geração múltipla que a Scooli não replica hoje.",
+        title: "O currículo que ensina",
+        description: "Sem códigos curriculares de outro país a traduzir: tudo parte das Aprendizagens Essenciais.",
       },
       {
-        title: "Correção automática de respostas discursivas",
-        description:
-          "A funcionalidade de avaliação e correção da Teachy inclui correção automática de redações e respostas abertas, não apenas de escolha múltipla.",
+        title: "O ano inteiro, não um tema",
+        description: "A planificação vira calendário, e cada semana é preparada num clique.",
       },
       {
-        title: "Escala e maturidade na América Latina",
-        description:
-          "Com centenas de milhares de professores e uma ronda de investimento Série A liderada por fundos internacionais (Goodwater Capital, Reach Capital), a Teachy tem recursos e maturidade de produto que uma plataforma mais nova ainda está a construir.",
+        title: "Português europeu a sério",
+        description: "Linguagem, exemplos e formato dos documentos pensados para as escolas portuguesas.",
       },
     ],
     faq: [
       {
         question: "A Teachy funciona com o currículo português?",
         answer:
-          "Com base na documentação pública da Teachy, o alinhamento curricular declarado é à BNCC (Base Nacional Comum Curricular) do Brasil, e em inglês ao CCSS dos EUA. Não encontrámos qualquer referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018. Mesmo conteúdo gerado sobre temas portugueses aparece etiquetado com códigos BNCC brasileiros.",
+          "Com base na documentação pública da Teachy, o alinhamento curricular declarado é à BNCC brasileira e, em inglês, ao CCSS dos EUA. Não encontrámos referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018, e mesmo conteúdo sobre temas portugueses aparece com códigos BNCC.",
       },
       {
         question: "A Teachy está disponível em português europeu?",
         answer:
-          "Não encontrámos uma variante pt-PT. A Teachy opera em português do Brasil (pt-BR) em teachy.com.br, e teachy.ai oferece mais de 20 locales — nenhum deles para Portugal.",
-      },
-      {
-        question: "Qual é mais barato?",
-        answer:
-          "Ambas têm um plano gratuito. No plano pago, o Premium da Teachy (cerca de 5€/mês à taxa de outubro de 2026) é mais barato do que o Pro da Scooli — mas sem alinhamento com o currículo português.",
+          "Não encontrámos uma variante pt-PT. A Teachy opera em português do Brasil (pt-BR) em teachy.com.br, e teachy.ai oferece mais de 20 locales, nenhum deles para Portugal.",
       },
       {
         question: "Existem escolas portuguesas a usar a Teachy?",
+        answer: "Não encontrámos presença institucional, parceria ou landing page específica para Portugal no site oficial da Teachy.",
+      },
+      {
+        question: "Já uso a Teachy. Vale a pena experimentar a Scooli?",
         answer:
-          "Não encontrámos qualquer presença institucional, parceria ou landing page específica para Portugal no site oficial da Teachy.",
+          "Pode experimentar com uma turma e comparar: a Scooli começa na sua planificação, prepara a semana num clique e usa as Aprendizagens Essenciais sem conversão de códigos.",
       },
     ],
-    ctaTitle: "Experimente a Scooli gratuitamente",
-    ctaDescription:
-      "Veja como as Aprendizagens Essenciais entram na planificação desde o primeiro pedido — sem precisar de traduzir códigos curriculares de outro país.",
-    sources: [
-      { label: "Teachy — planos e preços (Help Center oficial)", url: "https://helpcenter.teachy.ai/pt-BR/articles/9500483-nossos-planos" },
-      { label: "Teachy — Plano de Aula (alinhamento BNCC)", url: "https://www.teachy.com.br/pt-BR/ferramentas/lesson-plan-generator" },
-      { label: "Teachy — Lesson Plan (alinhamento CCSS, inglês)", url: "https://helpcenter.teachy.ai/en/articles/9500453-lesson-plan" },
-      { label: "DGE — Aprendizagens Essenciais", url: "https://www.dge.mec.pt/aprendizagens-essenciais" },
-      { label: "Revista Educação — perfil da Teachy (2024)", url: "https://revistaeducacao.com.br/2024/06/21/plataforma-teachy/" },
-    ],
+    ctaTitle: "Experimente a Scooli com as suas turmas",
+    ctaDescription: "Comece grátis, sem traduzir códigos curriculares de outro país.",
+    sources: [...sources.teachy, ptSourcesExtra.dge],
   },
   "chatgpt-gemini-perplexity": {
     slug: "chatgpt-gemini-perplexity",
     competitorName: "ChatGPT, Gemini e Perplexity",
-    metaTitle: "Scooli vs ChatGPT/Gemini/Perplexity para planos de aula",
+    metaTitle: "Scooli vs ChatGPT, Gemini e Perplexity para planos de aula",
     metaDescription:
-      "Usar um chatbot genérico para planos de aula tem riscos documentados de alinhamento curricular. Veja a comparação com fontes citadas.",
+      "Um chat dá-lhe texto e cada conversa parte do zero. A Scooli conhece o currículo, parte da sua planificação e prepara a semana. Com fontes citadas.",
     kicker: "Comparação",
     title: "Scooli vs ChatGPT, Gemini e Perplexity",
     description:
-      "Dois em cada três professores portugueses já usaram um chatbot genérico como o ChatGPT para preparar aulas. É rápido e está à mão — mas a investigação académica mais rigorosa sobre o tema mostra que \"alinhado ao currículo\" num chatbot genérico muitas vezes significa muito menos do que parece.",
+      "Dois em cada três professores portugueses já usaram IA para preparar aulas. Um chat dá-lhe texto; a Scooli dá-lhe a aula, o calendário e a semana preparada.",
     verdict:
-      "Em resumo: o ChatGPT, o Gemini e o Perplexity são rápidos, gratuitos na versão base e ótimos para brainstorming conversacional — por isso tantos professores já os usam. O que não têm é qualquer conhecimento estruturado do currículo português: cada sessão parte do zero, sem memória do que já foi ensinado, sem verificação de alinhamento e com um risco documentado de alucinação (incluindo fontes inventadas). O estudo mais rigoroso já feito sobre o tema — da Universidade de Massachusetts Amherst, com 310 planos de aula gerados por ChatGPT, Gemini e Copilot — encontrou que só 2 a 4% das atividades geradas pedem aos alunos para analisar ou avaliar; a maioria fica no nível mais básico de pensamento. A Scooli não substitui a conversa livre de um chatbot — substitui a parte em que esse chatbot promete alinhamento curricular que não tem forma de verificar.",
+      "O ChatGPT, o Gemini e o Perplexity são ótimos a conversar, mas cada conversa parte do zero: não conhecem a turma, o currículo português nem o que já foi dado, e a investigação documenta alinhamentos curriculares superficiais e fontes inventadas. A Scooli faz o contrário: parte da sua planificação, mantém o calendário de cada turma, prepara a semana inteira em documentos estruturados no seu modelo e deixa a revisão ao professor.",
     tableTitle: "Lado a lado",
-    tableDescription:
-      "Esta comparação não é sobre uma empresa — é sobre o que acontece quando se usa um assistente de conversação genérico para o trabalho que uma ferramenta curricular dedicada faz.",
+    tableDescription: "Não é sobre uma empresa: é sobre o que acontece quando se usa um chat genérico para o trabalho de preparar o ano letivo.",
     rows: [
       {
-        aspect: "Conhecimento estruturado do currículo português",
-        scooli: "Integrado por definição — Aprendizagens Essenciais e DL 55/2018 em cada pedido",
-        competitor: "Nenhum — depende inteiramente do que o professor escrever no pedido, sessão a sessão",
-        winner: "scooli",
+        aspect: "Currículo português",
+        scooli: "Aprendizagens Essenciais e DL 55/2018 integrados em cada pedido",
+        competitor: "Depende do que o professor escrever e verificar no pedido, sessão a sessão",
       },
       {
-        aspect: "Qualidade pedagógica validada por estudo independente",
-        scooli: "Estrutura pensada para objetivos, sequência e avaliação formativa",
-        competitor: "Estudo da UMass Amherst (310 planos): só 2–4% das atividades pedem análise ou avaliação; ~45% ficam no nível mais básico (\"recordar\")",
-        winner: "scooli",
+        aspect: "O seu plano e calendário",
+        scooli: "A planificação e o calendário de cada turma ficam guardados na Scooli",
+        competitor: "Sem memória persistente na versão gratuita: cada conversa parte do zero",
       },
       {
-        aspect: "Risco de alucinação (factos inventados)",
-        scooli: "Conteúdo gerado a partir de regras curriculares explícitas, sem invenção de fontes",
-        competitor: "Caso documentado: ChatGPT inventou um livro infantil inexistente ao gerar material \"alinhado\" a um standard curricular",
-        winner: "scooli",
+        aspect: "Preparar a semana",
+        scooli: "«Gerar semana»: um plano de aula para cada aula do calendário, num clique",
+        competitor: "Uma aula de cada vez, escrita em cada conversa",
       },
       {
-        aspect: "Organização do período letivo",
-        scooli: "Distribui os tópicos pelas aulas do período a partir do horário e gera o plano de aula de qualquer sessão já com esse contexto",
-        competitor: "Sem memória persistente na versão gratuita — cada conversa parte do zero, sem noção do que foi planeado nas sessões anteriores",
-        winner: "scooli",
+        aspect: "Qualidade pedagógica",
+        scooli: "Estrutura de objetivos, sequência e avaliação formativa em cada documento",
+        competitor: "Estudo da UMass Amherst (310 planos): só 2–4% das atividades pedem análise ou avaliação; cerca de 45% ficam no nível de \"recordar\"",
       },
       {
-        aspect: "Custo de entrada",
-        scooli: "Gratuito com créditos mensais; Pro desde 6,99€/mês",
-        competitor: "Camada gratuita disponível em todos; planos pagos de 8 a 22,99€/mês (ChatGPT Plus, Gemini AI Pro, Perplexity Pro)",
-        winner: "tie",
+        aspect: "Factos inventados",
+        scooli: "Documentos gerados a partir de regras curriculares explícitas e revistos pelo professor",
+        competitor: "Caso documentado: o ChatGPT inventou um livro infantil inexistente ao gerar material \"alinhado\" a um standard",
       },
       {
-        aspect: "Flexibilidade conversacional e brainstorming",
-        scooli: "Fluxo estruturado, pensado para gerar o documento final",
-        competitor: "Melhor opção para \"dá-me 10 formas diferentes de ensinar X\" ou iterar livremente sobre uma ideia",
-        winner: "competitor",
-      },
-      {
-        aspect: "Risco de viés documentado em recomendações",
-        scooli: "Sem funcionalidade de perfilagem comportamental de alunos",
-        competitor: "Estudo da Common Sense Media (2025) encontrou respostas mais punitivas para nomes associados a alunos negros do que a alunos brancos no mesmo prompt, incluindo no Google Gemini",
-        winner: "scooli",
+        aspect: "O resultado",
+        scooli: "Documentos estruturados no modelo do professor, prontos a exportar para Word e PDF",
+        competitor: "Texto de chat para copiar, colar e formatar",
       },
     ],
-    strengthsTitle: "Onde o ChatGPT, o Gemini e o Perplexity ganham, sem rodeios",
-    strengthsDescription:
-      "Uma comparação só é útil se for honesta sobre o que o outro lado faz melhor — e a investigação mostra genuínas vantagens aqui.",
-    competitorStrengths: [
+    reasonsTitle: "Porque os professores escolhem a Scooli",
+    reasons: [
       {
-        title: "Brainstorming e iteração conversacional",
-        description:
-          "Os próprios investigadores que documentaram as falhas de alinhamento curricular recomendam continuar a usar chatbots genéricos para brainstorming — por exemplo, pedir \"10 formas diferentes de ensinar este tema\" ou \"15 formas de melhorar este plano\". É um ponto forte real, não uma ferramenta de geração final.",
+        title: "Não recomeça do zero",
+        description: "A planificação e o calendário ficam na Scooli, por isso cada semana nasce do que planeou.",
       },
       {
-        title: "Gratuito e sem barreira de entrada",
-        description:
-          "Todos mantêm uma camada gratuita utilizável, o que remove a necessidade de aprovação de orçamento — uma barreira que atrasa a adoção de ferramentas pagas em contexto escolar.",
+        title: "Menos trabalho depois",
+        description: "O resultado já vem estruturado e alinhado, em vez de texto para reformatar e verificar à mão.",
       },
       {
-        title: "Versatilidade para tudo o resto",
-        description:
-          "O mesmo chat que gera uma ideia de aula também redige um email para encarregados de educação, um relatório administrativo ou ajuda a pensar numa adaptação para um aluno — não há troca de ferramenta a meio do dia de trabalho.",
+        title: "O professor decide",
+        description: "Tudo é editável e a revisão humana faz parte do fluxo, com os dados fora do treino de modelos.",
       },
     ],
     faq: [
       {
         question: "Porque não usar apenas o ChatGPT para gerar planos de aula?",
         answer:
-          "Pode — muitos professores já o fazem. O que a investigação mostra é que \"alinhado ao currículo\" num chatbot genérico depende inteiramente de o professor escrever e verificar esse alinhamento, sessão a sessão, sem garantia de que o resultado é pedagogicamente sólido. Um estudo da UMass Amherst com 310 planos gerados por ChatGPT, Gemini e Copilot encontrou que a maioria das atividades geradas fica no nível mais básico de pensamento, independentemente do standard curricular pedido.",
+          "Pode, e muitos professores já o fazem. A investigação mostra que o alinhamento curricular num chat genérico depende de o professor escrever e verificar tudo, sessão a sessão. Um estudo da UMass Amherst com 310 planos gerados por ChatGPT, Gemini e Copilot encontrou que a maioria das atividades fica no nível mais básico de pensamento.",
       },
       {
-        question: "O ChatGPT pode inventar informação quando gera um plano de aula?",
+        question: "O ChatGPT pode inventar informação num plano de aula?",
         answer:
-          "Sim, está documentado. Um estudo de caso publicado na PLOS ONE encontrou o ChatGPT a inventar um livro infantil inexistente quando lhe foi pedido material de leitura alinhado a um standard curricular. Isto obriga a uma verificação manual de cada resultado, sessão a sessão.",
+          "Sim, está documentado. Um estudo de caso publicado na PLOS ONE encontrou o ChatGPT a inventar um livro infantil inexistente ao pedir material de leitura alinhado a um standard. Obriga a verificar cada resultado à mão.",
       },
       {
-        question: "Quantos professores portugueses já usam o ChatGPT para preparar aulas?",
+        question: "Quantos professores portugueses já usam IA para preparar aulas?",
         answer:
-          "Um estudo de 2025 da Fundação Semapa com a Nova SBE e a Universidade do Minho, com cerca de 2.000 professores de mais de 300 escolas portuguesas, encontrou que dois em cada três professores (67%) já tinham usado ferramentas de IA — nomeadamente ChatGPT e Copilot — nesse ano letivo, principalmente para preparação de aulas.",
+          "Um estudo de 2025 da Fundação Semapa com a Nova SBE e a Universidade do Minho, com cerca de 2.000 professores de mais de 300 escolas, encontrou que dois em cada três (67%) já tinham usado ferramentas de IA nesse ano letivo, sobretudo para preparar aulas.",
       },
       {
-        question: "A Scooli substitui completamente o uso de um chatbot genérico?",
+        question: "Posso continuar a usar o ChatGPT para brainstorming?",
         answer:
-          "Não, e não é essa a proposta. Para brainstorming livre e iteração conversacional, um chatbot genérico continua a ser uma boa opção — os próprios investigadores recomendam esse uso. A Scooli existe para a parte em que é preciso alinhamento garantido com as Aprendizagens Essenciais e um documento pedagógico estruturado, não uma conversa aberta.",
+          "Sim, e os investigadores até o recomendam para isso. A Scooli existe para a parte seguinte: transformar a ideia em planificação, aulas e materiais alinhados, e manter o calendário de cada turma.",
       },
     ],
-    ctaTitle: "Experimente a Scooli gratuitamente",
-    ctaDescription:
-      "Veja a diferença entre pedir alinhamento curricular e ter alinhamento curricular garantido desde o primeiro pedido.",
-    sources: [
-      { label: "CITE Journal — estudo UMass Amherst sobre planos de aula gerados por IA", url: "https://citejournal.org/volume-25/issue-3-25/social-studies/civic-education-in-the-age-of-ai-should-we-trust-ai-generated-lesson-plans" },
-      { label: "EdWeek — Why AI May Not Be Ready to Write Your Lesson Plans", url: "https://www.edweek.org/technology/why-ai-may-not-be-ready-to-write-your-lesson-plans/2025/06" },
-      { label: "PLOS ONE — caso de alucinação do ChatGPT em plano de ciências", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11182495" },
-      { label: "Chalkbeat — estudo Common Sense Media sobre viés racial em assistentes de IA", url: "https://www.chalkbeat.org/2025/08/06/ai-teacher-assistants-promote-racial-bias-study-finds" },
-      { label: "Observador — 2 em cada 3 professores portugueses usaram IA (2025)", url: "https://observador.pt/2025/05/30/embargo-ate-8h-estudo-neste-ano-letivo-dois-em-cada-tres-professores-recorreram-a-inteligencia-artificial" },
-      { label: "RAND — Uneven Adoption of AI Tools Among US Educators", url: "https://www.rand.org/pubs/research_reports/RRA134-25.html" },
-      { label: "K-12 Dive — Beware hallucinations in AI lesson planning", url: "https://www.k12dive.com/news/using-ai-lesson-planning-beware-hallucinations/726660" },
-    ],
+    ctaTitle: "Experimente a Scooli com as suas turmas",
+    ctaDescription: "Veja a diferença entre pedir alinhamento curricular e tê-lo desde o primeiro pedido.",
+    sources: [...sources.chat, ptSourcesExtra.observador],
   },
 };
 
-export function getComparisonPages(): ComparisonPageContent[] {
-  return comparisonSlugs.map((slug) => comparisonContentPtPT[slug]);
+const en: Record<ComparisonSlug, ComparisonPageContent> = {
+  "canva-para-educacao": {
+    slug: "canva-para-educacao",
+    competitorName: "Canva for Education",
+    metaTitle: "Scooli vs Canva for Education: which to choose?",
+    metaDescription:
+      "Canva designs materials; Scooli prepares the school year: your plan, a calendar for every class and the week ready in one click. Sources cited.",
+    kicker: "Comparison",
+    title: "Scooli vs Canva for Education",
+    description:
+      "Canva designs beautiful materials. Scooli starts from your yearly plan, lays out each class's lessons in a calendar and prepares the week in one click.",
+    verdict:
+      "Canva for Education is a design tool, great for posters, infographics and slides. Scooli solves a different problem, preparing the school year: it starts from your yearly plan, lays out each class's lessons in a calendar and prepares the whole week with lesson plans, worksheets and tests ready to edit. Using both makes sense: Scooli for the content and the planning, Canva for the visual finish.",
+    tableTitle: "Side by side",
+    tableDescription: "What each one does for the same job: preparing a class's lessons across the year.",
+    rows: [
+      {
+        aspect: "Starting point",
+        scooli: "Your yearly plan and each class's calendar",
+        competitor: "One request at a time, or a design template",
+      },
+      {
+        aspect: "Curriculum",
+        scooli: "Works from the plan you set for each class and subject",
+        competitor: "Automatic curriculum mapping documented for four countries (US, Australia, Indonesia, Mexico)",
+      },
+      {
+        aspect: "Preparing the week",
+        scooli: "\"Generate week\": a lesson plan for every lesson in the calendar, in one click",
+        competitor: "A lesson plan generator, one request at a time; independent reviews describe the output as general text ideas",
+      },
+      {
+        aspect: "The teaching document",
+        scooli: "Objectives, sequence, materials and assessment in the teacher's template, exported to Word and PDF",
+        competitor: "Focused on visual design: templates, images and presentations",
+      },
+    ],
+    reasonsTitle: "Why teachers choose Scooli",
+    reasons: [
+      { title: "It starts from your plan", description: "Each class's lessons land in the calendar from what you planned for the year." },
+      { title: "A calendar for every class", description: "The plan becomes a calendar and each week is prepared in one click." },
+      { title: "Ready to teach from", description: "Structured documents in your template, editable, with the final say always yours." },
+    ],
+    faq: [
+      {
+        question: "Does Canva for Education replace Scooli?",
+        answer:
+          "Not for the same job. Canva helps you design the document; Scooli prepares the teaching content and the planning. Many teachers use both: Scooli for the content, Canva for the visual finish.",
+      },
+      {
+        question: "Does Canva map to my curriculum?",
+        answer:
+          "Based on Canva's public documentation, curriculum mapping by standard code (\"Learn Grid\") is available for the United States, Australia, Indonesia and Mexico.",
+      },
+      {
+        question: "What does Scooli do that a lesson plan generator doesn't?",
+        answer:
+          "Scooli doesn't generate stand-alone plans: it keeps each class's calendar and state, and prepares the whole week from there. What was taught and what's left feed the next lesson.",
+      },
+      {
+        question: "Can I use Canva and Scooli together?",
+        answer: "Yes. They're complementary: generate the lesson plan or yearly plan in Scooli and design the final visual material in Canva.",
+      },
+    ],
+    ctaTitle: "Try Scooli with your classes",
+    ctaDescription: "Start free and see a class's next week prepared in one click.",
+    sources: sources.canva,
+  },
+  "magicschool-ai": {
+    slug: "magicschool-ai",
+    competitorName: "MagicSchool AI",
+    metaTitle: "Scooli vs MagicSchool AI: which to choose?",
+    metaDescription:
+      "MagicSchool is a catalogue of 80+ tools. Scooli prepares the week from your yearly plan. Sources cited.",
+    kicker: "Comparison",
+    title: "Scooli vs MagicSchool AI",
+    description:
+      "MagicSchool AI is a catalogue of more than 80 AI tools for teachers. Scooli is one: the one that starts from your plan and prepares the school year with you.",
+    verdict:
+      "MagicSchool AI is built for US teachers: its curriculum alignment rests on US state standards and the Common Core, and every customer logo it publishes is a US school district. Scooli does a different job from a catalogue: it starts from your yearly plan, lays out each class's calendar and prepares the week, with school leaders seeing the state of the curriculum across the whole school.",
+    tableTitle: "Side by side",
+    tableDescription: "Verifiable facts, with sources, about the same job: preparing lessons across the year.",
+    rows: [
+      {
+        aspect: "Starting point",
+        scooli: "Your yearly plan and each class's calendar",
+        competitor: "One tool at a time, from a catalogue of 80+ for teachers",
+      },
+      {
+        aspect: "Curriculum",
+        scooli: "Works from the plan you set for each class and subject",
+        competitor: "Alignment built around US state standards and the Common Core",
+      },
+      {
+        aspect: "The school's view",
+        scooli: "A dashboard with the curriculum covered in every class, managed seats and an internal library",
+        competitor: "An Enterprise plan with SSO and SIS integration, designed for US school districts",
+      },
+      {
+        aspect: "Preparing the week",
+        scooli: "\"Generate week\": a lesson plan for every lesson in the calendar, in one click",
+        competitor: "Generation tool by tool; independent reviews call the output a solid starting point that needs careful fact-checking",
+      },
+    ],
+    reasonsTitle: "Why teachers choose Scooli",
+    reasons: [
+      { title: "One flow, not a catalogue", description: "Plan, calendar and prepared week in one place, without choosing between dozens of tools." },
+      { title: "Your plan, not a standards database", description: "Each lesson starts from the plan you set for the class." },
+      { title: "School leaders see the curriculum", description: "Pilots start with a small team, and leadership follows the curriculum of every class in one dashboard." },
+    ],
+    faq: [
+      {
+        question: "Does MagicSchool AI follow my own yearly plan?",
+        answer:
+          "Based on the public documentation we reviewed, MagicSchool's curriculum alignment is built around US state standards and the Common Core, with tools you run one at a time.",
+      },
+      {
+        question: "Which customers does MagicSchool list?",
+        answer: "The customer logos and case studies it publishes are US school districts.",
+      },
+      {
+        question: "Do I need 80 tools?",
+        answer:
+          "A teacher's work repeats every week: plan, prepare, adjust. Scooli concentrates on that loop instead of offering a catalogue.",
+      },
+      {
+        question: "Can a school try Scooli before deciding?",
+        answer: "Yes. Schools start with a supported pilot with a small team, and review usage together before rolling out.",
+      },
+    ],
+    ctaTitle: "Try Scooli with your classes",
+    ctaDescription: "Start free and see your first week prepared from your own plan.",
+    sources: sources.magicschool,
+  },
+  teachy: {
+    slug: "teachy",
+    competitorName: "Teachy",
+    metaTitle: "Scooli vs Teachy: which to choose?",
+    metaDescription:
+      "Teachy generates from a topic; Scooli starts from your yearly plan and keeps a calendar for every class. Sources cited.",
+    kicker: "Comparison",
+    title: "Scooli vs Teachy",
+    description:
+      "Teachy generates materials from a topic. Scooli starts from your yearly plan, keeps a calendar for each class and prepares each week from it.",
+    verdict:
+      "Teachy is a mature platform built and documented around Brazil's BNCC and, in English, the US Common Core (CCSS). Scooli is built around a different idea: your plan for the year becomes each class's calendar, every class has a live state, and each week is prepared from it, with the whole school able to see where its classes stand.",
+    tableTitle: "Side by side",
+    tableDescription: "Verifiable facts, with official sources wherever they exist, including Teachy's own Help Center.",
+    rows: [
+      {
+        aspect: "Starting point",
+        scooli: "Your yearly plan and each class's calendar",
+        competitor: "One topic at a time, from which it generates slides, games and a lesson plan",
+      },
+      {
+        aspect: "Curriculum",
+        scooli: "Works from the plan you set for each class and subject",
+        competitor: "Declared alignment to Brazil's BNCC and, in English, the US CCSS",
+      },
+      {
+        aspect: "Preparing the week",
+        scooli: "\"Generate week\": a lesson plan for every lesson in the calendar, in one click",
+        competitor: "Generation from a topic; no class calendar documented",
+      },
+      {
+        aspect: "The school's view",
+        scooli: "A dashboard with the curriculum covered in every class and each teacher's activity",
+        competitor: "Not documented in the public pages we reviewed",
+      },
+    ],
+    reasonsTitle: "Why teachers choose Scooli",
+    reasons: [
+      { title: "The whole year, not one topic", description: "The plan becomes a calendar, and each week is prepared in one click." },
+      { title: "Your plan leads", description: "Lessons follow what you decided to teach, in the order you decided." },
+      { title: "Made for the school too", description: "Seats, a dashboard and an internal library, with a supported pilot to start." },
+    ],
+    faq: [
+      {
+        question: "Which curricula does Teachy align to?",
+        answer: "Based on Teachy's public documentation, the declared alignment is to Brazil's BNCC and, in English, the US CCSS.",
+      },
+      {
+        question: "What languages does Teachy support?",
+        answer:
+          "Teachy operates in Brazilian Portuguese (pt-BR) at teachy.com.br, and teachy.ai offers more than 20 locales.",
+      },
+      {
+        question: "I already use Teachy. Is Scooli worth trying?",
+        answer:
+          "You can try it with one class and compare: Scooli starts from your yearly plan, prepares the week in one click and keeps each class's calendar.",
+      },
+      {
+        question: "Can a school try Scooli before deciding?",
+        answer: "Yes. Schools start with a supported pilot with a small team, and review usage together before rolling out.",
+      },
+    ],
+    ctaTitle: "Try Scooli with your classes",
+    ctaDescription: "Start free and see a week prepared from your own plan.",
+    sources: sources.teachy,
+  },
+  "chatgpt-gemini-perplexity": {
+    slug: "chatgpt-gemini-perplexity",
+    competitorName: "ChatGPT, Gemini and Perplexity",
+    metaTitle: "Scooli vs ChatGPT, Gemini and Perplexity for lesson plans",
+    metaDescription:
+      "A chat gives you text and every conversation starts from zero. Scooli prepares the week from your plan. Sources cited.",
+    kicker: "Comparison",
+    title: "Scooli vs ChatGPT, Gemini and Perplexity",
+    description:
+      "Most teachers have tried a chatbot for lesson planning. A chat gives you text; Scooli gives you the lesson, the calendar and the prepared week.",
+    verdict:
+      "ChatGPT, Gemini and Perplexity are great at conversation, but every conversation starts from zero: they don't know your class or what you've already taught, and research documents shallow curriculum alignment and invented sources. Scooli does the opposite: it starts from your yearly plan, keeps each class's calendar, prepares the whole week in structured documents in your template and leaves the review to the teacher.",
+    tableTitle: "Side by side",
+    tableDescription: "Not about one company: about what happens when a general chat does the job of preparing the school year.",
+    rows: [
+      {
+        aspect: "Your plan",
+        scooli: "Starts from your yearly plan for each class",
+        competitor: "Depends on what you write, and check, in every request",
+      },
+      {
+        aspect: "Your plan and calendar",
+        scooli: "Your yearly plan and each class's calendar stay in Scooli",
+        competitor: "No persistent memory on the free versions: every conversation starts from zero",
+      },
+      {
+        aspect: "Preparing the week",
+        scooli: "\"Generate week\": a lesson plan for every lesson in the calendar, in one click",
+        competitor: "One lesson at a time, written in each conversation",
+      },
+      {
+        aspect: "Pedagogical quality",
+        scooli: "Objectives, sequence and formative assessment structured in every document",
+        competitor: "UMass Amherst study (310 plans): only 2–4% of activities ask students to analyse or evaluate; about 45% stay at \"remember\"",
+      },
+      {
+        aspect: "Invented facts",
+        scooli: "Documents generated from explicit rules and reviewed by the teacher",
+        competitor: "Documented case: ChatGPT invented a children's book that doesn't exist when generating \"aligned\" material",
+      },
+      {
+        aspect: "The result",
+        scooli: "Structured documents in the teacher's template, ready to export to Word and PDF",
+        competitor: "Chat text to copy, paste and format",
+      },
+    ],
+    reasonsTitle: "Why teachers choose Scooli",
+    reasons: [
+      { title: "It doesn't start from zero", description: "Your plan and each class's calendar stay in Scooli, so every week starts from what you planned." },
+      { title: "Less work afterwards", description: "The result arrives structured, instead of text to reformat and check by hand." },
+      { title: "The teacher decides", description: "Everything is editable and human review is part of the flow, with your data kept out of model training." },
+    ],
+    faq: [
+      {
+        question: "Why not just use ChatGPT to generate lesson plans?",
+        answer:
+          "You can, and many teachers do. Research shows that curriculum alignment in a general chat depends on the teacher writing and checking everything, session by session. A UMass Amherst study of 310 lesson plans generated by ChatGPT, Gemini and Copilot found most activities stay at the most basic level of thinking.",
+      },
+      {
+        question: "Can ChatGPT invent information in a lesson plan?",
+        answer:
+          "Yes, it's documented. A PLOS ONE case study found ChatGPT inventing a children's book that doesn't exist when asked for reading material aligned to a standard. It means checking every result by hand.",
+      },
+      {
+        question: "Can I still use ChatGPT for brainstorming?",
+        answer:
+          "Yes, and the researchers even recommend it for that. Scooli is for the next step: turning the idea into a plan, lessons and materials, and keeping each class's calendar.",
+      },
+      {
+        question: "Does Scooli use my requests to train AI models?",
+        answer: "No. Requests and materials created in Scooli are not used to train AI models.",
+      },
+    ],
+    ctaTitle: "Try Scooli with your classes",
+    ctaDescription: "See the difference between asking for a plan and having one that starts from yours.",
+    sources: sources.chat,
+  },
+};
+
+const content: Record<Locale, Record<ComparisonSlug, ComparisonPageContent>> = {
+  "pt-PT": ptPT,
+  en,
+};
+
+export function getComparisonPages(locale: Locale = "pt-PT"): ComparisonPageContent[] {
+  return comparisonSlugs.map((slug) => content[locale][slug]);
 }
 
-export function getComparisonPage(slug: string): ComparisonPageContent | undefined {
+/** `slug` is the internal (Portuguese) slug; the English one only exists in the URL (see `i18n/toolSlugs.ts`). */
+export function getComparisonPage(slug: string, locale: Locale = "pt-PT"): ComparisonPageContent | undefined {
   return (comparisonSlugs as readonly string[]).includes(slug)
-    ? comparisonContentPtPT[slug as ComparisonSlug]
+    ? content[locale][slug as ComparisonSlug]
     : undefined;
 }

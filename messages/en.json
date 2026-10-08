@@ -14,8 +14,8 @@
     "backToHome": "Back to home",
     "logoAlt": "Scooli logo",
     "toolsMenu": {
-      "howTitle": "How it works",
-      "howDescription": "From topic to finished resource in three steps, and the whole year organised.",
+      "howTitle": "A document in seconds",
+      "howDescription": "From topic to resource in three steps.",
       "howLink": "See how it works",
       "allTools": "All tools",
       "items": {
@@ -91,7 +91,7 @@
       "contact": "Contact",
       "privacy": "Privacy",
       "terms": "Terms",
-      "howItWorks": "How it works",
+      "howItWorks": "Create in seconds",
       "allTools": "All tools",
       "investors": "Investors",
       "roadmap": "Roadmap"
@@ -103,9 +103,9 @@
   },
   "home": {
     "meta": {
-      "title": "Scooli | Plan the week's lessons in minutes",
-      "description": "Scooli saves teachers time on lesson preparation. It stays with you through the school year and creates lesson plans, worksheets, tests, quizzes, yearly plans and slide decks you can edit and export.",
-      "ogTitle": "Scooli | Plan the week's lessons in minutes",
+      "title": "Scooli | AI for teachers: prepare the week's lessons",
+      "description": "Scooli lays out each class's lessons from your yearly plan and prepares the week: lesson plans, worksheets, tests and slide decks you can edit.",
+      "ogTitle": "Scooli | AI for teachers: prepare the week's lessons",
       "ogDescription": "Lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, with the whole school year organised in one place.",
       "twitterTitle": "Scooli | Less time preparing, more time teaching",
       "twitterDescription": "Scooli stays with teachers through the school year and creates the week's resources, ready to review and edit."
@@ -139,12 +139,10 @@
     "videoFallback": "Your browser does not support HTML5 video.",
     "hero": {
       "title": "Your whole school year, prepared <em>week by week</em>.",
-      "description": "Scooli lays out each class's lessons from your yearly plan and prepares every week with you, with the lesson plans and materials you need.",
+      "description": "Scooli lays out each class's lessons from your yearly plan and prepares each week with you, with the lesson plans and materials you need.",
       "videoLabel": "Demo",
       "videoAria": "Demo: the week's lessons in Scooli's calendar; one click on “Generate week” prepares the lesson plans, and one opens ready to edit",
-      "kicker": "AI for teachers",
-      "roleTeacher": "I'm a teacher",
-      "roleSchool": "I'm a school"
+      "kicker": "AI for teachers"
     },
     "proof": {
       "ariaLabel": "Scooli in numbers",
@@ -152,8 +150,8 @@
       "documents": "documents created"
     },
     "howItWorks": {
-      "kicker": "How it works",
-      "title": "From topic to finished resource in three steps.",
+      "kicker": "In seconds",
+      "title": "A complete document in seconds, in three steps.",
       "steps": [
         {
           "title": "Tell Scooli what you're teaching",
@@ -524,17 +522,17 @@
   },
   "about": {
     "meta": {
-      "title": "About us",
-      "description": "Learn Scooli's story, the mission behind it, and meet the team building it for teachers."
+      "title": "About Scooli: the team and the story",
+      "description": "Meet the team and the story behind Scooli: engineers and a teacher on a mission to give time back to the people who teach."
     },
     "hero": {
       "badge": "About us",
-      "title": "Scooli exists to give teachers their time back.",
-      "description": "We're taking the repetitive work out of lesson preparation and bringing together a community that often works alone — with the teacher always in control of the final result."
+      "title": "Scooli exists to give teachers their time back",
+      "description": "We're cutting the repetitive work out of lesson preparation and bringing together a community that often works alone — with the teacher always in control of the final result."
     },
     "story": {
       "badge": "Our story",
-      "title": "It started with the teachers around us.",
+      "title": "It started with the teachers around us",
       "chapters": [
         {
           "title": "What we saw",
@@ -546,7 +544,7 @@
         },
         {
           "title": "Scooli",
-          "description": "So we built Scooli, with AI doing the mechanical work and the teacher keeping the final decision. Today it lays out each class's lessons from the yearly plan and prepares every week in one click. The goal has stayed the same since day one — give time back to the people who teach. And to their families."
+          "description": "So we built Scooli, with AI doing the mechanical work and the teacher keeping the final decision. The goal has stayed the same since day one — give time back to the people who teach. And to their families."
         }
       ],
       "videoAria": "Scooli at work: a maths lesson plan being generated",
@@ -560,7 +558,8 @@
     "metrics": {
       "eyebrow": "Scooli today",
       "activeTeachers": "teachers",
-      "generatedDocuments": "documents created"
+      "generatedDocuments": "documents created",
+      "activeMonth": "active in the last month"
     },
     "mission": {
       "badge": "Mission",
@@ -584,7 +583,7 @@
     "team": {
       "badge": "Team",
       "title": "Who's building Scooli.",
-      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor, with experience at Porto Editora, Talkdesk, Körber, Infios and Corticeira Amorim — building Scooli in direct contact with teachers.",
+      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor — building Scooli in direct contact with teachers.",
       "members": [
         {
           "role": "Co-founder · Software & AI Engineer",
@@ -617,18 +616,18 @@
     "next": {
       "kicker": "Where we're going",
       "title": "From the first day of school to the last.",
-      "description": "Next, Scooli will remember each class: what has been taught, what has stuck and what comes next. We want it to be where preparation happens, all year long."
+      "description": "We're building the state of every class, so Scooli can use what's been taught and decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
     }
   },
   "schools": {
     "meta": {
-      "title": "Scooli for schools",
-      "description": "Scooli's institutional plan: every teacher prepares lessons with AI and school leaders follow usage in one dashboard, with implementation, training and privacy documentation."
+      "title": "Institutional plan for schools",
+      "description": "Scooli's institutional plan: teachers prepare lessons with AI and school leaders see where the curriculum stands in every class, in one dashboard."
     },
     "hero": {
       "eyebrow": "For schools",
       "title": "Scooli for the whole school.",
-      "description": "One plan for the whole team: every teacher prepares lessons in Scooli, and school leaders follow usage in one dashboard.",
+      "description": "One plan for the whole team: every teacher prepares lessons in Scooli, and school leaders see, in one dashboard, where the curriculum stands in every class.",
       "secondaryLabel": "See pricing",
       "imageAlt": "Scooli's school dashboard with active seats, teachers active this month, AI requests and documents created"
     },
@@ -649,20 +648,20 @@
       "description": "Everything Pro includes for every teacher, plus what only makes sense at school level.",
       "items": [
         {
+          "title": "The curriculum at a glance",
+          "description": "Where each class stands against the curriculum and the plan, in one view, by subject and by grade."
+        },
+        {
+          "title": "Delays spotted early",
+          "description": "See which topics are still to be taught and which classes need support before the end of the term, not after."
+        },
+        {
           "title": "Central management",
           "description": "Seats and invitations managed in one place. Only the people the school invites get in."
         },
         {
-          "title": "The full picture",
-          "description": "A dashboard with active teachers, AI requests and documents created each month."
-        },
-        {
           "title": "A school library",
           "description": "Shared materials stay between colleagues at your school."
-        },
-        {
-          "title": "Consistent preparation",
-          "description": "Colleagues share plans and materials and keep preparation aligned through the year."
         },
         {
           "title": "Implementation and training",
@@ -721,8 +720,8 @@
   },
   "trust": {
     "meta": {
-      "title": "Trust and Privacy",
-      "description": "See how Scooli handles privacy, human review and responsible use of AI, explained in plain language."
+      "title": "Privacy, GDPR and responsible use of AI",
+      "description": "See how Scooli handles privacy and the GDPR, human review and the responsible use of AI in the classroom, explained in plain language."
     },
     "badge": "Trust and Privacy",
     "title": "Privacy, human review and responsible use, explained without the jargon",
@@ -824,8 +823,8 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact",
-      "description": "Get in touch with the Scooli team to ask questions, request information, or discuss a pilot for your school."
+      "title": "Contact and book a call",
+      "description": "Talk to the Scooli team: book a call, write to us with questions, or discuss a pilot for your school or school group."
     },
     "badge": "Contact",
     "title": "Talk to us",
@@ -925,8 +924,8 @@
   },
   "aiForTeachers": {
     "meta": {
-      "title": "AI for teachers",
-      "description": "Scooli is an AI platform for teachers. It creates editable lesson plans, worksheets, tests, quizzes and slide decks, keeps the school year organised, and leaves every final decision with the teacher.",
+      "title": "AI for teachers: prepare the whole week",
+      "description": "An AI platform for teachers: it lays out each class's lessons and prepares editable lesson plans, worksheets, tests, quizzes and slide decks.",
       "keywords": [
         "ai for teachers",
         "ai tool for teachers",
@@ -1047,8 +1046,8 @@
   },
   "pricingPage": {
     "meta": {
-      "title": "Pricing",
-      "description": "See Scooli's pricing, understand what each plan includes, and find the right path for teachers and schools."
+      "title": "Pricing: free, Pro and a plan for schools",
+      "description": "Simple Scooli pricing: a free plan with 20 credits a month, Pro with no creation limits, and an institutional plan for schools and school groups."
     },
     "hero": {
       "eyebrow": "Pricing",
@@ -1101,13 +1100,18 @@
     "institutional": {
       "kicker": "For schools",
       "title": "Why the institutional plan",
-      "description": "Several Pro licences give Scooli to each teacher. The institutional plan gives it to the school.",
+      "description": "Several Pro licences give Scooli to each teacher. The institutional plan gives it to the school, with the curriculum of every class in view.",
       "columns": {
         "label": "",
         "pro": "Several Pro licences",
         "institutional": "Institutional plan"
       },
       "rows": [
+        {
+          "label": "Curriculum",
+          "pro": "Each teacher follows their own classes",
+          "institutional": "The state of the curriculum in every class of the school, in one dashboard"
+        },
         {
           "label": "Accounts",
           "pro": "Each teacher manages their own",
@@ -1202,9 +1206,10 @@
       "label": "Schools and institutions",
       "price": "By request",
       "detail": "Priced by number of teachers",
-      "description": "For schools and school groups that want Scooli for the whole team, with central management and support.",
+      "description": "For schools and school groups that want Scooli for the whole team: the state of the curriculum in every class, central management and support.",
       "features": [
         "Everything in Pro, for every teacher",
+        "The state of the curriculum in every class, in one dashboard",
         "A school dashboard with each teacher's activity",
         "Seats and invitations managed in one place",
         "An internal library to share materials between colleagues",
@@ -1581,28 +1586,22 @@
   },
   "investors": {
     "meta": {
-      "title": "Investors",
-      "description": "Scooli prepares each class's week of lessons and is becoming the system teachers run their school year on. Product, traction, business model, market and team."
+      "title": "Investors: Scooli's vision and numbers",
+      "description": "Scooli prepares each class's week and is building a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
     },
     "hero": {
       "eyebrow": "Investors",
-      "title": "Scooli prepares the week's lessons for <em>every class</em>.",
-      "description": "Teachers spend their evenings preparing lessons. Scooli lays out each class's year from the yearly plan and prepares every week in one click. We're making it the system teachers run their whole school year on.",
+      "title": "Other tools generate content. Scooli will <em>know every class</em>.",
+      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and is building a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
       "videoAria": "Demo: the month in Scooli's calendar, one class's week, \"Generate week\" and the lesson plans ready"
     },
     "problem": {
       "kicker": "The problem",
-      "title": "Lesson preparation is every teacher's invisible job.",
+      "title": "AI generates content. Nobody tracks the curriculum.",
       "paragraphs": [
-        "Lesson plans, worksheets, tests, slide decks: every week, for every class, mostly outside working hours and rarely building on what was already done.",
-        "AI chats help with writing, but they don't know the class, the curriculum or what has already been taught. Teachers still explain, copy, format and check everything by hand, one conversation at a time."
+        "Dozens of tools generate lesson plans, worksheets and tests. Any of them can be copied, and the big platforms can add one whenever they like.",
+        "What nobody has is a live model of where each class stands in its curriculum: what was planned, what was taught and what's left. Without it, every request starts from zero and the school can't see what actually happens in lessons."
       ]
-    },
-    "next": {
-      "kicker": "Where we're going",
-      "title": "From a prepared week to a class Scooli knows.",
-      "description": "Next, Scooli will remember each class: what has been taught, what has stuck and what comes next, so it can prepare the right lesson at the right time. That per-class memory is in development.",
-      "link": "See the roadmap"
     },
     "team": {
       "kicker": "Team",
@@ -1657,36 +1656,14 @@
     "numbers": {
       "label": "Scooli in numbers",
       "teachers": "teachers on Scooli",
+      "active": "active in the last month",
       "documents": "documents created",
-      "pro": "per month, Pro plan per teacher",
       "launchValue": "< 4 weeks",
       "launch": "to get Scooli running in a new market"
     },
-    "edge": {
-      "kicker": "Why Scooli wins",
-      "title": "Not another chat. The place where preparation happens.",
-      "items": [
-        {
-          "title": "Documents, not answers",
-          "description": "Structured lesson plans, worksheets, tests and slide decks, in the teacher's template, ready to export. That's what gets used in a classroom."
-        },
-        {
-          "title": "Each class's year in one place",
-          "description": "The yearly plan becomes a lesson calendar and each week is prepared in one click. Teachers who plan their year in Scooli come back every week."
-        },
-        {
-          "title": "Curriculum as data",
-          "description": "Each grade and subject's curriculum is structured inside the platform. A new market is a new dataset, not a new product."
-        },
-        {
-          "title": "The school as the customer",
-          "description": "The institutional plan gives schools seat management, a usage dashboard and an internal library. Teachers come in through the free plan; the institutional plan takes Scooli to the whole school."
-        }
-      ]
-    },
     "model": {
       "kicker": "Business model",
-      "title": "From one teacher to the whole school.",
+      "title": "Three tiers, from free to the school.",
       "description": "Public pricing, in three tiers.",
       "plans": [
         {
@@ -1702,93 +1679,339 @@
         {
           "title": "Institutional",
           "price": "Per school",
-          "description": "For schools and school groups, priced by number of teachers, with central management and support."
+          "description": "For schools and school groups: the curriculum of every class in view, central management and support, priced by number of teachers."
         }
       ]
     },
     "market": {
       "kicker": "Market",
-      "title": "We started in Portugal. The product is ready for any market.",
-      "description": "Portugal is the market we know best, so that's where we started. Technically, Scooli is ready for any curriculum and language: entering a new market is mostly a question of distribution, and we can have Scooli running in a new country in under 4 weeks."
+      "title": "We started in Portugal, where we're proving the engine.",
+      "description": "Portugal is the market we know best, so that's where we started and where we're proving the curriculum-execution engine. Entering a new market is mostly a question of distribution: technically, we can have Scooli running in a new country in under 4 weeks.",
+      "roadmapTitle": "Where we're going",
+      "roadmapDescription": "From the class to the school, from the school to the system. The full path is on the roadmap.",
+      "roadmapLink": "See the roadmap"
+    },
+    "moat": {
+      "kicker": "The moat",
+      "title": "Not the AI model. The context that builds up.",
+      "description": "Models will keep getting better and cheaper. What can't be copied is the context of each class, built week by week.",
+      "items": [
+        {
+          "title": "Structured curriculum",
+          "description": "Subjects, grades, domains, topics, objectives and dependencies, as data the AI can use, not as a PDF."
+        },
+        {
+          "title": "The state of every class",
+          "description": "What should have been taught, what was taught, where the class is and what comes next."
+        },
+        {
+          "title": "Execution data",
+          "description": "Planned, taught and assessed, over years. A feature can be copied; two years of lessons' context can't."
+        },
+        {
+          "title": "Workflows that act",
+          "description": "Scooli stops waiting for the request: it updates plans, prepares lessons, spots delays and suggests reinforcement."
+        },
+        {
+          "title": "An institutional network",
+          "description": "Teachers, classes, departments, schools. The more of a school uses it, the more valuable it is to everyone."
+        }
+      ]
+    },
+    "flywheel": {
+      "kicker": "Distribution",
+      "title": "From one teacher to the whole school.",
+      "description": "Teachers are the channel: every teacher who uses Scooli each week brings the school closer to the institutional plan.",
+      "steps": [
+        {
+          "title": "A teacher discovers Scooli",
+          "description": "Organic search and word of mouth between colleagues."
+        },
+        {
+          "title": "Uses it with their classes",
+          "description": "The plan becomes a calendar and each week gets prepared."
+        },
+        {
+          "title": "Invites colleagues",
+          "description": "More teachers from the same school join, each with their own classes."
+        },
+        {
+          "title": "The school adopts the institutional plan",
+          "description": "Leadership sees the curriculum of every class, and the conversation stops being \"want to try it?\"."
+        }
+      ]
     }
   },
   "roadmap": {
     "meta": {
-      "title": "Roadmap",
-      "description": "What you can use in Scooli today, what we're building and what comes next."
+      "title": "Roadmap: what exists and what's next",
+      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today, what we're building and what comes next."
     },
     "hero": {
       "eyebrow": "Roadmap",
-      "title": "Where Scooli is going.",
-      "description": "What you can use today, what we're building and what comes next. No dates: we'd rather ship when it's done well."
+      "title": "From planning to the whole school.",
+      "description": "Scooli started by preparing lessons and already shows schools where the curriculum stands in every class. We're building each class's state for the teacher, and the path continues to the whole school. No dates: we ship when it's done well."
     },
-    "columns": [
-      {
-        "status": "Available",
-        "title": "Use it today",
-        "items": [
-          {
-            "title": "Lesson plans",
-            "description": "Objectives, activities and assessment for every lesson."
-          },
-          {
-            "title": "Worksheets, tests and quizzes",
-            "description": "With marks and marking criteria on tests."
-          },
-          {
-            "title": "Slide decks",
-            "description": "Slides from the lesson's topic."
-          },
-          {
-            "title": "Yearly plans",
-            "description": "For the year, the term or the unit."
-          },
-          {
-            "title": "Class calendar",
-            "description": "Each class's lessons in the calendar, with \"Generate week\"."
-          },
-          {
-            "title": "Adapt and reuse materials",
-            "description": "By level or need, from your own documents."
-          },
-          {
-            "title": "Community library",
-            "description": "Materials shared by other teachers."
-          },
-          {
-            "title": "School workspace",
-            "description": "Seats, a usage dashboard and an internal library."
-          }
-        ]
-      },
-      {
-        "status": "In development",
-        "title": "Building now",
-        "items": [
-          {
-            "title": "Per-class memory",
-            "description": "Scooli remembers what each class has been taught, what has stuck and what comes next."
-          }
-        ]
-      },
-      {
-        "status": "Next",
-        "title": "After that",
-        "items": [
-          {
-            "title": "Plans that follow the class",
-            "description": "Preparation adjusts to how each class is actually progressing."
-          },
-          {
-            "title": "The week prepared on its own",
-            "description": "An assistant that prepares next week before the teacher asks."
-          }
-        ]
-      }
-    ],
     "suggest": {
       "text": "Have a suggestion for Scooli?",
       "link": "Talk to us"
+    },
+    "legend": {
+      "live": "Available",
+      "building": "In development",
+      "next": "Next"
+    },
+    "phaseLabel": "Phase",
+    "phases": [
+      {
+        "name": "Connect",
+        "title": "Curriculum, plan and calendar in one place",
+        "status": "live",
+        "items": [
+          "Lesson plans, worksheets, tests, quizzes and slide decks",
+          "The curriculum by grade and subject",
+          "Yearly, term or unit plans",
+          "Each class's lesson calendar",
+          "The documents teachers already have",
+          "A school dashboard with the curriculum of every class"
+        ]
+      },
+      {
+        "name": "Remember",
+        "title": "Every class has a state",
+        "status": "building",
+        "items": [
+          "What was planned and what was taught",
+          "What's left in the curriculum",
+          "The class's history through the year"
+        ]
+      },
+      {
+        "name": "Adapt",
+        "title": "Scooli proposes what comes next",
+        "status": "building",
+        "items": [
+          "Reinforce one topic, move another",
+          "Materials differentiated by level",
+          "Calendar and plan updated in one click"
+        ]
+      },
+      {
+        "name": "Act",
+        "title": "The week prepared before you ask",
+        "status": "next",
+        "items": [
+          "Prepares next week on its own",
+          "Flags delays and suggests reinforcement",
+          "Proposes the assessment at the right time"
+        ]
+      },
+      {
+        "name": "Learn",
+        "title": "What students understood",
+        "status": "next",
+        "items": [
+          "Assessment evidence by topic",
+          "Difficulties that repeat across classes",
+          "Suggested interventions based on results"
+        ]
+      },
+      {
+        "name": "Orchestrate",
+        "title": "The whole school in step",
+        "status": "next",
+        "items": [
+          "A view by department and by school",
+          "Shared curriculum and resources",
+          "Integrations and school access controls"
+        ]
+      }
+    ],
+    "today": {
+      "title": "And all of it rests on what already works today",
+      "items": [
+        "A school dashboard with the curriculum of every class",
+        "Lesson plans",
+        "Worksheets",
+        "Tests and quizzes",
+        "Slide decks",
+        "Yearly plans",
+        "Material adaptation",
+        "Upload documents",
+        "\"Generate week\"",
+        "Community library",
+        "School workspace"
+      ]
     }
+  },
+  "classState": {
+    "kicker": "The state of every class",
+    "title": "Scooli will know where each class stands.",
+    "description": "We're building a live state for every class: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli will use it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
+    "points": [
+      {
+        "title": "Planned and taught, side by side",
+        "text": "See what was planned and what was actually taught, class by class."
+      },
+      {
+        "title": "What's left in the curriculum",
+        "text": "The topics still to cover, the ones that fell behind and how many lessons remain before the next assessment."
+      },
+      {
+        "title": "The right lesson next",
+        "text": "Scooli suggests the adjustment (one more lesson on a topic, move another) and prepares differentiated materials for it."
+      }
+    ],
+    "loopTitle": "A loop that repeats every week",
+    "loop": [
+      {
+        "title": "Curriculum",
+        "text": "What the year asks for"
+      },
+      {
+        "title": "Plan",
+        "text": "What you decided to teach"
+      },
+      {
+        "title": "Lesson taught",
+        "text": "What happened"
+      },
+      {
+        "title": "Class state",
+        "text": "Where we are"
+      },
+      {
+        "title": "Next lesson",
+        "text": "Plan and materials ready"
+      }
+    ],
+    "schoolsLink": "See how a school follows every class",
+    "card": {
+      "label": "Class state",
+      "className": "Class 7B · Mathematics",
+      "completionLabel": "Curriculum covered",
+      "completionValue": 38,
+      "topics": [
+        {
+          "name": "Fractions",
+          "status": "done"
+        },
+        {
+          "name": "Percentages",
+          "status": "done"
+        },
+        {
+          "name": "Proportionality",
+          "status": "progress"
+        },
+        {
+          "name": "Equations",
+          "status": "late"
+        }
+      ],
+      "statusLabels": {
+        "done": "Taught",
+        "progress": "In progress",
+        "late": "Behind"
+      },
+      "calendarNote": "3 lessons before the next assessment",
+      "recommendationTitle": "Scooli recommends",
+      "recommendations": [
+        "One more lesson on Proportionality",
+        "Move Equations back one lesson",
+        "Differentiated exercises ready"
+      ],
+      "action": "Apply to calendar",
+      "caption": "In development · illustrative example"
+    },
+    "school": {
+      "kicker": "For school leaders",
+      "title": "The school's curriculum, class by class.",
+      "description": "Each teacher works on their own classes, and the school sees the state of the curriculum across all of them in one dashboard: who is on track, where there are delays and which topics need reinforcement.",
+      "points": [
+        {
+          "title": "Who is on track and who needs support",
+          "text": "Each class's progress against what the curriculum and the plan call for."
+        },
+        {
+          "title": "Topics holding back several classes",
+          "text": "The same delays repeating across a department are spotted early, not at the end of the term."
+        },
+        {
+          "title": "What hasn't been taught yet",
+          "text": "The objectives still to cover before the end of the term, by subject and by grade."
+        }
+      ],
+      "tableLabel": "Curriculum covered by class",
+      "columns": {
+        "class": "Class",
+        "teacher": "Teacher",
+        "progress": "Curriculum covered",
+        "state": "Status"
+      },
+      "stateLabels": {
+        "ok": "On track",
+        "watch": "Watch",
+        "late": "Behind"
+      },
+      "summaryLabels": {
+        "ok": "on track",
+        "watch": "watch",
+        "late": "behind"
+      },
+      "rows": [
+        {
+          "className": "Class 5A · Mathematics",
+          "teacher": "Ana Ferreira",
+          "progress": 64,
+          "state": "ok"
+        },
+        {
+          "className": "Class 5B · Science",
+          "teacher": "Rita Carvalho",
+          "progress": 58,
+          "state": "ok"
+        },
+        {
+          "className": "Class 6A · Language",
+          "teacher": "João Matos",
+          "progress": 46,
+          "state": "watch"
+        },
+        {
+          "className": "Class 7B · Mathematics",
+          "teacher": "Inês Lopes",
+          "progress": 38,
+          "state": "late"
+        },
+        {
+          "className": "Class 8A · History",
+          "teacher": "Pedro Antunes",
+          "progress": 61,
+          "state": "ok"
+        },
+        {
+          "className": "Class 9A · English",
+          "teacher": "Catarina Sousa",
+          "progress": 49,
+          "state": "watch"
+        }
+      ],
+      "caption": "Illustrative example"
+    },
+    "badge": "In development"
+  },
+  "comparison": {
+    "summary": "Summary",
+    "summaryTitle": "Comparison summary",
+    "detail": "Detailed comparison",
+    "aspect": "Aspect",
+    "why": "Why Scooli",
+    "faq": "Frequently asked questions",
+    "sources": "Sources",
+    "sourcesTitle": "Every claim has a source",
+    "sourcesDescription": "Each statement about another product comes from its public documentation or from independent reviews. When we couldn't find something, we say so instead of asserting it.",
+    "forSchools": "For schools",
+    "pilot": "Talk about a pilot at my school"
   }
 }

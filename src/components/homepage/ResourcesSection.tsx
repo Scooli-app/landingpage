@@ -100,7 +100,7 @@ export function ResourcePreview({
   );
 }
 
-const resourceIcons: Record<NavToolSlug, LucideIcon> = {
+export const resourceIcons: Record<NavToolSlug, LucideIcon> = {
   "plano-de-aula": NotebookPen,
   "fichas-de-trabalho": FileText,
   "gerador-de-testes": ClipboardCheck,

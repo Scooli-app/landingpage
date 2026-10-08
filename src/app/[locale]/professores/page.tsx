@@ -1,3 +1,4 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
 import { ResourcesSection } from "@/components/homepage/ResourcesSection";
 import { YearSection } from "@/components/homepage/YearSection";
 import {
@@ -18,7 +19,7 @@ import { LoopingVideo } from "@/components/site/LoopingVideo";
 import type { Locale } from "@/i18n/routing";
 import { appMedia } from "@/lib/app-media";
 import { getPageMetadata } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Image from "next/image";
 
 export async function generateMetadata({
@@ -50,12 +51,22 @@ export default async function TeachersPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "teachers" });
   const days = t.raw("week.days") as Item[];
   const libraryPoints = t.raw("library.points") as Item[];
 
+  const tPageMeta = await getTranslations({ locale, namespace: "teachers.meta" });
+
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="professores"
+        path="/professores"
+        locale={locale}
+        title={tPageMeta("title")}
+        description={tPageMeta("description")}
+      />
       <PageHero
         eyebrow={t("hero.eyebrow")}
         title={t("hero.title")}

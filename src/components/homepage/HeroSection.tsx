@@ -52,30 +52,6 @@ export function HeroSection() {
           />
         </div>
 
-        {/* Role self-selection: a teacher and a school leader land on the same
-            hero but want different next pages. One line, no dropdown. */}
-        <p className="mt-5 text-[15px] text-subtle">
-          <TrackedLink
-            href="/professores"
-            eventName="marketing_navigation_clicked"
-            eventProperties={{ location: "home_hero_role_split", link_label: "teacher" }}
-            className="font-medium text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink"
-          >
-            {t("roleTeacher")}
-          </TrackedLink>
-          <span aria-hidden className="mx-2 text-faint">
-            ·
-          </span>
-          <TrackedLink
-            href="/escolas"
-            eventName="marketing_navigation_clicked"
-            eventProperties={{ location: "home_hero_role_split", link_label: "school" }}
-            className="font-medium text-ink underline decoration-line-strong underline-offset-4 hover:decoration-ink"
-          >
-            {t("roleSchool")}
-          </TrackedLink>
-        </p>
-
         {/* The film is the headline made visible: the year, prepared one week at a time. */}
         <LoopingVideo
           video={appMedia(locale).heroFilm}

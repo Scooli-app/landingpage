@@ -14,7 +14,7 @@ import {
 } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/i18n/urls";
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
@@ -175,7 +175,11 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  // Opt the tree into static rendering: without this next-intl reads the request
+  // headers to find the locale and every page becomes dynamic (no-store HTML).
+  setRequestLocale(locale);
+
+  const messages = await getMessages({ locale });
   const schemas = getGlobalSchemas(locale);
   const t = await getTranslations({ locale, namespace: "common" });
 

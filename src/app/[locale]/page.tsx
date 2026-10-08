@@ -13,7 +13,7 @@ import {
   SITE_URL,
 } from "@/lib/seo";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const ptKeywords = [
   "Scooli",
@@ -142,6 +142,7 @@ export default async function Home({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home.howToSchema" });
   const tHero = await getTranslations({ locale, namespace: "home.hero" });
   const homeSchemas = getHomePageSchemas(locale);

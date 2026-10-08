@@ -1,3 +1,4 @@
+import { PageSchemas } from "@/components/marketing/PageSchemas";
 import { getTrustCards } from "@/components/marketing/data";
 import { Checklist, PageHero, PublicSiteShell } from "@/components/marketing/shared";
 import {
@@ -12,7 +13,7 @@ import { GdprSeal } from "@/components/site/GdprSeal";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -36,6 +37,7 @@ export default async function TrustPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const trustCards = getTrustCards(locale);
   const t = await getTranslations({ locale, namespace: "trust" });
   const summaryPoints = t.raw("summaryPoints") as string[];
@@ -47,8 +49,17 @@ export default async function TrustPage({
     { key: "terms", href: "/terms" },
   ] as const;
 
+  const tPageMeta = await getTranslations({ locale, namespace: "trust.meta" });
+
   return (
     <PublicSiteShell>
+      <PageSchemas
+        id="confianca"
+        path="/confianca"
+        locale={locale}
+        title={tPageMeta("title")}
+        description={tPageMeta("description")}
+      />
       <PageHero
         eyebrow={t("badge")}
         title={t("title")}

@@ -1,6 +1,6 @@
 import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
 import { Facebook, Instagram } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import type { ComponentProps } from "react";
 import { Container } from "./Container";
@@ -37,16 +37,12 @@ const resourceLinks = [
   { labelKey: "terms", href: "/terms" },
 ] as const;
 
-/**
- * "Scooli vs X" comparison pages. Kept out of `resourceLinks`'s locale-keyed
- * shape because the titles are PT-PT only (see `comparisons.ts` — these
- * pages don't have English copy yet), not translation-catalogue entries.
- */
+/** "Scooli vs X" comparison pages, in both languages (the URL slug is localized by `Link`). */
 const comparisonLinks = [
-  { label: "Scooli vs Canva", slug: "canva-para-educacao" },
-  { label: "Scooli vs MagicSchool AI", slug: "magicschool-ai" },
-  { label: "Scooli vs Teachy", slug: "teachy" },
-  { label: "Scooli vs ChatGPT/Gemini/Perplexity", slug: "chatgpt-gemini-perplexity" },
+  { label: "Scooli vs Canva", labelEn: "Scooli vs Canva", slug: "canva-para-educacao" },
+  { label: "Scooli vs MagicSchool AI", labelEn: "Scooli vs MagicSchool AI", slug: "magicschool-ai" },
+  { label: "Scooli vs Teachy", labelEn: "Scooli vs Teachy", slug: "teachy" },
+  { label: "Scooli vs ChatGPT/Gemini/Perplexity", labelEn: "Scooli vs ChatGPT/Gemini/Perplexity", slug: "chatgpt-gemini-perplexity" },
 ] as const;
 
 const socialLinks = [
@@ -89,6 +85,7 @@ function FooterColumn({
 }
 
 export function Footer() {
+  const locale = useLocale();
   const t = useTranslations("footer");
   const tNav = useTranslations("nav");
   const year = new Date().getFullYear();
@@ -150,7 +147,7 @@ export function Footer() {
               })),
               ...comparisonLinks.map((link) => ({
                 key: link.slug,
-                label: link.label,
+                label: locale === "en" ? link.labelEn : link.label,
                 href: { pathname: "/comparar/[slug]", params: { slug: link.slug } } as Href,
               })),
             ]}

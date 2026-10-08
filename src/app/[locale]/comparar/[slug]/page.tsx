@@ -1,3 +1,5 @@
+import { pageUpdated } from "@/lib/pageDates";
+import { setRequestLocale } from "next-intl/server";
 import { ComparisonPage } from "@/components/marketing/ComparisonPage";
 import { StructuredData } from "@/components/StructuredData";
 import { comparisonSlugs, getComparisonPage } from "@/components/marketing/comparisons";
@@ -15,7 +17,7 @@ import { notFound } from "next/navigation";
 type ComparisonPageParams = { locale: Locale; slug: string };
 
 /**
- * "Scooli vs X" comparison pages — PT-PT only (see `comparisons.ts` header).
+ * "Scooli vs X" comparison pages, in Portuguese and English (see `comparisons.ts`).
  * Content is a TS module rather than `messages/pt-PT.json` for the same
  * reason tool pages are: nested arrays of records (rows, FAQs, sources) that
  * next-intl's flat message format can't express without untyped numeric keys.
@@ -31,7 +33,7 @@ export async function generateMetadata({
   params: Promise<ComparisonPageParams>;
 }) {
   const { locale, slug } = await params;
-  const content = getComparisonPage(slug);
+  const content = getComparisonPage(slug, locale);
 
   if (!content) {
     return getPageMetadata({
@@ -58,7 +60,8 @@ export default async function ComparisonRoute({
   params: Promise<ComparisonPageParams>;
 }) {
   const { locale, slug } = await params;
-  const content = getComparisonPage(slug);
+  setRequestLocale(locale);
+  const content = getComparisonPage(slug, locale);
 
   if (!content) {
     notFound();
@@ -77,6 +80,7 @@ export default async function ComparisonRoute({
     url,
     breadcrumb: breadcrumbItems,
     locale,
+    dateModified: pageUpdated("/comparar/[slug]"),
   });
   const faqSchema = getFAQPageSchema(content.faq);
 

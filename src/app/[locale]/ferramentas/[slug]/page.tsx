@@ -1,3 +1,4 @@
+import { pageUpdated } from "@/lib/pageDates";
 import { ToolLandingPage } from "@/components/marketing/ToolLandingPage";
 import { StructuredData } from "@/components/StructuredData";
 import { getToolPage, toolSlugs } from "@/components/marketing/data";
@@ -11,7 +12,7 @@ import {
   getWebPageSchema,
   SITE_URL,
 } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
 type ToolPageParams = { locale: Locale; slug: string };
@@ -55,6 +56,7 @@ export default async function ToolPage({
   params: Promise<ToolPageParams>;
 }) {
   const { locale, slug } = await params;
+  setRequestLocale(locale);
   const tool = getToolPage(locale, slug);
   const tNav = await getTranslations({ locale, namespace: "nav" });
   const tDetail = await getTranslations({ locale, namespace: "tools.detail" });
@@ -79,6 +81,7 @@ export default async function ToolPage({
     url,
     breadcrumb: breadcrumbItems,
     locale,
+    dateModified: pageUpdated("/ferramentas/[slug]"),
   });
   const faqSchema = getFAQPageSchema(tool.faq);
   const howToSchema = getHowToSchema(

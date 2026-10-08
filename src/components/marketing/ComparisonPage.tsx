@@ -1,24 +1,20 @@
-import { Check, Minus } from "lucide-react";
+import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
+import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
+import type { ComparisonPageContent } from "@/components/marketing/comparisons";
+import { Kicker, Section, SectionHeader } from "@/components/site/primitives";
 import { TrackedFaqAccordion } from "@/components/TrackedFaqAccordion";
 import { TrackedLink } from "@/components/TrackedLink";
-import { InstitutionalContactButton } from "@/components/InstitutionalContactButton";
-import { Kicker, Section, SectionHeader } from "@/components/site/primitives";
-import { PageCtaBanner, PageHero, PublicSiteShell } from "@/components/marketing/shared";
-import type { ComparisonPageContent, ComparisonRow } from "@/components/marketing/comparisons";
+import { Check, Minus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-/** One row of the comparison table: a checkmark on whoever wins, a dash on
- * whoever doesn't, nothing on a tie (both get the check — the row itself
- * says why). */
-function WinnerMark({ winner, side }: { winner: ComparisonRow["winner"]; side: "scooli" | "competitor" }) {
-  const wins = winner === "tie" || winner === side;
-  return wins ? (
-    <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-violet" strokeWidth={2} />
-  ) : (
-    <Minus aria-hidden className="mt-[3px] size-4 shrink-0 text-faint" strokeWidth={1.75} />
-  );
-}
-
+/**
+ * A "Scooli vs X" page: the verdict first (the paragraph most likely to be
+ * quoted whole by an answer engine), the side-by-side table, why teachers pick
+ * Scooli, the FAQ and the sources behind every claim about the other product.
+ */
 export function ComparisonPage({ content }: { content: ComparisonPageContent }) {
+  const t = useTranslations("comparison");
+
   return (
     <PublicSiteShell>
       <PageHero
@@ -28,17 +24,14 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
         primaryHref="#tabela"
         primaryLabel={content.tableTitle}
         secondaryHref="#faq"
-        secondaryLabel="Perguntas frequentes"
+        secondaryLabel={t("faq")}
       />
 
-      {/* The upfront verdict: the single paragraph most likely to be quoted
-          whole by an AI answer engine (ChatGPT Search, AI Overviews,
-          Perplexity) — states who it's for, plainly, before the table. */}
       <Section bordered aria-labelledby="comparison-verdict-title">
         <div data-reveal className="max-w-[820px] rounded-xl border border-line-strong bg-stone-soft p-7 md:p-9">
-          <Kicker>Resumo</Kicker>
+          <Kicker>{t("summary")}</Kicker>
           <h2 id="comparison-verdict-title" className="sr-only">
-            Resumo da comparação
+            {t("summaryTitle")}
           </h2>
           <p className="mt-3 text-[17px] leading-relaxed text-ink">{content.verdict}</p>
         </div>
@@ -47,7 +40,7 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
       <Section id="tabela" tone="stone" aria-labelledby="comparison-table-title">
         <SectionHeader
           id="comparison-table-title"
-          kicker="Comparação detalhada"
+          kicker={t("detail")}
           title={content.tableTitle}
           description={content.tableDescription}
         />
@@ -56,13 +49,13 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
           <table className="w-full border-collapse text-left">
             <thead>
               <tr className="border-b border-line-strong">
-                <th scope="col" className="w-[26%] px-6 py-5">
-                  <span className="sr-only">Aspeto</span>
+                <th scope="col" className="w-[24%] px-6 py-5">
+                  <span className="sr-only">{t("aspect")}</span>
                 </th>
-                <th scope="col" className="w-[37%] bg-violet-wash px-6 py-5 text-[15px] font-semibold text-violet-ink">
+                <th scope="col" className="w-[40%] bg-violet-wash px-6 py-5 text-[15px] font-semibold text-violet-ink">
                   Scooli
                 </th>
-                <th scope="col" className="w-[37%] px-6 py-5 text-[15px] font-medium text-subtle">
+                <th scope="col" className="w-[36%] px-6 py-5 text-[15px] font-medium text-subtle">
                   {content.competitorName}
                 </th>
               </tr>
@@ -75,13 +68,13 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
                   </th>
                   <td className="bg-violet-wash/60 px-6 py-4 text-[15px] font-medium text-ink">
                     <span className="flex items-start gap-2.5">
-                      <WinnerMark winner={row.winner} side="scooli" />
+                      <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-violet" strokeWidth={2} />
                       {row.scooli}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[15px] text-subtle">
+                  <td className="px-6 py-4 text-[14.5px] text-subtle">
                     <span className="flex items-start gap-2.5">
-                      <WinnerMark winner={row.winner} side="competitor" />
+                      <Minus aria-hidden className="mt-[3px] size-4 shrink-0 text-faint" strokeWidth={1.75} />
                       {row.competitor}
                     </span>
                   </td>
@@ -96,14 +89,14 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
             <li key={row.aspect} data-reveal className="rounded-xl border border-line-strong bg-white p-5">
               <p className="text-[15px] font-semibold text-ink">{row.aspect}</p>
               <p className="mt-3 flex items-start gap-2.5 text-[15px] font-medium text-ink">
-                <WinnerMark winner={row.winner} side="scooli" />
+                <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-violet" strokeWidth={2} />
                 <span>
                   <span className="sr-only">Scooli: </span>
                   {row.scooli}
                 </span>
               </p>
               <p className="mt-1.5 flex items-start gap-2.5 text-[14px] text-subtle">
-                <WinnerMark winner={row.winner} side="competitor" />
+                <Minus aria-hidden className="mt-[3px] size-4 shrink-0 text-faint" strokeWidth={1.75} />
                 <span>
                   <span className="sr-only">{content.competitorName}: </span>
                   {row.competitor}
@@ -114,29 +107,23 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
         </ul>
       </Section>
 
-      <Section aria-labelledby="comparison-strengths-title">
-        <SectionHeader
-          id="comparison-strengths-title"
-          kicker="Honestidade"
-          title={content.strengthsTitle}
-          description={content.strengthsDescription}
-        />
+      <Section aria-labelledby="comparison-reasons-title">
+        <SectionHeader id="comparison-reasons-title" kicker={t("why")} title={content.reasonsTitle} />
         <div className="grid gap-4 lg:grid-cols-3">
-          {content.competitorStrengths.map((strength) => (
-            <div key={strength.title} data-reveal className="rounded-xl border border-line-strong bg-white p-7">
-              <h3 className="text-[17px] font-semibold leading-snug text-ink">{strength.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-subtle">{strength.description}</p>
+          {content.reasons.map((reason, index) => (
+            <div key={reason.title} data-reveal className="rounded-xl border border-line-strong bg-white p-7">
+              <span className="font-mono text-xs text-violet-ink">0{index + 1}</span>
+              <h3 className="mt-3 text-[19px] font-semibold leading-snug tracking-[-0.01em] text-ink">
+                {reason.title}
+              </h3>
+              <p className="mt-2 text-[15px] leading-relaxed text-subtle">{reason.description}</p>
             </div>
           ))}
         </div>
       </Section>
 
       <Section id="faq" tone="stone" aria-labelledby="comparison-faq-title">
-        <SectionHeader
-          id="comparison-faq-title"
-          kicker="Perguntas frequentes"
-          title="Perguntas frequentes"
-        />
+        <SectionHeader id="comparison-faq-title" kicker={t("faq")} title={t("faq")} />
         <TrackedFaqAccordion
           items={content.faq}
           faqGroup={`comparison-${content.slug}`}
@@ -148,9 +135,9 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
       <Section bordered aria-labelledby="comparison-sources-title">
         <SectionHeader
           id="comparison-sources-title"
-          kicker="Fontes"
-          title="Todas as afirmações têm fonte"
-          description="Cada comparação é construída a partir de documentação pública do concorrente, não de opinião. As fontes consultadas:"
+          kicker={t("sources")}
+          title={t("sourcesTitle")}
+          description={t("sourcesDescription")}
         />
         <ul className="grid gap-2 border-t border-line pt-6 sm:grid-cols-2">
           {content.sources.map((source) => (
@@ -171,19 +158,14 @@ export function ComparisonPage({ content }: { content: ComparisonPageContent }) 
       </Section>
 
       <Section aria-labelledby="comparison-cta-title">
-        <div className="mt-0">
-          <PageCtaBanner
-            title={content.ctaTitle}
-            description={content.ctaDescription}
-            secondaryHref="/ferramentas/planificacoes"
-            secondaryLabel="Ver planificações com IA"
-          />
-        </div>
+        <PageCtaBanner
+          title={content.ctaTitle}
+          description={content.ctaDescription}
+          secondaryHref="/escolas"
+          secondaryLabel={t("forSchools")}
+        />
         <div data-reveal className="mt-8 flex justify-center">
-          <InstitutionalContactButton
-            source={`comparison_${content.slug}`}
-            label="Falar sobre um piloto na minha escola"
-          />
+          <InstitutionalContactButton source={`comparison_${content.slug}`} label={t("pilot")} />
         </div>
       </Section>
     </PublicSiteShell>
