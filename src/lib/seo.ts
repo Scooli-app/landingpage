@@ -172,6 +172,13 @@ export const PUBLIC_IMPACT_METRICS = {
   activeLast30Days: {
     minValue: 100,
   },
+  // Confirmed by Miguel on 2026-10-08 for the homepage proof strip.
+  hoursSavedPerWeek: {
+    minValue: 7,
+  },
+  adaptedMaterials: {
+    minValue: 500,
+  },
   generatedDocuments: {
     minValue: 900,
     interactionType: "https://schema.org/CreateAction",

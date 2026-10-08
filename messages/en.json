@@ -147,7 +147,9 @@
     "proof": {
       "ariaLabel": "Scooli in numbers",
       "teachers": "teachers on Scooli",
-      "documents": "documents created"
+      "documents": "documents created",
+      "hoursSaved": "saved per week",
+      "adapted": "materials adapted"
     },
     "howItWorks": {
       "kicker": "In seconds",
