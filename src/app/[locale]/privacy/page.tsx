@@ -1,10 +1,12 @@
+import { pageUpdated } from "@/lib/pageDates";
 import { Container } from "@/components/Container";
+import { PublicSiteShell } from "@/components/marketing/shared";
 import { PrivacyPolicy } from "@/components/PrivacyPolicy";
 import { StructuredData } from "@/components/StructuredData";
 import type { Locale } from "@/i18n/routing";
 import { localizedUrl } from "@/i18n/urls";
 import { getBreadcrumbSchema, getPageMetadata, getWebPageSchema, SITE_URL } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -28,6 +30,7 @@ export default async function PrivacyPage({
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "privacyPolicy.meta" });
   const pageUrl = localizedUrl(SITE_URL, "/privacy", locale);
 
@@ -44,6 +47,7 @@ export default async function PrivacyPage({
     url: pageUrl,
     breadcrumb: breadcrumbItems,
     locale,
+    dateModified: pageUpdated("/privacy"),
   });
 
   return (
@@ -51,11 +55,13 @@ export default async function PrivacyPage({
       <StructuredData id="breadcrumb-schema" data={breadcrumbSchema} />
       <StructuredData id="webpage-schema" data={webPageSchema} />
 
-      <section className="min-h-screen bg-gradient-to-b from-slate-50 to-white py-12 md:py-16">
+      <PublicSiteShell>
+      <section className="py-14 md:py-20">
         <Container>
           <PrivacyPolicy />
         </Container>
       </section>
+      </PublicSiteShell>
     </>
   );
 }

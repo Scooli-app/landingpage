@@ -2,36 +2,20 @@
 
 import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
+import { Kicker, Tag } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
 import type { Locale } from "@/i18n/routing";
+import { formatEuro } from "@/lib/format";
 import { APP_URL, appSignUpUrl, PRICING } from "@/lib/seo";
 import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo";
 import { cn } from "@/lib/utils";
-import {
-  ArrowRight,
-  BadgeCheck,
-  Building2,
-  Coins,
-  Crown,
-  ShieldCheck,
-  Sparkles,
-  Zap,
-} from "lucide-react";
+import { Check, Minus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 
 type BillingCycle = "monthly" | "annual";
-
-/**
- * Portuguese writes €6,99 and English €6.99 — matches the formatting already
- * used for the homepage pricing teaser.
- */
-function formatEur(locale: string, cents: number): string {
-  const value = (cents / 100).toFixed(2);
-  return locale === "en" ? `€${value}` : `€${value.replace(".", ",")}`;
-}
 
 function calculateSavingsPercent(
   monthlyCents: number,
@@ -45,6 +29,59 @@ function calculateSavingsPercent(
   return `${Math.round((savings / yearlyFromMonthly) * 100)}%`;
 }
 
+function PlanCard({
+  highlighted = false,
+  badge,
+  children,
+}: {
+  highlighted?: boolean;
+  badge?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        "relative flex h-full flex-col rounded-xl bg-white p-7 sm:p-8",
+        highlighted ? "border-2 border-ink" : "border border-line-strong",
+      )}
+    >
+      {badge && <div className="absolute -top-3 left-7">{badge}</div>}
+      {children}
+    </div>
+  );
+}
+
+function FeatureList({ items, locked = [] }: { items: string[]; locked?: string[] }) {
+  return (
+    <ul className="mt-6 flex-1 space-y-2.5 border-t border-line pt-6 text-[15px] text-body">
+      {items.map((item) => (
+        <li key={item} className="flex items-start gap-3">
+          <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-ink" strokeWidth={1.75} />
+          <span>{item}</span>
+        </li>
+      ))}
+      {locked.map((item) => (
+        <li key={item} className="flex items-start gap-3 text-faint">
+          <Minus aria-hidden className="mt-[3px] size-4 shrink-0" strokeWidth={1.75} />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function PriceLine({ price, suffix, before }: { price: string; suffix?: string; before?: string }) {
+  return (
+    <div className="mt-4 flex items-baseline gap-2">
+      {before && <span className="text-lg text-faint line-through">{before}</span>}
+      <span className="font-display text-[44px] font-medium leading-none tracking-[-0.02em] text-ink">
+        {price}
+      </span>
+      {suffix && <span className="text-[15px] text-subtle">{suffix}</span>}
+    </div>
+  );
+}
+
 function FreePlanCard() {
   const t = useTranslations("pricingSection.free");
   const locale = useLocale() as Locale;
@@ -56,68 +93,26 @@ function FreePlanCard() {
   const lockedFeatures = t.raw("lockedFeatures") as string[];
 
   return (
-    <div className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.32)] sm:p-7">
-      <div className="mb-6 flex items-start justify-between gap-4">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-            {t("label")}
-          </p>
-          <div className="mt-2 flex items-baseline gap-1">
-            <span className="text-4xl font-bold text-[color:var(--scooli-ink)]">
-              {t("price")}
-            </span>
-          </div>
-          <p className="mt-1 text-sm text-slate-400">{t("period")}</p>
-        </div>
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-          <Coins className="h-5 w-5" />
-        </div>
-      </div>
-
-      <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-        {t("description")}
-      </p>
-
-      <div className="mt-5 rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-        {t("creditsBadge", { credits })}
-      </div>
-
-      <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
-        {features.map((f) => (
-          <li key={f} className="flex items-start gap-3">
-            <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
-            <span>{f}</span>
-          </li>
-        ))}
-        {lockedFeatures.map((f) => (
-          <li key={f} className="flex items-start gap-3 text-slate-400">
-            <span className="mt-0.5 inline-block h-4 w-4 shrink-0 rounded-full border border-slate-300" />
-            <span className="line-through">{f}</span>
-          </li>
-        ))}
-      </ul>
-
-      <Button
-        asChild
-        variant="outline"
-        className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold sm:text-[15px]"
+    <PlanCard>
+      <Kicker>{t("label")}</Kicker>
+      <PriceLine price={t("price")} suffix={t("period")} />
+      <p className="mt-4 text-[15px] leading-relaxed text-subtle">{t("description")}</p>
+      <FeatureList items={features} locked={lockedFeatures} />
+      <TrackedLink
+        href={href}
+        eventName="marketing_plan_selected"
+        eventProperties={{
+          plan_code: "free",
+          billing_period: "month",
+          price_cents: 0,
+          placement: "pricing_plan_card",
+          target_url: href,
+        }}
+        className={cn(buttonVariants({ variant: "secondary", size: "lg" }), "mt-8 w-full")}
       >
-        <TrackedLink
-          href={href}
-          eventName="marketing_plan_selected"
-          eventProperties={{
-            plan_code: "free",
-            billing_period: "month",
-            price_cents: 0,
-            placement: "pricing_plan_card",
-            target_url: href,
-          }}
-        >
-          {t("cta")}
-          <ArrowRight className="h-4 w-4" />
-        </TrackedLink>
-      </Button>
-    </div>
+        {t("cta")}
+      </TrackedLink>
+    </PlanCard>
   );
 }
 
@@ -181,113 +176,48 @@ function ProPlanCard({
   const included = t.raw("features") as string[];
 
   return (
-    <div className="relative h-full">
-      <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
-        <span
-          className={cn(
-            "inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-xs font-semibold text-white shadow-lg",
-            isAnnual
-              ? "bg-[color:var(--scooli-secondary)]"
-              : "bg-[color:var(--scooli-primary)]",
-          )}
-        >
-          <Sparkles className="h-3.5 w-3.5" />
-          {isAnnual ? t("bestValue") : t("mostPopular")}
-        </span>
+    <PlanCard
+      highlighted
+      badge={<Tag tone="violet">{isAnnual ? t("bestValue") : t("mostPopular")}</Tag>}
+    >
+      <div className="flex flex-wrap items-center gap-2">
+        <Kicker>{t("label")}</Kicker>
+        {promoActive && <Tag tone="yellow">{t("promoBadge")}</Tag>}
       </div>
-
-      <div
-        className={cn(
-          "flex h-full flex-col rounded-[28px] border p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.32)] transition-all duration-200 sm:p-7",
-          isAnnual
-            ? "border-[color:var(--scooli-secondary)] bg-[linear-gradient(180deg,rgba(239,246,255,0.95),rgba(255,255,255,1))]"
-            : "border-[color:var(--scooli-primary)] bg-[linear-gradient(180deg,rgba(238,240,255,0.88),rgba(255,255,255,1))]",
-        )}
+      <PriceLine
+        price={formatEuro(locale, displayMonthlyCents)}
+        suffix={t("perMonth")}
+        before={promoActive ? formatEuro(locale, monthlyDisplayCents) : undefined}
+      />
+      <p className="mt-2 text-[13px] text-faint">
+        {promoActive
+          ? `${isAnnual ? t("promoAnnualPrefix", { price: formatEuro(locale, promoPriceCents) }) : ""}${t("promoTagline")}`
+          : isAnnual
+            ? t("annualNote", {
+                price: formatEuro(locale, annualTotalCents),
+                savings: savingsPercent,
+              })
+            : t("monthlyNote")}
+      </p>
+      <p className="mt-4 text-[15px] leading-relaxed text-subtle">
+        {isAnnual ? t("descriptionAnnual", { savings: savingsPercent }) : t("descriptionMonthly")}
+      </p>
+      <FeatureList items={[t("unlimitedBadge"), ...included]} />
+      <TrackedLink
+        href={href}
+        eventName="marketing_plan_selected"
+        eventProperties={{
+          plan_code: displayPlanCode,
+          billing_period: isAnnual ? "year" : "month",
+          price_cents: displayPriceCents,
+          placement: "pricing_plan_card",
+          target_url: href,
+        }}
+        className={cn(buttonVariants({ variant: "primary", size: "lg" }), "mt-8 w-full")}
       >
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              {t("label")}
-            </p>
-            {promoActive && (
-              <span className="mt-2 inline-flex w-fit items-center gap-1 rounded-full bg-amber-100 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-700">
-                {t("promoBadge")}
-              </span>
-            )}
-            <div className="mt-2 flex items-baseline gap-2">
-              {promoActive && (
-                <span className="text-lg font-medium text-slate-400 line-through">
-                  {formatEur(locale, monthlyDisplayCents)}
-                </span>
-              )}
-              <span className="text-4xl font-bold text-[color:var(--scooli-ink)]">
-                {formatEur(locale, displayMonthlyCents)}
-              </span>
-              <span className="text-slate-500">{t("perMonth")}</span>
-            </div>
-            {promoActive ? (
-              <p className="mt-1 text-xs text-slate-400">
-                {isAnnual
-                  ? t("promoAnnualPrefix", { price: formatEur(locale, promoPriceCents) })
-                  : ""}
-                {t("promoTagline")}
-              </p>
-            ) : isAnnual ? (
-              <p className="mt-1 text-xs text-slate-400">
-                {t("annualNote", {
-                  price: formatEur(locale, annualTotalCents),
-                  savings: savingsPercent,
-                })}
-              </p>
-            ) : (
-              <p className="mt-1 text-xs text-slate-400">
-                {t("monthlyNote")}
-              </p>
-            )}
-          </div>
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-            <Crown className="h-5 w-5" />
-          </div>
-        </div>
-
-        <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-          {isAnnual ? t("descriptionAnnual") : t("descriptionMonthly")}
-        </p>
-
-        <div className="mt-5 rounded-[22px] bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700">
-          {t("unlimitedBadge")}
-        </div>
-
-        <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
-          {included.map((f) => (
-            <li key={f} className="flex items-start gap-3">
-              <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
-              <span>{f}</span>
-            </li>
-          ))}
-        </ul>
-
-        <Button
-          asChild
-          className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]"
-        >
-          <TrackedLink
-            href={href}
-            eventName="marketing_plan_selected"
-            eventProperties={{
-              plan_code: displayPlanCode,
-              billing_period: isAnnual ? "year" : "month",
-              price_cents: displayPriceCents,
-              placement: "pricing_plan_card",
-              target_url: href,
-            }}
-          >
-            {t("cta")}
-            <ArrowRight className="h-4 w-4" />
-          </TrackedLink>
-        </Button>
-      </div>
-    </div>
+        {t("cta")}
+      </TrackedLink>
+    </PlanCard>
   );
 }
 
@@ -296,51 +226,22 @@ function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
   const features = t.raw("features") as string[];
 
   return (
-    <div className="relative h-full">
-      <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800 px-4 py-1.5 text-xs font-semibold text-white shadow-lg">
-          <Building2 className="h-3.5 w-3.5" />
-          {t("badge")}
-        </span>
-      </div>
-      <div className="flex h-full flex-col rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.32)] sm:p-7">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">
-              {t("label")}
-            </p>
-            <p className="mt-2 text-3xl font-bold text-[color:var(--scooli-ink)]">
-              {t("price")}
-            </p>
-            <p className="mt-1 text-sm font-medium text-slate-500">
-              {t("detail")}
-            </p>
-          </div>
-          <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-            <Building2 className="h-5 w-5" />
-          </div>
-        </div>
-        <p className="text-sm leading-7 text-[color:var(--scooli-muted)]">
-          {t("description")}
-        </p>
-        <ul className="mt-6 flex-1 space-y-3 text-sm text-slate-700">
-          {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-3">
-              <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-        <Button
-          type="button"
-          onClick={onContactClick}
-          className="mt-8 min-h-[3.25rem] w-full rounded-full px-5 text-sm font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)] sm:text-[15px]"
-        >
-          {t("cta")}
-          <ArrowRight className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
+    <PlanCard>
+      <Kicker>{t("label")}</Kicker>
+      <PriceLine price={t("price")} />
+      <p className="mt-2 text-[13px] text-faint">{t("detail")}</p>
+      <p className="mt-4 text-[15px] leading-relaxed text-subtle">{t("description")}</p>
+      <FeatureList items={features} />
+      <Button
+        type="button"
+        variant="secondary"
+        size="lg"
+        onClick={onContactClick}
+        className="mt-8 w-full"
+      >
+        {t("cta")}
+      </Button>
+    </PlanCard>
   );
 }
 
@@ -362,48 +263,42 @@ function BillingToggle({
       annualApiPlan?.priceCents ?? PRICING.pro_annual.priceCents,
     ) ?? PRICING.pro_annual.savings;
 
+  const optionClass = (active: boolean) =>
+    cn(
+      "inline-flex h-9 items-center gap-2 rounded-md px-4 text-sm transition-colors",
+      active
+        ? "bg-white text-ink shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-line-strong"
+        : "text-subtle hover:text-ink",
+    );
+
   return (
-    <div className="flex items-center justify-center">
-      <div className="inline-flex items-center rounded-full border border-slate-200 bg-white p-1 shadow-sm">
+    <div className="flex justify-center">
+      <div role="radiogroup" className="inline-flex items-center gap-1 rounded-lg bg-stone-soft p-1">
         <button
           type="button"
+          role="radio"
+          aria-checked={billing === "monthly"}
           onClick={() => onChange("monthly")}
-          className={cn(
-            "rounded-full px-5 py-2 text-sm font-medium transition-all duration-200",
-            billing === "monthly"
-              ? "bg-[color:var(--scooli-primary)] text-white shadow-sm"
-              : "text-slate-500 hover:text-slate-700",
-          )}
+          className={optionClass(billing === "monthly")}
         >
           {t("monthly")}
         </button>
         <button
           type="button"
+          role="radio"
+          aria-checked={billing === "annual"}
           onClick={() => onChange("annual")}
-          className={cn(
-            "flex items-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition-all duration-200",
-            billing === "annual"
-              ? "bg-[color:var(--scooli-primary)] text-white shadow-sm"
-              : "text-slate-500 hover:text-slate-700",
-          )}
+          className={optionClass(billing === "annual")}
         >
           {t("annual")}
-          <span
-            className={cn(
-              "rounded-full px-2 py-0.5 text-xs font-semibold",
-              billing === "annual"
-                ? "bg-white/20 text-white"
-                : "bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]",
-            )}
-          >
-            -{savingsPercent}
-          </span>
+          <Tag tone="green">−{savingsPercent}</Tag>
         </button>
       </div>
     </div>
   );
 }
 
+/** Plan cards for /precos. The page hero above it carries the heading. */
 export function PricingSection() {
   const t = useTranslations("pricingSection");
   const { plans, hasPlans } = usePlans();
@@ -412,52 +307,25 @@ export function PricingSection() {
   const apiPlans = hasPlans ? plans : [];
 
   return (
-    <section
-      id="precos"
-      className="bg-gradient-to-b from-slate-50/70 to-white py-20 md:py-28"
-    >
-      <Container className="space-y-12">
-        <div className="mx-auto max-w-3xl space-y-4 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-medium text-[color:var(--scooli-primary)]">
-            <Sparkles className="h-4 w-4" />
-            {t("eyebrow")}
-          </span>
-          <h2 className="font-display text-3xl text-[color:var(--scooli-ink)] md:text-4xl lg:text-5xl">
-            {t("title")}
-          </h2>
-          <p className="text-lg text-[color:var(--scooli-muted)]">
-            {t("description")}
-          </p>
-        </div>
+    <section id="planos" aria-label={t("title")} className="scroll-mt-20 py-16 md:py-24">
+      <Container>
+        <BillingToggle billing={billing} onChange={setBilling} apiPlans={apiPlans} />
 
-        <BillingToggle
-          billing={billing}
-          onChange={setBilling}
-          apiPlans={apiPlans}
-        />
-
-        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-3">
+        <div className="mx-auto mt-12 grid max-w-[1080px] gap-5 md:grid-cols-3">
           <FreePlanCard />
           <ProPlanCard billing={billing} apiPlans={apiPlans} />
           <EnterpriseCard onContactClick={() => setIsContactModalOpen(true)} />
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 pt-4 text-sm text-slate-500">
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="h-5 w-5 text-[color:var(--scooli-success)]" />
-            <span>{t("trustBadges.securePayment")}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <BadgeCheck className="h-5 w-5 text-[color:var(--scooli-primary)]" />
-            <span>{t("trustBadges.cancelAnytime")}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Zap className="h-5 w-5 text-[color:var(--scooli-warning)]" />
-            <span>{t("trustBadges.instantActivation")}</span>
-          </div>
-        </div>
+        <p className="mt-10 text-center text-sm text-subtle">
+          {[
+            t("trustBadges.securePayment"),
+            t("trustBadges.cancelAnytime"),
+            t("trustBadges.instantActivation"),
+          ].join(" · ")}
+        </p>
 
-        <p className="text-center text-xs text-slate-400">
+        <p className="mt-3 text-center text-[13px] text-faint">
           {t.rich("fairUseFootnote", {
             link: (chunks) => (
               <TrackedLink
@@ -467,7 +335,7 @@ export function PricingSection() {
                   location: "pricing_terms_note",
                   link_label: "politica_uso_justo",
                 }}
-                className="underline hover:text-slate-600"
+                className="underline underline-offset-2 hover:text-subtle"
               >
                 {chunks}
               </TrackedLink>

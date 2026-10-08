@@ -1,11 +1,10 @@
 import { MarketingScrollDepthTracker } from "@/components/MarketingScrollDepthTracker";
 import { PromoBanner } from "@/components/PromoBanner";
-import { ReducedMotionProvider } from "@/components/ReducedMotionProvider";
-import { SmoothScrollProvider } from "@/components/SmoothScrollProvider";
+import { RevealObserver } from "@/components/site/RevealObserver";
 import { StructuredData } from "@/components/StructuredData";
 import { Toaster } from "@/components/ui/sonner";
 import {
-  BRAND_KEYWORDS,
+  brandKeywords,
   getGlobalSchemas,
   openGraphLocale,
   SHARE_IMAGE_SIZE,
@@ -15,33 +14,38 @@ import {
 } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { hreflangAlternates } from "@/i18n/urls";
 import type { Metadata, Viewport } from "next";
 import { notFound } from "next/navigation";
-import { Fraunces, Manrope } from "next/font/google";
+import { Geist, Geist_Mono, Newsreader } from "next/font/google";
 import type { ReactNode } from "react";
 import "../globals.css";
 
-const manrope = Manrope({
+const geist = Geist({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-body",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-geist",
 });
 
-const fraunces = Fraunces({
+const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-display",
-  weight: ["600", "700"],
+  variable: "--font-geist-mono",
+});
+
+// Variable font: leaving `weight` unset keeps the full weight axis, which is
+// what lets `axes: ["opsz"]` give large headings their display cut.
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-newsreader",
 });
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#eef0ff" },
-    { media: "(prefers-color-scheme: dark)", color: "#6753FF" },
-  ],
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -69,7 +73,7 @@ export async function generateMetadata({
     description: t("description"),
     // Root-level fallback keywords; every localized page overrides these with
     // its own locale-specific list via `getPageMetadata`.
-    keywords: [...BRAND_KEYWORDS],
+    keywords: [...brandKeywords(locale)],
     authors: [{ name: SITE_NAME, url: SITE_URL }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
@@ -136,8 +140,9 @@ export async function generateMetadata({
     },
     other: {
       "ai-content-declaration": "human-created",
-      "geo.region": "PT",
-      "geo.placename": "Portugal",
+      // The English site is market-agnostic (see CLAUDE.md), so only the
+      // Portuguese pages declare a geographic target.
+      ...(locale === "en" ? {} : { "geo.region": "PT", "geo.placename": "Portugal" }),
       "content-language": siteLanguage,
       "DC.title": `${SITE_NAME} - ${t("dcTitleSuffix")}`,
       "DC.creator": SITE_NAME,
@@ -150,8 +155,6 @@ export async function generateMetadata({
     },
   };
 }
-
-const schemas = getGlobalSchemas();
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -172,11 +175,19 @@ export default async function RootLayout({
     notFound();
   }
 
-  const messages = await getMessages();
+  // Opt the tree into static rendering: without this next-intl reads the request
+  // headers to find the locale and every page becomes dynamic (no-store HTML).
+  setRequestLocale(locale);
+
+  const messages = await getMessages({ locale });
+  const schemas = getGlobalSchemas(locale);
   const t = await getTranslations({ locale, namespace: "common" });
 
   return (
-    <html lang={locale} className={`${manrope.variable} ${fraunces.variable}`}>
+    <html
+      lang={locale}
+      className={`${geist.variable} ${geistMono.variable} ${newsreader.variable}`}
+    >
       <head>
         {schemas.map((schema, index) => (
           <StructuredData
@@ -189,24 +200,21 @@ export default async function RootLayout({
           <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         )}
       </head>
-      <body className="min-h-screen bg-white text-[color:var(--scooli-ink)] antialiased">
+      <body>
         <a href="#main-content" className="skip-link">
           {t("skipToContent")}
         </a>
         <NextIntlClientProvider locale={locale} messages={messages}>
-        <ReducedMotionProvider>
-          <SmoothScrollProvider>
-            <PromoBanner />
-            <MarketingScrollDepthTracker />
-            {children}
-            <Toaster
-              position="bottom-right"
-              toastOptions={{
-                className: "glass border border-[color:var(--scooli-border)]",
-              }}
-            />
-          </SmoothScrollProvider>
-        </ReducedMotionProvider>
+          <PromoBanner />
+          <MarketingScrollDepthTracker />
+          <RevealObserver />
+          {children}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{
+              className: "border border-line-strong bg-white text-ink",
+            }}
+          />
         </NextIntlClientProvider>
       </body>
     </html>

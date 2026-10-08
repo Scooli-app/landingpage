@@ -1,7 +1,7 @@
 import { InstitutionRecommendationPage } from "@/components/InstitutionRecommendationPage";
 import type { Locale } from "@/i18n/routing";
 import { getPageMetadata } from "@/lib/seo";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 export async function generateMetadata({
   params,
@@ -19,6 +19,13 @@ export async function generateMetadata({
   });
 }
 
-export default function RecommendInstitutionPage() {
+export default async function RecommendInstitutionPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return <InstitutionRecommendationPage />;
 }

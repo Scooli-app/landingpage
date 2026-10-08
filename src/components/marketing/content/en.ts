@@ -4,42 +4,17 @@ import type { MarketingContent } from "../data";
 /**
  * English marketing copy — authored, not translated.
  *
- * Two conventions worth knowing before editing:
- *
- * 1. Scooli generates against the *Portuguese* national curriculum, and English
- *    pages say so plainly wherever curriculum alignment is claimed. It is
- *    framed as the specificity that makes the output usable ("grounded in the
- *    official Portuguese national curriculum"), not as a limitation. When other
- *    countries' curricula ship, this is the copy to revisit.
- * 2. Portuguese instrument names are kept and glossed once — "Aprendizagens
- *    Essenciais (Portugal's national curriculum standards)", "Decree-Law
- *    55/2018". Teachers searching in English still search for those names, and
- *    translating them away would make the claim unverifiable.
+ * The English site is market-agnostic (see CLAUDE.md): no Portugal, no
+ * Portuguese curriculum documents or legislation, including in SEO keywords.
+ * It must still stay truthful, so it never claims to support another country's
+ * curriculum. It argues with what is true everywhere instead: structured,
+ * editable documents rather than chat answers, the year organised in one place,
+ * and the teacher in control.
  */
 export const marketingContentEn: MarketingContent = {
-  teacherStats: [
-    {
-      value: "7.4 hrs/week",
-      label: "spent planning lessons by full-time teachers in Portugal",
-      source: "TALIS 2024 · Portugal",
-    },
-    {
-      value: "6.9 hrs/week",
-      label: "spent marking and assessing student work",
-      source: "TALIS 2024 · Portugal",
-    },
-    {
-      value: "77%",
-      label: "name the marking load as a source of workplace stress",
-      source: "TALIS 2024 · Portugal",
-    },
-  ],
-
   impactStatLabels: {
-    generatedDocuments: "documents generated",
-    weeklyHoursSaved: "saved every week",
-    adaptedMaterials: "materials adapted",
-    activeTeachers: "active teachers",
+    activeTeachers: "teachers",
+    generatedDocuments: "documents created",
   },
 
   trustCards: [
@@ -54,21 +29,6 @@ export const marketingContentEn: MarketingContent = {
     {
       title: "Your work never trains a model",
       description: "The materials you create and the prompts you write on Scooli are not used to train AI models.",
-    },
-  ],
-
-  teacherPageCards: [
-    {
-      title: "Less friction between idea and lesson",
-      description: "Start from a plain-language request and get an editable draft of the lesson, worksheet or test you need to finish tonight.",
-    },
-    {
-      title: "Differentiate without rebuilding",
-      description: "Change difficulty, reading level, length and format for a different class without starting the document again.",
-    },
-    {
-      title: "Reuse what already works",
-      description: "The community library is where you find a resource worth duplicating and adapting to your own class.",
     },
   ],
 
@@ -87,83 +47,35 @@ export const marketingContentEn: MarketingContent = {
     },
   ],
 
-  aboutPrinciples: [
-    {
-      title: "Give teachers their time back",
-      description: "The priority is cutting the repetitive work, so more of the week goes to teaching, following students and adjusting what actually matters.",
-    },
-    {
-      title: "Keep the teacher at the centre",
-      description: "The tool drafts materials and alternative versions. The professional judgement about what gets used stays with the teacher.",
-    },
-    {
-      title: "Built for Portugal, specifically",
-      description: "The language, the examples and the curriculum references are built around how schools and teachers in Portugal actually work.",
-    },
-  ],
-
-  libraryPageCards: [
-    {
-      title: "Worksheet on equivalent fractions",
-      meta: "Maths · Year 5 · Editable",
-      tags: ["Worksheet", "45 min", "Duplicate"],
-    },
-    {
-      title: "Weekly Portuguese language plan",
-      meta: "Portuguese · Lower secondary · With objectives",
-      tags: ["Lesson plan", "Curriculum", "Adjustable"],
-    },
-    {
-      title: "Science diagnostic test",
-      meta: "Science · Year 6 · With mark scheme",
-      tags: ["Test", "Marks", "Preview"],
-    },
-    {
-      title: "Slides on the water cycle",
-      meta: "Environmental studies · Primary · Presentation",
-      tags: ["Slides", "Explainer", "Adapt"],
-    },
-    {
-      title: "Quick revision quiz",
-      meta: "History · Year 8 · Quiz",
-      tags: ["Revision", "5 minutes", "Share"],
-    },
-    {
-      title: "Guided reading companion",
-      meta: "Portuguese · Year 7 · Study guide",
-      tags: ["Reading", "Support", "Library"],
-    },
-  ],
-
   toolPages: [
     {
       slug: "planificacoes",
-      title: "AI unit and year plans built on the Portuguese national curriculum",
+      title: "AI unit and year plans, structured and ready to edit",
       shortTitle: "Unit plans",
-      description: "Plan a unit, a term or a full year with the Aprendizagens Essenciais — Portugal's national curriculum standards — and Decree-Law 55/2018 already built in.",
+      description: "Plan a unit, a term or a full year with objectives, a lesson sequence and assessment already laid out — then adjust it to your class.",
       hero: "The start of the school year used to cost whole days of planning. Now it takes minutes.",
       useCases: ["Year plan", "Unit plan", "Term plan"],
-      outputs: ["Lesson sequence with curriculum descriptors", "Decree-Law 55/2018 and curriculum flexibility referenced", "Assessment points and instruments"],
+      outputs: ["Learning objectives for the unit", "A lesson sequence across the term", "Assessment points and instruments"],
       benefits: [
-        "Curriculum standards and Student Profile descriptors cited for you, instead of looked up by hand",
+        "Objectives, sequence and assessment drafted for you, instead of typed out by hand",
         "A complete unit plan in minutes rather than an evening",
         "Objectives, sequence and assessment all editable before you hand anything in",
       ],
       contentSections: [
         {
           title: "What a Scooli unit plan contains",
-          description: "The draft starts from the Aprendizagens Essenciais and Decree-Law 55/2018, so the curriculum work is already done when you open the document.",
+          description: "The draft starts from the subject, year group and scope you choose, and from any sources you add, so the structure is already there when you open the document.",
           bullets: [
-            "Curriculum standards and Student Profile descriptors, cited and put in context",
+            "Learning objectives, written out and put in context",
             "A lesson sequence where each objective builds on the last",
             "Formative and summative assessment spread across the unit",
           ],
         },
         {
-          title: "How Scooli supports curriculum flexibility",
-          description: "Decree-Law 55/2018 gave Portuguese schools room to adapt sequencing and resources. Scooli helps you document those choices clearly, in a file you can still edit.",
+          title: "How Scooli handles changes to the plan",
+          description: "Plans change during the year. Scooli helps you adapt sequencing and resources and keep those choices clear, in a file you can still edit.",
           bullets: [
-            "Curriculum management decisions documented in line with Decree-Law 55/2018",
+            "Your sequencing decisions documented in the plan itself",
             "Sequencing adjusted to the class in front of you",
             "Alternatives generated when the plan changes mid-term",
           ],
@@ -171,12 +83,12 @@ export const marketingContentEn: MarketingContent = {
       ],
       faq: [
         {
-          question: "Are the national curriculum standards actually cited in the plan?",
-          answer: "Yes. Scooli works from the Aprendizagens Essenciais and the Student Profile descriptors so you are not cross-referencing two documents while you plan. Everything it produces stays editable.",
+          question: "Can I plan from my own curriculum documents?",
+          answer: "Yes. Add your own sources — a syllabus, a scheme of work or a document you already use — and Scooli plans from them. Everything it produces stays editable.",
         },
         {
-          question: "Does Scooli know Decree-Law 55/2018 and curriculum flexibility?",
-          answer: "Yes. Decree-Law 55/2018 is one of the reference documents Scooli works from, which is what lets it document curriculum management choices in line with current Portuguese legislation.",
+          question: "Can I import a plan I already have?",
+          answer: "Yes. You can import an existing yearly plan and use it as the base for the calendar and for the week's lesson plans.",
         },
         {
           question: "Can I generate a full year plan?",
@@ -199,7 +111,7 @@ export const marketingContentEn: MarketingContent = {
         },
         {
           name: "Generate the plan",
-          text: "You get objectives, cited curriculum standards, a lesson sequence and assessment built in.",
+          text: "You get objectives, a lesson sequence and assessment built in.",
         },
         {
           name: "Refine and hand in",
@@ -210,8 +122,7 @@ export const marketingContentEn: MarketingContent = {
         "AI unit planner for teachers",
         "AI year plan generator",
         "curriculum aligned lesson planning",
-        "Portuguese national curriculum planning",
-        "Aprendizagens Essenciais planning tool",
+                "scheme of work generator",
         "term plan generator",
         "unit plan generator for teachers",
       ],
@@ -234,7 +145,7 @@ export const marketingContentEn: MarketingContent = {
           title: "What a Scooli lesson plan contains",
           description: "The draft covers everything a 45 to 90 minute lesson needs, so your time goes into the pedagogical decisions rather than into formatting a document.",
           bullets: [
-            "A lesson objective tied to the national curriculum standards",
+            "A clear lesson objective for the topic and year group",
             "An activity sequence with an estimated duration for each phase",
             "Materials, resources needed and a formative assessment point",
           ],
@@ -251,8 +162,8 @@ export const marketingContentEn: MarketingContent = {
       ],
       faq: [
         {
-          question: "Are the objectives tied to the national curriculum?",
-          answer: "Yes. Scooli starts from the Aprendizagens Essenciais for the subject and year group you choose, so the objectives are grounded in what you are actually required to teach.",
+          question: "Can I base the objectives on my own curriculum?",
+          answer: "Yes. Add your curriculum documents or syllabus as sources and Scooli writes the objectives from them. You can edit every objective before the lesson.",
         },
         {
           question: "Can I adapt the plan for a shorter or longer lesson?",
@@ -293,8 +204,7 @@ export const marketingContentEn: MarketingContent = {
         "editable lesson plan template",
         "AI lesson preparation",
         "curriculum aligned lesson objectives",
-        "lesson plan generator Portugal",
-      ],
+              ],
     },
     {
       slug: "sequencias-de-aulas",
@@ -315,7 +225,7 @@ export const marketingContentEn: MarketingContent = {
           description: "Scooli uses your weekly timetable and the term's start and end dates to fill in the lessons automatically, then suggests a topic for each session based on the curriculum and the syllabus.",
           bullets: [
             "Lessons created automatically from your timetable and term dates",
-            "A topic suggested for each session, based on the national curriculum standards",
+            "A topic suggested for each session, based on the subject and your syllabus",
             "The whole term visible on a single screen",
           ],
         },
@@ -516,7 +426,7 @@ export const marketingContentEn: MarketingContent = {
       relatedLinks: [
         { label: "Adapt materials by level", href: toolHref("adaptacao-de-materiais") },
         { label: "Start from your own document", href: toolHref("carregar-documentos") },
-        { label: "Browse the community library", href: "/biblioteca" },
+        { label: "Browse the community library", href: "/professores" },
       ],
       howToSteps: [
         {
@@ -601,7 +511,7 @@ export const marketingContentEn: MarketingContent = {
       relatedLinks: [
         { label: "Build full tests", href: toolHref("gerador-de-testes") },
         { label: "See classroom slides", href: toolHref("apresentacoes") },
-        { label: "Browse the community library", href: "/biblioteca" },
+        { label: "Browse the community library", href: "/professores" },
       ],
       howToSteps: [
         {

@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
-import { NextResponse, type NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { routing } from "./i18n/routing";
+import { EN_SEGMENT_TO_PATH, toEnglishSlug, toInternalSlug } from "./i18n/toolSlugs";
 
 const CANONICAL_SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -45,6 +46,27 @@ export function middleware(request: NextRequest) {
 
   if (SKIP_LOCALE_ROUTING.test(request.nextUrl.pathname)) {
     return NextResponse.next();
+  }
+
+  // Tool and comparison pages have English slugs (see `i18n/toolSlugs.ts`). The
+  // Portuguese slug under /en redirects to the English one; the English one is
+  // served by rewriting to the internal slug before locale routing runs.
+  const slugMatch = /^\/en\/(tools|compare)\/([^/]+)\/?$/.exec(request.nextUrl.pathname);
+  if (slugMatch) {
+    const [, segment, slug] = slugMatch;
+    const routePath = EN_SEGMENT_TO_PATH[segment];
+    const english = toEnglishSlug(routePath, slug);
+    if (english !== slug) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = `/en/${segment}/${english}`;
+      return NextResponse.redirect(redirectUrl, 301);
+    }
+    const internal = toInternalSlug(routePath, slug);
+    if (internal !== slug) {
+      const rewritten = request.nextUrl.clone();
+      rewritten.pathname = `/en/${segment}/${internal}`;
+      return intlMiddleware(new NextRequest(rewritten, request));
+    }
   }
 
   // Portuguese stays at "/" with no prefix; other locales get "/{locale}/".

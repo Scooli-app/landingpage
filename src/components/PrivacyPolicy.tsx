@@ -1,15 +1,6 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
-import {
-  ArrowLeft,
-  Calendar,
-  Database,
-  Eye,
-  FileText,
-  Mail,
-  Shield,
-  UserCheck,
-} from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { EmailContact } from "./EmailContact";
@@ -23,7 +14,7 @@ function isBoldBulletItem(item: BulletItem | BoldBulletItem): item is BoldBullet
 
 function BulletList({ items }: { items: (BulletItem | BoldBulletItem)[] }) {
   return (
-    <ul className="list-disc list-inside text-slate-600 space-y-2">
+    <ul className="list-disc pl-5 text-body space-y-2">
       {items.map((item) => {
         if (isBoldBulletItem(item)) {
           return (
@@ -39,10 +30,9 @@ function BulletList({ items }: { items: (BulletItem | BoldBulletItem)[] }) {
 }
 
 /**
- * The legal body below is rendered verbatim in Portuguese regardless of site
- * locale — see CLAUDE.md: mistranslating legal/GDPR terms is a liability, not
- * a copy problem. Only the page chrome (title, tagline, back link, and the
- * disclaimer shown to English readers) is authored per locale.
+ * The legal body comes from each locale's messages. The Portuguese text is the
+ * binding version; English readers get a translation plus a disclaimer saying
+ * so. Keep both locales in step when the document changes.
  */
 export function PrivacyPolicy() {
   const router = useRouter();
@@ -61,56 +51,49 @@ export function PrivacyPolicy() {
   const retentionItems = t.raw("sections.retention.items") as string[];
 
   return (
-    <div className="max-w-4xl mx-auto">
+    <div className="mx-auto max-w-[760px]">
       {/* Header */}
-      <div className="text-center mb-12">
+      <div className="mb-12">
         <div>
           <button
             type="button"
             onClick={() => router.back()}
-            className="inline-flex items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-8"
+            className="inline-flex items-center text-body hover:text-ink transition-colors duration-200 mb-8"
           >
             <ArrowLeft className="w-4 h-4 mr-2" />
             {t("header.backLabel")}
           </button>
         </div>
 
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl mb-6">
-          <Shield className="w-8 h-8 text-white" />
-        </div>
-
-        <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+        <h1 className="mb-4 font-display text-[clamp(40px,5vw,56px)] font-medium leading-[1.05] tracking-[-0.03em] text-ink">
           {t("header.title")}
         </h1>
-        <p className="text-slate-600 leading-relaxed max-w-2xl mx-auto">
+        <p className="max-w-[680px] text-lg leading-relaxed text-subtle">
           {t("header.tagline")}
         </p>
 
-        <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm text-slate-600 border border-slate-200 mt-4">
+        <div className="mt-4 inline-flex items-center gap-2 font-mono text-xs text-faint">
           <Calendar className="w-4 h-4" />
           {t("header.lastUpdated", { date: t("header.lastUpdatedValue") })}
         </div>
       </div>
 
       {isEnglish && (
-        <div className="mb-8 rounded-xl border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-900">
+        <div className="mb-8 rounded-xl border border-[#F1E3B5] bg-tag-yellow px-5 py-4 text-sm text-tag-yellow-ink">
           {t("disclaimer")}
         </div>
       )}
 
-      {/* Content — legal body stays in Portuguese for every locale */}
+      {/* Content — in the page's language; Portuguese prevails */}
       <div className="space-y-8">
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex-shrink-0">
-                <FileText className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div>
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.intro.heading")}
                 </h2>
-                <p className="text-slate-600 leading-relaxed">
+                <p className="text-body leading-relaxed">
                   {t("sections.intro.paragraph")}
                 </p>
               </div>
@@ -118,25 +101,22 @@ export function PrivacyPolicy() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl flex-shrink-0">
-                <Database className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.dataCollection.heading")}
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">
+                    <h3 className="font-semibold text-ink mb-2">
                       {t("sections.dataCollection.provided.heading")}
                     </h3>
                     <BulletList items={dataCollectionProvided} />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900 mb-2">
+                    <h3 className="font-semibold text-ink mb-2">
                       {t("sections.dataCollection.automatic.heading")}
                     </h3>
                     <BulletList items={dataCollectionAutomatic} />
@@ -147,68 +127,56 @@ export function PrivacyPolicy() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex-shrink-0">
-                <Eye className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.dataUse.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.dataUse.intro")}</p>
+                <p className="text-body mb-4">{t("sections.dataUse.intro")}</p>
                 <BulletList items={dataUseItems} />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-orange-500 to-red-600 rounded-xl flex-shrink-0">
-                <UserCheck className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.legalBasis.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.legalBasis.intro")}</p>
+                <p className="text-body mb-4">{t("sections.legalBasis.intro")}</p>
                 <BulletList items={legalBasisItems} />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl flex-shrink-0">
-                <Mail className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.dataSharing.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.dataSharing.intro")}</p>
+                <p className="text-body mb-4">{t("sections.dataSharing.intro")}</p>
                 <BulletList items={dataSharingItems} />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl flex-shrink-0">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.rights.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.rights.intro")}</p>
+                <p className="text-body mb-4">{t("sections.rights.intro")}</p>
                 <div className="grid md:grid-cols-2 gap-4">
                   <BulletList items={rightsColumnOne} />
                   <BulletList items={rightsColumnTwo} />
@@ -218,50 +186,44 @@ export function PrivacyPolicy() {
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-xl flex-shrink-0">
-                <Shield className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.security.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.security.intro")}</p>
+                <p className="text-body mb-4">{t("sections.security.intro")}</p>
                 <BulletList items={securityItems} />
-                <p className="text-slate-600 mt-4">{t("sections.security.closing")}</p>
+                <p className="text-body mt-4">{t("sections.security.closing")}</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
-            <div className="flex items-start gap-4">
-              <div className="inline-flex items-center justify-center w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex-shrink-0">
-                <Calendar className="w-6 h-6 text-white" />
-              </div>
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
+            <div className="flex items-start">
               <div className="flex-1">
-                <h2 className="text-xl font-bold text-slate-900 mb-3">
+                <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                   {t("sections.retention.heading")}
                 </h2>
-                <p className="text-slate-600 mb-4">{t("sections.retention.intro")}</p>
+                <p className="text-body mb-4">{t("sections.retention.intro")}</p>
                 <BulletList items={retentionItems} />
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="bg-white/80 backdrop-blur-sm border-slate-200/50 shadow-lg">
-          <CardContent className="p-8">
+        <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
+          <CardContent className="px-0 py-9">
             <div className="text-center">
-              <h2 className="text-xl font-bold text-slate-900 mb-4">
+              <h2 className="mb-4 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
                 {t("sections.contact.heading")}
               </h2>
-              <p className="text-slate-600 mb-6">{t("sections.contact.intro")}</p>
+              <p className="text-body mb-6">{t("sections.contact.intro")}</p>
               <EmailContact showIcon showLabel />
-              <p className="text-sm text-slate-500 mt-6">{t("sections.contact.closing")}</p>
+              <p className="text-sm text-subtle mt-6">{t("sections.contact.closing")}</p>
             </div>
           </CardContent>
         </Card>

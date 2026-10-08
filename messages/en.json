@@ -2,7 +2,6 @@
   "nav": {
     "howItWorks": "How it works",
     "tools": "Tools",
-    "library": "Library",
     "pricing": "Pricing",
     "about": "About",
     "teachers": "Teachers",
@@ -13,24 +12,61 @@
     "openMenu": "Open menu",
     "closeMenu": "Close menu",
     "backToHome": "Back to home",
-    "logoAlt": "Scooli logo"
+    "logoAlt": "Scooli logo",
+    "toolsMenu": {
+      "howTitle": "A document in seconds",
+      "howDescription": "From topic to resource in three steps.",
+      "howLink": "See how it works",
+      "allTools": "All tools",
+      "items": {
+        "plano-de-aula": {
+          "label": "Lesson plans",
+          "description": "Tomorrow's lesson, structured"
+        },
+        "fichas-de-trabalho": {
+          "label": "Worksheets",
+          "description": "Exercises ready to print"
+        },
+        "gerador-de-testes": {
+          "label": "Tests",
+          "description": "With sections and marks"
+        },
+        "quizzes": {
+          "label": "Quizzes",
+          "description": "For quick in-class review"
+        },
+        "planificacoes": {
+          "label": "Yearly plans",
+          "description": "For the year, a term or a unit"
+        },
+        "apresentacoes": {
+          "label": "Slide decks",
+          "description": "Slides from a topic"
+        }
+      }
+    }
   },
   "common": {
     "skipToContent": "Skip to main content",
     "languageSwitcher": "Language",
     "availableInEnglish": "This page is also available in English",
     "dismiss": "Dismiss",
-    "startFree": "Start for free",
+    "startFree": "Start free",
     "signIn": "Sign in",
     "allTools": "See every tool",
     "teacherJourney": "See how teachers use Scooli",
-    "forSchools": "For schools"
+    "forSchools": "For schools",
+    "bookDemo": "Book a demo",
+    "pauseVideo": "Pause video",
+    "playVideo": "Play video",
+    "talkToTeam": "Talk to our team"
   },
-  "curriculum": {
-    "badge": "Built on the Portuguese national curriculum",
-    "short": "Grounded in the official Portuguese national curriculum — the Aprendizagens Essenciais.",
-    "long": "Every document starts from the official reference documents for teaching in Portugal: the Aprendizagens Essenciais and Decree-Laws 54/2018 and 55/2018.",
-    "note": "Scooli plans against the official Portuguese national curriculum — the Aprendizagens Essenciais and Decree-Laws 54/2018 and 55/2018. That specificity is what makes the output usable rather than generic. Other national curricula are on the roadmap."
+  "advisorNote": {
+    "photoAlt": "Sílvia Valério, Scooli's pedagogical advisor",
+    "name": "Sílvia Valério",
+    "role": "pedagogical advisor and primary school teacher",
+    "description": "Reviews Scooli's curriculum alignment.",
+    "link": "Meet the team"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -39,35 +75,40 @@
     "switchTo": "Switch to {language}"
   },
   "footer": {
-    "tagline": "Made in Portugal, for teachers who want to prepare better, adapt faster and get their week back.",
-    "exploreHeading": "Explore",
-    "legalHeading": "Legal and contact",
+    "tagline": "Less time preparing, more time teaching.",
     "homeAria": "Scooli - Home",
     "socialAria": "Scooli on {network}",
-    "rights": "© {year} Scooli. All rights reserved.",
+    "rights": "© {year} Scooli · A product of FICTIONAL CLOUD, LDA.",
     "links": {
       "teachers": "Teachers",
       "aiForTeachers": "AI for teachers",
       "schools": "Schools",
       "recommend": "Recommend Scooli",
-      "library": "Library",
       "tools": "Tools",
       "pricing": "Pricing",
-      "trust": "Trust and privacy",
+      "trust": "Trust",
       "about": "About",
       "contact": "Contact",
-      "privacy": "Privacy policy",
-      "terms": "Terms of use"
-    }
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "howItWorks": "Create in seconds",
+      "allTools": "All tools",
+      "investors": "Investors",
+      "roadmap": "Roadmap"
+    },
+    "productHeading": "Product",
+    "toolsHeading": "Tools",
+    "companyHeading": "Company",
+    "resourcesHeading": "Resources"
   },
   "home": {
     "meta": {
-      "title": "Scooli | Lesson plans, worksheets and tests in minutes",
-      "description": "Scooli is an AI platform for teachers in Portugal. Build lesson plans, worksheets, tests, quizzes and slides on the Aprendizagens Essenciais — Portugal's national curriculum — adapt them to your class and export without starting from scratch.",
-      "ogTitle": "Scooli | Lesson plans, worksheets and tests in minutes",
-      "ogDescription": "Scooli is an AI platform for teachers in Portugal. Generate editable materials built on the national curriculum, adapt them to the class and export without starting from scratch.",
-      "twitterTitle": "Scooli | Practical AI for teachers",
-      "twitterDescription": "An AI platform for teachers in Portugal: lesson plans, worksheets, tests and adaptations built on the Aprendizagens Essenciais."
+      "title": "Scooli | AI for teachers: prepare the week's lessons",
+      "description": "Scooli lays out each class's lessons from your yearly plan and prepares the week: lesson plans, worksheets, tests and slide decks you can edit.",
+      "ogTitle": "Scooli | AI for teachers: prepare the week's lessons",
+      "ogDescription": "Lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, with the whole school year organised in one place.",
+      "twitterTitle": "Scooli | Less time preparing, more time teaching",
+      "twitterDescription": "Scooli stays with teachers through the school year and creates the week's resources, ready to review and edit."
     },
     "howToSchema": {
       "name": "How to use Scooli to build classroom materials",
@@ -95,241 +136,204 @@
         }
       ]
     },
+    "videoFallback": "Your browser does not support HTML5 video.",
     "hero": {
-      "title": "Lesson plans, worksheets and tests built on the national curriculum — in minutes.",
-      "description": "You are probably already using ChatGPT to prepare lessons. Scooli knows the documents that actually govern teaching in Portugal — the Aprendizagens Essenciais and Decree-Laws 54/2018 and 55/2018 — and hands back structured, editable documents instead of chat replies.",
-      "seeHowItWorks": "See how it works",
-      "freeCredits": "{credits} free credits every month. No card, no commitment.",
-      "schoolsLink": "Are you a school or a group of schools? See the institutional route",
-      "highlights": [
-        "Aligned to the Aprendizagens Essenciais and Decree-Laws 54/2018 and 55/2018",
-        "The teacher decides — the final call is always yours",
-        "GDPR — your work never trains an AI model"
-      ],
-      "previewTitle": "Scooli at work",
-      "previewSubtitle": "From an idea to a finished resource",
-      "videoAria": "A demonstration of building a test in Scooli",
-      "stepLabel": "Step {number}",
-      "previewSteps": [
-        "Give the topic, the year group and the kind of resource",
-        "Get a complete, structured document back",
-        "Edit, adapt and export when it is ready"
-      ]
+      "title": "Your whole school year, prepared <em>week by week</em>.",
+      "description": "Scooli lays out each class's lessons from your yearly plan and prepares each week with you, with the lesson plans and materials you need.",
+      "videoLabel": "Demo",
+      "videoAria": "Demo: the week's lessons in Scooli's calendar; one click on “Generate week” prepares the lesson plans, and one opens ready to edit",
+      "kicker": "AI for teachers"
     },
-    "metrics": {
-      "ariaLabel": "Scooli's impact",
-      "activeTeachers": "active teachers",
-      "generatedDocuments": "documents generated",
-      "weeklyHoursSaved": "saved every week",
-      "adaptedMaterials": "materials adapted"
-    },
-    "problem": {
-      "eyebrow": "The problem",
-      "title": "Lesson prep still eats the evenings — and generic AI hands the work straight back",
-      "description": "Most teachers have already tried ChatGPT. Using AI is not the problem. Using an AI that has never read your syllabus is.",
-      "painPoints": [
-        {
-          "title": "Hours disappear into prep every single week",
-          "description": "Plans, worksheets and tests take over evenings and weekends — an average of 7.4 hours a week on preparation alone (TALIS 2024 · Portugal)."
-        },
-        {
-          "title": "ChatGPT has never read the Portuguese curriculum",
-          "description": "The Aprendizagens Essenciais, Decree-Law 54/2018, Decree-Law 55/2018: none of it reaches the answer. Fixing the output takes as long as writing it yourself."
-        },
-        {
-          "title": "Differentiating is still a manual job",
-          "description": "Levels, pace, additional learning needs: every version rebuilt by hand, week after week."
-        }
-      ],
-      "todayLabel": "Today",
-      "withScooliLabel": "With Scooli",
-      "before": [
-        "A blank Word document — or a prompt box in ChatGPT",
-        "Loose text in a chat, with no reference to the curriculum or the decree-laws",
-        "Manual correction, reformatting and curriculum alignment",
-        "And the same again next week"
-      ],
-      "after": [
-        "Give the topic, the year group and the kind of resource",
-        "A complete document, curriculum-aligned from the first draft",
-        "Edit only what you want to change — the rest arrives finished",
-        "It stays in your library, ready to reuse and adapt"
-      ],
-      "disclaimer": "AI gets things wrong. That is why everything Scooli produces is editable, and why nothing reaches a classroom without your review."
+    "proof": {
+      "ariaLabel": "Scooli in numbers",
+      "teachers": "teachers on Scooli",
+      "documents": "documents created",
+      "hoursSaved": "saved per week",
+      "adapted": "materials adapted"
     },
     "howItWorks": {
-      "eyebrow": "How it works",
-      "title": "Three steps. Nothing to set up.",
-      "description": "Give the context, get the complete document, and change only what needs to fit your class.",
-      "cta": "Create your first resource",
+      "kicker": "In seconds",
+      "title": "A complete document in seconds, in three steps.",
       "steps": [
         {
-          "title": "Give the topic, the year group and the kind of resource",
-          "description": "A unit plan, a worksheet or a test. You can also start from a document you already have."
+          "title": "Tell Scooli what you're teaching",
+          "imageAlt": "A teacher types the lesson topic on the Scooli dashboard"
         },
         {
-          "title": "Get a complete, curriculum-aligned document",
-          "description": "Structure, content and criteria already organised — a finished starting point, not a blank page."
+          "title": "Get a complete resource",
+          "imageAlt": "A maths lesson plan generated by Scooli opening in the editor"
         },
         {
-          "title": "Edit, adapt and export when it is ready",
-          "description": "Shape it to your style and your class. The final result is always the teacher's decision."
+          "title": "Review, adjust and export",
+          "imageAlt": "The finished lesson plan in Scooli's editor, ready to review and export to Word or PDF"
         }
       ]
     },
-    "appPreview": {
-      "eyebrow": "The platform",
-      "title": "Where the work actually happens",
-      "description": "From the unit plan down to the individual lesson, all in one place — with AI built in that suggests, drafts and adapts without leaving the document.",
-      "editorLabel": "Editor · Maths semester plan",
-      "editorAlt": "The Scooli planning editor, with a section outline and an AI panel on the right",
-      "calendarLabel": "Calendar · Weekly teaching plan",
-      "calendarAlt": "The weekly view of the Scooli calendar with lessons laid out across the days"
-    },
-    "outputs": {
-      "eyebrow": "Real output",
-      "title": "See what you can create",
-      "description": "Unit plans, worksheets and tests ready to edit — real documents, aligned to the national curriculum and adaptable to any class.",
-      "note": "Edit line by line, adapt by level, and stay in control of what students actually see.",
+    "year": {
+      "kicker": "Through the year",
+      "title": "With you from the first day of school to the last.",
       "items": [
         {
-          "label": "Unit plan",
-          "title": "A plan clear enough to teach from tomorrow",
-          "description": "Objectives, materials, sequence and assessment gathered into a document that is easy to follow.",
-          "alt": "A real unit plan created with Scooli"
+          "label": "Start of the year",
+          "title": "Yearly plan"
         },
         {
-          "label": "Worksheet",
-          "title": "A worksheet ready to print, adapt and use",
-          "description": "Clear instructions, well-spaced exercises and answer space, without the visual clutter.",
-          "alt": "A real worksheet created with Scooli"
+          "label": "Every week",
+          "title": "Lesson calendar"
         },
         {
-          "label": "Test",
-          "title": "A full test with marks and a mark scheme",
-          "description": "Balanced questions and a visible mark scheme, so the marking is decided before you print.",
-          "alt": "A real test created with Scooli"
+          "label": "Every lesson",
+          "title": "This week's lesson plans"
         }
-      ]
+      ],
+      "imageAlt": "Scooli's month view with October's lessons for three classes, generated or still to generate"
     },
-    "valueProps": {
-      "eyebrow": "Why Scooli",
-      "title": "Not another general AI. The one built for the curriculum you actually teach.",
-      "description": "Four concrete differences from a general-purpose model.",
-      "items": [
-        {
-          "title": "Built on the Portuguese national curriculum",
-          "description": "The Aprendizagens Essenciais and Decree-Laws 54/2018 and 55/2018: every document starts from the official reference documents, not from a generic model you have to double-check."
+    "resources": {
+      "kicker": "Resources",
+      "title": "This week's resources, ready to use.",
+      "items": {
+        "plano-de-aula": {
+          "title": "Lesson plans",
+          "previewAlt": "A maths lesson plan generated by Scooli",
+          "description": "Objectives, activities and assessment for every lesson."
         },
-        {
-          "title": "Adapts to different classes and levels",
-          "description": "Simpler, shorter or more scaffolded versions — differentiation in line with Decree-Law 54/2018, without starting over."
+        "fichas-de-trabalho": {
+          "title": "Worksheets",
+          "previewAlt": "A science worksheet on the water cycle",
+          "description": "Practice exercises, ready to print."
         },
-        {
-          "title": "The teacher stays in charge",
-          "description": "The AI proposes the structure. The teacher reviews it, cuts it, improves it and decides what reaches the lesson. Every time."
+        "gerador-de-testes": {
+          "title": "Tests",
+          "previewAlt": "A history test with multiple-choice questions",
+          "description": "Question groups, marks and marking criteria."
         },
-        {
-          "title": "A community library",
-          "description": "Find, duplicate and adapt materials created by other teachers working from the same curriculum."
+        "quizzes": {
+          "title": "Quizzes",
+          "previewAlt": "An English grammar quiz on word classes",
+          "description": "Quick questions to review in class."
+        },
+        "planificacoes": {
+          "title": "Yearly plans",
+          "previewAlt": "A term plan for maths, organised by unit",
+          "description": "The year, the term or the unit, lesson by lesson."
+        },
+        "apresentacoes": {
+          "title": "Slide decks",
+          "previewAlt": "A science slide deck about the solar system",
+          "description": "Slides with the content and examples, from a topic."
         }
-      ]
-    },
-    "socialProof": {
-      "eyebrow": "Already using it",
-      "title": "What teachers say about Scooli",
-      "description": "Real feedback from teachers in Portugal.",
-      "quotes": [
-        {
-          "quote": "I got several hours a week back on lesson prep.",
-          "role": "Lower secondary teacher"
-        },
-        {
-          "quote": "I stopped rebuilding every worksheet almost from scratch.",
-          "role": "Portuguese language teacher"
-        },
-        {
-          "quote": "Adapting materials for different levels became far quicker.",
-          "role": "Primary school teacher"
-        }
-      ]
-    },
-    "weeklyHabit": {
-      "badge": "Week after week",
-      "title": "Built for every week — not for one trial run.",
-      "description": "Everything you create is saved to your own library. Next week you do not start over: you duplicate the worksheet you used with one class and adapt it for another in minutes. The longer you use it, the more the library does for you — that is how active teachers reach 7+ hours saved a week.",
-      "cta": "Build my library"
-    },
-    "pricingTeaser": {
-      "eyebrow": "Pricing",
-      "title": "Start free. Pay only once it is part of your week.",
-      "description": "No small print: the free plan includes {credits} credits a month, every month.",
-      "mostPopular": "Most popular",
-      "promoBadge": "Back to School 2026 · price locked for good",
-      "promoAnnual": "or {price}/year · save {savings}",
-      "comparison": "ChatGPT is free, but it does not really know Portuguese schooling. Correcting it and re-supplying context every time costs you the hours back.",
-      "cta": "See pricing and details",
-      "footnote": "* Unlimited generation is subject to a fair use policy.",
-      "free": {
-        "name": "Free",
-        "period": "forever",
-        "detail": "{credits} credits a month",
-        "description": "For trying it on real lessons, with no card and no commitment.",
-        "features": [
-          "{credits} credits every month",
-          "Community library",
-          "Editor for reviewing and adjusting"
-        ]
       },
-      "pro": {
-        "name": "Pro",
-        "period": "/month",
-        "detail": "or {annualPrice}/year · save {savings}",
-        "description": "For teachers preparing lessons every week, under a fair use policy.",
-        "features": [
-          "Unlimited generation*",
-          "Advanced AI models",
-          "Export in multiple formats"
-        ]
+      "description": "Each one fits the class, the level and the lesson length."
+    },
+    "audiences": {
+      "kicker": "Who it's for",
+      "title": "For the people who plan the lessons, and the people who lead the school.",
+      "teachers": {
+        "kicker": "For teachers",
+        "title": "Win back your planning hours.",
+        "description": "Start free and try it with your real lessons.",
+        "price": "<b>Free</b> with credits every month · <b>Pro</b> at {price}/month",
+        "link": "See pricing",
+        "imageAlt": "Scooli's dashboard with upcoming lessons already generated and the box to ask for a new resource"
       },
       "schools": {
-        "name": "Schools",
-        "price": "Talk to us",
-        "detail": "Step-by-step pilots",
-        "description": "For schools and school groups that want to test with a small team before rolling out.",
-        "features": [
-          "A plan shaped around the team",
-          "Implementation support",
-          "Training and onboarding"
-        ]
+        "kicker": "For schools",
+        "title": "One shared foundation for the whole school.",
+        "description": "We start with a supported pilot and review it together.",
+        "price": "<b>Pilot</b> with the Scooli team · <b>Plan</b> tailored to your institution",
+        "link": "How we work with schools",
+        "contactTitle": "Book a demo",
+        "contactDescription": "Tell us about your school and what you'd like to try. We'll get back to you with a pilot proposal.",
+        "imageAlt": "Scooli's shared library with resources from other teachers"
+      },
+      "recommend": {
+        "text": "Are you a teacher who'd like Scooli at your school?",
+        "link": "Recommend us to your school leaders"
+      }
+    },
+    "trust": {
+      "kicker": "Trust",
+      "title": "The teacher always has the final say.",
+      "items": [
+        {
+          "title": "Everything is editable",
+          "description": "Scooli prepares the starting point; the teacher reviews it and decides what reaches the class."
+        },
+        {
+          "title": "Your data doesn't train AI",
+          "description": "Requests and materials created in Scooli are not used to train AI models."
+        },
+        {
+          "title": "Protected data",
+          "description": "Handled under the GDPR, encrypted in transit (SSL/TLS) and kept on servers with restricted access."
+        },
+        {
+          "title": "Honest about AI",
+          "description": "We say where AI helps and where it needs checking: everything should be reviewed before it reaches students."
+        }
+      ],
+      "schools": {
+        "text": "School leader or data protection officer? We'll send you the privacy policy, the terms and answers to your questions.",
+        "cta": "Request documentation",
+        "contactTitle": "Request privacy documentation",
+        "contactDescription": "Tell us about your school and what you need to see. We'll reply with the documentation and answers to your questions."
+      },
+      "seal": "GDPR compliant",
+      "policiesLabel": "Policies",
+      "policies": {
+        "privacy": "Privacy policy",
+        "terms": "Terms of use",
+        "trust": "Trust and AI"
       }
     },
     "finalCta": {
-      "badge": "Last step",
-      "title": "Your next lesson can start from a finished draft.",
-      "description": "Create your first unit plan, worksheet or test in minutes — curriculum-aligned and ready to adapt to your class.",
-      "viewPricing": "See pricing",
-      "schoolsLink": "Are you a school or an institution? See the institutional route",
-      "bullets": [
-        "{credits} free credits a month — no card, no commitment.",
-        "Everything editable: the final result is always the teacher's decision.",
-        "Combine AI generation with materials from the community library."
-      ],
-      "outputsTitle": "What you end up with",
-      "outputsSubtitle": "Materials ready to review and use",
-      "outputLabels": [
-        "Unit plan",
-        "Worksheet",
-        "Test"
-      ],
-      "readyTitle": "Ready to edit",
-      "readyGenerated": "Document generated",
-      "readyAdjust": "Shape it to your taste",
-      "nextStepTitle": "Next step",
-      "nextStepCta": "Go to the platform",
-      "nextStepNote": "Keep control of the content and get speed on the work that repeats most."
+      "title": "Your next lesson can start from a ready-made base.",
+      "description": "Free to start, no card required.",
+      "schoolsLink": "A school? Book a demo"
     },
-    "videoFallback": "Your browser does not support HTML5 video."
+    "chatComparison": {
+      "kicker": "Why Scooli",
+      "title": "What Scooli does differently.",
+      "description": "If you plan lessons in an AI chat today, you know the rest of the job: explain, copy, format, double-check. Scooli does that part for you.",
+      "chat": {
+        "label": "In an AI chat",
+        "prompt": "Write a lesson plan on equivalent fractions for 5th grade",
+        "answer": "Sure! Here's a suggestion:\n\n**Topic:** Equivalent fractions\n**Objectives:** understand and identify equivalent fractions…\n**Activities:**\n1. Warm-up with everyday examples\n2. Pair work\n\nWant me to change the length or add a worksheet?",
+        "points": [
+          "Re-explain the class, grade and level in every conversation",
+          "Copy, paste and reformat in Word, one document at a time",
+          "Check by hand that it matches your curriculum",
+          "Start from zero next week: the chat doesn't know what you've taught"
+        ]
+      },
+      "scooli": {
+        "label": "In Scooli",
+        "imageAlt": "A maths lesson plan generated by Scooli",
+        "points": [
+          {
+            "title": "Knows each class",
+            "text": "Works from each class's timetable and calendar."
+          },
+          {
+            "title": "Starts from your plan",
+            "text": "Each lesson builds on the yearly plan you've set."
+          },
+          {
+            "title": "Ready-to-use documents",
+            "text": "In your template, exported to Word and PDF."
+          },
+          {
+            "title": "Week after week",
+            "text": "Prepares next week without starting over."
+          }
+        ]
+      }
+    },
+    "topicPrompt": {
+      "label": "What are you teaching?",
+      "placeholder": "E.g. equivalent fractions, 5th grade",
+      "submit": "Create with AI"
+    }
   },
   "tools": {
     "index": {
@@ -337,24 +341,20 @@
       "title": "Pick the kind of resource you want to create",
       "description": "Each tool answers one concrete need. If you already know what you have to prepare, go straight to it; if not, browse by category.",
       "metaTitle": "Tools for teachers",
-      "metaDescription": "Explore Scooli's tools: unit plans, lesson plans, teaching plans, tests, worksheets, quizzes and more — all built on the Portuguese national curriculum.",
+      "metaDescription": "Explore Scooli's tools: lesson plans, worksheets, tests, quizzes, yearly plans, slide decks and more — structured and ready to edit.",
       "previewAlt": "Preview: {tool}",
       "seeTool": "See {tool}",
       "ctaTitle": "Prefer to start from a plain request?",
       "ctaDescription": "Pick the tool closest to what you need, or go straight into the platform and create your first resource.",
-      "ctaSecondary": "Browse the library",
-      "categories": {
-        "planning": {
-          "label": "Planning and preparation",
-          "description": "From the year plan to the term-long teaching plan to the individual lesson — documents built on the Aprendizagens Essenciais and Decree-Law 55/2018."
+      "ctaSecondary": "Browse the shared library",
+      "groups": {
+        "main": {
+          "label": "This week's resources",
+          "description": "The six resources teachers use most, in order."
         },
-        "assessment": {
-          "label": "Assessment",
-          "description": "Tests and quizzes with mixed question types, marks and a mark scheme, ready to review and export."
-        },
-        "content": {
-          "label": "Content and materials",
-          "description": "Worksheets, slides and adapted materials for different classes and different learning paces."
+        "more": {
+          "label": "More tools",
+          "description": "For sequencing lessons, adapting materials and starting from documents you already have."
         }
       }
     },
@@ -366,12 +366,6 @@
       "typicalOutput": "What usually comes out",
       "whatYouGain": "What you get",
       "howToName": "How to use {tool} in Scooli",
-      "previewAlt": {
-        "planificacoes": "A real unit plan created with Scooli",
-        "fichas-de-trabalho": "A real worksheet created with Scooli",
-        "gerador-de-testes": "A real test created with Scooli",
-        "plano-de-aula": "The Scooli lesson plan editor, with the lesson structure and a built-in AI panel"
-      },
       "faq": {
         "eyebrow": "Frequently asked",
         "title": "Questions about {tool}",
@@ -392,7 +386,7 @@
         "scheduleTitle": "What a teaching plan gives you",
         "scheduleDescription": "Every teaching plan lays the term's lessons out with a topic for each session — ready to consult, and ready to generate lesson plans from whenever you need them.",
         "documentTitle": "What you get in the generated document",
-        "documentDescription": "Every document starts from the Portuguese curriculum reference documents and arrives ready to review, edit and use.",
+        "documentDescription": "Every document arrives structured, ready to review, edit and use.",
         "practiceEyebrow": "In practice",
         "practiceTitle": "Using {tool} in your week",
         "practiceDescription": "These are the situations where this tool makes the biggest difference, and what to expect from the result.",
@@ -437,7 +431,7 @@
           "planificacoes": {
             "label": "Year plan",
             "sub": "Natural Sciences · Year 6 · Autumn term",
-            "badge": "Curriculum · DL 55/2018",
+            "badge": "Editable",
             "rows": [
               {
                 "title": "Learning objectives",
@@ -460,7 +454,7 @@
           "default": {
             "label": "Lesson plan",
             "sub": "Natural Sciences · Year 6 · 50 min",
-            "badge": "Curriculum aligned",
+            "badge": "Editable",
             "rows": [
               {
                 "title": "Hook",
@@ -483,18 +477,7 @@
         }
       },
       "assessment": {
-        "stats": [
-          {
-            "value": "6.9 hrs/week",
-            "label": "spent marking and assessing, per teacher in Portugal",
-            "source": "TALIS 2024"
-          },
-          {
-            "value": "77%",
-            "label": "name the marking load as a source of workplace stress",
-            "source": "TALIS 2024"
-          }
-        ],
+        "stats": [],
         "formatsEyebrow": "Question formats",
         "formatsTitle": "Mixed question types in a single paper",
         "formatsDescription": "You can combine different question types in the same assessment, with marks and a mark scheme already included.",
@@ -541,8 +524,8 @@
   },
   "about": {
     "meta": {
-      "title": "About us",
-      "description": "Learn Scooli's story, the mission behind it, and meet the team building the product for Portuguese teachers."
+      "title": "About Scooli: the team and the story",
+      "description": "Meet the team and the story behind Scooli: engineers and a teacher on a mission to give time back to the people who teach."
     },
     "hero": {
       "badge": "About us",
@@ -559,26 +542,26 @@
         },
         {
           "title": "The question",
-          "description": "We're two young Portuguese engineers, Miguel and Pedro. When generative AI started showing what it could do, the question became obvious: why doesn't that time go back to the people who teach? The usual answer — \"just use ChatGPT\" — fell short: it didn't know the Portuguese curriculum, the Aprendizagens Essenciais (Portugal's national curriculum standards), Decree-Laws 54/2018 and 55/2018, or the document format a teacher actually uses."
+          "description": "We're two young engineers, Miguel and Pedro. When generative AI started showing what it could do, the question became obvious: why doesn't that time go back to the people who teach? The usual answer — \"just use ChatGPT\" — fell short: it returns chat answers, not the structured documents a teacher actually uses, and it knows nothing about how a teacher's year is organised."
         },
         {
           "title": "Scooli",
-          "description": "So we built Scooli: made in Portugal, for Portuguese teaching, with AI doing the mechanical work and the teacher keeping the final decision. The goal has stayed the same since day one — give time back to the people who teach. And to their families."
+          "description": "So we built Scooli, with AI doing the mechanical work and the teacher keeping the final decision. The goal has stayed the same since day one — give time back to the people who teach. And to their families."
         }
       ],
-      "videoAria": "Demo of creating a test in Scooli",
-      "videoCaption": "Scooli in action · a test taking shape",
+      "videoAria": "Scooli at work: a maths lesson plan being generated",
+      "videoCaption": "Scooli at work · a lesson plan taking shape",
       "miguelAlt": "Miguel Rodrigues, Scooli founder",
       "miguelCaption": "Miguel · Santa Maria da Feira",
       "pedroAlt": "Pedro Rocha, Scooli co-founder",
-      "pedroCaption": "Pedro · Vila Nova de Gaia"
+      "pedroCaption": "Pedro · Vila Nova de Gaia",
+      "roadmapLink": "See the roadmap"
     },
     "metrics": {
       "eyebrow": "Scooli today",
-      "activeTeachers": "active teachers",
-      "generatedDocuments": "documents generated",
-      "weeklyHoursSaved": "saved every week",
-      "adaptedMaterials": "materials adapted"
+      "activeTeachers": "teachers",
+      "generatedDocuments": "documents created",
+      "activeMonth": "active in the last month"
     },
     "mission": {
       "badge": "Mission",
@@ -594,141 +577,61 @@
           "description": "Teaching is often solitary work. Scooli also wants to bring teachers closer together through the community library and the sharing of useful materials."
         },
         {
-          "title": "Build for Portugal, specifically",
-          "description": "The language, the examples and the way Scooli works are designed around teachers, schools and the curriculum in Portugal."
+          "title": "Build it with teachers",
+          "description": "The language, the examples and the way Scooli works are shaped by direct contact with the teachers and schools who use it."
         }
       ]
     },
     "team": {
       "badge": "Team",
-      "title": "Who's building Scooli",
-      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor — building Scooli in direct contact with Portuguese teachers.",
+      "title": "Who's building Scooli.",
+      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor — building Scooli in direct contact with teachers.",
       "members": [
         {
-          "role": "Co-Founder · Software & AI Engineer",
-          "alt": "Miguel Rodrigues, Founder and Software & AI Engineer at Scooli"
+          "role": "Co-founder · Software & AI Engineer",
+          "background": "Previously: Körber and Infios.",
+          "alt": "Miguel Rodrigues, co-founder and software & AI engineer at Scooli"
         },
         {
-          "role": "Co-Founder · Software & AI Engineer",
-          "alt": "Pedro Rocha, Co-Founder and Software & AI Engineer at Scooli"
+          "role": "Co-founder · Software & AI Engineer",
+          "background": "Previously: Porto Editora and Talkdesk.",
+          "alt": "Pedro Rocha, co-founder and software & AI engineer at Scooli"
         },
         {
           "role": "Partner · Chief Growth Officer",
-          "alt": "Hugo Silva, Partner and Chief Growth Officer at Scooli"
+          "background": "Previously: Corticeira Amorim.",
+          "alt": "Hugo Silva, partner and Chief Growth Officer at Scooli"
         },
         {
-          "role": "Pedagogical Advisor · Primary school teacher",
-          "alt": "Sílvia Valério, Pedagogical Advisor at Scooli"
+          "role": "Pedagogical advisor · Primary school teacher",
+          "background": "In the classroom every day.",
+          "alt": "Sílvia Valério, pedagogical advisor at Scooli"
         }
       ]
     },
     "finalCta": {
       "title": "Want to be part of this story?",
-      "description": "Join 300+ teachers already preparing lessons with Scooli. Free, no card, no commitment.",
-      "secondaryLabel": "Talk to us"
-    }
-  },
-  "teachers": {
-    "meta": {
-      "title": "For teachers",
-      "description": "See how Scooli helps teachers create lesson plans, worksheets and tests with less repetitive work, more control, and better alignment with Portugal's Aprendizagens Essenciais."
+      "description": "Join more than 500 teachers already preparing lessons with Scooli. Free, no card, no commitment.",
+      "secondaryLabel": "Talk to us",
+      "investorsLink": "For investors"
     },
-    "preview": {
-      "days": {
-        "monday": "Monday",
-        "wednesday": "Wednesday",
-        "friday": "Friday"
-      },
-      "tasks": {
-        "monday": "Plan the week ahead",
-        "wednesday": "Consolidation worksheet",
-        "friday": "Quick test or quiz"
-      }
-    },
-    "hero": {
-      "eyebrow": "For teachers",
-      "title": "An easier way to prepare lessons, worksheets and tests without starting from a blank page",
-      "description": "Generate editable resources in minutes, aligned with the Aprendizagens Essenciais and ready to adapt for each class.",
-      "secondaryLabel": "See the library",
-      "checklist": [
-        "Create materials in minutes",
-        "Stay better aligned with the Aprendizagens Essenciais",
-        "Edit everything before you use it"
-      ]
-    },
-    "howItHelps": {
-      "eyebrow": "How it helps",
-      "title": "What actually changes during the week",
-      "description": "Scooli fits the tasks that repeat most: planning, creating materials and adapting resources for different classes, always with the Portuguese curriculum in mind."
-    },
-    "outputs": {
-      "eyebrow": "What you can create",
-      "title": "See the kind of document you get",
-      "description": "Lesson plans, worksheets and tests come out with enough structure, text and organisation to start editing instead of starting from scratch."
-    },
-    "library": {
-      "title": "Community library",
-      "subtitle": "Discover, duplicate and adapt",
-      "items": [
-        "Search by subject and year group",
-        "Duplicate a resource that already exists",
-        "Save materials to reuse later",
-        "Open a resource, adapt it and export"
-      ]
-    },
-    "weeklyFit": {
-      "title": "How it fits your week",
-      "items": [
-        "Prepare a lesson faster at the start of the week",
-        "Generate a consolidation worksheet aligned with the Aprendizagens Essenciais",
-        "Finish a test or quiz without rebuilding the whole structure"
-      ]
-    },
-    "finalCta": {
-      "title": "Want to try Scooli at your own pace?",
-      "description": "Start for free, try a real request for your next lesson, and adjust everything to your context before you use it.",
-      "secondaryLabel": "See pricing"
+    "next": {
+      "kicker": "Where we're going",
+      "title": "From the first day of school to the last.",
+      "description": "We're building the state of every class, so Scooli can use what's been taught and decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
     }
   },
   "schools": {
     "meta": {
-      "title": "For schools and institutions",
-      "description": "See how schools and school groups can evaluate Scooli through a simple path: an initial conversation, a pilot, and responsible adoption."
-    },
-    "preview": {
-      "items": [
-        "An initial conversation about context and goals",
-        "A pilot with a small team",
-        "Reviewing usage and next steps"
-      ],
-      "stepLabel": "Step {number}"
+      "title": "Institutional plan for schools",
+      "description": "Scooli's institutional plan: teachers prepare lessons with AI and school leaders see where the curriculum stands in every class, in one dashboard."
     },
     "hero": {
       "eyebrow": "For schools",
-      "title": "A simple path for schools to start with a pilot",
-      "description": "To evaluate Scooli with a coordination team, school leadership or a small group of teachers, here's how to get started with clarity, accountability and support from the outset.",
-      "secondaryLabel": "See trust and privacy",
-      "checklist": [
-        "An initial conversation about context and goals",
-        "A pilot with a small team and clear criteria",
-        "The teacher stays in control of the final result"
-      ]
-    },
-    "howWeWork": {
-      "eyebrow": "How we work",
-      "title": "A light-touch way to evaluate Scooli in a real setting",
-      "description": "Instead of a heavy process, we start small, understand the school's context, and stay close through the first phase of use."
-    },
-    "blockers": {
-      "title": "What usually holds up the decision early on",
-      "items": [
-        "How privacy is handled in a school setting",
-        "Whether user data is used to train models",
-        "Who keeps control of the final content",
-        "How to guarantee human review before classroom use",
-        "How to start with a pilot before making a bigger decision",
-        "Adapting materials for different classes and levels still feels too manual"
-      ]
+      "title": "Scooli for the whole school.",
+      "description": "One plan for the whole team: every teacher prepares lessons in Scooli, and school leaders see, in one dashboard, where the curriculum stands in every class.",
+      "secondaryLabel": "See pricing",
+      "imageAlt": "Scooli's school dashboard with active seats, teachers active this month, AI requests and documents created"
     },
     "recommend": {
       "eyebrow": "Internal recommendation",
@@ -737,25 +640,99 @@
       "buttonLabel": "Recommend my school"
     },
     "finalCta": {
-      "title": "Want to see if Scooli is a fit for your school?",
-      "description": "Start with a short conversation, understand the context, and put together a simple pilot with the right team.",
+      "title": "Shall we see if Scooli fits your school?",
+      "description": "Book a short call. We'll learn about your context and design a pilot with the right team.",
       "secondaryLabel": "See trust and privacy"
+    },
+    "benefits": {
+      "kicker": "The institutional plan",
+      "title": "What the school gets.",
+      "description": "Everything Pro includes for every teacher, plus what only makes sense at school level.",
+      "items": [
+        {
+          "title": "The curriculum at a glance",
+          "description": "Where each class stands against the curriculum and the plan, in one view, by subject and by grade."
+        },
+        {
+          "title": "Delays spotted early",
+          "description": "See which topics are still to be taught and which classes need support before the end of the term, not after."
+        },
+        {
+          "title": "Central management",
+          "description": "Seats and invitations managed in one place. Only the people the school invites get in."
+        },
+        {
+          "title": "A school library",
+          "description": "Shared materials stay between colleagues at your school."
+        },
+        {
+          "title": "Implementation and training",
+          "description": "We support the rollout with your team and train teachers to use Scooli."
+        },
+        {
+          "title": "Documented privacy",
+          "description": "Documentation and answers for your data protection officer, before you decide."
+        }
+      ]
+    },
+    "start": {
+      "kicker": "Getting started",
+      "title": "Start with a pilot, decide with data.",
+      "items": [
+        {
+          "title": "A first conversation",
+          "description": "We learn about your context, your goals and who will take part."
+        },
+        {
+          "title": "A supported pilot",
+          "description": "A small team uses Scooli for real lessons, with our support."
+        },
+        {
+          "title": "Review and decide",
+          "description": "We look at usage in the dashboard together and agree next steps."
+        }
+      ]
+    },
+    "questions": {
+      "kicker": "School leaders ask",
+      "title": "What usually weighs on the decision.",
+      "items": [
+        {
+          "question": "How is privacy handled?",
+          "answer": "Data is handled under the GDPR, encrypted in transit and kept on servers with restricted access. We send the documentation and answer your data protection officer's questions."
+        },
+        {
+          "question": "Does teachers' data train AI models?",
+          "answer": "No. Requests and materials created in Scooli are not used to train AI models."
+        },
+        {
+          "question": "Who decides what reaches the classroom?",
+          "answer": "The teacher. Scooli prepares the starting point; everything is editable and should be reviewed before it reaches students."
+        },
+        {
+          "question": "Does Scooli work with our own plans?",
+          "answer": "Yes. Each teacher starts from each class's yearly plan, and Scooli lays the lessons out in the calendar from it."
+        },
+        {
+          "question": "Can we try it before deciding?",
+          "answer": "Yes. We start with a pilot with a small team and review usage together before rolling out to the whole school."
+        }
+      ]
     }
   },
   "trust": {
     "meta": {
-      "title": "Trust and Privacy",
-      "description": "See how Scooli handles privacy, human review, the Aprendizagens Essenciais and responsible use of AI, explained in plain language."
+      "title": "Privacy, GDPR and responsible use of AI",
+      "description": "See how Scooli handles privacy and the GDPR, human review and the responsible use of AI in the classroom, explained in plain language."
     },
     "badge": "Trust and Privacy",
-    "title": "Privacy, human review, curriculum alignment and responsible use, explained without the jargon",
-    "description": "If you want to quickly understand how Scooli handles these topics, here's the essential version: what happens to data, where teacher control sits, and why alignment with the Aprendizagens Essenciais is also part of trusting the product.",
+    "title": "Privacy, human review and responsible use, explained without the jargon",
+    "description": "If you want to quickly understand how Scooli handles these topics, here's the essential version: what happens to data, where teacher control sits, and how the AI is used.",
     "summaryPoints": [
-      "Built for GDPR",
+      "GDPR compliant",
       "The teacher controls the final result",
       "User data is never used to train models",
-      "Human review before classroom use",
-      "Materials guided by the Aprendizagens Essenciais"
+      "Human review before classroom use"
     ],
     "principles": {
       "eyebrow": "Principles",
@@ -777,10 +754,6 @@
           "description": "Outputs should be reviewed, adjusted and validated before being used with students."
         },
         {
-          "title": "Aligned with the Aprendizagens Essenciais",
-          "description": "Scooli is built to generate materials in line with the Aprendizagens Essenciais, which helps reinforce curriculum alignment, content quality and trust."
-        },
-        {
           "title": "Privacy explained without the jargon",
           "description": "Scooli's approach to privacy and responsible use should be easy to understand quickly, without relying only on legal text."
         }
@@ -791,7 +764,7 @@
       "items": [
         "Avoid entering unnecessary personal data about students.",
         "Use pedagogical context wherever possible, rather than identifiable information.",
-        "Always confirm the final material is aligned with the Aprendizagens Essenciais and your classroom context.",
+        "Always check the final material fits your curriculum and your classroom context.",
         "Treat AI as support for creating and adapting materials, never as a replacement for pedagogical judgement."
       ]
     },
@@ -852,12 +825,12 @@
   },
   "contact": {
     "meta": {
-      "title": "Contact",
-      "description": "Get in touch with the Scooli team to ask questions, request information, or discuss a pilot for your school."
+      "title": "Contact and book a call",
+      "description": "Talk to the Scooli team: book a call, write to us with questions, or discuss a pilot for your school or school group."
     },
     "badge": "Contact",
     "title": "Talk to us",
-    "description": "If you have questions about Scooli, want to talk about a pilot, or need help, use the form or send us an email.",
+    "description": "Questions about Scooli, want to talk about a pilot, or need help? Book a call, use the form or send us an email.",
     "cards": {
       "email": {
         "title": "Email",
@@ -891,7 +864,10 @@
       "fetchErrorFallback": "Error sending the message. Please try again.",
       "successMessage": "Message sent successfully. We'll reply as soon as possible.",
       "genericErrorFallback": "Something went wrong. Please try again later."
-    }
+    },
+    "bookingHeading": "Book a call",
+    "bookingDescription": "Pick the day and time that suit you.",
+    "writeHeading": "Or write to us"
   },
   "contactForm": {
     "nameRequired": "Enter your name so we know how to reply.",
@@ -919,7 +895,9 @@
     "validationNotice": "Check the fields marked below and try again.",
     "fetchErrorFallback": "Error sending the message. Please try again.",
     "successMessage": "Message sent successfully! You'll receive a confirmation email shortly.",
-    "genericErrorFallback": "Something went wrong. Please try again later."
+    "genericErrorFallback": "Something went wrong. Please try again later.",
+    "bookingHeading": "Book a call",
+    "writeHeading": "Rather write?"
   },
   "institutionalContactButton": {
     "defaultTitle": "Talk to the team",
@@ -938,100 +916,31 @@
   "notFound": {
     "heading": "Page not found",
     "description": "Looks like this page went out to recess and never came back. Let's get you back home!",
-    "backHome": "Back to Home",
-    "previousPage": "Previous Page",
-    "tags": [
-      "Presentations",
-      "Lesson Plans",
-      "Tests",
-      "Quizzes"
-    ]
+    "backHome": "Back to home"
   },
   "promoBanner": {
-    "message": "Back to School 2026: Scooli Pro from <strong>{price}/month</strong> — keep this price for good.",
+    "message": "<strong>Back to School 2026:</strong> Scooli Pro for {price}/month, with the price locked in for good.",
     "monthlyCta": "Monthly {price}",
     "annualCta": "Annual {price}",
     "closeAriaLabel": "Close"
   },
-  "promoModal": {
-    "title": "Back to School 2026",
-    "description": "Scooli Pro for just {price}/month if you activate during the promotion — and keep this price for good.",
-    "unlimitedTitle": "Unlimited generations",
-    "unlimitedDescription": "Access to every Pro feature",
-    "lockedPriceTitle": "Price locked in for good",
-    "lockedPriceDescription": "No increases once the promotion ends",
-    "activateMonthly": "Activate for {price}/month",
-    "preferAnnual": "I prefer annual at {price}",
-    "maybeLater": "Maybe later"
-  },
-  "library": {
-    "meta": {
-      "title": "Community Library",
-      "description": "Explore Scooli's community library and find materials you can duplicate, adapt and use as a starting point."
-    },
-    "preview": {
-      "searchNote": "Search by subject, filter by type, and find resources ready to reuse.",
-      "imageAlt": "Scooli community library with search, filters and resources ready to reuse"
-    },
-    "hero": {
-      "eyebrow": "Library",
-      "title": "A community library for finding a good starting point faster",
-      "description": "Explore shared materials, see the kind of resources available, and sign in to duplicate and adapt them to your context.",
-      "secondaryLabel": "See the path for teachers",
-      "checklist": [
-        "Search by subject, year and resource type",
-        "Preview examples before signing in",
-        "Duplicate and adapt instead of starting from scratch"
-      ]
-    },
-    "howItWorks": {
-      "eyebrow": "How it works",
-      "title": "Discover first. Adapt later.",
-      "description": "The library helps you quickly see whether a good starting point already exists for what you need to prepare.",
-      "cards": [
-        {
-          "title": "Discover relevant materials",
-          "description": "Searching by subject, cycle, topic and resource type brings the library closer to what teachers actually look for."
-        },
-        {
-          "title": "Duplicate and adapt",
-          "description": "The goal is not just to view a resource: it is to use it as a base to reach a useful final version faster."
-        },
-        {
-          "title": "Preview with a clear path",
-          "description": "Previews help you decide. Editing, duplicating and the full workflow happen inside your account."
-        }
-      ]
-    },
-    "examples": {
-      "eyebrow": "Resource examples",
-      "title": "The kind of materials you can find in the library",
-      "description": "Worksheets, lesson plans, tests, presentations and support materials ready to serve as a base for your work."
-    },
-    "cta": {
-      "title": "Want to use one of these resources as a starting point?",
-      "description": "Sign in to Scooli, pick a material from the library and adapt it to your class instead of starting from scratch.",
-      "secondaryLabel": "See the tools"
-    }
-  },
   "aiForTeachers": {
     "meta": {
-      "title": "AI for Teachers in Portugal",
-      "description": "Scooli is an AI platform for teachers in Portugal, aligned with the Aprendizagens Essenciais. It helps create editable lesson plans, worksheets, tests, quizzes and presentations, with better curriculum alignment, quality and confidence.",
+      "title": "AI for teachers: prepare the whole week",
+      "description": "An AI platform for teachers: it lays out each class's lessons and prepares editable lesson plans, worksheets, tests, quizzes and slide decks.",
       "keywords": [
         "ai for teachers",
-        "ai for teachers in portugal",
         "ai tool for teachers",
-        "software for teachers",
         "ai platform for teachers",
+        "software for teachers",
         "ai lesson plans",
+        "ai lesson plan generator",
         "ai worksheets",
         "ai test generator",
+        "ai quiz generator",
         "ai presentations for lessons",
-        "aprendizagens essenciais",
-        "curriculum alignment",
-        "portuguese national curriculum",
-        "edtech portugal"
+        "lesson planning",
+        "teacher workload"
       ]
     },
     "breadcrumb": {
@@ -1039,8 +948,8 @@
       "page": "AI for teachers"
     },
     "webPage": {
-      "title": "AI for Teachers in Portugal | Scooli",
-      "description": "A quick-answer page about Scooli as an AI platform for teachers in Portugal, aligned with the Aprendizagens Essenciais."
+      "title": "AI for Teachers | Scooli",
+      "description": "Scooli is an AI platform for teachers: it prepares each class's week of lessons, with lesson plans, worksheets, tests and slide decks ready to edit."
     },
     "howToSchema": {
       "name": "How to use Scooli as AI for teachers",
@@ -1052,7 +961,7 @@
         },
         {
           "name": "Give the lesson context",
-          "text": "Add the topic, year, objective and, when it makes sense, the Aprendizagens Essenciais or part of a document you already have."
+          "text": "Add the topic, grade, objective and, if it helps, your own sources or part of a document you already have."
         },
         {
           "name": "Generate a first version",
@@ -1067,164 +976,86 @@
     "faq": [
       {
         "question": "What does Scooli do for teachers?",
-        "answer": "Scooli helps teachers in Portugal create lesson plans, worksheets, tests, quizzes and presentations. It also lets you adapt materials by level, reuse your own documents and edit everything before using it in class."
+        "answer": "It lays out each class's lessons from the yearly plan and prepares each week's resources: lesson plans, worksheets, tests, quizzes and slide decks. It also adapts materials by level and turns documents the teacher already has into new ones."
       },
       {
-        "question": "Is Scooli a generic AI tool or was it built for schools?",
-        "answer": "Scooli is positioned for the Portuguese education context. The site and public pages speak directly about lesson plans, worksheets, tests, the Aprendizagens Essenciais, privacy and human review in a school setting."
+        "question": "How is Scooli different from ChatGPT?",
+        "answer": "A chat gives you text you still have to copy, format and check. Scooli gives you structured documents in your template, linked to each class's calendar and ready to export to Word and PDF."
       },
       {
-        "question": "When does it make more sense to use Scooli instead of Canva or a tool built for another market?",
-        "answer": "It makes more sense when the goal is to prepare lesson materials with better curriculum alignment, in European Portuguese, following the Aprendizagens Essenciais. Scooli was built for the real workflows of teachers in Portugal, not just for generic design or another curriculum context."
+        "question": "Does Scooli follow what I've planned for the year?",
+        "answer": "Yes. Each lesson starts from the class's yearly plan, subject and grade you set, so the week follows your plan. Everything stays editable."
       },
       {
         "question": "Does Scooli replace the teacher?",
-        "answer": "No. The platform helps you get started faster and cuts repetitive work, but the teacher always keeps control of the final result before printing, exporting or using the material with students."
+        "answer": "No. Scooli prepares the starting point and takes away the repetitive work; the teacher reviews, adjusts and always decides what reaches the class."
       },
       {
-        "question": "Does Scooli work with documents the teacher already has?",
-        "answer": "Yes. You can upload your own materials and turn them into new worksheets, tests or adapted versions, instead of starting from scratch every time."
+        "question": "Can I use documents I already have?",
+        "answer": "Yes. You can upload your own materials and turn them into new worksheets, tests or adapted versions, instead of starting from scratch."
       },
       {
-        "question": "How does Scooli pricing work?",
-        "answer": "There is a free plan with 20 credits a month and a Pro plan for continuous use. Schools and school groups follow their own path, with direct contact to assess the pilot, context and adoption."
-      }
-    ],
-    "trustPoints": [
-      {
-        "title": "Built for Portugal and the Aprendizagens Essenciais",
-        "description": "The language, use cases and public positioning were written for teachers, schools, the Portuguese curriculum and the Aprendizagens Essenciais."
-      },
-      {
-        "title": "More curriculum alignment, better quality",
-        "description": "Scooli's promise isn't just speed. It's helping generate a base that is better aligned with the Portuguese curriculum context, with more quality and more confidence in the starting point."
-      },
-      {
-        "title": "Everything stays editable",
-        "description": "Scooli doesn't lock away the teacher's work. It helps you get to a good first version faster, so you can review it calmly afterwards."
-      },
-      {
-        "title": "Privacy and trust, made visible",
-        "description": "There are dedicated public pages on trust, privacy and terms, which makes the recommendation easier to justify."
-      }
-    ],
-    "discoveryPreview": [
-      {
-        "label": "Free plan",
-        "value": "20 credits / month"
-      },
-      {
-        "label": "Materials",
-        "value": "Plans, worksheets, tests and slides"
-      },
-      {
-        "label": "Context",
-        "value": "Portugal, European Portuguese and Aprendizagens Essenciais"
-      },
-      {
-        "label": "Control",
-        "value": "Everything reviewed before use"
+        "question": "How much does it cost?",
+        "answer": "There is a free plan with 20 credits a month and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
       }
     ],
     "hero": {
       "eyebrow": "AI for teachers",
-      "title": "AI for teachers in Portugal, aligned with the Aprendizagens Essenciais",
-      "description": "Scooli is an AI platform for teachers in Portugal. It's used to create editable lesson plans, worksheets, tests, quizzes and presentations, adapt materials by level and reuse your own documents instead of always starting from scratch. The focus is generating materials that follow the Aprendizagens Essenciais, with better curriculum alignment, quality and confidence than a generic tool.",
+      "title": "AI for teachers that prepares your <em>whole week</em>.",
+      "description": "Scooli lays out each class's lessons from your yearly plan and prepares the lesson plans, worksheets, tests and slide decks you need. You review, adjust and teach.",
       "secondaryLabel": "See the tools",
-      "checklist": [
-        "Lesson plans, worksheets, tests, quizzes and presentations",
-        "Materials aligned with the Aprendizagens Essenciais",
-        "Teacher reviews everything before using it with students"
-      ]
-    },
-    "quickAnswer": {
-      "eyebrow": "Quick answer",
-      "title": "What is Scooli, in simple terms?",
-      "paragraph1": "Scooli is AI software for teachers who want to prepare lessons with less repetitive work. Instead of using a generic tool and then reorganising everything by hand, the teacher starts with a ready-to-edit base: a lesson plan, worksheet, test, quiz or presentation.",
-      "paragraph2": "Unlike a generalist design tool or an assistant built for another market, Scooli was positioned for the Portuguese context and for generating materials that follow the Aprendizagens Essenciais. That helps with curriculum alignment, content quality, and the confidence with which the tool can be recommended."
-    },
-    "whenToChoose": {
-      "eyebrow": "When to choose Scooli",
-      "checklist": [
-        "When you need to prepare materials faster without giving up human review",
-        "When you want a tool more aligned with the Aprendizagens Essenciais than a generic option",
-        "When you need European Portuguese, Portuguese context and workflows built for teachers",
-        "When you want to create materials, not just design slides or chat with a chatbot"
-      ]
-    },
-    "toolsSection": {
-      "eyebrow": "What you can create",
-      "title": "Clear pages for every task a teacher wants to solve",
-      "description": "Each tool has its own page, with a short explanation, frequently asked questions and use cases, so it's easy to understand what Scooli does.",
-      "seeTool": "See page"
-    },
-    "trustSection": {
-      "eyebrow": "Why it's easy to understand",
-      "title": "Signals that help recommend Scooli with confidence",
-      "description": "A recommendation is clearer when the proposal, the context, the curriculum alignment and the product's limits are visible without needing to guess."
-    },
-    "socialSection": {
-      "eyebrow": "Public signals",
-      "title": "Social proof and impact already visible on the site",
-      "description": "A recommendation feels more credible when there are public numbers, dedicated pages and visible testimonials instead of vague promises."
+      "videoAria": "Demo: the week's lessons in Scooli's calendar; one click on \"Generate week\" prepares the lesson plans and one of them opens ready to edit"
     },
     "faqSection": {
-      "eyebrow": "Frequently asked questions",
-      "title": "Quick questions about AI for teachers",
-      "description": "These answers were written to explain Scooli directly, without hiding what it does, who it's for, and why it can be a better fit than a generic tool."
-    },
-    "nextSteps": {
-      "eyebrow": "Next steps",
-      "title": "Useful pages to better understand Scooli",
-      "links": [
-        {
-          "label": "See all the tools",
-          "href": "/ferramentas"
-        },
-        {
-          "label": "Read the teachers page",
-          "href": "/professores"
-        },
-        {
-          "label": "See pricing",
-          "href": "/precos"
-        },
-        {
-          "label": "Read about trust and privacy",
-          "href": "/confianca"
-        }
-      ],
-      "signupNote": "If you want to try the platform directly, sign-up is at <link>create.scooli.app</link>."
+      "eyebrow": "FAQ",
+      "title": "AI for teachers: what people usually ask."
     },
     "cta": {
-      "title": "Want to see if Scooli fits your prep routine?",
-      "description": "Try a real request for your next lesson, review the result, check the alignment with the Aprendizagens Essenciais, and adjust everything before using it with your class.",
-      "secondaryLabel": "See trust and privacy"
+      "title": "Try it with next week's lessons.",
+      "description": "Start free, prepare one class's week and see the result before you decide.",
+      "secondaryLabel": "For schools"
+    },
+    "proofLabel": "Scooli in numbers",
+    "proof": {
+      "teachers": "teachers on Scooli",
+      "documents": "documents created"
+    },
+    "week": {
+      "kicker": "Your week",
+      "title": "A week of preparation, with and without Scooli.",
+      "description": "The work is the same. What changes is who does the repetitive part.",
+      "without": {
+        "label": "Without Scooli",
+        "items": [
+          "Sunday evening deciding what to teach each class",
+          "Lesson plans written from scratch, one by one",
+          "Worksheets and tests pieced together from several sources",
+          "Chat answers pasted into Word and formatted by hand",
+          "Checking every lesson against your plan by hand"
+        ]
+      },
+      "with": {
+        "label": "With Scooli",
+        "items": [
+          "Each class's lessons already in the calendar, from your yearly plan",
+          "One click on \"Generate week\" prepares a plan for every lesson",
+          "Worksheets, tests, quizzes and slides created from the same topic",
+          "Documents in your template, ready to export to Word and PDF",
+          "Everything editable, so the final say stays yours"
+        ]
+      }
     }
   },
   "pricingPage": {
     "meta": {
-      "title": "Pricing",
-      "description": "See Scooli's pricing, understand what each plan includes, and find the right path for teachers and schools."
-    },
-    "intro": {
-      "freeLabel": "Free plan",
-      "freeCredits": "{credits} credits / month",
-      "freeDescription": "For trying Scooli with real requests and getting a feel for the workflow.",
-      "proLabel": "Pro plan",
-      "proHeadline": "Continuous use with more freedom",
-      "proDescription": "For anyone who wants to use the platform every week without thinking about tight limits."
+      "title": "Pricing: free, Pro and a plan for schools",
+      "description": "Simple Scooli pricing: a free plan with 20 credits a month, Pro with no creation limits, and an institutional plan for schools and school groups."
     },
     "hero": {
       "eyebrow": "Pricing",
-      "title": "Clear pricing for teachers, and a dedicated path for schools",
-      "description": "Try Scooli with the free plan. If you need to use the platform every week, choose Pro. If you represent a school, talk to us to set up a pilot or institutional path.",
-      "secondaryLabel": "See the option for schools",
-      "checklist": [
-        "Free plan to try it out, no commitment",
-        "Pro plan for continuous use with more freedom",
-        "Schools follow direct contact with the team"
-      ]
+      "title": "Simple pricing, from one teacher to the whole school.",
+      "description": "Start free. Go Pro whenever you like. For schools, an institutional plan.",
+      "secondaryLabel": "See the institutional plan"
     },
     "faqCards": [
       {
@@ -1240,11 +1071,6 @@
         "description": "Teachers can start right away. Schools and school groups have their own path, with an initial contact and an assessment of context before moving forward."
       }
     ],
-    "reviews": {
-      "eyebrow": "Real reviews",
-      "title": "Teachers are already feeling the difference in weekly use",
-      "description": "Average of {rating}/5 based on {count} real testimonials already published on Scooli."
-    },
     "notes": {
       "eyebrow": "Important notes",
       "title": "Helping you decide with more clarity",
@@ -1268,6 +1094,65 @@
       "title": "Want to try it before deciding?",
       "description": "Start for free, generate a few real materials, and see if Scooli fits your working rhythm.",
       "secondaryLabel": "See trust and privacy"
+    },
+    "faq": {
+      "kicker": "FAQ",
+      "title": "Before you decide."
+    },
+    "institutional": {
+      "kicker": "For schools",
+      "title": "Why the institutional plan",
+      "description": "Several Pro licences give Scooli to each teacher. The institutional plan gives it to the school, with the curriculum of every class in view.",
+      "columns": {
+        "label": "",
+        "pro": "Several Pro licences",
+        "institutional": "Institutional plan"
+      },
+      "rows": [
+        {
+          "label": "Curriculum",
+          "pro": "Each teacher follows their own classes",
+          "institutional": "The state of the curriculum in every class of the school, in one dashboard"
+        },
+        {
+          "label": "Accounts",
+          "pro": "Each teacher manages their own",
+          "institutional": "Seats and invitations managed by the school"
+        },
+        {
+          "label": "Overview",
+          "pro": "None",
+          "institutional": "A dashboard with each teacher's activity"
+        },
+        {
+          "label": "Sharing",
+          "pro": "Public community library",
+          "institutional": "An internal library, colleagues only"
+        },
+        {
+          "label": "Billing",
+          "pro": "One subscription per teacher",
+          "institutional": "One invoice for the school"
+        },
+        {
+          "label": "Getting started",
+          "pro": "Everyone on their own",
+          "institutional": "Implementation and team training"
+        },
+        {
+          "label": "Privacy",
+          "pro": "Public policy",
+          "institutional": "Documentation and answers for your DPO"
+        },
+        {
+          "label": "Trying it",
+          "pro": "Free plan",
+          "institutional": "A supported pilot with a small team"
+        }
+      ],
+      "cta": "Talk to our team",
+      "contactTitle": "Institutional plan",
+      "contactDescription": "Book a call, or tell us about your school and how many teachers you have. We'll reply with a proposal."
     }
   },
   "pricingSection": {
@@ -1282,7 +1167,7 @@
       "label": "Free Plan",
       "price": "Free",
       "period": "forever",
-      "description": "For trying Scooli and getting a feel for the creation flow before committing.",
+      "description": "For getting to know Scooli and creating your first materials.",
       "creditsBadge": "{credits} credits/month",
       "features": [
         "{credits} credits a month",
@@ -1305,8 +1190,8 @@
       "promoAnnualPrefix": "{price}/year · ",
       "annualNote": "{price}/year · save {savings}",
       "monthlyNote": "billed monthly",
-      "descriptionAnnual": "For anyone who wants stability through the school year and better value for money.",
-      "descriptionMonthly": "For anyone who uses the platform every week and wants a smoother working rhythm.",
+      "descriptionAnnual": "The same Pro plan, paid once a year, {savings} off.",
+      "descriptionMonthly": "Everything Scooli does, with no creation limits.",
       "unlimitedBadge": "Unlimited generation*",
       "features": [
         "Advanced AI models",
@@ -1322,13 +1207,17 @@
       "badge": "Institutional",
       "label": "Schools and institutions",
       "price": "By request",
-      "detail": "Plan tailored to context",
-      "description": "For school groups, schools and teams that need an institutional path, support and training.",
+      "detail": "Priced by number of teachers",
+      "description": "For schools and school groups that want Scooli for the whole team: the state of the curriculum in every class, central management and support.",
       "features": [
-        "Plan adapted to volume and team size",
-        "Implementation support",
-        "Training and onboarding",
-        "Dedicated path for internal validation"
+        "Everything in Pro, for every teacher",
+        "The state of the curriculum in every class, in one dashboard",
+        "A school dashboard with each teacher's activity",
+        "Seats and invitations managed in one place",
+        "An internal library to share materials between colleagues",
+        "Implementation and team training",
+        "Privacy documentation for your data protection officer",
+        "One invoice for the school"
       ],
       "cta": "Talk to the team"
     },
@@ -1344,15 +1233,15 @@
     }
   },
   "siteMeta": {
-    "titleSuffix": "Practical AI for teachers in Portugal",
-    "description": "Create lesson plans, worksheets and tests with AI aligned to the Aprendizagens Essenciais, edit everything at your own pace, and get back time to teach. Scooli was built for teachers in Portugal.",
+    "titleSuffix": "Practical AI for teachers",
+    "description": "Plan the week's lessons in minutes. Scooli creates lesson plans, worksheets, tests, quizzes, yearly plans and slide decks you can edit, and keeps your school year organised.",
     "ogTitleSuffix": "Lesson plans, worksheets and tests in minutes",
-    "ogDescription": "Scooli helps teachers in Portugal create ready-to-edit materials aligned with the Aprendizagens Essenciais, adapt them to the class, and export without starting from scratch.",
+    "ogDescription": "Scooli helps teachers create ready-to-edit lesson materials, adapt them to the class and keep the school year organised.",
     "twitterTitleSuffix": "Practical AI for teachers",
-    "twitterDescription": "Lesson plans, worksheets and tests generated with AI aligned to the Aprendizagens Essenciais, built to save time while keeping the teacher in control.",
-    "dcTitleSuffix": "Practical AI for teachers in Portugal",
-    "dcSubject": "Education, Artificial Intelligence, Teachers, Portugal",
-    "dcDescription": "Tool for creating lesson plans, worksheets and tests with AI in the Portuguese school context, aligned with the Aprendizagens Essenciais"
+    "twitterDescription": "Lesson plans, worksheets and tests created with AI, built to save time while keeping the teacher in control.",
+    "dcTitleSuffix": "Practical AI for teachers",
+    "dcSubject": "Education, Artificial Intelligence, Teachers",
+    "dcDescription": "Tool for creating lesson plans, worksheets and tests with AI, with the teacher in control."
   },
   "legalLayout": {
     "backToHome": "Back to homepage",
@@ -1367,139 +1256,139 @@
       "lastUpdated": "Last updated: {date}",
       "lastUpdatedValue": "July 15, 2025"
     },
-    "disclaimer": "This page is available in Portuguese only. The Portuguese text below is the sole legally binding version of this document.",
+    "disclaimer": "This is an English translation provided for convenience. If it differs from the Portuguese version, the Portuguese version prevails.",
     "sections": {
       "intro": {
-        "heading": "Introdução",
-        "paragraph": "A Scooli (\"nós\", \"nosso\" ou \"nossa\") respeita a sua privacidade e está comprometido em proteger os seus dados pessoais. Esta Política de Privacidade informa-o sobre como recolhemos, utilizamos, divulgamos e protegemos as suas informações quando utiliza o nosso serviço, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD)."
+        "heading": "Introduction",
+        "paragraph": "Scooli is a product of FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\", \"we\", \"us\" or \"our\"), the controller of your personal data. We respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose and protect your information when you use Scooli, in accordance with the General Data Protection Regulation (GDPR)."
       },
       "dataCollection": {
-        "heading": "Dados que Recolhemos",
+        "heading": "Data We Collect",
         "provided": {
-          "heading": "Dados Fornecidos por Si",
+          "heading": "Data You Provide",
           "items": [
-            "Endereço de email (quando se regista para receber notificações)",
-            "Informações de contacto que nos forneça voluntariamente",
-            "Feedback e comunicações que nos envie"
+            "Email address (when you sign up to receive notifications)",
+            "Contact information you choose to give us",
+            "Feedback and messages you send us"
           ]
         },
         "automatic": {
-          "heading": "Dados Recolhidos Automaticamente",
+          "heading": "Data Collected Automatically",
           "items": [
-            "Dados de utilização do website (páginas visitadas, tempo de permanência)",
-            "Cookies e tecnologias similares"
+            "Website usage data (pages visited, time spent)",
+            "Cookies and similar technologies"
           ]
         }
       },
       "dataUse": {
-        "heading": "Como Utilizamos os Seus Dados",
-        "intro": "Utilizamos os seus dados pessoais para os seguintes fins:",
+        "heading": "How We Use Your Data",
+        "intro": "We use your personal data for the following purposes:",
         "items": [
-          "Enviar notificações sobre o lançamento da Scooli e atualizações importantes",
-          "Melhorar e personalizar a sua experiência no nosso website",
-          "Responder às suas perguntas e pedidos de suporte",
-          "Analisar o uso do website para melhorar os nossos serviços",
-          "Cumprir obrigações legais e regulamentares",
-          "Proteger os nossos direitos e prevenir fraudes"
+          "Sending notifications about Scooli's launch and important updates",
+          "Improving and personalising your experience on our website",
+          "Answering your questions and support requests",
+          "Analysing website usage to improve our services",
+          "Complying with legal and regulatory obligations",
+          "Protecting our rights and preventing fraud"
         ]
       },
       "legalBasis": {
-        "heading": "Base Legal para o Tratamento",
-        "intro": "Tratamos os seus dados pessoais com base nas seguintes bases legais:",
+        "heading": "Legal Basis for Processing",
+        "intro": "We process your personal data on the following legal bases:",
         "items": [
           {
-            "bold": "Consentimento:",
-            "text": "Quando nos dá consentimento explícito para processar os seus dados"
+            "bold": "Consent:",
+            "text": "When you give us explicit consent to process your data"
           },
           {
-            "bold": "Interesses legítimos:",
-            "text": "Para melhorar os nossos serviços e comunicar consigo"
+            "bold": "Legitimate interests:",
+            "text": "To improve our services and communicate with you"
           },
           {
-            "bold": "Cumprimento legal:",
-            "text": "Quando necessário para cumprir obrigações legais"
+            "bold": "Legal obligation:",
+            "text": "When necessary to comply with legal obligations"
           }
         ]
       },
       "dataSharing": {
-        "heading": "Partilha de Dados",
-        "intro": "Não vendemos, alugamos ou partilhamos os seus dados pessoais com terceiros para fins comerciais. Podemos partilhar os seus dados apenas nas seguintes circunstâncias:",
+        "heading": "Data Sharing",
+        "intro": "We do not sell, rent or share your personal data with third parties for commercial purposes. We may share your data only in the following circumstances:",
         "items": [
-          "Com fornecedores de serviços que nos ajudam a operar o website (ex: serviços de email)",
-          "Quando exigido por lei ou por autoridades competentes",
-          "Para proteger os nossos direitos, propriedade ou segurança",
-          "Com o seu consentimento explícito"
+          "With service providers who help us run the website (e.g. email services)",
+          "When required by law or by the competent authorities",
+          "To protect our rights, property or safety",
+          "With your explicit consent"
         ]
       },
       "rights": {
-        "heading": "Os Seus Direitos",
-        "intro": "Ao abrigo do RGPD, tem os seguintes direitos:",
+        "heading": "Your Rights",
+        "intro": "Under the GDPR, you have the following rights:",
         "columnOne": [
           {
-            "bold": "Acesso:",
-            "text": "Solicitar cópias dos seus dados pessoais"
+            "bold": "Access:",
+            "text": "Request copies of your personal data"
           },
           {
-            "bold": "Retificação:",
-            "text": "Corrigir dados incorretos ou incompletos"
+            "bold": "Rectification:",
+            "text": "Correct inaccurate or incomplete data"
           },
           {
-            "bold": "Apagamento:",
-            "text": "Solicitar a eliminação dos seus dados"
+            "bold": "Erasure:",
+            "text": "Request that your data be deleted"
           },
           {
-            "bold": "Limitação:",
-            "text": "Restringir o processamento dos seus dados"
+            "bold": "Restriction:",
+            "text": "Restrict the processing of your data"
           }
         ],
         "columnTwo": [
           {
-            "bold": "Portabilidade:",
-            "text": "Transferir os seus dados para outro serviço"
+            "bold": "Portability:",
+            "text": "Transfer your data to another service"
           },
           {
-            "bold": "Oposição:",
-            "text": "Opor-se ao processamento dos seus dados"
+            "bold": "Objection:",
+            "text": "Object to the processing of your data"
           },
           {
-            "bold": "Retirar consentimento:",
-            "text": "A qualquer momento"
+            "bold": "Withdraw consent:",
+            "text": "At any time"
           },
           {
-            "bold": "Apresentar queixa:",
-            "text": "À autoridade de proteção de dados"
+            "bold": "Lodge a complaint:",
+            "text": "With the data protection authority"
           }
         ]
       },
       "security": {
-        "heading": "Segurança dos Dados",
-        "intro": "Implementamos medidas técnicas e organizacionais adequadas para proteger os seus dados pessoais contra:",
+        "heading": "Data Security",
+        "intro": "We apply appropriate technical and organisational measures to protect your personal data against:",
         "items": [
-          "Acesso não autorizado ou ilegal",
-          "Perda, destruição ou danos acidentais",
-          "Alteração, divulgação ou processamento não autorizado"
+          "Unauthorised or unlawful access",
+          "Accidental loss, destruction or damage",
+          "Unauthorised alteration, disclosure or processing"
         ],
-        "closing": "Utilizamos encriptação SSL/TLS para proteger a transmissão de dados e armazenamos as informações em servidores seguros com acesso restrito."
+        "closing": "We use SSL/TLS encryption to protect data in transit and store information on secure servers with restricted access."
       },
       "retention": {
-        "heading": "Retenção de Dados",
-        "intro": "Conservamos os seus dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos:",
+        "heading": "Data Retention",
+        "intro": "We keep your personal data only for as long as needed for the purposes for which it was collected:",
         "items": [
-          "Dados de subscrição: Até cancelar a subscrição ou solicitar a eliminação",
-          "Dados de contacto: Até 3 anos após o último contacto",
-          "Dados de utilização: Até 2 anos para fins analíticos",
-          "Dados legais: Conforme exigido por lei"
+          "Subscription data: until you cancel your subscription or ask for it to be deleted",
+          "Contact data: up to 3 years after the last contact",
+          "Usage data: up to 2 years for analytics",
+          "Legal data: as required by law"
         ]
       },
       "contact": {
-        "heading": "Contacte-nos",
-        "intro": "Se tiver questões sobre esta Política de Privacidade ou quiser exercer os seus direitos, pode contactar-nos através de:",
-        "closing": "Responderemos ao seu pedido no prazo de 30 dias, conforme exigido pelo RGPD."
+        "heading": "Contact Us",
+        "intro": "If you have questions about this Privacy Policy or want to exercise your rights, you can contact us at:",
+        "closing": "We will reply to your request within 30 days, as required by the GDPR."
       }
     },
     "meta": {
       "title": "Privacy Policy",
-      "description": "Scooli's Privacy Policy, with clear information about data handling, GDPR, security and user rights. The legally binding version of this document is in Portuguese.",
+      "description": "Scooli's Privacy Policy: how FICTIONAL CLOUD, LDA. handles personal data, your GDPR rights, security and retention.",
       "ogTitle": "Privacy Policy | Scooli",
       "ogDescription": "How Scooli handles and protects the personal data of teachers and visitors, in line with the GDPR.",
       "ogImageAlt": "Scooli's Privacy Policy",
@@ -1516,100 +1405,101 @@
       "lastUpdated": "Last updated: {date}",
       "lastUpdatedValue": "January 5, 2026"
     },
-    "disclaimer": "This page is available in Portuguese only. The Portuguese text below is the sole legally binding version of this document.",
+    "disclaimer": "This is an English translation provided for convenience. If it differs from the Portuguese version, the Portuguese version prevails.",
     "sections": {
       "section1": {
-        "title": "1) Aceitação dos Termos",
+        "title": "1) Acceptance of the Terms",
         "paragraphs": [
-          "Ao aceder ou utilizar a Scooli, concorda com estes Termos. Se não concordar, não deve utilizar o serviço.",
-          "Estes Termos aplicam-se ao website, a eventuais versões beta e à aplicação Scooli, bem como a funcionalidades associadas (por exemplo, biblioteca comunitária)."
+          "Scooli is a product of FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\" or \"we\"), which provides the service. These Terms are an agreement between you and FICTIONAL CLOUD, LDA.",
+          "By accessing or using Scooli, you agree to these Terms. If you do not agree, you must not use the service.",
+          "These Terms apply to the website, any beta versions and the Scooli app, as well as related features (for example, the community library)."
         ]
       },
       "section2": {
-        "title": "2) O Serviço e Contas",
-        "intro": "A Scooli é um produto de tecnologia educativa para apoiar professores em Portugal na criação e organização de recursos pedagógicos.",
+        "title": "2) The Service and Accounts",
+        "intro": "Scooli is an education technology product of FICTIONAL CLOUD, LDA. that helps teachers create and organise teaching resources.",
         "items": [
-          "Poderá ser necessário criar uma conta para aceder a determinadas funcionalidades.",
-          "Deve fornecer informação verdadeira e manter os seus dados atualizados.",
-          "É responsável pela confidencialidade das suas credenciais e por qualquer atividade realizada na sua conta."
+          "You may need to create an account to access some features.",
+          "You must provide accurate information and keep your details up to date.",
+          "You are responsible for keeping your credentials confidential and for any activity on your account."
         ]
       },
       "section3": {
-        "title": "3) Uso Aceitável",
-        "intro": "Compromete-se a não:",
+        "title": "3) Acceptable Use",
+        "intro": "You agree not to:",
         "items": [
-          "Usar o serviço para fins ilegais, fraudulentos ou abusivos.",
-          "Carregar, gerar, partilhar ou solicitar conteúdos que violem direitos de terceiros (ex.: direitos de autor, privacidade).",
-          "Tentar contornar limites de segurança, explorar vulnerabilidades ou interferir com o funcionamento do serviço.",
-          "Partilhar dados pessoais de alunos (ou outros menores) sem base legal e consentimentos aplicáveis."
+          "Use the service for illegal, fraudulent or abusive purposes.",
+          "Upload, generate, share or request content that infringes the rights of others (e.g. copyright, privacy).",
+          "Try to bypass security limits, exploit vulnerabilities or interfere with the operation of the service.",
+          "Share personal data of students (or other minors) without a legal basis and the applicable consents."
         ]
       },
       "section4": {
-        "title": "4) Conteúdos do Utilizador e Biblioteca Comunitária",
-        "intro": "Se o serviço permitir carregar ou partilhar recursos, é responsável por garantir que tem direitos para o fazer.",
+        "title": "4) User Content and the Community Library",
+        "intro": "If the service lets you upload or share resources, you are responsible for making sure you have the rights to do so.",
         "items": [
-          "Ao submeter conteúdos para áreas comunitárias, concede à Scooli uma licença não exclusiva para alojar, reproduzir e disponibilizar esse conteúdo no âmbito do serviço.",
-          "Poderemos moderar, remover ou restringir conteúdos que violem estes Termos, a lei ou padrões de qualidade/segurança da comunidade."
+          "By submitting content to community areas, you grant FICTIONAL CLOUD, LDA. a non-exclusive licence to host, reproduce and make that content available within Scooli.",
+          "We may moderate, remove or restrict content that breaches these Terms, the law or the community's quality and safety standards."
         ]
       },
       "section5": {
-        "title": "5) Conteúdo Gerado por IA",
-        "intro": "A Scooli pode gerar sugestões e materiais através de inteligência artificial. Estes resultados podem conter imprecisões.",
+        "title": "5) AI-Generated Content",
+        "intro": "Scooli may generate suggestions and materials using artificial intelligence. These results may contain inaccuracies.",
         "items": [
-          "Deve rever e validar todo o conteúdo antes de o utilizar em sala de aula, avaliações ou comunicações oficiais.",
-          "A Scooli não garante a exatidão, adequação curricular ou ausência de erros nos conteúdos gerados."
+          "You must review and validate all content before using it in class, assessments or official communications.",
+          "FICTIONAL CLOUD, LDA. does not guarantee the accuracy, curricular fit or absence of errors of generated content."
         ]
       },
       "section6": {
-        "title": "6) Créditos, Plano Pro e Cancelamentos",
-        "intro": "Algumas funcionalidades dependem do limite de créditos de cada plano.",
+        "title": "6) Credits, Pro Plan and Cancellations",
+        "intro": "Some features depend on each plan's credit limit.",
         "items": [
-          "O plano gratuito inclui 20 créditos por mês.",
-          "Preços, funcionalidades e limites podem ser atualizados ao longo do tempo.",
-          "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na secção 7."
+          "The free plan includes 20 credits per month.",
+          "Prices, features and limits may be updated over time.",
+          "The Pro Plan's \"unlimited\" access is subject to the Fair Use Policy described in section 7."
         ],
-        "contactItem": "Para gestão ou cancelamento de subscrição, contacte-nos em <email>info@scooli.app</email>."
+        "contactItem": "To manage or cancel your subscription, contact us at <email>info@scooli.app</email>."
       },
       "section7": {
-        "title": "7) Política de Uso Justo (Fair Use)",
-        "paragraph1": "O Plano Pro da Scooli oferece capacidade de geração de conteúdos de forma ilimitada para fins de uso pessoal e profissional do docente subscritor.",
-        "paragraph2": "Para garantir a estabilidade da plataforma e a qualidade do serviço para todos os utilizadores, a Scooli aplica uma <strong>Política de Uso Justo</strong>. Esta política destina-se a evitar utilizações abusivas, automáticas ou não-humanas que coloquem em causa a integridade do sistema.",
+        "title": "7) Fair Use Policy",
+        "paragraph1": "Scooli's Pro Plan offers unlimited content generation for the subscribing teacher's personal and professional use.",
+        "paragraph2": "To keep the platform stable and the service reliable for every user, we apply a <strong>Fair Use Policy</strong>. It exists to prevent abusive, automated or non-human use that puts the integrity of the system at risk.",
         "abuseBox": {
-          "heading": "Considera-se uso abusivo:",
+          "heading": "The following counts as abusive use:",
           "items": [
-            "A partilha de credenciais de acesso com terceiros;",
-            "A utilização de scripts, bots ou qualquer forma de automação para geração massiva de conteúdos;",
-            "A utilização da conta por múltiplos utilizadores em simultâneo;",
-            "Qualquer outra forma de utilização que exceda manifestamente o padrão de uso individual humano."
+            "Sharing login credentials with third parties;",
+            "Using scripts, bots or any form of automation to generate content in bulk;",
+            "Several people using the account at the same time;",
+            "Any other use that clearly exceeds the pattern of individual human use."
           ]
         },
-        "paragraph3": "Caso o volume de utilização de um utilizador exceda manifestamente a média expectável para um uso individual humano num período de 30 dias, a Scooli reserva-se o direito de:",
+        "paragraph3": "If a user's usage clearly exceeds the average expected for individual human use over a 30-day period, FICTIONAL CLOUD, LDA. reserves the right to:",
         "alphaItems": [
-          "Ajustar temporariamente a velocidade de processamento ou o modelo de IA utilizado;",
-          "Contactar o utilizador para validar a conformidade da utilização;",
-          "Suspender temporariamente o acesso em casos extremos de violação técnica;",
-          "Rescindir a subscrição em caso de violação reiterada ou grave, com devolução proporcional do valor não utilizado."
+          "Temporarily adjust the processing speed or the AI model used;",
+          "Contact the user to confirm that the usage complies with these Terms;",
+          "Temporarily suspend access in extreme cases of technical abuse;",
+          "Terminate the subscription in case of repeated or serious breach, with a proportional refund of the unused amount."
         ],
-        "paragraph4": "A aplicação desta política será sempre proporcional e precedida, sempre que possível, de contacto com o utilizador para esclarecimento."
+        "paragraph4": "This policy will always be applied proportionately and, whenever possible, after contacting the user for clarification."
       },
       "section8": {
-        "title": "8) Propriedade Intelectual, Responsabilidade e Lei Aplicável",
+        "title": "8) Intellectual Property, Liability and Governing Law",
         "items": [
-          "A Scooli (incluindo marca, software e design) é protegida por direitos de propriedade intelectual.",
-          "O serviço é fornecido “tal como está” e pode estar sujeito a indisponibilidades, especialmente em fases beta.",
-          "Na medida permitida por lei, a Scooli não será responsável por perdas indiretas ou consequenciais decorrentes do uso do serviço.",
-          "Estes Termos regem-se pela lei portuguesa, sem prejuízo de normas imperativas aplicáveis."
+          "Scooli (including its brand, software and design) is owned by FICTIONAL CLOUD, LDA. and protected by intellectual property rights.",
+          "The service is provided \"as is\" and may be unavailable at times, especially during beta phases.",
+          "To the extent permitted by law, FICTIONAL CLOUD, LDA. is not liable for indirect or consequential losses arising from the use of the service.",
+          "These Terms are governed by Portuguese law, without prejudice to applicable mandatory rules."
         ],
-        "closingParagraph": "Para privacidade e dados pessoais, consulte a <privacyLink>Política de Privacidade</privacyLink>."
+        "closingParagraph": "For privacy and personal data, see the <privacyLink>Privacy Policy</privacyLink>."
       },
       "section9": {
-        "title": "9) Contacto",
-        "paragraph": "Para questões sobre estes Termos, contacte-nos em <email>info@scooli.app</email>."
+        "title": "9) Contact",
+        "paragraph": "For questions about these Terms, contact us at <email>info@scooli.app</email>."
       }
     },
     "meta": {
       "title": "Terms of Use",
-      "description": "Scooli's Terms of Use: access rules, acceptable use, the Pro Plan's Fair Use Policy, and the service's other conditions. The legally binding version of this document is in Portuguese.",
+      "description": "Scooli's Terms of Use: access rules, acceptable use, the Pro Plan's Fair Use Policy and the other conditions of the service provided by FICTIONAL CLOUD, LDA.",
       "ogTitle": "Terms of Use | Scooli",
       "ogDescription": "Rules for accessing and using the Scooli website and app, including the Pro Plan Fair Use Policy.",
       "ogImageAlt": "Scooli's Terms of Use",
@@ -1620,10 +1510,510 @@
   },
   "shareImage": {
     "alt": "Scooli - AI for teachers",
-    "headline": "AI that gives teachers their time back",
-    "subline": "Presentations, lesson plans, tests and quizzes aligned with the Portuguese curriculum (Aprendizagens Essenciais)",
-    "tagOrigin": "Made in Portugal",
-    "tagPrivacy": "GDPR-ready",
-    "tagCurriculum": "Aprendizagens Essenciais"
+    "headline": "Less time preparing, more time teaching",
+    "subline": "Lesson plans, worksheets, tests, quizzes and slide decks, ready to edit",
+    "tagOrigin": "For teachers",
+    "tagPrivacy": "GDPR compliant",
+    "tagCurriculum": "Structured documents"
+  },
+  "teachers": {
+    "meta": {
+      "title": "Scooli for teachers",
+      "description": "Spend less time preparing the week: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks you can edit, with the school year organised."
+    },
+    "hero": {
+      "eyebrow": "For teachers",
+      "title": "Prepare the week in less time, without starting from scratch.",
+      "description": "Lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, structured and ready to edit for each class.",
+      "secondaryLabel": "See pricing",
+      "checklist": [
+        "Free to start, no card required",
+        "Structured documents, not chat answers",
+        "Everything editable before you use it"
+      ],
+      "imageAlt": "A maths lesson plan being created and opened in Scooli's editor"
+    },
+    "week": {
+      "kicker": "Your week",
+      "title": "What actually changes during the week.",
+      "description": "Scooli fits the tasks that repeat most: planning, creating materials and adapting them for different classes.",
+      "days": [
+        {
+          "label": "Monday",
+          "title": "This week's lessons",
+          "description": "Prepare the week's lesson plans in one go, from your yearly plan."
+        },
+        {
+          "label": "Wednesday",
+          "title": "Consolidation worksheet",
+          "description": "Generate a worksheet on the week's topic and adjust it for the class."
+        },
+        {
+          "label": "Friday",
+          "title": "Quick test or quiz",
+          "description": "Finish a test or quiz without rebuilding the whole structure."
+        }
+      ]
+    },
+    "library": {
+      "kicker": "Shared library",
+      "title": "Start from other teachers' work.",
+      "description": "Browse materials shared by other teachers, duplicate what works and adapt it to your class instead of starting from scratch.",
+      "points": [
+        {
+          "title": "Discover",
+          "description": "Search by subject, grade and type of resource."
+        },
+        {
+          "title": "Duplicate and adapt",
+          "description": "Use a resource as a base and get to a final version faster."
+        },
+        {
+          "title": "Save and reuse",
+          "description": "Keep materials to use again throughout the year."
+        }
+      ],
+      "imageAlt": "Scooli's shared library with search, filters and shared resources"
+    },
+    "finalCta": {
+      "title": "Try it with your next lesson.",
+      "description": "Start free, make a real request for your next lesson and adjust everything to your context before you use it.",
+      "secondaryLabel": "See pricing"
+    }
+  },
+  "booking": {
+    "iframeTitle": "Calendar to book a call with the Scooli team",
+    "openInNewTab": "Open the calendar in a new window",
+    "loading": "Loading the calendar…"
+  },
+  "investors": {
+    "meta": {
+      "title": "Investors: Scooli's vision and numbers",
+      "description": "Scooli prepares each class's week and is building a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
+    },
+    "hero": {
+      "eyebrow": "Investors",
+      "title": "Other tools generate content. Scooli will <em>know every class</em>.",
+      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and is building a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
+      "videoAria": "Demo: the month in Scooli's calendar, one class's week, \"Generate week\" and the lesson plans ready"
+    },
+    "problem": {
+      "kicker": "The problem",
+      "title": "AI generates content. Nobody tracks the curriculum.",
+      "paragraphs": [
+        "Dozens of tools generate lesson plans, worksheets and tests. Any of them can be copied, and the big platforms can add one whenever they like.",
+        "What nobody has is a live model of where each class stands in its curriculum: what was planned, what was taught and what's left. Without it, every request starts from zero and the school can't see what actually happens in lessons."
+      ]
+    },
+    "team": {
+      "kicker": "Team",
+      "title": "Who is building Scooli.",
+      "description": "Engineering, education and growth, with experience at Porto Editora, Portugal's largest school publisher, Talkdesk, Körber, Infios and Corticeira Amorim.",
+      "people": [
+        {
+          "role": "Co-founder · Engineering & AI",
+          "background": "Previously: Körber and Infios"
+        },
+        {
+          "role": "Co-founder · Engineering & AI",
+          "background": "Previously: Porto Editora and Talkdesk"
+        },
+        {
+          "role": "Partner · Growth",
+          "background": "Previously: Corticeira Amorim"
+        },
+        {
+          "role": "Pedagogical advisor",
+          "background": "Primary school teacher"
+        }
+      ],
+      "link": "Meet the team"
+    },
+    "contact": {
+      "kicker": "Contact",
+      "title": "Let's talk.",
+      "deckTitle": "Request the pitch deck",
+      "deckDescription": "Tell us who you are and we'll send you the pitch deck.",
+      "callTitle": "Book a call",
+      "callDescription": "Pick the day and time that suit you, or write to info@scooli.app.",
+      "callCta": "Book a call",
+      "callDialogTitle": "Talk to Scooli",
+      "callDialogDescription": "Book a call with Miguel or leave us a message."
+    },
+    "deckForm": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "companyLabel": "Fund or company (optional)",
+      "noteLabel": "Note (optional)",
+      "submit": "Send me the pitch deck",
+      "sending": "Sending...",
+      "success": "Request received. We'll get back to you with the pitch deck shortly.",
+      "privacy": "We only use your email to reply to you.",
+      "errors": {
+        "invalid": "Please enter your name and a valid email.",
+        "unavailable": "We couldn't send it right now. Write to info@scooli.app."
+      },
+      "defaultMessage": "Request for the Scooli pitch deck."
+    },
+    "numbers": {
+      "label": "Scooli in numbers",
+      "teachers": "teachers on Scooli",
+      "active": "active in the last month",
+      "documents": "documents created",
+      "launchValue": "< 4 weeks",
+      "launch": "to get Scooli running in a new market"
+    },
+    "model": {
+      "kicker": "Business model",
+      "title": "Three tiers, from free to the school.",
+      "description": "Public pricing, in three tiers.",
+      "plans": [
+        {
+          "title": "Free",
+          "price": "€0",
+          "description": "20 credits a month. The way in: every teacher tries it with their real lessons."
+        },
+        {
+          "title": "Pro",
+          "price": "{pro}/month",
+          "description": "For the individual teacher, with no creation limits. Also available as an annual plan."
+        },
+        {
+          "title": "Institutional",
+          "price": "Per school",
+          "description": "For schools and school groups: the curriculum of every class in view, central management and support, priced by number of teachers."
+        }
+      ]
+    },
+    "market": {
+      "kicker": "Market",
+      "title": "We started in Portugal, where we're proving the engine.",
+      "description": "Portugal is the market we know best, so that's where we started and where we're proving the curriculum-execution engine. Entering a new market is mostly a question of distribution: technically, we can have Scooli running in a new country in under 4 weeks.",
+      "roadmapTitle": "Where we're going",
+      "roadmapDescription": "From the class to the school, from the school to the system. The full path is on the roadmap.",
+      "roadmapLink": "See the roadmap"
+    },
+    "moat": {
+      "kicker": "The moat",
+      "title": "Not the AI model. The context that builds up.",
+      "description": "Models will keep getting better and cheaper. What can't be copied is the context of each class, built week by week.",
+      "items": [
+        {
+          "title": "Structured curriculum",
+          "description": "Subjects, grades, domains, topics, objectives and dependencies, as data the AI can use, not as a PDF."
+        },
+        {
+          "title": "The state of every class",
+          "description": "What should have been taught, what was taught, where the class is and what comes next."
+        },
+        {
+          "title": "Execution data",
+          "description": "Planned, taught and assessed, over years. A feature can be copied; two years of lessons' context can't."
+        },
+        {
+          "title": "Workflows that act",
+          "description": "Scooli stops waiting for the request: it updates plans, prepares lessons, spots delays and suggests reinforcement."
+        },
+        {
+          "title": "An institutional network",
+          "description": "Teachers, classes, departments, schools. The more of a school uses it, the more valuable it is to everyone."
+        }
+      ]
+    },
+    "flywheel": {
+      "kicker": "Distribution",
+      "title": "From one teacher to the whole school.",
+      "description": "Teachers are the channel: every teacher who uses Scooli each week brings the school closer to the institutional plan.",
+      "steps": [
+        {
+          "title": "A teacher discovers Scooli",
+          "description": "Organic search and word of mouth between colleagues."
+        },
+        {
+          "title": "Uses it with their classes",
+          "description": "The plan becomes a calendar and each week gets prepared."
+        },
+        {
+          "title": "Invites colleagues",
+          "description": "More teachers from the same school join, each with their own classes."
+        },
+        {
+          "title": "The school adopts the institutional plan",
+          "description": "Leadership sees the curriculum of every class, and the conversation stops being \"want to try it?\"."
+        }
+      ]
+    }
+  },
+  "roadmap": {
+    "meta": {
+      "title": "Roadmap: what exists and what's next",
+      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today, what we're building and what comes next."
+    },
+    "hero": {
+      "eyebrow": "Roadmap",
+      "title": "From planning to the whole school.",
+      "description": "Scooli started by preparing lessons and already shows schools where the curriculum stands in every class. We're building each class's state for the teacher, and the path continues to the whole school. No dates: we ship when it's done well."
+    },
+    "suggest": {
+      "text": "Have a suggestion for Scooli?",
+      "link": "Talk to us"
+    },
+    "legend": {
+      "live": "Available",
+      "building": "In development",
+      "next": "Next"
+    },
+    "phaseLabel": "Phase",
+    "phases": [
+      {
+        "name": "Connect",
+        "title": "Curriculum, plan and calendar in one place",
+        "status": "live",
+        "items": [
+          "Lesson plans, worksheets, tests, quizzes and slide decks",
+          "The curriculum by grade and subject",
+          "Yearly, term or unit plans",
+          "Each class's lesson calendar",
+          "The documents teachers already have",
+          "A school dashboard with the curriculum of every class"
+        ]
+      },
+      {
+        "name": "Remember",
+        "title": "Every class has a state",
+        "status": "building",
+        "items": [
+          "What was planned and what was taught",
+          "What's left in the curriculum",
+          "The class's history through the year"
+        ]
+      },
+      {
+        "name": "Adapt",
+        "title": "Scooli proposes what comes next",
+        "status": "building",
+        "items": [
+          "Reinforce one topic, move another",
+          "Materials differentiated by level",
+          "Calendar and plan updated in one click"
+        ]
+      },
+      {
+        "name": "Act",
+        "title": "The week prepared before you ask",
+        "status": "next",
+        "items": [
+          "Prepares next week on its own",
+          "Flags delays and suggests reinforcement",
+          "Proposes the assessment at the right time"
+        ]
+      },
+      {
+        "name": "Learn",
+        "title": "What students understood",
+        "status": "next",
+        "items": [
+          "Assessment evidence by topic",
+          "Difficulties that repeat across classes",
+          "Suggested interventions based on results"
+        ]
+      },
+      {
+        "name": "Orchestrate",
+        "title": "The whole school in step",
+        "status": "next",
+        "items": [
+          "A view by department and by school",
+          "Shared curriculum and resources",
+          "Integrations and school access controls"
+        ]
+      }
+    ],
+    "today": {
+      "title": "And all of it rests on what already works today",
+      "items": [
+        "A school dashboard with the curriculum of every class",
+        "Lesson plans",
+        "Worksheets",
+        "Tests and quizzes",
+        "Slide decks",
+        "Yearly plans",
+        "Material adaptation",
+        "Upload documents",
+        "\"Generate week\"",
+        "Community library",
+        "School workspace"
+      ]
+    }
+  },
+  "classState": {
+    "kicker": "The state of every class",
+    "title": "Scooli will know where each class stands.",
+    "description": "We're building a live state for every class: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli will use it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
+    "points": [
+      {
+        "title": "Planned and taught, side by side",
+        "text": "See what was planned and what was actually taught, class by class."
+      },
+      {
+        "title": "What's left in the curriculum",
+        "text": "The topics still to cover, the ones that fell behind and how many lessons remain before the next assessment."
+      },
+      {
+        "title": "The right lesson next",
+        "text": "Scooli suggests the adjustment (one more lesson on a topic, move another) and prepares differentiated materials for it."
+      }
+    ],
+    "loopTitle": "A loop that repeats every week",
+    "loop": [
+      {
+        "title": "Curriculum",
+        "text": "What the year asks for"
+      },
+      {
+        "title": "Plan",
+        "text": "What you decided to teach"
+      },
+      {
+        "title": "Lesson taught",
+        "text": "What happened"
+      },
+      {
+        "title": "Class state",
+        "text": "Where we are"
+      },
+      {
+        "title": "Next lesson",
+        "text": "Plan and materials ready"
+      }
+    ],
+    "schoolsLink": "See how a school follows every class",
+    "card": {
+      "label": "Class state",
+      "className": "Class 7B · Mathematics",
+      "completionLabel": "Curriculum covered",
+      "completionValue": 38,
+      "topics": [
+        {
+          "name": "Fractions",
+          "status": "done"
+        },
+        {
+          "name": "Percentages",
+          "status": "done"
+        },
+        {
+          "name": "Proportionality",
+          "status": "progress"
+        },
+        {
+          "name": "Equations",
+          "status": "late"
+        }
+      ],
+      "statusLabels": {
+        "done": "Taught",
+        "progress": "In progress",
+        "late": "Behind"
+      },
+      "calendarNote": "3 lessons before the next assessment",
+      "recommendationTitle": "Scooli recommends",
+      "recommendations": [
+        "One more lesson on Proportionality",
+        "Move Equations back one lesson",
+        "Differentiated exercises ready"
+      ],
+      "action": "Apply to calendar",
+      "caption": "In development · illustrative example"
+    },
+    "school": {
+      "kicker": "For school leaders",
+      "title": "The school's curriculum, class by class.",
+      "description": "Each teacher works on their own classes, and the school sees the state of the curriculum across all of them in one dashboard: who is on track, where there are delays and which topics need reinforcement.",
+      "points": [
+        {
+          "title": "Who is on track and who needs support",
+          "text": "Each class's progress against what the curriculum and the plan call for."
+        },
+        {
+          "title": "Topics holding back several classes",
+          "text": "The same delays repeating across a department are spotted early, not at the end of the term."
+        },
+        {
+          "title": "What hasn't been taught yet",
+          "text": "The objectives still to cover before the end of the term, by subject and by grade."
+        }
+      ],
+      "tableLabel": "Curriculum covered by class",
+      "columns": {
+        "class": "Class",
+        "teacher": "Teacher",
+        "progress": "Curriculum covered",
+        "state": "Status"
+      },
+      "stateLabels": {
+        "ok": "On track",
+        "watch": "Watch",
+        "late": "Behind"
+      },
+      "summaryLabels": {
+        "ok": "on track",
+        "watch": "watch",
+        "late": "behind"
+      },
+      "rows": [
+        {
+          "className": "Class 5A · Mathematics",
+          "teacher": "Ana Ferreira",
+          "progress": 64,
+          "state": "ok"
+        },
+        {
+          "className": "Class 5B · Science",
+          "teacher": "Rita Carvalho",
+          "progress": 58,
+          "state": "ok"
+        },
+        {
+          "className": "Class 6A · Language",
+          "teacher": "João Matos",
+          "progress": 46,
+          "state": "watch"
+        },
+        {
+          "className": "Class 7B · Mathematics",
+          "teacher": "Inês Lopes",
+          "progress": 38,
+          "state": "late"
+        },
+        {
+          "className": "Class 8A · History",
+          "teacher": "Pedro Antunes",
+          "progress": 61,
+          "state": "ok"
+        },
+        {
+          "className": "Class 9A · English",
+          "teacher": "Catarina Sousa",
+          "progress": 49,
+          "state": "watch"
+        }
+      ],
+      "caption": "Illustrative example"
+    },
+    "badge": "In development"
+  },
+  "comparison": {
+    "summary": "Summary",
+    "summaryTitle": "Comparison summary",
+    "detail": "Detailed comparison",
+    "aspect": "Aspect",
+    "why": "Why Scooli",
+    "faq": "Frequently asked questions",
+    "sources": "Sources",
+    "sourcesTitle": "Every claim has a source",
+    "sourcesDescription": "Each statement about another product comes from its public documentation or from independent reviews. When we couldn't find something, we say so instead of asserting it.",
+    "forSchools": "For schools",
+    "pilot": "Talk about a pilot at my school"
   }
 }

@@ -28,13 +28,15 @@ export const pathnames = {
   "/precos": { "pt-PT": "/precos", en: "/pricing" },
   "/ferramentas": { "pt-PT": "/ferramentas", en: "/tools" },
   "/ferramentas/[slug]": { "pt-PT": "/ferramentas/[slug]", en: "/tools/[slug]" },
-  "/biblioteca": { "pt-PT": "/biblioteca", en: "/library" },
   "/professores": { "pt-PT": "/professores", en: "/teachers" },
   "/escolas": { "pt-PT": "/escolas", en: "/schools" },
   "/ia-para-professores": { "pt-PT": "/ia-para-professores", en: "/ai-for-teachers" },
+  "/comparar/[slug]": { "pt-PT": "/comparar/[slug]", en: "/compare/[slug]" },
   "/sobre": { "pt-PT": "/sobre", en: "/about" },
   "/contacto": { "pt-PT": "/contacto", en: "/contact" },
   "/confianca": { "pt-PT": "/confianca", en: "/trust" },
+  "/investidores": { "pt-PT": "/investidores", en: "/investors" },
+  "/roadmap": "/roadmap",
   "/recomendar-instituicao": {
     "pt-PT": "/recomendar-instituicao",
     en: "/recommend-your-school",
@@ -54,4 +56,7 @@ export const routing = defineRouting({
   // Portuguese teachers whose browsers are set to English — which is most of them.
   // Locale is offered, not imposed; the choice is persisted in a cookie.
   localeDetection: false,
+  // hreflang is emitted in the page head and the sitemap; the middleware's Link
+  // header would repeat it with the internal tool slugs.
+  alternateLinks: false,
 });

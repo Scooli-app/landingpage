@@ -69,15 +69,15 @@ export function EmailContact({
         onClick={handleCopy}
         aria-label={t("copyAriaLabel")}
         title={t("copyTitle")}
-        className={`inline-flex items-center gap-2 rounded-lg px-3 py-2 text-[color:var(--scooli-ink)] transition-colors duration-200 hover:bg-[color:var(--scooli-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)] ${className}`}
+        className={`inline-flex items-center gap-2 rounded-md px-3 py-2 text-ink transition-colors hover:bg-stone-soft ${className}`}
       >
-        {showLabel && <span className="text-[color:var(--scooli-muted)]">{t("label")}</span>}
+        {showLabel && <span className="text-subtle">{t("label")}</span>}
         <span className="font-medium">info@scooli.app</span>
         {showIcon &&
           (copied ? (
-            <Check className="h-4 w-4 text-[color:var(--scooli-success)]" />
+            <Check className="h-4 w-4 text-tag-green-ink" />
           ) : (
-            <Copy className="h-4 w-4 text-[color:var(--scooli-muted)]" />
+            <Copy className="h-4 w-4 text-subtle" />
           ))}
       </button>
       <span aria-live="polite" className="sr-only">

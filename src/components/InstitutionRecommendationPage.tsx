@@ -3,22 +3,14 @@
 import { Container } from "@/components/Container";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { errorClass, hintClass, Input, labelClass, textareaClass } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { captureMarketingEvent, getErrorType } from "@/lib/analytics";
 import { EMAIL_REGEX } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
-import {
-  ArrowLeft,
-  BriefcaseBusiness,
-  Building2,
-  Loader2,
-  Mail,
-  Send,
-  User,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
+import { displayTitle, Kicker } from "@/components/site/primitives";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { useId, useState } from "react";
@@ -257,87 +249,72 @@ export function InstitutionRecommendationPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[linear-gradient(180deg,#f8faff_0%,#ffffff_32%,#f6f8fc_100%)] text-[color:var(--scooli-ink)]">
-      <Container className="py-6 sm:py-8">
-        <div className="mx-auto max-w-5xl">
-          <div className="flex items-center justify-between gap-4">
-            <TrackedLink
-              href="/"
-              eventName="marketing_navigation_clicked"
-              eventProperties={{
-                location: "institution_recommendation_logo",
-                link_label: "home_logo",
-              }}
-              className="inline-flex rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
-              aria-label={tFooter("homeAria")}
+    <main id="main-content" tabIndex={-1} className="min-h-screen bg-white">
+      <div className="border-b border-line">
+        <Container className="flex h-16 items-center justify-between gap-4">
+          <TrackedLink
+            href="/"
+            eventName="marketing_navigation_clicked"
+            eventProperties={{
+              location: "institution_recommendation_logo",
+              link_label: "home_logo",
+            }}
+            className="inline-flex rounded-md"
+            aria-label={tFooter("homeAria")}
+          >
+            <Image src="/scooli.svg" alt={tNav("logoAlt")} width={80} height={26} priority />
+          </TrackedLink>
+
+          <TrackedLink
+            href="/escolas"
+            eventName="marketing_navigation_clicked"
+            eventProperties={{
+              location: "institution_recommendation_back_link",
+              link_label: "escolas",
+            }}
+            className="inline-flex items-center gap-2 text-[14.5px] text-subtle transition-colors hover:text-ink"
+          >
+            <ArrowLeft aria-hidden className="size-4" strokeWidth={1.75} />
+            {t("backLabel")}
+          </TrackedLink>
+        </Container>
+      </div>
+
+      <Container className="py-14 md:py-20">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-16">
+          <section>
+            <Kicker>{t("badge")}</Kicker>
+            <h1
+              className={cn(
+                displayTitle,
+                "mt-4 text-[clamp(36px,4.4vw,56px)] leading-[1.06] tracking-[-0.03em]",
+              )}
             >
-              <Image
-                src="/scooli.svg"
-                alt={tNav("logoAlt")}
-                width={92}
-                height={30}
-                priority
-              />
-            </TrackedLink>
+              {t("title")}
+            </h1>
+            <p className="mt-5 text-lg leading-relaxed text-subtle">{t("description")}</p>
 
-            <TrackedLink
-              href="/escolas"
-              eventName="marketing_navigation_clicked"
-              eventProperties={{
-                location: "institution_recommendation_back_link",
-                link_label: "escolas",
-              }}
-              className="inline-flex items-center gap-2 rounded-full border border-[color:var(--scooli-border)] bg-white px-4 py-2 text-sm font-semibold text-[color:var(--scooli-muted)] transition hover:border-[color:var(--scooli-primary)] hover:text-[color:var(--scooli-primary)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--scooli-primary)]"
+            <div className="mt-10 border-t border-line pt-6">
+              <Kicker>{t("noteLabel")}</Kicker>
+              <p className="mt-3 text-[16px] leading-relaxed text-body">{t("noteText")}</p>
+            </div>
+          </section>
+
+          <section className="self-start rounded-xl border border-line-strong bg-white p-6 sm:p-9">
+            <form
+              onSubmit={handleSubmit}
+              noValidate
+              aria-busy={isLoading}
+              className="space-y-5"
             >
-              <ArrowLeft className="h-4 w-4" />
-              {t("backLabel")}
-            </TrackedLink>
-          </div>
-
-          <div className="mt-8 grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-            <section className="space-y-6 lg:pt-6">
-              <div className="space-y-4">
-                <span className="inline-flex w-fit items-center rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
-                  {t("badge")}
-                </span>
-                <div className="space-y-4">
-                  <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl">
-                    {t("title")}
-                  </h1>
-                  <p className="text-lg leading-8 text-[color:var(--scooli-muted)]">
-                    {t("description")}
-                  </p>
-                </div>
-              </div>
-
-              <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">
-                  {t("noteLabel")}
-                </p>
-                <p className="mt-3 text-base leading-8 text-[color:var(--scooli-ink)]">
-                  {t("noteText")}
-                </p>
-              </div>
-            </section>
-
-            <section className="rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-56px_rgba(19,35,58,0.36)] sm:p-8">
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                aria-busy={isLoading}
-                className="space-y-5"
-              >
-                <p className="text-sm text-[color:var(--scooli-muted)]">
-                  {t("form.requiredNote")}
-                </p>
+              <p className={hintClass}>{t("form.requiredNote")}</p>
 
                 <div className="grid gap-5 sm:grid-cols-2">
                   <div className="space-y-2">
                     <Label
                       htmlFor={fieldIds.name}
-                      className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                      className={labelClass}
                     >
-                      <User className="h-3.5 w-3.5 text-slate-400" />
                       {t("form.nameLabel")}
                     </Label>
                     <Input
@@ -351,7 +328,7 @@ export function InstitutionRecommendationPage() {
                         clearFieldError("name");
                       }}
                       maxLength={200}
-                      className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                     
                       disabled={isLoading}
                       autoComplete="name"
                       aria-invalid={Boolean(errors.name)}
@@ -361,7 +338,7 @@ export function InstitutionRecommendationPage() {
                     {errors.name && (
                       <p
                         id={getFieldErrorId("name")}
-                        className="text-sm text-[color:var(--scooli-error)]"
+                        className={errorClass}
                       >
                         {errors.name}
                       </p>
@@ -371,9 +348,8 @@ export function InstitutionRecommendationPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor={fieldIds.email}
-                      className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                      className={labelClass}
                     >
-                      <Mail className="h-3.5 w-3.5 text-slate-400" />
                       {t("form.emailLabel")}
                     </Label>
                     <Input
@@ -386,7 +362,7 @@ export function InstitutionRecommendationPage() {
                         setEmail(event.target.value);
                         clearFieldError("email");
                       }}
-                      className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                     
                       disabled={isLoading}
                       autoComplete="email"
                       aria-invalid={Boolean(errors.email)}
@@ -396,7 +372,7 @@ export function InstitutionRecommendationPage() {
                     {errors.email && (
                       <p
                         id={getFieldErrorId("email")}
-                        className="text-sm text-[color:var(--scooli-error)]"
+                        className={errorClass}
                       >
                         {errors.email}
                       </p>
@@ -408,9 +384,8 @@ export function InstitutionRecommendationPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor={fieldIds.role}
-                      className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                      className={labelClass}
                     >
-                      <BriefcaseBusiness className="h-3.5 w-3.5 text-slate-400" />
                       {t("form.roleLabel")}
                     </Label>
                     <Input
@@ -424,7 +399,7 @@ export function InstitutionRecommendationPage() {
                         clearFieldError("role");
                       }}
                       maxLength={200}
-                      className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                     
                       disabled={isLoading}
                       autoComplete="organization-title"
                       aria-invalid={Boolean(errors.role)}
@@ -434,7 +409,7 @@ export function InstitutionRecommendationPage() {
                     {errors.role && (
                       <p
                         id={getFieldErrorId("role")}
-                        className="text-sm text-[color:var(--scooli-error)]"
+                        className={errorClass}
                       >
                         {errors.role}
                       </p>
@@ -444,9 +419,8 @@ export function InstitutionRecommendationPage() {
                   <div className="space-y-2">
                     <Label
                       htmlFor={fieldIds.institution}
-                      className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                      className={labelClass}
                     >
-                      <Building2 className="h-3.5 w-3.5 text-slate-400" />
                       {t("form.institutionLabel")}
                     </Label>
                     <Input
@@ -460,7 +434,7 @@ export function InstitutionRecommendationPage() {
                         clearFieldError("institution");
                       }}
                       maxLength={200}
-                      className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                     
                       disabled={isLoading}
                       autoComplete="organization"
                       aria-invalid={Boolean(errors.institution)}
@@ -470,7 +444,7 @@ export function InstitutionRecommendationPage() {
                     {errors.institution && (
                       <p
                         id={getFieldErrorId("institution")}
-                        className="text-sm text-[color:var(--scooli-error)]"
+                        className={errorClass}
                       >
                         {errors.institution}
                       </p>
@@ -481,9 +455,8 @@ export function InstitutionRecommendationPage() {
                 <div className="space-y-2">
                   <Label
                     htmlFor={fieldIds.leadershipContact}
-                    className="flex items-center gap-2 text-sm font-medium text-slate-700"
+                    className={labelClass}
                   >
-                    <Users className="h-3.5 w-3.5 text-slate-400" />
                     {t("form.leadershipContactLabel")}
                   </Label>
                   <Input
@@ -497,7 +470,7 @@ export function InstitutionRecommendationPage() {
                       clearFieldError("leadershipContact");
                     }}
                     maxLength={200}
-                    className="h-11 border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
+                   
                     disabled={isLoading}
                     aria-invalid={Boolean(errors.leadershipContact)}
                     aria-describedby={getFieldDescribedBy("leadershipContact")}
@@ -506,7 +479,7 @@ export function InstitutionRecommendationPage() {
                   {errors.leadershipContact && (
                     <p
                       id={getFieldErrorId("leadershipContact")}
-                      className="text-sm text-[color:var(--scooli-error)]"
+                      className={errorClass}
                     >
                       {errors.leadershipContact}
                     </p>
@@ -516,7 +489,7 @@ export function InstitutionRecommendationPage() {
                 <div className="space-y-2">
                   <Label
                     htmlFor={fieldIds.message}
-                    className="text-sm font-medium text-slate-700"
+                    className={labelClass}
                   >
                     {t("form.messageLabel")}
                   </Label>
@@ -530,18 +503,18 @@ export function InstitutionRecommendationPage() {
                       clearFieldError("message");
                     }}
                     maxLength={2000}
-                    className="flex min-h-[160px] w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-xs placeholder:text-slate-400 focus:border-[#6753FF] focus:outline-none focus:ring-1 focus:ring-[#6753FF] disabled:cursor-not-allowed disabled:opacity-50"
+                    className={cn(textareaClass, "min-h-[160px]")}
                     disabled={isLoading}
                     aria-invalid={Boolean(errors.message)}
                     aria-describedby={getFieldDescribedBy("message", fieldIds.ccHint)}
                   />
-                  <p id={fieldIds.ccHint} className="text-xs text-slate-500">
+                  <p id={fieldIds.ccHint} className={hintClass}>
                     {t("form.ccHint")}
                   </p>
                   {errors.message && (
                     <p
                       id={getFieldErrorId("message")}
-                      className="text-sm text-[color:var(--scooli-error)]"
+                      className={errorClass}
                     >
                       {errors.message}
                     </p>
@@ -556,8 +529,8 @@ export function InstitutionRecommendationPage() {
                       className={cn(
                         "text-sm",
                         submitMessage.tone === "error"
-                          ? "text-[color:var(--scooli-error)]"
-                          : "text-emerald-700"
+                          ? "text-tag-red-ink"
+                          : "text-tag-green-ink"
                       )}
                     >
                       {submitMessage.text}
@@ -568,7 +541,7 @@ export function InstitutionRecommendationPage() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="h-12 w-full rounded-xl bg-[color:var(--scooli-primary)] text-base font-semibold text-white transition-all duration-200 hover:bg-[color:var(--scooli-primary-strong)] disabled:cursor-not-allowed disabled:opacity-50"
+                  size="lg" className="w-full"
                 >
                   {isLoading ? (
                     <span className="flex items-center gap-2">
@@ -577,18 +550,17 @@ export function InstitutionRecommendationPage() {
                     </span>
                   ) : (
                     <span className="flex items-center gap-2">
-                      <Send className="h-4 w-4" />
                       {t("form.submitLabel")}
                     </span>
                   )}
                 </Button>
 
-                <p className="text-center text-xs text-slate-400">
+                <p className="text-center text-[13px] text-faint">
                   {t.rich("form.consent", {
                     link: (chunks) => (
                       <Link
                         href="/privacy"
-                        className="text-[color:var(--scooli-primary)] underline hover:text-[color:var(--scooli-primary-strong)]"
+                        className="text-violet-ink underline underline-offset-2"
                       >
                         {chunks}
                       </Link>
@@ -596,8 +568,7 @@ export function InstitutionRecommendationPage() {
                   })}
                 </p>
               </form>
-            </section>
-          </div>
+          </section>
         </div>
       </Container>
     </main>

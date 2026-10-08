@@ -1,5 +1,6 @@
 "use client";
 
+import { BookingEmbed } from "@/components/BookingEmbed";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,7 +9,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+import { errorClass, hintClass, Input, labelClass, textareaClass } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   captureMarketingEvent,
@@ -17,7 +18,7 @@ import {
 import { getFirstContactErrorField, type ContactErrors, type ContactField, validateContactForm } from "@/lib/contactForm";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
-import { Building2, Loader2, Mail, Send, User } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
@@ -51,6 +52,8 @@ export function ContactModal({
   const [errors, setErrors] = useState<ContactErrors>({});
   const [submitMessage, setSubmitMessage] = useState<{ tone: "error" | "success"; text: string } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  // Phones show one panel at a time; from md up both sit side by side.
+  const [panel, setPanel] = useState<"book" | "write">("book");
   const previousOpenRef = useRef(open);
 
   const fieldIds = {
@@ -98,6 +101,7 @@ export function ContactModal({
       setMessage("");
       setErrors({});
       setSubmitMessage(null);
+      setPanel("book");
     }
   }, [open, isLoading]);
 
@@ -192,174 +196,197 @@ export function ContactModal({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md border-slate-200 bg-white sm:max-w-lg">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2 text-xl text-slate-900">
-            <div className="rounded-lg bg-[#6753FF]/10 p-2">
-              <Mail className="h-5 w-5 text-[#6753FF]" />
-            </div>
+      <DialogContent className="border-line-strong bg-white sm:max-w-lg md:max-w-[1040px] md:p-9">
+        <DialogHeader className="md:pr-8">
+          <DialogTitle className="font-display text-[26px] font-medium leading-tight tracking-[-0.015em] text-ink">
             {resolvedTitle}
           </DialogTitle>
-          <DialogDescription className="text-slate-500">{resolvedDescription}</DialogDescription>
+          <DialogDescription className="text-[15px] leading-relaxed text-subtle">{resolvedDescription}</DialogDescription>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-4 pt-2">
-          <p className="text-sm text-slate-500">{t("requiredNote")}</p>
+        <div role="tablist" className="grid grid-cols-2 gap-1 rounded-lg bg-stone-soft p-1 md:hidden">
+          {(["book", "write"] as const).map((option) => (
+            <button
+              key={option}
+              type="button"
+              role="tab"
+              aria-selected={panel === option}
+              onClick={() => setPanel(option)}
+              className={cn(
+                "h-9 rounded-md text-sm transition-colors",
+                panel === option
+                  ? "bg-white font-medium text-ink shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-line-strong"
+                  : "text-subtle hover:text-ink",
+              )}
+            >
+              {option === "book" ? t("bookingHeading") : t("writeHeading")}
+            </button>
+          ))}
+        </div>
 
-          <div className="space-y-2">
-            <Label htmlFor={fieldIds.name} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <User className="h-3.5 w-3.5 text-slate-400" />
-              {t("nameLabel")}
-            </Label>
-            <Input
-              id={fieldIds.name}
-              name="name"
-              type="text"
-              placeholder={t("namePlaceholder")}
-              value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                clearFieldError("name");
-              }}
-              maxLength={200}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
-              disabled={isLoading}
-              autoComplete="name"
-              aria-invalid={Boolean(errors.name)}
-              aria-describedby={getFieldDescribedBy("name")}
-              required
-            />
-            {errors.name && (
-              <p id={getFieldErrorId("name")} className="text-sm text-[color:var(--scooli-error)]">
-                {errors.name}
-              </p>
-            )}
-          </div>
+        <div className="grid gap-8 md:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] md:gap-10">
+          <section aria-label={t("bookingHeading")} className={cn(panel !== "book" && "hidden md:block")}>
+            <h3 className="mb-3 hidden text-[15px] font-semibold text-ink md:block">{t("bookingHeading")}</h3>
+            <BookingEmbed source={source} />
+          </section>
 
-          <div className="space-y-2">
-            <Label htmlFor={fieldIds.email} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <Mail className="h-3.5 w-3.5 text-slate-400" />
-              {t("emailLabel")}
-            </Label>
-            <Input
-              id={fieldIds.email}
-              name="email"
-              type="email"
-              placeholder={t("emailPlaceholder")}
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-                clearFieldError("email");
-              }}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
-              disabled={isLoading}
-              autoComplete="email"
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={getFieldDescribedBy("email", fieldIds.emailHint)}
-              required
-            />
-            <p id={fieldIds.emailHint} className="text-xs text-slate-500">
-              {t("emailHint")}
-            </p>
-            {errors.email && (
-              <p id={getFieldErrorId("email")} className="text-sm text-[color:var(--scooli-error)]">
-                {errors.email}
-              </p>
-            )}
-          </div>
+          <section aria-label={t("writeHeading")} className={cn(panel !== "write" && "hidden md:block")}>
+            <h3 className="mb-3 hidden text-[15px] font-semibold text-ink md:block">{t("writeHeading")}</h3>
+            <form onSubmit={handleSubmit} noValidate aria-busy={isLoading} className="space-y-4">
+              <p className={hintClass}>{t("requiredNote")}</p>
 
-          <div className="space-y-2">
-            <Label htmlFor={fieldIds.organization} className="flex items-center gap-2 text-sm font-medium text-slate-700">
-              <Building2 className="h-3.5 w-3.5 text-slate-400" />
-              {t("organizationLabel")}
-            </Label>
-            <Input
-              id={fieldIds.organization}
-              name="organization"
-              type="text"
-              placeholder={t("organizationPlaceholder")}
-              value={organization}
-              onChange={(e) => setOrganization(e.target.value)}
-              maxLength={200}
-              className="border-slate-200 bg-white focus:border-[#6753FF] focus:ring-[#6753FF]"
-              disabled={isLoading}
-              autoComplete="organization"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor={fieldIds.message} className="text-sm font-medium text-slate-700">
-              {t("messageLabel")}
-            </Label>
-            <textarea
-              id={fieldIds.message}
-              name="message"
-              placeholder={t("messagePlaceholder")}
-              value={message}
-              onChange={(e) => {
-                setMessage(e.target.value);
-                clearFieldError("message");
-              }}
-              maxLength={2000}
-              className="flex min-h-[100px] w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 shadow-xs placeholder:text-slate-400 focus:border-[#6753FF] focus:outline-none focus:ring-1 focus:ring-[#6753FF] disabled:cursor-not-allowed disabled:opacity-50"
-              disabled={isLoading}
-              aria-invalid={Boolean(errors.message)}
-              aria-describedby={getFieldDescribedBy("message", fieldIds.messageHint)}
-              required
-            />
-            <p id={fieldIds.messageHint} className="text-xs text-slate-500">
-              {t("messageHint")}
-            </p>
-            {errors.message && (
-              <p id={getFieldErrorId("message")} className="text-sm text-[color:var(--scooli-error)]">
-                {errors.message}
-              </p>
-            )}
-          </div>
-
-          <div aria-live="polite" className="min-h-6">
-            {submitMessage && (
-              <p
-                id={fieldIds.status}
-                role="status"
-                className={cn(
-                  "text-sm",
-                  submitMessage.tone === "error" ? "text-[color:var(--scooli-error)]" : "text-emerald-700"
+              <div className="space-y-2">
+                <Label htmlFor={fieldIds.name} className={labelClass}>
+                  {t("nameLabel")}
+                </Label>
+                <Input
+                  id={fieldIds.name}
+                  name="name"
+                  type="text"
+                  placeholder={t("namePlaceholder")}
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    clearFieldError("name");
+                  }}
+                  maxLength={200}
+             
+                  disabled={isLoading}
+                  autoComplete="name"
+                  aria-invalid={Boolean(errors.name)}
+                  aria-describedby={getFieldDescribedBy("name")}
+                  required
+                />
+                {errors.name && (
+                  <p id={getFieldErrorId("name")} className={errorClass}>
+                    {errors.name}
+                  </p>
                 )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor={fieldIds.email} className={labelClass}>
+                  {t("emailLabel")}
+                </Label>
+                <Input
+                  id={fieldIds.email}
+                  name="email"
+                  type="email"
+                  placeholder={t("emailPlaceholder")}
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    clearFieldError("email");
+                  }}
+             
+                  disabled={isLoading}
+                  autoComplete="email"
+                  aria-invalid={Boolean(errors.email)}
+                  aria-describedby={getFieldDescribedBy("email", fieldIds.emailHint)}
+                  required
+                />
+                <p id={fieldIds.emailHint} className={hintClass}>
+                  {t("emailHint")}
+                </p>
+                {errors.email && (
+                  <p id={getFieldErrorId("email")} className={errorClass}>
+                    {errors.email}
+                  </p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor={fieldIds.organization} className={labelClass}>
+                  {t("organizationLabel")}
+                </Label>
+                <Input
+                  id={fieldIds.organization}
+                  name="organization"
+                  type="text"
+                  placeholder={t("organizationPlaceholder")}
+                  value={organization}
+                  onChange={(e) => setOrganization(e.target.value)}
+                  maxLength={200}
+             
+                  disabled={isLoading}
+                  autoComplete="organization"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor={fieldIds.message} className={labelClass}>
+                  {t("messageLabel")}
+                </Label>
+                <textarea
+                  id={fieldIds.message}
+                  name="message"
+                  placeholder={t("messagePlaceholder")}
+                  value={message}
+                  onChange={(e) => {
+                    setMessage(e.target.value);
+                    clearFieldError("message");
+                  }}
+                  maxLength={2000}
+                  className={cn(textareaClass, "min-h-[100px]")}
+                  disabled={isLoading}
+                  aria-invalid={Boolean(errors.message)}
+                  aria-describedby={getFieldDescribedBy("message", fieldIds.messageHint)}
+                  required
+                />
+                <p id={fieldIds.messageHint} className={hintClass}>
+                  {t("messageHint")}
+                </p>
+                {errors.message && (
+                  <p id={getFieldErrorId("message")} className={errorClass}>
+                    {errors.message}
+                  </p>
+                )}
+              </div>
+
+              <div aria-live="polite" className="min-h-6">
+                {submitMessage && (
+                  <p
+                    id={fieldIds.status}
+                    role="status"
+                    className={cn(
+                      "text-sm",
+                      submitMessage.tone === "error" ? "text-tag-red-ink" : "text-tag-green-ink"
+                    )}
+                  >
+                    {submitMessage.text}
+                  </p>
+                )}
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isLoading}
+                size="lg" className="w-full"
               >
-                {submitMessage.text}
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                    {t("submittingLabel")}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    {t("submitLabel")}
+                  </div>
+                )}
+              </Button>
+
+              <p className="text-center text-[13px] text-faint">
+                {t.rich("consent", {
+                  link: (chunks) => (
+                    <Link href="/privacy" className="text-violet-ink underline underline-offset-2">
+                      {chunks}
+                    </Link>
+                  ),
+                })}
               </p>
-            )}
-          </div>
-
-          <Button
-            type="submit"
-            disabled={isLoading}
-            className="h-11 w-full rounded-xl bg-gradient-to-r from-[#6753FF] to-[#4E3BC0] font-semibold text-white transition-all duration-200 hover:shadow-lg hover:shadow-[#6753FF]/25 disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            {isLoading ? (
-              <div className="flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
-                {t("submittingLabel")}
-              </div>
-            ) : (
-              <div className="flex items-center gap-2">
-                <Send className="h-4 w-4" />
-                {t("submitLabel")}
-              </div>
-            )}
-          </Button>
-
-          <p className="text-center text-xs text-slate-400">
-            {t.rich("consent", {
-              link: (chunks) => (
-                <Link href="/privacy" className="text-[#6753FF] underline hover:text-[#4E3BC0]">
-                  {chunks}
-                </Link>
-              ),
-            })}
-          </p>
-        </form>
+            </form>
+          </section>
+        </div>
       </DialogContent>
     </Dialog>
   );

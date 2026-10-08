@@ -1,4 +1,5 @@
 import { defaultLocale, locales, pathnames, type Locale } from "./routing";
+import { toEnglishSlug } from "./toolSlugs";
 
 /**
  * Pure URL helpers over the `pathnames` map.
@@ -35,7 +36,8 @@ export type PathnameKey = keyof typeof pathnames;
  * English version would never have been indexed. Two lists that have to agree is
  * the bug. One list plus explicit exceptions cannot drift.
  *
- * Empty today — every route in `pathnames` has authored English copy.
+ * Add a path here when a page exists only in Portuguese (its English route
+ * should then 404 or stay out of the sitemap).
  */
 const notYetLocalized = new Set<string>([]);
 
@@ -71,7 +73,8 @@ export function localizedPathname(
 
   if (params) {
     for (const [key, value] of Object.entries(params)) {
-      resolved = resolved.replace(`[${key}]`, value);
+      const segment = locale === "en" ? toEnglishSlug(path, value) : value;
+      resolved = resolved.replace(`[${key}]`, segment);
     }
   }
 

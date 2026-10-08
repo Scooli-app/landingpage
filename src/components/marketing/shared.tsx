@@ -1,8 +1,9 @@
 import { Container } from "@/components/Container";
 import { Footer } from "@/components/Footer";
-import { TrackedLink } from "@/components/TrackedLink";
 import { MarketingNav } from "@/components/MarketingNav";
-import { Button } from "@/components/ui/button";
+import { Card, displayTitle, Kicker, SectionHeader } from "@/components/site/primitives";
+import { TrackedLink } from "@/components/TrackedLink";
+import { buttonVariants } from "@/components/ui/button";
 import {
   type MarketingEventName,
   type MarketingEventProperties,
@@ -11,14 +12,15 @@ import type { Locale } from "@/i18n/routing";
 import { appSignUpUrl } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
-import {
-  ArrowRight,
-  CheckCircle2,
-  ChevronRight,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
+import { Check, type LucideIcon } from "lucide-react";
 import type { ReactNode } from "react";
+
+/**
+ * Templates shared by the interior pages. They sit on the same primitives as
+ * the homepage (`components/site/primitives.tsx`), so every page reads as one
+ * system: type and space for hierarchy, hairlines instead of boxes, violet
+ * only on actions.
+ */
 
 function toTrackingId(label: string) {
   return label
@@ -29,13 +31,9 @@ function toTrackingId(label: string) {
     .replace(/^_+|_+$/g, "");
 }
 
+/** Small label above a heading. */
 export function MarketingSectionBadge({ children }: { children: ReactNode }) {
-  return (
-    <span className="inline-flex w-fit items-center gap-2 rounded-full border border-[#d9ddff] bg-[color:var(--scooli-accent)] px-4 py-1.5 text-sm font-semibold text-[color:var(--scooli-primary)]">
-      <Sparkles className="h-4 w-4" />
-      {children}
-    </span>
-  );
+  return <Kicker>{children}</Kicker>;
 }
 
 export function MarketingSectionHeading({
@@ -44,33 +42,31 @@ export function MarketingSectionHeading({
   description,
   centered = false,
 }: {
-  eyebrow: string;
-  title: string;
-  description: string;
+  eyebrow?: string;
+  title: ReactNode;
+  description?: ReactNode;
   centered?: boolean;
 }) {
   return (
-    <div className={cn("max-w-3xl space-y-4", centered && "mx-auto text-center")}>
-      <MarketingSectionBadge>{eyebrow}</MarketingSectionBadge>
-      <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl lg:text-5xl">
-        {title}
-      </h2>
-      <p className="text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">{description}</p>
-    </div>
+    <SectionHeader
+      kicker={eyebrow}
+      title={title}
+      description={description}
+      align={centered ? "center" : "left"}
+      className="mb-0 md:mb-0"
+    />
   );
 }
 
 export function PublicSiteShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-transparent text-[color:var(--scooli-ink)]">
-      <header role="banner">
-        <MarketingNav />
-      </header>
-      <main id="main-content" role="main" tabIndex={-1} className="overflow-x-hidden">
+    <>
+      <MarketingNav />
+      <main id="main-content" tabIndex={-1} className="overflow-x-clip">
         {children}
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
@@ -89,11 +85,14 @@ export function PageHero({
   secondaryEventName = "marketing_cta_clicked",
   secondaryEventProperties,
   aside,
+  showActions = true,
   children,
 }: {
-  eyebrow: string;
-  title: string;
-  description: string;
+  eyebrow?: string;
+  title: ReactNode;
+  description: ReactNode;
+  /** Pages like /confianca have nothing to sell in the hero. */
+  showActions?: boolean;
   primaryHref?: string;
   primaryLabel?: string;
   primaryAction?: ReactNode;
@@ -115,86 +114,91 @@ export function PageHero({
   const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
 
   return (
-    <section className="relative isolate pt-8 sm:pt-10">
-      <div className="absolute inset-x-0 top-0 -z-10 h-[540px] bg-[radial-gradient(ellipse_80%_55%_at_50%_-10%,rgba(103,83,255,0.08),transparent)]" />
-      <Container className="pb-12 pt-8 sm:pb-16 lg:pb-20">
-        <div className={cn("grid gap-10 lg:items-center", aside ? "lg:grid-cols-[0.95fr_1.05fr]" : "max-w-4xl")}>
-          <div className="space-y-7">
-            <MarketingSectionBadge>{eyebrow}</MarketingSectionBadge>
-            <div className="space-y-5">
-              <h1 className="font-display text-4xl leading-tight text-[color:var(--scooli-ink)] sm:text-5xl lg:text-6xl">
-                {title}
-              </h1>
-              <p className="max-w-3xl text-lg leading-8 text-[color:var(--scooli-muted)] sm:text-xl">{description}</p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
+    <section className="border-b border-line pb-16 pt-14 md:pb-24 md:pt-20">
+      <Container>
+        <div
+          className={cn(
+            "grid gap-12 lg:items-center",
+            aside ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-16" : "max-w-[820px]",
+          )}
+        >
+          <div>
+            {eyebrow && <Kicker>{eyebrow}</Kicker>}
+            <h1
+              className={cn(
+                displayTitle,
+                // Size before `leading-*`: tailwind-merge drops a line-height
+                // that comes before a font-size class.
+                aside ? "text-[clamp(38px,4.4vw,56px)]" : "text-[clamp(40px,5vw,64px)]",
+                "mt-4 leading-[1.04] tracking-[-0.03em]",
+              )}
+            >
+              {title}
+            </h1>
+            <p className="mt-5 max-w-[620px] text-lg leading-relaxed text-subtle md:text-[19px]">
+              {description}
+            </p>
+            {showActions && (
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
               {primaryAction ?? (
-                <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
-                  <TrackedLink
-                    href={resolvedPrimaryHref}
-                    eventName={primaryEventName}
-                    eventProperties={{
-                      cta_id: `page_hero_${toTrackingId(resolvedPrimaryLabel)}`,
-                      placement: "page_hero_primary",
-                      ...primaryEventProperties,
-                    }}
-                  >
-                    {resolvedPrimaryLabel}
-                    <ArrowRight className="h-4 w-4" />
-                  </TrackedLink>
-                </Button>
+                <TrackedLink
+                  href={resolvedPrimaryHref}
+                  eventName={primaryEventName}
+                  eventProperties={{
+                    cta_id: `page_hero_${toTrackingId(resolvedPrimaryLabel)}`,
+                    placement: "page_hero_primary",
+                    ...primaryEventProperties,
+                  }}
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  {resolvedPrimaryLabel}
+                </TrackedLink>
               )}
               {secondaryAction ??
                 (secondaryHref && secondaryLabel && (
-                  <Button asChild variant="outline" className="h-12 rounded-full px-6 text-base font-semibold">
-                    <TrackedLink
-                      href={secondaryHref}
-                      eventName={secondaryEventName}
-                      eventProperties={{
-                        cta_id: `page_hero_${toTrackingId(secondaryLabel)}`,
-                        placement: "page_hero_secondary",
-                        ...secondaryEventProperties,
-                      }}
-                    >
-                      {secondaryLabel}
-                    </TrackedLink>
-                  </Button>
+                  <TrackedLink
+                    href={secondaryHref}
+                    eventName={secondaryEventName}
+                    eventProperties={{
+                      cta_id: `page_hero_${toTrackingId(secondaryLabel)}`,
+                      placement: "page_hero_secondary",
+                      ...secondaryEventProperties,
+                    }}
+                    className={buttonVariants({ variant: "secondary", size: "lg" })}
+                  >
+                    {secondaryLabel}
+                  </TrackedLink>
                 ))}
             </div>
-            {children}
+            )}
+            {children && <div className="mt-8">{children}</div>}
           </div>
-          {aside}
+          {aside && <div className="min-w-0">{aside}</div>}
         </div>
       </Container>
     </section>
   );
 }
 
+/**
+ * A short statement in a bordered card. `icon` is accepted for older call
+ * sites but no longer drawn: an icon on every card is the look we are avoiding.
+ */
 export function InfoCard({
-  icon: Icon,
   title,
   description,
   tone = "default",
 }: {
-  icon: LucideIcon;
+  icon?: LucideIcon;
   title: string;
   description: string;
   tone?: "default" | "soft";
 }) {
   return (
-    <div
-      className={cn(
-        "rounded-[28px] border p-6 shadow-[0_24px_70px_-50px_rgba(19,35,58,0.35)]",
-        tone === "default" && "border-slate-200/80 bg-white",
-        tone === "soft" && "border-[#d9ddff] bg-[color:var(--scooli-surface-alt)]"
-      )}
-    >
-      <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--scooli-accent)] text-[color:var(--scooli-primary)]">
-        <Icon className="h-5 w-5" />
-      </div>
-      <h3 className="mt-5 text-xl font-semibold text-[color:var(--scooli-ink)]">{title}</h3>
-      <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-muted)] sm:text-[15px]">{description}</p>
-    </div>
+    <Card data-reveal className={cn("p-7", tone === "soft" && "bg-stone-soft")}>
+      <h3 className="text-[17px] font-semibold leading-snug text-ink">{title}</h3>
+      <p className="mt-2 text-[15px] leading-relaxed text-subtle">{description}</p>
+    </Card>
   );
 }
 
@@ -208,28 +212,26 @@ export function StatCard({
   source?: string;
 }) {
   return (
-    <div className="rounded-[28px] border border-slate-200 bg-white p-6 shadow-[0_24px_70px_-56px_rgba(19,35,58,0.28)]">
-      <p className="font-display text-4xl text-[color:var(--scooli-ink)]">{value}</p>
-      <p className="mt-3 text-sm leading-7 text-[color:var(--scooli-ink-soft)]">{label}</p>
-      {source && <p className="mt-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">{source}</p>}
+    <div data-reveal className="border-t border-line-strong pt-6">
+      <p className="font-display text-[40px] font-medium leading-none tracking-[-0.02em] text-ink">
+        {value}
+      </p>
+      <p className="mt-3 text-[15px] leading-relaxed text-body">{label}</p>
+      {source && <p className="mt-2 font-mono text-xs text-faint">{source}</p>}
     </div>
   );
 }
 
 export function SurfacePanel({ children, className }: { children: ReactNode; className?: string }) {
-  return (
-    <div className={cn("rounded-[32px] border border-slate-200 bg-white p-6 shadow-[0_24px_80px_-56px_rgba(19,35,58,0.36)] sm:p-8", className)}>
-      {children}
-    </div>
-  );
+  return <Card className={cn("p-7 md:p-9", className)}>{children}</Card>;
 }
 
 export function Checklist({ items }: { items: string[] }) {
   return (
-    <ul className="grid gap-3 text-sm leading-7 text-[color:var(--scooli-muted)]">
+    <ul className="grid gap-2.5 text-[15px] leading-relaxed text-body">
       {items.map((item) => (
         <li key={item} className="flex items-start gap-3">
-          <CheckCircle2 className="mt-1 h-4 w-4 shrink-0 text-[color:var(--scooli-primary)]" />
+          <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-ink" strokeWidth={1.75} />
           <span>{item}</span>
         </li>
       ))}
@@ -270,47 +272,45 @@ export function PageCtaBanner({
   const resolvedPrimaryHref = primaryHref ?? appSignUpUrl(locale);
 
   return (
-    <SurfacePanel className="bg-[linear-gradient(135deg,rgba(103,83,255,0.10),rgba(255,255,255,0.97)_45%,rgba(59,130,246,0.10))]">
-      <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-        <div className="space-y-4">
-          <h2 className="font-display text-3xl leading-tight text-[color:var(--scooli-ink)] sm:text-4xl">{title}</h2>
-          <p className="max-w-2xl text-base leading-8 text-[color:var(--scooli-muted)] sm:text-lg">{description}</p>
-        </div>
-        <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-          {primaryAction ?? (
-            <Button asChild className="h-12 rounded-full px-6 text-base font-semibold shadow-[0_20px_32px_-18px_rgba(103,83,255,0.45)]">
-              <TrackedLink
-                href={resolvedPrimaryHref}
-                eventName={primaryEventName}
-                eventProperties={{
-                  cta_id: `page_cta_banner_${toTrackingId(resolvedPrimaryLabel)}`,
-                  placement: "page_cta_banner_primary",
-                  ...primaryEventProperties,
-                }}
-              >
-                {resolvedPrimaryLabel}
-                <ArrowRight className="h-4 w-4" />
-              </TrackedLink>
-            </Button>
-          )}
-          {secondaryAction ??
-            (secondaryHref && secondaryLabel && (
-              <TrackedLink
-                href={secondaryHref}
-                eventName={secondaryEventName}
-                eventProperties={{
-                  cta_id: `page_cta_banner_${toTrackingId(secondaryLabel)}`,
-                  placement: "page_cta_banner_secondary",
-                  ...secondaryEventProperties,
-                }}
-                className="inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[color:var(--scooli-primary)]"
-              >
-                {secondaryLabel}
-                <ChevronRight className="h-4 w-4" />
-              </TrackedLink>
-            ))}
-        </div>
+    <div
+      data-reveal
+      className="grid gap-8 rounded-xl border border-line-strong bg-stone-soft p-8 md:p-12 lg:grid-cols-[1fr_auto] lg:items-end"
+    >
+      <div className="max-w-[640px]">
+        <h2 className={cn(displayTitle, "text-[clamp(30px,3.4vw,42px)] leading-[1.1]")}>{title}</h2>
+        <p className="mt-3 text-[17px] leading-relaxed text-subtle">{description}</p>
       </div>
-    </SurfacePanel>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+        {primaryAction ?? (
+          <TrackedLink
+            href={resolvedPrimaryHref}
+            eventName={primaryEventName}
+            eventProperties={{
+              cta_id: `page_cta_banner_${toTrackingId(resolvedPrimaryLabel)}`,
+              placement: "page_cta_banner_primary",
+              ...primaryEventProperties,
+            }}
+            className={buttonVariants({ variant: "primary", size: "lg" })}
+          >
+            {resolvedPrimaryLabel}
+          </TrackedLink>
+        )}
+        {secondaryAction ??
+          (secondaryHref && secondaryLabel && (
+            <TrackedLink
+              href={secondaryHref}
+              eventName={secondaryEventName}
+              eventProperties={{
+                cta_id: `page_cta_banner_${toTrackingId(secondaryLabel)}`,
+                placement: "page_cta_banner_secondary",
+                ...secondaryEventProperties,
+              }}
+              className="px-2 text-[15px] font-medium text-violet-ink hover:underline"
+            >
+              {secondaryLabel} →
+            </TrackedLink>
+          ))}
+      </div>
+    </div>
   );
 }

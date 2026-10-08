@@ -1,17 +1,19 @@
-import { HomePageClient } from "@/components/HomePageClient";
+import { HomePage } from "@/components/homepage/HomePage";
 import { StructuredData } from "@/components/StructuredData";
 import type { Locale } from "@/i18n/routing";
 import { canonicalUrl, hreflangAlternates, localizedUrl } from "@/i18n/urls";
+import { FILM_DURATIONS_SECONDS, FILM_UPLOAD_DATES } from "@/lib/app-media";
 import {
   getHomePageSchemas,
   getHowToSchema,
+  getVideoObjectSchema,
   openGraphLocale,
   SHARE_IMAGE_SIZE,
   shareImageUrl,
   SITE_URL,
 } from "@/lib/seo";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 const ptKeywords = [
   "Scooli",
@@ -87,19 +89,13 @@ const enKeywords = [
   "classroom quizzes",
   "AI presentation generator",
   "slides for lessons",
+  "yearly plan generator",
   "create teaching materials",
   "AI teaching resources",
   "differentiated instruction",
-  "inclusive education",
-  "special educational needs",
   "editable teaching materials",
   "teacher resource library",
-  "teacher community",
-  "Aprendizagens Essenciais",
-  "Portuguese national curriculum",
-  "curriculum alignment",
-  "edtech Portugal",
-  "education technology Portugal",
+  "teacher workload",
 ];
 
 export async function generateMetadata({
@@ -140,21 +136,39 @@ export async function generateMetadata({
   };
 }
 
-const homeSchemas = getHomePageSchemas();
-
 export default async function Home({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
 }) {
   const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: "home.howToSchema" });
+  const tHero = await getTranslations({ locale, namespace: "home.hero" });
+  const homeSchemas = getHomePageSchemas(locale);
 
   const howToSchema = getHowToSchema(
     t("name"),
     t("description"),
     t.raw("steps") as { name: string; text: string }[],
   );
+
+  // VideoObject for the hero product film — the first demo a visitor sees,
+  // and the one most likely to be quoted whole by an AI answer engine. Only
+  // the desktop cut is described: schema.org has no notion of "the same clip,
+  // cropped for phones", and describing both would read as two different
+  // assets pointing at overlapping content.
+  const pageUrl = localizedUrl(SITE_URL, "/", locale);
+  const mediaDir = locale === "en" ? "en" : "pt";
+  const heroVideoSchema = getVideoObjectSchema({
+    name: tHero("videoLabel"),
+    description: tHero("videoAria"),
+    thumbnailUrl: `${SITE_URL}/app/${mediaDir}/hero.jpg`,
+    contentUrl: `${SITE_URL}/app/${mediaDir}/hero.mp4`,
+    pageUrl,
+    uploadDate: FILM_UPLOAD_DATES[locale].hero,
+    durationSeconds: FILM_DURATIONS_SECONDS[locale].hero,
+  });
 
   return (
     <>
@@ -166,8 +180,9 @@ export default async function Home({
         />
       ))}
       <StructuredData id="howto-schema" data={howToSchema} />
+      <StructuredData id="hero-video-schema" data={heroVideoSchema} />
 
-      <HomePageClient />
+      <HomePage />
     </>
   );
 }

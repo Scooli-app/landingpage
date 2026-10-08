@@ -17,7 +17,9 @@ export type MarketingEventName =
   | "marketing_promo_banner_viewed"
   | "marketing_promo_banner_dismissed"
   | "marketing_promo_modal_viewed"
-  | "marketing_promo_modal_dismissed";
+  | "marketing_promo_modal_dismissed"
+  | "marketing_pitch_deck_requested"
+  | "marketing_pitch_deck_failed";
 
 export type MarketingEventProperties = Record<string, unknown>;
 
@@ -72,6 +74,14 @@ export function getPageCategory(pathname = getCurrentPathname()) {
 
   if (pathname === "/sobre") {
     return "about";
+  }
+
+  if (pathname === "/investidores") {
+    return "investors";
+  }
+
+  if (pathname === "/roadmap") {
+    return "roadmap";
   }
 
   if (pathname === "/privacy" || pathname === "/terms") {

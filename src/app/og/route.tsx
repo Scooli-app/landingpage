@@ -20,6 +20,29 @@ import type { NextRequest } from "next/server";
  * an image there would never show up in a share preview. The middleware skips
  * locale routing for `/og`.
  */
+
+/**
+ * The site's display face, subset to the characters actually drawn. If Google
+ * Fonts is unreachable the card still renders, in the default sans.
+ */
+async function loadNewsreader(text: string): Promise<ArrayBuffer | null> {
+  try {
+    const css = await (
+      await fetch(
+        `https://fonts.googleapis.com/css2?family=Newsreader:wght@500&text=${encodeURIComponent(text)}`,
+      )
+    ).text();
+    const source = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/);
+    if (!source) {
+      return null;
+    }
+    const response = await fetch(source[1]);
+    return response.ok ? await response.arrayBuffer() : null;
+  } catch {
+    return null;
+  }
+}
+
 export async function GET(request: NextRequest) {
   const requested = request.nextUrl.searchParams.get("locale");
   const locale = hasLocale(routing.locales, requested)
@@ -31,6 +54,8 @@ export async function GET(request: NextRequest) {
   const logoSvg = await logoResponse.text();
   const logoDataUrl = `data:image/svg+xml,${encodeURIComponent(logoSvg)}`;
   const tags = [t("tagOrigin"), t("tagPrivacy"), t("tagCurriculum")];
+  const headline = t("headline");
+  const display = await loadNewsreader(headline);
 
   return new ImageResponse(
     (
@@ -40,136 +65,60 @@ export async function GET(request: NextRequest) {
           width: "100%",
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "linear-gradient(135deg, #EEF0FF 0%, #FFFFFF 50%, #F4F5F8 100%)",
-          fontFamily: "Inter, system-ui, sans-serif",
-          position: "relative",
+          justifyContent: "space-between",
+          padding: "72px 80px",
+          background: "#FFFFFF",
+          borderBottom: "16px solid #F0EFEB",
         }}
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "-100px",
-            left: "-100px",
-            width: "400px",
-            height: "400px",
-            background: "radial-gradient(circle at center, rgba(103,83,255,0.15), transparent)",
-            borderRadius: "50%",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-150px",
-            right: "-100px",
-            width: "500px",
-            height: "500px",
-            background: "radial-gradient(circle at center, rgba(78,59,192,0.12), transparent)",
-            borderRadius: "50%",
-          }}
-        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={logoDataUrl} alt="Scooli" width={170} height={56} style={{ objectFit: "contain" }} />
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "60px",
-            zIndex: 10,
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              marginBottom: "40px",
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={logoDataUrl}
-              alt="Scooli Logo"
-              width={300}
-              height={120}
-              style={{
-                objectFit: "contain",
-              }}
-            />
-          </div>
-
+        <div style={{ display: "flex", flexDirection: "column" }}>
           <h1
             style={{
-              fontSize: "56px",
-              fontWeight: 700,
-              color: "#0B0D17",
-              textAlign: "center",
-              lineHeight: 1.2,
-              maxWidth: "900px",
+              fontFamily: display ? "Newsreader" : undefined,
+              fontSize: "76px",
+              fontWeight: 500,
+              color: "#111111",
+              lineHeight: 1.04,
+              letterSpacing: "-0.03em",
+              maxWidth: "980px",
               margin: "0 0 24px 0",
             }}
           >
-            {t("headline")}
+            {headline}
           </h1>
-
           <p
             style={{
               fontSize: "28px",
-              color: "#6C6F80",
-              textAlign: "center",
-              maxWidth: "800px",
+              color: "#787774",
               lineHeight: 1.4,
+              maxWidth: "900px",
               margin: 0,
             }}
           >
             {t("subline")}
           </p>
-
-          <div
-            style={{
-              display: "flex",
-              gap: "16px",
-              marginTop: "48px",
-              flexWrap: "wrap",
-              justifyContent: "center",
-            }}
-          >
-            {tags.map((tag) => (
-              <div
-                key={tag}
-                style={{
-                  background: "white",
-                  border: "1px solid #C7C9D9",
-                  borderRadius: "100px",
-                  padding: "12px 24px",
-                  fontSize: "20px",
-                  color: "#2E2F38",
-                  boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-                }}
-              >
-                {tag}
-              </div>
-            ))}
-          </div>
         </div>
 
         <div
           style={{
-            position: "absolute",
-            bottom: "40px",
             display: "flex",
+            justifyContent: "space-between",
             alignItems: "center",
-            gap: "8px",
+            fontSize: "22px",
+            color: "#A3A29E",
           }}
         >
-          <span style={{ fontSize: "24px", color: "#6C6F80" }}>www.scooli.app</span>
+          <span>{tags.join("  ·  ")}</span>
+          <span style={{ color: "#4E3BC0" }}>www.scooli.app</span>
         </div>
       </div>
     ),
     {
       ...SHARE_IMAGE_SIZE,
+      fonts: display ? [{ name: "Newsreader", data: display, weight: 500, style: "normal" }] : [],
     },
   );
 }
