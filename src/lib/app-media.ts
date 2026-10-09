@@ -8,7 +8,7 @@ type AppMedia = {
   /**
    * The hero film (videos/scooli-hero-film, HyperFrames): the year → one week →
    * "Gerar semana" → a lesson's plan → its materials → the weeks that follow.
-   * Phones keep the portrait screen recording.
+   * Phones get its portrait port from videos/scooli-mobile-films.
    */
   heroFilm: VideoAsset;
   /** One short loop per "how it works" step, in step order. */
@@ -37,7 +37,10 @@ const slide = (dir: string, n: number): ImageAsset => ({
   width: 1536,
   height: 864,
 });
-/** A desktop film plus its portrait cut for phones (`<name>-mobile`, 720x900). */
+/**
+ * A desktop film plus its portrait cut for phones (`<name>-mobile`, 1080x1350): a separate film
+ * that zooms into the real recording so the app reads at phone size (videos/scooli-mobile-films).
+ */
 const film = (dir: string, name: string, width: number, height: number): VideoAsset => ({
   src: `/app/${dir}/${name}.mp4`,
   poster: `/app/${dir}/${name}.jpg`,
@@ -46,8 +49,8 @@ const film = (dir: string, name: string, width: number, height: number): VideoAs
   mobile: {
     src: `/app/${dir}/${name}-mobile.mp4`,
     poster: `/app/${dir}/${name}-mobile.jpg`,
-    width: 720,
-    height: 900,
+    width: 1080,
+    height: 1350,
   },
 });
 
