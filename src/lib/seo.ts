@@ -701,7 +701,14 @@ export interface VideoObjectOptions {
   contentUrl: string;
   /** The page the video is embedded on. */
   pageUrl: string;
-  /** ISO 8601 date the asset was published, e.g. "2026-10-06". */
+  /**
+   * Date the asset was published, as a bare ISO 8601 date, e.g. "2026-10-06".
+   * Normalized to a full date-time with a UTC offset before being written
+   * into the schema — Google's structured-data validator rejects a bare
+   * date for `uploadDate` as both "invalid date/time" and "missing
+   * timezone", so callers should keep passing the simple YYYY-MM-DD form
+   * and let `toIso8601UploadDate` do the conversion.
+   */
   uploadDate: string;
   /** Real duration in seconds, measured from the file — see note above. */
   durationSeconds: number;
@@ -714,6 +721,21 @@ function toIso8601Duration(totalSeconds: number): string {
   return `PT${minutes > 0 ? `${minutes}M` : ""}${seconds}S`;
 }
 
+/**
+ * Normalizes `uploadDate` into a full ISO 8601 date-time with an explicit
+ * UTC offset, which is what Google's Video Structured Data validator
+ * requires. A bare date ("2026-10-06") is midnight UTC; a value that
+ * already carries a time component is passed through untouched (adding a
+ * "Z" only if it's missing a timezone designator).
+ */
+function toIso8601UploadDate(date: string): string {
+  if (/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+    return `${date}T00:00:00Z`;
+  }
+  const hasTimezone = /(Z|[+-]\d{2}:?\d{2})$/.test(date);
+  return hasTimezone ? date : `${date}Z`;
+}
+
 export function getVideoObjectSchema(options: VideoObjectOptions) {
   return {
     "@context": "https://schema.org",
@@ -721,7 +743,7 @@ export function getVideoObjectSchema(options: VideoObjectOptions) {
     name: options.name,
     description: options.description,
     thumbnailUrl: [options.thumbnailUrl],
-    uploadDate: options.uploadDate,
+    uploadDate: toIso8601UploadDate(options.uploadDate),
     duration: toIso8601Duration(options.durationSeconds),
     contentUrl: options.contentUrl,
     embedUrl: options.pageUrl,
