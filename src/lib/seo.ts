@@ -712,6 +712,8 @@ export interface VideoObjectOptions {
   uploadDate: string;
   /** Real duration in seconds, measured from the file — see note above. */
   durationSeconds: number;
+  /** The language the video's name/description are actually written in; defaults to Portuguese. */
+  locale?: Locale;
 }
 
 function toIso8601Duration(totalSeconds: number): string {
@@ -748,7 +750,7 @@ export function getVideoObjectSchema(options: VideoObjectOptions) {
     contentUrl: options.contentUrl,
     embedUrl: options.pageUrl,
     isFamilyFriendly: true,
-    inLanguage: SITE_LANGUAGE,
+    inLanguage: options.locale ?? SITE_LANGUAGE,
     publisher: {
       "@id": `${SITE_URL}/#organization`,
     },

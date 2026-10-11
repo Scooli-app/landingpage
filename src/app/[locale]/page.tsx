@@ -168,6 +168,7 @@ export default async function Home({
     pageUrl,
     uploadDate: FILM_UPLOAD_DATES[locale].hero,
     durationSeconds: FILM_DURATIONS_SECONDS[locale].hero,
+    locale,
   });
 
   return (
