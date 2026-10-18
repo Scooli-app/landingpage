@@ -53,11 +53,28 @@ export type ToolHowToStep = {
 
 export type ToolLayout = "planning" | "assessment";
 
+export type ToolHeadings = {
+  practice?: string;
+  faq?: string;
+  cta?: string;
+  /** Name of the HowTo structured data ("Como criar um quiz na Scooli"). */
+  howTo?: string;
+};
+
 export type ToolPageContent = {
   slug: string;
   title: string;
   shortTitle: string;
   description: string;
+  /** Search-result title when it should differ from `title` (which is also the schema/OG name). */
+  metaTitle?: string;
+  /** Search-result snippet when it should differ from the hero `description`. */
+  metaDescription?: string;
+  /**
+   * Section titles that replace the shared "{tool}" templates, for tools whose
+   * name doesn't read well dropped into them ("O que muda com gerador de testes").
+   */
+  headings?: ToolHeadings;
   hero: string;
   useCases: string[];
   outputs: string[];

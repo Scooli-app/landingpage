@@ -41,8 +41,8 @@ export async function generateMetadata({
   }
 
   return getPageMetadata({
-    title: tool.title,
-    description: tool.description,
+    title: tool.metaTitle ?? tool.title,
+    description: tool.metaDescription ?? tool.description,
     path: "/ferramentas/[slug]",
     params: { slug: tool.slug },
     keywords: tool.seoKeywords,
@@ -76,8 +76,8 @@ export default async function ToolPage({
 
   const breadcrumbSchema = getBreadcrumbSchema(breadcrumbItems);
   const webPageSchema = getWebPageSchema({
-    title: tool.title,
-    description: tool.description,
+    title: tool.metaTitle ?? tool.title,
+    description: tool.metaDescription ?? tool.description,
     url,
     breadcrumb: breadcrumbItems,
     locale,
@@ -85,7 +85,7 @@ export default async function ToolPage({
   });
   const faqSchema = getFAQPageSchema(tool.faq);
   const howToSchema = getHowToSchema(
-    tDetail("howToName", { tool: tool.shortTitle.toLowerCase() }),
+    tool.headings?.howTo ?? tDetail("howToName", { tool: tool.shortTitle.toLowerCase() }),
     tool.description,
     tool.howToSteps,
   );

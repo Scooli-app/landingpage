@@ -48,6 +48,14 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Planificações com IA alinhadas com as Aprendizagens Essenciais",
       shortTitle: "Planificações",
       description: "Crie planificações de unidades, períodos e anos com as Aprendizagens Essenciais e o DL 55/2018 integrados desde o início.",
+      metaTitle: "Planificações com IA: anual, de período e de unidade",
+      metaDescription:
+        "Faça planificações anuais, de período e de unidade com IA, com as Aprendizagens Essenciais e o DL 55/2018 integrados. Edite e exporte para Word e PDF.",
+      headings: {
+        practice: "Como encaixar as planificações na sua rotina",
+        cta: "Faça a sua próxima planificação na Scooli",
+        howTo: "Como criar uma planificação na Scooli",
+      },
       hero: "O início do ano letivo que custava dias inteiros de planificação — agora demora minutos.",
       useCases: ["Planificação anual", "Planificação de unidade didática", "Planificação por período"],
       outputs: ["Sequência de aulas com descritores AE", "Referência ao DL 55/2018 e flexibilidade curricular", "Instrumentos e momentos de avaliação"],
@@ -89,6 +97,16 @@ export const marketingContentPtPT: MarketingContent = {
           question: "Posso gerar uma planificação anual completa?",
           answer: "Sim. Pode pedir uma planificação anual, por período ou de unidade — a Scooli gera a estrutura e os objetivos, que ficam editáveis para afinar ao seu contexto.",
         },
+        {
+          question: "Em que formatos posso exportar a planificação?",
+          answer:
+            "Pode exportar a planificação para Word ou PDF, ou continuar a editá-la na Scooli ao longo do ano.",
+        },
+        {
+          question: "Posso experimentar grátis?",
+          answer:
+            "Sim. Pode começar grátis, sem cartão, e criar materiais reais para as suas turmas antes de decidir. Os limites de cada plano estão na página de preços.",
+        },
       ],
       relatedLinks: [
         { label: "Ver planos letivos", href: toolHref("sequencias-de-aulas") },
@@ -128,6 +146,15 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Plano de aula com IA para professores — preparação em minutos",
       shortTitle: "Plano de aula",
       description: "Gere um plano de aula com objetivos, sequência de atividades, materiais e avaliação — tudo editável e pronto a usar.",
+      metaTitle: "Plano de aula com IA: planificação de aula em minutos",
+      metaDescription:
+        "Gere planos de aula com objetivos alinhados com as Aprendizagens Essenciais, atividades, materiais e avaliação. Tudo editável, para aulas de 45 a 90 minutos.",
+      headings: {
+        practice: "Como usar o plano de aula na sua rotina",
+        faq: "Dúvidas sobre planos de aula com IA",
+        cta: "Prepare o próximo plano de aula na Scooli",
+        howTo: "Como criar um plano de aula na Scooli",
+      },
       hero: "Prepare uma aula completa em minutos e afine antes de entrar na sala.",
       useCases: ["Aula nova de raiz", "Adaptar para outra turma", "Substituição de última hora"],
       outputs: ["Objetivos e competências", "Sequência de atividades com duração", "Materiais e avaliação formativa"],
@@ -208,6 +235,14 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Planos letivos com IA — organize o ano letivo sessão a sessão",
       shortTitle: "Planos letivos",
       description: "Defina a disciplina, o período e o horário. A Scooli distribui as aulas pelo calendário — com o tópico de cada sessão sugerido — e gera o plano de aula quando precisar.",
+      metaTitle: "Planos letivos com IA: o período organizado aula a aula",
+      metaDescription:
+        "Indique a disciplina, o período e o horário: a Scooli distribui as aulas pelo calendário, sugere o tópico de cada sessão e gera o plano de aula quando precisar.",
+      headings: {
+        practice: "Como usar os planos letivos na sua rotina",
+        cta: "Organize o seu plano letivo na Scooli",
+        howTo: "Como criar um plano letivo na Scooli",
+      },
       hero: "Distribua os tópicos pelas aulas do período — e gere o plano de cada sessão quando chegar a hora.",
       useCases: ["Organizar o período completo", "Distribuir o programa pelo ano", "Preparar a estrutura antes de começar"],
       outputs: ["Aulas distribuídas pelo horário com tópico por sessão", "Distribuição do programa no tempo", "Plano de aula gerado a partir de qualquer sessão"],
@@ -288,7 +323,16 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Gerador de testes com IA para professores",
       shortTitle: "Gerador de testes",
       description: "Crie testes com perguntas diversificadas, cotação e critérios, partindo de um pedido simples ou de um documento seu.",
-      hero: "Crie testes estruturados em minutos e ajuste o nível antes de imprimir ou exportar.",
+      metaTitle: "Gerador de testes com IA para testes de avaliação",
+      metaDescription:
+        "Faça testes de avaliação com IA: escolha múltipla, resposta curta e desenvolvimento, com cotação e critérios de correção. Edite tudo antes de imprimir.",
+      headings: {
+        howTo: "Como criar um teste de avaliação na Scooli",
+        practice: "Quando usar o gerador de testes",
+        faq: "Dúvidas sobre testes de avaliação com IA",
+        cta: "Prepare o próximo teste de avaliação com a Scooli",
+      },
+      hero: "Crie testes de avaliação em minutos e ajuste o nível antes de imprimir ou exportar.",
       useCases: ["Teste diagnóstico", "Avaliação intermédia", "Versão adaptada para outra turma"],
       outputs: ["Perguntas de escolha múltipla", "Perguntas de resposta curta", "Critérios de correção"],
       benefits: [
@@ -334,6 +378,31 @@ export const marketingContentPtPT: MarketingContent = {
           answer:
             "Sim. Pode pedir uma versão mais simples, mais curta ou com outro nível de dificuldade sem reconstruir tudo de novo.",
         },
+        {
+          question: "O teste inclui cotação e critérios de correção?",
+          answer:
+            "Sim. Cada teste vem com a cotação por item e critérios de correção, que pode rever e ajustar antes de entregar aos alunos.",
+        },
+        {
+          question: "Os testes seguem as Aprendizagens Essenciais?",
+          answer:
+            "Sim. Os testes partem das Aprendizagens Essenciais do ano e da disciplina que indicar. A revisão final é sempre sua.",
+        },
+        {
+          question: "Posso criar um teste a partir de uma ficha ou documento meu?",
+          answer:
+            "Sim. Pode carregar um documento, como uma ficha, um texto ou um teste antigo, e usá-lo como base para um novo teste de avaliação.",
+        },
+        {
+          question: "Em que formatos posso exportar o teste?",
+          answer:
+            "Pode exportar o teste para Word ou PDF, pronto a imprimir.",
+        },
+        {
+          question: "Posso experimentar grátis?",
+          answer:
+            "Sim. Pode começar grátis, sem cartão, e criar materiais reais para as suas turmas antes de decidir. Os limites de cada plano estão na página de preços.",
+        },
       ],
       relatedLinks: [
         { label: "Ver fichas de trabalho", href: toolHref("fichas-de-trabalho") },
@@ -373,6 +442,13 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Gerador de fichas de trabalho com IA para professores",
       shortTitle: "Fichas de trabalho",
       description: "Crie fichas de trabalho com exercícios, instruções claras e versões por nível para rever, imprimir e adaptar à turma.",
+      metaTitle: "Fichas de trabalho com IA: crie e imprima em minutos",
+      metaDescription:
+        "Faça fichas de trabalho e fichas formativas com IA: indique o tema e o ano e receba exercícios e versões por nível, prontos a imprimir. Comece grátis.",
+      headings: {
+        howTo: "Como criar uma ficha de trabalho na Scooli",
+        cta: "Faça a sua primeira ficha de trabalho na Scooli",
+      },
       hero: "Crie fichas de trabalho em minutos e adapte-as à turma antes de imprimir.",
       useCases: ["Consolidação", "Trabalho de casa", "Apoio a diferentes ritmos"],
       outputs: ["Exercícios diferenciados", "Instruções claras", "Versões por nível"],
@@ -419,6 +495,26 @@ export const marketingContentPtPT: MarketingContent = {
           answer:
             "Sim. Se já tem um texto, uma ficha antiga ou outro material, pode usá-lo como base e transformar esse conteúdo numa nova ficha de trabalho.",
         },
+        {
+          question: "Posso fazer fichas formativas com a Scooli?",
+          answer:
+            "Sim. Indique que quer uma ficha formativa, o tema e o ano, e a Scooli gera exercícios para verificar a compreensão antes da avaliação. Pode ajustar a dificuldade e o número de exercícios antes de imprimir.",
+        },
+        {
+          question: "As fichas seguem as Aprendizagens Essenciais?",
+          answer:
+            "Sim. As fichas partem das Aprendizagens Essenciais do ano e da disciplina que indicar. Ainda assim, reveja sempre a ficha antes de a usar com a turma.",
+        },
+        {
+          question: "Em que formatos posso exportar a ficha?",
+          answer:
+            "Pode exportar a ficha para Word ou PDF, ou continuar a editá-la na Scooli até estar como quer.",
+        },
+        {
+          question: "Posso experimentar grátis?",
+          answer:
+            "Sim. Pode começar grátis, sem cartão, e criar materiais reais para as suas turmas antes de decidir. Os limites de cada plano estão na página de preços.",
+        },
       ],
       relatedLinks: [
         { label: "Adaptar materiais por nível", href: toolHref("adaptacao-de-materiais") },
@@ -458,6 +554,13 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Quizzes com IA para revisão e participação em aula",
       shortTitle: "Quizzes",
       description: "Crie quizzes rápidos para rever conteúdos, testar compreensão e dinamizar o ritmo da aula.",
+      metaDescription:
+        "Crie quizzes com IA para rever conteúdos e testar a compreensão: escolha o tema e o ano, ajuste as perguntas e use-as na aula. Comece grátis.",
+      headings: {
+        practice: "Quando usar quizzes nas aulas",
+        cta: "Crie o seu primeiro quiz na Scooli",
+        howTo: "Como criar um quiz na Scooli",
+      },
       hero: "Prepare quizzes rápidos para rever matéria sem perder tempo na montagem.",
       useCases: ["Revisão no fim da aula", "Aquecimento", "Diagnóstico rápido"],
       outputs: ["Perguntas rápidas", "Escolha múltipla", "Versão curta"],
@@ -543,6 +646,13 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Apresentações com IA para introduzir e explicar conteúdos",
       shortTitle: "Apresentações",
       description: "Estruture apresentações com tópicos, exemplos e ritmo de aula, prontas para afinar e completar.",
+      metaTitle: "Apresentações com IA para explicar conteúdos na aula",
+      metaDescription:
+        "Crie apresentações com IA para introduzir e explicar conteúdos, com tópicos, exemplos e ritmo de aula definidos, prontas a editar antes de projetar.",
+      headings: {
+        cta: "Prepare a próxima apresentação na Scooli",
+        howTo: "Como criar uma apresentação na Scooli",
+      },
       hero: "Monte a base de uma apresentação em minutos e refine apenas o essencial.",
       useCases: ["Introdução de tema", "Aula expositiva", "Síntese de unidade"],
       outputs: ["Estrutura de slides", "Tópicos principais", "Exemplos visuais"],
@@ -628,6 +738,13 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Adaptação de materiais com IA para níveis diferentes",
       shortTitle: "Adaptação de materiais",
       description: "Parta de um material base e gere versões mais simples, mais curtas ou com apoio adicional sem refazer o trabalho.",
+      metaDescription:
+        "Adapte fichas, testes e textos com IA: versões mais simples, mais curtas ou com apoio adicional, tendo em conta o DL 54/2018, sem refazer o material.",
+      headings: {
+        practice: "O que pode adaptar com a Scooli",
+        cta: "Adapte o próximo material na Scooli",
+        howTo: "Como adaptar materiais na Scooli",
+      },
       hero: "Adapte um material à turma certa sem começar tudo de novo.",
       useCases: ["Simplificar linguagem", "Reduzir extensão", "Criar apoio adicional"],
       outputs: ["Versão simplificada", "Versão resumida", "Apoio adicional"],
@@ -713,6 +830,14 @@ export const marketingContentPtPT: MarketingContent = {
       title: "Carregar documentos e transformar materiais com IA",
       shortTitle: "Carregar documentos",
       description: "Parta de um documento seu e transforme-o em fichas, testes ou versões adaptadas com menos trabalho manual.",
+      metaDescription:
+        "Carregue um documento seu, como uma ficha antiga ou um texto, e transforme-o com IA em fichas, testes ou versões adaptadas, prontas a editar.",
+      headings: {
+        practice: "O que pode fazer com os seus documentos",
+        faq: "Dúvidas sobre partir de documentos seus",
+        cta: "Transforme um documento seu na Scooli",
+        howTo: "Como transformar um documento seu na Scooli",
+      },
       hero: "Use documentos que já tem e transforme-os em novos recursos mais depressa.",
       useCases: ["Aproveitar materiais antigos", "Adaptar um teste", "Criar ficha a partir de texto"],
       outputs: ["Ficha a partir de documento", "Teste a partir de texto", "Nova versão adaptada"],

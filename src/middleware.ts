@@ -16,6 +16,12 @@ const redirectableHosts = new Set([canonicalHost, apexHost]);
 
 const intlMiddleware = createMiddleware(routing);
 
+/** Portuguese route segments that can show up under /en from old links. */
+const PT_TO_EN_SEGMENT: Record<string, string> = {
+  ferramentas: "tools",
+  comparar: "compare",
+};
+
 /**
  * Paths locale routing must not touch: API routes, Next internals, the PostHog
  * proxy rewrites, the social share image (`/og`, which takes the locale as a
@@ -51,12 +57,27 @@ export function middleware(request: NextRequest) {
   // Tool and comparison pages have English slugs (see `i18n/toolSlugs.ts`). The
   // Portuguese slug under /en redirects to the English one; the English one is
   // served by rewriting to the internal slug before locale routing runs.
-  const slugMatch = /^\/en\/(tools|compare)\/([^/]+)\/?$/.exec(request.nextUrl.pathname);
+  //
+  // The Portuguese segment under /en (`/en/ferramentas/plano-de-aula`) is caught
+  // here too and sent to the final URL in one permanent hop. Left to next-intl it
+  // got a temporary 307 to `/en/tools/plano-de-aula` and then a second redirect.
+  const slugMatch = /^\/en\/(tools|compare|ferramentas|comparar)(?:\/([^/]+))?\/?$/.exec(
+    request.nextUrl.pathname,
+  );
   if (slugMatch) {
-    const [, segment, slug] = slugMatch;
+    const [, rawSegment, slug] = slugMatch;
+    const segment = PT_TO_EN_SEGMENT[rawSegment] ?? rawSegment;
+    if (!slug) {
+      if (segment !== rawSegment) {
+        const redirectUrl = request.nextUrl.clone();
+        redirectUrl.pathname = `/en/${segment}`;
+        return NextResponse.redirect(redirectUrl, 301);
+      }
+      return intlMiddleware(request);
+    }
     const routePath = EN_SEGMENT_TO_PATH[segment];
     const english = toEnglishSlug(routePath, slug);
-    if (english !== slug) {
+    if (english !== slug || segment !== rawSegment) {
       const redirectUrl = request.nextUrl.clone();
       redirectUrl.pathname = `/en/${segment}/${english}`;
       return NextResponse.redirect(redirectUrl, 301);

@@ -123,7 +123,7 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
         ? t("eyebrowAssessment")
         : t("eyebrowDefault");
 
-  const practice =
+  const practiceBase =
     layout === "planning"
       ? {
           kicker: tPlanning("practiceEyebrow"),
@@ -141,6 +141,7 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
             title: tDefault("practiceTitle", { tool: toolName }),
             description: tDefault("practiceDescription"),
           };
+  const practice = { ...practiceBase, title: tool.headings?.practice ?? practiceBase.title };
 
   const how =
     layout === "planning"
@@ -324,7 +325,7 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
             <SectionHeader
               id="tool-faq-title"
               kicker={t("faq.eyebrow")}
-              title={t("faq.title", { tool: toolName })}
+              title={tool.headings?.faq ?? t("faq.title", { tool: toolName })}
               description={t("faq.description")}
               className="mb-8 md:mb-8"
             />
@@ -364,7 +365,7 @@ export function ToolLandingPage({ tool }: { tool: ToolPageData }) {
 
         <div className="mt-20 md:mt-28">
           <PageCtaBanner
-            title={t("cta.title", { tool: toolName })}
+            title={tool.headings?.cta ?? t("cta.title", { tool: toolName })}
             description={t("cta.description")}
             secondaryHref="/ferramentas"
             secondaryLabel={tCommon("allTools")}

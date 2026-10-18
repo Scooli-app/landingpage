@@ -15,6 +15,15 @@ const nextConfig: NextConfig = {
       { source: "/en/library", destination: "/en/teachers#biblioteca", permanent: true },
       // Teachers looking for the app on the marketing domain.
       { source: "/dashboard", destination: "https://create.scooli.app/dashboard", permanent: true },
+      // Old slugs for the AI-for-teachers page. Search Console still shows them
+      // with clicks, and they 404 since the slugs were consolidated.
+      { source: "/ia-professores", destination: "/ia-para-professores", permanent: true },
+      { source: "/ia-for-professores", destination: "/ia-para-professores", permanent: true },
+      { source: "/ia-for-teachers", destination: "/en/ai-for-teachers", permanent: true },
+      { source: "/en/ia-for-teachers", destination: "/en/ai-for-teachers", permanent: true },
+      // Portuguese has no locale prefix; an old `/pt/...` URL is still indexed.
+      { source: "/pt", destination: "/", permanent: true },
+      { source: "/pt/:path*", destination: "/:path*", permanent: true },
     ];
   },
 

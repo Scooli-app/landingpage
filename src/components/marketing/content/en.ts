@@ -53,6 +53,11 @@ export const marketingContentEn: MarketingContent = {
       title: "AI unit and year plans, structured and ready to edit",
       shortTitle: "Unit plans",
       description: "Plan a unit, a term or a full year with objectives, a lesson sequence and assessment already laid out — then adjust it to your class.",
+      metaTitle: "AI unit plan and year plan generator",
+      headings: {
+        cta: "Build your next unit plan with Scooli",
+        howTo: "How to create a unit plan in Scooli",
+      },
       hero: "The start of the school year used to cost whole days of planning. Now it takes minutes.",
       useCases: ["Year plan", "Unit plan", "Term plan"],
       outputs: ["Learning objectives for the unit", "A lesson sequence across the term", "Assessment points and instruments"],
@@ -132,6 +137,11 @@ export const marketingContentEn: MarketingContent = {
       title: "AI lesson plan generator — a full lesson prepared in minutes",
       shortTitle: "Lesson plans",
       description: "Get a lesson plan with objectives, a timed activity sequence, materials and assessment — editable and ready to teach from.",
+      metaTitle: "AI lesson plan generator for teachers",
+      headings: {
+        cta: "Plan your next lesson with Scooli",
+        howTo: "How to create a lesson plan in Scooli",
+      },
       hero: "Prepare a complete lesson in minutes, then fine-tune it before you walk into the room.",
       useCases: ["A brand new lesson", "Adapting for another class", "Last-minute cover"],
       outputs: ["Objectives and competences", "Timed activity sequence", "Materials and formative assessment"],
@@ -211,6 +221,13 @@ export const marketingContentEn: MarketingContent = {
       title: "AI teaching plans — map the school year lesson by lesson",
       shortTitle: "Teaching plans",
       description: "Set the subject, the term and your timetable. Scooli lays the lessons out across the calendar with a suggested topic for each one, and generates the lesson plan whenever you need it.",
+      metaTitle: "AI teaching plan generator: the term, lesson by lesson",
+      metaDescription:
+        "Set the subject, term and timetable. Scooli lays your lessons across the calendar with a suggested topic for each, then generates lesson plans when you need them.",
+      headings: {
+        cta: "Lay out your teaching plan with Scooli",
+        howTo: "How to create a teaching plan in Scooli",
+      },
       hero: "Spread your topics across the term's lessons — then generate each lesson plan when the day comes.",
       useCases: ["Map a full term", "Spread the syllabus over the year", "Set the structure before term starts"],
       outputs: ["Lessons laid out on your timetable with a topic each", "The syllabus distributed over time", "A lesson plan generated from any session"],
@@ -291,6 +308,14 @@ export const marketingContentEn: MarketingContent = {
       title: "AI test generator for teachers",
       shortTitle: "Test generator",
       description: "Build tests with varied question types, marks and a mark scheme — from a short description or from a document you already have.",
+      metaDescription:
+        "Generate tests with AI: multiple-choice, short-answer and extended questions, with marks and a mark scheme. Edit everything before you print. Free to start.",
+      headings: {
+        howTo: "How to create a test in Scooli",
+        practice: "When to use the test generator",
+        faq: "Questions about generating tests with AI",
+        cta: "Build your next test with Scooli",
+      },
       hero: "Build a structured test in minutes, then set the difficulty before you print or export.",
       useCases: ["Diagnostic test", "Mid-unit assessment", "A version for another class"],
       outputs: ["Multiple-choice questions", "Short-answer questions", "Mark scheme"],
@@ -337,6 +362,26 @@ export const marketingContentEn: MarketingContent = {
           answer:
             "Yes. Ask for a simpler, shorter or harder version without rebuilding the paper from scratch.",
         },
+        {
+          question: "Does the test come with marks and a mark scheme?",
+          answer:
+            "Yes. Each test includes marks per question and a mark scheme, which you can review and adjust before it reaches students.",
+        },
+        {
+          question: "Can I build a test from my own worksheet or document?",
+          answer:
+            "Yes. Upload a document, such as a worksheet, a text or an old test, and use it as the starting point for a new test.",
+        },
+        {
+          question: "What formats can I export a test to?",
+          answer:
+            "You can export the test to Word or PDF, ready to print.",
+        },
+        {
+          question: "Can I try it for free?",
+          answer:
+            "Yes. You can start free, with no card, and create real materials for your classes before you decide. The limits of each plan are on the pricing page.",
+        },
       ],
       relatedLinks: [
         { label: "See worksheets", href: toolHref("fichas-de-trabalho") },
@@ -376,6 +421,12 @@ export const marketingContentEn: MarketingContent = {
       title: "AI worksheet generator for teachers",
       shortTitle: "Worksheets",
       description: "Create worksheets with exercises, clear instructions and versions by level — ready to review, print and adapt to your class.",
+      metaDescription:
+        "Generate printable worksheets with AI from a topic and grade level: exercises, clear instructions and levelled versions you can edit first. Free to start.",
+      headings: {
+        howTo: "How to create a worksheet in Scooli",
+        cta: "Make your first worksheet with Scooli",
+      },
       hero: "Create a worksheet in minutes and shape it around your class before you print.",
       useCases: ["Consolidation", "Homework", "Supporting different paces"],
       outputs: ["Differentiated exercises", "Clear instructions", "Versions by level"],
@@ -422,6 +473,16 @@ export const marketingContentEn: MarketingContent = {
           answer:
             "Yes. If you already have a text, an old worksheet or any other material, use it as the starting point and turn it into a new worksheet.",
         },
+        {
+          question: "What formats can I export a worksheet to?",
+          answer:
+            "You can export the worksheet to Word or PDF, or keep editing it in Scooli until it is right.",
+        },
+        {
+          question: "Can I try it for free?",
+          answer:
+            "Yes. You can start free, with no card, and create real materials for your classes before you decide. The limits of each plan are on the pricing page.",
+        },
       ],
       relatedLinks: [
         { label: "Adapt materials by level", href: toolHref("adaptacao-de-materiais") },
@@ -461,6 +522,14 @@ export const marketingContentEn: MarketingContent = {
       title: "AI quizzes for revision and classroom participation",
       shortTitle: "Quizzes",
       description: "Build quick quizzes to revise content, check understanding and change the pace of a lesson.",
+      metaTitle: "AI quiz generator for teachers",
+      metaDescription:
+        "Generate quizzes with AI to revise content and check understanding. Pick the topic and grade level, edit the questions, then use them in class. Free to start.",
+      headings: {
+        practice: "When to use quizzes in class",
+        cta: "Create your first quiz with Scooli",
+        howTo: "How to create a quiz in Scooli",
+      },
       hero: "Put together a quick revision quiz without losing the lesson time to building it.",
       useCases: ["End-of-lesson revision", "A warm-up", "A quick diagnostic"],
       outputs: ["Fast questions", "Multiple choice", "A short version"],
@@ -546,6 +615,14 @@ export const marketingContentEn: MarketingContent = {
       title: "AI slides for introducing and explaining new content",
       shortTitle: "Slides",
       description: "Structure a presentation with talking points, examples and classroom pacing, ready to refine and finish.",
+      metaTitle: "AI slide deck generator for teachers",
+      metaDescription:
+        "Generate slide decks with AI to introduce and explain new content: talking points, examples and pacing, ready to edit before you present. Free to start.",
+      headings: {
+        faq: "Questions about slide decks",
+        cta: "Build your next slide deck with Scooli",
+        howTo: "How to create a slide deck in Scooli",
+      },
       hero: "Get the structure of a presentation in minutes and spend your time only on what matters.",
       useCases: ["Introducing a topic", "A lecture-style lesson", "End-of-unit summary"],
       outputs: ["Slide structure", "Key talking points", "Worked examples"],
@@ -631,6 +708,15 @@ export const marketingContentEn: MarketingContent = {
       title: "AI material adaptation for different levels",
       shortTitle: "Material adaptation",
       description: "Take one source material and produce simpler, shorter or more scaffolded versions without redoing the work.",
+      metaTitle: "AI differentiation tool: adapt materials by level",
+      metaDescription:
+        "Adapt worksheets, tests and texts with AI: simpler, shorter or more scaffolded versions of the same material, without redoing it. Free to start.",
+      headings: {
+        practice: "What you can adapt with Scooli",
+        faq: "Questions about adapting materials",
+        cta: "Adapt your next resource with Scooli",
+        howTo: "How to adapt a resource in Scooli",
+      },
       hero: "Adapt a resource to the right class without starting it again.",
       useCases: ["Simplify the language", "Cut the length", "Add scaffolding"],
       outputs: ["Simplified version", "Condensed version", "Scaffolded version"],
@@ -716,6 +802,13 @@ export const marketingContentEn: MarketingContent = {
       title: "Upload documents and turn your own materials into new resources",
       shortTitle: "Upload documents",
       description: "Start from a document you already have and turn it into worksheets, tests or adapted versions with far less manual work.",
+      metaTitle: "Turn your documents into worksheets and tests with AI",
+      headings: {
+        practice: "What you can do with your own documents",
+        faq: "Questions about starting from your documents",
+        cta: "Turn one of your documents into a resource",
+        howTo: "How to turn your document into a resource in Scooli",
+      },
       hero: "Use the documents you already have and turn them into new resources, faster.",
       useCases: ["Reuse older materials", "Adapt an existing test", "Build a worksheet from a text"],
       outputs: ["A worksheet from a document", "A test from a text", "An adapted version"],
