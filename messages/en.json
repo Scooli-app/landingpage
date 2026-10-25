@@ -103,9 +103,9 @@
   },
   "home": {
     "meta": {
-      "title": "Scooli | AI for teachers: prepare the week's lessons",
+      "title": "Scooli | The school year, prepared week by week",
       "description": "Scooli lays out each class's lessons from your yearly plan and prepares the week: lesson plans, worksheets, tests and slide decks you can edit.",
-      "ogTitle": "Scooli | AI for teachers: prepare the week's lessons",
+      "ogTitle": "Scooli | The school year, prepared week by week",
       "ogDescription": "Lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, with the whole school year organised in one place.",
       "twitterTitle": "Scooli | Less time preparing, more time teaching",
       "twitterDescription": "Scooli stays with teachers through the school year and creates the week's resources, ready to review and edit."
@@ -1044,6 +1044,50 @@
           "Everything editable, so the final say stays yours"
         ]
       }
+    },
+    "quickAnswer": {
+      "kicker": "In short",
+      "title": "What is Scooli, in a few words?",
+      "paragraphs": [
+        "Scooli is AI software for teachers who want to prepare lessons with less repetitive work. Instead of asking a chat for text and reorganising it by hand, you start from a document ready to edit: lesson plan, worksheet, test, quiz or slide deck.",
+        "It is built around how teaching works: each class has its own calendar, each lesson starts from your yearly plan, and every document stays editable, so the final say stays yours."
+      ]
+    },
+    "whenToChoose": {
+      "title": "When Scooli makes sense",
+      "items": [
+        "When you want to prepare materials faster and still review everything",
+        "When you need documents that follow your yearly plan, not generic text",
+        "When you want the week organised by class, not one-off answers",
+        "When you want ready-to-use documents, not just a chatbot conversation"
+      ]
+    },
+    "tools": {
+      "kicker": "What you can create",
+      "title": "One tool for each task of the week.",
+      "description": "Each tool has its own page, with examples and common questions."
+    },
+    "trust": {
+      "kicker": "Why trust it",
+      "title": "Built for how teachers actually work.",
+      "items": [
+        {
+          "title": "Follows your plan",
+          "description": "Each material starts from the class's yearly plan, subject and grade, not from a blank prompt."
+        },
+        {
+          "title": "One place for the week",
+          "description": "Lessons, materials and exports live in each class's calendar, instead of scattered chats and files."
+        },
+        {
+          "title": "Everything editable",
+          "description": "Scooli prepares the starting point; you review it and decide what reaches the class."
+        },
+        {
+          "title": "Privacy in the open",
+          "description": "Privacy and usage rules are public, on the Trust page."
+        }
+      ]
     }
   },
   "pricingPage": {

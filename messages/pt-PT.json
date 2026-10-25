@@ -103,9 +103,9 @@
   },
   "home": {
     "meta": {
-      "title": "Scooli | IA para professores: prepare a semana de aulas",
+      "title": "Scooli | O ano letivo preparado semana a semana",
       "description": "A Scooli organiza as aulas de cada turma e prepara a semana: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais.",
-      "ogTitle": "Scooli | IA para professores: prepare a semana de aulas",
+      "ogTitle": "Scooli | O ano letivo preparado semana a semana",
       "ogDescription": "Planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais, com o ano letivo inteiro organizado.",
       "twitterTitle": "Scooli | Menos tempo a preparar, mais tempo a ensinar",
       "twitterDescription": "A Scooli acompanha o professor ao longo do ano letivo e cria os recursos da semana, alinhados com as Aprendizagens Essenciais."
@@ -942,8 +942,8 @@
   },
   "aiForTeachers": {
     "meta": {
-      "title": "IA para professores: prepare a semana inteira",
-      "description": "Plataforma de IA para professores em Portugal: organiza as aulas de cada turma e prepara planos de aula, fichas, testes e apresentações editáveis.",
+      "title": "IA para professores em Portugal",
+      "description": "Plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais: planos de aula, fichas, testes e apresentações editáveis, organizados por turma.",
       "keywords": [
         "ia para professores",
         "ia para professores em portugal",
@@ -1018,8 +1018,8 @@
     ],
     "hero": {
       "eyebrow": "IA para professores",
-      "title": "IA para professores que prepara a <em>semana inteira</em>.",
-      "description": "A Scooli organiza as aulas de cada turma a partir da sua planificação e prepara os planos de aula, fichas, testes e apresentações de que precisa, alinhados com as Aprendizagens Essenciais. O professor revê, ajusta e dá a aula.",
+      "title": "IA para professores em Portugal, alinhada com as <em>Aprendizagens Essenciais</em>.",
+      "description": "A Scooli é uma plataforma de IA para professores em Portugal. Cria planos de aula, fichas de trabalho, testes, quizzes e apresentações editáveis, alinhados com as Aprendizagens Essenciais, e organiza as aulas de cada turma a partir da sua planificação. O professor revê, ajusta e dá a aula.",
       "secondaryLabel": "Ver as ferramentas",
       "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em «Gerar semana» prepara os planos de aula e um deles abre pronto a editar"
     },
@@ -1061,6 +1061,50 @@
           "Alinhados com as Aprendizagens Essenciais do ano e da disciplina"
         ]
       }
+    },
+    "quickAnswer": {
+      "kicker": "Em resumo",
+      "title": "O que é a Scooli, em poucas palavras?",
+      "paragraphs": [
+        "A Scooli é software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de pedir texto a um chat e reorganizar tudo à mão, o professor começa com um documento pronto a editar: plano de aula, ficha, teste, quiz ou apresentação.",
+        "Foi feita para a escola portuguesa: escreve em português de Portugal, segue as Aprendizagens Essenciais do ano e da disciplina e tem em conta os DL 54/2018 e 55/2018 quando adapta materiais."
+      ]
+    },
+    "whenToChoose": {
+      "title": "Quando faz sentido escolher a Scooli",
+      "items": [
+        "Quando quer preparar materiais mais depressa sem abdicar de rever tudo",
+        "Quando precisa de materiais alinhados com as Aprendizagens Essenciais, não de texto genérico",
+        "Quando quer português de Portugal e o contexto da escola portuguesa",
+        "Quando quer documentos prontos a usar, não apenas conversar com um chatbot"
+      ]
+    },
+    "tools": {
+      "kicker": "O que pode criar",
+      "title": "Uma ferramenta para cada tarefa da semana.",
+      "description": "Cada ferramenta tem a sua página, com exemplos e perguntas frequentes."
+    },
+    "trust": {
+      "kicker": "Porque confiar",
+      "title": "Pensada para a escola portuguesa.",
+      "items": [
+        {
+          "title": "Aprendizagens Essenciais",
+          "description": "Cada material segue as aprendizagens do ano e da disciplina, em vez de partir de um texto genérico."
+        },
+        {
+          "title": "Português de Portugal",
+          "description": "A linguagem, os exemplos e os modelos são os da escola portuguesa."
+        },
+        {
+          "title": "Tudo editável",
+          "description": "A Scooli prepara a base; o professor revê e decide o que leva para a aula."
+        },
+        {
+          "title": "Privacidade à vista",
+          "description": "As regras de privacidade e de utilização estão públicas, na página Confiança."
+        }
+      ]
     }
   },
   "pricingPage": {
