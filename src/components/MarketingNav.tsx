@@ -257,7 +257,7 @@ export function MarketingNav() {
         role="region"
         aria-label={t("mobileMenuLabel")}
         style={{ top: panelTop }}
-        className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-white lg:hidden"
+        className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto overscroll-contain bg-white lg:hidden"
       >
         <Container className="flex min-h-full flex-col py-4">
           <p className="pt-2 font-mono text-xs uppercase tracking-[0.06em] text-subtle">
