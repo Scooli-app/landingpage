@@ -49,6 +49,13 @@
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
 
+  /*
+   * 600px instead of Tailwind's 640px: the iPhone Duo's inner screen is 626px
+   * wide unfolded, and should get the two-up layouts rather than a stretched
+   * phone layout.
+   */
+  --breakpoint-sm: 37.5rem;
+
   --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
 
   --animate-accordion-down: accordion-down 0.25s var(--ease-out-soft);
