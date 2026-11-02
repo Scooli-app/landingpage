@@ -86,7 +86,7 @@ function FreePlanCard() {
   const t = useTranslations("pricingSection.free");
   const locale = useLocale() as Locale;
   const href = appSignUpUrl(locale);
-  const credits = PRICING.free.generationsPerMonth;
+  const credits = PRICING.free.credits;
   const features = (t.raw("features") as string[]).map((_, index) =>
     t(`features.${index}`, { credits }),
   );

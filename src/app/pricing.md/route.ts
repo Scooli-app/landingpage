@@ -16,7 +16,7 @@ function buildPricing() {
     "",
     "## Free",
     "- Price: EUR 0",
-    `- Limits: ${PRICING.free.generationsPerMonth} credits per month (one credit per document generated)`,
+    `- Limits: ${PRICING.free.credits} credits in total, with no monthly reset (one credit per document generated)`,
     "- Includes: lesson plans, worksheets, tests, quizzes, slide decks, yearly plans, community library, editor, basic export",
     "",
     "## Pro",

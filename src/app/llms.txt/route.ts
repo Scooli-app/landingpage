@@ -38,7 +38,7 @@ function buildLlmsText() {
       "- Not a student-facing tutor, not an LMS, not a general chatbot.",
     ]),
     buildSection("Pricing", [
-      `- Free: ${PRICING.free.generationsPerMonth} credits per month.`,
+      `- Free: ${PRICING.free.credits} credits.`,
       `- Pro: EUR ${PRICING.pro_monthly.price.toFixed(2)} per month, or EUR ${PRICING.pro_annual.price.toFixed(2)} per year (${PRICING.pro_annual.savings} off). No creation limits, subject to a fair-use policy.`,
       "- Institutional plan for schools and school groups: priced by number of teachers, on request. Includes a school dashboard, seat management, an internal library, training and privacy documentation. Starts with a supported pilot.",
       `- Machine-readable: ${SITE_URL}/pricing.md`,

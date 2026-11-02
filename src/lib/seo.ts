@@ -143,7 +143,7 @@ export function getPageMetadata({
 // Pricing constants (in cents and euros)
 export const PRICING = {
   free: {
-    generationsPerMonth: 20,
+    credits: 20,
     price: 0,
   },
   pro_monthly: {
@@ -260,7 +260,7 @@ const schemaCopy = {
     audience: "Professores",
     offers: {
       free: "Plano Gratuito",
-      freeDescription: `${PRICING.free.generationsPerMonth} créditos por mês`,
+      freeDescription: `${PRICING.free.credits} créditos`,
       monthly: "Scooli Pro Mensal",
       monthlyDescription: "Geração ilimitada, modelos avançados e suporte prioritário",
       annual: "Scooli Pro Anual",
@@ -296,7 +296,7 @@ const schemaCopy = {
     audience: "Teachers",
     offers: {
       free: "Free plan",
-      freeDescription: `${PRICING.free.generationsPerMonth} credits per month`,
+      freeDescription: `${PRICING.free.credits} credits`,
       monthly: "Scooli Pro Monthly",
       monthlyDescription: "Unlimited generation, advanced models and priority support",
       annual: "Scooli Pro Annual",
