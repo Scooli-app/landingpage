@@ -232,7 +232,7 @@
         "kicker": "Para professores",
         "title": "Recupere as horas da preparação.",
         "description": "Comece grátis e experimente com as suas aulas reais.",
-        "price": "<b>Grátis</b> com créditos todos os meses · <b>Pro</b> a {price}/mês",
+        "price": "<b>Grátis</b> com 20 créditos · <b>Pro</b> a {price}/mês",
         "link": "Ver preços",
         "imageAlt": "Painel da Scooli com as próximas aulas já geradas e o campo para pedir um novo recurso"
       },
@@ -1013,7 +1013,7 @@
       },
       {
         "question": "Quanto custa?",
-        "answer": "Há um plano gratuito com 20 créditos por mês e um plano Pro sem limites de criação. As escolas e agrupamentos têm um plano institucional, com gestão central da equipa e um piloto antes de decidir."
+        "answer": "Há um plano gratuito com 20 créditos e um plano Pro sem limites de criação. As escolas e agrupamentos têm um plano institucional, com gestão central da equipa e um piloto antes de decidir."
       }
     ],
     "hero": {
@@ -1110,7 +1110,7 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: grátis, Pro e plano para escolas",
-      "description": "Preços simples da Scooli: plano grátis com 20 créditos por mês, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
+      "description": "Preços simples da Scooli: plano grátis com 20 créditos, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
     },
     "hero": {
       "eyebrow": "Preços",
@@ -1229,9 +1229,9 @@
       "price": "Grátis",
       "period": "para sempre",
       "description": "Para conhecer a Scooli e criar os primeiros materiais.",
-      "creditsBadge": "{credits} créditos/mês",
+      "creditsBadge": "{credits} créditos",
       "features": [
-        "{credits} créditos por mês",
+        "{credits} créditos",
         "Acesso à biblioteca comunitária",
         "Exportação básica",
         "Editor para rever e ajustar"
@@ -1515,7 +1515,7 @@
         "title": "6) Créditos, Plano Pro e Cancelamentos",
         "intro": "Algumas funcionalidades dependem do limite de créditos de cada plano.",
         "items": [
-          "O plano gratuito inclui 20 créditos por mês.",
+          "O plano gratuito inclui 20 créditos.",
           "Preços, funcionalidades e limites podem ser atualizados ao longo do tempo.",
           "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na secção 7."
         ],
@@ -1645,7 +1645,7 @@
   "booking": {
     "iframeTitle": "Calendário para marcar uma reunião com a equipa Scooli",
     "openInNewTab": "Abrir o calendário numa nova janela",
-    "loading": "A carregar o calendário…"
+    "loading": "A carregar o calendário… Se não aparecer, use o botão acima."
   },
   "investors": {
     "meta": {
@@ -1732,7 +1732,7 @@
         {
           "title": "Grátis",
           "price": "€0",
-          "description": "20 créditos por mês. A porta de entrada: cada professor experimenta com as suas aulas reais."
+          "description": "20 créditos. A porta de entrada: cada professor experimenta com as suas aulas reais."
         },
         {
           "title": "Pro",

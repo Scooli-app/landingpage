@@ -232,7 +232,7 @@
         "kicker": "For teachers",
         "title": "Win back your planning hours.",
         "description": "Start free and try it with your real lessons.",
-        "price": "<b>Free</b> with credits every month · <b>Pro</b> at {price}/month",
+        "price": "<b>Free</b> with 20 credits · <b>Pro</b> at {price}/month",
         "link": "See pricing",
         "imageAlt": "Scooli's dashboard with upcoming lessons already generated and the box to ask for a new resource"
       },
@@ -996,7 +996,7 @@
       },
       {
         "question": "How much does it cost?",
-        "answer": "There is a free plan with 20 credits a month and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
+        "answer": "There is a free plan with 20 credits and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
       }
     ],
     "hero": {
@@ -1093,7 +1093,7 @@
   "pricingPage": {
     "meta": {
       "title": "Pricing: free, Pro and a plan for schools",
-      "description": "Simple Scooli pricing: a free plan with 20 credits a month, Pro with no creation limits, and an institutional plan for schools and school groups."
+      "description": "Simple Scooli pricing: a free plan with 20 credits, Pro with no creation limits, and an institutional plan for schools and school groups."
     },
     "hero": {
       "eyebrow": "Pricing",
@@ -1212,9 +1212,9 @@
       "price": "Free",
       "period": "forever",
       "description": "For getting to know Scooli and creating your first materials.",
-      "creditsBadge": "{credits} credits/month",
+      "creditsBadge": "{credits} credits",
       "features": [
-        "{credits} credits a month",
+        "{credits} credits",
         "Access to the community library",
         "Basic export",
         "Editor for reviewing and adjusting"
@@ -1498,7 +1498,7 @@
         "title": "6) Credits, Pro Plan and Cancellations",
         "intro": "Some features depend on each plan's credit limit.",
         "items": [
-          "The free plan includes 20 credits per month.",
+          "The free plan includes 20 credits.",
           "Prices, features and limits may be updated over time.",
           "The Pro Plan's \"unlimited\" access is subject to the Fair Use Policy described in section 7."
         ],
@@ -1628,7 +1628,7 @@
   "booking": {
     "iframeTitle": "Calendar to book a call with the Scooli team",
     "openInNewTab": "Open the calendar in a new window",
-    "loading": "Loading the calendar…"
+    "loading": "Loading the calendar… If it doesn't appear, use the button above."
   },
   "investors": {
     "meta": {
@@ -1715,7 +1715,7 @@
         {
           "title": "Free",
           "price": "€0",
-          "description": "20 credits a month. The way in: every teacher tries it with their real lessons."
+          "description": "20 credits. The way in: every teacher tries it with their real lessons."
         },
         {
           "title": "Pro",
