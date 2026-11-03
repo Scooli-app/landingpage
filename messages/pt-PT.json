@@ -106,9 +106,9 @@
       "title": "Scooli | O ano letivo preparado semana a semana",
       "description": "A Scooli organiza as aulas de cada turma e prepara a semana: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais.",
       "ogTitle": "Scooli | O ano letivo preparado semana a semana",
-      "ogDescription": "Planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais, com o ano letivo inteiro organizado.",
-      "twitterTitle": "Scooli | Menos tempo a preparar, mais tempo a ensinar",
-      "twitterDescription": "A Scooli acompanha o professor ao longo do ano letivo e cria os recursos da semana, alinhados com as Aprendizagens Essenciais."
+      "ogDescription": "A partir da sua planificação, a Scooli distribui as aulas pelo ano e prepara cada semana consigo, pronta a usar.",
+      "twitterTitle": "Scooli | O ano letivo preparado semana a semana",
+      "twitterDescription": "A partir da sua planificação, a Scooli distribui as aulas pelo ano e prepara cada semana consigo, pronta a usar."
     },
     "howToSchema": {
       "name": "Como usar a Scooli para criar materiais de aula",
@@ -1571,8 +1571,9 @@
   },
   "shareImage": {
     "alt": "Scooli - IA para professores em Portugal",
-    "headline": "Menos tempo a preparar, mais tempo a ensinar",
-    "subline": "Planos de aula, fichas, testes, quizzes e apresentações alinhados com as Aprendizagens Essenciais",
+    "headline": "O ano letivo inteiro, preparado",
+    "headlineEm": "semana a semana.",
+    "subline": "Planos de aula, fichas, testes e apresentações para cada turma, alinhados com as Aprendizagens Essenciais e prontos a editar.",
     "tagOrigin": "Made in Portugal",
     "tagPrivacy": "RGPD",
     "tagCurriculum": "Aprendizagens Essenciais"
