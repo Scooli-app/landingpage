@@ -618,7 +618,7 @@
     "next": {
       "kicker": "Where we're going",
       "title": "From the first day of school to the last.",
-      "description": "We're building the state of every class, so Scooli can use what's been taught and decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
+      "description": "Scooli already keeps the state of every class and uses what's been taught to decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
     }
   },
   "schools": {
@@ -1634,12 +1634,12 @@
   "investors": {
     "meta": {
       "title": "Investors: Scooli's vision and numbers",
-      "description": "Scooli prepares each class's week and is building a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
+      "description": "Scooli prepares each class's week and keeps a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
     },
     "hero": {
       "eyebrow": "Investors",
-      "title": "Other tools generate content. Scooli will <em>know every class</em>.",
-      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and is building a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
+      "title": "Other tools generate content. Scooli <em>knows every class</em>.",
+      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and keeps a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
       "videoAria": "Demo: the month in Scooli's calendar, one class's week, \"Generate week\" and the lesson plans ready"
     },
     "problem": {
@@ -1792,12 +1792,12 @@
   "roadmap": {
     "meta": {
       "title": "Roadmap: what exists and what's next",
-      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today, what we're building and what comes next."
+      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today and what comes next."
     },
     "hero": {
       "eyebrow": "Roadmap",
       "title": "From planning to the whole school.",
-      "description": "Scooli started by preparing lessons and already shows schools where the curriculum stands in every class. We're building each class's state for the teacher, and the path continues to the whole school. No dates: we ship when it's done well."
+      "description": "Scooli started by preparing lessons. Today every class has a state, for the teacher and for the school, and Scooli proposes what comes next. From here, the path leads to the week prepared before you ask. No dates: we ship when it's done well."
     },
     "suggest": {
       "text": "Have a suggestion for Scooli?",
@@ -1805,7 +1805,6 @@
     },
     "legend": {
       "live": "Available",
-      "building": "In development",
       "next": "Next"
     },
     "phaseLabel": "Phase",
@@ -1826,7 +1825,7 @@
       {
         "name": "Remember",
         "title": "Every class has a state",
-        "status": "building",
+        "status": "live",
         "items": [
           "What was planned and what was taught",
           "What's left in the curriculum",
@@ -1836,7 +1835,7 @@
       {
         "name": "Adapt",
         "title": "Scooli proposes what comes next",
-        "status": "building",
+        "status": "live",
         "items": [
           "Reinforce one topic, move another",
           "Materials differentiated by level",
@@ -1893,8 +1892,8 @@
   },
   "classState": {
     "kicker": "The state of every class",
-    "title": "Scooli will know where each class stands.",
-    "description": "We're building a live state for every class: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli will use it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
+    "title": "Scooli knows where each class stands.",
+    "description": "Every class has a live state: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli uses it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
     "points": [
       {
         "title": "Planned and taught, side by side",
@@ -1969,7 +1968,7 @@
         "Differentiated exercises ready"
       ],
       "action": "Apply to calendar",
-      "caption": "In development · illustrative example"
+      "caption": "Illustrative example"
     },
     "school": {
       "kicker": "For school leaders",
@@ -2045,8 +2044,7 @@
         }
       ],
       "caption": "Illustrative example"
-    },
-    "badge": "In development"
+    }
   },
   "comparison": {
     "summary": "Summary",
