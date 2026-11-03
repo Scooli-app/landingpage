@@ -24,8 +24,8 @@ export async function generateMetadata({
 }
 
 /**
- * The public roadmap: available, in development, next. No dates. Anything not
- * shipped stays in the last two columns and is worded as such.
+ * The public roadmap: available, then next. No dates. Anything not shipped is
+ * marked "next" and worded as such.
  */
 export default async function RoadmapPage({
   params,

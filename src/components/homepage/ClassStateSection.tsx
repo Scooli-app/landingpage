@@ -1,5 +1,5 @@
 import { ClassStateCard } from "@/components/site/ClassStateCard";
-import { Kicker, Section, Tag, displayTitle } from "@/components/site/primitives";
+import { Kicker, Section, displayTitle } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
 import { cn } from "@/lib/utils";
 import { BookOpen, CalendarRange, CheckCheck, Gauge, RefreshCw, Sparkles } from "lucide-react";
@@ -21,10 +21,7 @@ export function ClassStateSection({ id = "estado-da-turma" }: { id?: string }) {
     <Section id={id} aria-labelledby={`${id}-title`}>
       <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)] lg:gap-20">
         <div data-reveal>
-          <div className="flex flex-wrap items-center gap-3">
-            <Kicker>{t("kicker")}</Kicker>
-            <Tag tone="violet">{t("badge")}</Tag>
-          </div>
+          <Kicker>{t("kicker")}</Kicker>
           <h2
             id={`${id}-title`}
             className={cn(displayTitle, "mt-3 text-[clamp(34px,4.4vw,56px)] leading-[1.05] tracking-[-0.03em]")}

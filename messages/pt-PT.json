@@ -629,7 +629,7 @@
     "next": {
       "kicker": "Para onde vamos",
       "title": "Do primeiro ao último dia de aulas.",
-      "description": "Estamos a construir o estado de cada turma, para a Scooli usar o que já foi dado e decidir o que vem a seguir. O caminho leva-nos da aula de amanhã à escola inteira, sempre com o professor a decidir."
+      "description": "A Scooli já guarda o estado de cada turma e usa o que já foi dado para decidir o que vem a seguir. O caminho leva-nos da aula de amanhã à escola inteira, sempre com o professor a decidir."
     }
   },
   "schools": {
@@ -1651,12 +1651,12 @@
   "investors": {
     "meta": {
       "title": "Investidores: a visão e os números da Scooli",
-      "description": "A Scooli prepara a semana de cada turma e está a construir um modelo vivo do currículo para decidir o que fazer a seguir. Produto, tração, fosso, modelo e equipa."
+      "description": "A Scooli prepara a semana de cada turma e mantém um modelo vivo do currículo para decidir o que fazer a seguir. Produto, tração, fosso, modelo e equipa."
     },
     "hero": {
       "eyebrow": "Investidores",
-      "title": "Outras ferramentas geram conteúdo. A Scooli vai <em>conhecer cada turma</em>.",
-      "description": "A Scooli prepara a semana de aulas de cada turma, com planos de aula, fichas, testes, quizzes e apresentações prontos a editar, e está a construir um modelo vivo do currículo, o que foi planeado, o que foi dado e o que falta, para decidir o que cada turma deve fazer a seguir. Começa nos professores e já chega à escola inteira.",
+      "title": "Outras ferramentas geram conteúdo. A Scooli <em>conhece cada turma</em>.",
+      "description": "A Scooli prepara a semana de aulas de cada turma, com planos de aula, fichas, testes, quizzes e apresentações prontos a editar, e mantém um modelo vivo do currículo, o que foi planeado, o que foi dado e o que falta, para decidir o que cada turma deve fazer a seguir. Começa nos professores e já chega à escola inteira.",
       "videoAria": "Demonstração: o mês no calendário da Scooli, a semana de uma turma, «Gerar semana» e os planos de aula prontos"
     },
     "problem": {
@@ -1809,12 +1809,12 @@
   "roadmap": {
     "meta": {
       "title": "Roadmap: o que já existe e o que vem a seguir",
-      "description": "O caminho da Scooli: de planear aulas ao estado de cada turma e da escola inteira. O que já pode usar, o que estamos a construir e o que vem a seguir."
+      "description": "O caminho da Scooli: de planear aulas ao estado de cada turma e da escola inteira. O que já pode usar e o que vem a seguir."
     },
     "hero": {
       "eyebrow": "Roadmap",
       "title": "Do planeamento à escola inteira.",
-      "description": "A Scooli começou por preparar aulas e já mostra à escola o estado do currículo em cada turma. Estamos a construir o estado de cada turma para o professor, e o caminho continua até à escola inteira. Sem datas: lançamos quando estiver bem feito."
+      "description": "A Scooli começou por preparar aulas. Hoje cada turma tem um estado, para o professor e para a escola, e a Scooli propõe o que vem a seguir. Daqui, o caminho leva à semana preparada antes de a pedir. Sem datas: lançamos quando estiver bem feito."
     },
     "suggest": {
       "text": "Tem uma sugestão para a Scooli?",
@@ -1822,7 +1822,6 @@
     },
     "legend": {
       "live": "Disponível",
-      "building": "Em construção",
       "next": "A seguir"
     },
     "phaseLabel": "Fase",
@@ -1843,7 +1842,7 @@
       {
         "name": "Lembrar",
         "title": "Cada turma tem um estado",
-        "status": "building",
+        "status": "live",
         "items": [
           "O que estava planeado e o que foi dado",
           "O que falta no currículo",
@@ -1853,7 +1852,7 @@
       {
         "name": "Adaptar",
         "title": "A Scooli propõe o que vem a seguir",
-        "status": "building",
+        "status": "live",
         "items": [
           "Reforçar um tópico, mover outro",
           "Materiais diferenciados por nível",
@@ -1910,8 +1909,8 @@
   },
   "classState": {
     "kicker": "O estado de cada turma",
-    "title": "A Scooli vai saber em que ponto está cada turma.",
-    "description": "Estamos a construir um estado vivo para cada turma: o que o currículo pede, o que já foi dado, o que falta e o que fazer a seguir. A Scooli vai usá-lo para planear, preparar e ajustar cada aula, em vez de começar do zero a cada pedido.",
+    "title": "A Scooli sabe em que ponto está cada turma.",
+    "description": "Cada turma tem um estado vivo: o que o currículo pede, o que já foi dado, o que falta e o que fazer a seguir. A Scooli usa-o para planear, preparar e ajustar cada aula, em vez de começar do zero a cada pedido.",
     "points": [
       {
         "title": "O planeado e o dado, lado a lado",
@@ -1986,7 +1985,7 @@
         "Exercícios diferenciados prontos"
       ],
       "action": "Aplicar ao calendário",
-      "caption": "Em construção · exemplo ilustrativo"
+      "caption": "Exemplo ilustrativo"
     },
     "school": {
       "kicker": "Para a direção",
@@ -2062,8 +2061,7 @@
         }
       ],
       "caption": "Exemplo ilustrativo"
-    },
-    "badge": "Em construção"
+    }
   },
   "comparison": {
     "summary": "Resumo",
