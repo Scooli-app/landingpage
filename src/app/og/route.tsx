@@ -22,14 +22,18 @@ import type { NextRequest } from "next/server";
  */
 
 /**
- * The site's display face, subset to the characters actually drawn. If Google
- * Fonts is unreachable the card still renders, in the default sans.
+ * A Google font subset to the characters actually drawn (`family` is the css2
+ * spec, e.g. `Newsreader:ital,wght@1,500`). Every text block names its font
+ * explicitly: Satori otherwise borrows glyphs from whichever subset has them,
+ * which mixed two typefaces inside one word. The body is Inter rather than the
+ * site's Geist, which Satori draws with uneven word spacing. If Google Fonts is
+ * unreachable the card still renders, in the default sans.
  */
-async function loadNewsreader(text: string): Promise<ArrayBuffer | null> {
+async function loadFont(family: string, text: string): Promise<ArrayBuffer | null> {
   try {
     const css = await (
       await fetch(
-        `https://fonts.googleapis.com/css2?family=Newsreader:wght@500&text=${encodeURIComponent(text)}`,
+        `https://fonts.googleapis.com/css2?family=${family}&text=${encodeURIComponent(text)}`,
       )
     ).text();
     const source = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/);
@@ -53,9 +57,20 @@ export async function GET(request: NextRequest) {
   const logoResponse = await fetch(new URL("/scooli.svg", SITE_URL));
   const logoSvg = await logoResponse.text();
   const logoDataUrl = `data:image/svg+xml,${encodeURIComponent(logoSvg)}`;
-  const tags = [t("tagOrigin"), t("tagPrivacy"), t("tagCurriculum")];
+  const tags = [t("tagOrigin"), t("tagPrivacy"), t("tagCurriculum")].join("  ·  ");
   const headline = t("headline");
-  const display = await loadNewsreader(headline);
+  const headlineEm = t("headlineEm");
+  const subline = t("subline");
+  const [display, displayItalic, body] = await Promise.all([
+    loadFont("Newsreader:wght@500", headline),
+    loadFont("Newsreader:ital,wght@1,500", headlineEm),
+    loadFont("Inter:wght@400", `${subline}${tags}www.scooli.app`),
+  ]);
+  const fonts = [
+    display && { name: "Newsreader", data: display, weight: 500 as const, style: "normal" as const },
+    displayItalic && { name: "Newsreader", data: displayItalic, weight: 500 as const, style: "italic" as const },
+    body && { name: "Inter", data: body, weight: 400 as const, style: "normal" as const },
+  ].filter((font) => !!font);
 
   return new ImageResponse(
     (
@@ -66,9 +81,10 @@ export async function GET(request: NextRequest) {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: "72px 80px",
+          padding: "64px 80px",
           background: "#FFFFFF",
           borderBottom: "16px solid #F0EFEB",
+          fontFamily: body ? "Inter" : undefined,
         }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -77,28 +93,31 @@ export async function GET(request: NextRequest) {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h1
             style={{
+              display: "flex",
+              flexWrap: "wrap",
               fontFamily: display ? "Newsreader" : undefined,
-              fontSize: "76px",
+              fontSize: "72px",
               fontWeight: 500,
               color: "#111111",
-              lineHeight: 1.04,
+              lineHeight: 1.06,
               letterSpacing: "-0.03em",
-              maxWidth: "980px",
-              margin: "0 0 24px 0",
+              maxWidth: "1000px",
+              margin: "0 0 28px 0",
             }}
           >
-            {headline}
+            {headline}&nbsp;
+            <span style={{ fontStyle: "italic", color: "#4E3BC0" }}>{headlineEm}</span>
           </h1>
           <p
             style={{
               fontSize: "28px",
-              color: "#787774",
+              color: "#5F5E5A",
               lineHeight: 1.4,
-              maxWidth: "900px",
+              maxWidth: "960px",
               margin: 0,
             }}
           >
-            {t("subline")}
+            {subline}
           </p>
         </div>
 
@@ -111,14 +130,17 @@ export async function GET(request: NextRequest) {
             color: "#A3A29E",
           }}
         >
-          <span>{tags.join("  ·  ")}</span>
+          <span>{tags}</span>
           <span style={{ color: "#4E3BC0" }}>www.scooli.app</span>
         </div>
       </div>
     ),
     {
       ...SHARE_IMAGE_SIZE,
-      fonts: display ? [{ name: "Newsreader", data: display, weight: 500, style: "normal" }] : [],
+      fonts,
+      // Served from the CDN, with a Content-Length: Facebook gives up on a card
+      // that is regenerated on every request and streamed in chunks.
+      headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
     },
   );
 }

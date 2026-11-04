@@ -66,14 +66,17 @@ export function openGraphLocale(locale: Locale) {
 
 export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
+const SHARE_IMAGE_VERSION = 2;
+
 /**
  * The social share card for a locale, rendered by `src/app/og/route.tsx`.
- * Portuguese keeps the bare URL so the default card has one stable address.
+ * Facebook and LinkedIn cache the image by URL, so bump `SHARE_IMAGE_VERSION`
+ * whenever the card changes or they keep showing the old one.
  */
 export function shareImageUrl(locale: Locale = defaultLocale) {
   return locale === defaultLocale
-    ? `${SITE_URL}/og`
-    : `${SITE_URL}/og?locale=${locale}`;
+    ? `${SITE_URL}/og?v=${SHARE_IMAGE_VERSION}`
+    : `${SITE_URL}/og?locale=${locale}&v=${SHARE_IMAGE_VERSION}`;
 }
 
 export function getPageMetadata({
@@ -123,6 +126,7 @@ export function getPageMetadata({
         {
           url: shareImageUrl(locale),
           ...SHARE_IMAGE_SIZE,
+          type: "image/png",
           alt: `${SITE_NAME} - ${title}`,
         },
       ],
@@ -143,7 +147,7 @@ export function getPageMetadata({
 // Pricing constants (in cents and euros)
 export const PRICING = {
   free: {
-    generationsPerMonth: 20,
+    credits: 20,
     price: 0,
   },
   pro_monthly: {
@@ -260,7 +264,7 @@ const schemaCopy = {
     audience: "Professores",
     offers: {
       free: "Plano Gratuito",
-      freeDescription: `${PRICING.free.generationsPerMonth} créditos por mês`,
+      freeDescription: `${PRICING.free.credits} créditos`,
       monthly: "Scooli Pro Mensal",
       monthlyDescription: "Geração ilimitada, modelos avançados e suporte prioritário",
       annual: "Scooli Pro Anual",
@@ -296,7 +300,7 @@ const schemaCopy = {
     audience: "Teachers",
     offers: {
       free: "Free plan",
-      freeDescription: `${PRICING.free.generationsPerMonth} credits per month`,
+      freeDescription: `${PRICING.free.credits} credits`,
       monthly: "Scooli Pro Monthly",
       monthlyDescription: "Unlimited generation, advanced models and priority support",
       annual: "Scooli Pro Annual",

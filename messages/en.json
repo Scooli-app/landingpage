@@ -103,12 +103,12 @@
   },
   "home": {
     "meta": {
-      "title": "Scooli | AI for teachers: prepare the week's lessons",
+      "title": "Scooli | The school year, prepared week by week",
       "description": "Scooli lays out each class's lessons from your yearly plan and prepares the week: lesson plans, worksheets, tests and slide decks you can edit.",
-      "ogTitle": "Scooli | AI for teachers: prepare the week's lessons",
-      "ogDescription": "Lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, with the whole school year organised in one place.",
-      "twitterTitle": "Scooli | Less time preparing, more time teaching",
-      "twitterDescription": "Scooli stays with teachers through the school year and creates the week's resources, ready to review and edit."
+      "ogTitle": "Scooli | The school year, prepared week by week",
+      "ogDescription": "Scooli turns your yearly plan into lessons for each class and prepares every week with you, ready to use.",
+      "twitterTitle": "Scooli | The school year, prepared week by week",
+      "twitterDescription": "Scooli turns your yearly plan into lessons for each class and prepares every week with you, ready to use."
     },
     "howToSchema": {
       "name": "How to use Scooli to build classroom materials",
@@ -232,7 +232,7 @@
         "kicker": "For teachers",
         "title": "Win back your planning hours.",
         "description": "Start free and try it with your real lessons.",
-        "price": "<b>Free</b> with credits every month · <b>Pro</b> at {price}/month",
+        "price": "<b>Free</b> with 20 credits · <b>Pro</b> at {price}/month",
         "link": "See pricing",
         "imageAlt": "Scooli's dashboard with upcoming lessons already generated and the box to ask for a new resource"
       },
@@ -618,7 +618,7 @@
     "next": {
       "kicker": "Where we're going",
       "title": "From the first day of school to the last.",
-      "description": "We're building the state of every class, so Scooli can use what's been taught and decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
+      "description": "Scooli already keeps the state of every class and uses what's been taught to decide what comes next. The path takes us from tomorrow's lesson to the whole school, with the teacher always deciding."
     }
   },
   "schools": {
@@ -996,7 +996,7 @@
       },
       {
         "question": "How much does it cost?",
-        "answer": "There is a free plan with 20 credits a month and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
+        "answer": "There is a free plan with 20 credits and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
       }
     ],
     "hero": {
@@ -1044,12 +1044,56 @@
           "Everything editable, so the final say stays yours"
         ]
       }
+    },
+    "quickAnswer": {
+      "kicker": "In short",
+      "title": "What is Scooli, in a few words?",
+      "paragraphs": [
+        "Scooli is AI software for teachers who want to prepare lessons with less repetitive work. Instead of asking a chat for text and reorganising it by hand, you start from a document ready to edit: lesson plan, worksheet, test, quiz or slide deck.",
+        "It is built around how teaching works: each class has its own calendar, each lesson starts from your yearly plan, and every document stays editable, so the final say stays yours."
+      ]
+    },
+    "whenToChoose": {
+      "title": "When Scooli makes sense",
+      "items": [
+        "When you want to prepare materials faster and still review everything",
+        "When you need documents that follow your yearly plan, not generic text",
+        "When you want the week organised by class, not one-off answers",
+        "When you want ready-to-use documents, not just a chatbot conversation"
+      ]
+    },
+    "tools": {
+      "kicker": "What you can create",
+      "title": "One tool for each task of the week.",
+      "description": "Each tool has its own page, with examples and common questions."
+    },
+    "trust": {
+      "kicker": "Why trust it",
+      "title": "Built for how teachers actually work.",
+      "items": [
+        {
+          "title": "Follows your plan",
+          "description": "Each material starts from the class's yearly plan, subject and grade, not from a blank prompt."
+        },
+        {
+          "title": "One place for the week",
+          "description": "Lessons, materials and exports live in each class's calendar, instead of scattered chats and files."
+        },
+        {
+          "title": "Everything editable",
+          "description": "Scooli prepares the starting point; you review it and decide what reaches the class."
+        },
+        {
+          "title": "Privacy in the open",
+          "description": "Privacy and usage rules are public, on the Trust page."
+        }
+      ]
     }
   },
   "pricingPage": {
     "meta": {
       "title": "Pricing: free, Pro and a plan for schools",
-      "description": "Simple Scooli pricing: a free plan with 20 credits a month, Pro with no creation limits, and an institutional plan for schools and school groups."
+      "description": "Simple Scooli pricing: a free plan with 20 credits, Pro with no creation limits, and an institutional plan for schools and school groups."
     },
     "hero": {
       "eyebrow": "Pricing",
@@ -1168,9 +1212,9 @@
       "price": "Free",
       "period": "forever",
       "description": "For getting to know Scooli and creating your first materials.",
-      "creditsBadge": "{credits} credits/month",
+      "creditsBadge": "{credits} credits",
       "features": [
-        "{credits} credits a month",
+        "{credits} credits",
         "Access to the community library",
         "Basic export",
         "Editor for reviewing and adjusting"
@@ -1454,7 +1498,7 @@
         "title": "6) Credits, Pro Plan and Cancellations",
         "intro": "Some features depend on each plan's credit limit.",
         "items": [
-          "The free plan includes 20 credits per month.",
+          "The free plan includes 20 credits.",
           "Prices, features and limits may be updated over time.",
           "The Pro Plan's \"unlimited\" access is subject to the Fair Use Policy described in section 7."
         ],
@@ -1510,11 +1554,12 @@
   },
   "shareImage": {
     "alt": "Scooli - AI for teachers",
-    "headline": "Less time preparing, more time teaching",
-    "subline": "Lesson plans, worksheets, tests, quizzes and slide decks, ready to edit",
+    "headline": "Your whole school year, prepared",
+    "headlineEm": "week by week.",
+    "subline": "Lesson plans, worksheets, tests and slide decks for every class, as structured documents you can edit.",
     "tagOrigin": "For teachers",
     "tagPrivacy": "GDPR compliant",
-    "tagCurriculum": "Structured documents"
+    "tagCurriculum": "Editable documents"
   },
   "teachers": {
     "meta": {
@@ -1584,17 +1629,17 @@
   "booking": {
     "iframeTitle": "Calendar to book a call with the Scooli team",
     "openInNewTab": "Open the calendar in a new window",
-    "loading": "Loading the calendar…"
+    "loading": "Loading the calendar… If it doesn't appear, use the button above."
   },
   "investors": {
     "meta": {
       "title": "Investors: Scooli's vision and numbers",
-      "description": "Scooli prepares each class's week and is building a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
+      "description": "Scooli prepares each class's week and keeps a live model of the curriculum to decide what to do next. Product, traction, moat, model and team."
     },
     "hero": {
       "eyebrow": "Investors",
-      "title": "Other tools generate content. Scooli will <em>know every class</em>.",
-      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and is building a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
+      "title": "Other tools generate content. Scooli <em>knows every class</em>.",
+      "description": "Scooli prepares each class's week of lessons, with lesson plans, worksheets, tests, quizzes and slide decks ready to edit, and keeps a live model of the curriculum, what was planned, what was taught and what's left, to decide what each class should do next. It starts with teachers and already reaches the whole school.",
       "videoAria": "Demo: the month in Scooli's calendar, one class's week, \"Generate week\" and the lesson plans ready"
     },
     "problem": {
@@ -1671,7 +1716,7 @@
         {
           "title": "Free",
           "price": "€0",
-          "description": "20 credits a month. The way in: every teacher tries it with their real lessons."
+          "description": "20 credits. The way in: every teacher tries it with their real lessons."
         },
         {
           "title": "Pro",
@@ -1747,12 +1792,12 @@
   "roadmap": {
     "meta": {
       "title": "Roadmap: what exists and what's next",
-      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today, what we're building and what comes next."
+      "description": "Where Scooli is going: from planning lessons to the state of every class and the whole school. What you can use today and what comes next."
     },
     "hero": {
       "eyebrow": "Roadmap",
       "title": "From planning to the whole school.",
-      "description": "Scooli started by preparing lessons and already shows schools where the curriculum stands in every class. We're building each class's state for the teacher, and the path continues to the whole school. No dates: we ship when it's done well."
+      "description": "Scooli started by preparing lessons. Today every class has a state, for the teacher and for the school, and Scooli proposes what comes next. From here, the path leads to the week prepared before you ask. No dates: we ship when it's done well."
     },
     "suggest": {
       "text": "Have a suggestion for Scooli?",
@@ -1760,7 +1805,6 @@
     },
     "legend": {
       "live": "Available",
-      "building": "In development",
       "next": "Next"
     },
     "phaseLabel": "Phase",
@@ -1781,7 +1825,7 @@
       {
         "name": "Remember",
         "title": "Every class has a state",
-        "status": "building",
+        "status": "live",
         "items": [
           "What was planned and what was taught",
           "What's left in the curriculum",
@@ -1791,7 +1835,7 @@
       {
         "name": "Adapt",
         "title": "Scooli proposes what comes next",
-        "status": "building",
+        "status": "live",
         "items": [
           "Reinforce one topic, move another",
           "Materials differentiated by level",
@@ -1848,8 +1892,8 @@
   },
   "classState": {
     "kicker": "The state of every class",
-    "title": "Scooli will know where each class stands.",
-    "description": "We're building a live state for every class: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli will use it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
+    "title": "Scooli knows where each class stands.",
+    "description": "Every class has a live state: what the curriculum asks for, what has been taught, what's left and what to do next. Scooli uses it to plan, prepare and adjust each lesson, instead of starting from zero with every request.",
     "points": [
       {
         "title": "Planned and taught, side by side",
@@ -1924,7 +1968,7 @@
         "Differentiated exercises ready"
       ],
       "action": "Apply to calendar",
-      "caption": "In development · illustrative example"
+      "caption": "Illustrative example"
     },
     "school": {
       "kicker": "For school leaders",
@@ -2000,8 +2044,7 @@
         }
       ],
       "caption": "Illustrative example"
-    },
-    "badge": "In development"
+    }
   },
   "comparison": {
     "summary": "Summary",

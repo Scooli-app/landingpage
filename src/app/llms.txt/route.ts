@@ -29,7 +29,7 @@ function buildLlmsText() {
     `Scooli is a product of ${LEGAL_ENTITY_NAME} The site is in European Portuguese (${SITE_URL}) with an English version (${SITE_URL}/en). This file describes the Portuguese site.`,
     "",
     buildSection("What it does", [
-      "- In development (not yet available to teachers): a live state for every class (what the curriculum asks for, what was planned, what has been taught, what is left) and recommendations for what to teach next.",
+      "- A live state for every class (what the curriculum asks for, what was planned, what has been taught, what is left) and recommendations for what to teach next.",
       "- Builds each class's lesson calendar from the teacher's yearly plan, and prepares a lesson plan for every lesson of the week in one click (\"Gerar semana\").",
       "- Creates lesson plans, worksheets, tests (with marks and marking criteria), quizzes, yearly/unit plans and slide decks as structured, editable documents. Exports to Word and PDF.",
       "- Adapts materials by level or support need, and turns documents the teacher already has into new resources.",
@@ -38,7 +38,7 @@ function buildLlmsText() {
       "- Not a student-facing tutor, not an LMS, not a general chatbot.",
     ]),
     buildSection("Pricing", [
-      `- Free: ${PRICING.free.generationsPerMonth} credits per month.`,
+      `- Free: ${PRICING.free.credits} credits.`,
       `- Pro: EUR ${PRICING.pro_monthly.price.toFixed(2)} per month, or EUR ${PRICING.pro_annual.price.toFixed(2)} per year (${PRICING.pro_annual.savings} off). No creation limits, subject to a fair-use policy.`,
       "- Institutional plan for schools and school groups: priced by number of teachers, on request. Includes a school dashboard, seat management, an internal library, training and privacy documentation. Starts with a supported pilot.",
       `- Machine-readable: ${SITE_URL}/pricing.md`,
@@ -53,8 +53,7 @@ function buildLlmsText() {
       `- More than ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} teachers and more than ${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue} documents created.`,
     ]),
     buildSection("Roadmap", [
-      "- Available: connect curriculum, plan and calendar; a school dashboard with the curriculum of every class.",
-      "- In development: a live state for every class, for teachers; recommendations for what comes next.",
+      "- Available: connect curriculum, plan and calendar; a live state for every class and recommendations for what comes next; a school dashboard with the curriculum of every class.",
       "- Next: Scooli prepares the week on its own initiative, assessment evidence by topic, and a view across departments and the whole school.",
       `- Roadmap: ${SITE_URL}/roadmap`,
     ]),

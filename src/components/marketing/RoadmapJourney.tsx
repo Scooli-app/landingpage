@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-type Status = "live" | "building" | "next";
+type Status = "live" | "next";
 type Phase = { name: string; title: string; status: Status; items: string[] };
 
 const phaseIcons: LucideIcon[] = [Link2, Brain, RefreshCw, Sparkles, Network, School];
@@ -23,12 +23,6 @@ const statusStyles: Record<Status, { pill: string; node: string; card: string; r
     card: "border-line-strong bg-white",
     rail: "bg-violet",
   },
-  building: {
-    pill: "bg-violet-wash text-violet-ink",
-    node: "border-violet bg-white text-violet ring-4 ring-violet/15",
-    card: "border-2 border-violet bg-violet-wash/40",
-    rail: "bg-[repeating-linear-gradient(90deg,#6753ff_0,#6753ff_6px,transparent_6px,transparent_12px)]",
-  },
   next: {
     pill: "bg-stone-soft text-subtle ring-1 ring-line-strong",
     node: "border-line-strong bg-white text-faint",
@@ -39,8 +33,8 @@ const statusStyles: Record<Status, { pill: string; node: string; card: string; r
 
 /**
  * The roadmap as a journey: six phases on a rail (solid where Scooli already
- * is, dashed where it is being built, grey where it is next), then a card for
- * each phase with what it contains. No dates, on purpose.
+ * is, grey where it is next), then a card for each phase with what it
+ * contains. No dates, on purpose.
  */
 export function RoadmapJourney() {
   const t = useTranslations("roadmap");
@@ -51,13 +45,12 @@ export function RoadmapJourney() {
   return (
     <div>
       <ul className="mb-10 flex flex-wrap items-center gap-x-6 gap-y-2 text-[13px] text-subtle">
-        {(["live", "building", "next"] as const).map((status) => (
+        {(["live", "next"] as const).map((status) => (
           <li key={status} className="flex items-center gap-2">
             <span
               className={cn(
                 "size-2.5 rounded-full",
                 status === "live" && "bg-violet",
-                status === "building" && "border-2 border-violet bg-white",
                 status === "next" && "border border-line-strong bg-white",
               )}
             />
@@ -125,12 +118,6 @@ export function RoadmapJourney() {
                     style.pill,
                   )}
                 >
-                  {phase.status === "building" && (
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex size-full animate-ping rounded-full bg-violet opacity-60" />
-                      <span className="relative inline-flex size-2 rounded-full bg-violet" />
-                    </span>
-                  )}
                   {legend[phase.status]}
                 </span>
               </div>
