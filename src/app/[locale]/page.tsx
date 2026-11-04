@@ -124,7 +124,7 @@ export async function generateMetadata({
       // A page-level `openGraph` replaces the layout's wholesale, images
       // included, so the share card has to be repeated here.
       images: [
-        { url: shareImageUrl(locale), ...SHARE_IMAGE_SIZE, alt: t("ogTitle") },
+        { url: shareImageUrl(locale), ...SHARE_IMAGE_SIZE, type: "image/png", alt: t("ogTitle") },
       ],
     },
     twitter: {

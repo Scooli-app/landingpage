@@ -113,6 +113,7 @@ export async function generateMetadata({
         {
           url: shareImageUrl(locale),
           ...SHARE_IMAGE_SIZE,
+          type: "image/png",
           alt: `${SITE_NAME} | ${t("ogTitleSuffix")}`,
         },
       ],
