@@ -138,6 +138,9 @@ export async function GET(request: NextRequest) {
     {
       ...SHARE_IMAGE_SIZE,
       fonts,
+      // Served from the CDN, with a Content-Length: Facebook gives up on a card
+      // that is regenerated on every request and streamed in chunks.
+      headers: { "Cache-Control": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800" },
     },
   );
 }

@@ -66,14 +66,17 @@ export function openGraphLocale(locale: Locale) {
 
 export const SHARE_IMAGE_SIZE = { width: 1200, height: 630 } as const;
 
+const SHARE_IMAGE_VERSION = 2;
+
 /**
  * The social share card for a locale, rendered by `src/app/og/route.tsx`.
- * Portuguese keeps the bare URL so the default card has one stable address.
+ * Facebook and LinkedIn cache the image by URL, so bump `SHARE_IMAGE_VERSION`
+ * whenever the card changes or they keep showing the old one.
  */
 export function shareImageUrl(locale: Locale = defaultLocale) {
   return locale === defaultLocale
-    ? `${SITE_URL}/og`
-    : `${SITE_URL}/og?locale=${locale}`;
+    ? `${SITE_URL}/og?v=${SHARE_IMAGE_VERSION}`
+    : `${SITE_URL}/og?locale=${locale}&v=${SHARE_IMAGE_VERSION}`;
 }
 
 export function getPageMetadata({
@@ -123,6 +126,7 @@ export function getPageMetadata({
         {
           url: shareImageUrl(locale),
           ...SHARE_IMAGE_SIZE,
+          type: "image/png",
           alt: `${SITE_NAME} - ${title}`,
         },
       ],
