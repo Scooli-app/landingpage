@@ -9,7 +9,7 @@ import type { MarketingContent } from "../data";
 export const marketingContentPtPT: MarketingContent = {
   impactStatLabels: {
     activeTeachers: "professores",
-    generatedDocuments: "documentos criados",
+    preparedLessons: "aulas preparadas",
   },
 
   trustCards: [

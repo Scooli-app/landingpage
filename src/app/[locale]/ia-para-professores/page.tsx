@@ -157,8 +157,8 @@ export default async function AiForTeachersPage({
           <Container className="grid max-w-[720px] gap-8 sm:grid-cols-2">
             <StatCard value={`${PUBLIC_IMPACT_METRICS.activeTeachers.minValue}+`} label={t("proof.teachers")} />
             <StatCard
-              value={`${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`}
-              label={t("proof.documents")}
+              value={`${PUBLIC_IMPACT_METRICS.preparedLessons.minValue}+`}
+              label={t("proof.lessons")}
             />
           </Container>
         </section>

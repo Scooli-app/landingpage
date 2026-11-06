@@ -15,7 +15,7 @@ const loopIcons = [BookOpen, CalendarRange, CheckCheck, Gauge, Sparkles];
 export function ClassStateSection({ id = "estado-da-turma" }: { id?: string }) {
   const t = useTranslations("classState");
   const points = t.raw("points") as { title: string; text: string }[];
-  const loop = t.raw("loop") as { title: string; text: string }[];
+  const loop = t.raw("loop") as { title: string; text?: string }[];
 
   return (
     <Section id={id} aria-labelledby={`${id}-title`}>
@@ -84,7 +84,7 @@ export function ClassStateSection({ id = "estado-da-turma" }: { id?: string }) {
                 )}
                 <div className="lg:mt-4">
                   <p className="text-[16px] font-semibold text-ink">{step.title}</p>
-                  <p className="mt-0.5 text-[14px] text-subtle">{step.text}</p>
+                  {step.text && <p className="mt-0.5 text-[14px] text-subtle">{step.text}</p>}
                 </div>
               </li>
             );

@@ -99,7 +99,7 @@ export type StatContent = {
 export type MarketingContent = {
   impactStatLabels: {
     activeTeachers: string;
-    generatedDocuments: string;
+    preparedLessons: string;
   };
   trustCards: MarketingCardContent[];
   schoolPageCards: MarketingCardContent[];
@@ -174,8 +174,8 @@ export function getImpactStats(locale: string): StatContent[] {
       label: labels.activeTeachers,
     },
     {
-      value: `${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`,
-      label: labels.generatedDocuments,
+      value: `${PUBLIC_IMPACT_METRICS.preparedLessons.minValue}+`,
+      label: labels.preparedLessons,
     },
   ];
 }

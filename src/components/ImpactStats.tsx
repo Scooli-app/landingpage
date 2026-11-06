@@ -4,8 +4,7 @@ import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
 /**
- * The confirmed numbers (teachers, documents, hours saved a week, adapted
- * materials), shared between the homepage and any page selling to a
+ * The confirmed numbers (teachers, lessons prepared, adapted materials), shared between the homepage and any page selling to a
  * decision-maker who wants proof before a pitch — currently also /escolas,
  * where a school leader otherwise sees zero numeric trust signal before the
  * benefits list. Same figures everywhere: no page invents its own stat.
@@ -15,8 +14,7 @@ export function ImpactStats({ className, bordered = true }: { className?: string
 
   const stats = [
     { value: `${PUBLIC_IMPACT_METRICS.activeTeachers.minValue}+`, label: t("teachers") },
-    { value: `${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`, label: t("documents") },
-    { value: `${PUBLIC_IMPACT_METRICS.hoursSavedPerWeek.minValue}h+`, label: t("hoursSaved") },
+    { value: `${PUBLIC_IMPACT_METRICS.preparedLessons.minValue}+`, label: t("lessons") },
     { value: `${PUBLIC_IMPACT_METRICS.adaptedMaterials.minValue}+`, label: t("adapted") },
   ];
 
@@ -25,7 +23,7 @@ export function ImpactStats({ className, bordered = true }: { className?: string
       <Container>
         <dl
           className={cn(
-            "mx-auto grid max-w-[920px] grid-cols-2 gap-y-8 md:grid-cols-4 md:divide-x md:divide-line",
+            "mx-auto grid max-w-[720px] grid-cols-3 gap-y-8 md:divide-x md:divide-line",
             bordered && "rounded-xl border border-line-strong bg-white py-8",
           )}
         >

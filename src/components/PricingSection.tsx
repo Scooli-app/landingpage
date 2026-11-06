@@ -2,7 +2,7 @@
 
 import { ContactModal } from "@/components/ContactModal";
 import { Container } from "@/components/Container";
-import { Kicker, Tag } from "@/components/site/primitives";
+import { Tag } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { usePlans, type Plan } from "@/contexts/PlansContext";
@@ -13,9 +13,10 @@ import { PROMO_PLAN_CODES, PROMO_PRICE_CENTS, isPromoActive } from "@/lib/promo"
 import { cn } from "@/lib/utils";
 import { Check, Minus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useState, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 
 type BillingCycle = "monthly" | "annual";
+type FeatureGroup = { title: string; plans?: ("trial" | "pro" | "school")[]; rows: string[] };
 
 function calculateSavingsPercent(
   monthlyCents: number,
@@ -29,102 +30,97 @@ function calculateSavingsPercent(
   return `${Math.round((savings / yearlyFromMonthly) * 100)}%`;
 }
 
-function PlanCard({
-  highlighted = false,
-  badge,
-  children,
-}: {
-  highlighted?: boolean;
-  badge?: ReactNode;
-  children: ReactNode;
-}) {
-  return (
-    <div
-      className={cn(
-        "relative flex h-full flex-col rounded-xl bg-white p-7 sm:p-8",
-        highlighted ? "border-2 border-ink" : "border border-line-strong",
-      )}
-    >
-      {badge && <div className="absolute -top-3 left-7">{badge}</div>}
-      {children}
-    </div>
-  );
-}
-
-function FeatureList({ items, locked = [] }: { items: string[]; locked?: string[] }) {
-  return (
-    <ul className="mt-6 flex-1 space-y-2.5 border-t border-line pt-6 text-[15px] text-body">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3">
-          <Check aria-hidden className="mt-[3px] size-4 shrink-0 text-ink" strokeWidth={1.75} />
-          <span>{item}</span>
-        </li>
-      ))}
-      {locked.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-faint">
-          <Minus aria-hidden className="mt-[3px] size-4 shrink-0" strokeWidth={1.75} />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  );
-}
-
 function PriceLine({ price, suffix, before }: { price: string; suffix?: string; before?: string }) {
   return (
-    <div className="mt-4 flex items-baseline gap-2">
+    <div className="mt-3 flex flex-wrap items-baseline gap-x-2">
       {before && <span className="text-lg text-faint line-through">{before}</span>}
-      <span className="font-display text-[44px] font-medium leading-none tracking-[-0.02em] text-ink">
+      <span className="font-display text-[32px] font-medium leading-none tracking-[-0.02em] text-ink md:max-lg:text-[24px]">
         {price}
       </span>
-      {suffix && <span className="text-[15px] text-subtle">{suffix}</span>}
+      {suffix && <span className="text-[15px] text-subtle md:max-lg:text-[13px]">{suffix}</span>}
     </div>
   );
 }
 
-function FreePlanCard() {
-  const t = useTranslations("pricingSection.free");
-  const locale = useLocale() as Locale;
-  const href = appSignUpUrl(locale);
-  const credits = PRICING.free.credits;
-  const features = (t.raw("features") as string[]).map((_, index) =>
-    t(`features.${index}`, { credits }),
-  );
-  const lockedFeatures = t.raw("lockedFeatures") as string[];
+/** Header buttons: at the bottom of the cell so the three line up; wrapping in the narrow tablet columns. */
+const HEADER_CTA =
+  "mt-auto w-full md:max-lg:h-auto md:max-lg:min-h-10 md:max-lg:whitespace-normal md:max-lg:px-2 md:max-lg:py-2 md:max-lg:text-center md:max-lg:text-[13px] md:max-lg:leading-tight";
 
+/** Phone header buttons: three side by side in narrow columns, so short labels and tight padding. */
+const COMPACT_CTA = "h-8 w-full px-0.5 text-[12px] max-[379px]:text-[11px]";
+
+/** A plan's header in a phone column: name, price, and its button at the bottom so the three line up. */
+function CompactHeader({ name, value, sub, cta }: { name: string; value: string; sub?: string; cta: ReactNode }) {
   return (
-    <PlanCard>
-      <Kicker>{t("label")}</Kicker>
-      <PriceLine price={t("price")} suffix={t("period")} />
-      <p className="mt-4 text-[15px] leading-relaxed text-subtle">{t("description")}</p>
-      <FeatureList items={features} locked={lockedFeatures} />
-      <TrackedLink
-        href={href}
-        eventName="marketing_plan_selected"
-        eventProperties={{
-          plan_code: "free",
-          billing_period: "month",
-          price_cents: 0,
-          placement: "pricing_plan_card",
-          target_url: href,
-        }}
-        className={cn(buttonVariants({ variant: "secondary", size: "lg" }), "mt-8 w-full")}
-      >
-        {t("cta")}
-      </TrackedLink>
-    </PlanCard>
+    <div className="flex h-full flex-col items-center px-1 pb-3 pt-3.5 text-center font-normal">
+      <span className="font-mono text-[10.5px] font-medium uppercase tracking-[0.06em] text-subtle">{name}</span>
+      <span className="mt-1.5 font-display text-[17px] leading-tight text-ink">{value}</span>
+      {sub && <span className="text-[11.5px] text-subtle">{sub}</span>}
+      <div className="mt-auto w-full pt-2.5">{cta}</div>
+    </div>
   );
 }
 
-function ProPlanCard({
+/** Same row height in all three header cells, with or without Pro's promo tag, so the prices line up. */
+function KickerRow({ children }: { children: ReactNode }) {
+  return <div className="flex min-h-6 flex-wrap items-center gap-2 font-mono md:max-lg:min-h-8 text-xs font-medium uppercase tracking-[0.06em] text-subtle">{children}</div>;
+}
+
+/** The free trial: 30 days, no payment details. Its column shows what it leaves out. */
+function TrialHeader({ compact = false }: { compact?: boolean }) {
+  const t = useTranslations("pricingSection.trial");
+  const locale = useLocale() as Locale;
+  const href = appSignUpUrl(locale);
+  // Plan code "free" and this placement are what the funnels already count for the sign-up button.
+  const cta = (className: string, label: string) => (
+    <TrackedLink
+      href={href}
+      eventName="marketing_plan_selected"
+      eventProperties={{
+        plan_code: "free",
+        billing_period: "month",
+        price_cents: 0,
+        placement: "pricing_plan_card",
+        target_url: href,
+      }}
+      className={className}
+    >
+      {label}
+    </TrackedLink>
+  );
+  if (compact) {
+    return (
+      <CompactHeader
+        name={t("short")}
+        value={t("days")}
+        cta={cta(cn(buttonVariants({ variant: "secondary", size: "sm" }), COMPACT_CTA), t("ctaShort"))}
+      />
+    );
+  }
+  return (
+    <div className="flex h-full flex-col font-normal">
+      <KickerRow>{t("title")}</KickerRow>
+      <PriceLine price={t("price")} suffix={t("period")} />
+      <p className="mb-5 mt-2 text-[13px] text-faint">{t("note")}</p>
+      {cta(cn(buttonVariants({ variant: "secondary", size: "lg" }), HEADER_CTA), t("cta"))}
+    </div>
+  );
+}
+
+/** Pro's price: API price, constants as fallback, the launch promo while it runs. */
+function ProHeader({
   billing,
+  onBillingChange,
   apiPlans,
+  compact = false,
 }: {
   billing: BillingCycle;
+  onBillingChange: (b: BillingCycle) => void;
   apiPlans: Plan[];
+  compact?: boolean;
 }) {
   const t = useTranslations("pricingSection.pro");
-  const locale = useLocale();
+  const locale = useLocale() as Locale;
   const isAnnual = billing === "annual";
   const planCode = isAnnual ? "pro_annual" : "pro_monthly";
 
@@ -171,25 +167,47 @@ function ProPlanCard({
     : monthlyDisplayCents;
   const displayPriceCents = promoActive ? promoPriceCents : currentPriceCents;
 
-  const href = `${APP_URL}/checkout?plan=${displayPlanCode}`;
+  const checkoutHref = `${APP_URL}/checkout?plan=${displayPlanCode}`;
+  const cta = (className: string) => (
+    <TrackedLink
+      href={checkoutHref}
+      eventName="marketing_plan_selected"
+      eventProperties={{
+        plan_code: displayPlanCode,
+        billing_period: isAnnual ? "year" : "month",
+        price_cents: displayPriceCents,
+        placement: "pricing_plan_card",
+        target_url: checkoutHref,
+      }}
+      className={className}
+    >
+      {t("cta")}
+    </TrackedLink>
+  );
 
-  const included = t.raw("features") as string[];
+  if (compact) {
+    return (
+      <CompactHeader
+        name={t("short")}
+        value={formatEuro(locale, displayMonthlyCents)}
+        sub={t("perMonth")}
+        cta={cta(cn(buttonVariants({ variant: "primary", size: "sm" }), COMPACT_CTA))}
+      />
+    );
+  }
 
   return (
-    <PlanCard
-      highlighted
-      badge={<Tag tone="violet">{isAnnual ? t("bestValue") : t("mostPopular")}</Tag>}
-    >
-      <div className="flex flex-wrap items-center gap-2">
-        <Kicker>{t("label")}</Kicker>
+    <div className="flex h-full flex-col font-normal">
+      <KickerRow>
+        {t("label")}
         {promoActive && <Tag tone="yellow">{t("promoBadge")}</Tag>}
-      </div>
+      </KickerRow>
       <PriceLine
         price={formatEuro(locale, displayMonthlyCents)}
         suffix={t("perMonth")}
         before={promoActive ? formatEuro(locale, monthlyDisplayCents) : undefined}
       />
-      <p className="mt-2 text-[13px] text-faint">
+      <p className="mb-5 mt-2 text-[13px] text-faint">
         {promoActive
           ? `${isAnnual ? t("promoAnnualPrefix", { price: formatEuro(locale, promoPriceCents) }) : ""}${t("promoTagline")}`
           : isAnnual
@@ -199,49 +217,150 @@ function ProPlanCard({
               })
             : t("monthlyNote")}
       </p>
-      <p className="mt-4 text-[15px] leading-relaxed text-subtle">
-        {isAnnual ? t("descriptionAnnual", { savings: savingsPercent }) : t("descriptionMonthly")}
-      </p>
-      <FeatureList items={[t("unlimitedBadge"), ...included]} />
-      <TrackedLink
-        href={href}
-        eventName="marketing_plan_selected"
-        eventProperties={{
-          plan_code: displayPlanCode,
-          billing_period: isAnnual ? "year" : "month",
-          price_cents: displayPriceCents,
-          placement: "pricing_plan_card",
-          target_url: href,
-        }}
-        className={cn(buttonVariants({ variant: "primary", size: "lg" }), "mt-8 w-full")}
-      >
-        {t("cta")}
-      </TrackedLink>
-    </PlanCard>
+      <BillingToggle billing={billing} onChange={onBillingChange} apiPlans={apiPlans} className="mb-5" />
+      {cta(cn(buttonVariants({ variant: "primary", size: "lg" }), HEADER_CTA))}
+    </div>
   );
 }
 
-function EnterpriseCard({ onContactClick }: { onContactClick: () => void }) {
+function SchoolHeader({ onContactClick, compact = false }: { onContactClick: () => void; compact?: boolean }) {
   const t = useTranslations("pricingSection.enterprise");
-  const features = t.raw("features") as string[];
-
+  if (compact) {
+    return (
+      <CompactHeader
+        name={t("short")}
+        value={t("price")}
+        cta={
+          <Button type="button" variant="secondary" size="sm" onClick={onContactClick} className={COMPACT_CTA}>
+            {t("ctaShort")}
+          </Button>
+        }
+      />
+    );
+  }
   return (
-    <PlanCard>
-      <Kicker>{t("label")}</Kicker>
+    <div className="flex h-full flex-col font-normal">
+      <KickerRow>{t("label")}</KickerRow>
       <PriceLine price={t("price")} />
-      <p className="mt-2 text-[13px] text-faint">{t("detail")}</p>
-      <p className="mt-4 text-[15px] leading-relaxed text-subtle">{t("description")}</p>
-      <FeatureList items={features} />
-      <Button
-        type="button"
-        variant="secondary"
-        size="lg"
-        onClick={onContactClick}
-        className="mt-8 w-full"
-      >
+      <p className="mb-5 mt-2 text-[13px] text-faint">{t("detail")}</p>
+      <Button type="button" variant="secondary" size="lg" onClick={onContactClick} className={HEADER_CTA}>
         {t("cta")}
       </Button>
-    </PlanCard>
+    </div>
+  );
+}
+
+function Mark({ included }: { included: boolean }) {
+  const t = useTranslations("pricingSection.table");
+  return included ? (
+    <>
+      <Check aria-hidden className="mx-auto size-[18px] text-violet" strokeWidth={2} />
+      <span className="sr-only">{t("included")}</span>
+    </>
+  ) : (
+    <>
+      <Minus aria-hidden className="mx-auto size-[18px] text-faint" strokeWidth={1.75} />
+      <span className="sr-only">{t("notIncluded")}</span>
+    </>
+  );
+}
+
+const PLAN_COLUMNS = ["trial", "pro", "school"] as const;
+type PlanColumn = (typeof PLAN_COLUMNS)[number];
+
+/**
+ * What each plan includes, as one table with checks: the free trial, Pro and the schools' plan side by
+ * side, each column topped by its price and button. Each feature group lists the plans it belongs to
+ * (all three when it says nothing). Phones get a compact header row that stays in view while the
+ * rows scroll, so the three columns can be compared all the way down.
+ */
+function PlanTable({
+  billing,
+  onBillingChange,
+  apiPlans,
+  onContactClick,
+}: {
+  billing: BillingCycle;
+  onBillingChange: (b: BillingCycle) => void;
+  apiPlans: Plan[];
+  onContactClick: () => void;
+}) {
+  const t = useTranslations("pricingSection");
+  const groups = t.raw("table.groups") as FeatureGroup[];
+  const header = (plan: PlanColumn, compact: boolean) =>
+    plan === "trial" ? (
+      <TrialHeader compact={compact} />
+    ) : plan === "pro" ? (
+      <ProHeader billing={billing} onBillingChange={onBillingChange} apiPlans={apiPlans} compact={compact} />
+    ) : (
+      <SchoolHeader onContactClick={onContactClick} compact={compact} />
+    );
+  // Pro stays the highlighted column.
+  const columnClass = (plan: PlanColumn) => cn("border-l border-line", plan === "pro" && "bg-violet-wash/40");
+
+  return (
+    // overflow-clip, not hidden: it rounds the corners without becoming a scroll box, so the phone header can stick.
+    <div className="mx-auto max-w-[1080px] overflow-clip rounded-xl border border-line-strong bg-white">
+      <table className="w-full table-fixed border-collapse text-left">
+        <caption className="sr-only">{t("table.caption")}</caption>
+        <thead>
+          <tr className="md:hidden">
+            {/* Sticky cells need opaque backgrounds and an inset rule: collapsed borders stay behind when they move. */}
+            <th scope="col" className="sticky top-16 z-10 w-[36%] bg-white px-3 py-3 align-middle font-normal shadow-[inset_0_-1px_0_var(--color-line-strong)]">
+              <span className="sr-only">{t("table.featureColumn")}</span>
+              {/* The Pro column is too narrow for it: the toggle sits next to it, and stays in view with the header. */}
+              <BillingToggle billing={billing} onChange={onBillingChange} apiPlans={apiPlans} stacked className="mx-auto max-w-[8.5rem]" />
+            </th>
+            {PLAN_COLUMNS.map((plan) => (
+              <th
+                key={plan}
+                scope="col"
+                className="sticky top-16 z-10 h-px w-[21.33%] border-l border-line bg-white p-0 align-top shadow-[inset_0_-1px_0_var(--color-line-strong)]"
+              >
+                <div className={cn("h-full", plan === "pro" && "bg-violet-wash/40")}>{header(plan, true)}</div>
+              </th>
+            ))}
+          </tr>
+          <tr className="border-b border-line-strong max-md:hidden">
+            <th scope="col" className="w-[31%] px-5 py-8 align-bottom lg:px-7">
+              <span className="text-[13px] font-medium text-subtle">{t("table.featureColumn")}</span>
+            </th>
+            {PLAN_COLUMNS.map((plan) => (
+              <th key={plan} scope="col" className={cn(columnClass(plan), "h-px w-[23%] px-4 py-8 align-top lg:px-5")}>
+                {header(plan, false)}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {groups.map((group) => (
+            <Fragment key={group.title}>
+              <tr className="border-t border-line-strong first:border-t-0">
+                <th
+                  scope="colgroup"
+                  colSpan={PLAN_COLUMNS.length + 1}
+                  className="bg-stone-soft px-3 py-2.5 font-mono text-[11.5px] font-normal uppercase tracking-[0.06em] text-subtle md:px-5 lg:px-7"
+                >
+                  {group.title}
+                </th>
+              </tr>
+              {group.rows.map((row) => (
+                <tr key={row} className="border-t border-line">
+                  <th scope="row" className="px-3 py-3 text-[13.5px] font-normal text-body md:px-5 md:text-[14px] lg:px-7 lg:text-[15px]">
+                    {row}
+                  </th>
+                  {PLAN_COLUMNS.map((plan) => (
+                    <td key={plan} className={cn(columnClass(plan), "py-3")}>
+                      <Mark included={!group.plans || group.plans.includes(plan)} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </Fragment>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -249,10 +368,14 @@ function BillingToggle({
   billing,
   onChange,
   apiPlans,
+  stacked = false,
+  className,
 }: {
   billing: BillingCycle;
   onChange: (b: BillingCycle) => void;
   apiPlans: Plan[];
+  stacked?: boolean;
+  className?: string;
 }) {
   const t = useTranslations("pricingSection.billingToggle");
   const monthlyApiPlan = apiPlans.find((p) => p.planCode === "pro_monthly");
@@ -265,15 +388,23 @@ function BillingToggle({
 
   const optionClass = (active: boolean) =>
     cn(
-      "inline-flex h-9 items-center gap-2 rounded-md px-4 text-sm transition-colors",
+      "inline-flex items-center justify-center gap-1.5 transition-[color,background-color,box-shadow] duration-150",
+      stacked ? "h-8 w-full rounded-lg text-[12.5px]" : "h-8 flex-1 rounded-full px-3 text-[13px] md:max-lg:px-1.5 md:max-lg:text-[12.5px]",
       active
-        ? "bg-white text-ink shadow-[0_1px_2px_rgba(0,0,0,0.06)] ring-1 ring-line-strong"
+        ? "bg-white font-medium text-ink shadow-[0_1px_3px_rgba(17,17,17,0.10),0_0_0_1px_var(--color-line-strong)]"
         : "text-subtle hover:text-ink",
     );
 
   return (
-    <div className="flex justify-center">
-      <div role="radiogroup" className="inline-flex items-center gap-1 rounded-lg bg-stone-soft p-1">
+    <div className={className}>
+      <div
+        role="radiogroup"
+        aria-label={t("label")}
+        className={cn(
+          "gap-1 bg-stone-soft p-1 ring-1 ring-inset ring-line",
+          stacked ? "grid rounded-xl" : "flex items-center rounded-full",
+        )}
+      >
         <button
           type="button"
           role="radio"
@@ -291,14 +422,20 @@ function BillingToggle({
           className={optionClass(billing === "annual")}
         >
           {t("annual")}
-          <Tag tone="green">−{savingsPercent}</Tag>
+          {/* The tag doesn't fit the narrow tablet Pro column or the phone cell: the note under the price, or the caption below, says it. */}
+          {!stacked && <Tag tone="green" className="px-1.5 md:max-lg:hidden">−{savingsPercent}</Tag>}
         </button>
       </div>
+      {stacked && (
+        <p className="mt-1.5 text-center text-[11px] font-medium text-tag-green-ink">
+          {t("annualSavings", { savings: savingsPercent })}
+        </p>
+      )}
     </div>
   );
 }
 
-/** Plan cards for /precos. The page hero above it carries the heading. */
+/** The plan table for /precos. The page hero above it carries the heading. */
 export function PricingSection() {
   const t = useTranslations("pricingSection");
   const { plans, hasPlans } = usePlans();
@@ -309,13 +446,14 @@ export function PricingSection() {
   return (
     <section id="planos" aria-label={t("title")} className="scroll-mt-20 py-16 md:py-24">
       <Container>
-        <BillingToggle billing={billing} onChange={setBilling} apiPlans={apiPlans} />
+        <PlanTable
+          billing={billing}
+          onBillingChange={setBilling}
+          apiPlans={apiPlans}
+          onContactClick={() => setIsContactModalOpen(true)}
+        />
 
-        <div className="mx-auto mt-12 grid max-w-[1080px] gap-5 md:grid-cols-3">
-          <FreePlanCard />
-          <ProPlanCard billing={billing} apiPlans={apiPlans} />
-          <EnterpriseCard onContactClick={() => setIsContactModalOpen(true)} />
-        </div>
+        <p className="mx-auto mt-6 max-w-[70ch] text-center text-[14px] text-subtle">{t("trial.after")}</p>
 
         <p className="mt-10 text-center text-sm text-subtle">
           {[

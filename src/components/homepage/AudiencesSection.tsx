@@ -4,8 +4,7 @@ import { TrackedLink } from "@/components/TrackedLink";
 import { buttonVariants } from "@/components/ui/button";
 import type { Locale } from "@/i18n/routing";
 import { appMedia, type ImageAsset } from "@/lib/app-media";
-import { formatEuro } from "@/lib/format";
-import { appSignUpUrl, PRICING } from "@/lib/seo";
+import { appSignUpUrl } from "@/lib/seo";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import type { ReactNode } from "react";
@@ -86,10 +85,7 @@ export function AudiencesSection() {
           visualAlt={t("teachers.imageAlt")}
           title={t("teachers.title")}
           description={t("teachers.description")}
-          price={t.rich("teachers.price", {
-            ...bold,
-            price: formatEuro(locale, PRICING.pro_monthly.priceCents),
-          })}
+          price={t.rich("teachers.price", bold)}
           actions={
             <>
               <TrackedLink
