@@ -146,8 +146,9 @@ export function getPageMetadata({
 
 // Pricing constants (in cents and euros)
 export const PRICING = {
+  // New accounts get a 30-day free trial on sign-up (no payment details), then become read-only.
   free: {
-    credits: 20,
+    trialDays: 30,
     price: 0,
   },
   pro_monthly: {
@@ -176,15 +177,12 @@ export const PUBLIC_IMPACT_METRICS = {
   activeLast30Days: {
     minValue: 100,
   },
-  // Confirmed by Miguel on 2026-10-08 for the homepage proof strip.
-  hoursSavedPerWeek: {
-    minValue: 7,
-  },
   adaptedMaterials: {
     minValue: 500,
   },
-  generatedDocuments: {
-    minValue: 900,
+  // Given by Miguel on 2026-11-06 for the public numbers (was 900+ documents created).
+  preparedLessons: {
+    minValue: 3000,
     interactionType: "https://schema.org/CreateAction",
   },
 } as const;
@@ -260,15 +258,15 @@ const schemaCopy = {
       "Serviço de criação de recursos educativos com IA para professores em Portugal: planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais.",
     serviceName: "Scooli - Recursos educativos com IA",
     product:
-      "Plano premium da Scooli com geração ilimitada de recursos educativos, modelos de IA avançados e suporte prioritário para professores.",
+      "Plano premium da Scooli para professores: sem limites de criação de recursos educativos, turmas sem limite para o ano letivo inteiro, modelos de IA avançados e suporte prioritário.",
     audience: "Professores",
     offers: {
-      free: "Plano Gratuito",
-      freeDescription: `${PRICING.free.credits} créditos`,
+      free: "30 dias grátis",
+      freeDescription: `Período experimental de ${PRICING.free.trialDays} dias, sem dados de pagamento`,
       monthly: "Scooli Pro Mensal",
-      monthlyDescription: "Geração ilimitada, modelos avançados e suporte prioritário",
+      monthlyDescription: "Sem limites de criação, modelos avançados e suporte prioritário",
       annual: "Scooli Pro Anual",
-      annualDescription: `Geração ilimitada com ${PRICING.pro_annual.savings} de desconto`,
+      annualDescription: `Sem limites de criação, com ${PRICING.pro_annual.savings} de desconto`,
       pro: "Scooli Pro",
       catalog: "Planos Scooli",
     },
@@ -296,15 +294,15 @@ const schemaCopy = {
       "AI service that creates teaching resources: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, structured and editable.",
     serviceName: "Scooli - AI teaching resources",
     product:
-      "Scooli's premium plan, with unlimited resource generation, advanced AI models and priority support for teachers.",
+      "Scooli's premium plan for teachers: no limits on creating teaching resources, unlimited classes for the whole school year, advanced AI models and priority support.",
     audience: "Teachers",
     offers: {
-      free: "Free plan",
-      freeDescription: `${PRICING.free.credits} credits`,
+      free: "30-day free trial",
+      freeDescription: `A ${PRICING.free.trialDays}-day trial with no payment details`,
       monthly: "Scooli Pro Monthly",
-      monthlyDescription: "Unlimited generation, advanced models and priority support",
+      monthlyDescription: "No creation limits, advanced models and priority support",
       annual: "Scooli Pro Annual",
-      annualDescription: `Unlimited generation with ${PRICING.pro_annual.savings} off`,
+      annualDescription: `No creation limits, ${PRICING.pro_annual.savings} off`,
       pro: "Scooli Pro",
       catalog: "Scooli plans",
     },
@@ -478,8 +476,8 @@ export function getSoftwareApplicationSchema(locale: Locale = defaultLocale) {
     interactionStatistic: [
       {
         "@type": "InteractionCounter",
-        interactionType: PUBLIC_IMPACT_METRICS.generatedDocuments.interactionType,
-        userInteractionCount: PUBLIC_IMPACT_METRICS.generatedDocuments.minValue,
+        interactionType: PUBLIC_IMPACT_METRICS.preparedLessons.interactionType,
+        userInteractionCount: PUBLIC_IMPACT_METRICS.preparedLessons.minValue,
       },
     ],
     audience: {

@@ -116,7 +116,7 @@
       "steps": [
         {
           "name": "Criar conta gratuita",
-          "text": "Registe-se na Scooli e comece a explorar a plataforma com o plano gratuito."
+          "text": "Registe-se na Scooli e experimente a plataforma grátis durante 30 dias."
         },
         {
           "name": "Escolher o tipo de recurso",
@@ -147,8 +147,7 @@
     "proof": {
       "ariaLabel": "A Scooli em números",
       "teachers": "professores na Scooli",
-      "documents": "documentos criados",
-      "hoursSaved": "poupadas por semana",
+      "lessons": "aulas preparadas",
       "adapted": "materiais adaptados"
     },
     "howItWorks": {
@@ -232,7 +231,7 @@
         "kicker": "Para professores",
         "title": "Recupere as horas da preparação.",
         "description": "Comece grátis e experimente com as suas aulas reais.",
-        "price": "<b>Grátis</b> com 20 créditos · <b>Pro</b> a {price}/mês",
+        "price": "<b>30 dias grátis</b> · sem compromisso",
         "link": "Ver preços",
         "imageAlt": "Painel da Scooli com as próximas aulas já geradas e o campo para pedir um novo recurso"
       },
@@ -571,7 +570,7 @@
     "metrics": {
       "eyebrow": "A Scooli hoje",
       "activeTeachers": "professores",
-      "generatedDocuments": "documentos criados",
+      "preparedLessons": "aulas preparadas",
       "activeMonth": "ativos no último mês"
     },
     "mission": {
@@ -1013,7 +1012,7 @@
       },
       {
         "question": "Quanto custa?",
-        "answer": "Há um plano gratuito com 20 créditos e um plano Pro sem limites de criação. As escolas e agrupamentos têm um plano institucional, com gestão central da equipa e um piloto antes de decidir."
+        "answer": "Pode experimentar a Scooli grátis durante 30 dias, sem dados de pagamento e sem compromisso. Depois, o plano Pro não tem limites de criação. As escolas e agrupamentos têm um plano institucional, com gestão central da equipa e um piloto antes de decidir."
       }
     ],
     "hero": {
@@ -1035,7 +1034,7 @@
     "proofLabel": "A Scooli em números",
     "proof": {
       "teachers": "professores na Scooli",
-      "documents": "documentos criados"
+      "lessons": "aulas preparadas"
     },
     "week": {
       "kicker": "A sua semana",
@@ -1110,18 +1109,18 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: grátis, Pro e plano para escolas",
-      "description": "Preços simples da Scooli: plano grátis com 20 créditos, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
+      "description": "Preços simples da Scooli: 30 dias grátis para experimentar, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
     },
     "hero": {
       "eyebrow": "Preços",
       "title": "Preços simples, do professor à escola inteira.",
-      "description": "Comece grátis. Passe a Pro quando quiser. Para a escola, um plano institucional.",
+      "description": "Experimente grátis durante 30 dias, sem dados de pagamento nem compromisso. Para a escola, um plano institucional.",
       "secondaryLabel": "Ver o plano institucional"
     },
     "faqCards": [
       {
-        "title": "O que é uma geração?",
-        "description": "Na prática, uma geração é cada novo documento criado com IA. Se pedir outra versão do mesmo material, isso conta como uma nova geração."
+        "title": "Como funcionam os 30 dias grátis?",
+        "description": "Ao criar conta, tem 30 dias para preparar aulas e materiais com a Scooli, sem dados de pagamento e sem compromisso. Se não continuar, a conta passa a modo de leitura: os seus documentos ficam lá, para ver e editar."
       },
       {
         "title": "Uso justo sem letras pequenas",
@@ -1207,7 +1206,7 @@
         },
         {
           "label": "Experimentar",
-          "pro": "Plano gratuito",
+          "pro": "30 dias grátis",
           "institutional": "Piloto acompanhado com uma equipa pequena"
         }
       ],
@@ -1219,78 +1218,111 @@
   "pricingSection": {
     "eyebrow": "Preços e opções",
     "title": "Escolha a opção certa para a forma como quer usar a Scooli.",
-    "description": "O plano gratuito ajuda a experimentar. Os planos pagos dão mais continuidade. As escolas seguem por um percurso próprio.",
+    "description": "Experimente grátis durante 30 dias. O Pro dá continuidade. As escolas seguem por um percurso próprio.",
     "billingToggle": {
       "monthly": "Mensal",
-      "annual": "Anual"
-    },
-    "free": {
-      "label": "Plano Gratuito",
-      "price": "Grátis",
-      "period": "para sempre",
-      "description": "Para conhecer a Scooli e criar os primeiros materiais.",
-      "creditsBadge": "{credits} créditos",
-      "features": [
-        "{credits} créditos",
-        "Acesso à biblioteca comunitária",
-        "Exportação básica",
-        "Editor para rever e ajustar"
-      ],
-      "lockedFeatures": [
-        "Suporte prioritário",
-        "Modelos de IA avançados"
-      ],
-      "cta": "Experimentar grátis"
+      "annual": "Anual",
+      "label": "Faturação do Pro",
+      "annualSavings": "−{savings} no anual"
     },
     "pro": {
       "label": "Pro",
-      "mostPopular": "Mais popular",
-      "bestValue": "Melhor valor",
       "promoBadge": "Regresso às Aulas 2026",
       "perMonth": "/mês",
       "promoAnnualPrefix": "{price}/ano · ",
       "annualNote": "{price}/ano · poupe {savings}",
       "monthlyNote": "faturado mensalmente",
-      "descriptionAnnual": "O mesmo plano Pro, pago uma vez por ano, com {savings} de desconto.",
-      "descriptionMonthly": "Tudo o que a Scooli faz, sem limites de criação.",
-      "unlimitedBadge": "Geração ilimitada*",
-      "features": [
-        "Modelos de IA avançados",
-        "Exportação em múltiplos formatos",
-        "Acesso antecipado a novidades",
-        "Biblioteca comunitária",
-        "Geração de imagens"
-      ],
       "cta": "Subscrever",
-      "promoTagline": "Regresso às Aulas 2026 · ative durante a promoção e mantenha este preço para sempre"
+      "promoTagline": "Regresso às Aulas 2026 · ative durante a promoção e mantenha este preço para sempre",
+      "short": "Pro"
     },
     "enterprise": {
-      "badge": "Institucional",
       "label": "Escolas e instituições",
       "price": "Sob consulta",
       "detail": "Preço ajustado ao número de professores",
-      "description": "Para escolas e agrupamentos que querem a Scooli para toda a equipa: o estado do currículo de todas as turmas, gestão central e acompanhamento.",
-      "features": [
-        "Tudo o que o Pro inclui, para cada professor",
-        "O estado do currículo de todas as turmas, num só painel",
-        "Painel da escola com a atividade de cada professor",
-        "Lugares e convites geridos num só sítio",
-        "Biblioteca interna para partilhar materiais entre colegas",
-        "Implementação e formação da equipa",
-        "Documentação de privacidade para o encarregado de proteção de dados",
-        "Uma fatura para a escola"
-      ],
-      "cta": "Falar com a equipa"
+      "cta": "Falar com a equipa",
+      "short": "Escolas",
+      "ctaShort": "Contactar"
     },
     "trustBadges": {
       "securePayment": "Pagamento seguro via Stripe",
       "cancelAnytime": "Cancele a qualquer momento",
       "instantActivation": "Ativação imediata"
     },
-    "fairUseFootnote": "* Geração ilimitada sujeita à <link>Política de Uso Justo</link>.",
+    "fairUseFootnote": "* Sem limites de criação, de acordo com a <link>Política de Uso Justo</link>.",
     "contactModal": {
       "title": "Fale com a equipa",
       "description": "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo."
+    },
+    "trial": {
+      "title": "30 dias grátis",
+      "price": "Grátis",
+      "period": "durante 30 dias",
+      "cta": "Experimentar grátis",
+      "note": "Sem dados de pagamento nem compromisso",
+      "after": "Depois dos 30 dias grátis, a conta passa a modo de leitura até subscrever: os seus documentos continuam disponíveis para ver e editar.",
+      "short": "Grátis",
+      "days": "30 dias",
+      "ctaShort": "Começar"
+    },
+    "table": {
+      "caption": "Funcionalidades incluídas em cada plano",
+      "featureColumn": "Funcionalidade",
+      "included": "Incluído",
+      "notIncluded": "Não incluído",
+      "groups": [
+        {
+          "title": "Preparar aulas",
+          "rows": [
+            "Planos de aula, fichas, testes e quizzes",
+            "Apresentações",
+            "Planificações anuais e de unidade",
+            "Calendário de cada turma, com a semana preparada num clique",
+            "Estado de cada turma: o que já foi dado e o que falta",
+            "Turmas sem limite, para o ano letivo inteiro",
+            "Sem limites de criação*"
+          ]
+        },
+        {
+          "title": "Materiais",
+          "rows": [
+            "Materiais adaptados por nível ou necessidades",
+            "Os seus manuais e materiais como fonte",
+            "Imagens nos documentos",
+            "Exportação para Word e PDF",
+            "Biblioteca comunitária"
+          ]
+        },
+        {
+          "title": "IA e apoio",
+          "plans": [
+            "pro",
+            "school"
+          ],
+          "rows": [
+            "Modelos de IA avançados",
+            "Acesso antecipado a novidades",
+            "Suporte prioritário"
+          ]
+        },
+        {
+          "title": "Para a escola",
+          "plans": [
+            "school"
+          ],
+          "rows": [
+            "O estado do currículo de todas as turmas, num só painel",
+            "Painel da escola com a atividade de cada professor",
+            "Lugares e convites geridos num só sítio",
+            "Biblioteca interna para partilhar materiais entre colegas",
+            "Implementação e formação da equipa",
+            "Acompanhamento contínuo da equipa",
+            "Adaptações e funcionalidades à medida da escola",
+            "Documentação de privacidade para o encarregado de proteção de dados",
+            "Uma fatura para a escola"
+          ]
+        }
+      ]
     }
   },
   "siteMeta": {
@@ -1464,7 +1496,7 @@
       "tagline": "Estes Termos regulam o acesso e utilização do website e (quando disponível) da aplicação Scooli, incluindo funcionalidades de geração de conteúdos e componentes comunitários.",
       "backLabel": "Voltar",
       "lastUpdated": "Última atualização: {date}",
-      "lastUpdatedValue": "5 de Janeiro de 2026"
+      "lastUpdatedValue": "6 de Novembro de 2026"
     },
     "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculativa deste documento.",
     "sections": {
@@ -1512,10 +1544,11 @@
         ]
       },
       "section6": {
-        "title": "6) Créditos, Plano Pro e Cancelamentos",
-        "intro": "Algumas funcionalidades dependem do limite de créditos de cada plano.",
+        "title": "6) Período Experimental, Plano Pro e Cancelamentos",
+        "intro": "As contas novas começam com um período experimental do Plano Pro.",
         "items": [
-          "O plano gratuito inclui 20 créditos.",
+          "As contas novas têm um período experimental gratuito de 30 dias, sem dados de pagamento. No fim desse período, a conta passa a modo de leitura: continua a poder ver e editar os seus documentos, mas criar e gerar documentos, exportar, duplicar e partilhar requerem o Plano Pro.",
+          "As contas do plano gratuito criadas antes do período experimental mantêm o limite de 20 créditos enquanto estiverem nesse plano.",
           "Preços, funcionalidades e limites podem ser atualizados ao longo do tempo.",
           "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na secção 7."
         ],
@@ -1721,7 +1754,7 @@
       "label": "A Scooli em números",
       "teachers": "professores na Scooli",
       "active": "ativos no último mês",
-      "documents": "documentos criados",
+      "lessons": "aulas preparadas",
       "launchValue": "< 4 semanas",
       "launch": "para pôr a Scooli a funcionar num novo mercado"
     },
@@ -1731,9 +1764,9 @@
       "description": "Preços públicos, em três níveis.",
       "plans": [
         {
-          "title": "Grátis",
+          "title": "30 dias grátis",
           "price": "€0",
-          "description": "20 créditos. A porta de entrada: cada professor experimenta com as suas aulas reais."
+          "description": "Sem dados de pagamento. A porta de entrada: cada professor experimenta com as suas aulas reais."
         },
         {
           "title": "Pro",
@@ -1941,7 +1974,7 @@
       },
       {
         "title": "Estado da turma",
-        "text": "Onde estamos"
+        "text": "O que já foi dado e o que falta"
       },
       {
         "title": "Próxima aula",

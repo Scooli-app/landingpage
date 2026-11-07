@@ -92,7 +92,7 @@ export default async function InvestorsPage({
   const numbers = [
     { value: `${PUBLIC_IMPACT_METRICS.activeTeachers.minValue}+`, label: t("numbers.teachers") },
     { value: `${PUBLIC_IMPACT_METRICS.activeLast30Days.minValue}+`, label: t("numbers.active") },
-    { value: `${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue}+`, label: t("numbers.documents") },
+    { value: `${PUBLIC_IMPACT_METRICS.preparedLessons.minValue}+`, label: t("numbers.lessons") },
     { value: t("numbers.launchValue"), label: t("numbers.launch") },
   ];
 

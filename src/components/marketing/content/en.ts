@@ -14,7 +14,7 @@ import type { MarketingContent } from "../data";
 export const marketingContentEn: MarketingContent = {
   impactStatLabels: {
     activeTeachers: "teachers",
-    generatedDocuments: "documents created",
+    preparedLessons: "lessons prepared",
   },
 
   trustCards: [

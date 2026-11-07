@@ -38,9 +38,9 @@ function buildLlmsText() {
       "- Not a student-facing tutor, not an LMS, not a general chatbot.",
     ]),
     buildSection("Pricing", [
-      `- Free: ${PRICING.free.credits} credits.`,
+      `- Free trial: ${PRICING.free.trialDays} days from sign-up, no payment details, no commitment. Everything in Pro except advanced AI models, early access and priority support. After that, the account becomes read-only (documents stay viewable and editable) until the teacher subscribes.`,
       `- Pro: EUR ${PRICING.pro_monthly.price.toFixed(2)} per month, or EUR ${PRICING.pro_annual.price.toFixed(2)} per year (${PRICING.pro_annual.savings} off). No creation limits, subject to a fair-use policy.`,
-      "- Institutional plan for schools and school groups: priced by number of teachers, on request. Includes a school dashboard, seat management, an internal library, training and privacy documentation. Starts with a supported pilot.",
+      "- Institutional plan for schools and school groups: priced by number of teachers, on request. Includes a school dashboard, seat management, an internal library, training, ongoing support, adaptations built for the school's needs and privacy documentation. Starts with a supported pilot.",
       `- Machine-readable: ${SITE_URL}/pricing.md`,
     ]),
     buildSection("Trust and data", [
@@ -50,7 +50,7 @@ function buildLlmsText() {
       `- Privacy Policy: ${SITE_URL}/privacy | Terms: ${SITE_URL}/terms | Trust page: ${SITE_URL}/confianca`,
     ]),
     buildSection("Public numbers", [
-      `- More than ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} teachers and more than ${PUBLIC_IMPACT_METRICS.generatedDocuments.minValue} documents created.`,
+      `- More than ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} teachers and more than ${PUBLIC_IMPACT_METRICS.preparedLessons.minValue} lessons prepared.`,
     ]),
     buildSection("Roadmap", [
       "- Available: connect curriculum, plan and calendar; a live state for every class and recommendations for what comes next; a school dashboard with the curriculum of every class.",

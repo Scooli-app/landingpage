@@ -116,7 +116,7 @@
       "steps": [
         {
           "name": "Create a free account",
-          "text": "Sign up for Scooli and start exploring the platform on the free plan."
+          "text": "Sign up for Scooli and try the platform free for 30 days."
         },
         {
           "name": "Choose the kind of resource",
@@ -147,8 +147,7 @@
     "proof": {
       "ariaLabel": "Scooli in numbers",
       "teachers": "teachers on Scooli",
-      "documents": "documents created",
-      "hoursSaved": "saved per week",
+      "lessons": "lessons prepared",
       "adapted": "materials adapted"
     },
     "howItWorks": {
@@ -232,7 +231,7 @@
         "kicker": "For teachers",
         "title": "Win back your planning hours.",
         "description": "Start free and try it with your real lessons.",
-        "price": "<b>Free</b> with 20 credits · <b>Pro</b> at {price}/month",
+        "price": "<b>30 days free</b> · no commitment",
         "link": "See pricing",
         "imageAlt": "Scooli's dashboard with upcoming lessons already generated and the box to ask for a new resource"
       },
@@ -560,7 +559,7 @@
     "metrics": {
       "eyebrow": "Scooli today",
       "activeTeachers": "teachers",
-      "generatedDocuments": "documents created",
+      "preparedLessons": "lessons prepared",
       "activeMonth": "active in the last month"
     },
     "mission": {
@@ -996,7 +995,7 @@
       },
       {
         "question": "How much does it cost?",
-        "answer": "There is a free plan with 20 credits and a Pro plan with no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
+        "answer": "You can try Scooli free for 30 days, with no payment details and no commitment. After that, the Pro plan has no creation limits. Schools have an institutional plan, with central team management and a pilot before deciding."
       }
     ],
     "hero": {
@@ -1018,7 +1017,7 @@
     "proofLabel": "Scooli in numbers",
     "proof": {
       "teachers": "teachers on Scooli",
-      "documents": "documents created"
+      "lessons": "lessons prepared"
     },
     "week": {
       "kicker": "Your week",
@@ -1093,18 +1092,18 @@
   "pricingPage": {
     "meta": {
       "title": "Pricing: free, Pro and a plan for schools",
-      "description": "Simple Scooli pricing: a free plan with 20 credits, Pro with no creation limits, and an institutional plan for schools and school groups."
+      "description": "Simple Scooli pricing: 30 days free to try it, Pro with no creation limits, and an institutional plan for schools and school groups."
     },
     "hero": {
       "eyebrow": "Pricing",
       "title": "Simple pricing, from one teacher to the whole school.",
-      "description": "Start free. Go Pro whenever you like. For schools, an institutional plan.",
+      "description": "Try it free for 30 days, with no payment details and no commitment. For schools, an institutional plan.",
       "secondaryLabel": "See the institutional plan"
     },
     "faqCards": [
       {
-        "title": "What is a generation?",
-        "description": "In practice, a generation is every new document created with AI. If you ask for another version of the same material, that counts as a new generation."
+        "title": "How do the 30 free days work?",
+        "description": "When you sign up, you get 30 days to prepare lessons and materials with Scooli, with no payment details and no commitment. If you don't continue, your account becomes read-only: your documents stay there, to view and edit."
       },
       {
         "title": "Fair use, no small print",
@@ -1190,7 +1189,7 @@
         },
         {
           "label": "Trying it",
-          "pro": "Free plan",
+          "pro": "30 days free",
           "institutional": "A supported pilot with a small team"
         }
       ],
@@ -1202,78 +1201,111 @@
   "pricingSection": {
     "eyebrow": "Pricing and options",
     "title": "Choose the right option for how you want to use Scooli.",
-    "description": "The free plan helps you try it out. Paid plans give you more continuity. Schools follow their own path.",
+    "description": "Try it free for 30 days. Pro keeps it going. Schools follow their own path.",
     "billingToggle": {
       "monthly": "Monthly",
-      "annual": "Annual"
-    },
-    "free": {
-      "label": "Free Plan",
-      "price": "Free",
-      "period": "forever",
-      "description": "For getting to know Scooli and creating your first materials.",
-      "creditsBadge": "{credits} credits",
-      "features": [
-        "{credits} credits",
-        "Access to the community library",
-        "Basic export",
-        "Editor for reviewing and adjusting"
-      ],
-      "lockedFeatures": [
-        "Priority support",
-        "Advanced AI models"
-      ],
-      "cta": "Try it for free"
+      "annual": "Annual",
+      "label": "Pro billing",
+      "annualSavings": "{savings} off yearly"
     },
     "pro": {
       "label": "Pro",
-      "mostPopular": "Most popular",
-      "bestValue": "Best value",
       "promoBadge": "Back to School 2026",
       "perMonth": "/month",
       "promoAnnualPrefix": "{price}/year · ",
       "annualNote": "{price}/year · save {savings}",
       "monthlyNote": "billed monthly",
-      "descriptionAnnual": "The same Pro plan, paid once a year, {savings} off.",
-      "descriptionMonthly": "Everything Scooli does, with no creation limits.",
-      "unlimitedBadge": "Unlimited generation*",
-      "features": [
-        "Advanced AI models",
-        "Export in multiple formats",
-        "Early access to new features",
-        "Community library",
-        "Image generation"
-      ],
       "cta": "Subscribe",
-      "promoTagline": "Back to School 2026 · activate during the promotion and keep this price for good"
+      "promoTagline": "Back to School 2026 · activate during the promotion and keep this price for good",
+      "short": "Pro"
     },
     "enterprise": {
-      "badge": "Institutional",
       "label": "Schools and institutions",
       "price": "By request",
       "detail": "Priced by number of teachers",
-      "description": "For schools and school groups that want Scooli for the whole team: the state of the curriculum in every class, central management and support.",
-      "features": [
-        "Everything in Pro, for every teacher",
-        "The state of the curriculum in every class, in one dashboard",
-        "A school dashboard with each teacher's activity",
-        "Seats and invitations managed in one place",
-        "An internal library to share materials between colleagues",
-        "Implementation and team training",
-        "Privacy documentation for your data protection officer",
-        "One invoice for the school"
-      ],
-      "cta": "Talk to the team"
+      "cta": "Talk to the team",
+      "short": "Schools",
+      "ctaShort": "Contact"
     },
     "trustBadges": {
       "securePayment": "Secure payment via Stripe",
       "cancelAnytime": "Cancel anytime",
       "instantActivation": "Instant activation"
     },
-    "fairUseFootnote": "* Unlimited generation is subject to our <link>Fair Use Policy</link>.",
+    "fairUseFootnote": "* No creation limits, subject to our <link>Fair Use Policy</link>.",
     "contactModal": {
       "title": "Talk to the team",
       "description": "Share the context of your school or institution and we'll get in touch to work out the best next step."
+    },
+    "trial": {
+      "title": "Free trial",
+      "price": "Free",
+      "period": "for 30 days",
+      "cta": "Try it free",
+      "note": "No payment details, no commitment",
+      "after": "After the 30-day trial, your account becomes read-only until you subscribe: your documents stay available to view and edit.",
+      "short": "Trial",
+      "days": "30 days",
+      "ctaShort": "Start"
+    },
+    "table": {
+      "caption": "Features included in each plan",
+      "featureColumn": "Feature",
+      "included": "Included",
+      "notIncluded": "Not included",
+      "groups": [
+        {
+          "title": "Preparing lessons",
+          "rows": [
+            "Lesson plans, worksheets, tests and quizzes",
+            "Slide decks",
+            "Yearly and unit plans",
+            "A calendar for each class, with the week prepared in one click",
+            "Each class's state: what has been taught and what is left",
+            "Unlimited classes, for the whole school year",
+            "No creation limits*"
+          ]
+        },
+        {
+          "title": "Materials",
+          "rows": [
+            "Materials adapted by level or learning needs",
+            "Your own textbooks and materials as sources",
+            "Images in your documents",
+            "Export to Word and PDF",
+            "Community library"
+          ]
+        },
+        {
+          "title": "AI and support",
+          "plans": [
+            "pro",
+            "school"
+          ],
+          "rows": [
+            "Advanced AI models",
+            "Early access to new features",
+            "Priority support"
+          ]
+        },
+        {
+          "title": "For the school",
+          "plans": [
+            "school"
+          ],
+          "rows": [
+            "The state of the curriculum in every class, in one dashboard",
+            "A school dashboard with each teacher's activity",
+            "Seats and invitations managed in one place",
+            "An internal library to share materials between colleagues",
+            "Implementation and team training",
+            "Ongoing support for the team",
+            "Adaptations and features built for your school's needs",
+            "Privacy documentation for your data protection officer",
+            "One invoice for the school"
+          ]
+        }
+      ]
     }
   },
   "siteMeta": {
@@ -1447,7 +1479,7 @@
       "tagline": "These Terms govern access to and use of the Scooli website and (when available) the Scooli app, including AI content generation and community features.",
       "backLabel": "Go back",
       "lastUpdated": "Last updated: {date}",
-      "lastUpdatedValue": "January 5, 2026"
+      "lastUpdatedValue": "November 6, 2026"
     },
     "disclaimer": "This is an English translation provided for convenience. If it differs from the Portuguese version, the Portuguese version prevails.",
     "sections": {
@@ -1495,10 +1527,11 @@
         ]
       },
       "section6": {
-        "title": "6) Credits, Pro Plan and Cancellations",
-        "intro": "Some features depend on each plan's credit limit.",
+        "title": "6) Trial Period, Pro Plan and Cancellations",
+        "intro": "New accounts start with a trial period of the Pro Plan.",
         "items": [
-          "The free plan includes 20 credits.",
+          "New accounts get a free 30-day trial period, with no payment details. At the end of that period, the account becomes read-only: you can still view and edit your documents, but creating and generating documents, exporting, duplicating and sharing require the Pro Plan.",
+          "Free plan accounts created before the trial period keep their limit of 20 credits while they stay on that plan.",
           "Prices, features and limits may be updated over time.",
           "The Pro Plan's \"unlimited\" access is subject to the Fair Use Policy described in section 7."
         ],
@@ -1704,7 +1737,7 @@
       "label": "Scooli in numbers",
       "teachers": "teachers on Scooli",
       "active": "active in the last month",
-      "documents": "documents created",
+      "lessons": "lessons prepared",
       "launchValue": "< 4 weeks",
       "launch": "to get Scooli running in a new market"
     },
@@ -1714,9 +1747,9 @@
       "description": "Public pricing, in three tiers.",
       "plans": [
         {
-          "title": "Free",
+          "title": "30 days free",
           "price": "€0",
-          "description": "20 credits. The way in: every teacher tries it with their real lessons."
+          "description": "No payment details. The way in: every teacher tries it with their real lessons."
         },
         {
           "title": "Pro",
@@ -1924,7 +1957,7 @@
       },
       {
         "title": "Class state",
-        "text": "Where we are"
+        "text": "What has been taught and what is left"
       },
       {
         "title": "Next lesson",
