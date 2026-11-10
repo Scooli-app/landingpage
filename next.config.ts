@@ -3,6 +3,26 @@ import type { NextConfig } from "next";
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
+/**
+ * Security headers for every response. The CSP is deliberately narrow: it
+ * blocks clickjacking, <base> hijacking and plugins without restricting
+ * scripts, so PostHog, Speed Insights and the booking embed keep working. A
+ * script-src policy would need per-request nonces, which forces every page to
+ * render dynamically.
+ */
+const securityHeaders = [
+  {
+    key: "Content-Security-Policy",
+    value: "base-uri 'self'; object-src 'none'; frame-ancestors 'self'; upgrade-insecure-requests",
+  },
+  { key: "X-Frame-Options", value: "SAMEORIGIN" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  // Vercel's default HSTS, plus includeSubDomains.
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+];
+
 const nextConfig: NextConfig = {
   experimental: {
     optimizeCss: true,
@@ -29,6 +49,10 @@ const nextConfig: NextConfig = {
 
   async headers() {
     return [
+      {
+        source: "/:path*",
+        headers: securityHeaders,
+      },
       {
         // PostHog static assets are versioned (?v=x.x.x) — safe to cache for 1 year
         source: "/ingest/static/:path*",
