@@ -14,7 +14,7 @@ function buildSection(title: string, lines: string[]) {
 
 function buildToolSection() {
   const lines = toolPages.map(
-    (tool) => `- ${tool.shortTitle}: ${SITE_URL}/ferramentas/${tool.slug}. ${tool.description}`,
+    (tool) => `- [${tool.shortTitle}](${SITE_URL}/ferramentas/${tool.slug}): ${tool.description}`,
   );
 
   return buildSection("Tools", lines);
@@ -41,13 +41,15 @@ function buildLlmsText() {
       `- Free trial: ${PRICING.free.trialDays} days from sign-up, no payment details, no commitment. Everything in Pro except advanced AI models, early access and priority support. After that, the account becomes read-only (documents stay viewable and editable) until the teacher subscribes.`,
       `- Pro: EUR ${PRICING.pro_monthly.price.toFixed(2)} per month, or EUR ${PRICING.pro_annual.price.toFixed(2)} per year (${PRICING.pro_annual.savings} off). No creation limits, subject to a fair-use policy.`,
       "- Institutional plan for schools and school groups: priced by number of teachers, on request. Includes a school dashboard, seat management, an internal library, training, ongoing support, adaptations built for the school's needs and privacy documentation. Starts with a supported pilot.",
-      `- Machine-readable: ${SITE_URL}/pricing.md`,
+      `- [Pricing in Markdown](${SITE_URL}/pricing.md): machine-readable plans and prices.`,
     ]),
     buildSection("Trust and data", [
       "- User prompts and materials are not used to train AI models.",
       "- Data is handled under the GDPR, encrypted in transit (SSL/TLS) and stored on servers with restricted access.",
       "- Teacher review is expected before any material is used with students.",
-      `- Privacy Policy: ${SITE_URL}/privacy | Terms: ${SITE_URL}/terms | Trust page: ${SITE_URL}/confianca`,
+      `- [Privacy Policy](${SITE_URL}/privacy)`,
+      `- [Terms of Use](${SITE_URL}/terms)`,
+      `- [Trust page](${SITE_URL}/confianca): how data, privacy and AI use are handled.`,
     ]),
     buildSection("Public numbers", [
       `- More than ${PUBLIC_IMPACT_METRICS.activeTeachers.minValue} teachers and more than ${PUBLIC_IMPACT_METRICS.preparedLessons.minValue} lessons prepared.`,
@@ -55,28 +57,28 @@ function buildLlmsText() {
     buildSection("Roadmap", [
       "- Available: connect curriculum, plan and calendar; a live state for every class and recommendations for what comes next; a school dashboard with the curriculum of every class.",
       "- Next: Scooli prepares the week on its own initiative, assessment evidence by topic, and a view across departments and the whole school.",
-      `- Roadmap: ${SITE_URL}/roadmap`,
+      `- [Roadmap](${SITE_URL}/roadmap): what is available now and what comes next.`,
     ]),
     buildSection("Key pages", [
-      `- Home: ${SITE_URL}`,
-      `- AI for teachers: ${SITE_URL}/ia-para-professores`,
-      `- For teachers: ${SITE_URL}/professores`,
-      `- For schools: ${SITE_URL}/escolas`,
-      `- Tools: ${SITE_URL}/ferramentas`,
-      `- Pricing: ${SITE_URL}/precos`,
-      `- About the team: ${SITE_URL}/sobre`,
-      `- Contact: ${SITE_URL}/contacto`,
+      `- [Home](${SITE_URL}): what Scooli is and how it prepares the week.`,
+      `- [AI for teachers](${SITE_URL}/ia-para-professores): how teachers in Portugal use AI to prepare lessons.`,
+      `- [For teachers](${SITE_URL}/professores): the teacher's workflow and the community library.`,
+      `- [For schools](${SITE_URL}/escolas): the institutional plan for schools and school groups.`,
+      `- [Tools](${SITE_URL}/ferramentas): every resource Scooli creates.`,
+      `- [Pricing](${SITE_URL}/precos): free trial, Pro and the institutional plan.`,
+      `- [About the team](${SITE_URL}/sobre): who builds Scooli.`,
+      `- [Contact](${SITE_URL}/contacto): get in touch with the team.`,
     ]),
     buildSection("Comparisons", comparisonSlugs.map((slug) => {
       const page = getComparisonPage(slug);
       const english = getComparisonPage(slug, "en");
-      return `- ${page?.metaTitle ?? slug}: ${SITE_URL}/comparar/${slug} (English: ${SITE_URL}/en/compare/${EN_COMPARISON_SLUGS[slug]}, "${english?.metaTitle ?? ""}")`;
+      return `- [${page?.metaTitle ?? slug}](${SITE_URL}/comparar/${slug}): in English, [${english?.metaTitle ?? "English version"}](${SITE_URL}/en/compare/${EN_COMPARISON_SLUGS[slug]})`;
     })),
     buildToolSection(),
     buildSection("Contact", [
-      `- Website: ${SITE_URL}`,
-      `- Sign up: ${APP_URL}/sign-up`,
-      "- Email: info@scooli.app",
+      `- [Website](${SITE_URL})`,
+      `- [Sign up](${APP_URL}/sign-up): start the free trial.`,
+      "- [Email](mailto:info@scooli.app): info@scooli.app",
     ]),
   ].join("\n");
 }
