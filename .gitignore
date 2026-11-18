@@ -43,3 +43,6 @@ next-env.d.ts
 /skills/
 # brainstorming companion mockups
 .superpowers/
+
+# graphify generated output
+graphify-out/
