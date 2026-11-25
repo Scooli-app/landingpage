@@ -261,13 +261,13 @@ const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
     competitorName: "Teachy",
     metaTitle: "Scooli vs Teachy: qual escolher em Portugal?",
     metaDescription:
-      "A Teachy segue o currículo brasileiro; a Scooli segue o português e organiza o ano de cada turma num calendário. Comparação com todas as fontes citadas.",
+      "A Teachy segue o currículo brasileiro; a Scooli segue o português, com as Aprendizagens Essenciais em cada planificação. Comparação com todas as fontes citadas.",
     kicker: "Comparação",
     title: "Scooli vs Teachy",
     description:
-      "A Teachy planeia e gera materiais com base no currículo brasileiro. A Scooli parte da sua planificação e do currículo português, e organiza o ano de cada turma num calendário.",
+      "A Teachy planeia e gera materiais com base no currículo brasileiro. A Scooli faz o mesmo com o currículo português, a partir da sua planificação.",
     verdict:
-      "A Teachy está construída e documentada em torno da BNCC brasileira. Não encontrámos variante em português europeu nem página para Portugal, e conteúdo sobre temas portugueses aparece com códigos curriculares brasileiros. A Scooli foi feita para o professor português: as Aprendizagens Essenciais e o DL 55/2018 entram desde o primeiro pedido, e o calendário de cada turma mantém o ano letivo no sítio certo.",
+      "A Teachy está construída e documentada em torno da BNCC brasileira. Não encontrámos variante em português europeu nem página para Portugal. A Scooli foi feita para o professor português: as Aprendizagens Essenciais e o DL 55/2018 entram desde o primeiro pedido, e o calendário de cada turma segue o ano letivo português.",
     tableTitle: "Lado a lado",
     tableDescription: "Factos verificáveis, com fonte oficial sempre que existe, incluindo as páginas da própria Teachy.",
     rows: [
@@ -279,7 +279,7 @@ const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         aspect: "Idioma",
         scooli: "Português europeu nativo, da interface ao conteúdo gerado",
-        competitor: "Apenas português do Brasil (pt-BR); sem variante para Portugal",
+        competitor: "Português do Brasil (pt-BR); não encontrámos variante para Portugal",
       },
       {
         aspect: "Ponto de partida",
@@ -294,7 +294,7 @@ const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         aspect: "Presença em Portugal",
         scooli: "Produto construído desde a fundação para o ensino português",
-        competitor: "Sem página, locale ou presença institucional específica para Portugal",
+        competitor: "Não encontrámos página, locale ou presença institucional específica para Portugal",
       },
     ],
     reasonsTitle: "Porque os professores escolhem a Scooli",
@@ -304,8 +304,8 @@ const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
         description: "Sem códigos curriculares de outro país a traduzir: tudo parte das Aprendizagens Essenciais.",
       },
       {
-        title: "O ano inteiro, num clique por semana",
-        description: "A planificação vira calendário, e cada semana é preparada num clique.",
+        title: "O ano letivo português",
+        description: "A planificação vira o calendário de cada turma no ano letivo português, com as Aprendizagens Essenciais em cada aula.",
       },
       {
         title: "Português europeu a sério",
@@ -316,7 +316,7 @@ const ptPT: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         question: "A Teachy funciona com o currículo português?",
         answer:
-          "Com base na documentação pública da Teachy, o alinhamento curricular declarado é à BNCC brasileira. Não encontrámos referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018, e mesmo conteúdo sobre temas portugueses aparece com códigos BNCC.",
+          "Com base na documentação pública da Teachy, o alinhamento curricular declarado é à BNCC brasileira. Não encontrámos referência às Aprendizagens Essenciais nem aos Decretos-Lei 54/2018 ou 55/2018.",
       },
       {
         question: "A Teachy está disponível em português europeu?",
@@ -565,7 +565,7 @@ const en: Record<ComparisonSlug, ComparisonPageContent> = {
     competitorName: "Teachy",
     metaTitle: "Scooli vs Teachy: which to choose?",
     metaDescription:
-      "Both plan by class on a calendar. In Scooli the plan follows what happened in each lesson, and school leaders see how much of the plan every class has covered. Sources cited.",
+      "Both plan by class on a calendar. In Scooli, a check-in after each lesson moves the plan, and school leaders see each class's coverage built from those check-ins. Sources cited.",
     kicker: "Comparison",
     title: "Scooli vs Teachy",
     description:
@@ -595,13 +595,14 @@ const en: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         aspect: "The school's own material",
         scooli: "The school's rules and support material are set once and apply to every teacher's documents",
-        competitor: "Teachers can upload their own files (PDFs, documents, slides) when generating a lesson plan",
+        competitor:
+          "Teachers can upload their own files (PDFs, documents, slides) when generating a lesson plan, and the schools offer lists plans aligned with \"your curriculum and your school's standards\"",
       },
     ],
     reasonsTitle: "Why choose Scooli",
     reasons: [
       { title: "The plan follows the classroom", description: "A quick check-in after each lesson moves the next ones. Scooli suggests the change; the teacher decides." },
-      { title: "Coverage in view", description: "School leaders see, class by class, what has been taught and what is behind, during the term rather than at the end of the year." },
+      { title: "Coverage from every lesson", description: "From each lesson's check-in, school leaders see, class by class, what has been taught and what is behind, during the term rather than at the end of the year." },
       { title: "Set up once for the school", description: "The school's rules and support material reach every teacher's documents without repeating them in each request." },
     ],
     faq: [
@@ -904,7 +905,7 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
     competitorName: "Teachy",
     metaTitle: "Scooli vs Teachy: o que muda para a sua escola",
     metaDescription:
-      "Na Scooli, o plano acompanha o que aconteceu em cada aula e a direção vê o cumprimento do planejamento, turma a turma. Comparação com a Teachy, com fontes.",
+      "Na Scooli, o plano acompanha cada aula, e a direção vê o cumprimento, turma a turma, a partir do registro de cada aula. Comparação com a Teachy, com fontes.",
     kicker: "Comparação",
     title: "Scooli vs Teachy",
     description:
@@ -952,9 +953,9 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
     reasonsTitle: "Por que escolher a Scooli",
     reasons: [
       {
-        title: "O cumprimento à vista",
+        title: "O cumprimento a partir de cada aula",
         description:
-          "A direção sabe, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, durante o bimestre e não no fim do ano.",
+          "A partir do registro de cada aula, a direção sabe, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, durante o bimestre e não no fim do ano.",
       },
       {
         title: "O plano acompanha a sala",
@@ -985,7 +986,7 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         question: "Já usamos a Teachy. Faz sentido conhecer a Scooli?",
         answer:
-          "Faz, se a escola quer acompanhar o cumprimento do planejamento turma a turma ao longo do bimestre. Começamos com um piloto com um grupo pequeno de professores, e a escola avalia o painel da direção antes de decidir.",
+          "Faz, se a escola quer ver o cumprimento do planejamento, turma a turma, a partir do registro de cada aula, ao longo do bimestre. Começamos com um piloto com um grupo pequeno de professores, e a escola avalia o painel da direção antes de decidir.",
       },
     ],
     ctaTitle: "Veja o cumprimento do planejamento na sua escola",
@@ -1003,13 +1004,13 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
     competitorName: "ChatGPT, Gemini e Perplexity",
     metaTitle: "Scooli vs ChatGPT, Gemini e Perplexity para planos de aula",
     metaDescription:
-      "Um chat devolve texto e não guarda o calendário da turma. A Scooli parte do seu planejamento, liga cada aula à BNCC e prepara a semana. Com fontes.",
+      "Um chat devolve texto e não mantém o calendário da turma nem o que já foi dado. A Scooli parte do seu planejamento, liga cada aula à BNCC e prepara a semana. Com fontes.",
     kicker: "Comparação",
     title: "Scooli vs ChatGPT, Gemini e Perplexity",
     description:
       "Segundo a TIC Educação 2024, 43% dos professores no Brasil já usavam IA generativa para preparar conteúdos didáticos. Um chat devolve texto; a Scooli devolve a aula, o calendário e a semana preparada.",
     verdict:
-      "O ChatGPT, o Gemini e o Perplexity são ótimos para conversar, mas não guardam o planejamento nem o calendário da turma: não sabem quais habilidades da BNCC estão previstas nem o que já foi dado, e a pesquisa documenta alinhamento curricular superficial e fontes inventadas. A Scooli faz o contrário: parte do seu planejamento, mantém o calendário de cada turma, prepara a semana inteira em documentos estruturados no seu modelo e deixa a revisão com o professor.",
+      "O ChatGPT, o Gemini e o Perplexity são ótimos para conversar, mas não mantêm o calendário da turma nem o que já foi dado: não sabem quais habilidades da BNCC estão previstas para a próxima aula, e a pesquisa documenta alinhamento curricular superficial e fontes inventadas. A Scooli faz o contrário: parte do seu planejamento, mantém o calendário de cada turma, prepara a semana inteira em documentos estruturados no seu modelo e deixa a revisão com o professor.",
     tableTitle: "Lado a lado",
     tableDescription:
       "Não é sobre uma empresa: é sobre o que acontece quando um chat genérico faz o trabalho de preparar o ano letivo.",
@@ -1023,7 +1024,7 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
         aspect: "Seu planejamento e calendário",
         scooli: "O planejamento e o calendário de cada turma ficam guardados na Scooli",
         competitor:
-          "Não guarda o planejamento nem o calendário da turma: o contexto depende do que o professor contar em cada conversa",
+          "Não mantém o calendário da turma nem o que já foi dado: o contexto depende do que o professor contar ou anexar em cada conversa",
       },
       {
         aspect: "Preparar a semana",

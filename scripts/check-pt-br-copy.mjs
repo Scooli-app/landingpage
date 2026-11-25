@@ -2,8 +2,9 @@
 // Fails when a namespace that should be Brazilian is still the pt-PT scaffold,
 // when its keys or {placeholders}/<tags> drift from pt-PT, or when any string
 // uses a Portugal-only term. Scope: the namespaces in DONE_NAMESPACES, plus the
-// string literals of src/components/marketing/content/pt-BR.ts and of the pt-BR
-// entries in src/components/marketing/comparisons.ts (comments are skipped).
+// string literals of src/components/marketing/content/pt-BR.ts, of the pt-BR
+// entries in src/components/marketing/comparisons.ts and of buildPricingPtBR in
+// src/app/pricing.md/route.ts (comments are skipped).
 import { existsSync, readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
@@ -46,8 +47,9 @@ const BANNED = [
   "pront[oa]s? a \\p{L}+(?:ar|er|ir)",
 ];
 // Exact phrases that are fine despite a banned word in them. The slugs are the
-// internal tool identifiers in content/pt-BR.ts; the /br URLs use the Brazilian ones.
-const ALLOWED = ["Período de teste", '"fichas-de-trabalho"', '"gerador-de-testes"'];
+// internal tool identifiers in content/pt-BR.ts and "/contacto" is the internal
+// pathname key; the /br URLs use the Brazilian ones.
+const ALLOWED = ["Período de teste", '"fichas-de-trabalho"', '"gerador-de-testes"', '"/contacto"'];
 
 const bannedRe = new RegExp(`(?<![\\p{L}\\p{N}])(?:${BANNED.join("|")})(?![\\p{L}\\p{N}])`, "giu");
 // Brazil quotes with “ ”; «» is the European style. Punctuation, so no word boundaries.
@@ -95,14 +97,14 @@ for (const ns of DONE_NAMESPACES) {
 
 /** Scans the string literals of `source` (a slice of `path` starting at line `firstLine`). */
 function scanSource(path, source, firstLine = 1) {
-  // Strings only. /* */ blocks are blanked (newlines kept, so line numbers hold),
-  // and a "//" before any quote on a line starts a comment, which the alternation skips.
+  // Strings only ("..." and one-line `...`). /* */ blocks are blanked (newlines kept, so
+  // line numbers hold), and a "//" before any quote on a line starts a comment, which the alternation skips.
   source
     .replace(/\/\*[\s\S]*?\*\//g, (block) => block.replace(/[^\n]/g, " "))
     .split("\n")
     .forEach((line, index) => {
-      for (const [token] of line.matchAll(/"(?:[^"\\]|\\.)*"|\/\/.*$/g))
-        if (token.startsWith('"')) scanBanned(`${path}:${firstLine + index}`, token);
+      for (const [token] of line.matchAll(/"(?:[^"\\]|\\.)*"|`(?:[^`\\]|\\.)*`|\/\/.*$/g))
+        if (!token.startsWith("//")) scanBanned(`${path}:${firstLine + index}`, token);
     });
 }
 
@@ -124,6 +126,14 @@ if (brStart < 0 || brEnd < 0) errors.push(`${comparisonsPath}: pt-BR entries not
 else if (!/"pt-BR": ptBR\b/.test(comparisons)) errors.push(`${comparisonsPath}: pt-BR does not use ptBR`);
 else
   scanSource(comparisonsPath, comparisons.slice(brStart, brEnd), comparisons.slice(0, brStart).split("\n").length);
+
+// The pt-BR pricing.md runs from buildPricingPtBR to the GET handler.
+const pricingPath = "src/app/pricing.md/route.ts";
+const pricing = read(pricingPath);
+const pricingStart = pricing.indexOf("function buildPricingPtBR");
+const pricingEnd = pricing.indexOf("export function GET", pricingStart);
+if (pricingStart < 0 || pricingEnd < 0) errors.push(`${pricingPath}: buildPricingPtBR not found`);
+else scanSource(pricingPath, pricing.slice(pricingStart, pricingEnd), pricing.slice(0, pricingStart).split("\n").length);
 
 if (errors.length) {
   console.error(errors.join("\n"));

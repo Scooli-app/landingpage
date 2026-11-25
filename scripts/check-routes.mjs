@@ -1,21 +1,14 @@
 // Route table for the locale routing: run it against a running server
 // (`npm run dev` or `npm start`) with `npm run check:routes`.
 // BASE defaults to http://localhost:3100; override it with the BASE env var.
-import { readFileSync } from "node:fs";
-
 const BASE = (process.env.BASE || "http://localhost:3100").replace(/\/$/, "");
 const SITE = "https://www.scooli.app";
 
 const ok = (status) => ({ status });
 const redirect = (status, to) => ({ status, to });
 
-// While the tool pages are listed in NOT_YET_LOCALIZED["pt-BR"], every /br tool URL
-// 307s to /br; once they are published, the pt-PT slug 301s to the Brazilian one.
-const notYetLocalized = readFileSync(new URL("../src/i18n/localizationStatus.ts", import.meta.url), "utf8")
-  .match(/"pt-BR": \[([\s\S]*?)\n\s*\]/)?.[1] ?? "";
-const brToolsPublished = !notYetLocalized.includes('"/ferramentas/[slug]"');
-const brTool = (from, to) =>
-  brToolsPublished ? [[from, redirect(301, to)], [to, ok(200)]] : [[from, redirect(307, "/br")], [to, redirect(307, "/br")]];
+// Every /br tool page is published: the pt-PT slug 301s to the Brazilian one, which serves.
+const brTool = (from, to) => [[from, redirect(301, to)], [to, ok(200)]];
 
 /** [path, expectation]. A function expectation returns an error string or nothing. */
 const cases = [
