@@ -186,7 +186,7 @@
           "title": "Planos de aula da semana"
         }
       ],
-      "imageAlt": "Calendário mensal da Scooli com as aulas de três turmas, já geradas ou ainda por gerar"
+      "imageAlt": "Calendário mensal da Scooli com as aulas de três turmas, já prontas ou ainda para preparar"
     },
     "resources": {
       "kicker": "Materiais",
@@ -199,7 +199,7 @@
         },
         "fichas-de-trabalho": {
           "title": "Atividades",
-          "previewAlt": "Atividade de Ciências sobre o ciclo da água",
+          "previewAlt": "Lista de exercícios de Ciências sobre misturas homogêneas e heterogêneas",
           "description": "Exercícios para praticar, prontos para imprimir."
         },
         "gerador-de-testes": {
@@ -219,7 +219,7 @@
         },
         "apresentacoes": {
           "title": "Apresentações",
-          "previewAlt": "Apresentação de Ciências sobre o Sistema Solar",
+          "previewAlt": "Apresentação de Ciências sobre os movimentos da Terra",
           "description": "Slides com o conteúdo e exemplos, a partir do tema."
         }
       },
@@ -234,7 +234,7 @@
         "description": "Comece grátis e experimente com as suas aulas de verdade.",
         "price": "<b>30 dias grátis</b> · sem compromisso",
         "link": "Ver preços",
-        "imageAlt": "Painel da Scooli com as próximas aulas já geradas e o campo para pedir um novo material"
+        "imageAlt": "Painel da Scooli com as aulas de hoje já prontas, as próximas aulas e a pergunta sobre como foi a última aula"
       },
       "schools": {
         "kicker": "Para escolas e redes de ensino",
@@ -642,7 +642,7 @@
       "title": "A direção vê o cumprimento do planejamento, turma a turma.",
       "description": "Saiba, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, sem pedir relatórios aos professores.",
       "secondaryLabel": "Ver preços",
-      "imageAlt": "Painel da escola na Scooli com vagas ativas, professores que usaram a IA neste mês, pedidos à IA e documentos criados"
+      "imageAlt": "Painel da direção na Scooli com o cumprimento dos planejamentos: aulas em dia, turmas em dia, a acompanhar e atrasadas, e o percentual do currículo previsto em cada turma e disciplina"
     },
     "recommend": {
       "eyebrow": "Recomendação interna",
