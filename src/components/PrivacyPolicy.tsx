@@ -52,6 +52,10 @@ export function PrivacyPolicy() {
   const rightsColumnTwo = t.raw("sections.rights.columnTwo") as BoldBulletItem[];
   const securityItems = t.raw("sections.security.items") as string[];
   const retentionItems = t.raw("sections.retention.items") as string[];
+  // Sections only some locales need (pt-BR: LGPD international transfer, minors, changes).
+  const additionalSections = t.has("sections.additional")
+    ? (t.raw("sections.additional") as { heading: string; paragraphs: string[] }[])
+    : [];
 
   return (
     <div className="mx-auto max-w-[760px]">
@@ -217,6 +221,26 @@ export function PrivacyPolicy() {
             </div>
           </CardContent>
         </Card>
+
+        {additionalSections.map((section) => (
+          <Card
+            key={section.heading}
+            className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none"
+          >
+            <CardContent className="px-0 py-9">
+              <h2 className="mb-3 font-display text-[26px] font-medium leading-snug tracking-[-0.015em] text-ink">
+                {section.heading}
+              </h2>
+              <div className="space-y-4">
+                {section.paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="text-body leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ))}
 
         <Card className="rounded-none border-0 border-t border-line bg-transparent py-0 shadow-none">
           <CardContent className="px-0 py-9">

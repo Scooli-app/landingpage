@@ -14,8 +14,12 @@ const DONE_NAMESPACES = [
   "common", "nav", "footer", "siteMeta", "shareImage", "promoBanner", "booking", "notFound",
   "contactModal", "contactForm", "emailContact", "institutionalContactButton", "home",
   "classState", "schools", "pricingSection", "pricingPage", "contact", "trust", "about",
-  "recommendInstitution", "languageSwitcher",
+  "recommendInstitution", "languageSwitcher", "privacyPolicy", "termsOfUse",
 ];
+
+// The pt-BR legal texts add items and sections that the LGPD and the CDC need
+// and that pt-PT has no counterpart for. Missing keys are still errors there.
+const EXTRA_KEYS_OK = ["privacyPolicy.sections.", "termsOfUse.sections."];
 
 // Case-insensitive, matched as whole words (Unicode-aware, so "ecrã" and "registo" work).
 const BANNED = [
@@ -70,7 +74,9 @@ for (const ns of DONE_NAMESPACES) {
     else if (tokens(text) !== tokens(brLeaves.get(path)))
       errors.push(`placeholders differ at ${path}: pt-PT "${tokens(text)}" vs pt-BR "${tokens(brLeaves.get(path))}"`);
   }
-  for (const path of brLeaves.keys()) if (!ptLeaves.has(path)) errors.push(`extra key ${path}`);
+  for (const path of brLeaves.keys())
+    if (!ptLeaves.has(path) && !EXTRA_KEYS_OK.some((prefix) => path.startsWith(prefix)))
+      errors.push(`extra key ${path}`);
   for (const [path, text] of brLeaves) scanBanned(`messages/pt-BR.json ${path}`, text);
 }
 

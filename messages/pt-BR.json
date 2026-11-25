@@ -1345,146 +1345,189 @@
   "privacyPolicy": {
     "header": {
       "title": "Política de Privacidade",
-      "tagline": "A sua privacidade é importante para nós. Esta política explica como recolhemos, utilizamos e protegemos os seus dados pessoais.",
+      "tagline": "Sua privacidade é importante para nós. Esta política explica como coletamos, usamos e protegemos seus dados pessoais, de acordo com a Lei Geral de Proteção de Dados Pessoais (LGPD).",
       "backLabel": "Voltar",
       "lastUpdated": "Última atualização: {date}",
-      "lastUpdatedValue": "15 de Julho de 2025"
+      "lastUpdatedValue": "25 de novembro de 2026"
     },
-    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculativa deste documento.",
+    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculante deste documento.",
     "sections": {
       "intro": {
         "heading": "Introdução",
-        "paragraph": "A Scooli é um produto da FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\", \"nós\", \"nosso\" ou \"nossa\"), responsável pelo tratamento dos seus dados pessoais. Respeitamos a sua privacidade e estamos comprometidos em proteger os seus dados pessoais. Esta Política de Privacidade informa-o sobre como recolhemos, utilizamos, divulgamos e protegemos as suas informações quando utiliza a Scooli, em conformidade com o Regulamento Geral sobre a Proteção de Dados (RGPD)."
+        "paragraph": "A Scooli é um produto da FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\", \"nós\", \"nosso\" ou \"nossa\"), empresa com sede em Portugal e controladora dos seus dados pessoais. Esta Política de Privacidade explica como coletamos, usamos, compartilhamos e protegemos suas informações quando você usa a Scooli no Brasil, em conformidade com a Lei nº 13.709/2018, a Lei Geral de Proteção de Dados Pessoais (\"LGPD\"). Como empresa europeia, também cumprimos o Regulamento Geral sobre a Proteção de Dados da União Europeia (GDPR), o que funciona como uma garantia adicional para você."
       },
       "dataCollection": {
-        "heading": "Dados que Recolhemos",
+        "heading": "Dados que coletamos",
         "provided": {
-          "heading": "Dados Fornecidos por Si",
+          "heading": "Dados fornecidos por você",
           "items": [
-            "Endereço de email (quando se regista para receber notificações)",
-            "Informações de contacto que nos forneça voluntariamente",
-            "Feedback e comunicações que nos envie"
+            "Nome e endereço de e-mail, quando você cria uma conta, se cadastra para receber novidades ou nos escreve pelo formulário de contato",
+            "Outras informações de contato que você nos fornece voluntariamente",
+            "Feedback e mensagens que você nos envia",
+            "Os conteúdos que você cria, carrega ou compartilha na Scooli, que tratamos para prestar o serviço"
           ]
         },
         "automatic": {
-          "heading": "Dados Recolhidos Automaticamente",
+          "heading": "Dados coletados automaticamente",
           "items": [
-            "Dados de utilização do website (páginas visitadas, tempo de permanência)",
-            "Cookies e tecnologias similares"
+            "Dados de uso do site (páginas visitadas, tempo de permanência)",
+            "Cookies e tecnologias semelhantes, que você pode gerenciar ou bloquear nas configurações do seu navegador"
           ]
         }
       },
       "dataUse": {
-        "heading": "Como Utilizamos os Seus Dados",
-        "intro": "Utilizamos os seus dados pessoais para os seguintes fins:",
+        "heading": "Como usamos seus dados",
+        "intro": "Usamos seus dados pessoais para as seguintes finalidades:",
         "items": [
-          "Enviar notificações sobre o lançamento da Scooli e atualizações importantes",
-          "Melhorar e personalizar a sua experiência no nosso website",
-          "Responder às suas perguntas e pedidos de suporte",
-          "Analisar o uso do website para melhorar os nossos serviços",
-          "Cumprir obrigações legais e regulamentares",
-          "Proteger os nossos direitos e prevenir fraudes"
+          "Prestar o serviço Scooli e gerenciar sua conta",
+          "Enviar novidades sobre a Scooli e comunicações importantes sobre o serviço",
+          "Melhorar e personalizar sua experiência no nosso site",
+          "Responder às suas perguntas e aos seus pedidos de suporte",
+          "Analisar o uso do site para melhorar nossos serviços",
+          "Cumprir obrigações legais e regulatórias",
+          "Proteger nossos direitos e prevenir fraudes"
         ]
       },
       "legalBasis": {
-        "heading": "Base Legal para o Tratamento",
-        "intro": "Tratamos os seus dados pessoais com base nas seguintes bases legais:",
+        "heading": "Bases legais para o tratamento",
+        "intro": "Tratamos seus dados pessoais com base nas hipóteses previstas no art. 7º da LGPD:",
         "items": [
           {
-            "bold": "Consentimento:",
-            "text": "Quando nos dá consentimento explícito para processar os seus dados"
+            "bold": "Consentimento (art. 7º, I):",
+            "text": "quando você nos dá seu consentimento, por exemplo para receber novidades por e-mail. Você pode revogá-lo a qualquer momento."
           },
           {
-            "bold": "Interesses legítimos:",
-            "text": "Para melhorar os nossos serviços e comunicar consigo"
+            "bold": "Execução de contrato (art. 7º, V):",
+            "text": "para criar e manter sua conta, prestar o serviço que você contratou, incluindo o Plano Pro, e atender aos pedidos que você nos faz antes de contratar."
           },
           {
-            "bold": "Cumprimento legal:",
-            "text": "Quando necessário para cumprir obrigações legais"
+            "bold": "Legítimo interesse (art. 7º, IX):",
+            "text": "para melhorar nossos serviços, analisar o uso do site, prevenir fraudes e nos comunicar com você, sempre respeitando seus direitos e suas expectativas legítimas."
+          },
+          {
+            "bold": "Cumprimento de obrigação legal ou regulatória (art. 7º, II):",
+            "text": "quando a lei nos obriga a tratar ou guardar determinados dados."
+          },
+          {
+            "bold": "Exercício regular de direitos (art. 7º, VI):",
+            "text": "para nos defender em processos judiciais, administrativos ou arbitrais."
           }
         ]
       },
       "dataSharing": {
-        "heading": "Partilha de Dados",
-        "intro": "Não vendemos, alugamos ou partilhamos os seus dados pessoais com terceiros para fins comerciais. Podemos partilhar os seus dados apenas nas seguintes circunstâncias:",
+        "heading": "Compartilhamento de dados",
+        "intro": "Não vendemos, alugamos nem compartilhamos seus dados pessoais com terceiros para fins comerciais, e não usamos seus dados nem os materiais que você cria para treinar modelos de inteligência artificial. Podemos compartilhar seus dados apenas nas seguintes situações:",
         "items": [
-          "Com fornecedores de serviços que nos ajudam a operar o website (ex: serviços de email)",
+          "Com prestadores de serviços que nos ajudam a operar o site e a plataforma (por exemplo, serviços de e-mail), que tratam os dados em nosso nome e segundo nossas instruções",
           "Quando exigido por lei ou por autoridades competentes",
-          "Para proteger os nossos direitos, propriedade ou segurança",
-          "Com o seu consentimento explícito"
+          "Para proteger nossos direitos, nossa propriedade ou nossa segurança",
+          "Com o seu consentimento"
         ]
       },
       "rights": {
-        "heading": "Os Seus Direitos",
-        "intro": "Ao abrigo do RGPD, tem os seguintes direitos:",
+        "heading": "Seus direitos",
+        "intro": "Como titular dos dados, a LGPD (art. 18) garante a você os direitos abaixo. Você pode exercê-los a qualquer momento e sem custo, escrevendo para o encarregado indicado no fim desta página:",
         "columnOne": [
           {
-            "bold": "Acesso:",
-            "text": "Solicitar cópias dos seus dados pessoais"
+            "bold": "Confirmação e acesso:",
+            "text": "saber se tratamos seus dados e receber uma cópia deles"
           },
           {
-            "bold": "Retificação:",
-            "text": "Corrigir dados incorretos ou incompletos"
+            "bold": "Correção:",
+            "text": "corrigir dados incompletos, inexatos ou desatualizados"
           },
           {
-            "bold": "Apagamento:",
-            "text": "Solicitar a eliminação dos seus dados"
+            "bold": "Anonimização, bloqueio ou eliminação:",
+            "text": "de dados desnecessários, excessivos ou tratados em desconformidade com a LGPD"
           },
           {
-            "bold": "Limitação:",
-            "text": "Restringir o processamento dos seus dados"
+            "bold": "Portabilidade:",
+            "text": "levar seus dados para outro fornecedor de serviço, nos termos da regulamentação da ANPD"
+          },
+          {
+            "bold": "Eliminação:",
+            "text": "dos dados tratados com base no seu consentimento, ressalvadas as hipóteses de conservação do art. 16 da LGPD"
           }
         ],
         "columnTwo": [
           {
-            "bold": "Portabilidade:",
-            "text": "Transferir os seus dados para outro serviço"
+            "bold": "Informação sobre compartilhamento:",
+            "text": "saber com quais entidades públicas e privadas compartilhamos seus dados"
+          },
+          {
+            "bold": "Informação sobre o consentimento:",
+            "text": "saber que você pode não dar o consentimento e quais são as consequências disso"
+          },
+          {
+            "bold": "Revogação do consentimento:",
+            "text": "a qualquer momento"
           },
           {
             "bold": "Oposição:",
-            "text": "Opor-se ao processamento dos seus dados"
+            "text": "opor-se a um tratamento feito com base em outra hipótese legal, se houver descumprimento da LGPD"
           },
           {
-            "bold": "Retirar consentimento:",
-            "text": "A qualquer momento"
-          },
-          {
-            "bold": "Apresentar queixa:",
-            "text": "À autoridade de proteção de dados"
+            "bold": "Petição à ANPD:",
+            "text": "apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), em gov.br/anpd"
           }
         ]
       },
       "security": {
-        "heading": "Segurança dos Dados",
-        "intro": "Implementamos medidas técnicas e organizacionais adequadas para proteger os seus dados pessoais contra:",
+        "heading": "Segurança dos dados",
+        "intro": "Adotamos medidas de segurança, técnicas e administrativas, adequadas para proteger seus dados pessoais contra:",
         "items": [
-          "Acesso não autorizado ou ilegal",
-          "Perda, destruição ou danos acidentais",
-          "Alteração, divulgação ou processamento não autorizado"
+          "Acessos não autorizados",
+          "Situações acidentais ou ilícitas de destruição, perda, alteração ou comunicação",
+          "Qualquer forma de tratamento inadequado ou ilícito"
         ],
-        "closing": "Utilizamos encriptação SSL/TLS para proteger a transmissão de dados e armazenamos as informações em servidores seguros com acesso restrito."
+        "closing": "Usamos criptografia SSL/TLS para proteger a transmissão de dados e armazenamos as informações em servidores seguros, com acesso restrito. Se ocorrer um incidente de segurança que possa causar risco ou dano relevante a você, comunicaremos o fato a você e à ANPD, conforme o art. 48 da LGPD."
       },
       "retention": {
-        "heading": "Retenção de Dados",
-        "intro": "Conservamos os seus dados pessoais apenas pelo tempo necessário para cumprir os fins para os quais foram recolhidos:",
+        "heading": "Retenção de dados",
+        "intro": "Guardamos seus dados pessoais apenas pelo tempo necessário para cumprir as finalidades para as quais foram coletados:",
         "items": [
-          "Dados de subscrição: Até cancelar a subscrição ou solicitar a eliminação",
-          "Dados de contacto: Até 3 anos após o último contacto",
-          "Dados de utilização: Até 2 anos para fins analíticos",
-          "Dados legais: Conforme exigido por lei"
+          "Dados de cadastro e de inscrição: até você cancelar a inscrição, encerrar a conta ou pedir a eliminação",
+          "Dados de contato: até 3 anos após o último contato",
+          "Dados de uso: até 2 anos, para fins analíticos",
+          "Dados exigidos por lei: pelo prazo que a lei determinar",
+          "Ao fim do tratamento, eliminamos os dados ou os anonimizamos, ressalvadas as hipóteses de conservação do art. 16 da LGPD, como o cumprimento de obrigação legal"
         ]
       },
+      "additional": [
+        {
+          "heading": "Transferência internacional de dados",
+          "paragraphs": [
+            "A FICTIONAL CLOUD tem sede em Portugal e a plataforma Scooli está hospedada na União Europeia. Por isso, quando você usa a Scooli, seus dados pessoais são transferidos do Brasil para a União Europeia, onde também ficam protegidos pelo GDPR.",
+            "Essa transferência é necessária para executar o contrato com você e prestar o serviço que você pediu (art. 33, IX, combinado com o art. 7º, V, da LGPD).",
+            "Alguns prestadores de serviços que nos ajudam a operar a Scooli podem tratar dados em outros países. Nesses casos, a transferência só ocorre com uma das garantias previstas no art. 33 da LGPD, como país ou organismo internacional com grau de proteção adequado reconhecido pela ANPD (art. 33, I) ou cláusulas-padrão contratuais (art. 33, II, \"b\")."
+          ]
+        },
+        {
+          "heading": "Dados de crianças e adolescentes",
+          "paragraphs": [
+            "A Scooli é destinada a professores e a escolas, não a alunos. Não pedimos que crianças ou adolescentes criem contas nem nos forneçam dados pessoais.",
+            "Pedimos que você não insira na plataforma dados que identifiquem seus alunos. Para criar ou adaptar materiais, use o contexto pedagógico da turma (ano, habilidades, necessidades de aprendizagem) em vez de nomes ou outras informações pessoais. Evite também dados sensíveis, como informações de saúde ou diagnósticos; descreva apenas a necessidade pedagógica.",
+            "Se, ainda assim, for preciso tratar dados de alunos, esse tratamento deve ser feito no melhor interesse deles e com base legal adequada, conforme o art. 14 da LGPD."
+          ]
+        },
+        {
+          "heading": "Alterações desta política",
+          "paragraphs": [
+            "Podemos atualizar esta Política de Privacidade para refletir mudanças na Scooli ou na legislação. A data da última atualização aparece no topo da página. Quando a mudança for relevante, avisaremos você no site ou por e-mail."
+          ]
+        }
+      ],
       "contact": {
-        "heading": "Contacte-nos",
-        "intro": "Se tiver questões sobre esta Política de Privacidade ou quiser exercer os seus direitos, pode contactar-nos através de:",
-        "closing": "Responderemos ao seu pedido no prazo de 30 dias, conforme exigido pelo RGPD."
+        "heading": "Encarregado (DPO) e contato",
+        "intro": "O Encarregado pelo tratamento de dados pessoais (DPO) da Scooli é o canal de comunicação entre você, a FICTIONAL CLOUD e a ANPD. Para tirar dúvidas sobre esta Política de Privacidade ou exercer seus direitos, escreva para:",
+        "closing": "Respondemos às solicitações nos prazos da LGPD e da regulamentação da ANPD; o acesso completo aos seus dados é fornecido em até 15 dias (art. 19, II). Podemos pedir informações para confirmar sua identidade."
       }
     },
     "meta": {
       "title": "Política de Privacidade",
-      "description": "Política de Privacidade da Scooli, com informação clara sobre tratamento de dados, RGPD, segurança e direitos dos utilizadores.",
+      "description": "Política de Privacidade da Scooli: como tratamos seus dados conforme a LGPD, bases legais, transferência internacional, segurança e seus direitos como titular.",
       "ogTitle": "Política de Privacidade | Scooli",
-      "ogDescription": "Como a Scooli trata e protege os dados pessoais de professores e visitantes, em conformidade com o RGPD.",
+      "ogDescription": "Como a Scooli trata e protege os dados pessoais de professores e visitantes, em conformidade com a LGPD e o GDPR.",
       "ogImageAlt": "Política de Privacidade da Scooli",
       "webPageTitle": "Política de Privacidade - Scooli",
       "breadcrumbHome": "Scooli",
@@ -1493,114 +1536,118 @@
   },
   "termsOfUse": {
     "header": {
-      "title": "Termos de Utilização",
-      "tagline": "Estes Termos regulam o acesso e utilização do website e (quando disponível) da aplicação Scooli, incluindo funcionalidades de geração de conteúdos e componentes comunitários.",
+      "title": "Termos de Uso",
+      "tagline": "Estes Termos regulam o acesso e o uso do site e da plataforma Scooli, incluindo as funcionalidades de geração de conteúdos e os recursos da comunidade.",
       "backLabel": "Voltar",
       "lastUpdated": "Última atualização: {date}",
-      "lastUpdatedValue": "6 de Novembro de 2026"
+      "lastUpdatedValue": "25 de novembro de 2026"
     },
-    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculativa deste documento.",
+    "disclaimer": "Esta página está disponível apenas em português. O texto em português é a única versão juridicamente vinculante deste documento.",
     "sections": {
       "section1": {
         "title": "1) Aceitação dos Termos",
         "paragraphs": [
-          "A Scooli é um produto da FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\" ou \"nós\"), que presta o serviço. Estes Termos constituem um acordo entre si e a FICTIONAL CLOUD, LDA.",
-          "Ao aceder ou utilizar a Scooli, concorda com estes Termos. Se não concordar, não deve utilizar o serviço.",
-          "Estes Termos aplicam-se ao website, a eventuais versões beta e à aplicação Scooli, bem como a funcionalidades associadas (por exemplo, biblioteca comunitária)."
+          "A Scooli é um produto da FICTIONAL CLOUD, LDA. (\"FICTIONAL CLOUD\" ou \"nós\"), empresa com sede em Portugal, que presta o serviço. Estes Termos constituem um contrato entre você e a FICTIONAL CLOUD, LDA.",
+          "Ao acessar ou usar a Scooli, você concorda com estes Termos. Se não concordar, não use o serviço.",
+          "Estes Termos se aplicam ao site, a eventuais versões beta e à plataforma Scooli, bem como às funcionalidades associadas (por exemplo, a biblioteca da comunidade).",
+          "Esta versão dos Termos se destina a usuários no Brasil. Se você contrata como consumidor, continuam garantidos todos os direitos previstos no Código de Defesa do Consumidor (Lei nº 8.078/1990), e nenhuma cláusula destes Termos os afasta."
         ]
       },
       "section2": {
-        "title": "2) O Serviço e Contas",
-        "intro": "A Scooli é um produto de tecnologia educativa da FICTIONAL CLOUD, LDA. para apoiar professores na criação e organização de recursos pedagógicos.",
+        "title": "2) O serviço e as contas",
+        "intro": "A Scooli é um produto de tecnologia educacional da FICTIONAL CLOUD, LDA. que ajuda professores a criar e organizar recursos pedagógicos.",
         "items": [
-          "Poderá ser necessário criar uma conta para aceder a determinadas funcionalidades.",
-          "Deve fornecer informação verdadeira e manter os seus dados atualizados.",
-          "É responsável pela confidencialidade das suas credenciais e por qualquer atividade realizada na sua conta."
+          "Pode ser necessário criar uma conta para acessar determinadas funcionalidades.",
+          "Você deve fornecer informações verdadeiras e mantê-las atualizadas.",
+          "Você é responsável por manter suas credenciais em sigilo e pelas atividades realizadas na sua conta."
         ]
       },
       "section3": {
-        "title": "3) Uso Aceitável",
-        "intro": "Compromete-se a não:",
+        "title": "3) Uso aceitável",
+        "intro": "Você se compromete a não:",
         "items": [
           "Usar o serviço para fins ilegais, fraudulentos ou abusivos.",
-          "Carregar, gerar, partilhar ou solicitar conteúdos que violem direitos de terceiros (ex.: direitos de autor, privacidade).",
-          "Tentar contornar limites de segurança, explorar vulnerabilidades ou interferir com o funcionamento do serviço.",
-          "Partilhar dados pessoais de alunos (ou outros menores) sem base legal e consentimentos aplicáveis."
+          "Carregar, gerar, compartilhar ou solicitar conteúdos que violem direitos de terceiros (por exemplo, direitos autorais ou de privacidade).",
+          "Tentar contornar limites de segurança, explorar vulnerabilidades ou interferir no funcionamento do serviço.",
+          "Compartilhar dados pessoais de alunos (ou de outras crianças e adolescentes) sem base legal adequada, em desacordo com a LGPD, em especial com o art. 14."
         ]
       },
       "section4": {
-        "title": "4) Conteúdos do Utilizador e Biblioteca Comunitária",
-        "intro": "Se o serviço permitir carregar ou partilhar recursos, é responsável por garantir que tem direitos para o fazer.",
+        "title": "4) Conteúdos do usuário e biblioteca da comunidade",
+        "intro": "Se o serviço permitir carregar ou compartilhar recursos, você é responsável por garantir que tem os direitos necessários para isso.",
         "items": [
-          "Ao submeter conteúdos para áreas comunitárias, concede à FICTIONAL CLOUD, LDA. uma licença não exclusiva para alojar, reproduzir e disponibilizar esse conteúdo no âmbito da Scooli.",
-          "Poderemos moderar, remover ou restringir conteúdos que violem estes Termos, a lei ou padrões de qualidade/segurança da comunidade."
+          "Ao enviar conteúdos para áreas da comunidade, você concede à FICTIONAL CLOUD, LDA. uma licença não exclusiva para hospedar, reproduzir e disponibilizar esse conteúdo no âmbito da Scooli.",
+          "Podemos moderar, remover ou restringir conteúdos que violem estes Termos, a lei ou os padrões de qualidade e segurança da comunidade."
         ]
       },
       "section5": {
-        "title": "5) Conteúdo Gerado por IA",
-        "intro": "A Scooli pode gerar sugestões e materiais através de inteligência artificial. Estes resultados podem conter imprecisões.",
+        "title": "5) Conteúdo gerado por IA",
+        "intro": "A Scooli pode gerar sugestões e materiais com inteligência artificial. Esses resultados podem conter imprecisões: o professor revisa e decide o que vai para a aula.",
         "items": [
-          "Deve rever e validar todo o conteúdo antes de o utilizar em sala de aula, avaliações ou comunicações oficiais.",
-          "A FICTIONAL CLOUD, LDA. não garante a exatidão, adequação curricular ou ausência de erros nos conteúdos gerados."
+          "Você deve revisar e validar todo o conteúdo antes de usá-lo em sala de aula, em avaliações ou em comunicações oficiais.",
+          "A FICTIONAL CLOUD, LDA. não garante a exatidão, a adequação curricular nem a ausência de erros nos conteúdos gerados, que são um ponto de partida para o seu trabalho."
         ]
       },
       "section6": {
-        "title": "6) Período Experimental, Plano Pro e Cancelamentos",
-        "intro": "As contas novas começam com um período experimental do Plano Pro.",
+        "title": "6) Período gratuito, Plano Pro e cancelamento",
+        "intro": "As contas novas começam com um período gratuito do Plano Pro.",
         "items": [
-          "As contas novas têm um período experimental gratuito de 30 dias, sem dados de pagamento. No fim desse período, a conta passa a modo de leitura: continua a poder ver e editar os seus documentos, mas criar e gerar documentos, exportar, duplicar e partilhar requerem o Plano Pro.",
-          "As contas do plano gratuito criadas antes do período experimental mantêm o limite de 20 créditos enquanto estiverem nesse plano.",
+          "As contas novas têm 30 dias grátis do Plano Pro, sem dados de pagamento. Ao fim desse período, a conta passa para o modo de leitura: você continua podendo ver e editar seus documentos, mas criar e gerar documentos, exportar, duplicar e compartilhar exigem o Plano Pro.",
+          "As contas do plano gratuito criadas antes do período gratuito do Plano Pro mantêm o limite de 20 créditos enquanto estiverem nesse plano.",
+          "Os preços do Plano Pro são apresentados e cobrados em euros (€), como indicado na página de preços. Seu banco ou a operadora do cartão pode aplicar conversão cambial e IOF à cobrança.",
           "Preços, funcionalidades e limites podem ser atualizados ao longo do tempo.",
-          "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na secção 7."
+          "O acesso “ilimitado” do Plano Pro está sujeito à Política de Uso Justo descrita na seção 7.",
+          "Direito de arrependimento: se você contratar o Plano Pro como consumidor, pode desistir da contratação em até 7 dias a contar da contratação, conforme o art. 49 do Código de Defesa do Consumidor, e os valores pagos serão devolvidos nos termos da lei."
         ],
-        "contactItem": "Para gestão ou cancelamento de subscrição, contacte-nos em <email>info@scooli.app</email>."
+        "contactItem": "Para gerenciar ou cancelar sua assinatura, ou para exercer o direito de arrependimento, escreva para <email>info@scooli.app</email>."
       },
       "section7": {
         "title": "7) Política de Uso Justo (Fair Use)",
-        "paragraph1": "O Plano Pro da Scooli oferece capacidade de geração de conteúdos de forma ilimitada para fins de uso pessoal e profissional do docente subscritor.",
-        "paragraph2": "Para garantir a estabilidade da plataforma e a qualidade do serviço para todos os utilizadores, aplicamos uma <strong>Política de Uso Justo</strong>. Esta política destina-se a evitar utilizações abusivas, automáticas ou não-humanas que coloquem em causa a integridade do sistema.",
+        "paragraph1": "O Plano Pro da Scooli oferece geração de conteúdos ilimitada para o uso pessoal e profissional do professor assinante.",
+        "paragraph2": "Para garantir a estabilidade da plataforma e a qualidade do serviço para todos os usuários, aplicamos uma <strong>Política de Uso Justo</strong>. Ela serve para evitar usos abusivos, automatizados ou não humanos que comprometam a integridade do sistema.",
         "abuseBox": {
-          "heading": "Considera-se uso abusivo:",
+          "heading": "É considerado uso abusivo:",
           "items": [
-            "A partilha de credenciais de acesso com terceiros;",
-            "A utilização de scripts, bots ou qualquer forma de automação para geração massiva de conteúdos;",
-            "A utilização da conta por múltiplos utilizadores em simultâneo;",
-            "Qualquer outra forma de utilização que exceda manifestamente o padrão de uso individual humano."
+            "Compartilhar as credenciais de acesso com terceiros;",
+            "Usar scripts, bots ou qualquer forma de automação para gerar conteúdos em massa;",
+            "Usar a mesma conta por vários usuários ao mesmo tempo;",
+            "Qualquer outro uso que exceda claramente o padrão de uso individual humano."
           ]
         },
-        "paragraph3": "Caso o volume de utilização de um utilizador exceda manifestamente a média expectável para um uso individual humano num período de 30 dias, a FICTIONAL CLOUD, LDA. reserva-se o direito de:",
+        "paragraph3": "Se o volume de uso de um usuário exceder claramente a média esperada para um uso individual humano em um período de 30 dias, a FICTIONAL CLOUD, LDA. se reserva o direito de:",
         "alphaItems": [
           "Ajustar temporariamente a velocidade de processamento ou o modelo de IA utilizado;",
-          "Contactar o utilizador para validar a conformidade da utilização;",
+          "Falar com o usuário para verificar se o uso está de acordo com estes Termos;",
           "Suspender temporariamente o acesso em casos extremos de violação técnica;",
-          "Rescindir a subscrição em caso de violação reiterada ou grave, com devolução proporcional do valor não utilizado."
+          "Rescindir a assinatura em caso de violação reiterada ou grave, com devolução proporcional do valor não utilizado."
         ],
-        "paragraph4": "A aplicação desta política será sempre proporcional e precedida, sempre que possível, de contacto com o utilizador para esclarecimento."
+        "paragraph4": "Esta política será sempre aplicada de forma proporcional e, sempre que possível, depois de falarmos com o usuário para esclarecimentos."
       },
       "section8": {
-        "title": "8) Propriedade Intelectual, Responsabilidade e Lei Aplicável",
+        "title": "8) Propriedade intelectual, responsabilidade, lei aplicável e foro",
         "items": [
           "A Scooli (incluindo marca, software e design) é propriedade da FICTIONAL CLOUD, LDA. e está protegida por direitos de propriedade intelectual.",
-          "O serviço é fornecido “tal como está” e pode estar sujeito a indisponibilidades, especialmente em fases beta.",
-          "Na medida permitida por lei, a FICTIONAL CLOUD, LDA. não será responsável por perdas indiretas ou consequenciais decorrentes do uso do serviço.",
-          "Estes Termos regem-se pela lei portuguesa, sem prejuízo de normas imperativas aplicáveis."
+          "O serviço pode ficar indisponível pontualmente, por exemplo durante manutenções ou em funcionalidades em fase beta.",
+          "Na medida permitida pela legislação aplicável, a FICTIONAL CLOUD, LDA. não responde por danos indiretos decorrentes do uso do serviço. Nada nestes Termos limita ou exclui direitos que a lei garante ao consumidor.",
+          "Para usuários no Brasil, estes Termos são regidos pela legislação brasileira, incluindo o Código de Defesa do Consumidor e a LGPD.",
+          "Se você for consumidor, fica assegurado o foro do seu domicílio para qualquer ação relativa a estes Termos (art. 101, I, do Código de Defesa do Consumidor)."
         ],
         "closingParagraph": "Para privacidade e dados pessoais, consulte a <privacyLink>Política de Privacidade</privacyLink>."
       },
       "section9": {
-        "title": "9) Contacto",
-        "paragraph": "Para questões sobre estes Termos, contacte-nos em <email>info@scooli.app</email>."
+        "title": "9) Contato",
+        "paragraph": "Para dúvidas sobre estes Termos, escreva para <email>info@scooli.app</email>."
       }
     },
     "meta": {
-      "title": "Termos de Utilização",
-      "description": "Termos de Utilização da Scooli: regras de acesso, uso aceitável, Política de Uso Justo do Plano Pro e demais condições do serviço.",
-      "ogTitle": "Termos de Utilização | Scooli",
-      "ogDescription": "Regras de acesso e utilização do website e da aplicação Scooli, incluindo a Política de Uso Justo do Plano Pro.",
-      "ogImageAlt": "Termos de Utilização da Scooli",
-      "webPageTitle": "Termos de Utilização - Scooli",
+      "title": "Termos de Uso",
+      "description": "Termos de Uso da Scooli: regras de acesso, uso aceitável, Política de Uso Justo do Plano Pro, direitos do consumidor e demais condições do serviço.",
+      "ogTitle": "Termos de Uso | Scooli",
+      "ogDescription": "Regras de acesso e uso do site e da plataforma Scooli, incluindo a Política de Uso Justo do Plano Pro e os direitos do consumidor.",
+      "ogImageAlt": "Termos de Uso da Scooli",
+      "webPageTitle": "Termos de Uso - Scooli",
       "breadcrumbHome": "Scooli",
-      "breadcrumbPage": "Termos de Utilização"
+      "breadcrumbPage": "Termos de Uso"
     }
   },
   "shareImage": {
