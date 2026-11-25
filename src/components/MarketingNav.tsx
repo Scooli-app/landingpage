@@ -6,6 +6,7 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
 import { TrackedLink } from "@/components/TrackedLink";
 import { buttonVariants } from "@/components/ui/button";
+import { isLocalized } from "@/i18n/localizationStatus";
 import { usePathname } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { APP_URL, appSignUpUrl } from "@/lib/seo";
@@ -44,6 +45,11 @@ export function MarketingNav() {
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(`${href}/`);
   const toolsActive = isActive("/ferramentas");
+  // Pages not yet written in this locale aren't linked; without the tool pages
+  // the Tools menu gives way to a plain "how it works" link.
+  const showTools = isLocalized("/ferramentas/[slug]", locale);
+  const showAllTools = isLocalized("/ferramentas", locale);
+  const visibleLinks = links.filter((link) => isLocalized(link.href, locale));
 
   useEffect(() => {
     setMobileOpen(false);
@@ -118,6 +124,7 @@ export function MarketingNav() {
           </TrackedLink>
 
           <div className="hidden items-center gap-1 lg:flex">
+            {showTools ? (
             <div
               ref={toolsRef}
               className="relative"
@@ -181,6 +188,7 @@ export function MarketingNav() {
                         </TrackedLink>
                       </li>
                     ))}
+                    {showAllTools && (
                     <li className="col-span-2 mt-1 border-t border-line pt-1.5">
                       <TrackedLink
                         href="/ferramentas"
@@ -192,12 +200,23 @@ export function MarketingNav() {
                         {t("toolsMenu.allTools")} →
                       </TrackedLink>
                     </li>
+                    )}
                   </ul>
                 </div>
               </div>
             </div>
+            ) : (
+              <TrackedLink
+                href="/#como-funciona"
+                eventName="marketing_navigation_clicked"
+                eventProperties={{ location: "header_desktop_nav", link_label: "how_it_works" }}
+                className={linkClass(false)}
+              >
+                {t("howItWorks")}
+              </TrackedLink>
+            )}
 
-            {links.map((link) => (
+            {visibleLinks.map((link) => (
               <TrackedLink
                 key={link.href}
                 href={link.href}
@@ -260,11 +279,13 @@ export function MarketingNav() {
         className="fixed inset-x-0 bottom-0 z-40 overflow-y-auto bg-white lg:hidden"
       >
         <Container className="flex min-h-full flex-col py-4">
+          {showTools && (
           <p className="pt-2 font-mono text-xs uppercase tracking-[0.06em] text-subtle">
             {t("tools")}
           </p>
-          <ul className="mt-1 border-b border-line pb-3">
-            {NAV_TOOL_SLUGS.map((slug) => (
+          )}
+          <ul className={cn("border-b border-line pb-3", showTools && "mt-1")}>
+            {showTools && NAV_TOOL_SLUGS.map((slug) => (
               <li key={slug}>
                 <TrackedLink
                   href={toolHref(slug)}
@@ -289,7 +310,7 @@ export function MarketingNav() {
             </li>
           </ul>
           <ul>
-            {links.map((link) => (
+            {visibleLinks.map((link) => (
               <li key={link.href} className="border-b border-line">
                 <TrackedLink
                   href={link.href}

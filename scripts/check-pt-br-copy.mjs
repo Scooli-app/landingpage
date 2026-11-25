@@ -20,11 +20,14 @@ const DONE_NAMESPACES = [
 // Case-insensitive, matched as whole words (Unicode-aware, so "ecrã" and "registo" work).
 const BANNED = [
   "Aprendizagens Essenciais", "DL 54/2018", "DL 55/2018", "54/2018", "55/2018", "RGPD",
-  "agrupamentos?", "[123]\\.?º ciclo","fichas?", "testes?", "equipas?",
-  "contactos?", "contact(?:ar|e|em|ámos)", "telemóve(?:l|is)", "regist(?:o|os|ar|e|ámos)",
-  "utilizador(?:es|a|as)?", "ecrãs?", "Regresso às Aulas", "encarregado de educação",
-  "ensino profissional", "cursos? profissiona(?:l|is)", "ensino técnico", "cursos? técnicos?",
-  "Educação Infantil", "pré-escolar",
+  "agrupamentos?", "[123]\\.?º ciclo", "(?:primeiro|segundo|terceiro) ciclo", "fichas?",
+  "testes?", "equipas?", "planificaç(?:ão|ões)", "connosco", "partilh[\\p{L}-]*", "ficheiros?",
+  "facto", "contact[\\p{L}-]*", "telemóve(?:l|is)",
+  // "registro"/"registrar" are Brazilian and must pass.
+  "regist(?:o|os|ad[\\p{L}]*|ar|á-[\\p{L}]+|e|ámos)",
+  "utilizador(?:es|a|as)?", "ecrãs?", "Regresso às Aulas", "encarregad[oa]s? de educação",
+  "(?:ensino|educação) profissional", "profissionalizantes?", "cursos? profissiona(?:l|is)",
+  "ensino técnico", "cursos? técnicos?", "Educação Infantil", "pré-escolar",
   // tu-form verbs and pronouns ("você" is the only form on /br)
   "tens", "podes", "queres", "vês", "fazes", "sabes", "precisas", "estás", "consegues",
   "teu", "tua", "teus", "tuas", "contigo",

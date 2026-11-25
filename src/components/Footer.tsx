@@ -1,4 +1,5 @@
 import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
+import { isHrefLocalized } from "@/i18n/localizationStatus";
 import type { Locale } from "@/i18n/routing";
 import { Facebook, Instagram } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
@@ -64,11 +65,17 @@ function FooterColumn({
   location: string;
   items: { key: string; label: string; href: Href }[];
 }) {
+  const locale = useLocale() as Locale;
+  const visible = items.filter((item) => isHrefLocalized(item.href as string | { pathname: string }, locale));
+  if (visible.length === 0) {
+    return null;
+  }
+
   return (
     <nav aria-label={heading}>
       <p className="text-[13px] font-medium text-ink">{heading}</p>
       <ul className="mt-3.5 space-y-2">
-        {items.map((item) => (
+        {visible.map((item) => (
           <li key={item.key}>
             <TrackedLink
               href={item.href}

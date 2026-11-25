@@ -36,3 +36,12 @@ export function isLocalized(path: string, locale: Locale): boolean {
     !(NOT_YET_LOCALIZED[locale] as readonly string[] | undefined)?.includes(path)
   );
 }
+
+/**
+ * `isLocalized` for a link target (`"/sobre"`, `"/#como-funciona"` or
+ * `{ pathname: "/ferramentas/[slug]", … }`). Links to pages not yet localized
+ * are hidden rather than left to redirect.
+ */
+export function isHrefLocalized(href: string | { pathname: string }, locale: Locale): boolean {
+  return isLocalized(typeof href === "string" ? href.split("#")[0] || "/" : href.pathname, locale);
+}

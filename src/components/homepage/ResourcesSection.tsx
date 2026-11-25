@@ -1,6 +1,8 @@
 import { Section, SectionHeader } from "@/components/site/primitives";
 import { NAV_TOOL_SLUGS, type NavToolSlug } from "@/components/site/nav-data";
 import { TrackedLink } from "@/components/TrackedLink";
+import { isLocalized } from "@/i18n/localizationStatus";
+import type { Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { appMedia } from "@/lib/app-media";
 import {
@@ -116,6 +118,9 @@ export const resourceIcons: Record<NavToolSlug, LucideIcon> = {
  */
 export function ResourcesSection() {
   const t = useTranslations("home.resources");
+  // Until the tool pages exist in this locale the cards stay, without a link.
+  const linked = isLocalized("/ferramentas/[slug]", useLocale() as Locale);
+  const cardClass = "flex h-full flex-col rounded-xl border border-line-strong bg-white p-6 md:p-7";
 
   return (
     <Section aria-labelledby="home-resources-title">
@@ -140,28 +145,40 @@ export function ResourcesSection() {
                 } as React.CSSProperties
               }
             >
-              <TrackedLink
-                href={{ pathname: "/ferramentas/[slug]", params: { slug } }}
-                eventName="marketing_navigation_clicked"
-                eventProperties={{ location: "home_resources", link_label: slug }}
-                className="group flex h-full flex-col rounded-xl border border-line-strong bg-white p-6 transition-colors hover:border-[#C9C8C3] md:p-7"
-              >
-                <span className="grid size-11 place-items-center rounded-lg bg-stone-soft text-ink transition-colors group-hover:bg-violet-wash group-hover:text-violet-ink">
-                  <Icon aria-hidden className="size-5" strokeWidth={1.75} />
-                </span>
-                <h3 className="mt-6 flex items-center justify-between gap-4 text-[17px] font-semibold text-ink">
-                  {t(`items.${slug}.title`)}
-                  <span
-                    aria-hidden
-                    className="text-subtle transition-transform group-hover:translate-x-0.5"
-                  >
-                    →
+              {linked ? (
+                <TrackedLink
+                  href={{ pathname: "/ferramentas/[slug]", params: { slug } }}
+                  eventName="marketing_navigation_clicked"
+                  eventProperties={{ location: "home_resources", link_label: slug }}
+                  className={cn("group transition-colors hover:border-[#C9C8C3]", cardClass)}
+                >
+                  <span className="grid size-11 place-items-center rounded-lg bg-stone-soft text-ink transition-colors group-hover:bg-violet-wash group-hover:text-violet-ink">
+                    <Icon aria-hidden className="size-5" strokeWidth={1.75} />
                   </span>
-                </h3>
-                <p className="mt-1.5 text-[15px] leading-relaxed text-subtle">
-                  {t(`items.${slug}.description`)}
-                </p>
-              </TrackedLink>
+                  <h3 className="mt-6 flex items-center justify-between gap-4 text-[17px] font-semibold text-ink">
+                    {t(`items.${slug}.title`)}
+                    <span
+                      aria-hidden
+                      className="text-subtle transition-transform group-hover:translate-x-0.5"
+                    >
+                      →
+                    </span>
+                  </h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-subtle">
+                    {t(`items.${slug}.description`)}
+                  </p>
+                </TrackedLink>
+              ) : (
+                <div className={cardClass}>
+                  <span className="grid size-11 place-items-center rounded-lg bg-stone-soft text-ink">
+                    <Icon aria-hidden className="size-5" strokeWidth={1.75} />
+                  </span>
+                  <h3 className="mt-6 text-[17px] font-semibold text-ink">{t(`items.${slug}.title`)}</h3>
+                  <p className="mt-1.5 text-[15px] leading-relaxed text-subtle">
+                    {t(`items.${slug}.description`)}
+                  </p>
+                </div>
+              )}
             </li>
           );
         })}
