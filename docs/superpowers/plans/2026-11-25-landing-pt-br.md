@@ -16,7 +16,7 @@
 - `localeDetection: false` stays. There are no automatic redirects on browser language or IP.
 - Pro price shown in euros: €6.99/month, €67.10/year, written `€6,99` in pt-BR (same as pt-PT). The school plan is "Sob consulta".
 - Privacy claim on `/br`: "Em conformidade com a LGPD" (GDPR and EU hosting can be added as extra).
-- Banned on any `/br` page: Aprendizagens Essenciais, DL 54/2018, DL 55/2018, RGPD as the only privacy claim, agrupamento(s), "1.º/2.º/3.º ciclo", "ficha(s)", "teste(s)" in the assessment sense, "ano letivo", "equipa", "contacto", "telemóvel", "registo", "tu"-form verbs, Portuguese teacher names in media, technical/vocational courses, Educação Infantil.
+- Banned on any `/br` page: Aprendizagens Essenciais, DL 54/2018, DL 55/2018, RGPD as the only privacy claim, agrupamento(s), "1.º/2.º/3.º ciclo", "ficha(s)", "teste(s)" in the assessment sense, "ano letivo" only when it implies the Portuguese September–July year ("ano letivo" itself is normal Brazilian usage and allowed), "equipa", "contacto", "telemóvel", "registo", "tu"-form verbs, Portuguese teacher names in media, technical/vocational courses, Educação Infantil.
 - About Teachy, write only "na documentação pública não encontramos", never "a Teachy não tem". No price, quality or BNCC-error claims about Teachy.
 - Never claim Brazilian clients or networks, inflated numbers, or that the direção invites its own teachers.
 - Language names are written in their own language: "Português (Portugal)", "Português (Brasil)", "English". Short codes: PT / BR / EN.
