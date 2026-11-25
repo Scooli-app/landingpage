@@ -2,6 +2,7 @@ import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import { routing, type Locale } from "@/i18n/routing";
 import type { MarketingHref } from "@/i18n/navigation";
 import { marketingContentEn } from "./content/en";
+import { marketingContentPtBR } from "./content/pt-BR";
 import { marketingContentPtPT } from "./content/pt-PT";
 
 /**
@@ -139,8 +140,7 @@ export const toolLayouts: Partial<Record<string, ToolLayout>> = {
 
 const contentByLocale: Record<Locale, MarketingContent> = {
   "pt-PT": marketingContentPtPT,
-  // Reuses pt-PT until the pt-BR copy is written.
-  "pt-BR": marketingContentPtPT,
+  "pt-BR": marketingContentPtBR,
   en: marketingContentEn,
 };
 

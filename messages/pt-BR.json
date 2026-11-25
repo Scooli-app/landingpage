@@ -6,16 +6,16 @@
     "about": "Sobre",
     "teachers": "Professores",
     "schools": "Escolas",
-    "contact": "Contacto",
+    "contact": "Contato",
     "ariaLabel": "Navegação principal",
     "mobileMenuLabel": "Menu principal",
     "openMenu": "Abrir menu",
     "closeMenu": "Fechar menu",
-    "backToHome": "Voltar ao início",
-    "logoAlt": "Logótipo Scooli",
+    "backToHome": "Voltar para o início",
+    "logoAlt": "Logotipo da Scooli",
     "toolsMenu": {
       "howTitle": "Um documento em segundos",
-      "howDescription": "Do tema ao recurso em três passos.",
+      "howDescription": "Do tema ao material pronto em três passos.",
       "howLink": "Ver como funciona",
       "allTools": "Todas as ferramentas",
       "items": {
@@ -24,20 +24,20 @@
           "description": "A aula de amanhã, estruturada"
         },
         "fichas-de-trabalho": {
-          "label": "Fichas de trabalho",
-          "description": "Exercícios prontos a imprimir"
+          "label": "Atividades",
+          "description": "Exercícios prontos para imprimir"
         },
         "gerador-de-testes": {
-          "label": "Testes",
-          "description": "Com grupos e cotações"
+          "label": "Provas",
+          "description": "Com questões, pontuação e critérios"
         },
         "quizzes": {
           "label": "Quizzes",
-          "description": "Para rever em aula"
+          "description": "Para revisar em aula"
         },
         "planificacoes": {
-          "label": "Planificações",
-          "description": "Anual, semestral ou de unidade"
+          "label": "Planejamentos",
+          "description": "Anual, bimestral ou de unidade"
         },
         "apresentacoes": {
           "label": "Apresentações",
@@ -47,19 +47,19 @@
     }
   },
   "common": {
-    "skipToContent": "Saltar para o conteúdo principal",
+    "skipToContent": "Pular para o conteúdo principal",
     "languageSwitcher": "Idioma",
     "availableInEnglish": "This page is also available in English",
-    "dismiss": "Dispensar",
+    "dismiss": "Fechar",
     "startFree": "Começar grátis",
     "signIn": "Entrar",
     "allTools": "Ver todas as ferramentas",
-    "teacherJourney": "Ver percurso para professores",
+    "teacherJourney": "Ver como funciona para professores",
     "forSchools": "Para escolas",
-    "bookDemo": "Pedir demonstração",
+    "bookDemo": "Agendar demonstração",
     "pauseVideo": "Pausar vídeo",
     "playVideo": "Reproduzir vídeo",
-    "talkToTeam": "Falar com a equipa"
+    "talkToTeam": "Fale com a equipe"
   },
   "advisorNote": {
     "photoAlt": "Sílvia Valério, consultora pedagógica da Scooli",
@@ -73,10 +73,10 @@
     "pt-PT": "Português (Portugal)",
     "pt-BR": "Português (Brasil)",
     "en": "English",
-    "switchTo": "Mudar para {language}"
+    "switchTo": "Trocar para {language}"
   },
   "footer": {
-    "tagline": "Menos tempo a preparar, mais tempo a ensinar.",
+    "tagline": "Menos tempo preparando, mais tempo ensinando.",
     "homeAria": "Scooli - Página inicial",
     "socialAria": "{network} da Scooli",
     "rights": "© {year} Scooli · Um produto da FICTIONAL CLOUD, LDA.",
@@ -89,7 +89,7 @@
       "pricing": "Preços",
       "trust": "Confiança",
       "about": "Sobre",
-      "contact": "Contacto",
+      "contact": "Contato",
       "privacy": "Privacidade",
       "terms": "Termos",
       "howItWorks": "Criar em segundos",
@@ -105,44 +105,44 @@
   "home": {
     "meta": {
       "title": "Scooli | O ano letivo preparado semana a semana",
-      "description": "A Scooli organiza as aulas de cada turma e prepara a semana: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais.",
+      "description": "A Scooli organiza as aulas de cada turma e prepara a semana: planos de aula, atividades, provas e apresentações alinhados à BNCC.",
       "ogTitle": "Scooli | O ano letivo preparado semana a semana",
-      "ogDescription": "A partir da sua planificação, a Scooli distribui as aulas pelo ano e prepara cada semana consigo, pronta a usar.",
+      "ogDescription": "A partir do seu planejamento, a Scooli distribui as aulas pelos bimestres e prepara cada semana com você, pronta para usar.",
       "twitterTitle": "Scooli | O ano letivo preparado semana a semana",
-      "twitterDescription": "A partir da sua planificação, a Scooli distribui as aulas pelo ano e prepara cada semana consigo, pronta a usar."
+      "twitterDescription": "A partir do seu planejamento, a Scooli distribui as aulas pelos bimestres e prepara cada semana com você, pronta para usar."
     },
     "howToSchema": {
       "name": "Como usar a Scooli para criar materiais de aula",
-      "description": "Guia simples para gerar, editar e exportar planificações, fichas e testes com a Scooli.",
+      "description": "Guia rápido para gerar, editar e exportar planos de aula, atividades e provas com a Scooli.",
       "steps": [
         {
-          "name": "Criar conta gratuita",
-          "text": "Registe-se na Scooli e experimente a plataforma grátis durante 30 dias."
+          "name": "Criar uma conta gratuita",
+          "text": "Cadastre-se na Scooli e use a plataforma grátis por 30 dias."
         },
         {
-          "name": "Escolher o tipo de recurso",
-          "text": "Selecione se quer criar uma planificação, uma ficha de trabalho ou um teste."
+          "name": "Escolher o tipo de material",
+          "text": "Escolha se quer criar um plano de aula, uma atividade ou uma prova."
         },
         {
-          "name": "Dar contexto ou carregar material",
-          "text": "Indique o tema, o ano, o objetivo da aula e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem."
+          "name": "Dar contexto ou enviar material",
+          "text": "Informe o tema, o ano, o objetivo da aula e, quando fizer sentido, as habilidades da BNCC ou um trecho de um documento que você já tem."
         },
         {
           "name": "Gerar com IA",
-          "text": "Receba uma primeira versão em segundos para começar com uma base pronta a editar."
+          "text": "Receba uma primeira versão em segundos, uma base pronta para editar."
         },
         {
           "name": "Editar e exportar",
-          "text": "Ajuste o conteúdo, valide antes de usar e exporte o material final quando estiver pronto."
+          "text": "Ajuste o conteúdo, revise antes de usar e exporte o material quando estiver pronto."
         }
       ]
     },
-    "videoFallback": "O seu navegador não suporta vídeo HTML5.",
+    "videoFallback": "Seu navegador não suporta vídeo HTML5.",
     "hero": {
       "title": "O ano letivo inteiro, preparado <em>semana a semana</em>.",
-      "description": "A Scooli organiza as aulas de cada turma a partir da sua planificação e prepara cada semana consigo, com os planos de aula e materiais de que precisa.",
+      "description": "A Scooli organiza as aulas de cada turma a partir do seu planejamento e prepara cada semana com você, com os planos de aula e os materiais de que você precisa.",
       "videoLabel": "Demonstração",
-      "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em «Gerar semana» prepara os planos de aula e um deles abre pronto a editar",
+      "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em “Gerar semana” prepara os planos de aula e um deles abre pronto para editar",
       "kicker": "IA para professores"
     },
     "proof": {
@@ -157,25 +157,25 @@
       "steps": [
         {
           "title": "Diga o que vai ensinar",
-          "imageAlt": "Professor escreve o tema da aula no painel da Scooli"
+          "imageAlt": "Professor digita o tema da aula no painel da Scooli"
         },
         {
-          "title": "Receba o recurso completo",
-          "imageAlt": "Plano de aula de Matemática gerado pela Scooli a abrir no editor"
+          "title": "Receba o material completo",
+          "imageAlt": "Plano de aula de Matemática gerado pela Scooli abrindo no editor"
         },
         {
-          "title": "Reveja, ajuste e exporte",
-          "imageAlt": "Plano de aula pronto a rever no editor da Scooli, com exportação para Word e PDF"
+          "title": "Revise, ajuste e exporte",
+          "imageAlt": "Plano de aula pronto para revisar no editor da Scooli, com exportação para Word e PDF"
         }
       ]
     },
     "year": {
       "kicker": "Ao longo do ano",
-      "title": "Acompanha-o do primeiro ao último dia de aulas.",
+      "title": "Com você do primeiro ao último dia de aula.",
       "items": [
         {
-          "label": "Setembro",
-          "title": "Planificação anual"
+          "label": "Fevereiro",
+          "title": "Planejamento anual"
         },
         {
           "label": "Cada semana",
@@ -186,69 +186,69 @@
           "title": "Planos de aula da semana"
         }
       ],
-      "imageAlt": "Calendário mensal da Scooli com as aulas de outubro de três turmas, já geradas ou por gerar"
+      "imageAlt": "Calendário mensal da Scooli com as aulas de três turmas, já geradas ou ainda por gerar"
     },
     "resources": {
-      "kicker": "Recursos",
-      "title": "Os recursos da semana, prontos a usar.",
+      "kicker": "Materiais",
+      "title": "Os materiais da semana, prontos para usar.",
       "items": {
         "plano-de-aula": {
           "title": "Planos de aula",
-          "previewAlt": "Plano de aula de Matemática do 5.º ano gerado pela Scooli",
+          "previewAlt": "Plano de aula de Matemática gerado pela Scooli",
           "description": "Objetivos, atividades e avaliação para cada aula."
         },
         "fichas-de-trabalho": {
-          "title": "Fichas de trabalho",
-          "previewAlt": "Ficha de trabalho de Ciências Naturais sobre o ciclo da água",
-          "description": "Exercícios para praticar, prontos a imprimir."
+          "title": "Atividades",
+          "previewAlt": "Atividade de Ciências sobre o ciclo da água",
+          "description": "Exercícios para praticar, prontos para imprimir."
         },
         "gerador-de-testes": {
-          "title": "Testes",
-          "previewAlt": "Teste de História e Geografia de Portugal com questões de escolha múltipla",
-          "description": "Grupos de questões, cotações e critérios de correção."
+          "title": "Provas",
+          "previewAlt": "Prova de História com questões de múltipla escolha",
+          "description": "Questões, pontuação e critérios de correção."
         },
         "quizzes": {
           "title": "Quizzes",
-          "previewAlt": "Quiz de Português sobre classes de palavras",
-          "description": "Perguntas rápidas para rever a matéria em aula."
+          "previewAlt": "Quiz de Língua Portuguesa sobre classes de palavras",
+          "description": "Perguntas rápidas para revisar o conteúdo em aula."
         },
         "planificacoes": {
-          "title": "Planificações",
-          "previewAlt": "Planificação de Matemática do 1.º período, organizada por unidades",
-          "description": "O ano, o período ou a unidade, aula a aula."
+          "title": "Planejamentos",
+          "previewAlt": "Planejamento de Matemática organizado por unidades",
+          "description": "O ano, o bimestre ou a unidade, aula a aula."
         },
         "apresentacoes": {
           "title": "Apresentações",
-          "previewAlt": "Apresentação de Ciências Naturais sobre o Sistema Solar",
-          "description": "Diapositivos com a matéria e exemplos, a partir do tema."
+          "previewAlt": "Apresentação de Ciências sobre o Sistema Solar",
+          "description": "Slides com o conteúdo e exemplos, a partir do tema."
         }
       },
-      "description": "Cada recurso adapta-se à turma, ao nível e ao tempo de aula."
+      "description": "Cada material se adapta à turma, ao nível e ao tempo de aula."
     },
     "audiences": {
       "kicker": "Para quem é",
       "title": "Para quem prepara as aulas e para quem lidera a escola.",
       "teachers": {
         "kicker": "Para professores",
-        "title": "Recupere as horas da preparação.",
-        "description": "Comece grátis e experimente com as suas aulas reais.",
+        "title": "Recupere as horas de preparação.",
+        "description": "Comece grátis e experimente com as suas aulas de verdade.",
         "price": "<b>30 dias grátis</b> · sem compromisso",
         "link": "Ver preços",
-        "imageAlt": "Painel da Scooli com as próximas aulas já geradas e o campo para pedir um novo recurso"
+        "imageAlt": "Painel da Scooli com as próximas aulas já geradas e o campo para pedir um novo material"
       },
       "schools": {
-        "kicker": "Para escolas e agrupamentos",
+        "kicker": "Para escolas e redes de ensino",
         "title": "Uma base comum para toda a escola.",
         "description": "Começamos com um piloto acompanhado e avaliamos juntos.",
-        "price": "<b>Piloto</b> com a equipa Scooli · <b>Plano</b> à medida da instituição",
+        "price": "<b>Piloto</b> com a equipe da Scooli · <b>Plano</b> sob medida para a instituição",
         "link": "Como trabalhamos com escolas",
-        "contactTitle": "Pedir uma demonstração",
-        "contactDescription": "Diga-nos qual é a escola ou agrupamento e o que gostava de experimentar. Respondemos com uma proposta de piloto.",
-        "imageAlt": "Biblioteca comunitária da Scooli com recursos partilhados por professores"
+        "contactTitle": "Agendar uma demonstração",
+        "contactDescription": "Conte qual é a escola ou rede de ensino e o que você gostaria de experimentar. Respondemos com uma proposta de piloto.",
+        "imageAlt": "Biblioteca comunitária da Scooli com materiais compartilhados por professores"
       },
       "recommend": {
-        "text": "É professor e gostava de ver a Scooli na sua escola?",
-        "link": "Recomende-nos à direção"
+        "text": "Você é professor e gostaria de ver a Scooli na sua escola?",
+        "link": "Recomende a Scooli à direção"
       }
     },
     "trust": {
@@ -257,69 +257,69 @@
       "items": [
         {
           "title": "Tudo é editável",
-          "description": "A Scooli prepara a base; o professor revê e decide o que vai para a aula."
+          "description": "A Scooli prepara a base; o professor revisa e decide o que vai para a aula."
         },
         {
-          "title": "Os seus dados não treinam IA",
+          "title": "Seus dados não treinam IA",
           "description": "Os pedidos e materiais criados na Scooli não são usados para treinar modelos de IA."
         },
         {
           "title": "Dados protegidos",
-          "description": "Tratados segundo o RGPD, encriptados em trânsito (SSL/TLS) e guardados em servidores com acesso restrito."
+          "description": "Tratados conforme a LGPD e o GDPR, criptografados em trânsito (SSL/TLS) e armazenados em servidores com acesso restrito."
         },
         {
-          "title": "Honestos sobre a IA",
-          "description": "Dizemos onde a IA ajuda e onde precisa de revisão: tudo deve ser revisto antes de chegar aos alunos."
+          "title": "Transparência sobre a IA",
+          "description": "Dizemos onde a IA ajuda e onde ela precisa de revisão: tudo deve ser revisado antes de chegar aos alunos."
         }
       ],
       "schools": {
-        "text": "É da direção ou encarregado de proteção de dados? Enviamos-lhe a política de privacidade, os termos e as respostas às suas perguntas.",
+        "text": "Você é da direção ou o encarregado de dados da escola? Enviamos a política de privacidade, os termos e as respostas às suas perguntas.",
         "cta": "Pedir documentação",
-        "contactTitle": "Pedir documentação de privacidade",
-        "contactDescription": "Diga-nos qual é a escola ou agrupamento e o que precisa de ver. Respondemos com a documentação e as respostas às suas perguntas."
+        "contactTitle": "Pedir a documentação de privacidade",
+        "contactDescription": "Conte qual é a escola ou rede de ensino e o que você precisa ver. Respondemos com a documentação e as respostas às suas perguntas."
       },
-      "seal": "Em conformidade com o RGPD",
+      "seal": "Em conformidade com a LGPD e o GDPR",
       "policiesLabel": "Políticas",
       "policies": {
         "privacy": "Política de privacidade",
-        "terms": "Termos de utilização",
+        "terms": "Termos de uso",
         "trust": "Confiança e IA"
       }
     },
     "finalCta": {
       "title": "A próxima aula pode começar com uma base pronta.",
       "description": "Grátis para começar, sem cartão.",
-      "schoolsLink": "É uma escola? Peça uma demonstração"
+      "schoolsLink": "É uma escola? Agende uma demonstração"
     },
     "chatComparison": {
-      "kicker": "Porquê a Scooli",
-      "title": "O que a Scooli faz diferente.",
-      "description": "Se hoje prepara aulas num chat de IA, conhece o resto do trabalho: explicar, copiar, formatar, confirmar. A Scooli faz essa parte por si.",
+      "kicker": "Por que a Scooli",
+      "title": "O que a Scooli faz de diferente.",
+      "description": "Se hoje você prepara aulas em um chat de IA, conhece o resto do trabalho: explicar, copiar, formatar, conferir. A Scooli faz essa parte por você.",
       "chat": {
-        "label": "Num chat de IA",
-        "prompt": "Faz um plano de aula sobre frações equivalentes para o 5.º ano",
-        "answer": "Claro! Aqui tens uma proposta:\n\n**Tema:** Frações equivalentes\n**Objetivos:** compreender e identificar frações equivalentes…\n**Atividades:**\n1. Introdução com exemplos do dia a dia\n2. Exercícios em pares\n\nQueres que adapte a duração ou acrescente uma ficha?",
+        "label": "Em um chat de IA",
+        "prompt": "Faça um plano de aula sobre frações equivalentes para o 6º ano",
+        "answer": "Claro! Aqui está uma proposta:\n\n**Tema:** Frações equivalentes\n**Objetivos:** compreender e identificar frações equivalentes…\n**Atividades:**\n1. Introdução com exemplos do dia a dia\n2. Exercícios em duplas\n\nQuer que eu ajuste a duração ou inclua uma lista de exercícios?",
         "points": [
           "Explica a turma, o ano e o nível em cada conversa",
           "Copia, cola e formata no Word, um documento de cada vez",
-          "Confirma à mão se bate certo com as Aprendizagens Essenciais",
-          "Na semana seguinte começa do zero: o chat não sabe o que já deu"
+          "Confere à mão se está de acordo com a BNCC",
+          "Na semana seguinte, começa do zero: o chat não sabe o que já foi dado"
         ]
       },
       "scooli": {
         "label": "Na Scooli",
-        "imageAlt": "Plano de aula de Matemática do 5.º ano gerado pela Scooli",
+        "imageAlt": "Plano de aula de Matemática gerado pela Scooli",
         "points": [
           {
             "title": "Conhece cada turma",
-            "text": "Parte da sua planificação e do calendário de cada turma."
+            "text": "Parte do seu planejamento e do calendário de cada turma."
           },
           {
-            "title": "Alinhada com o currículo",
-            "text": "Segue as Aprendizagens Essenciais do ano e da disciplina."
+            "title": "Alinhada à BNCC",
+            "text": "Liga cada aula às habilidades da BNCC do ano e da disciplina."
           },
           {
-            "title": "Documentos prontos a usar",
+            "title": "Documentos prontos para usar",
             "text": "No seu modelo, com exportação para Word e PDF."
           },
           {
@@ -330,8 +330,8 @@
       }
     },
     "topicPrompt": {
-      "label": "O que vai ensinar?",
-      "placeholder": "Ex.: frações equivalentes, 5.º ano",
+      "label": "O que você vai ensinar?",
+      "placeholder": "Ex.: frações equivalentes, 6º ano",
       "submit": "Criar com IA"
     }
   },
@@ -535,37 +535,37 @@
   },
   "about": {
     "meta": {
-      "title": "Sobre a Scooli: a equipa e a história",
-      "description": "Conheça a equipa e a história da Scooli: engenheiros e uma professora a devolver tempo a quem ensina, com os professores portugueses."
+      "title": "Sobre a Scooli: a equipe e a história",
+      "description": "Conheça a equipe e a história da Scooli: engenheiros portugueses e uma professora devolvendo tempo a quem ensina, agora também para escolas brasileiras."
     },
     "hero": {
       "badge": "Sobre nós",
       "title": "A Scooli existe para devolver tempo aos professores",
-      "description": "Estamos a reduzir o trabalho repetitivo da preparação de aulas e a aproximar uma comunidade que muitas vezes trabalha sozinha — sempre com o professor no controlo do resultado final."
+      "description": "Estamos reduzindo o trabalho repetitivo da preparação de aulas e aproximando uma comunidade que muitas vezes trabalha sozinha, sempre com o professor no controle do resultado final."
     },
     "story": {
-      "badge": "A nossa história",
-      "title": "Começou com os professores à nossa volta",
+      "badge": "Nossa história",
+      "title": "Começou com os professores ao nosso redor",
       "chapters": [
         {
           "title": "O que víamos",
-          "description": "Professores próximos de nós a chegar ao fim do dia com as aulas dadas e as reuniões feitas — e ainda uma noite de planificações, fichas e testes pela frente. Serões e fins de semana de família a desaparecer em trabalho que se repete, semana após semana."
+          "description": "Professores próximos de nós chegando ao final do dia com as aulas dadas e as reuniões feitas, e ainda uma noite de planejamentos, atividades e provas pela frente. Noites e fins de semana com a família sumindo em um trabalho que se repete, semana após semana."
         },
         {
           "title": "A pergunta",
-          "description": "Somos dois jovens engenheiros portugueses, o Miguel e o Pedro. Quando a IA generativa começou a mostrar o que conseguia fazer, a pergunta tornou-se óbvia: porque é que estas horas não voltam para quem ensina? A resposta habitual — «usa-se o ChatGPT» — não chegava: faltava-lhe o currículo português, as Aprendizagens Essenciais, os DL 54/2018 e 55/2018, e o formato de documento que um professor usa de verdade."
+          "description": "Somos dois jovens engenheiros portugueses, o Miguel e o Pedro. Quando a IA generativa começou a mostrar do que era capaz, a pergunta ficou óbvia: por que essas horas não voltam para quem ensina? A resposta de sempre, “use o ChatGPT”, não bastava: faltavam o currículo, o calendário de cada turma e o formato de documento que um professor usa de verdade."
         },
         {
           "title": "A Scooli",
-          "description": "Por isso construímos a Scooli: feita em Portugal, para o ensino português, com a IA a fazer o trabalho mecânico e o professor a manter a decisão final. O objetivo é o mesmo desde o primeiro dia — devolver tempo a quem ensina. E às famílias de quem ensina."
+          "description": "Por isso construímos a Scooli, com a IA fazendo o trabalho mecânico e o professor mantendo a decisão final. Começamos em Portugal; hoje a Scooli também trabalha com a BNCC e o calendário escolar brasileiro. O objetivo é o mesmo desde o primeiro dia: devolver tempo a quem ensina. E às famílias de quem ensina."
         }
       ],
-      "videoAria": "A Scooli em ação: um plano de aula de Matemática a ser gerado",
-      "videoCaption": "A Scooli em ação · um plano de aula a ganhar forma",
+      "videoAria": "A Scooli em ação: um plano de aula de Matemática sendo gerado",
+      "videoCaption": "A Scooli em ação · um plano de aula ganhando forma",
       "miguelAlt": "Miguel Rodrigues, fundador da Scooli",
-      "miguelCaption": "Miguel · Santa Maria da Feira",
+      "miguelCaption": "Miguel · Santa Maria da Feira, Portugal",
       "pedroAlt": "Pedro Rocha, cofundador da Scooli",
-      "pedroCaption": "Pedro · Vila Nova de Gaia",
+      "pedroCaption": "Pedro · Vila Nova de Gaia, Portugal",
       "roadmapLink": "Ver o roadmap"
     },
     "metrics": {
@@ -577,34 +577,34 @@
     "mission": {
       "badge": "Missão",
       "title": "Aliviar o lado mais pesado do trabalho docente",
-      "description": "A IA deve ser prática, útil e respeitadora do papel do professor. E a missão não acaba na automação: queremos uma comunidade onde os professores encontrem boas bases e sintam menos isolamento.",
+      "description": "A IA deve ser prática, útil e respeitar o papel do professor. E a missão não acaba na automação: queremos uma comunidade onde os professores encontrem boas bases e se sintam menos sozinhos.",
       "points": [
         {
           "title": "Devolver tempo aos professores",
-          "description": "Reduzir o trabalho repetitivo da preparação de aulas para libertar tempo para ensinar, acompanhar alunos e ajustar melhor o que acontece em sala."
+          "description": "Reduzir o trabalho repetitivo da preparação de aulas para liberar tempo para ensinar, acompanhar os alunos e ajustar melhor o que acontece em sala."
         },
         {
           "title": "Criar comunidade, não só uma ferramenta",
-          "description": "O trabalho de um professor é muitas vezes solitário. A Scooli também quer aproximar docentes através da biblioteca comunitária e da partilha de materiais úteis."
+          "description": "O trabalho do professor muitas vezes é solitário. A Scooli também quer aproximar os professores por meio da biblioteca comunitária e do compartilhamento de materiais úteis."
         },
         {
-          "title": "Construir para a realidade portuguesa",
-          "description": "A linguagem, os exemplos e a forma de usar a Scooli são pensados para professores, escolas e currículo em Portugal."
+          "title": "Construir para a escola brasileira",
+          "description": "A BNCC e as suas habilidades, os bimestres, as provas e os planejamentos: no Brasil, a linguagem e o jeito de usar a Scooli são pensados para professores e escolas brasileiras."
         }
       ]
     },
     "team": {
-      "badge": "Equipa",
-      "title": "Quem está a construir a Scooli.",
-      "description": "Dois engenheiros de software e IA, um responsável de crescimento e uma professora como consultora pedagógica — a construir a Scooli em contacto direto com professores portugueses.",
+      "badge": "Equipe",
+      "title": "Quem está construindo a Scooli.",
+      "description": "Dois engenheiros de software e IA, um responsável por crescimento e uma professora como consultora pedagógica: uma equipe portuguesa construindo a Scooli em contato direto com professores.",
       "members": [
         {
-          "role": "Cofundador · Engenheiro de Software & IA",
+          "role": "Cofundador · Engenheiro de Software e IA",
           "background": "Antes: Körber e Infios.",
           "alt": "Miguel Rodrigues, cofundador e engenheiro de software e IA da Scooli"
         },
         {
-          "role": "Cofundador · Engenheiro de Software & IA",
+          "role": "Cofundador · Engenheiro de Software e IA",
           "background": "Antes: Porto Editora e Talkdesk.",
           "alt": "Pedro Rocha, cofundador e engenheiro de software e IA da Scooli"
         },
@@ -614,7 +614,7 @@
           "alt": "Hugo Silva, sócio e Chief Growth Officer da Scooli"
         },
         {
-          "role": "Consultora pedagógica · Professora do 1.º ciclo",
+          "role": "Consultora pedagógica · Professora em Portugal",
           "background": "Na sala de aula todos os dias.",
           "alt": "Sílvia Valério, consultora pedagógica da Scooli"
         }
@@ -623,84 +623,84 @@
     "finalCta": {
       "title": "Quer fazer parte desta história?",
       "description": "Junte-se a mais de 500 professores que já preparam aulas com a Scooli. Grátis, sem cartão, sem compromisso.",
-      "secondaryLabel": "Falar connosco",
+      "secondaryLabel": "Fale com a gente",
       "investorsLink": "Para investidores"
     },
     "next": {
       "kicker": "Para onde vamos",
-      "title": "Do primeiro ao último dia de aulas.",
-      "description": "A Scooli já guarda o estado de cada turma e usa o que já foi dado para decidir o que vem a seguir. O caminho leva-nos da aula de amanhã à escola inteira, sempre com o professor a decidir."
+      "title": "Do primeiro ao último dia de aula.",
+      "description": "A Scooli já guarda o estado de cada turma e usa o que já foi dado para decidir o que vem em seguida. O caminho nos leva da aula de amanhã à escola inteira, sempre com o professor decidindo."
     }
   },
   "schools": {
     "meta": {
-      "title": "Plano institucional para escolas e agrupamentos",
-      "description": "O plano institucional da Scooli: os professores preparam as aulas com IA e a direção vê o estado do currículo de todas as turmas num só painel."
+      "title": "Plano para escolas e redes de ensino",
+      "description": "O plano da Scooli para escolas: os professores preparam as aulas com IA, ligadas à BNCC, e a direção vê o cumprimento do planejamento de cada turma em um só painel."
     },
     "hero": {
-      "eyebrow": "Para escolas e agrupamentos",
-      "title": "A Scooli para a escola inteira.",
-      "description": "Um plano para toda a equipa: cada professor prepara as aulas na Scooli e a direção vê, num só painel, o estado do currículo em todas as turmas.",
+      "eyebrow": "Para escolas e redes de ensino",
+      "title": "A direção vê o cumprimento do planejamento, turma a turma.",
+      "description": "Saiba, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, sem pedir relatórios aos professores.",
       "secondaryLabel": "Ver preços",
-      "imageAlt": "Painel da escola na Scooli com lugares ativos, professores ativos este mês, pedidos de IA e documentos criados"
+      "imageAlt": "Painel da escola na Scooli com vagas ativas, professores que usaram a IA neste mês, pedidos à IA e documentos criados"
     },
     "recommend": {
       "eyebrow": "Recomendação interna",
-      "title": "Trabalha numa escola mas não está na direção?",
-      "description": "Pode abrir a conversa na mesma. Criamos uma página dedicada para professores e equipas que querem sugerir a Scooli à direção, coordenação ou agrupamento onde trabalham.",
-      "buttonLabel": "Recomendar a minha escola"
+      "title": "Você trabalha em uma escola, mas não faz parte da direção?",
+      "description": "Você pode começar a conversa mesmo assim. Criamos uma página para professores e coordenadores que querem sugerir a Scooli à direção, à coordenação pedagógica ou à rede de ensino.",
+      "buttonLabel": "Recomendar minha escola"
     },
     "finalCta": {
       "title": "Vamos ver se a Scooli faz sentido para a sua escola?",
-      "description": "Marque uma reunião curta. Percebemos o contexto e desenhamos um piloto com a equipa certa.",
+      "description": "Agende uma conversa rápida. Entendemos o contexto e desenhamos um piloto com as pessoas certas.",
       "secondaryLabel": "Ver confiança e privacidade"
     },
     "benefits": {
-      "kicker": "O plano institucional",
+      "kicker": "O plano para escolas",
       "title": "O que a escola ganha.",
-      "description": "Tudo o que o Pro inclui para cada professor, mais o que só faz sentido ao nível da escola.",
+      "description": "Tudo o que o Pro inclui para cada professor, mais o que só faz sentido no nível da escola.",
       "items": [
         {
-          "title": "O currículo à vista",
-          "description": "O estado de cada turma face ao currículo e à planificação, numa só vista, por disciplina e por ano."
+          "title": "O planejamento à vista",
+          "description": "O cumprimento do planejamento de cada turma em uma só tela, com filtros por ano e por área."
         },
         {
-          "title": "Atrasos detetados cedo",
-          "description": "Vê onde há tópicos por dar e que turmas precisam de apoio antes do fim do período, não depois."
+          "title": "Atrasos vistos a tempo",
+          "description": "As turmas atrasadas e o que ainda falta dar aparecem no painel durante o bimestre, não no fim do ano."
         },
         {
           "title": "Gestão central",
-          "description": "Lugares e convites geridos num só sítio. Entra quem a escola convida."
+          "description": "As vagas e as contas da escola em um só lugar. A equipe da Scooli cria as contas dos professores."
         },
         {
-          "title": "Biblioteca da escola",
-          "description": "Os materiais partilhados ficam entre colegas da escola."
+          "title": "Biblioteca e fontes da escola",
+          "description": "Os materiais compartilhados ficam entre colegas, e as regras e o material de apoio da escola entram nos documentos de todos os professores."
         },
         {
-          "title": "Implementação e formação",
-          "description": "Acompanhamos o arranque com a equipa e formamos os professores no uso da Scooli."
+          "title": "Implantação e formação",
+          "description": "Acompanhamos a implantação com a equipe e formamos os professores no uso da Scooli, em encontros on-line."
         },
         {
           "title": "Privacidade documentada",
-          "description": "Documentação e respostas para o encarregado de proteção de dados, antes de decidir."
+          "description": "Documentação e respostas para o encarregado de dados da escola, antes de decidir."
         }
       ]
     },
     "start": {
       "kicker": "Como começar",
-      "title": "Comece com um piloto, decida com dados.",
+      "title": "Comece com um piloto e decida com dados.",
       "items": [
         {
           "title": "Conversa inicial",
-          "description": "Percebemos o contexto, os objetivos e quem vai participar."
+          "description": "Entendemos o contexto, os objetivos e quem vai participar."
         },
         {
           "title": "Piloto acompanhado",
-          "description": "Uma equipa pequena usa a Scooli nas aulas reais, com o nosso apoio."
+          "description": "Um grupo pequeno de professores usa a Scooli nas aulas de verdade, com o nosso apoio a distância."
         },
         {
           "title": "Avaliação e decisão",
-          "description": "Vemos juntos a utilização no painel e definimos os próximos passos."
+          "description": "Vemos juntos o uso no painel e definimos os próximos passos."
         }
       ]
     },
@@ -709,8 +709,8 @@
       "title": "O que costuma pesar na decisão.",
       "items": [
         {
-          "question": "Como é tratada a privacidade?",
-          "answer": "Os dados são tratados segundo o RGPD, encriptados em trânsito e guardados em servidores com acesso restrito. Enviamos a documentação e respondemos às perguntas do encarregado de proteção de dados."
+          "question": "Como a privacidade é tratada?",
+          "answer": "Os dados são tratados conforme a LGPD e o GDPR, criptografados em trânsito e armazenados em servidores com acesso restrito. Enviamos a documentação e respondemos às perguntas do encarregado de dados da escola."
         },
         {
           "question": "Os dados dos professores treinam modelos de IA?",
@@ -718,33 +718,33 @@
         },
         {
           "question": "Quem decide o que vai para a aula?",
-          "answer": "O professor. A Scooli prepara a base; tudo é editável e deve ser revisto antes de chegar aos alunos."
+          "answer": "O professor. A Scooli prepara a base; tudo é editável e deve ser revisado antes de chegar aos alunos."
         },
         {
-          "question": "A Scooli funciona com as nossas planificações?",
-          "answer": "Sim. Cada professor parte da planificação de cada turma, e a Scooli organiza as aulas no calendário a partir dela."
+          "question": "A Scooli funciona com os planejamentos da escola?",
+          "answer": "Sim. Cada professor parte do planejamento de cada turma, e a Scooli organiza as aulas no calendário a partir dele, ligadas às habilidades da BNCC. O painel da direção mostra o que os professores registram depois de cada aula."
         },
         {
           "question": "Podemos experimentar antes de decidir?",
-          "answer": "Sim. Começamos com um piloto com uma equipa pequena e avaliamos juntos a utilização antes de alargar à escola."
+          "answer": "Sim. Começamos com um piloto com um grupo pequeno de professores e avaliamos juntos o uso antes de ampliar para a escola toda."
         }
       ]
     }
   },
   "trust": {
     "meta": {
-      "title": "Privacidade, RGPD e uso responsável da IA",
-      "description": "Perceba como a Scooli trata privacidade, revisão humana, Aprendizagens Essenciais e uso responsável da IA com linguagem simples e direta."
+      "title": "Privacidade, LGPD e uso responsável da IA",
+      "description": "Entenda como a Scooli trata a privacidade, a revisão humana, o alinhamento à BNCC e o uso responsável da IA, em linguagem simples e direta."
     },
-    "badge": "Confiança e Privacidade",
+    "badge": "Confiança e privacidade",
     "title": "Privacidade, revisão humana, alinhamento curricular e uso responsável, explicados sem jargão",
-    "description": "Se quer perceber rapidamente como a Scooli lida com estes temas, aqui tem o essencial: o que acontece aos dados, onde fica o controlo do professor e porque o alinhamento com as Aprendizagens Essenciais também faz parte da confiança no produto.",
+    "description": "Se você quer entender rápido como a Scooli lida com esses temas, aqui está o essencial: o que acontece com os dados, onde fica o controle do professor e por que o alinhamento à BNCC também faz parte da confiança no produto.",
     "summaryPoints": [
-      "Em conformidade com o RGPD",
-      "Professor no controlo do resultado final",
-      "Os dados dos utilizadores não são usados para treinar modelos",
+      "Em conformidade com a LGPD e o GDPR",
+      "Professor no controle do resultado final",
+      "Os dados dos usuários não são usados para treinar modelos",
       "Revisão humana antes de usar em aula",
-      "Materiais orientados pelas Aprendizagens Essenciais"
+      "Materiais orientados pelas habilidades da BNCC"
     ],
     "principles": {
       "eyebrow": "Princípios",
@@ -754,103 +754,103 @@
       "title": "Compromissos públicos",
       "items": [
         {
-          "title": "Professor no controlo",
-          "description": "A Scooli ajuda a gerar um ponto de partida, mas a decisão final sobre o que vai para a aula continua do lado do professor."
+          "title": "Professor no controle",
+          "description": "A Scooli ajuda a gerar um ponto de partida, mas a decisão final sobre o que vai para a aula continua com o professor."
         },
         {
-          "title": "Sem treino com dados dos utilizadores",
+          "title": "Sem treino com dados dos usuários",
           "description": "Os materiais e pedidos feitos na plataforma não são usados para treinar modelos de IA."
         },
         {
           "title": "Revisão humana sempre recomendada",
-          "description": "Os resultados devem ser revistos, ajustados e validados antes de serem usados com alunos."
+          "description": "Os resultados devem ser revisados, ajustados e validados antes de serem usados com os alunos."
         },
         {
-          "title": "Alinhamento com Aprendizagens Essenciais",
-          "description": "A Scooli é posicionada para gerar materiais de acordo com as Aprendizagens Essenciais, o que ajuda a reforçar alinhamento curricular, qualidade do conteúdo e confiança."
+          "title": "Alinhamento à BNCC",
+          "description": "As aulas e os materiais partem das habilidades da BNCC do ano e da disciplina (e do currículo do estado, quando disponível), o que reforça o alinhamento curricular, a qualidade do conteúdo e a confiança."
         },
         {
           "title": "Privacidade explicada sem jargão",
-          "description": "A postura da Scooli sobre privacidade e uso responsável pode ser percebida rapidamente, sem depender só dos textos legais."
+          "description": "A postura da Scooli sobre privacidade e uso responsável pode ser entendida rapidamente, sem depender só dos textos legais."
         }
       ]
     },
     "goodPractices": {
       "title": "Antes de usar em aula",
       "items": [
-        "Evite inserir dados pessoais desnecessários de alunos.",
-        "Use contexto pedagógico sempre que possível, em vez de informação identificável.",
-        "Confirme sempre que o material final está alinhado com as Aprendizagens Essenciais e com o seu contexto de aula.",
-        "Trate a IA como apoio à criação e adaptação de materiais, nunca como substituição da decisão pedagógica."
+        "Evite inserir dados pessoais desnecessários dos alunos.",
+        "Use o contexto pedagógico sempre que possível, em vez de informações que identifiquem os alunos.",
+        "Confirme sempre que o material final está alinhado à BNCC e ao contexto da sua turma.",
+        "Trate a IA como apoio para criar e adaptar materiais, nunca como substituta da decisão pedagógica."
       ]
     },
     "documents": {
       "title": "Documentos úteis",
       "privacy": {
         "title": "Política de Privacidade",
-        "description": "Detalhes legais sobre tratamento de dados, responsabilidades e informação adicional."
+        "description": "Detalhes legais sobre o tratamento de dados, responsabilidades e informações adicionais."
       },
       "terms": {
-        "title": "Termos de Utilização",
-        "description": "Condições de uso, princípios de utilização e notas sobre subscrição e uso justo."
+        "title": "Termos de Uso",
+        "description": "Condições de uso, princípios de utilização e notas sobre assinatura e uso justo."
       }
     }
   },
   "recommendInstitution": {
     "meta": {
-      "title": "Recomendar a Scooli a uma instituição",
-      "description": "Sugira a Scooli à direção da sua escola, instituição ou agrupamento. Partilhe o contexto e a nossa equipa prepara o próximo contacto."
+      "title": "Recomendar a Scooli para uma escola",
+      "description": "Sugira a Scooli à direção da sua escola, instituição ou rede de ensino. Conte o contexto e a nossa equipe prepara o próximo passo."
     },
     "backLabel": "Voltar",
     "badge": "Recomendar a Scooli",
-    "title": "Quer que falemos com a sua escola?",
-    "description": "Preencha este formulário com o essencial e nós tratamos do próximo passo.",
-    "noteLabel": "Nota importante",
-    "noteText": "Se avançarmos com um primeiro email para a direção ou coordenação, colocamos o seu email em CC.",
+    "title": "Quer que a gente converse com a sua escola?",
+    "description": "Preencha este formulário com o essencial e nós cuidamos do próximo passo.",
+    "noteLabel": "Importante",
+    "noteText": "Se enviarmos um primeiro e-mail para a direção ou a coordenação, colocamos você em cópia (CC).",
     "form": {
-      "requiredNote": "Os campos assinalados com * são obrigatórios.",
+      "requiredNote": "Os campos marcados com * são obrigatórios.",
       "nameLabel": "Nome *",
-      "namePlaceholder": "O seu nome",
-      "emailLabel": "Email *",
-      "emailPlaceholder": "o.seu.email@exemplo.com",
-      "roleLabel": "Cargo / papel *",
-      "rolePlaceholder": "Professor, coordenação, etc.",
+      "namePlaceholder": "Seu nome",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "seu.email@exemplo.com",
+      "roleLabel": "Cargo / função *",
+      "rolePlaceholder": "Professor, coordenação pedagógica etc.",
       "institutionLabel": "Escola / instituição *",
-      "institutionPlaceholder": "Nome da escola, instituição ou agrupamento",
-      "leadershipContactLabel": "Contacto da direção ou coordenação *",
-      "leadershipContactPlaceholder": "Email, telefone ou nome da pessoa",
+      "institutionPlaceholder": "Nome da escola, instituição ou rede de ensino",
+      "leadershipContactLabel": "Contato da direção ou da coordenação *",
+      "leadershipContactPlaceholder": "E-mail, telefone ou nome da pessoa",
       "messageLabel": "Contexto",
-      "messagePlaceholder": "Explique em poucas linhas porque faz sentido falarmos com esta escola.",
-      "ccHint": "Usamos o seu email para responder e para o manter em CC se avançarmos com o contacto.",
+      "messagePlaceholder": "Explique em poucas linhas por que faz sentido conversarmos com esta escola.",
+      "ccHint": "Usamos seu e-mail para responder e para manter você em cópia se entrarmos em contato com a escola.",
       "submitLabel": "Enviar pedido",
-      "submittingLabel": "A enviar...",
-      "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
+      "submittingLabel": "Enviando...",
+      "consent": "Ao enviar, você concorda com a nossa <link>Política de Privacidade</link>.",
       "errors": {
-        "name": "Indique o seu nome para sabermos quem está a recomendar.",
-        "emailRequired": "Indique um email para podermos responder ao pedido.",
-        "emailInvalid": "Introduza um endereço de email válido.",
-        "role": "Partilhe o seu papel na escola ou instituição.",
-        "institution": "Indique a escola, instituição ou agrupamento que quer recomendar.",
-        "leadershipContact": "Indique o contacto da direção ou coordenação."
+        "name": "Informe seu nome para sabermos quem está recomendando.",
+        "emailRequired": "Informe um e-mail para podermos responder ao pedido.",
+        "emailInvalid": "Digite um endereço de e-mail válido.",
+        "role": "Conte qual é a sua função na escola ou instituição.",
+        "institution": "Informe a escola, instituição ou rede de ensino que você quer recomendar.",
+        "leadershipContact": "Informe o contato da direção ou da coordenação."
       },
-      "validationNotice": "Reveja os campos assinalados e tente novamente.",
+      "validationNotice": "Revise os campos marcados e tente novamente.",
       "fetchErrorFallback": "Erro ao enviar o pedido. Tente novamente.",
-      "successMessage": "Pedido enviado com sucesso. Vamos analisar o contexto e responder o mais depressa possível.",
+      "successMessage": "Pedido enviado. Vamos analisar o contexto e responder o mais rápido possível.",
       "genericErrorFallback": "Ocorreu um erro. Tente novamente mais tarde."
     }
   },
   "contact": {
     "meta": {
-      "title": "Contacto e marcação de reunião",
-      "description": "Fale com a equipa da Scooli: marque uma reunião, escreva-nos para tirar dúvidas ou discuta um piloto para a sua escola ou agrupamento."
+      "title": "Contato e agendamento de reunião",
+      "description": "Fale com a equipe da Scooli: agende uma reunião, tire dúvidas por escrito ou converse sobre um piloto para a sua escola ou rede de ensino."
     },
-    "badge": "Contacto",
-    "title": "Fale connosco",
-    "description": "Tem perguntas sobre a Scooli, quer falar sobre um piloto ou precisa de ajuda? Marque uma reunião, use o formulário ou envie-nos um email.",
+    "badge": "Contato",
+    "title": "Fale com a gente",
+    "description": "Tem perguntas sobre a Scooli, quer conversar sobre um piloto ou precisa de ajuda? Agende uma reunião, use o formulário ou mande um e-mail.",
     "cards": {
       "email": {
-        "title": "Email",
-        "subtitle": "A forma mais simples de falar connosco"
+        "title": "E-mail",
+        "subtitle": "O jeito mais simples de falar com a gente"
       },
       "responseTime": {
         "title": "Tempo de resposta",
@@ -858,84 +858,84 @@
       },
       "institutions": {
         "title": "Escolas e instituições",
-        "subtitle": "Se quer falar sobre pilotos, adoção institucional ou dúvidas de implementação, também pode escrever-nos por aqui."
+        "subtitle": "Se você quer falar sobre pilotos, adoção pela escola ou dúvidas de implantação, também pode escrever por aqui."
       }
     },
     "form": {
-      "requiredNote": "Os campos assinalados com * são obrigatórios.",
+      "requiredNote": "Os campos marcados com * são obrigatórios.",
       "nameLabel": "Nome *",
-      "namePlaceholder": "O seu nome",
-      "emailLabel": "Email *",
-      "emailPlaceholder": "o.seu.email@exemplo.com",
-      "emailHint": "Usamos o seu email apenas para responder ao pedido.",
+      "namePlaceholder": "Seu nome",
+      "emailLabel": "E-mail *",
+      "emailPlaceholder": "seu.email@exemplo.com",
+      "emailHint": "Usamos seu e-mail apenas para responder ao pedido.",
       "organizationLabel": "Organização / Escola",
       "organizationPlaceholder": "Nome da sua organização (opcional)",
       "messageLabel": "Mensagem *",
       "messagePlaceholder": "Como podemos ajudar?",
-      "messageHint": "Partilhe o contexto necessário para o conseguirmos ajudar.",
+      "messageHint": "Compartilhe o contexto necessário para podermos ajudar.",
       "submitLabel": "Enviar mensagem",
-      "submittingLabel": "A enviar...",
-      "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
-      "validationNotice": "Reveja os campos assinalados e tente novamente.",
+      "submittingLabel": "Enviando...",
+      "consent": "Ao enviar, você concorda com a nossa <link>Política de Privacidade</link>.",
+      "validationNotice": "Revise os campos marcados e tente novamente.",
       "fetchErrorFallback": "Erro ao enviar a mensagem. Tente novamente.",
-      "successMessage": "Mensagem enviada com sucesso. Vamos responder o mais depressa possível.",
+      "successMessage": "Mensagem enviada. Vamos responder o mais rápido possível.",
       "genericErrorFallback": "Ocorreu um erro. Tente novamente mais tarde."
     },
-    "bookingHeading": "Marque uma reunião",
-    "bookingDescription": "Escolha o dia e a hora que lhe dão mais jeito.",
-    "writeHeading": "Ou escreva-nos"
+    "bookingHeading": "Agende uma reunião",
+    "bookingDescription": "Escolha o dia e o horário que forem melhores para você.",
+    "writeHeading": "Ou escreva para nós"
   },
   "contactForm": {
-    "nameRequired": "Indique o seu nome para sabermos como responder.",
-    "emailRequired": "Indique um email para podermos entrar em contacto.",
-    "emailInvalid": "Introduza um endereço de email válido.",
-    "messageRequired": "Escreva uma mensagem com o que precisa."
+    "nameRequired": "Informe seu nome para sabermos como responder.",
+    "emailRequired": "Informe um e-mail para podermos entrar em contato.",
+    "emailInvalid": "Digite um endereço de e-mail válido.",
+    "messageRequired": "Escreva uma mensagem contando do que você precisa."
   },
   "contactModal": {
-    "defaultTitle": "Fale connosco",
-    "defaultDescription": "Preencha o formulário e entraremos em contacto consigo o mais brevemente possível.",
-    "requiredNote": "Os campos assinalados com * são obrigatórios.",
+    "defaultTitle": "Fale com a gente",
+    "defaultDescription": "Preencha o formulário e entraremos em contato o mais rápido possível.",
+    "requiredNote": "Os campos marcados com * são obrigatórios.",
     "nameLabel": "Nome *",
-    "namePlaceholder": "O seu nome",
-    "emailLabel": "Email *",
-    "emailPlaceholder": "o.seu.email@exemplo.com",
-    "emailHint": "Usamos o seu email apenas para responder ao pedido.",
+    "namePlaceholder": "Seu nome",
+    "emailLabel": "E-mail *",
+    "emailPlaceholder": "seu.email@exemplo.com",
+    "emailHint": "Usamos seu e-mail apenas para responder ao pedido.",
     "organizationLabel": "Organização / Escola",
     "organizationPlaceholder": "Nome da sua instituição (opcional)",
     "messageLabel": "Mensagem *",
     "messagePlaceholder": "Como podemos ajudar?",
-    "messageHint": "Inclua o contexto necessário para conseguirmos ajudar.",
+    "messageHint": "Inclua o contexto necessário para podermos ajudar.",
     "submitLabel": "Enviar mensagem",
-    "submittingLabel": "A enviar...",
-    "consent": "Ao enviar, concorda com a nossa <link>Política de Privacidade</link>.",
-    "validationNotice": "Reveja os campos assinalados e tente novamente.",
+    "submittingLabel": "Enviando...",
+    "consent": "Ao enviar, você concorda com a nossa <link>Política de Privacidade</link>.",
+    "validationNotice": "Revise os campos marcados e tente novamente.",
     "fetchErrorFallback": "Erro ao enviar a mensagem. Tente novamente.",
-    "successMessage": "Mensagem enviada com sucesso! Receberá um email de confirmação em breve.",
+    "successMessage": "Mensagem enviada! Você vai receber um e-mail de confirmação em breve.",
     "genericErrorFallback": "Ocorreu um erro. Tente novamente mais tarde.",
-    "bookingHeading": "Marcar reunião",
+    "bookingHeading": "Agendar reunião",
     "writeHeading": "Prefere escrever?"
   },
   "institutionalContactButton": {
-    "defaultTitle": "Fale com a equipa",
-    "defaultDescription": "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo.",
-    "defaultLabel": "Falar com a equipa"
+    "defaultTitle": "Fale com a equipe",
+    "defaultDescription": "Conte um pouco sobre a sua escola ou rede de ensino e entraremos em contato para entender o melhor próximo passo.",
+    "defaultLabel": "Fale com a equipe"
   },
   "emailContact": {
-    "copyAriaLabel": "Copiar email info@scooli.app",
+    "copyAriaLabel": "Copiar o e-mail info@scooli.app",
     "copyTitle": "Copiar info@scooli.app",
-    "label": "Email:",
-    "copiedStatus": "Email copiado para a área de transferência.",
-    "copiedToast": "Email copiado!",
-    "errorStatus": "Não foi possível copiar o email. Tente novamente.",
-    "errorToast": "Não foi possível copiar o email."
+    "label": "E-mail:",
+    "copiedStatus": "E-mail copiado para a área de transferência.",
+    "copiedToast": "E-mail copiado!",
+    "errorStatus": "Não foi possível copiar o e-mail. Tente novamente.",
+    "errorToast": "Não foi possível copiar o e-mail."
   },
   "notFound": {
     "heading": "Página não encontrada",
-    "description": "Parece que esta página foi para o recreio e não voltou. Vamos levá-lo de volta ao início!",
-    "backHome": "Voltar ao início"
+    "description": "Parece que esta página foi para o recreio e não voltou. Vamos levar você de volta ao início!",
+    "backHome": "Voltar para o início"
   },
   "promoBanner": {
-    "message": "<strong>Regresso às Aulas 2026:</strong> Scooli Pro a {price}/mês, preço bloqueado para sempre.",
+    "message": "<strong>Oferta especial:</strong> Scooli Pro por {price}/mês, com o preço garantido para sempre.",
     "monthlyCta": "Mensal {price}",
     "annualCta": "Anual {price}",
     "closeAriaLabel": "Fechar"
@@ -1110,50 +1110,50 @@
   "pricingPage": {
     "meta": {
       "title": "Preços: grátis, Pro e plano para escolas",
-      "description": "Preços simples da Scooli: 30 dias grátis para experimentar, Pro sem limites de criação e plano institucional para escolas e agrupamentos."
+      "description": "Preços simples da Scooli: 30 dias grátis para experimentar, Pro sem limites de criação e um plano para escolas e redes de ensino."
     },
     "hero": {
       "eyebrow": "Preços",
       "title": "Preços simples, do professor à escola inteira.",
-      "description": "Experimente grátis durante 30 dias, sem dados de pagamento nem compromisso. Para a escola, um plano institucional.",
-      "secondaryLabel": "Ver o plano institucional"
+      "description": "Experimente grátis por 30 dias, sem dados de pagamento nem compromisso. Para a escola, um plano próprio.",
+      "secondaryLabel": "Ver o plano para escolas"
     },
     "faqCards": [
       {
         "title": "Como funcionam os 30 dias grátis?",
-        "description": "Ao criar conta, tem 30 dias para preparar aulas e materiais com a Scooli, sem dados de pagamento e sem compromisso. Se não continuar, a conta passa a modo de leitura: os seus documentos ficam lá, para ver e editar."
+        "description": "Ao criar a conta, você tem 30 dias para preparar aulas e materiais com a Scooli, sem dados de pagamento e sem compromisso. Se não continuar, a conta fica em modo de leitura: seus documentos continuam lá, para ver e editar."
       },
       {
-        "title": "Uso justo sem letras pequenas",
-        "description": "No Pro não tem um limite mensal rígido. A política de uso justo existe para evitar abuso automatizado e manter a qualidade do serviço para todos."
+        "title": "Uso justo, sem letras miúdas",
+        "description": "No Pro, você cria sem se preocupar com cotas no dia a dia. A política de uso justo existe para evitar abuso automatizado e manter a qualidade do serviço para todos."
       },
       {
-        "title": "Professores e escolas não seguem o mesmo caminho",
-        "description": "Professores podem começar logo. Escolas e agrupamentos têm um percurso próprio, com contacto inicial e avaliação do contexto antes de avançar."
+        "title": "Professores e escolas seguem caminhos diferentes",
+        "description": "Professores podem começar na hora. Escolas e redes de ensino têm um caminho próprio, com uma conversa inicial e uma avaliação do contexto antes de avançar."
       }
     ],
     "notes": {
       "eyebrow": "Notas importantes",
-      "title": "Ajudar a decidir com mais clareza",
-      "description": "Em vez de esconder os detalhes, aqui tem o essencial para decidir com mais clareza: limites, pagamento, apoio e percurso institucional.",
+      "title": "Para decidir com mais clareza",
+      "description": "Em vez de esconder os detalhes, aqui está o essencial para decidir: limites, pagamento, suporte e o caminho para escolas.",
       "cards": [
         {
           "title": "Pagamento",
-          "description": "Os pagamentos são processados de forma segura. Se precisar de ajuda com faturação ou subscrição, escreva-nos por email."
+          "description": "Os pagamentos são processados com segurança pelo Stripe, em euros. Se precisar de ajuda com a cobrança ou a assinatura, escreva para nós por e-mail."
         },
         {
           "title": "Uso justo",
-          "description": "Queremos que possa trabalhar com liberdade. Só intervimos quando há padrões anómalos ou automatizados que coloquem o serviço em risco."
+          "description": "Queremos que você trabalhe com liberdade. Só intervimos quando há padrões anormais ou automatizados que coloquem o serviço em risco."
         },
         {
           "title": "Escolas",
-          "description": "Para equipas, agrupamentos ou projetos-piloto, definimos o percurso caso a caso, sempre com contacto direto com a equipa."
+          "description": "Para escolas, redes de ensino ou projetos-piloto, definimos o caminho caso a caso, sempre em contato direto com a equipe da Scooli."
         }
       ]
     },
     "cta": {
       "title": "Quer experimentar antes de decidir?",
-      "description": "Comece gratuitamente, gere alguns materiais reais e perceba se a Scooli encaixa no seu ritmo de trabalho.",
+      "description": "Comece de graça, gere alguns materiais de verdade e veja se a Scooli combina com o seu ritmo de trabalho.",
       "secondaryLabel": "Ver confiança e privacidade"
     },
     "faq": {
@@ -1162,106 +1162,106 @@
     },
     "institutional": {
       "kicker": "Para escolas",
-      "title": "Porquê o plano institucional",
-      "description": "Várias licenças Pro dão a Scooli a cada professor. O plano institucional dá-a à escola, com o currículo de todas as turmas à vista.",
+      "title": "Por que o plano para escolas",
+      "description": "Várias licenças Pro dão a Scooli a cada professor. O plano para escolas dá a Scooli à escola, com o cumprimento do planejamento de todas as turmas à vista.",
       "columns": {
         "label": "",
         "pro": "Várias licenças Pro",
-        "institutional": "Plano institucional"
+        "institutional": "Plano para escolas"
       },
       "rows": [
         {
-          "label": "Currículo",
+          "label": "Planejamento",
           "pro": "Cada professor acompanha as suas turmas",
-          "institutional": "O estado do currículo de todas as turmas da escola, num só painel"
+          "institutional": "O cumprimento do planejamento de todas as turmas da escola, em um só painel"
         },
         {
           "label": "Contas",
-          "pro": "Cada professor gere a sua",
-          "institutional": "Lugares e convites geridos pela escola"
+          "pro": "Cada professor cuida da sua",
+          "institutional": "Vagas da escola, com as contas criadas pela equipe da Scooli"
         },
         {
-          "label": "Visão de conjunto",
+          "label": "Visão geral",
           "pro": "Nenhuma",
-          "institutional": "Painel com a atividade de cada professor"
+          "institutional": "Painel com o uso da Scooli pelos professores"
         },
         {
-          "label": "Partilha",
+          "label": "Compartilhamento",
           "pro": "Biblioteca comunitária pública",
           "institutional": "Biblioteca interna, só entre colegas"
         },
         {
-          "label": "Faturação",
-          "pro": "Uma subscrição por professor",
+          "label": "Cobrança",
+          "pro": "Uma assinatura por professor",
           "institutional": "Uma fatura para a escola"
         },
         {
-          "label": "Arranque",
+          "label": "Início",
           "pro": "Cada um por conta própria",
-          "institutional": "Implementação e formação da equipa"
+          "institutional": "Implantação e formação dos professores"
         },
         {
           "label": "Privacidade",
           "pro": "Política pública",
-          "institutional": "Documentação e respostas para o EPD"
+          "institutional": "Documentação e respostas para o encarregado de dados"
         },
         {
           "label": "Experimentar",
           "pro": "30 dias grátis",
-          "institutional": "Piloto acompanhado com uma equipa pequena"
+          "institutional": "Piloto acompanhado com um grupo pequeno de professores"
         }
       ],
-      "cta": "Falar com a equipa",
-      "contactTitle": "Plano institucional",
-      "contactDescription": "Marque uma reunião ou diga-nos qual é a escola ou agrupamento e quantos professores são. Respondemos com uma proposta."
+      "cta": "Fale com a equipe",
+      "contactTitle": "Plano para escolas",
+      "contactDescription": "Agende uma reunião ou conte qual é a escola ou rede de ensino e quantos professores são. Respondemos com uma proposta."
     }
   },
   "pricingSection": {
-    "eyebrow": "Preços e opções",
-    "title": "Escolha a opção certa para a forma como quer usar a Scooli.",
-    "description": "Experimente grátis durante 30 dias. O Pro dá continuidade. As escolas seguem por um percurso próprio.",
+    "eyebrow": "Preços e planos",
+    "title": "Escolha a opção certa para o jeito como você quer usar a Scooli.",
+    "description": "Experimente grátis por 30 dias. O Pro dá continuidade. Para as escolas, um caminho próprio.",
     "billingToggle": {
       "monthly": "Mensal",
       "annual": "Anual",
-      "label": "Faturação do Pro",
+      "label": "Cobrança do Pro",
       "annualSavings": "−{savings} no anual"
     },
     "pro": {
       "label": "Pro",
-      "promoBadge": "Regresso às Aulas 2026",
+      "promoBadge": "Oferta especial",
       "perMonth": "/mês",
       "promoAnnualPrefix": "{price}/ano · ",
-      "annualNote": "{price}/ano · poupe {savings}",
-      "monthlyNote": "faturado mensalmente",
-      "cta": "Subscrever",
-      "promoTagline": "Regresso às Aulas 2026 · ative durante a promoção e mantenha este preço para sempre",
+      "annualNote": "{price}/ano · economize {savings}",
+      "monthlyNote": "cobrado mensalmente",
+      "cta": "Assinar",
+      "promoTagline": "Oferta especial · assine durante a promoção e mantenha este preço para sempre",
       "short": "Pro"
     },
     "enterprise": {
       "label": "Escolas e instituições",
       "price": "Sob consulta",
-      "detail": "Preço ajustado ao número de professores",
-      "cta": "Falar com a equipa",
+      "detail": "Preço de acordo com o número de professores",
+      "cta": "Fale com a equipe",
       "short": "Escolas",
-      "ctaShort": "Contactar"
+      "ctaShort": "Fale conosco"
     },
     "trustBadges": {
       "securePayment": "Pagamento seguro via Stripe",
-      "cancelAnytime": "Cancele a qualquer momento",
+      "cancelAnytime": "Cancele quando quiser",
       "instantActivation": "Ativação imediata"
     },
     "fairUseFootnote": "* Sem limites de criação, de acordo com a <link>Política de Uso Justo</link>.",
     "contactModal": {
-      "title": "Fale com a equipa",
-      "description": "Partilhe o contexto da sua escola ou instituição e entraremos em contacto para perceber o melhor próximo passo."
+      "title": "Fale com a equipe",
+      "description": "Conte um pouco sobre a sua escola ou instituição e entraremos em contato para entender o melhor próximo passo."
     },
     "trial": {
       "title": "30 dias grátis",
       "price": "Grátis",
-      "period": "durante 30 dias",
+      "period": "por 30 dias",
       "cta": "Experimentar grátis",
       "note": "Sem dados de pagamento nem compromisso",
-      "after": "Depois dos 30 dias grátis, a conta passa a modo de leitura até subscrever: os seus documentos continuam disponíveis para ver e editar.",
+      "after": "Depois dos 30 dias grátis, a conta fica em modo de leitura até você assinar: seus documentos continuam disponíveis para ver e editar.",
       "short": "Grátis",
       "days": "30 dias",
       "ctaShort": "Começar"
@@ -1275,10 +1275,10 @@
         {
           "title": "Preparar aulas",
           "rows": [
-            "Planos de aula, fichas, testes e quizzes",
+            "Planos de aula, atividades, provas e quizzes",
             "Apresentações",
-            "Planificações anuais e de unidade",
-            "Calendário de cada turma, com a semana preparada num clique",
+            "Planejamentos anuais, bimestrais e de unidade",
+            "Calendário de cada turma, com a semana preparada em um clique",
             "Estado de cada turma: o que já foi dado e o que falta",
             "Turmas sem limite, para o ano letivo inteiro",
             "Sem limites de criação*"
@@ -1288,14 +1288,14 @@
           "title": "Materiais",
           "rows": [
             "Materiais adaptados por nível ou necessidades",
-            "Os seus manuais e materiais como fonte",
+            "Seus livros didáticos e materiais como fonte",
             "Imagens nos documentos",
             "Exportação para Word e PDF",
             "Biblioteca comunitária"
           ]
         },
         {
-          "title": "IA e apoio",
+          "title": "IA e suporte",
           "plans": [
             "pro",
             "school"
@@ -1312,14 +1312,14 @@
             "school"
           ],
           "rows": [
-            "O estado do currículo de todas as turmas, num só painel",
-            "Painel da escola com a atividade de cada professor",
-            "Lugares e convites geridos num só sítio",
-            "Biblioteca interna para partilhar materiais entre colegas",
-            "Implementação e formação da equipa",
-            "Acompanhamento contínuo da equipa",
-            "Adaptações e funcionalidades à medida da escola",
-            "Documentação de privacidade para o encarregado de proteção de dados",
+            "O cumprimento do planejamento de todas as turmas, em um só painel",
+            "Painel da escola com o uso da Scooli pelos professores",
+            "Vagas e contas da escola em um só lugar",
+            "Biblioteca interna para compartilhar materiais entre colegas",
+            "Implantação e formação dos professores",
+            "Acompanhamento contínuo da equipe da Scooli",
+            "Adaptações e funcionalidades sob medida para a escola",
+            "Documentação de privacidade para o encarregado de dados",
             "Uma fatura para a escola"
           ]
         }
@@ -1327,15 +1327,15 @@
     }
   },
   "siteMeta": {
-    "titleSuffix": "IA prática para professores em Portugal",
-    "description": "Crie planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, edite tudo ao seu ritmo e recupere tempo para ensinar. A Scooli foi pensada para professores em Portugal.",
-    "ogTitleSuffix": "Planificações, fichas e testes em minutos",
-    "ogDescription": "A Scooli ajuda professores em Portugal a criar materiais prontos a editar de acordo com as Aprendizagens Essenciais, adaptar à turma e exportar sem começar do zero.",
+    "titleSuffix": "IA para professores, alinhada à BNCC",
+    "description": "Crie planos de aula, atividades e provas com IA alinhados à BNCC, edite tudo no seu ritmo e ganhe tempo para ensinar. A Scooli organiza as aulas de cada turma ao longo do ano letivo.",
+    "ogTitleSuffix": "Planos de aula, atividades e provas em minutos",
+    "ogDescription": "A Scooli ajuda professores a criar materiais editáveis, ligados às habilidades da BNCC, adaptar à turma e exportar sem começar do zero.",
     "twitterTitleSuffix": "IA prática para professores",
-    "twitterDescription": "Planificações, fichas e testes com IA de acordo com as Aprendizagens Essenciais, feitos para poupar tempo e manter o professor no controlo.",
-    "dcTitleSuffix": "IA prática para professores em Portugal",
-    "dcSubject": "Educação, Inteligência Artificial, Professores, Portugal",
-    "dcDescription": "Ferramenta para criar planificações, fichas e testes com IA em contexto escolar português, de acordo com as Aprendizagens Essenciais"
+    "twitterDescription": "Planos de aula, atividades e provas com IA, alinhados à BNCC, para ganhar tempo e manter o professor no controle.",
+    "dcTitleSuffix": "IA para professores, alinhada à BNCC",
+    "dcSubject": "Educação, Inteligência Artificial, Professores, BNCC, Brasil",
+    "dcDescription": "Ferramenta para criar planos de aula, atividades e provas com IA para escolas brasileiras, ligados às habilidades da BNCC"
   },
   "legalLayout": {
     "backToHome": "Voltar à página principal",
@@ -1604,13 +1604,13 @@
     }
   },
   "shareImage": {
-    "alt": "Scooli - IA para professores em Portugal",
+    "alt": "Scooli - IA para professores, alinhada à BNCC",
     "headline": "O ano letivo inteiro, preparado",
     "headlineEm": "semana a semana.",
-    "subline": "Planos de aula, fichas, testes e apresentações para cada turma, alinhados com as Aprendizagens Essenciais e prontos a editar.",
-    "tagOrigin": "Made in Portugal",
-    "tagPrivacy": "RGPD",
-    "tagCurriculum": "Aprendizagens Essenciais"
+    "subline": "Planos de aula, atividades, provas e apresentações para cada turma, alinhados à BNCC e prontos para editar.",
+    "tagOrigin": "Para a escola brasileira",
+    "tagPrivacy": "LGPD",
+    "tagCurriculum": "BNCC"
   },
   "teachers": {
     "meta": {
@@ -1678,9 +1678,9 @@
     }
   },
   "booking": {
-    "iframeTitle": "Calendário para marcar uma reunião com a equipa Scooli",
-    "openInNewTab": "Abrir o calendário numa nova janela",
-    "loading": "A carregar o calendário… Se não aparecer, use o botão acima."
+    "iframeTitle": "Calendário para agendar uma reunião com a equipe da Scooli",
+    "openInNewTab": "Abrir o calendário em uma nova janela",
+    "loading": "Carregando o calendário… Se ele não aparecer, use o botão acima."
   },
   "investors": {
     "meta": {
@@ -1944,30 +1944,30 @@
   "classState": {
     "kicker": "O estado de cada turma",
     "title": "A Scooli sabe em que ponto está cada turma.",
-    "description": "Cada turma tem um estado vivo: o que o currículo pede, o que já foi dado, o que falta e o que fazer a seguir. A Scooli usa-o para planear, preparar e ajustar cada aula, em vez de começar do zero a cada pedido.",
+    "description": "Cada turma tem um estado sempre atualizado: o que o currículo pede, o que já foi dado, o que falta e o que fazer em seguida. A Scooli usa esse estado para planejar, preparar e ajustar cada aula, em vez de começar do zero a cada pedido.",
     "points": [
       {
-        "title": "O planeado e o dado, lado a lado",
-        "text": "Vê o que estava previsto e o que foi realmente lecionado, turma a turma."
+        "title": "O planejado e o dado, lado a lado",
+        "text": "Veja o que estava previsto e o que foi de fato ministrado, turma a turma."
       },
       {
-        "title": "O que falta no currículo",
-        "text": "Os tópicos por dar, os que ficaram para trás e quantas aulas restam até à próxima avaliação."
+        "title": "O que falta do currículo",
+        "text": "As habilidades que ainda faltam, as que ficaram para trás e quantas aulas restam até a próxima prova."
       },
       {
-        "title": "A aula certa a seguir",
-        "text": "A Scooli propõe o ajuste (mais uma aula num tópico, mover outro) e prepara os materiais já diferenciados."
+        "title": "A próxima aula certa",
+        "text": "A Scooli propõe o ajuste (mais uma aula em um tema, adiar outro) e prepara os materiais, inclusive uma atividade de reforço."
       }
     ],
-    "loopTitle": "Um ciclo que se repete a cada semana",
+    "loopTitle": "Um ciclo que se repete toda semana",
     "loop": [
       {
         "title": "Currículo",
-        "text": "O que o ano pede"
+        "text": "O que a BNCC pede para o ano"
       },
       {
-        "title": "Planificação",
-        "text": "O que decidiu dar"
+        "title": "Planejamento",
+        "text": "O que você decidiu dar"
       },
       {
         "title": "Aula dada",
@@ -1982,10 +1982,10 @@
         "text": "Plano e materiais prontos"
       }
     ],
-    "schoolsLink": "Ver como a escola acompanha todas as turmas",
+    "schoolsLink": "Veja como a direção acompanha todas as turmas",
     "card": {
       "label": "Estado da turma",
-      "className": "7.º B · Matemática",
+      "className": "7º B · Matemática",
       "completionLabel": "Currículo cumprido",
       "completionValue": 38,
       "topics": [
@@ -1994,7 +1994,7 @@
           "status": "done"
         },
         {
-          "name": "Percentagens",
+          "name": "Porcentagem",
           "status": "done"
         },
         {
@@ -2008,43 +2008,43 @@
       ],
       "statusLabels": {
         "done": "Dado",
-        "progress": "Em curso",
+        "progress": "Em andamento",
         "late": "Atrasado"
       },
-      "calendarNote": "3 aulas até à próxima avaliação",
+      "calendarNote": "3 aulas até a próxima prova",
       "recommendationTitle": "A Scooli recomenda",
       "recommendations": [
-        "Mais uma aula em Proporcionalidade",
-        "Mover Equações uma aula",
-        "Exercícios diferenciados prontos"
+        "Mais uma aula de Proporcionalidade",
+        "Adiar Equações em uma aula",
+        "Atividade de reforço pronta"
       ],
       "action": "Aplicar ao calendário",
       "caption": "Exemplo ilustrativo"
     },
     "school": {
-      "kicker": "Para a direção",
-      "title": "O currículo da escola, turma a turma.",
-      "description": "Cada professor trabalha nas suas turmas e a escola vê, num só painel, o estado do currículo em todas: quem está em dia, onde há atrasos e que tópicos pedem reforço.",
+      "kicker": "Como funciona",
+      "title": "O plano acompanha o que aconteceu na sala.",
+      "description": "O planejamento de cada professor vira o calendário de aulas da turma, bimestre a bimestre. Depois de cada aula, o professor marca em poucos segundos como ela foi, e é desse registro que sai o painel da direção.",
       "points": [
         {
-          "title": "Quem está em dia e quem precisa de apoio",
-          "text": "O progresso de cada turma face ao que o currículo e a planificação pedem."
+          "title": "Do planejamento ao calendário",
+          "text": "As aulas de cada turma são distribuídas pelos bimestres a partir do planejamento, já ligadas às habilidades da BNCC (e ao currículo do estado, quando disponível)."
         },
         {
-          "title": "Tópicos que travam várias turmas",
-          "text": "Os mesmos atrasos a repetirem-se no departamento são vistos cedo, não no fim do período."
+          "title": "Um registro rápido depois de cada aula",
+          "text": "Ministrada, com dificuldades, ficou pela metade ou não houve aula. Quando algo fica para trás, a Scooli move as aulas seguintes e propõe o ajuste ao plano; o professor decide."
         },
         {
-          "title": "O que ainda não foi dado",
-          "text": "Os objetivos por cumprir antes do fim do período, por disciplina e por ano."
+          "title": "O painel da direção sai daí",
+          "text": "Por turma: a porcentagem do currículo previsto até hoje e o que ainda falta dar. Os números mostram o que os professores registram em aula, não o que os alunos aprenderam."
         }
       ],
-      "tableLabel": "Currículo cumprido por turma",
+      "tableLabel": "Porcentagem do currículo previsto até hoje, por turma",
       "columns": {
         "class": "Turma",
         "teacher": "Professor",
-        "progress": "Currículo cumprido",
-        "state": "Estado"
+        "progress": "Planejamento cumprido",
+        "state": "Situação"
       },
       "stateLabels": {
         "ok": "Em dia",
@@ -2058,38 +2058,38 @@
       },
       "rows": [
         {
-          "className": "5.º A · Matemática",
-          "teacher": "Ana Ferreira",
+          "className": "6º A · Matemática",
+          "teacher": "Ana Souza",
           "progress": 64,
           "state": "ok"
         },
         {
-          "className": "5.º B · Ciências Naturais",
-          "teacher": "Rita Carvalho",
+          "className": "6º B · Ciências",
+          "teacher": "Juliana Costa",
           "progress": 58,
           "state": "ok"
         },
         {
-          "className": "6.º A · Português",
-          "teacher": "João Matos",
+          "className": "7º A · Português",
+          "teacher": "Rafael Oliveira",
           "progress": 46,
           "state": "watch"
         },
         {
-          "className": "7.º B · Matemática",
-          "teacher": "Inês Lopes",
+          "className": "7º B · Matemática",
+          "teacher": "Camila Santos",
           "progress": 38,
           "state": "late"
         },
         {
-          "className": "8.º A · História",
-          "teacher": "Pedro Antunes",
+          "className": "8º A · História",
+          "teacher": "Thiago Almeida",
           "progress": 61,
           "state": "ok"
         },
         {
-          "className": "9.º A · Inglês",
-          "teacher": "Catarina Sousa",
+          "className": "9º A · Inglês",
+          "teacher": "Fernanda Lima",
           "progress": 49,
           "state": "watch"
         }
