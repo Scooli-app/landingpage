@@ -64,6 +64,8 @@ const film = (dir: string, name: string, width: number, height: number): VideoAs
  */
 export const FILM_DURATIONS_SECONDS: Record<Locale, Record<string, number>> = {
   "pt-PT": { hero: 23, "step-1": 6.8, "step-2": 5.3, "step-3": 7.7 },
+  // pt-BR shows the pt-PT films until its own are recorded.
+  "pt-BR": { hero: 23, "step-1": 6.8, "step-2": 5.3, "step-3": 7.7 },
   en: { hero: 23.1, "step-1": 5.9, "step-2": 9.6, "step-3": 7.7 },
 };
 
@@ -75,6 +77,7 @@ export const FILM_DURATIONS_SECONDS: Record<Locale, Record<string, number>> = {
  */
 export const FILM_UPLOAD_DATES: Record<Locale, Record<string, string>> = {
   "pt-PT": { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
+  "pt-BR": { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
   en: { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
 };
 
@@ -108,6 +111,8 @@ const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
  */
 const media: Record<Locale, AppMedia> = {
   "pt-PT": forLocale("pt", { src: "/app/pt/library.png", width: 2240, height: 1874 }),
+  // pt-BR shows the pt-PT captures until its own are recorded.
+  "pt-BR": forLocale("pt", { src: "/app/pt/library.png", width: 2240, height: 1874 }),
   en: forLocale("en", { src: "/app/en/library.png", width: 2240, height: 1692 }),
 };
 

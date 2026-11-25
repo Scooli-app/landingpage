@@ -139,6 +139,8 @@ export const toolLayouts: Partial<Record<string, ToolLayout>> = {
 
 const contentByLocale: Record<Locale, MarketingContent> = {
   "pt-PT": marketingContentPtPT,
+  // Reuses pt-PT until the pt-BR copy is written.
+  "pt-BR": marketingContentPtPT,
   en: marketingContentEn,
 };
 

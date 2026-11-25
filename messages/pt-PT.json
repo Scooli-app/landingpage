@@ -70,7 +70,8 @@
   },
   "languageSwitcher": {
     "label": "Idioma",
-    "pt-PT": "Português",
+    "pt-PT": "Português (Portugal)",
+    "pt-BR": "Português (Brasil)",
     "en": "English",
     "switchTo": "Mudar para {language}"
   },

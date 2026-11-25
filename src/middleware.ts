@@ -1,7 +1,9 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import { routing } from "./i18n/routing";
-import { EN_SEGMENT_TO_PATH, toEnglishSlug, toInternalSlug } from "./i18n/toolSlugs";
+import { toInternalSlug, toPublicSlug } from "./i18n/localeSlugs";
+import { isLocalized } from "./i18n/localizationStatus";
+import { LOCALE_PREFIX, locales, pathnames, routing, type Locale } from "./i18n/routing";
+import type { PathnameKey } from "./i18n/urls";
 
 const CANONICAL_SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
@@ -16,11 +18,31 @@ const redirectableHosts = new Set([canonicalHost, apexHost]);
 
 const intlMiddleware = createMiddleware(routing);
 
-/** Portuguese route segments that can show up under /en from old links. */
-const PT_TO_EN_SEGMENT: Record<string, string> = {
-  ferramentas: "tools",
-  comparar: "compare",
+/** Prefixed locales by their URL prefix (`/en` → en, `/br` → pt-BR). */
+const LOCALE_BY_PREFIX = new Map(
+  locales.filter((locale) => LOCALE_PREFIX[locale]).map((locale) => [LOCALE_PREFIX[locale], locale]),
+);
+
+/** Slugged route segments in any locale's spelling, so old links in the wrong spelling still land. */
+const SLUG_ROUTE_BY_SEGMENT: Record<string, "/ferramentas/[slug]" | "/comparar/[slug]"> = {
+  ferramentas: "/ferramentas/[slug]",
+  tools: "/ferramentas/[slug]",
+  comparar: "/comparar/[slug]",
+  compare: "/comparar/[slug]",
 };
+
+/** The template a locale uses for an internal pathname key. */
+const templateFor = (key: PathnameKey, locale: Locale): string => {
+  const config = pathnames[key];
+  return typeof config === "string" ? config : config[locale];
+};
+
+/** The internal pathname key whose `locale` template matches `path` (the part after the prefix). */
+function matchPathnameKey(path: string, locale: Locale): PathnameKey | undefined {
+  return (Object.keys(pathnames) as PathnameKey[]).find((key) =>
+    new RegExp(`^${templateFor(key, locale).replace(/\[[^\]]+\]/g, "[^/]+")}/?$`).test(path),
+  );
+}
 
 /**
  * Paths locale routing must not touch: API routes, Next internals, the PostHog
@@ -54,43 +76,65 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Tool and comparison pages have English slugs (see `i18n/toolSlugs.ts`). The
-  // Portuguese slug under /en redirects to the English one; the English one is
-  // served by rewriting to the internal slug before locale routing runs.
+  const pathname = request.nextUrl.pathname;
+  const brPrefix = LOCALE_PREFIX["pt-BR"];
+
+  // pt-BR is published page by page. A page whose copy is not written yet sends
+  // the reader to the /br home rather than render pt-PT copy under /br, and the
+  // pt-PT spelling of a page Brazil spells differently (`/br/contacto`) goes to
+  // the Brazilian one in one permanent hop.
+  if (pathname === brPrefix || pathname.startsWith(`${brPrefix}/`)) {
+    const rest = pathname.slice(brPrefix.length) || "/";
+    const brKey = matchPathnameKey(rest, "pt-BR");
+    const key = brKey ?? matchPathnameKey(rest, "pt-PT");
+    if (key && !isLocalized(key, "pt-BR")) {
+      return NextResponse.redirect(new URL(brPrefix, request.url), 307);
+    }
+    // shortcut: only static routes are re-spelled; no pt-BR dynamic template differs from pt-PT today.
+    if (key && !brKey && !key.includes("[")) {
+      const redirectUrl = request.nextUrl.clone();
+      redirectUrl.pathname = `${brPrefix}${templateFor(key, "pt-BR")}`;
+      return NextResponse.redirect(redirectUrl, 301);
+    }
+  }
+
+  // Tool and comparison pages have per-locale slugs (see `i18n/localeSlugs.ts`).
+  // The internal slug, or a segment in another locale's spelling, redirects to
+  // the locale's public URL; the public one is served by rewriting to the
+  // internal slug before locale routing runs.
   //
-  // The Portuguese segment under /en (`/en/ferramentas/plano-de-aula`) is caught
+  // A segment in the wrong spelling (`/en/ferramentas/plano-de-aula`) is caught
   // here too and sent to the final URL in one permanent hop. Left to next-intl it
   // got a temporary 307 to `/en/tools/plano-de-aula` and then a second redirect.
-  const slugMatch = /^\/en\/(tools|compare|ferramentas|comparar)(?:\/([^/]+))?\/?$/.exec(
-    request.nextUrl.pathname,
-  );
-  if (slugMatch) {
-    const [, rawSegment, slug] = slugMatch;
-    const segment = PT_TO_EN_SEGMENT[rawSegment] ?? rawSegment;
+  const slugMatch = /^(\/[^/]+)\/(tools|compare|ferramentas|comparar)(?:\/([^/]+))?\/?$/.exec(pathname);
+  const slugLocale = slugMatch && LOCALE_BY_PREFIX.get(slugMatch[1]);
+  if (slugMatch && slugLocale) {
+    const [, prefix, rawSegment, slug] = slugMatch;
+    const routePath = SLUG_ROUTE_BY_SEGMENT[rawSegment];
+    const segment = templateFor(routePath, slugLocale).split("/")[1];
     if (!slug) {
       if (segment !== rawSegment) {
         const redirectUrl = request.nextUrl.clone();
-        redirectUrl.pathname = `/en/${segment}`;
+        redirectUrl.pathname = `${prefix}/${segment}`;
         return NextResponse.redirect(redirectUrl, 301);
       }
       return intlMiddleware(request);
     }
-    const routePath = EN_SEGMENT_TO_PATH[segment];
-    const english = toEnglishSlug(routePath, slug);
-    if (english !== slug || segment !== rawSegment) {
+    const internal = toInternalSlug(slugLocale, routePath, slug);
+    const publicSlug = toPublicSlug(slugLocale, routePath, internal);
+    if (publicSlug !== slug || segment !== rawSegment) {
       const redirectUrl = request.nextUrl.clone();
-      redirectUrl.pathname = `/en/${segment}/${english}`;
+      redirectUrl.pathname = `${prefix}/${segment}/${publicSlug}`;
       return NextResponse.redirect(redirectUrl, 301);
     }
-    const internal = toInternalSlug(routePath, slug);
     if (internal !== slug) {
       const rewritten = request.nextUrl.clone();
-      rewritten.pathname = `/en/${segment}/${internal}`;
+      rewritten.pathname = `${prefix}/${segment}/${internal}`;
       return intlMiddleware(new NextRequest(rewritten, request));
     }
   }
 
-  // Portuguese stays at "/" with no prefix; other locales get "/{locale}/".
+  // Portuguese stays at "/" with no prefix; other locales get their prefix (`/en`, `/br`).
   return intlMiddleware(request);
 }
 

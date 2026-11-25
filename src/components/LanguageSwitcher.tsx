@@ -11,6 +11,7 @@ import type { ComponentProps } from "react";
 
 const LOCALE_CODES: Record<Locale, string> = {
   "pt-PT": "PT",
+  "pt-BR": "BR",
   en: "EN",
 };
 

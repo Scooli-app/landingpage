@@ -1,16 +1,16 @@
 import { createNavigation } from "next-intl/navigation";
 import { useLocale } from "next-intl";
 import { createElement, forwardRef, type ComponentProps } from "react";
-import { routing } from "./routing";
-import { toEnglishSlug } from "./toolSlugs";
+import { routing, type Locale } from "./routing";
+import { toPublicSlug } from "./localeSlugs";
 
 /**
  * Locale-aware navigation primitives.
  *
  * Every internal link in the marketing site must go through these rather than
- * `next/link`, because the English pages live on different slugs (`/precos` is
+ * `next/link`, because other locales live on different slugs (`/precos` is
  * `/en/pricing`, not `/en/precos`). `Link` resolves the slug from the
- * `pathnames` map in `routing.ts` and adds the `/en` prefix when needed;
+ * `pathnames` map in `routing.ts` and adds the `/en` or `/br` prefix when needed;
  * external URLs (the app on create.scooli.app) and bare hash links pass
  * through untouched.
  */
@@ -21,18 +21,17 @@ export const { getPathname, redirect, permanentRedirect, usePathname, useRouter 
 const BaseLink = navigation.Link;
 
 /**
- * `Link` plus the English slugs: a link to `/ferramentas/[slug]` in English
- * points at `/en/tools/lesson-plan-generator`, not at the internal Portuguese
- * slug (see `toolSlugs.ts`). Same for `/comparar/[slug]`.
+ * `Link` plus the per-locale slugs: a link to `/ferramentas/[slug]` in English
+ * points at `/en/tools/lesson-plan-generator`, not at the internal pt-PT slug
+ * (see `localeSlugs.ts`). Same for `/comparar/[slug]` and for pt-BR.
  */
 export const Link = forwardRef<HTMLAnchorElement, ComponentProps<typeof BaseLink>>(
   function Link(props, ref) {
     const currentLocale = useLocale();
-    const target = props.locale ?? currentLocale;
+    const target = (props.locale ?? currentLocale) as Locale;
     const href = props.href as unknown;
 
     if (
-      target === "en" &&
       typeof href === "object" &&
       href !== null &&
       ["/ferramentas/[slug]", "/comparar/[slug]"].includes((href as { pathname?: string }).pathname ?? "")
@@ -40,7 +39,7 @@ export const Link = forwardRef<HTMLAnchorElement, ComponentProps<typeof BaseLink
       const original = href as { pathname: string; params: { slug: string } };
       const mapped = {
         ...original,
-        params: { ...original.params, slug: toEnglishSlug(original.pathname, original.params.slug) },
+        params: { ...original.params, slug: toPublicSlug(target, original.pathname, original.params.slug) },
       };
       return createElement(BaseLink, { ...props, href: mapped as never, ref });
     }

@@ -351,7 +351,7 @@ export function getPersonSchema(person: (typeof TEAM_PEOPLE)[number], locale: Lo
     "@type": "Person",
     "@id": `${SITE_URL}/#person-${person.id}`,
     name: person.name,
-    jobTitle: person.jobTitle[locale],
+    jobTitle: person.jobTitle[locale === "en" ? "en" : "pt-PT"],
     image: `${SITE_URL}${person.image}`,
     worksFor: { "@id": `${SITE_URL}/#organization` },
   };

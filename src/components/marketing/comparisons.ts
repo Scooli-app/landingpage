@@ -706,6 +706,8 @@ const en: Record<ComparisonSlug, ComparisonPageContent> = {
 
 const content: Record<Locale, Record<ComparisonSlug, ComparisonPageContent>> = {
   "pt-PT": ptPT,
+  // Reuses pt-PT until the pt-BR copy is written; /br redirects these pages meanwhile.
+  "pt-BR": ptPT,
   en,
 };
 
@@ -713,7 +715,7 @@ export function getComparisonPages(locale: Locale = "pt-PT"): ComparisonPageCont
   return comparisonSlugs.map((slug) => content[locale][slug]);
 }
 
-/** `slug` is the internal (Portuguese) slug; the English one only exists in the URL (see `i18n/toolSlugs.ts`). */
+/** `slug` is the internal (Portuguese) slug; other locales' public slugs only exist in the URL (see `i18n/localeSlugs.ts`). */
 export function getComparisonPage(slug: string, locale: Locale = "pt-PT"): ComparisonPageContent | undefined {
   return (comparisonSlugs as readonly string[]).includes(slug)
     ? content[locale][slug as ComparisonSlug]

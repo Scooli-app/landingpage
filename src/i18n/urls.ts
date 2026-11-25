@@ -1,5 +1,6 @@
-import { defaultLocale, locales, pathnames, type Locale } from "./routing";
-import { toEnglishSlug } from "./toolSlugs";
+import { isLocalized } from "./localizationStatus";
+import { LOCALE_PREFIX, defaultLocale, locales, pathnames, type Locale } from "./routing";
+import { toPublicSlug } from "./localeSlugs";
 
 /**
  * Pure URL helpers over the `pathnames` map.
@@ -12,41 +13,6 @@ import { toEnglishSlug } from "./toolSlugs";
  */
 
 export type PathnameKey = keyof typeof pathnames;
-
-/**
- * Pages whose *body copy* is fully translated, not just their nav and footer.
- *
- * Only these get an `hreflang` entry per locale and an English URL in the
- * sitemap. Everywhere else the English route still renders (the nav, footer and
- * language switcher work), but its canonical points at the Portuguese URL, so
- * Google is not invited to index a page that is mostly Portuguese under an
- * English hreflang claim.
- *
- * **Add a path here the moment its copy is translated** — that is the whole
- * mechanism, there is nothing else to switch on.
- */
-/**
- * Paths whose English version is not ready, and which must therefore keep
- * canonicalising to the Portuguese URL instead of being indexed as English.
- *
- * Derived by exclusion from `pathnames` on purpose. This was previously a
- * hand-written allowlist of the three paths that happened to be localized first,
- * and it silently stopped matching reality as the rest were translated: every
- * newly localized page kept pointing its canonical at the Portuguese URL, so the
- * English version would never have been indexed. Two lists that have to agree is
- * the bug. One list plus explicit exceptions cannot drift.
- *
- * Add a path here when a page exists only in Portuguese (its English route
- * should then 404 or stay out of the sitemap).
- */
-const notYetLocalized = new Set<string>([]);
-
-export function isFullyLocalized(path: string) {
-  return (
-    Object.prototype.hasOwnProperty.call(pathnames, path) &&
-    !notYetLocalized.has(path)
-  );
-}
 
 function isPathnameKey(path: string): path is PathnameKey {
   return Object.prototype.hasOwnProperty.call(pathnames, path);
@@ -73,18 +39,17 @@ export function localizedPathname(
 
   if (params) {
     for (const [key, value] of Object.entries(params)) {
-      const segment = locale === "en" ? toEnglishSlug(path, value) : value;
-      resolved = resolved.replace(`[${key}]`, segment);
+      resolved = resolved.replace(`[${key}]`, toPublicSlug(locale, path, value));
     }
   }
 
-  // `localePrefix: "as-needed"` — Portuguese stays at the root so every
-  // currently indexed URL keeps working.
-  if (locale === defaultLocale) {
+  // pt-PT has no prefix, so every currently indexed URL keeps working.
+  const prefix = LOCALE_PREFIX[locale];
+  if (!prefix) {
     return resolved;
   }
 
-  return resolved === "/" ? `/${locale}` : `/${locale}${resolved}`;
+  return resolved === "/" ? prefix : `${prefix}${resolved}`;
 }
 
 /** Absolute URL for an internal pathname key in a given locale. */
@@ -99,9 +64,9 @@ export function localizedUrl(
 }
 
 /**
- * The canonical URL for a page. For a translated page that is the page itself;
- * for one that only exists in Portuguese it is the Portuguese URL, whichever
- * locale the reader arrived in.
+ * The canonical URL for a page. For a localized page that is the page itself;
+ * for one not yet localized in `locale` it is the pt-PT URL (see
+ * `localizationStatus.ts`).
  */
 export function canonicalUrl(
   siteUrl: string,
@@ -109,7 +74,7 @@ export function canonicalUrl(
   locale: Locale,
   params?: Record<string, string>,
 ): string {
-  const canonicalLocale = isFullyLocalized(path) ? locale : defaultLocale;
+  const canonicalLocale = isLocalized(path, locale) ? locale : defaultLocale;
   return localizedUrl(siteUrl, path, canonicalLocale, params);
 }
 
@@ -125,10 +90,9 @@ export function hreflangAlternates(
   params?: Record<string, string>,
 ): Record<string, string> {
   const languages: Record<string, string> = {};
-  const translated = isFullyLocalized(path);
 
   for (const locale of locales) {
-    if (translated || locale === defaultLocale) {
+    if (isLocalized(path, locale)) {
       languages[locale] = localizedUrl(siteUrl, path, locale, params);
     }
   }
