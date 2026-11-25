@@ -38,8 +38,10 @@ const BANNED = [
   // tu-form verbs and pronouns ("você" is the only form on /br)
   "tens", "podes", "queres", "vês", "fazes", "sabes", "precisas", "estás", "consegues",
   "teu", "tua", "teus", "tuas", "contigo",
-  // EU-PT constructions: "estar a" + infinitive, "a ser" + participle, "pronto a" + infinitive.
-  "est(?:ar|á|ão|ou|amos|eja|ejam) a \\p{L}+(?:ar|er|ir)", "a ser \\p{L}+(?:ad|id)[oa]s?",
+  // EU-PT constructions: "estar a" + infinitive (any tense, "a ir", "a prepará-lo"),
+  // "a ser" + participle (regular and the common irregular ones), "pronto a" + infinitive.
+  "est(?:ar|á|ão|ou|amos|ava|avam|ávamos|ive|eve|ivemos|iveram|ará|arão|aria|ariam|ando|eja|ejam|ivesse|ivessem) a (?:\\p{L}+(?:ar|er|ir)|\\p{L}+[áêí]-\\p{L}+|ir|pôr)",
+  "a ser (?:\\p{L}+(?:ad|id)|feit|escrit|abert|post|vist|dit|impress|cobert)[oa]s?", "a ser entregues?",
   "pront[oa]s? a \\p{L}+(?:ar|er|ir)",
 ];
 // Exact phrases that are fine despite a banned word in them. The slugs are the
