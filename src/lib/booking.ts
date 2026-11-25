@@ -11,8 +11,10 @@ const PT_BOOKING_PAGE_URL =
 export const BOOKING_PAGE_URL: Record<Locale, string> = {
   "pt-PT": PT_BOOKING_PAGE_URL,
   // Placeholder: the Portuguese schedule until Miguel supplies the Brazilian Google Calendar booking page.
-  "pt-BR": PT_BOOKING_PAGE_URL,
+  // `hl` at least puts Google's own UI (labels, time zone name) in Brazilian Portuguese.
+  "pt-BR": `${PT_BOOKING_PAGE_URL}?hl=pt-BR`,
   en: PT_BOOKING_PAGE_URL,
 };
 
-export const bookingEmbedUrl = (locale: Locale) => `${BOOKING_PAGE_URL[locale]}?gv=true`;
+export const bookingEmbedUrl = (locale: Locale) =>
+  `${BOOKING_PAGE_URL[locale]}${BOOKING_PAGE_URL[locale].includes("?") ? "&" : "?"}gv=true`;
