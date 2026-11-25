@@ -569,9 +569,9 @@ const en: Record<ComparisonSlug, ComparisonPageContent> = {
     kicker: "Comparison",
     title: "Scooli vs Teachy",
     description:
-      "Both turn a plan into each class's calendar. In Scooli, a quick check-in after each lesson keeps the plan in step with the classroom, and school leaders see coverage class by class.",
+      "Both turn a plan into each class's calendar. In Scooli, a quick check-in after each lesson keeps the plan in step with the classroom, and school leaders see coverage class by class, built from those check-ins.",
     verdict:
-      "Teachy is a platform built and documented around Brazil's BNCC, with per-class planning on a calendar and an offer for schools. Scooli starts from the same place, each class's plan on a calendar, and looks after what comes next: after each lesson the teacher records in seconds how it went, the following lessons move with it, and school leaders see how much of the planned curriculum each class has covered and what fell behind, without asking teachers for reports.",
+      "Teachy is a platform built and documented around Brazil's BNCC, with per-class planning on a calendar and an offer for schools that lists curriculum coverage by class. Scooli starts from the same place, each class's plan on a calendar, and builds coverage from a check-in after each lesson: the teacher records in seconds how it went, the following lessons move with it, and from those check-ins school leaders see how much of the planned curriculum each class has covered and what fell behind, without asking teachers for reports.",
     tableTitle: "Side by side",
     tableDescription:
       "Verifiable facts, with official sources wherever they exist, including Teachy's own pages. Where we could not find something in Teachy's public pages, we say so.",
@@ -579,7 +579,8 @@ const en: Record<ComparisonSlug, ComparisonPageContent> = {
       {
         aspect: "After each lesson",
         scooli: "A check-in in seconds: taught, taught with difficulties, half done or no class. The following lessons move, and the teacher decides any change to the plan",
-        competitor: "To change class days, the teacher reopens the plan, edits the days and generates it again; we did not find a per-lesson check-in in the public pages we reviewed",
+        competitor:
+          "The schools offer lists a Smart Calendar to follow teachers on every lesson; to change class days, the teacher reopens the plan, edits the days and generates it again. We did not find a per-lesson check-in that moves the following lessons in the public pages we reviewed",
       },
       {
         aspect: "Curriculum coverage",
@@ -907,9 +908,9 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
     kicker: "Comparação",
     title: "Scooli vs Teachy",
     description:
-      "As duas planejam com a BNCC e organizam as aulas de cada turma em um calendário. Na Scooli, um registro rápido depois de cada aula mantém o plano em dia com a sala, e a direção vê o cumprimento do planejamento, turma a turma.",
+      "As duas planejam com a BNCC e organizam as aulas de cada turma em um calendário. Na Scooli, um registro rápido depois de cada aula mantém o plano em dia com a sala, e é a partir desses registros que a direção vê o cumprimento do planejamento, turma a turma.",
     verdict:
-      "A Teachy é uma plataforma brasileira de IA para professores e escolas, com planejamento alinhado à BNCC e calendário por turma. A Scooli parte do mesmo ponto, o planejamento de cada turma ligado às habilidades da BNCC, e cuida do que vem depois: o professor registra em segundos como cada aula foi, as aulas seguintes se ajustam ao que aconteceu na sala e a direção sabe, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, sem pedir relatórios aos professores.",
+      "A Teachy é uma plataforma brasileira de IA para professores e escolas, com planejamento alinhado à BNCC, calendário por turma e uma oferta para escolas que cita cobertura curricular por turma. A Scooli parte do mesmo ponto, o planejamento de cada turma ligado às habilidades da BNCC. Na Scooli, o cumprimento vem do registro de cada aula: o professor registra em segundos como a aula foi, as aulas seguintes se ajustam ao que aconteceu na sala e, a partir desses registros, a direção sabe, em cada turma, quanto do currículo previsto já foi dado e o que ficou para trás, sem pedir relatórios aos professores.",
     tableTitle: "Lado a lado",
     tableDescription:
       "Fatos verificáveis, com fonte nas páginas da própria Teachy. Quando não encontramos algo na documentação pública, dizemos isso, em vez de afirmar que não existe.",
@@ -926,7 +927,7 @@ const ptBR: Record<ComparisonSlug, ComparisonPageContent> = {
         scooli:
           "Registro em segundos: ministrada, com dificuldades, ficou pela metade ou não houve aula. As aulas seguintes se movem, a Scooli propõe o ajuste ao plano e o professor decide",
         competitor:
-          "Para mudar os dias de aula, o professor reabre o planejamento, altera os dias e gera de novo; na documentação pública não encontramos um registro de cada aula que mova as seguintes",
+          "A oferta para escolas cita um Calendário Inteligente para acompanhar os professores em cada aula; para mudar os dias de aula, o professor reabre o planejamento, altera os dias e gera de novo. Na documentação pública não encontramos um registro de cada aula que mova as seguintes",
       },
       {
         aspect: "BNCC",
