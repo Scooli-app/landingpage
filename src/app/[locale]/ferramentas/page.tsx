@@ -28,7 +28,7 @@ const brKeywords = [
   "gerador de provas",
   "planejamento com IA",
   "plano de aula com IA",
-  "sequências de aulas",
+  "sequência didática",
   "quizzes com IA",
   "apresentações com IA",
   "adaptação de materiais",
