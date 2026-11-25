@@ -57,7 +57,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     return routeLocales.map((locale) => ({
       url: localizedUrl(SITE_URL, route.path, locale, route.params),
-      lastModified: new Date(`${pageUpdated(route.path)}T00:00:00.000Z`),
+      lastModified: new Date(`${pageUpdated(route.path, locale)}T00:00:00.000Z`),
       changeFrequency: route.changeFrequency,
       priority: route.priority,
       alternates: {

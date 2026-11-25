@@ -101,7 +101,7 @@ export default async function AiForTeachersPage({
           url: pageUrl,
           breadcrumb: breadcrumbItems,
           locale,
-          dateModified: pageUpdated(pagePath),
+          dateModified: pageUpdated(pagePath, locale),
         })}
       />
       <StructuredData id="ia-professores-faq" data={getFAQPageSchema(faqItems)} />

@@ -337,7 +337,7 @@ const schemaCopy = {
       "Plano premium da Scooli para professores: criação de recursos educacionais sem limites, turmas ilimitadas durante todo o ano letivo, modelos de IA avançados e suporte prioritário.",
     audience: "Professores",
     offers: {
-      free: "30 dias grátis",
+      free: `${PRICING.free.trialDays} dias grátis`,
       freeDescription: `Período de teste de ${PRICING.free.trialDays} dias, sem dados de pagamento`,
       monthly: "Scooli Pro Mensal",
       monthlyDescription: "Sem limites de criação, modelos avançados e suporte prioritário",

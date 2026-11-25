@@ -80,7 +80,7 @@ export default async function ComparisonRoute({
     url,
     breadcrumb: breadcrumbItems,
     locale,
-    dateModified: pageUpdated("/comparar/[slug]"),
+    dateModified: pageUpdated("/comparar/[slug]", locale),
   });
   const faqSchema = getFAQPageSchema(content.faq);
 

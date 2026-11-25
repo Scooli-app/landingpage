@@ -37,11 +37,19 @@ const templateFor = (key: PathnameKey, locale: Locale): string => {
   return typeof config === "string" ? config : config[locale];
 };
 
+/** Each locale's pathname templates as regexes, built once at module load. */
+const PATHNAME_MATCHERS = Object.fromEntries(
+  locales.map((locale) => [
+    locale,
+    (Object.keys(pathnames) as PathnameKey[]).map(
+      (key) => [key, new RegExp(`^${templateFor(key, locale).replace(/\[[^\]]+\]/g, "[^/]+")}/?$`)] as const,
+    ),
+  ]),
+) as Record<Locale, (readonly [PathnameKey, RegExp])[]>;
+
 /** The internal pathname key whose `locale` template matches `path` (the part after the prefix). */
 function matchPathnameKey(path: string, locale: Locale): PathnameKey | undefined {
-  return (Object.keys(pathnames) as PathnameKey[]).find((key) =>
-    new RegExp(`^${templateFor(key, locale).replace(/\[[^\]]+\]/g, "[^/]+")}/?$`).test(path),
-  );
+  return PATHNAME_MATCHERS[locale].find(([, pattern]) => pattern.test(path))?.[0];
 }
 
 /**
@@ -88,7 +96,9 @@ function handle(request: NextRequest) {
     const brKey = matchPathnameKey(rest, "pt-BR");
     const key = brKey ?? matchPathnameKey(rest, "pt-PT");
     if (key && !isLocalized(key, "pt-BR")) {
-      return NextResponse.redirect(new URL(brPrefix, request.url), 307);
+      const homeUrl = request.nextUrl.clone();
+      homeUrl.pathname = brPrefix;
+      return NextResponse.redirect(homeUrl, 307);
     }
     // shortcut: only static routes are re-spelled; no pt-BR dynamic template differs from pt-PT today.
     if (key && !brKey && !key.includes("[")) {
@@ -141,15 +151,25 @@ function handle(request: NextRequest) {
 const COUNTRY_COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
 
 /**
- * Remembers the visitor's country (Vercel sets the header, nothing locally) so
- * the client can offer the Brazil site. It only labels the response: no status
- * or location changes, and never a redirect.
+ * Marks visitors from Brazil (Vercel sets the header, nothing locally) so the
+ * client can offer the Brazil site. Only "BR" is ever read, so only Brazilian
+ * visitors on pages get the cookie, once: other countries, files, feeds and the
+ * share image stay cookie-free (no geolocation cookie in the EU, cacheable
+ * responses). It only labels the response: no status or location changes.
  */
 export function middleware(request: NextRequest) {
   const response = handle(request);
-  const country = request.headers.get("x-vercel-ip-country");
-  if (country && request.cookies.get("scooli_country")?.value !== country) {
-    response.cookies.set("scooli_country", country, { path: "/", maxAge: COUNTRY_COOKIE_MAX_AGE, sameSite: "lax" });
+  if (
+    request.headers.get("x-vercel-ip-country") === "BR" &&
+    !SKIP_LOCALE_ROUTING.test(request.nextUrl.pathname) &&
+    request.cookies.get("scooli_country")?.value !== "BR"
+  ) {
+    response.cookies.set("scooli_country", "BR", {
+      path: "/",
+      maxAge: COUNTRY_COOKIE_MAX_AGE,
+      sameSite: "lax",
+      secure: true,
+    });
   }
   return response;
 }
