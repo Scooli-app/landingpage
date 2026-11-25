@@ -33,14 +33,15 @@ export const LOCALE_SLUGS: Partial<Record<Locale, Record<SlugPath, Record<string
       "chatgpt-gemini-perplexity": "chatgpt-gemini-perplexity",
     },
   },
-  // The Brazilian school vocabulary: "prova", "atividade", "planejamento".
+  // Brazilian school and search vocabulary: "prova", "atividade", "planejamento",
+  // "sequência didática", and "enviar" (the app's word for uploading).
   "pt-BR": {
     "/ferramentas/[slug]": {
       "gerador-de-testes": "gerador-de-provas",
       "fichas-de-trabalho": "atividades",
       planificacoes: "planejamentos",
       "sequencias-de-aulas": "sequencias-didaticas",
-      "adaptacao-de-materiais": "adaptacao-de-materiais",
+      "carregar-documentos": "enviar-documentos",
     },
     "/comparar/[slug]": {},
   },
