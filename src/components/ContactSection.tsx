@@ -15,13 +15,14 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { Loader2 } from "lucide-react";
 import { displayTitle, Kicker } from "@/components/site/primitives";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useId, useState } from "react";
 import { toast } from "sonner";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
 
 export function ContactSection() {
+  const locale = useLocale();
   const t = useTranslations("contact");
   const tForm = useTranslations("contactForm");
   const formId = useId();
@@ -118,6 +119,7 @@ export function ContactSection() {
           message: message.trim(),
           organization: organization.trim() || null,
           source: "contact_page",
+          locale,
         }),
       });
 

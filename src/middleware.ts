@@ -54,7 +54,7 @@ function matchPathnameKey(path: string, locale: Locale): PathnameKey | undefined
  */
 const SKIP_LOCALE_ROUTING = /^\/(?:api|_next|_vercel|ingest|_ph|og)(?:\/|$)|\.[^/]+$/;
 
-export function middleware(request: NextRequest) {
+function handle(request: NextRequest) {
   const requestHost = request.nextUrl.host.toLowerCase();
 
   // Canonical host first. Redirecting before locale routing means the locale
@@ -136,6 +136,22 @@ export function middleware(request: NextRequest) {
 
   // Portuguese stays at "/" with no prefix; other locales get their prefix (`/en`, `/br`).
   return intlMiddleware(request);
+}
+
+const COUNTRY_COOKIE_MAX_AGE = 60 * 60 * 24 * 30;
+
+/**
+ * Remembers the visitor's country (Vercel sets the header, nothing locally) so
+ * the client can offer the Brazil site. It only labels the response: no status
+ * or location changes, and never a redirect.
+ */
+export function middleware(request: NextRequest) {
+  const response = handle(request);
+  const country = request.headers.get("x-vercel-ip-country");
+  if (country && request.cookies.get("scooli_country")?.value !== country) {
+    response.cookies.set("scooli_country", country, { path: "/", maxAge: COUNTRY_COOKIE_MAX_AGE, sameSite: "lax" });
+  }
+  return response;
 }
 
 /**

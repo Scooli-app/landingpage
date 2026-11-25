@@ -1,3 +1,4 @@
+import { BrazilSiteBanner } from "@/components/BrazilSiteBanner";
 import { MarketingScrollDepthTracker } from "@/components/MarketingScrollDepthTracker";
 import { PromoBanner } from "@/components/PromoBanner";
 import { RevealObserver } from "@/components/site/RevealObserver";
@@ -209,6 +210,7 @@ export default async function RootLayout({
         </a>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <PromoBanner />
+          {locale === "pt-PT" && <BrazilSiteBanner />}
           <MarketingScrollDepthTracker />
           <RevealObserver />
           {children}

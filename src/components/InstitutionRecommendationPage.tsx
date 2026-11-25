@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import { displayTitle, Kicker } from "@/components/site/primitives";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import { useId, useState } from "react";
 import { toast } from "sonner";
@@ -77,6 +77,7 @@ function validateRecommendationForm(
 }
 
 export function InstitutionRecommendationPage() {
+  const locale = useLocale();
   const t = useTranslations("recommendInstitution");
   const tNav = useTranslations("nav");
   const tFooter = useTranslations("footer");
@@ -203,6 +204,7 @@ export function InstitutionRecommendationPage() {
           email: email.trim().toLowerCase(),
           organization: institution.trim(),
           source: SOURCE,
+          locale,
           message: message.trim(),
           role: role.trim(),
           leadershipContact: leadershipContact.trim(),
