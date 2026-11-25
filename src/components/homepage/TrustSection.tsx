@@ -6,7 +6,7 @@ import { displayTitle, Kicker } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
 import { cn } from "@/lib/utils";
 import { Ban, Eye, Lock, PencilLine } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const itemIcons = [PencilLine, Ban, Lock, Eye];
 
@@ -25,6 +25,7 @@ const policies = [
 export function TrustSection() {
   const t = useTranslations("home.trust");
   const items = t.raw("items") as { title: string; description: string }[];
+  const locale = useLocale();
 
   return (
     <section aria-labelledby="home-trust-title" className="bg-canvas py-20 md:py-28">
@@ -45,7 +46,8 @@ export function TrustSection() {
             <p className="mt-6 max-w-[420px] text-[16px] leading-relaxed text-subtle">
               {t("schools.text")}
             </p>
-            <AdvisorNote className="mt-6 max-w-[420px]" />
+            {/* The advisor note is about the Portuguese curriculum, not the BNCC. */}
+            {locale !== "pt-BR" && <AdvisorNote className="mt-6 max-w-[420px]" />}
           </div>
 
           <ul data-reveal className="grid gap-4 sm:grid-cols-2">
