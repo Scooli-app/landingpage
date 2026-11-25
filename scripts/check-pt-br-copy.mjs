@@ -1,9 +1,8 @@
 // Guard for the Brazilian copy: `npm run check:pt-br`.
 // Fails when a namespace that should be Brazilian is still the pt-PT scaffold,
 // when its keys or {placeholders}/<tags> drift from pt-PT, or when any string
-// uses a Portugal-only term. Scope: the namespaces in DONE_NAMESPACES (step 1;
-// Task 9 extends the list and then scans the whole file), plus
-// src/components/marketing/content/pt-BR.ts in full once it exists.
+// uses a Portugal-only term. Scope: the namespaces in DONE_NAMESPACES, plus the
+// string literals of src/components/marketing/content/pt-BR.ts (comments are skipped).
 import { existsSync, readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
@@ -14,12 +13,16 @@ const DONE_NAMESPACES = [
   "common", "nav", "footer", "siteMeta", "shareImage", "promoBanner", "booking", "notFound",
   "contactModal", "contactForm", "emailContact", "institutionalContactButton", "home",
   "classState", "schools", "pricingSection", "pricingPage", "contact", "trust", "about",
-  "recommendInstitution", "languageSwitcher", "privacyPolicy", "termsOfUse",
+  "recommendInstitution", "languageSwitcher", "privacyPolicy", "termsOfUse", "legalLayout",
+  "teachers", "aiForTeachers", "tools", "roadmap", "investors",
 ];
 
 // The pt-BR legal texts add items and sections that the LGPD and the CDC need
 // and that pt-PT has no counterpart for. Missing keys are still errors there.
 const EXTRA_KEYS_OK = ["privacyPolicy.sections.", "termsOfUse.sections."];
+// pt-PT keys pt-BR leaves out on purpose: the assessment stats are Portuguese
+// TALIS figures, and the page hides the block when the list is empty.
+const MISSING_KEYS_OK = ["tools.detail.assessment.stats."];
 
 // Case-insensitive, matched as whole words (Unicode-aware, so "ecrã" and "registo" work).
 const BANNED = [
@@ -35,11 +38,17 @@ const BANNED = [
   // tu-form verbs and pronouns ("você" is the only form on /br)
   "tens", "podes", "queres", "vês", "fazes", "sabes", "precisas", "estás", "consegues",
   "teu", "tua", "teus", "tuas", "contigo",
+  // EU-PT constructions: "estar a" + infinitive, "a ser" + participle, "pronto a" + infinitive.
+  "est(?:ar|á|ão|ou|amos|eja|ejam) a \\p{L}+(?:ar|er|ir)", "a ser \\p{L}+(?:ad|id)[oa]s?",
+  "pront[oa]s? a \\p{L}+(?:ar|er|ir)",
 ];
-// Exact phrases that are fine despite a banned word in them.
-const ALLOWED = [];
+// Exact phrases that are fine despite a banned word in them. The slugs are the
+// internal tool identifiers in content/pt-BR.ts; the /br URLs use the Brazilian ones.
+const ALLOWED = ["Período de teste", '"fichas-de-trabalho"', '"gerador-de-testes"'];
 
 const bannedRe = new RegExp(`(?<![\\p{L}\\p{N}])(?:${BANNED.join("|")})(?![\\p{L}\\p{N}])`, "giu");
+// Brazil quotes with “ ”; «» is the European style. Punctuation, so no word boundaries.
+const guillemetRe = /[«»]/g;
 
 const errors = [];
 
@@ -55,7 +64,7 @@ const tokens = (s) => (s.match(/\{[^}]+\}|<\/?\w+>/g) ?? []).sort().join(" ");
 function scanBanned(label, text) {
   let clean = text;
   for (const phrase of ALLOWED) clean = clean.replaceAll(phrase, "");
-  const hits = [...clean.matchAll(bannedRe)].map((m) => m[0]);
+  const hits = [...clean.matchAll(bannedRe), ...clean.matchAll(guillemetRe)].map((m) => m[0]);
   if (hits.length) errors.push(`banned term in ${label}: ${[...new Set(hits)].join(", ")}`);
 }
 
@@ -70,8 +79,9 @@ for (const ns of DONE_NAMESPACES) {
   const ptLeaves = new Map(leaves(ptPT[ns], ns));
   const brLeaves = new Map(leaves(ptBR[ns], ns));
   for (const [path, text] of ptLeaves) {
-    if (!brLeaves.has(path)) errors.push(`missing key ${path}`);
-    else if (tokens(text) !== tokens(brLeaves.get(path)))
+    if (!brLeaves.has(path)) {
+      if (!MISSING_KEYS_OK.some((prefix) => path.startsWith(prefix))) errors.push(`missing key ${path}`);
+    } else if (tokens(text) !== tokens(brLeaves.get(path)))
       errors.push(`placeholders differ at ${path}: pt-PT "${tokens(text)}" vs pt-BR "${tokens(brLeaves.get(path))}"`);
   }
   for (const path of brLeaves.keys())
@@ -81,10 +91,20 @@ for (const ns of DONE_NAMESPACES) {
 }
 
 const contentPath = "src/components/marketing/content/pt-BR.ts";
-if (existsSync(new URL(`../${contentPath}`, import.meta.url))) {
-  read(contentPath)
+if (!existsSync(new URL(`../${contentPath}`, import.meta.url))) {
+  errors.push(`missing ${contentPath}`);
+} else {
+  const source = read(contentPath);
+  if (source.includes("marketingContentPtPT")) errors.push(`${contentPath} still reuses pt-PT copy`);
+  // Strings only. /* */ blocks are blanked (newlines kept, so line numbers hold),
+  // and a "//" before any quote on a line starts a comment, which the alternation skips.
+  source
+    .replace(/\/\*[\s\S]*?\*\//g, (block) => block.replace(/[^\n]/g, " "))
     .split("\n")
-    .forEach((line, index) => scanBanned(`${contentPath}:${index + 1}`, line));
+    .forEach((line, index) => {
+      for (const [token] of line.matchAll(/"(?:[^"\\]|\\.)*"|\/\/.*$/g))
+        if (token.startsWith('"')) scanBanned(`${contentPath}:${index + 1}`, token);
+    });
 }
 
 if (errors.length) {
