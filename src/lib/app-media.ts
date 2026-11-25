@@ -81,6 +81,14 @@ export const FILM_UPLOAD_DATES: Record<Locale, Record<string, string>> = {
   en: { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
 };
 
+/** The media folder under /public/app each locale shows. */
+export const MEDIA_DIR: Record<Locale, string> = {
+  "pt-PT": "pt",
+  // TODO(Task 6): "br" once the pt-BR captures are recorded.
+  "pt-BR": "pt",
+  en: "en",
+};
+
 const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
   heroFilm: { ...film(dir, "hero", 1600, 800), av1Src: `/app/${dir}/hero.av1.mp4` },
   stepFilms: [film(dir, "step-1", 1280, 800), film(dir, "step-2", 1280, 800), film(dir, "step-3", 1280, 800)],
@@ -110,10 +118,10 @@ const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
  * Portuguese curricula or school-system details.
  */
 const media: Record<Locale, AppMedia> = {
-  "pt-PT": forLocale("pt", { src: "/app/pt/library.png", width: 2240, height: 1874 }),
-  // pt-BR shows the pt-PT captures until its own are recorded.
-  "pt-BR": forLocale("pt", { src: "/app/pt/library.png", width: 2240, height: 1874 }),
-  en: forLocale("en", { src: "/app/en/library.png", width: 2240, height: 1692 }),
+  "pt-PT": forLocale(MEDIA_DIR["pt-PT"], { src: "/app/pt/library.png", width: 2240, height: 1874 }),
+  // TODO(Task 6): pt-BR shows the pt-PT captures until its own are recorded.
+  "pt-BR": forLocale(MEDIA_DIR["pt-BR"], { src: "/app/pt/library.png", width: 2240, height: 1874 }),
+  en: forLocale(MEDIA_DIR.en, { src: "/app/en/library.png", width: 2240, height: 1692 }),
 };
 
 export function appMedia(locale: string): AppMedia {

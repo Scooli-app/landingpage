@@ -22,6 +22,18 @@ const ptKeywords = [
   "adaptação de materiais",
 ];
 
+const brKeywords = [
+  "ferramentas para professores",
+  "gerador de atividades",
+  "gerador de provas",
+  "planejamento com IA",
+  "plano de aula com IA",
+  "sequências de aulas",
+  "quizzes com IA",
+  "apresentações com IA",
+  "adaptação de materiais",
+];
+
 const enKeywords = [
   "tools for teachers",
   "AI worksheet generator",
@@ -49,7 +61,7 @@ export async function generateMetadata({
     title: t("metaTitle"),
     description: t("metaDescription"),
     path: "/ferramentas",
-    keywords: locale === "en" ? enKeywords : ptKeywords,
+    keywords: { "pt-PT": ptKeywords, "pt-BR": brKeywords, en: enKeywords }[locale],
     locale,
   });
 }

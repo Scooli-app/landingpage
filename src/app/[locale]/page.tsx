@@ -2,7 +2,7 @@ import { HomePage } from "@/components/homepage/HomePage";
 import { StructuredData } from "@/components/StructuredData";
 import type { Locale } from "@/i18n/routing";
 import { canonicalUrl, hreflangAlternates, localizedUrl } from "@/i18n/urls";
-import { FILM_DURATIONS_SECONDS, FILM_UPLOAD_DATES } from "@/lib/app-media";
+import { FILM_DURATIONS_SECONDS, FILM_UPLOAD_DATES, MEDIA_DIR } from "@/lib/app-media";
 import {
   getHomePageSchemas,
   getHowToSchema,
@@ -70,6 +70,17 @@ const ptKeywords = [
   "plataforma educativa Portugal",
 ];
 
+const brKeywords = [
+  "Scooli",
+  "plataforma de IA para professores",
+  "inteligência artificial para professores",
+  "inteligência artificial para educação",
+  "ferramentas de IA para educação",
+  "ferramentas para professores",
+  "planejamento de aulas com IA",
+  "plano de aula com BNCC",
+];
+
 const enKeywords = [
   "Scooli",
   "AI platform for teachers",
@@ -110,7 +121,7 @@ export async function generateMetadata({
   return {
     title: t("title"),
     description: t("description"),
-    keywords: locale === "en" ? enKeywords : ptKeywords,
+    keywords: { "pt-PT": ptKeywords, "pt-BR": brKeywords, en: enKeywords }[locale],
     alternates: {
       canonical: canonicalUrl(SITE_URL, "/", locale),
       languages: hreflangAlternates(SITE_URL, "/"),
@@ -159,7 +170,7 @@ export default async function Home({
   // cropped for phones", and describing both would read as two different
   // assets pointing at overlapping content.
   const pageUrl = localizedUrl(SITE_URL, "/", locale);
-  const mediaDir = locale === "en" ? "en" : "pt";
+  const mediaDir = MEDIA_DIR[locale];
   const heroVideoSchema = getVideoObjectSchema({
     name: tHero("videoLabel"),
     description: tHero("videoAria"),

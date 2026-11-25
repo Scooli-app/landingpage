@@ -1,5 +1,7 @@
 "use client";
 import { Card, CardContent } from "@/components/ui/card";
+import type { Locale } from "@/i18n/routing";
+import { SHOWS_LEGAL_DISCLAIMER } from "@/lib/legal";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
@@ -38,7 +40,8 @@ export function PrivacyPolicy() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("privacyPolicy");
-  const isEnglish = locale === "en";
+  // Only the English translation needs the "Portuguese prevails" disclaimer.
+  const showDisclaimer = SHOWS_LEGAL_DISCLAIMER[locale as Locale];
 
   const dataCollectionProvided = t.raw("sections.dataCollection.provided.items") as string[];
   const dataCollectionAutomatic = t.raw("sections.dataCollection.automatic.items") as string[];
@@ -78,7 +81,7 @@ export function PrivacyPolicy() {
         </div>
       </div>
 
-      {isEnglish && (
+      {showDisclaimer && (
         <div className="mb-8 rounded-xl border border-[#F1E3B5] bg-tag-yellow px-5 py-4 text-sm text-tag-yellow-ink">
           {t("disclaimer")}
         </div>

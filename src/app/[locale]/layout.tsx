@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/sonner";
 import {
   brandKeywords,
   getGlobalSchemas,
+  MARKET,
   openGraphLocale,
   SHARE_IMAGE_SIZE,
   shareImageUrl,
@@ -62,7 +63,8 @@ export async function generateMetadata({
     ? requestedLocale
     : routing.defaultLocale;
   const t = await getTranslations({ locale, namespace: "siteMeta" });
-  const siteLanguage = locale === "en" ? "en" : "pt-PT";
+  const siteLanguage = locale;
+  const market = MARKET[locale];
 
   return {
     metadataBase: new URL(SITE_URL),
@@ -141,9 +143,9 @@ export async function generateMetadata({
     },
     other: {
       "ai-content-declaration": "human-created",
-      // The English site is market-agnostic (see CLAUDE.md), so only the
-      // Portuguese pages declare a geographic target.
-      ...(locale === "en" ? {} : { "geo.region": "PT", "geo.placename": "Portugal" }),
+      // The English site is market-agnostic (see CLAUDE.md), so MARKET gives it
+      // no geographic target.
+      ...(market.geoRegion ? { "geo.region": market.geoRegion, "geo.placename": market.placename } : {}),
       "content-language": siteLanguage,
       "DC.title": `${SITE_NAME} - ${t("dcTitleSuffix")}`,
       "DC.creator": SITE_NAME,
