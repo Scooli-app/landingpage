@@ -2130,13 +2130,13 @@
     "summary": "Resumo",
     "summaryTitle": "Resumo da comparação",
     "detail": "Comparação detalhada",
-    "aspect": "Aspeto",
-    "why": "Porquê a Scooli",
+    "aspect": "Aspecto",
+    "why": "Por que a Scooli",
     "faq": "Perguntas frequentes",
     "sources": "Fontes",
     "sourcesTitle": "Todas as afirmações têm fonte",
-    "sourcesDescription": "Cada afirmação sobre outro produto vem da sua documentação pública ou de avaliações independentes. Quando não encontrámos algo, dizemo-lo em vez de o afirmar.",
+    "sourcesDescription": "Cada afirmação sobre outro produto vem da documentação pública dele ou de avaliações independentes. Quando não encontramos algo, dizemos isso em vez de afirmar o contrário.",
     "forSchools": "Para escolas",
-    "pilot": "Falar sobre um piloto na minha escola"
+    "pilot": "Conversar sobre um piloto na minha escola"
   }
 }

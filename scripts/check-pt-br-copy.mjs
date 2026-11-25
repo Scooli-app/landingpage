@@ -2,7 +2,8 @@
 // Fails when a namespace that should be Brazilian is still the pt-PT scaffold,
 // when its keys or {placeholders}/<tags> drift from pt-PT, or when any string
 // uses a Portugal-only term. Scope: the namespaces in DONE_NAMESPACES, plus the
-// string literals of src/components/marketing/content/pt-BR.ts (comments are skipped).
+// string literals of src/components/marketing/content/pt-BR.ts and of the pt-BR
+// entries in src/components/marketing/comparisons.ts (comments are skipped).
 import { existsSync, readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
@@ -14,7 +15,7 @@ const DONE_NAMESPACES = [
   "contactModal", "contactForm", "emailContact", "institutionalContactButton", "home",
   "classState", "schools", "pricingSection", "pricingPage", "contact", "trust", "about",
   "recommendInstitution", "languageSwitcher", "privacyPolicy", "termsOfUse", "legalLayout",
-  "teachers", "aiForTeachers", "tools", "roadmap", "investors",
+  "teachers", "aiForTeachers", "tools", "roadmap", "investors", "comparison",
 ];
 
 // The pt-BR legal texts add items and sections that the LGPD and the CDC need
@@ -92,12 +93,8 @@ for (const ns of DONE_NAMESPACES) {
   for (const [path, text] of brLeaves) scanBanned(`messages/pt-BR.json ${path}`, text);
 }
 
-const contentPath = "src/components/marketing/content/pt-BR.ts";
-if (!existsSync(new URL(`../${contentPath}`, import.meta.url))) {
-  errors.push(`missing ${contentPath}`);
-} else {
-  const source = read(contentPath);
-  if (source.includes("marketingContentPtPT")) errors.push(`${contentPath} still reuses pt-PT copy`);
+/** Scans the string literals of `source` (a slice of `path` starting at line `firstLine`). */
+function scanSource(path, source, firstLine = 1) {
   // Strings only. /* */ blocks are blanked (newlines kept, so line numbers hold),
   // and a "//" before any quote on a line starts a comment, which the alternation skips.
   source
@@ -105,9 +102,28 @@ if (!existsSync(new URL(`../${contentPath}`, import.meta.url))) {
     .split("\n")
     .forEach((line, index) => {
       for (const [token] of line.matchAll(/"(?:[^"\\]|\\.)*"|\/\/.*$/g))
-        if (token.startsWith('"')) scanBanned(`${contentPath}:${index + 1}`, token);
+        if (token.startsWith('"')) scanBanned(`${path}:${firstLine + index}`, token);
     });
 }
+
+const contentPath = "src/components/marketing/content/pt-BR.ts";
+if (!existsSync(new URL(`../${contentPath}`, import.meta.url))) {
+  errors.push(`missing ${contentPath}`);
+} else {
+  const source = read(contentPath);
+  if (source.includes("marketingContentPtPT")) errors.push(`${contentPath} still reuses pt-PT copy`);
+  scanSource(contentPath, source);
+}
+
+// The pt-BR comparison copy runs from `brSourcesExtra` to the locale table.
+const comparisonsPath = "src/components/marketing/comparisons.ts";
+const comparisons = read(comparisonsPath);
+const brStart = comparisons.indexOf("const brSourcesExtra");
+const brEnd = comparisons.indexOf("const content:", brStart);
+if (brStart < 0 || brEnd < 0) errors.push(`${comparisonsPath}: pt-BR entries not found`);
+else if (!/"pt-BR": ptBR\b/.test(comparisons)) errors.push(`${comparisonsPath}: pt-BR does not use ptBR`);
+else
+  scanSource(comparisonsPath, comparisons.slice(brStart, brEnd), comparisons.slice(0, brStart).split("\n").length);
 
 if (errors.length) {
   console.error(errors.join("\n"));
