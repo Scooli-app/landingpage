@@ -1,4 +1,6 @@
 import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
+import { isHrefLocalized } from "@/i18n/localizationStatus";
+import type { Locale } from "@/i18n/routing";
 import { Facebook, Instagram } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
@@ -37,13 +39,13 @@ const resourceLinks = [
   { labelKey: "terms", href: "/terms" },
 ] as const;
 
-/** "Scooli vs X" comparison pages, in both languages (the URL slug is localized by `Link`). */
-const comparisonLinks = [
-  { label: "Scooli vs Canva", labelEn: "Scooli vs Canva", slug: "canva-para-educacao" },
-  { label: "Scooli vs MagicSchool AI", labelEn: "Scooli vs MagicSchool AI", slug: "magicschool-ai" },
-  { label: "Scooli vs Teachy", labelEn: "Scooli vs Teachy", slug: "teachy" },
-  { label: "Scooli vs ChatGPT/Gemini/Perplexity", labelEn: "Scooli vs ChatGPT/Gemini/Perplexity", slug: "chatgpt-gemini-perplexity" },
-] as const;
+/** "Scooli vs X" comparison pages, in every language (the URL slug is localized by `Link`). */
+const comparisonLinks: { label: Record<Locale, string>; slug: string }[] = [
+  { label: { "pt-PT": "Scooli vs Canva", "pt-BR": "Scooli vs Canva", en: "Scooli vs Canva" }, slug: "canva-para-educacao" },
+  { label: { "pt-PT": "Scooli vs MagicSchool AI", "pt-BR": "Scooli vs MagicSchool AI", en: "Scooli vs MagicSchool AI" }, slug: "magicschool-ai" },
+  { label: { "pt-PT": "Scooli vs Teachy", "pt-BR": "Scooli vs Teachy", en: "Scooli vs Teachy" }, slug: "teachy" },
+  { label: { "pt-PT": "Scooli vs ChatGPT/Gemini/Perplexity", "pt-BR": "Scooli vs ChatGPT/Gemini/Perplexity", en: "Scooli vs ChatGPT/Gemini/Perplexity" }, slug: "chatgpt-gemini-perplexity" },
+];
 
 const socialLinks = [
   { label: "Instagram", href: "https://www.instagram.com/scooliapp/", icon: Instagram },
@@ -63,11 +65,17 @@ function FooterColumn({
   location: string;
   items: { key: string; label: string; href: Href }[];
 }) {
+  const locale = useLocale() as Locale;
+  const visible = items.filter((item) => isHrefLocalized(item.href as string | { pathname: string }, locale));
+  if (visible.length === 0) {
+    return null;
+  }
+
   return (
     <nav aria-label={heading}>
       <p className="text-[13px] font-medium text-ink">{heading}</p>
       <ul className="mt-3.5 space-y-2">
-        {items.map((item) => (
+        {visible.map((item) => (
           <li key={item.key}>
             <TrackedLink
               href={item.href}
@@ -147,7 +155,7 @@ export function Footer() {
               })),
               ...comparisonLinks.map((link) => ({
                 key: link.slug,
-                label: locale === "en" ? link.labelEn : link.label,
+                label: link.label[locale as Locale],
                 href: { pathname: "/comparar/[slug]", params: { slug: link.slug } } as Href,
               })),
             ]}

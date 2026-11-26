@@ -1,6 +1,6 @@
 import { getToolPages } from "@/components/marketing/data";
 import { defaultLocale } from "@/i18n/routing";
-import { EN_COMPARISON_SLUGS } from "@/i18n/toolSlugs";
+import { toPublicSlug } from "@/i18n/localeSlugs";
 import { comparisonSlugs, getComparisonPage } from "@/components/marketing/comparisons";
 import { APP_URL, LEGAL_ENTITY_NAME, PRICING, PUBLIC_IMPACT_METRICS, SITE_URL } from "@/lib/seo";
 
@@ -72,7 +72,7 @@ function buildLlmsText() {
     buildSection("Comparisons", comparisonSlugs.map((slug) => {
       const page = getComparisonPage(slug);
       const english = getComparisonPage(slug, "en");
-      return `- [${page?.metaTitle ?? slug}](${SITE_URL}/comparar/${slug}): in English, [${english?.metaTitle ?? "English version"}](${SITE_URL}/en/compare/${EN_COMPARISON_SLUGS[slug]})`;
+      return `- [${page?.metaTitle ?? slug}](${SITE_URL}/comparar/${slug}): in English, [${english?.metaTitle ?? "English version"}](${SITE_URL}/en/compare/${toPublicSlug("en", "/comparar/[slug]", slug)})`;
     })),
     buildToolSection(),
     buildSection("Contact", [

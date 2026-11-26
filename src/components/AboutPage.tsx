@@ -2,6 +2,8 @@ import { PageCtaBanner, PageHero, StatCard } from "@/components/marketing/shared
 import { LoopingVideo } from "@/components/site/LoopingVideo";
 import { DividerGrid, DividerItem, Kicker, Section, SectionHeader, displayTitle } from "@/components/site/primitives";
 import { TrackedLink } from "@/components/TrackedLink";
+import { isLocalized } from "@/i18n/localizationStatus";
+import type { Locale } from "@/i18n/routing";
 import { appMedia } from "@/lib/app-media";
 import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -197,14 +199,16 @@ export function AboutPage() {
             </h2>
             <p className="mt-4 text-[17px] leading-relaxed text-subtle">{t("next.description")}</p>
           </div>
-          <TrackedLink
-            href="/roadmap"
-            eventName="marketing_navigation_clicked"
-            eventProperties={{ location: "about_next", link_label: "roadmap" }}
-            className="text-[15px] font-medium text-violet-ink hover:underline"
-          >
-            {t("story.roadmapLink")} →
-          </TrackedLink>
+          {isLocalized("/roadmap", locale as Locale) && (
+            <TrackedLink
+              href="/roadmap"
+              eventName="marketing_navigation_clicked"
+              eventProperties={{ location: "about_next", link_label: "roadmap" }}
+              className="text-[15px] font-medium text-violet-ink hover:underline"
+            >
+              {t("story.roadmapLink")} →
+            </TrackedLink>
+          )}
         </div>
       </Section>
 
@@ -223,16 +227,18 @@ export function AboutPage() {
             placement: "about_final_cta",
           }}
         />
-        <p className="mt-6 text-[15px]">
-          <TrackedLink
-            href="/investidores"
-            eventName="marketing_navigation_clicked"
-            eventProperties={{ location: "about_final_cta", link_label: "investors" }}
-            className="font-medium text-violet-ink hover:underline"
-          >
-            {t("finalCta.investorsLink")} →
-          </TrackedLink>
-        </p>
+        {isLocalized("/investidores", locale as Locale) && (
+          <p className="mt-6 text-[15px]">
+            <TrackedLink
+              href="/investidores"
+              eventName="marketing_navigation_clicked"
+              eventProperties={{ location: "about_final_cta", link_label: "investors" }}
+              className="font-medium text-violet-ink hover:underline"
+            >
+              {t("finalCta.investorsLink")} →
+            </TrackedLink>
+          </p>
+        )}
       </Section>
     </>
   );

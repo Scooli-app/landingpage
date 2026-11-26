@@ -19,7 +19,7 @@ import { getFirstContactErrorField, type ContactErrors, type ContactField, valid
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { Loader2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useId, useRef, useState } from "react";
 import { toast } from "sonner";
 
@@ -40,6 +40,7 @@ export function ContactModal({
   title,
   description,
 }: ContactModalProps) {
+  const locale = useLocale();
   const t = useTranslations("contactModal");
   const tForm = useTranslations("contactForm");
   const resolvedTitle = title ?? t("defaultTitle");
@@ -163,6 +164,7 @@ export function ContactModal({
           message: message.trim(),
           organization: organization.trim() || null,
           source,
+          locale,
         }),
       });
 

@@ -68,9 +68,15 @@
     "description": "Acompanha o alinhamento curricular da Scooli com as Aprendizagens Essenciais.",
     "link": "Conhecer a equipa"
   },
+  "brazilBanner": {
+    "text": "Você está no Brasil? Temos uma versão do site feita para escolas brasileiras.",
+    "cta": "Ver versão Brasil",
+    "dismiss": "Fechar"
+  },
   "languageSwitcher": {
     "label": "Idioma",
-    "pt-PT": "Português",
+    "pt-PT": "Português (Portugal)",
+    "pt-BR": "Português (Brasil)",
     "en": "English",
     "switchTo": "Mudar para {language}"
   },

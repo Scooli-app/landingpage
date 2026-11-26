@@ -9,7 +9,9 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "lint:strict": "eslint src --max-warnings 0",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "check:routes": "node scripts/check-routes.mjs",
+    "check:pt-br": "node scripts/check-pt-br-copy.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.1.1",

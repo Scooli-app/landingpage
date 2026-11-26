@@ -47,7 +47,7 @@ export default async function PrivacyPage({
     url: pageUrl,
     breadcrumb: breadcrumbItems,
     locale,
-    dateModified: pageUpdated("/privacy"),
+    dateModified: pageUpdated("/privacy", locale),
   });
 
   return (

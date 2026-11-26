@@ -219,6 +219,30 @@ const BRAND_KEYWORDS_PT = [
   "RGPD educação",
 ] as const;
 
+const BRAND_KEYWORDS_BR = [
+  "Scooli",
+  "IA para professores",
+  "inteligência artificial na educação",
+  "planejamento de aulas",
+  "plano de aula",
+  "gerador de plano de aula",
+  "atividades para imprimir",
+  "gerador de atividades",
+  "apresentações escolares",
+  "provas escolares",
+  "gerador de provas",
+  "quizzes educativos",
+  "adaptação de materiais",
+  "BNCC",
+  "planejamento alinhado à BNCC",
+  "recursos educacionais",
+  "biblioteca comunitária",
+  "ferramentas para professores",
+  "ensino fundamental",
+  "ensino médio",
+  "LGPD educação",
+] as const;
+
 const BRAND_KEYWORDS_EN = [
   "Scooli",
   "AI for teachers",
@@ -236,9 +260,25 @@ const BRAND_KEYWORDS_EN = [
   "teacher workload",
 ] as const;
 
+const BRAND_KEYWORDS: Record<Locale, readonly string[]> = {
+  "pt-PT": BRAND_KEYWORDS_PT,
+  "pt-BR": BRAND_KEYWORDS_BR,
+  en: BRAND_KEYWORDS_EN,
+};
+
 export function brandKeywords(locale: Locale): readonly string[] {
-  return locale === "en" ? BRAND_KEYWORDS_EN : BRAND_KEYWORDS_PT;
+  return BRAND_KEYWORDS[locale];
 }
+
+/**
+ * The geographic target each locale declares (geo meta tags, `areaServed`).
+ * The English site is market-agnostic (see CLAUDE.md), so it names no country.
+ */
+export const MARKET: Record<Locale, { geoRegion?: "PT" | "BR"; placename?: string; areaServed?: string }> = {
+  "pt-PT": { geoRegion: "PT", placename: "Portugal", areaServed: "Portugal" },
+  "pt-BR": { geoRegion: "BR", placename: "Brasil", areaServed: "Brasil" },
+  en: {},
+};
 
 /**
  * Locale-specific wording for the structured data below. The organisation's
@@ -283,6 +323,42 @@ const schemaCopy = {
       "RGPD",
     ],
   },
+  "pt-BR": {
+    organization:
+      "Plataforma com IA que ajuda professores a preparar aulas em menos tempo: planos de aula, atividades, provas, quizzes, planejamentos e apresentações alinhados com a BNCC.",
+    website:
+      "Scooli - IA para professores: planos de aula, atividades, provas, quizzes, planejamentos e apresentações alinhados com a BNCC.",
+    application:
+      "Plataforma de inteligência artificial para professores. Acompanha o professor ao longo do ano letivo e cria planos de aula, atividades, provas, quizzes, planejamentos e apresentações alinhados com a BNCC.",
+    service:
+      "Serviço de criação de recursos educacionais com IA para professores: planos de aula, atividades, provas, quizzes, planejamentos e apresentações alinhados com a BNCC.",
+    serviceName: "Scooli - Recursos educacionais com IA",
+    product:
+      "Plano premium da Scooli para professores: criação de recursos educacionais sem limites, turmas ilimitadas durante todo o ano letivo, modelos de IA avançados e suporte prioritário.",
+    audience: "Professores",
+    offers: {
+      free: `${PRICING.free.trialDays} dias grátis`,
+      freeDescription: `Período de teste de ${PRICING.free.trialDays} dias, sem dados de pagamento`,
+      monthly: "Scooli Pro Mensal",
+      monthlyDescription: "Sem limites de criação, modelos avançados e suporte prioritário",
+      annual: "Scooli Pro Anual",
+      annualDescription: `Sem limites de criação, com ${PRICING.pro_annual.savings} de desconto`,
+      pro: "Scooli Pro",
+      catalog: "Planos Scooli",
+    },
+    features: [
+      "Planos de aula",
+      "Atividades",
+      "Provas e quizzes",
+      "Planejamentos anuais e de unidade",
+      "Apresentações",
+      "Calendário de aulas ao longo do ano",
+      "Conteúdos alinhados com a BNCC",
+      "Adaptação de materiais",
+      "Biblioteca comunitária",
+      "LGPD",
+    ],
+  },
   en: {
     organization:
       "AI platform that helps teachers prepare lessons in less time: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, structured and ready to edit.",
@@ -318,14 +394,14 @@ const schemaCopy = {
       "GDPR",
     ],
   },
-} as const;
+} as const satisfies Record<Locale, unknown>;
 
 /**
  * The [locale] segment can carry anything (`/nao-existe` renders the page
  * alongside the layout's notFound()), so never index the copy blindly.
  */
-function copyFor(locale: string) {
-  return locale === "en" ? schemaCopy.en : schemaCopy["pt-PT"];
+function copyFor(locale: Locale) {
+  return schemaCopy[locale] ?? schemaCopy[defaultLocale];
 }
 
 // Organization Schema - Used across all pages
@@ -340,10 +416,10 @@ export const SOCIAL_PROFILES = [
 
 /** The people the site names publicly (photos live in /public/team). */
 export const TEAM_PEOPLE = [
-  { id: "miguel", name: "Miguel Rodrigues", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/miguel.jpg", founder: true },
-  { id: "pedro", name: "Pedro Rocha", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/pedro.jpeg", founder: true },
-  { id: "hugo", name: "Hugo Silva", jobTitle: { "pt-PT": "Sócio, Chief Growth Officer", en: "Partner, Chief Growth Officer" }, image: "/team/hugo.jpg", founder: false },
-  { id: "silvia", name: "Sílvia Valério", jobTitle: { "pt-PT": "Consultora pedagógica, professora do 1.º ciclo", en: "Pedagogical advisor, primary school teacher" }, image: "/team/silvia.jpg", founder: false },
+  { id: "miguel", name: "Miguel Rodrigues", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", "pt-BR": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/miguel.jpg", founder: true },
+  { id: "pedro", name: "Pedro Rocha", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", "pt-BR": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/pedro.jpeg", founder: true },
+  { id: "hugo", name: "Hugo Silva", jobTitle: { "pt-PT": "Sócio, Chief Growth Officer", "pt-BR": "Sócio, Chief Growth Officer", en: "Partner, Chief Growth Officer" }, image: "/team/hugo.jpg", founder: false },
+  { id: "silvia", name: "Sílvia Valério", jobTitle: { "pt-PT": "Consultora pedagógica, professora do 1.º ciclo", "pt-BR": "Consultora pedagógica, professora dos anos iniciais", en: "Pedagogical advisor, primary school teacher" }, image: "/team/silvia.jpg", founder: false },
 ] as const;
 
 export function getPersonSchema(person: (typeof TEAM_PEOPLE)[number], locale: Locale = defaultLocale) {
@@ -798,10 +874,10 @@ export function getServiceSchema(locale: Locale = defaultLocale) {
       "@id": `${SITE_URL}/#organization`,
     },
     serviceType: "Educational Technology Service",
-    // The English site is market-agnostic, so only Portuguese names a country.
-    ...(locale === "en"
-      ? {}
-      : { areaServed: { "@type": "Country", name: "Portugal" } }),
+    // The English site is market-agnostic: MARKET names no country for it.
+    ...(MARKET[locale]?.areaServed
+      ? { areaServed: { "@type": "Country", name: MARKET[locale]?.areaServed } }
+      : {}),
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: copy.offers.catalog,

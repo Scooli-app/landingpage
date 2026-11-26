@@ -1,6 +1,7 @@
 "use client";
 
 import { Link, usePathname } from "@/i18n/navigation";
+import { isLocalized } from "@/i18n/localizationStatus";
 import { locales, type Locale } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
@@ -11,6 +12,7 @@ import type { ComponentProps } from "react";
 
 const LOCALE_CODES: Record<Locale, string> = {
   "pt-PT": "PT",
+  "pt-BR": "BR",
   en: "EN",
 };
 
@@ -23,6 +25,9 @@ const LOCALE_CODES: Record<Locale, string> = {
  * (`/ferramentas/[slug]`), not the localized URL, so switching language keeps
  * the reader on the same page rather than dumping them on the homepage. The
  * route params come from Next.js and fill the template back in.
+ *
+ * A page whose copy is not written in the target locale yet links to that
+ * locale's home instead (`isLocalized`).
  *
  * The choice is persisted by next-intl's `NEXT_LOCALE` cookie, which `Link`
  * writes when a `locale` prop is present. Nothing here reads `Accept-Language`:
@@ -67,7 +72,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             return (
               <DropdownMenuPrimitive.Item key={locale} asChild>
                 <Link
-                  href={href}
+                  href={isLocalized(pathname, locale) ? href : "/"}
                   locale={locale}
                   hrefLang={locale}
                   aria-current={isActive ? "true" : undefined}

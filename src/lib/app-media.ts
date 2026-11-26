@@ -23,7 +23,10 @@ type AppMedia = {
   dashboard: ImageAsset;
   /** The community library (demo resources from fictional teachers, seeded locally). */
   library: ImageAsset;
-  /** The school admin dashboard (a fictional school, seeded locally: _screenshots/seed-school.sql). */
+  /**
+   * The school dashboard, a fictional school seeded locally: the usage overview for pt-PT and en
+   * (_screenshots/seed-school.sql), the direction view of curriculum progress for pt-BR (seed-school-br.sql).
+   */
   schoolDashboard: ImageAsset;
 };
 
@@ -64,6 +67,7 @@ const film = (dir: string, name: string, width: number, height: number): VideoAs
  */
 export const FILM_DURATIONS_SECONDS: Record<Locale, Record<string, number>> = {
   "pt-PT": { hero: 23, "step-1": 6.8, "step-2": 5.3, "step-3": 7.7 },
+  "pt-BR": { hero: 23, "step-1": 5.9, "step-2": 7, "step-3": 7 },
   en: { hero: 23.1, "step-1": 5.9, "step-2": 9.6, "step-3": 7.7 },
 };
 
@@ -75,7 +79,15 @@ export const FILM_DURATIONS_SECONDS: Record<Locale, Record<string, number>> = {
  */
 export const FILM_UPLOAD_DATES: Record<Locale, Record<string, string>> = {
   "pt-PT": { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
+  "pt-BR": { hero: "2026-11-25", "step-1": "2026-11-25", "step-2": "2026-11-25", "step-3": "2026-11-25" },
   en: { hero: "2026-10-06", "step-1": "2026-10-07", "step-2": "2026-10-07", "step-3": "2026-10-07" },
+};
+
+/** The media folder under /public/app each locale shows. */
+export const MEDIA_DIR: Record<Locale, string> = {
+  "pt-PT": "pt",
+  "pt-BR": "br",
+  en: "en",
 };
 
 const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
@@ -107,8 +119,9 @@ const forLocale = (dir: string, library: ImageAsset): AppMedia => ({
  * Portuguese curricula or school-system details.
  */
 const media: Record<Locale, AppMedia> = {
-  "pt-PT": forLocale("pt", { src: "/app/pt/library.png", width: 2240, height: 1874 }),
-  en: forLocale("en", { src: "/app/en/library.png", width: 2240, height: 1692 }),
+  "pt-PT": forLocale(MEDIA_DIR["pt-PT"], { src: "/app/pt/library.png", width: 2240, height: 1874 }),
+  "pt-BR": forLocale(MEDIA_DIR["pt-BR"], { src: "/app/br/library.png", width: 2240, height: 1606 }),
+  en: forLocale(MEDIA_DIR.en, { src: "/app/en/library.png", width: 2240, height: 1692 }),
 };
 
 export function appMedia(locale: string): AppMedia {

@@ -1,6 +1,8 @@
 "use client";
 
 import { Card, CardContent } from "@/components/ui/card";
+import type { Locale } from "@/i18n/routing";
+import { SHOWS_LEGAL_DISCLAIMER } from "@/lib/legal";
 import { ArrowLeft, Calendar } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { useLocale, useTranslations } from "next-intl";
@@ -55,7 +57,8 @@ export function TermsOfUse() {
   const router = useRouter();
   const locale = useLocale();
   const t = useTranslations("termsOfUse");
-  const isEnglish = locale === "en";
+  // Only the English translation needs the "Portuguese prevails" disclaimer.
+  const showDisclaimer = SHOWS_LEGAL_DISCLAIMER[locale as Locale];
 
   const section2Items = t.raw("sections.section2.items") as string[];
   const section3Items = t.raw("sections.section3.items") as string[];
@@ -95,7 +98,7 @@ export function TermsOfUse() {
         </div>
       </div>
 
-      {isEnglish && (
+      {showDisclaimer && (
         <div className="mb-8 rounded-xl border border-[#F1E3B5] bg-tag-yellow px-5 py-4 text-sm text-tag-yellow-ink">
           {t("disclaimer")}
         </div>

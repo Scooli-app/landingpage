@@ -131,7 +131,8 @@ export default async function SchoolsPage({
           title={t("benefits.title")}
           description={t("benefits.description")}
         />
-        <AdvisorNote className="mb-10 max-w-[560px]" />
+        {/* The advisor note is about the Portuguese curriculum, not the BNCC. */}
+        {locale !== "pt-BR" && <AdvisorNote className="mb-10 max-w-[560px]" />}
         <ul className="grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {benefits.map((benefit, index) => {
             const Icon = benefitIcons[index % benefitIcons.length];

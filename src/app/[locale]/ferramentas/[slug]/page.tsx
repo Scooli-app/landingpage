@@ -81,7 +81,7 @@ export default async function ToolPage({
     url,
     breadcrumb: breadcrumbItems,
     locale,
-    dateModified: pageUpdated("/ferramentas/[slug]"),
+    dateModified: pageUpdated("/ferramentas/[slug]", locale),
   });
   const faqSchema = getFAQPageSchema(tool.faq);
   const howToSchema = getHowToSchema(

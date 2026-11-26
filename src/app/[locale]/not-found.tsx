@@ -4,7 +4,9 @@ import { TrackedLink } from "@/components/TrackedLink";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/Container";
 import { cn } from "@/lib/utils";
-import { useTranslations } from "next-intl";
+import { isLocalized } from "@/i18n/localizationStatus";
+import type { Locale } from "@/i18n/routing";
+import { useLocale, useTranslations } from "next-intl";
 
 const links = [
   { labelKey: "teachers", href: "/professores" },
@@ -16,6 +18,7 @@ const links = [
 export default function NotFound() {
   const t = useTranslations("notFound");
   const tNav = useTranslations("nav");
+  const locale = useLocale() as Locale;
 
   return (
     <PublicSiteShell>
@@ -40,7 +43,7 @@ export default function NotFound() {
             </TrackedLink>
           </div>
           <ul className="mt-14 border-t border-line">
-            {links.map((link) => (
+            {links.filter((link) => isLocalized(link.href, locale)).map((link) => (
               <li key={link.href} className="border-b border-line">
                 <TrackedLink
                   href={link.href}

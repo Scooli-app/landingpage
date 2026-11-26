@@ -2,10 +2,11 @@
 
 import { TrackedLink } from "@/components/TrackedLink";
 import { buttonVariants } from "@/components/ui/button";
-import { BOOKING_EMBED_URL, BOOKING_PAGE_URL } from "@/lib/booking";
+import type { Locale } from "@/i18n/routing";
+import { BOOKING_PAGE_URL, bookingEmbedUrl } from "@/lib/booking";
 import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 
 /**
@@ -16,6 +17,7 @@ import { useState } from "react";
  */
 export function BookingEmbed({ source, className }: { source: string; className?: string }) {
   const t = useTranslations("booking");
+  const locale = useLocale() as Locale;
   // Google's page takes a few seconds; until it paints, say so instead of
   // showing an empty box.
   const [loaded, setLoaded] = useState(false);
@@ -23,7 +25,7 @@ export function BookingEmbed({ source, className }: { source: string; className?
   return (
     <div className={className}>
       <TrackedLink
-        href={BOOKING_PAGE_URL}
+        href={BOOKING_PAGE_URL[locale]}
         target="_blank"
         rel="noreferrer"
         eventName="marketing_cta_clicked"
@@ -38,7 +40,7 @@ export function BookingEmbed({ source, className }: { source: string; className?
           <p className="absolute inset-0 grid place-items-center px-6 text-center text-[14px] text-subtle">{t("loading")}</p>
         )}
         <iframe
-          src={BOOKING_EMBED_URL}
+          src={bookingEmbedUrl(locale)}
           title={t("iframeTitle")}
           loading="lazy"
           onLoad={() => setLoaded(true)}

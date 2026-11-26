@@ -56,7 +56,7 @@ export function PageSchemas({
           url,
           breadcrumb,
           locale,
-          dateModified: pageUpdated(path),
+          dateModified: pageUpdated(path, locale),
         })}
       />
       {faq && faq.length > 0 && <StructuredData id={`${id}-faq`} data={getFAQPageSchema(faq)} />}

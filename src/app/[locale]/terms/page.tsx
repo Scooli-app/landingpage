@@ -47,7 +47,7 @@ export default async function TermsPage({
     url: pageUrl,
     breadcrumb: breadcrumbItems,
     locale,
-    dateModified: pageUpdated("/terms"),
+    dateModified: pageUpdated("/terms", locale),
   });
 
   return (
