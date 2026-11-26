@@ -1,11 +1,13 @@
 import { getToolPages } from "@/components/marketing/data";
 import { defaultLocale } from "@/i18n/routing";
 import { toPublicSlug } from "@/i18n/localeSlugs";
+import { isLocalized } from "@/i18n/localizationStatus";
+import { localizedUrl } from "@/i18n/urls";
 import { comparisonSlugs, getComparisonPage } from "@/components/marketing/comparisons";
 import { APP_URL, LEGAL_ENTITY_NAME, PRICING, PUBLIC_IMPACT_METRICS, SITE_URL } from "@/lib/seo";
 
 // llms.txt is a single, unlocalised document served at the site root, so it
-// describes the Portuguese site — the canonical one.
+// describes the Portuguese site — the canonical one — plus where the Brazilian site lives.
 const toolPages = getToolPages(defaultLocale);
 
 function buildSection(title: string, lines: string[]) {
@@ -20,13 +22,53 @@ function buildToolSection() {
   return buildSection("Tools", lines);
 }
 
+/** The /br pages whose pt-BR copy is written (the others redirect to /br until then). */
+function buildBrazilSection() {
+  const br = "pt-BR";
+  const pages: [string, string][] = [
+    ["/", "Home"],
+    ["/escolas", "For schools: the direção sees the cumprimento do planejamento, turma a turma"],
+    ["/professores", "For teachers"],
+    ["/ia-para-professores", "AI for teachers in Brazil"],
+    ["/ferramentas", "Tools"],
+    ["/precos", "Pricing (same euro prices as the Portuguese site)"],
+    ["/sobre", "About the team"],
+    ["/contacto", "Contact"],
+    ["/confianca", "Trust: LGPD, privacy and AI use"],
+    ["/roadmap", "Roadmap"],
+  ];
+  const lines = [
+    "- For teachers and schools in Brazil, in Brazilian Portuguese: lessons linked to BNCC habilidades, a February–December school year in four bimestres with Brazilian holidays, and LGPD compliance.",
+    ...pages
+      .filter(([path]) => isLocalized(path, br))
+      .map(([path, label]) => `- [${label}](${localizedUrl(SITE_URL, path, br)})`),
+    `- [Pricing in Markdown, Brazilian Portuguese](${SITE_URL}/pricing.md?locale=pt-BR)`,
+  ];
+  if (isLocalized("/ferramentas/[slug]", br)) {
+    lines.push(
+      ...getToolPages(br).map(
+        (tool) => `- [${tool.shortTitle}](${localizedUrl(SITE_URL, "/ferramentas/[slug]", br, { slug: tool.slug })}): ${tool.description}`,
+      ),
+    );
+  }
+  if (isLocalized("/comparar/[slug]", br)) {
+    lines.push(
+      ...comparisonSlugs.map((slug) => {
+        const page = getComparisonPage(slug, br);
+        return `- [${page?.metaTitle ?? slug}](${localizedUrl(SITE_URL, "/comparar/[slug]", br, { slug })})`;
+      }),
+    );
+  }
+  return buildSection("Brazilian site", lines);
+}
+
 function buildLlmsText() {
   return [
     "# Scooli",
     "",
     "> Scooli is AI software for teachers in Portugal. It lays out each class's lessons from the teacher's yearly plan and prepares every week: lesson plans, worksheets, tests, quizzes, yearly plans and slide decks, aligned with the Aprendizagens Essenciais and editable before use.",
     "",
-    `Scooli is a product of ${LEGAL_ENTITY_NAME} The site is in European Portuguese (${SITE_URL}) with an English version (${SITE_URL}/en). This file describes the Portuguese site.`,
+    `Scooli is a product of ${LEGAL_ENTITY_NAME} The site is in European Portuguese (${SITE_URL}) with a Brazilian Portuguese version (${SITE_URL}/br) and an English version (${SITE_URL}/en). This file describes the Portuguese site; the Brazilian site is listed under "Brazilian site".`,
     "",
     buildSection("What it does", [
       "- A live state for every class (what the curriculum asks for, what was planned, what has been taught, what is left) and recommendations for what to teach next.",
@@ -75,6 +117,7 @@ function buildLlmsText() {
       return `- [${page?.metaTitle ?? slug}](${SITE_URL}/comparar/${slug}): in English, [${english?.metaTitle ?? "English version"}](${SITE_URL}/en/compare/${toPublicSlug("en", "/comparar/[slug]", slug)})`;
     })),
     buildToolSection(),
+    buildBrazilSection(),
     buildSection("Contact", [
       `- [Website](${SITE_URL})`,
       `- [Sign up](${APP_URL}/sign-up): start the free trial.`,

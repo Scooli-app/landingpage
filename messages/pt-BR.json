@@ -61,13 +61,6 @@
     "playVideo": "Reproduzir vídeo",
     "talkToTeam": "Fale com a equipe"
   },
-  "advisorNote": {
-    "photoAlt": "Sílvia Valério, consultora pedagógica da Scooli",
-    "name": "Sílvia Valério",
-    "role": "consultora pedagógica e professora do 1.º ciclo",
-    "description": "Acompanha o alinhamento curricular da Scooli com as Aprendizagens Essenciais.",
-    "link": "Conhecer a equipa"
-  },
   "languageSwitcher": {
     "label": "Idioma",
     "pt-PT": "Português (Portugal)",
@@ -338,127 +331,127 @@
   "tools": {
     "index": {
       "eyebrow": "Ferramentas",
-      "title": "Escolha o tipo de recurso que quer criar",
-      "description": "Cada ferramenta responde a uma necessidade concreta. Se já sabe o que precisa de preparar, escolha diretamente; se não, explore por categoria.",
+      "title": "Escolha o tipo de material que você quer criar",
+      "description": "Cada ferramenta responde a uma necessidade concreta. Se você já sabe o que precisa preparar, escolha direto; se não, explore por categoria.",
       "metaTitle": "Ferramentas para professores",
-      "metaDescription": "Explore as ferramentas da Scooli: planificações, planos de aula, sequências de aulas, testes, fichas, quizzes e mais — tudo alinhado com o currículo português.",
-      "previewAlt": "Pré-visualização: {tool}",
+      "metaDescription": "Conheça as ferramentas da Scooli: planejamentos, planos de aula, sequências didáticas, provas, listas de exercícios, quizzes e mais, tudo ligado à BNCC.",
+      "previewAlt": "Prévia: {tool}",
       "seeTool": "Ver {tool}",
-      "ctaTitle": "Quer começar por um pedido simples?",
-      "ctaDescription": "Escolha a ferramenta mais próxima do que precisa ou entre diretamente na plataforma para criar o primeiro material.",
+      "ctaTitle": "Quer começar com um pedido simples?",
+      "ctaDescription": "Escolha a ferramenta mais próxima do que você precisa ou entre direto na plataforma para criar o primeiro material.",
       "ctaSecondary": "Ver a biblioteca comunitária",
       "groups": {
         "main": {
-          "label": "Os recursos da semana",
-          "description": "Os seis recursos que os professores mais usam, por ordem."
+          "label": "Os materiais da semana",
+          "description": "Os seis materiais que os professores mais usam, em ordem."
         },
         "more": {
           "label": "Mais ferramentas",
-          "description": "Para organizar sequências de aulas, adaptar materiais e partir de documentos que já tem."
+          "description": "Para organizar sequências didáticas, adaptar materiais e partir de documentos que você já tem."
         }
       }
     },
     "detail": {
-      "eyebrowPlanning": "Planificação",
+      "eyebrowPlanning": "Planejamento",
       "eyebrowAssessment": "Avaliação",
       "eyebrowDefault": "Ferramenta",
       "realExample": "Exemplo real criado na Scooli",
       "typicalOutput": "O que costuma sair",
-      "whatYouGain": "O que ganha",
+      "whatYouGain": "O que você ganha",
       "howToName": "Como usar {tool} na Scooli",
       "faq": {
         "eyebrow": "Perguntas frequentes",
         "title": "Dúvidas sobre {tool}",
-        "description": "Respostas rápidas para perceber o que esta ferramenta faz, como se adapta ao seu contexto e o que pode esperar antes de experimentar."
+        "description": "Respostas rápidas para entender o que esta ferramenta faz, como ela se adapta ao seu contexto e o que esperar antes de experimentar."
       },
       "related": {
-        "eyebrow": "Continue a explorar",
+        "eyebrow": "Continue explorando",
         "title": "Páginas relacionadas",
-        "description": "Se está a comparar formas de preparar materiais, estas páginas ajudam a encontrar a ferramenta certa mais depressa."
+        "description": "Se você está comparando formas de preparar materiais, estas páginas ajudam a encontrar a ferramenta certa mais rápido."
       },
       "cta": {
         "title": "Quer experimentar {tool} na Scooli?",
-        "description": "Comece gratuitamente, gere um primeiro material e ajuste tudo antes de usar, imprimir ou exportar."
+        "description": "Comece grátis, gere um primeiro material e ajuste tudo antes de usar, imprimir ou exportar."
       },
       "planning": {
         "structureEyebrow": "A estrutura",
         "documentEyebrow": "O documento",
-        "scheduleTitle": "O que encontra no plano letivo",
-        "scheduleDescription": "Cada plano letivo mostra as aulas distribuídas pelo período com o tópico de cada sessão — pronto a consultar e a gerar planos de aula quando precisar.",
-        "documentTitle": "O que encontra no documento gerado",
-        "documentDescription": "Cada documento parte dos referenciais curriculares portugueses e chega pronto a rever, editar e usar.",
+        "scheduleTitle": "O que você encontra na sequência didática",
+        "scheduleDescription": "Cada sequência mostra as aulas distribuídas pelo bimestre, com o tópico de cada aula, pronta para consultar e para gerar planos de aula quando você precisar.",
+        "documentTitle": "O que você encontra no documento gerado",
+        "documentDescription": "Cada documento parte das habilidades da BNCC e chega pronto para revisar, editar e usar.",
         "practiceEyebrow": "Na prática",
         "practiceTitle": "Como usar {tool} na sua rotina",
-        "practiceDescription": "Estas são as situações em que esta ferramenta faz mais diferença e o que pode esperar do resultado.",
+        "practiceDescription": "Estas são as situações em que esta ferramenta faz mais diferença e o que esperar do resultado.",
         "howEyebrow": "Como funciona",
-        "howScheduleTitle": "Do horário ao plano letivo organizado",
-        "howScheduleDescription": "Indique a disciplina, o período e o horário — a Scooli distribui as aulas e sugere os tópicos. Gere o plano de aula de qualquer sessão quando precisar.",
+        "howScheduleTitle": "Do horário à sequência de aulas organizada",
+        "howScheduleDescription": "Informe a disciplina, o bimestre e o horário: a Scooli distribui as aulas e sugere os tópicos. Gere o plano de aula de qualquer aula quando precisar.",
         "howDocumentTitle": "Do pedido ao documento editável",
-        "howDocumentDescription": "O processo é simples: parte-se de um contexto, recebe-se uma base estruturada e ajusta-se até estar pronto a usar.",
-        "controlEyebrow": "Professor no controlo",
-        "controlScheduleTitle": "A Scooli organiza as aulas — o professor gera o plano quando quiser",
-        "controlScheduleDescription": "O plano letivo define a estrutura temporal. A geração do plano de aula de cada sessão é sempre uma decisão do professor — a Scooli não gera automaticamente sem pedido.",
-        "controlDocumentTitle": "A Scooli gera a base — o professor decide o que fica",
-        "controlDocumentDescription": "Todos os documentos são editáveis antes de imprimir, exportar ou partilhar. A decisão final é sempre do professor, não da IA.",
+        "howDocumentDescription": "O processo é simples: você parte de um contexto, recebe uma base estruturada e ajusta até o documento estar pronto para usar.",
+        "controlEyebrow": "Professor no controle",
+        "controlScheduleTitle": "A Scooli organiza as aulas; o professor gera o plano quando quiser",
+        "controlScheduleDescription": "A sequência define a estrutura no tempo. Gerar o plano de cada aula é sempre uma decisão do professor: a Scooli não gera nada sem você pedir.",
+        "controlDocumentTitle": "A Scooli gera a base; o professor decide o que fica",
+        "controlDocumentDescription": "Todos os documentos são editáveis antes de imprimir, exportar ou compartilhar. A decisão final é sempre do professor, não da IA.",
         "editable": "Editável",
         "generateLessonPlan": "Gerar plano de aula",
         "exportPdf": "Exportar PDF",
         "createdWithScooli": "Criado na Scooli",
         "visuals": {
           "sequencias-de-aulas": {
-            "label": "Plano letivo",
-            "sub": "Ciências Naturais · 6.º ano · Set–Dez",
+            "label": "Sequência de aulas",
+            "sub": "Ciências · 6º ano · 1º bimestre",
             "badge": "Por horário",
             "rows": [
               {
-                "title": "Seg 16 Set · Sistemas do corpo humano",
+                "title": "Seg 2 mar · A célula como unidade da vida",
                 "meta": "Introdução ao tema · sem plano gerado"
               },
               {
-                "title": "Qua 18 Set · Aparelho respiratório",
+                "title": "Qua 4 mar · Níveis de organização do corpo",
                 "meta": "Plano de aula gerado ✓"
               },
               {
-                "title": "Seg 23 Set · Aparelho circulatório",
-                "meta": "Plano de aula gerado ✓ · ficha incluída"
+                "title": "Seg 9 mar · Sistema nervoso",
+                "meta": "Plano de aula gerado ✓ · lista incluída"
               },
               {
-                "title": "Qua 25 Set · Revisão dos sistemas",
-                "meta": "Aguarda geração"
+                "title": "Qua 11 mar · Revisão do tema",
+                "meta": "Aguardando geração"
               }
             ]
           },
           "planificacoes": {
-            "label": "Planificação anual",
-            "sub": "Ciências Naturais · 6.º ano · 1.º período",
-            "badge": "AE · DL 55/2018",
+            "label": "Planejamento anual",
+            "sub": "Ciências · 6º ano · 1º bimestre",
+            "badge": "BNCC",
             "rows": [
               {
-                "title": "Objetivos de aprendizagem",
-                "meta": "4 descritores AE · alinhados com o Perfil do Aluno"
+                "title": "Habilidades da BNCC",
+                "meta": "4 habilidades · EF06CI05 a EF06CI08"
               },
               {
-                "title": "Conteúdos e sequência didática",
-                "meta": "8 sessões previstas · tópicos distribuídos"
+                "title": "Objetos de conhecimento e sequência",
+                "meta": "8 aulas previstas · tópicos distribuídos"
               },
               {
                 "title": "Estratégias e atividades",
-                "meta": "Trabalho em grupo · aula expositiva · pesquisa guiada"
+                "meta": "Trabalho em grupo · aula expositiva · pesquisa orientada"
               },
               {
                 "title": "Avaliação",
-                "meta": "Formativa contínua + sumativa · critérios definidos"
+                "meta": "Formativa contínua + prova bimestral · critérios definidos"
               }
             ]
           },
           "default": {
             "label": "Plano de aula",
-            "sub": "Ciências Naturais · 6.º ano · 50 min",
-            "badge": "AE alinhadas",
+            "sub": "Ciências · 6º ano · 50 min",
+            "badge": "BNCC · EF06CI05",
             "rows": [
               {
                 "title": "Motivação",
-                "meta": "10 min · Ativação de conhecimentos"
+                "meta": "10 min · Conhecimentos prévios"
               },
               {
                 "title": "Desenvolvimento",
@@ -469,7 +462,7 @@
                 "meta": "10 min · Exercício orientado"
               },
               {
-                "title": "Síntese",
+                "title": "Fechamento",
                 "meta": "5 min · Avaliação formativa"
               }
             ]
@@ -477,59 +470,48 @@
         }
       },
       "assessment": {
-        "stats": [
-          {
-            "value": "6,9 h/semana",
-            "label": "gasto em correção e avaliação por docente em Portugal",
-            "source": "TALIS 2024"
-          },
-          {
-            "value": "77%",
-            "label": "identificam o excesso de correções como fonte de stress",
-            "source": "TALIS 2024"
-          }
-        ],
-        "formatsEyebrow": "Formatos de questão",
-        "formatsTitle": "Perguntas variadas, num só documento",
-        "formatsDescription": "Pode combinar diferentes tipos de pergunta no mesmo instrumento de avaliação, com cotação e critérios já incluídos.",
+        "stats": [],
+        "formatsEyebrow": "Tipos de questão",
+        "formatsTitle": "Questões variadas em um só documento",
+        "formatsDescription": "Você pode combinar tipos de questão diferentes na mesma avaliação, com pontuação, gabarito e critérios de correção já incluídos.",
         "questionTypes": [
           {
             "symbol": "A · B · C · D",
-            "label": "Escolha múltipla",
-            "detail": "Opções com resposta única ou múltipla"
+            "label": "Múltipla escolha",
+            "detail": "Alternativas com uma ou mais respostas corretas"
           },
           {
             "symbol": "___",
             "label": "Resposta curta",
-            "detail": "Uma ou duas frases, foco na compreensão"
+            "detail": "Uma ou duas frases, com foco na compreensão"
           },
           {
             "symbol": "¶",
-            "label": "Desenvolvimento",
-            "detail": "Resposta extensa com critérios visíveis"
+            "label": "Questão dissertativa",
+            "detail": "Resposta longa com critérios visíveis"
           },
           {
             "symbol": "✓",
-            "label": "Critérios de correção",
-            "detail": "Pontuação por item e descritores de classificação"
+            "label": "Gabarito e critérios",
+            "detail": "Pontuação por questão e níveis de correção"
           }
         ],
         "practiceEyebrow": "Na prática",
         "practiceTitle": "O que muda com {tool} na Scooli",
         "practiceDescription": "Estas são as situações em que a ferramenta faz mais diferença no dia a dia de preparação e avaliação.",
         "howEyebrow": "Como funciona",
-        "howTitle": "Do tema ao instrumento de avaliação",
-        "howDescription": "Quatro passos desde o primeiro pedido até ter um instrumento revisto e pronto a entregar."
+        "howTitle": "Do tema à avaliação pronta",
+        "howDescription": "Quatro passos do primeiro pedido até ter uma avaliação revisada e pronta para aplicar."
       },
       "default": {
         "whenEyebrow": "Quando usar",
-        "whenTitle": "Situações em que esta ferramenta faz a diferença",
+        "whenTitle": "Situações em que esta ferramenta faz diferença",
         "practiceEyebrow": "Na prática",
-        "practiceTitle": "O que pode fazer com {tool}",
-        "practiceDescription": "Esta página resume o tipo de resultado que pode esperar e em que situações faz sentido usar esta ferramenta.",
+        "practiceTitle": "O que você pode fazer com {tool}",
+        "practiceDescription": "Esta página resume o tipo de resultado que você pode esperar e em que situações faz sentido usar esta ferramenta.",
         "howEyebrow": "Como funciona",
         "howTitle": "Quatro passos do pedido ao material pronto",
-        "howDescription": "Parte-se de um contexto simples, recebe-se uma base estruturada e ajusta-se antes de usar."
+        "howDescription": "Você parte de um contexto simples, recebe uma base estruturada e ajusta antes de usar."
       }
     }
   },
@@ -942,22 +924,22 @@
   },
   "aiForTeachers": {
     "meta": {
-      "title": "IA para professores em Portugal",
-      "description": "Plataforma de IA para professores em Portugal, alinhada com as Aprendizagens Essenciais: planos de aula, fichas, testes e apresentações editáveis, organizados por turma.",
+      "title": "IA para professores, alinhada à BNCC",
+      "description": "Plataforma de IA para professores, alinhada à BNCC: planos de aula, atividades, provas e apresentações editáveis, organizados por turma e por bimestre.",
       "keywords": [
         "ia para professores",
-        "ia para professores em portugal",
+        "inteligência artificial para professores",
         "ferramenta de ia para professores",
-        "software para professores",
         "plataforma de ia para professores",
-        "planificações com ia",
-        "fichas de trabalho com ia",
-        "gerador de testes com ia",
+        "plano de aula com ia",
+        "planejamento com ia",
+        "gerador de provas com ia",
+        "atividades com ia",
+        "lista de exercícios com ia",
         "apresentações com ia para aulas",
-        "aprendizagens essenciais",
-        "alinhamento curricular",
-        "currículo português",
-        "edtech portugal"
+        "bncc",
+        "habilidades da bncc",
+        "planejamento bncc"
       ]
     },
     "breadcrumb": {
@@ -965,8 +947,8 @@
       "page": "IA para professores"
     },
     "webPage": {
-      "title": "IA para professores em Portugal | Scooli",
-      "description": "A Scooli é uma plataforma de IA para professores em Portugal: prepara a semana de aulas de cada turma, com planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais."
+      "title": "IA para professores, alinhada à BNCC | Scooli",
+      "description": "A Scooli é uma plataforma de IA para professores: prepara a semana de aulas de cada turma, com planos de aula, atividades, provas e apresentações ligados às habilidades da BNCC."
     },
     "howToSchema": {
       "name": "Como usar a Scooli como IA para professores",
@@ -974,61 +956,61 @@
       "steps": [
         {
           "name": "Escolher o tipo de material",
-          "text": "Selecione se quer criar uma planificação, ficha, teste, quiz ou apresentação."
+          "text": "Escolha se quer criar um planejamento, uma lista de exercícios, uma prova, um quiz ou uma apresentação."
         },
         {
-          "name": "Dar contexto da aula",
-          "text": "Indique tema, ano, objetivo e, quando fizer sentido, as Aprendizagens Essenciais ou parte de um documento que já tem."
+          "name": "Dar o contexto da aula",
+          "text": "Informe o tema, o ano, o objetivo e, quando fizer sentido, as habilidades da BNCC ou um trecho de um documento que você já tem."
         },
         {
           "name": "Gerar uma primeira versão",
-          "text": "Receba uma base pronta a editar, em vez de começar a partir de uma página em branco."
+          "text": "Receba uma base pronta para editar, em vez de começar de uma página em branco."
         },
         {
-          "name": "Rever e adaptar",
+          "name": "Revisar e adaptar",
           "text": "Ajuste a linguagem, a dificuldade, a estrutura e os detalhes antes de usar o material em aula."
         }
       ]
     },
     "faq": [
       {
-        "question": "O que faz a Scooli pelos professores?",
-        "answer": "Organiza as aulas de cada turma a partir da planificação e prepara os recursos de cada semana: planos de aula, fichas de trabalho, testes, quizzes e apresentações, alinhados com as Aprendizagens Essenciais. Também adapta materiais por nível e transforma documentos que o professor já tem."
+        "question": "O que a Scooli faz pelos professores?",
+        "answer": "Organiza as aulas de cada turma a partir do planejamento e prepara os materiais de cada semana: planos de aula, listas de exercícios, provas, quizzes e apresentações, ligados às habilidades da BNCC. Também adapta materiais por nível e transforma documentos que o professor já tem."
       },
       {
         "question": "Qual é a diferença entre a Scooli e o ChatGPT?",
-        "answer": "Um chat devolve texto que ainda tem de ser copiado, formatado e confirmado. A Scooli devolve documentos estruturados no seu modelo, alinhados com o currículo, ligados ao calendário de cada turma e prontos a exportar para Word e PDF."
+        "answer": "Um chat devolve texto que ainda precisa ser copiado, formatado e conferido. A Scooli devolve documentos estruturados no seu modelo, ligados à BNCC e ao calendário de cada turma, prontos para exportar para Word e PDF."
       },
       {
-        "question": "A Scooli segue o currículo português?",
-        "answer": "Sim. Os materiais seguem as Aprendizagens Essenciais do ano e da disciplina, e a Scooli tem em conta os DL 54/2018 e 55/2018 na adaptação de materiais e na flexibilidade curricular."
+        "question": "A Scooli segue a BNCC?",
+        "answer": "Sim. Os materiais partem das habilidades da BNCC do ano e da disciplina, citadas com o código (por exemplo, EF06MA07). Se a turma tem estudantes público-alvo da educação especial ou acompanhados pelo AEE, você pode informar isso no pedido e a Scooli leva em conta ao preparar o material."
       },
       {
         "question": "A Scooli substitui o professor?",
-        "answer": "Não. A Scooli prepara a base e tira o trabalho repetitivo; o professor revê, ajusta e decide sempre o que leva para a aula."
+        "answer": "Não. A Scooli prepara a base e tira o trabalho repetitivo; o professor revisa, ajusta e decide sempre o que leva para a aula."
       },
       {
         "question": "Posso usar os documentos que já tenho?",
-        "answer": "Sim. Pode carregar os seus materiais e transformá-los em novas fichas, testes ou versões adaptadas, em vez de começar do zero."
+        "answer": "Sim. Você pode enviar seus materiais e transformá-los em novas listas de exercícios, provas ou versões adaptadas, em vez de começar do zero."
       },
       {
         "question": "Quanto custa?",
-        "answer": "Pode experimentar a Scooli grátis durante 30 dias, sem dados de pagamento e sem compromisso. Depois, o plano Pro não tem limites de criação. As escolas e agrupamentos têm um plano institucional, com gestão central da equipa e um piloto antes de decidir."
+        "answer": "Você pode experimentar a Scooli grátis por 30 dias, sem dados de pagamento e sem compromisso. Depois, o plano Pro não tem limites de criação. Escolas e redes de ensino têm um plano institucional, com gestão central das contas e um piloto antes de decidir."
       }
     ],
     "hero": {
       "eyebrow": "IA para professores",
-      "title": "IA para professores em Portugal, alinhada com as <em>Aprendizagens Essenciais</em>.",
-      "description": "A Scooli é uma plataforma de IA para professores em Portugal. Cria planos de aula, fichas de trabalho, testes, quizzes e apresentações editáveis, alinhados com as Aprendizagens Essenciais, e organiza as aulas de cada turma a partir da sua planificação. O professor revê, ajusta e dá a aula.",
+      "title": "IA para professores, alinhada à <em>BNCC</em>.",
+      "description": "A Scooli é uma plataforma de IA para professores. Cria planos de aula, listas de exercícios, provas, quizzes e apresentações editáveis, ligados às habilidades da BNCC, e organiza as aulas de cada turma por bimestre a partir do seu planejamento. O professor revisa, ajusta e dá a aula.",
       "secondaryLabel": "Ver as ferramentas",
-      "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em «Gerar semana» prepara os planos de aula e um deles abre pronto a editar"
+      "videoAria": "Demonstração: a semana de aulas no calendário da Scooli; um clique em “Gerar semana” prepara os planos de aula e um deles abre pronto para editar"
     },
     "faqSection": {
       "eyebrow": "Perguntas frequentes",
-      "title": "IA para professores: o que costumam perguntar."
+      "title": "IA para professores: as perguntas mais comuns."
     },
     "cta": {
-      "title": "Experimente com a semana que vem.",
+      "title": "Experimente com a próxima semana.",
       "description": "Comece grátis, prepare a semana de uma turma e veja o resultado antes de decidir.",
       "secondaryLabel": "Para escolas"
     },
@@ -1038,27 +1020,27 @@
       "lessons": "aulas preparadas"
     },
     "week": {
-      "kicker": "A sua semana",
+      "kicker": "Sua semana",
       "title": "Uma semana de preparação, com e sem a Scooli.",
       "description": "O trabalho é o mesmo. Muda quem faz a parte repetitiva.",
       "without": {
         "label": "Sem a Scooli",
         "items": [
-          "Domingo à noite a decidir o que dar a cada turma",
-          "Planos de aula escritos de raiz, um a um",
-          "Fichas e testes montados a partir de várias fontes",
+          "Domingo à noite decidindo o que dar em cada turma",
+          "Planos de aula escritos do zero, um por um",
+          "Listas e provas montadas a partir de várias fontes",
           "Respostas de chat copiadas para o Word e formatadas à mão",
-          "Confirmar à mão as Aprendizagens Essenciais de cada aula"
+          "Conferir à mão as habilidades da BNCC de cada aula"
         ]
       },
       "with": {
         "label": "Com a Scooli",
         "items": [
-          "As aulas de cada turma já estão no calendário, a partir da planificação",
-          "Um clique em «Gerar semana» prepara um plano para cada aula",
-          "Fichas, testes, quizzes e apresentações criados a partir do mesmo tema",
-          "Documentos no seu modelo, prontos a exportar para Word e PDF",
-          "Alinhados com as Aprendizagens Essenciais do ano e da disciplina"
+          "As aulas de cada turma já estão no calendário, a partir do planejamento",
+          "Um clique em “Gerar semana” prepara um plano para cada aula",
+          "Listas, provas, quizzes e apresentações criados a partir do mesmo tema",
+          "Documentos no seu modelo, prontos para exportar para Word e PDF",
+          "Ligados às habilidades da BNCC do ano e da disciplina"
         ]
       }
     },
@@ -1066,43 +1048,43 @@
       "kicker": "Em resumo",
       "title": "O que é a Scooli, em poucas palavras?",
       "paragraphs": [
-        "A Scooli é software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de pedir texto a um chat e reorganizar tudo à mão, o professor começa com um documento pronto a editar: plano de aula, ficha, teste, quiz ou apresentação.",
-        "Foi feita para a escola portuguesa: escreve em português de Portugal, segue as Aprendizagens Essenciais do ano e da disciplina e tem em conta os DL 54/2018 e 55/2018 quando adapta materiais."
+        "A Scooli é um software de IA para professores que querem preparar aulas com menos trabalho repetitivo. Em vez de pedir texto a um chat e reorganizar tudo à mão, o professor começa com um documento pronto para editar: plano de aula, lista de exercícios, prova, quiz ou apresentação.",
+        "Para o professor brasileiro, a Scooli escreve em português do Brasil, parte das habilidades da BNCC do ano e da disciplina e organiza o ano letivo em bimestres, com o calendário e os feriados brasileiros."
       ]
     },
     "whenToChoose": {
       "title": "Quando faz sentido escolher a Scooli",
       "items": [
-        "Quando quer preparar materiais mais depressa sem abdicar de rever tudo",
-        "Quando precisa de materiais alinhados com as Aprendizagens Essenciais, não de texto genérico",
-        "Quando quer português de Portugal e o contexto da escola portuguesa",
-        "Quando quer documentos prontos a usar, não apenas conversar com um chatbot"
+        "Quando você quer preparar materiais mais rápido sem abrir mão de revisar tudo",
+        "Quando precisa de materiais ligados às habilidades da BNCC, não de texto genérico",
+        "Quando quer acompanhar o planejamento de cada turma ao longo dos bimestres",
+        "Quando quer documentos prontos para usar, e não apenas conversar com um chatbot"
       ]
     },
     "tools": {
-      "kicker": "O que pode criar",
+      "kicker": "O que você pode criar",
       "title": "Uma ferramenta para cada tarefa da semana.",
       "description": "Cada ferramenta tem a sua página, com exemplos e perguntas frequentes."
     },
     "trust": {
-      "kicker": "Porque confiar",
-      "title": "Pensada para a escola portuguesa.",
+      "kicker": "Por que confiar",
+      "title": "Preparada para a escola brasileira.",
       "items": [
         {
-          "title": "Aprendizagens Essenciais",
-          "description": "Cada material segue as aprendizagens do ano e da disciplina, em vez de partir de um texto genérico."
+          "title": "BNCC",
+          "description": "Cada material parte das habilidades do ano e da disciplina, com o código, em vez de partir de um texto genérico."
         },
         {
-          "title": "Português de Portugal",
-          "description": "A linguagem, os exemplos e os modelos são os da escola portuguesa."
+          "title": "Português do Brasil",
+          "description": "A linguagem, os termos e o calendário são os da escola brasileira: bimestres, provas, listas de exercícios."
         },
         {
           "title": "Tudo editável",
-          "description": "A Scooli prepara a base; o professor revê e decide o que leva para a aula."
+          "description": "A Scooli prepara a base; o professor revisa e decide o que leva para a aula."
         },
         {
           "title": "Privacidade à vista",
-          "description": "As regras de privacidade e de utilização estão públicas, na página Confiança."
+          "description": "As regras de privacidade e de uso, conforme a LGPD, são públicas e estão na página Confiança."
         }
       ]
     }
@@ -1338,8 +1320,8 @@
     "dcDescription": "Ferramenta para criar planos de aula, atividades e provas com IA para escolas brasileiras, ligados às habilidades da BNCC"
   },
   "legalLayout": {
-    "backToHome": "Voltar à página principal",
-    "documentLabel": "Documento Legal",
+    "backToHome": "Voltar para a página inicial",
+    "documentLabel": "Documento legal",
     "lastUpdated": "Última atualização: {date}"
   },
   "privacyPolicy": {
@@ -1662,65 +1644,65 @@
   "teachers": {
     "meta": {
       "title": "Scooli para professores",
-      "description": "Prepare a semana em menos tempo: planos de aula, fichas, testes e apresentações alinhados com as Aprendizagens Essenciais e prontos a editar."
+      "description": "Prepare a semana em menos tempo: planos de aula, atividades, provas e apresentações alinhados à BNCC e prontos para editar."
     },
     "hero": {
       "eyebrow": "Para professores",
       "title": "Prepare a semana em menos tempo, sem começar do zero.",
-      "description": "Planos de aula, fichas, testes, quizzes, planificações e apresentações alinhados com as Aprendizagens Essenciais e prontos a editar para cada turma.",
+      "description": "Planos de aula, listas de exercícios, provas, quizzes, planejamentos e apresentações ligados às habilidades da BNCC e prontos para editar para cada turma.",
       "secondaryLabel": "Ver preços",
       "checklist": [
         "Grátis para começar, sem cartão",
-        "Alinhado com as Aprendizagens Essenciais",
+        "Alinhado à BNCC",
         "Tudo editável antes de usar"
       ],
-      "imageAlt": "Plano de aula de Matemática a ser criado e aberto no editor da Scooli"
+      "imageAlt": "Plano de aula de Matemática sendo criado e aberto no editor da Scooli"
     },
     "week": {
       "kicker": "Na semana",
       "title": "O que muda na prática durante a semana.",
-      "description": "A Scooli encaixa nas tarefas que mais se repetem: planificar, criar materiais e adaptá-los para turmas diferentes.",
+      "description": "A Scooli entra nas tarefas que mais se repetem: planejar, criar materiais e adaptá-los para turmas diferentes.",
       "days": [
         {
           "label": "Segunda",
           "title": "Aulas da semana",
-          "description": "Prepare os planos de aula da semana de uma vez, a partir da sua planificação."
+          "description": "Prepare os planos de aula da semana de uma vez, a partir do seu planejamento."
         },
         {
           "label": "Quarta",
-          "title": "Ficha de consolidação",
-          "description": "Gere uma ficha alinhada com as Aprendizagens Essenciais e ajuste-a à turma."
+          "title": "Lista de exercícios",
+          "description": "Gere uma lista ligada às habilidades da BNCC da aula e ajuste-a à turma."
         },
         {
           "label": "Sexta",
-          "title": "Teste ou quiz rápido",
-          "description": "Feche um teste ou um quiz sem reconstruir a estrutura toda."
+          "title": "Prova ou quiz rápido",
+          "description": "Feche uma prova ou um quiz sem montar toda a estrutura de novo."
         }
       ]
     },
     "library": {
       "kicker": "Biblioteca comunitária",
       "title": "Parta do trabalho de outros professores.",
-      "description": "Explore materiais partilhados por outros professores, duplique o que lhe serve e adapte-o à sua turma em vez de começar do zero.",
+      "description": "Explore materiais compartilhados por outros professores, duplique o que serve para você e adapte à sua turma em vez de começar do zero.",
       "points": [
         {
           "title": "Descobrir",
-          "description": "Pesquise por disciplina, ano e tipo de recurso."
+          "description": "Pesquise por disciplina, ano e tipo de material."
         },
         {
           "title": "Duplicar e adaptar",
-          "description": "Use um recurso como base e chegue mais depressa à versão final."
+          "description": "Use um material como base e chegue mais rápido à versão final."
         },
         {
-          "title": "Guardar e reutilizar",
-          "description": "Guarde materiais para voltar a usar ao longo do ano."
+          "title": "Salvar e reutilizar",
+          "description": "Salve materiais para usar de novo ao longo do ano."
         }
       ],
-      "imageAlt": "Biblioteca comunitária da Scooli com pesquisa, filtros e recursos partilhados"
+      "imageAlt": "Biblioteca comunitária da Scooli com busca, filtros e materiais compartilhados por professores"
     },
     "finalCta": {
       "title": "Experimente com a próxima aula.",
-      "description": "Comece grátis, faça um pedido real para a próxima aula e ajuste tudo ao seu contexto antes de usar.",
+      "description": "Comece grátis, faça um pedido de verdade para a próxima aula e ajuste tudo ao seu contexto antes de usar.",
       "secondaryLabel": "Ver preços"
     }
   },
@@ -1732,26 +1714,26 @@
   "investors": {
     "meta": {
       "title": "Investidores: a visão e os números da Scooli",
-      "description": "A Scooli prepara a semana de cada turma e mantém um modelo vivo do currículo para decidir o que fazer a seguir. Produto, tração, fosso, modelo e equipa."
+      "description": "A Scooli prepara a semana de cada turma e mantém um modelo vivo do currículo para decidir o que fazer em seguida. Produto, tração, diferencial, modelo de negócio e equipe."
     },
     "hero": {
       "eyebrow": "Investidores",
       "title": "Outras ferramentas geram conteúdo. A Scooli <em>conhece cada turma</em>.",
-      "description": "A Scooli prepara a semana de aulas de cada turma, com planos de aula, fichas, testes, quizzes e apresentações prontos a editar, e mantém um modelo vivo do currículo, o que foi planeado, o que foi dado e o que falta, para decidir o que cada turma deve fazer a seguir. Começa nos professores e já chega à escola inteira.",
-      "videoAria": "Demonstração: o mês no calendário da Scooli, a semana de uma turma, «Gerar semana» e os planos de aula prontos"
+      "description": "A Scooli prepara a semana de aulas de cada turma, com planos de aula, listas de exercícios, provas, quizzes e apresentações prontos para editar, e mantém um modelo vivo do currículo (o que foi planejado, o que foi dado e o que falta) para decidir o que cada turma deve fazer em seguida. Começa pelos professores e já chega à escola inteira.",
+      "videoAria": "Demonstração: o mês no calendário da Scooli, a semana de uma turma, “Gerar semana” e os planos de aula prontos"
     },
     "problem": {
       "kicker": "O problema",
-      "title": "A IA gera conteúdo. Ninguém acompanha o currículo.",
+      "title": "A IA gera conteúdo. Falta acompanhar o currículo.",
       "paragraphs": [
-        "Há dezenas de ferramentas que geram planos de aula, fichas e testes. Qualquer uma pode ser copiada, e as grandes plataformas podem acrescentá-la quando quiserem.",
-        "O que ninguém tem é um modelo vivo de onde está cada turma no currículo: o que foi planeado, o que foi dado e o que falta. Sem isso, cada pedido parte do zero e a escola não sabe o que realmente acontece nas aulas."
+        "Há dezenas de ferramentas que geram planos de aula, listas de exercícios e provas. Qualquer uma pode ser copiada, e as grandes plataformas podem incorporá-la quando quiserem.",
+        "O que falta é um modelo vivo de onde cada turma está no currículo: o que foi planejado, o que foi dado e o que ainda falta. Sem isso, cada pedido começa do zero e a escola não sabe o que realmente acontece nas aulas."
       ]
     },
     "team": {
-      "kicker": "Equipa",
-      "title": "Quem está a construir a Scooli.",
-      "description": "Engenharia, educação e crescimento, com experiência na Porto Editora, a maior editora escolar portuguesa, Talkdesk, Körber, Infios e Corticeira Amorim.",
+      "kicker": "Equipe",
+      "title": "Quem está construindo a Scooli.",
+      "description": "Engenharia, educação e crescimento, com experiência na Porto Editora, a maior editora escolar de Portugal, na Talkdesk, na Körber, na Infios e na Corticeira Amorim.",
       "people": [
         {
           "role": "Cofundador · Engenharia e IA",
@@ -1767,34 +1749,34 @@
         },
         {
           "role": "Consultora pedagógica",
-          "background": "Professora do 1.º ciclo"
+          "background": "Professora do ensino básico em Portugal"
         }
       ],
-      "link": "Conhecer a equipa"
+      "link": "Conhecer a equipe"
     },
     "contact": {
-      "kicker": "Contacto",
+      "kicker": "Contato",
       "title": "Vamos conversar.",
       "deckTitle": "Pedir o pitch deck",
-      "deckDescription": "Diga-nos quem é e enviamos-lhe o pitch deck.",
-      "callTitle": "Marcar uma conversa",
-      "callDescription": "Escolha o dia e a hora que lhe dão mais jeito, ou escreva-nos para info@scooli.app.",
-      "callCta": "Marcar uma conversa",
+      "deckDescription": "Conte quem você é e enviamos o pitch deck.",
+      "callTitle": "Agendar uma conversa",
+      "callDescription": "Escolha o dia e o horário que forem melhores para você, ou escreva para info@scooli.app.",
+      "callCta": "Agendar uma conversa",
       "callDialogTitle": "Falar com a Scooli",
-      "callDialogDescription": "Marque uma conversa com o Miguel ou deixe-nos uma mensagem."
+      "callDialogDescription": "Agende uma conversa com o Miguel ou deixe uma mensagem."
     },
     "deckForm": {
       "nameLabel": "Nome",
-      "emailLabel": "Email",
+      "emailLabel": "E-mail",
       "companyLabel": "Fundo ou empresa (opcional)",
-      "noteLabel": "Nota (opcional)",
-      "submit": "Enviar-me o pitch deck",
-      "sending": "A enviar...",
+      "noteLabel": "Observação (opcional)",
+      "submit": "Quero receber o pitch deck",
+      "sending": "Enviando...",
       "success": "Pedido recebido. Respondemos em breve com o pitch deck.",
-      "privacy": "Usamos o seu email apenas para lhe responder.",
+      "privacy": "Usamos o seu e-mail apenas para responder a você.",
       "errors": {
-        "invalid": "Indique o seu nome e um email válido.",
-        "unavailable": "Não foi possível enviar agora. Escreva-nos para info@scooli.app."
+        "invalid": "Informe seu nome e um e-mail válido.",
+        "unavailable": "Não foi possível enviar agora. Escreva para info@scooli.app."
       },
       "defaultMessage": "Pedido do pitch deck da Scooli."
     },
@@ -1804,7 +1786,7 @@
       "active": "ativos no último mês",
       "lessons": "aulas preparadas",
       "launchValue": "< 4 semanas",
-      "launch": "para pôr a Scooli a funcionar num novo mercado"
+      "launch": "para colocar a Scooli no ar em um novo mercado"
     },
     "model": {
       "kicker": "Modelo de negócio",
@@ -1814,107 +1796,107 @@
         {
           "title": "30 dias grátis",
           "price": "€0",
-          "description": "Sem dados de pagamento. A porta de entrada: cada professor experimenta com as suas aulas reais."
+          "description": "Sem dados de pagamento. A porta de entrada: cada professor experimenta com as suas aulas de verdade."
         },
         {
           "title": "Pro",
           "price": "{pro}/mês",
-          "description": "Para o professor, sem limites de criação. Também disponível em plano anual."
+          "description": "Para o professor, sem limites de criação. Também disponível no plano anual."
         },
         {
           "title": "Institucional",
           "price": "Por escola",
-          "description": "Para escolas e agrupamentos: o currículo de todas as turmas à vista, gestão central e acompanhamento, com preço ajustado ao número de professores."
+          "description": "Para escolas e redes de ensino: o currículo de todas as turmas à vista, gestão central e acompanhamento, com preço ajustado ao número de professores."
         }
       ]
     },
     "market": {
       "kicker": "Mercado",
-      "title": "Começámos em Portugal, onde provamos o motor.",
-      "description": "Portugal é o mercado que conhecemos melhor, por isso começámos aqui e é onde estamos a provar o motor de execução curricular. Entrar num novo mercado é sobretudo uma questão de distribuição: tecnicamente, conseguimos pôr a Scooli a funcionar num novo país em menos de 4 semanas.",
+      "title": "Começamos em Portugal. O Brasil é o próximo.",
+      "description": "Portugal é o mercado que conhecemos melhor, por isso começamos lá, e é onde estamos provando o motor de execução curricular. O Brasil é o próximo: a Scooli já funciona com a BNCC, os bimestres e o calendário escolar brasileiro. Entrar em um novo mercado é sobretudo uma questão de distribuição: tecnicamente, conseguimos colocar a Scooli no ar em um novo país em menos de 4 semanas.",
       "roadmapTitle": "Para onde vamos",
-      "roadmapDescription": "Da turma à escola, da escola ao sistema. O percurso completo está no roadmap.",
+      "roadmapDescription": "Da turma à escola, da escola ao sistema. O caminho completo está no roadmap.",
       "roadmapLink": "Ver o roadmap"
     },
     "moat": {
-      "kicker": "O fosso",
+      "kicker": "O diferencial",
       "title": "Não é o modelo de IA. É o contexto que se acumula.",
-      "description": "Os modelos vão continuar a melhorar e a ficar baratos. O que não se copia é o contexto de cada turma, construído semana a semana.",
+      "description": "Os modelos vão continuar melhorando e ficando mais baratos. O que não se copia é o contexto de cada turma, construído semana a semana.",
       "items": [
         {
           "title": "Currículo estruturado",
-          "description": "Disciplinas, anos, domínios, tópicos, objetivos e dependências, como dados que a IA pode usar, não como PDF."
+          "description": "Disciplinas, anos, unidades temáticas, habilidades e dependências, como dados que a IA pode usar, não como PDF."
         },
         {
           "title": "O estado de cada turma",
-          "description": "O que devia ter sido dado, o que foi dado, onde está a turma e o que vem a seguir."
+          "description": "O que deveria ter sido dado, o que foi dado, onde a turma está e o que vem a seguir."
         },
         {
           "title": "Dados de execução",
-          "description": "Planeado, dado e avaliado, ao longo de anos. Uma funcionalidade copia-se; o contexto de dois anos de aulas não."
+          "description": "Planejado, dado e avaliado, ao longo dos anos. Uma funcionalidade se copia; o contexto de dois anos de aulas, não."
         },
         {
           "title": "Fluxos que agem",
-          "description": "A Scooli deixa de esperar pelo pedido: atualiza planos, prepara aulas, deteta atrasos e sugere reforço."
+          "description": "A Scooli deixa de esperar pelo pedido: atualiza planos, prepara aulas, detecta atrasos e sugere reforço."
         },
         {
           "title": "Rede institucional",
-          "description": "Professores, turmas, departamentos, escolas. Quanto mais da escola usa, mais valor tem para todos."
+          "description": "Professores, turmas, áreas, escolas. Quanto mais a escola usa, mais valor a Scooli tem para todos."
         }
       ]
     },
     "flywheel": {
       "kicker": "Distribuição",
       "title": "De um professor à escola inteira.",
-      "description": "Os professores são o canal: cada um que usa a Scooli todas as semanas leva a escola mais perto do plano institucional.",
+      "description": "Os professores são o canal: cada um que usa a Scooli toda semana leva a escola para mais perto do plano institucional.",
       "steps": [
         {
           "title": "Um professor descobre a Scooli",
-          "description": "Pesquisa orgânica e recomendação entre colegas."
+          "description": "Busca orgânica e indicação entre colegas."
         },
         {
-          "title": "Usa-a nas suas turmas",
-          "description": "A planificação vira calendário e cada semana é preparada."
+          "title": "Usa nas suas turmas",
+          "description": "O planejamento vira calendário e cada semana é preparada."
         },
         {
-          "title": "Convida colegas",
+          "title": "Indica aos colegas",
           "description": "Mais professores da mesma escola entram, cada um com as suas turmas."
         },
         {
           "title": "A escola adota o plano institucional",
-          "description": "A direção vê o currículo de todas as turmas, e a conversa deixa de ser \"quer experimentar?\"."
+          "description": "A direção vê o currículo de todas as turmas, e a conversa deixa de ser “quer experimentar?”."
         }
       ]
     }
   },
   "roadmap": {
     "meta": {
-      "title": "Roadmap: o que já existe e o que vem a seguir",
-      "description": "O caminho da Scooli: de planear aulas ao estado de cada turma e da escola inteira. O que já pode usar e o que vem a seguir."
+      "title": "Roadmap: o que já existe e o que vem por aí",
+      "description": "O caminho da Scooli: de planejar aulas ao estado de cada turma e da escola inteira. O que você já pode usar e o que vem por aí."
     },
     "hero": {
       "eyebrow": "Roadmap",
-      "title": "Do planeamento à escola inteira.",
-      "description": "A Scooli começou por preparar aulas. Hoje cada turma tem um estado, para o professor e para a escola, e a Scooli propõe o que vem a seguir. Daqui, o caminho leva à semana preparada antes de a pedir. Sem datas: lançamos quando estiver bem feito."
+      "title": "Do planejamento à escola inteira.",
+      "description": "A Scooli começou preparando aulas. Hoje cada turma tem um estado, para o professor e para a escola, e a Scooli propõe o que vem a seguir. Daqui, o caminho leva à semana preparada antes de você pedir. Sem datas: lançamos quando estiver bem feito."
     },
     "suggest": {
       "text": "Tem uma sugestão para a Scooli?",
-      "link": "Fale connosco"
+      "link": "Fale com a gente"
     },
     "legend": {
       "live": "Disponível",
-      "next": "A seguir"
+      "next": "Próximo"
     },
     "phaseLabel": "Fase",
     "phases": [
       {
-        "name": "Ligar",
-        "title": "Currículo, planificação e calendário no mesmo sítio",
+        "name": "Conectar",
+        "title": "Currículo, planejamento e calendário no mesmo lugar",
         "status": "live",
         "items": [
-          "Planos de aula, fichas, testes, quizzes e apresentações",
+          "Planos de aula, listas de exercícios, provas, quizzes e apresentações",
           "Currículo por ano e disciplina",
-          "Planificação anual, de período ou de unidade",
+          "Planejamento anual, bimestral ou de unidade",
           "Calendário de aulas de cada turma",
           "Os documentos que o professor já tem",
           "Painel da escola com o currículo de todas as turmas"
@@ -1925,8 +1907,8 @@
         "title": "Cada turma tem um estado",
         "status": "live",
         "items": [
-          "O que estava planeado e o que foi dado",
-          "O que falta no currículo",
+          "O que estava planejado e o que foi dado",
+          "O que falta do currículo",
           "O histórico da turma ao longo do ano"
         ]
       },
@@ -1937,27 +1919,27 @@
         "items": [
           "Reforçar um tópico, mover outro",
           "Materiais diferenciados por nível",
-          "Calendário e planificação atualizados num clique"
+          "Calendário e planejamento atualizados em um clique"
         ]
       },
       {
         "name": "Agir",
-        "title": "A semana preparada antes de a pedir",
+        "title": "A semana preparada antes de você pedir",
         "status": "next",
         "items": [
           "Prepara a semana seguinte por iniciativa própria",
-          "Avisa de atrasos e sugere reforços",
-          "Propõe a avaliação na altura certa"
+          "Avisa sobre atrasos e sugere reforços",
+          "Propõe a avaliação no momento certo"
         ]
       },
       {
         "name": "Aprender",
-        "title": "O que os alunos perceberam",
+        "title": "O que os alunos entenderam",
         "status": "next",
         "items": [
-          "Evidência das avaliações por tópico",
+          "Evidências das avaliações por tópico",
           "Dificuldades que se repetem entre turmas",
-          "Intervenções sugeridas com base nos resultados"
+          "Intervenções sugeridas a partir dos resultados"
         ]
       },
       {
@@ -1965,24 +1947,24 @@
         "title": "A escola inteira em sintonia",
         "status": "next",
         "items": [
-          "Visão por departamento e por escola",
-          "Currículo e recursos partilhados",
-          "Integrações e controlo de acessos da escola"
+          "Visão por área e por escola",
+          "Currículo e materiais compartilhados",
+          "Integrações e controle de acessos da escola"
         ]
       }
     ],
     "today": {
-      "title": "E tudo isto assenta no que já funciona hoje",
+      "title": "E tudo isso se apoia no que já funciona hoje",
       "items": [
         "Painel da escola com o currículo de todas as turmas",
         "Planos de aula",
-        "Fichas de trabalho",
-        "Testes e quizzes",
+        "Listas de exercícios",
+        "Provas e quizzes",
         "Apresentações",
-        "Planificações",
+        "Planejamentos",
         "Adaptação de materiais",
-        "Carregar documentos",
-        "«Gerar semana»",
+        "Envio de documentos",
+        "“Gerar semana”",
         "Biblioteca comunitária",
         "Espaço da escola"
       ]
@@ -2117,7 +2099,7 @@
           "state": "ok"
         },
         {
-          "className": "7º A · Português",
+          "className": "7º A · Língua Portuguesa",
           "teacher": "Rafael Oliveira",
           "progress": 46,
           "state": "watch"
@@ -2148,13 +2130,13 @@
     "summary": "Resumo",
     "summaryTitle": "Resumo da comparação",
     "detail": "Comparação detalhada",
-    "aspect": "Aspeto",
-    "why": "Porquê a Scooli",
+    "aspect": "Aspecto",
+    "why": "Por que a Scooli",
     "faq": "Perguntas frequentes",
     "sources": "Fontes",
     "sourcesTitle": "Todas as afirmações têm fonte",
-    "sourcesDescription": "Cada afirmação sobre outro produto vem da sua documentação pública ou de avaliações independentes. Quando não encontrámos algo, dizemo-lo em vez de o afirmar.",
+    "sourcesDescription": "Cada afirmação sobre outro produto vem da documentação pública dele ou de avaliações independentes. Quando não encontramos algo, dizemos isso em vez de afirmar o contrário.",
     "forSchools": "Para escolas",
-    "pilot": "Falar sobre um piloto na minha escola"
+    "pilot": "Conversar sobre um piloto na minha escola"
   }
 }

@@ -18,7 +18,7 @@ const DEFAULT_UPDATED: Record<Locale, string> = {
 const PT_EN_UPDATED: Record<string, string> = {
   "/privacy": "2025-07-15",
   "/terms": "2026-01-05",
-  "/comparar/[slug]": "2026-10-07",
+  "/comparar/[slug]": "2026-11-25",
 };
 
 const PAGE_UPDATED: Record<Locale, Record<string, string>> = {

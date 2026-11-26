@@ -15,15 +15,7 @@ import type { PathnameKey } from "./urls";
  * not an allowlist that has to be kept in sync with `pathnames`.
  */
 export const NOT_YET_LOCALIZED: Partial<Record<Locale, readonly PathnameKey[]>> = {
-  "pt-BR": [
-    "/professores",
-    "/ia-para-professores",
-    "/ferramentas",
-    "/ferramentas/[slug]",
-    "/comparar/[slug]",
-    "/roadmap",
-    "/investidores",
-  ],
+  "pt-BR": [],
 };
 
 /** Whether `path` (an internal pathname key) has its copy written in `locale`. pt-PT is the source copy, so always. */

@@ -7,6 +7,9 @@ const SITE = "https://www.scooli.app";
 const ok = (status) => ({ status });
 const redirect = (status, to) => ({ status, to });
 
+// Every /br tool page is published: the pt-PT slug 301s to the Brazilian one, which serves.
+const brTool = (from, to) => [[from, redirect(301, to)], [to, ok(200)]];
+
 /** [path, expectation]. A function expectation returns an error string or nothing. */
 const cases = [
   ["/", ok(200)],
@@ -17,10 +20,15 @@ const cases = [
   ["/br/escolas", ok(200)],
   ["/br/contato", ok(200)],
   ["/br/contacto", redirect(301, "/br/contato")],
-  ["/br/professores", redirect(307, "/br")],
-  ["/br/ferramentas", redirect(307, "/br")],
-  ["/br/ferramentas/plano-de-aula", redirect(307, "/br")],
-  ["/br/comparar/teachy", redirect(307, "/br")],
+  ["/br/professores", ok(200)],
+  ["/br/ferramentas", ok(200)],
+  ["/br/ferramentas/plano-de-aula", ok(200)],
+  ["/br/comparar/teachy", ok(200)],
+  ...brTool("/br/ferramentas/gerador-de-testes", "/br/ferramentas/gerador-de-provas"),
+  ...brTool("/br/ferramentas/fichas-de-trabalho", "/br/ferramentas/atividades"),
+  ...brTool("/br/ferramentas/planificacoes", "/br/ferramentas/planejamentos"),
+  ...brTool("/br/ferramentas/sequencias-de-aulas", "/br/ferramentas/sequencias-didaticas"),
+  ...brTool("/br/ferramentas/carregar-documentos", "/br/ferramentas/enviar-documentos"),
   ["/en/tools/lesson-plan-generator", ok(200)],
   ["/en/ferramentas/plano-de-aula", redirect(301, "/en/tools/lesson-plan-generator")],
   [
