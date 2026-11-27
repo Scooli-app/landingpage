@@ -7,6 +7,7 @@ import type { Locale } from "@/i18n/routing";
 import { appMedia } from "@/lib/app-media";
 import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import { cn } from "@/lib/utils";
+import { Linkedin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -19,20 +20,37 @@ type TeamMember = {
   name: string;
   image: string;
   location: string;
+  linkedin: string;
   /** Pedro's photo is framed wider than the others. */
   imageClassName?: string;
 };
 
 const team: TeamMember[] = [
-  { name: "Miguel Rodrigues", image: "/team/miguel.jpg", location: "Santa Maria da Feira, Aveiro" },
+  {
+    name: "Miguel Rodrigues",
+    image: "/team/miguel.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    linkedin: "https://www.linkedin.com/in/miguel-r0drigues/",
+  },
   {
     name: "Pedro Rocha",
     image: "/team/pedro.jpeg",
     location: "Vila Nova de Gaia, Porto",
+    linkedin: "https://www.linkedin.com/in/pedrorocha06/",
     imageClassName: "scale-[1.28]",
   },
-  { name: "Hugo Silva", image: "/team/hugo.jpg", location: "Santa Maria da Feira, Aveiro" },
-  { name: "Sílvia Valério", image: "/team/silvia.jpg", location: "Lisboa" },
+  {
+    name: "Hugo Silva",
+    image: "/team/hugo.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    linkedin: "https://www.linkedin.com/in/hugo-silva-76a3181a7/",
+  },
+  {
+    name: "Sílvia Valério",
+    image: "/team/silvia.jpg",
+    location: "Lisboa",
+    linkedin: "https://www.linkedin.com/in/s%C3%ADlvia-val%C3%A9rio-9ba70b221/",
+  },
 ];
 
 function Portrait({
@@ -182,6 +200,15 @@ export function AboutPage() {
               <p className="mt-1 text-[15px] text-body">{members[index]?.role}</p>
               <p className="mt-2 text-[15px] font-medium text-ink">{members[index]?.background}</p>
               <p className="mt-1 text-sm text-subtle">{member.location}</p>
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-violet-ink hover:underline"
+              >
+                <Linkedin className="size-4" strokeWidth={1.75} aria-hidden />
+                LinkedIn
+              </a>
             </li>
           ))}
         </ul>

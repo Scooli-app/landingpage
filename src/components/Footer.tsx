@@ -1,7 +1,7 @@
 import { NAV_TOOL_SLUGS } from "@/components/site/nav-data";
 import { isHrefLocalized } from "@/i18n/localizationStatus";
 import type { Locale } from "@/i18n/routing";
-import { Facebook, Instagram } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import type { ComponentProps } from "react";
@@ -48,6 +48,7 @@ const comparisonLinks: { label: Record<Locale, string>; slug: string }[] = [
 ];
 
 const socialLinks = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/company/scooliapp/", icon: Linkedin },
   { label: "Instagram", href: "https://www.instagram.com/scooliapp/", icon: Instagram },
   {
     label: "Facebook",
@@ -164,7 +165,18 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-4 border-t border-line pt-6 text-[13px] text-faint sm:flex-row sm:items-center sm:justify-between">
           {/* Passed as a string so ICU does not group the digits ("2.026"). */}
-          <p>{t("rights", { year: String(year) })}</p>
+          <p>
+            {t("rights", { year: String(year) })} ·{" "}
+            {/* Public company record, so the legal entity behind Scooli can be checked. */}
+            <a
+              href="https://www.racius.com/fictional-cloud-lda/"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-ink hover:underline"
+            >
+              {t("companyId")}
+            </a>
+          </p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
             <EmailContact
               className="px-0 py-0 text-[13px] text-subtle hover:bg-transparent hover:text-ink"
