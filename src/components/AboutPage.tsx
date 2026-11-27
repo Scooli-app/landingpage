@@ -189,7 +189,7 @@ export function AboutPage() {
         />
         <ul className="grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((member, index) => (
-            <li key={member.name} data-reveal>
+            <li key={member.name} data-reveal className="flex flex-col">
               <Portrait
                 src={member.image}
                 alt={members[index]?.alt ?? member.name}
@@ -204,7 +204,7 @@ export function AboutPage() {
                 href={member.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-violet-ink hover:underline"
+                className="mt-auto inline-flex items-center gap-1.5 self-start pt-3 text-sm font-medium text-violet-ink hover:underline"
               >
                 <Linkedin className="size-4" strokeWidth={1.75} aria-hidden />
                 LinkedIn
