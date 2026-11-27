@@ -412,6 +412,7 @@ export const LEGAL_ENTITY_NAME = "FICTIONAL CLOUD, LDA.";
 export const SOCIAL_PROFILES = [
   "https://www.instagram.com/scooliapp/",
   "https://www.facebook.com/people/Scooli/61588415560096/",
+  "https://www.linkedin.com/company/scooliapp/",
 ] as const;
 
 /** The people the site names publicly (photos live in /public/team). */
@@ -419,7 +420,6 @@ export const TEAM_PEOPLE = [
   { id: "miguel", name: "Miguel Rodrigues", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", "pt-BR": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/miguel.jpg", founder: true },
   { id: "pedro", name: "Pedro Rocha", jobTitle: { "pt-PT": "Cofundador, engenharia de software e IA", "pt-BR": "Cofundador, engenharia de software e IA", en: "Co-founder, software and AI engineering" }, image: "/team/pedro.jpeg", founder: true },
   { id: "hugo", name: "Hugo Silva", jobTitle: { "pt-PT": "Sócio, Chief Growth Officer", "pt-BR": "Sócio, Chief Growth Officer", en: "Partner, Chief Growth Officer" }, image: "/team/hugo.jpg", founder: false },
-  { id: "silvia", name: "Sílvia Valério", jobTitle: { "pt-PT": "Consultora pedagógica, professora do 1.º ciclo", "pt-BR": "Consultora pedagógica, professora dos anos iniciais", en: "Pedagogical advisor, primary school teacher" }, image: "/team/silvia.jpg", founder: false },
 ] as const;
 
 export function getPersonSchema(person: (typeof TEAM_PEOPLE)[number], locale: Locale = defaultLocale) {

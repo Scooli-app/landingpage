@@ -7,6 +7,7 @@ import type { Locale } from "@/i18n/routing";
 import { appMedia } from "@/lib/app-media";
 import { PUBLIC_IMPACT_METRICS } from "@/lib/seo";
 import { cn } from "@/lib/utils";
+import { Linkedin } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 
@@ -19,20 +20,31 @@ type TeamMember = {
   name: string;
   image: string;
   location: string;
+  linkedin: string;
   /** Pedro's photo is framed wider than the others. */
   imageClassName?: string;
 };
 
 const team: TeamMember[] = [
-  { name: "Miguel Rodrigues", image: "/team/miguel.jpg", location: "Santa Maria da Feira, Aveiro" },
+  {
+    name: "Miguel Rodrigues",
+    image: "/team/miguel.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    linkedin: "https://www.linkedin.com/in/miguel-r0drigues/",
+  },
   {
     name: "Pedro Rocha",
     image: "/team/pedro.jpeg",
     location: "Vila Nova de Gaia, Porto",
+    linkedin: "https://www.linkedin.com/in/pedrorocha06/",
     imageClassName: "scale-[1.28]",
   },
-  { name: "Hugo Silva", image: "/team/hugo.jpg", location: "Santa Maria da Feira, Aveiro" },
-  { name: "Sílvia Valério", image: "/team/silvia.jpg", location: "Lisboa" },
+  {
+    name: "Hugo Silva",
+    image: "/team/hugo.jpg",
+    location: "Santa Maria da Feira, Aveiro",
+    linkedin: "https://www.linkedin.com/in/hugo-silva-76a3181a7/",
+  },
 ];
 
 function Portrait({
@@ -169,19 +181,28 @@ export function AboutPage() {
           title={t("team.title")}
           description={t("team.description")}
         />
-        <ul className="grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid max-w-[900px] gap-x-5 gap-y-10 sm:grid-cols-3">
           {team.map((member, index) => (
-            <li key={member.name} data-reveal>
+            <li key={member.name} data-reveal className="flex flex-col">
               <Portrait
                 src={member.image}
                 alt={members[index]?.alt ?? member.name}
                 imageClassName={member.imageClassName}
-                sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 100vw"
+                sizes="(min-width: 640px) 290px, 100vw"
               />
               <p className="mt-5 text-lg font-semibold text-ink">{member.name}</p>
               <p className="mt-1 text-[15px] text-body">{members[index]?.role}</p>
               <p className="mt-2 text-[15px] font-medium text-ink">{members[index]?.background}</p>
               <p className="mt-1 text-sm text-subtle">{member.location}</p>
+              <a
+                href={member.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 self-start pt-3 text-sm font-medium text-violet-ink hover:underline"
+              >
+                <Linkedin className="size-4" strokeWidth={1.75} aria-hidden />
+                LinkedIn
+              </a>
             </li>
           ))}
         </ul>

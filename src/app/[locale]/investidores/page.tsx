@@ -42,7 +42,6 @@ const founders = [
   { name: "Miguel Rodrigues", image: "/team/miguel.jpg" },
   { name: "Pedro Rocha", image: "/team/pedro.jpeg", imageClassName: "scale-[1.28]" },
   { name: "Hugo Silva", image: "/team/hugo.jpg" },
-  { name: "Sílvia Valério", image: "/team/silvia.jpg" },
 ];
 
 function MoreLink({
@@ -273,7 +272,7 @@ export default async function InvestorsPage({
           title={t("team.title")}
           description={t("team.description")}
         />
-        <ul className="grid gap-x-5 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid max-w-[900px] gap-x-5 gap-y-8 sm:grid-cols-3">
           {founders.map((person, index) => (
             <li key={person.name} data-reveal className="flex items-center gap-4">
               <div className="relative size-16 shrink-0 overflow-hidden rounded-full bg-stone">

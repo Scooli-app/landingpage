@@ -85,6 +85,7 @@
     "homeAria": "Scooli - Página inicial",
     "socialAria": "{network} da Scooli",
     "rights": "© {year} Scooli · Um produto da FICTIONAL CLOUD, LDA.",
+    "companyId": "NIF 519405587",
     "links": {
       "teachers": "Professores",
       "aiForTeachers": "IA para professores",
@@ -541,7 +542,7 @@
   "about": {
     "meta": {
       "title": "Sobre a Scooli: a equipa e a história",
-      "description": "Conheça a equipa e a história da Scooli: engenheiros e uma professora a devolver tempo a quem ensina, com os professores portugueses."
+      "description": "Conheça a equipa e a história da Scooli: engenheiros a devolver tempo a quem ensina, com os professores portugueses."
     },
     "hero": {
       "badge": "Sobre nós",
@@ -601,7 +602,7 @@
     "team": {
       "badge": "Equipa",
       "title": "Quem está a construir a Scooli.",
-      "description": "Dois engenheiros de software e IA, um responsável de crescimento e uma professora como consultora pedagógica — a construir a Scooli em contacto direto com professores portugueses.",
+      "description": "Dois engenheiros de software e IA e um responsável de crescimento — a construir a Scooli em contacto direto com professores portugueses.",
       "members": [
         {
           "role": "Cofundador · Engenheiro de Software & IA",
@@ -617,11 +618,6 @@
           "role": "Sócio · Chief Growth Officer",
           "background": "Antes: Corticeira Amorim.",
           "alt": "Hugo Silva, sócio e Chief Growth Officer da Scooli"
-        },
-        {
-          "role": "Consultora pedagógica · Professora do 1.º ciclo",
-          "background": "Na sala de aula todos os dias.",
-          "alt": "Sílvia Valério, consultora pedagógica da Scooli"
         }
       ]
     },
@@ -1722,10 +1718,6 @@
         {
           "role": "Sócio · Crescimento",
           "background": "Antes: Corticeira Amorim"
-        },
-        {
-          "role": "Consultora pedagógica",
-          "background": "Professora do 1.º ciclo"
         }
       ],
       "link": "Conhecer a equipa"
