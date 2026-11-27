@@ -519,7 +519,7 @@
   "about": {
     "meta": {
       "title": "Sobre a Scooli: a equipe e a história",
-      "description": "Conheça a equipe e a história da Scooli: engenheiros portugueses e uma professora devolvendo tempo a quem ensina, agora também para escolas brasileiras."
+      "description": "Conheça a equipe e a história da Scooli: engenheiros portugueses devolvendo tempo a quem ensina, agora também para escolas brasileiras."
     },
     "hero": {
       "badge": "Sobre nós",
@@ -579,7 +579,7 @@
     "team": {
       "badge": "Equipe",
       "title": "Quem está construindo a Scooli.",
-      "description": "Dois engenheiros de software e IA, um responsável por crescimento e uma professora como consultora pedagógica: uma equipe portuguesa construindo a Scooli em contato direto com professores.",
+      "description": "Dois engenheiros de software e IA e um responsável por crescimento: uma equipe portuguesa construindo a Scooli em contato direto com professores.",
       "members": [
         {
           "role": "Cofundador · Engenheiro de Software e IA",
@@ -595,11 +595,6 @@
           "role": "Sócio · Chief Growth Officer",
           "background": "Antes: Corticeira Amorim.",
           "alt": "Hugo Silva, sócio e Chief Growth Officer da Scooli"
-        },
-        {
-          "role": "Consultora pedagógica · Professora em Portugal",
-          "background": "Na sala de aula todos os dias.",
-          "alt": "Sílvia Valério, consultora pedagógica da Scooli"
         }
       ]
     },
@@ -1747,10 +1742,6 @@
         {
           "role": "Sócio · Crescimento",
           "background": "Antes: Corticeira Amorim"
-        },
-        {
-          "role": "Consultora pedagógica",
-          "background": "Professora do ensino básico em Portugal"
         }
       ],
       "link": "Conhecer a equipe"

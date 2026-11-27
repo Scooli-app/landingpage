@@ -45,12 +45,6 @@ const team: TeamMember[] = [
     location: "Santa Maria da Feira, Aveiro",
     linkedin: "https://www.linkedin.com/in/hugo-silva-76a3181a7/",
   },
-  {
-    name: "Sílvia Valério",
-    image: "/team/silvia.jpg",
-    location: "Lisboa",
-    linkedin: "https://www.linkedin.com/in/s%C3%ADlvia-val%C3%A9rio-9ba70b221/",
-  },
 ];
 
 function Portrait({
@@ -187,14 +181,14 @@ export function AboutPage() {
           title={t("team.title")}
           description={t("team.description")}
         />
-        <ul className="grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid max-w-[900px] gap-x-5 gap-y-10 sm:grid-cols-3">
           {team.map((member, index) => (
             <li key={member.name} data-reveal className="flex flex-col">
               <Portrait
                 src={member.image}
                 alt={members[index]?.alt ?? member.name}
                 imageClassName={member.imageClassName}
-                sizes="(min-width: 1024px) 280px, (min-width: 640px) 45vw, 100vw"
+                sizes="(min-width: 640px) 290px, 100vw"
               />
               <p className="mt-5 text-lg font-semibold text-ink">{member.name}</p>
               <p className="mt-1 text-[15px] text-body">{members[index]?.role}</p>

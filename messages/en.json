@@ -526,7 +526,7 @@
   "about": {
     "meta": {
       "title": "About Scooli: the team and the story",
-      "description": "Meet the team and the story behind Scooli: engineers and a teacher on a mission to give time back to the people who teach."
+      "description": "Meet the team and the story behind Scooli: engineers on a mission to give time back to the people who teach."
     },
     "hero": {
       "badge": "About us",
@@ -586,7 +586,7 @@
     "team": {
       "badge": "Team",
       "title": "Who's building Scooli.",
-      "description": "Two software and AI engineers, a growth lead and a teacher as pedagogical advisor — building Scooli in direct contact with teachers.",
+      "description": "Two software and AI engineers and a growth lead, building Scooli in direct contact with teachers.",
       "members": [
         {
           "role": "Co-founder · Software & AI Engineer",
@@ -602,11 +602,6 @@
           "role": "Partner · Chief Growth Officer",
           "background": "Previously: Corticeira Amorim.",
           "alt": "Hugo Silva, partner and Chief Growth Officer at Scooli"
-        },
-        {
-          "role": "Pedagogical advisor · Primary school teacher",
-          "background": "In the classroom every day.",
-          "alt": "Sílvia Valério, pedagogical advisor at Scooli"
         }
       ]
     },
@@ -1701,10 +1696,6 @@
         {
           "role": "Partner · Growth",
           "background": "Previously: Corticeira Amorim"
-        },
-        {
-          "role": "Pedagogical advisor",
-          "background": "Primary school teacher"
         }
       ],
       "link": "Meet the team"
